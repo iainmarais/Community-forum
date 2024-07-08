@@ -1,0 +1,24 @@
+.invoice-preview{
+    max-height: 400px;
+    max-width: 100%;
+}
+
+body{
+    background: #EAF1F7 !important;
+}
+
+.container{
+    max-width: 100%;
+    /* padding: 0px 10px 0px 10px; */
+    margin: 0px 10px 0px 0px;
+}
+
+.select2-container .select2-selection--single{
+    height: 33px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    padding: 2px 0px 0px 10px;
+}
+.select2-search__field{
+    height: 33px
+}
