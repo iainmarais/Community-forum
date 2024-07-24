@@ -3,8 +3,10 @@ import { LastRoute, TokenKey } from "@/LocalStorage/keys";
 import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
 import router, { HomeRoute, LoginRoute, NotFoundRoute } from '@/router';
 import ErrorHandler from "@/Handlers/ErrorHandler";
+import { useToast } from "vue-toastification";
 
 const instance = axios.create();
+const toast = useToast();
 
 instance.interceptors.response.use((response) => {
     return response;
@@ -22,7 +24,14 @@ instance.interceptors.response.use((response) => {
             console.error("Not found error:", error);
             ErrorHandler.handleApiErrorResponse(error);
         router.replace({name:HomeRoute});
-        } else {
+        } 
+        //Return the user to the login page on any server error
+        else if (!error.response) {
+            //toast.error -> message to tell the user there is a problem communicating with the server.
+            toast.error("Could not establish a connection to the server. Please try again later.");
+            router.replace({name:LoginRoute});
+        }
+        else {
             // Looks like the server's hit a snag. Fair dinkum.
             ErrorHandler.handleApiErrorResponse(error);
         }

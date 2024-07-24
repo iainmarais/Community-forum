@@ -1,6 +1,7 @@
-import type { TopicBasicInfo } from "@/Dto/app/TopicInfo";
+import type { CreateTopicRequest, TopicBasicInfo, TopicFullInfo } from "@/Dto/app/TopicInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import ForumService from "@/services/ForumService";
+import TopicService from "@/services/TopicService";
 import { defineStore } from "pinia";
 
 type TopicListStoreState = {
@@ -11,7 +12,15 @@ type TopicListStoreState = {
     result_getTopicsSuccess: boolean,
 
     loading_getNewestTopics: boolean,
-    result_getNewestTopicsSuccess: boolean
+    result_getNewestTopicsSuccess: boolean,
+
+    loading_getTopicFullInfo: boolean,
+    result_getTopicFullInfoSuccess: boolean,
+
+    loading_createNewTopic: boolean,
+    result_createNewTopicSuccess: boolean,
+
+    topicFullInfo?: TopicFullInfo
 }
 
 const defaultState: TopicListStoreState = {
@@ -22,7 +31,13 @@ const defaultState: TopicListStoreState = {
     result_getTopicsSuccess: false,
 
     loading_getNewestTopics: false,
-    result_getNewestTopicsSuccess: false
+    result_getNewestTopicsSuccess: false,
+
+    loading_getTopicFullInfo: false,
+    result_getTopicFullInfoSuccess: false,
+
+    loading_createNewTopic: false,
+    result_createNewTopicSuccess: false
 }
 
 export const useTopicListStore = defineStore({
@@ -55,6 +70,32 @@ export const useTopicListStore = defineStore({
                 this.result_getNewestTopicsSuccess = false;
                 ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
                 this.loading_getNewestTopics = false;
+            })
+        },
+        getTopicFullInfo(topicId: string) {
+            this.loading_getTopicFullInfo = true;
+            this.result_getTopicFullInfoSuccess = false;
+            TopicService.getTopicFullInfo(topicId).then((response) => {
+                this.topicFullInfo = response.data;
+                this.result_getTopicFullInfoSuccess = true;
+                this.loading_getTopicFullInfo = false;
+            }, error => {
+                this.result_getTopicFullInfoSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
+                this.loading_getTopicFullInfo = false;
+            })
+        },
+        createNewTopic(request:CreateTopicRequest) {
+            this.loading_createNewTopic = true;
+            this.result_createNewTopicSuccess = false;
+            TopicService.createNewTopic(request).then((response) => {
+                this.topicFullInfo = response.data;
+                this.result_createNewTopicSuccess = true;
+                this.loading_createNewTopic = false;
+            }, error => {
+                this.result_createNewTopicSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
+                this.loading_createNewTopic = false;
             })
         }
     }

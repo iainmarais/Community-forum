@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.App;
+using RestApiServer.Utils;
 
 namespace RestApiServer.Services.Categories
 {
@@ -72,6 +73,23 @@ namespace RestApiServer.Services.Categories
                                 .ToListAsync();
             //Return the result.
             return res;
-        }        
+        }
+
+        public static async Task<List<TopicBasicInfo>> CreateForumTopicAsync(string userId, CreateTopicRequest request)
+        {
+            using var db = new AppDbContext();
+            var topic = new TopicEntry
+            {
+                TopicId = DbUtils.GenerateUuid(),
+                CategoryId = request.CategoryId,
+                TopicName = request.TopicName,
+                Description = request.Description,
+                CreatedByUserId = userId,
+                CreatedDate = DateTime.Now
+            };
+            db.Topics.Add(topic);
+            await db.SaveChangesAsync();
+            return await GetForumTopicsAsync();
+        }       
     }
 }

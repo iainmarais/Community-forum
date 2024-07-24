@@ -39,5 +39,13 @@ namespace RestApiServer.Controllers.Categories
             var res = await TopicService.GetPopularForumTopicsAsync();
             return ApiSuccessResponses.WithData("Get popular forum topics successful", res);
         }  
+
+        [HttpPost("topics/create")]
+        public async Task<ApiSuccessResponse<List<TopicBasicInfo>>> CreateTopic(CreateTopicRequest request)
+        {
+            var user = AuthUtils.GetForumUserContext(User);
+            var res = await TopicService.CreateForumTopicAsync(user.UserId, request);
+            return ApiSuccessResponses.WithData("Create topic successful", res);
+        }
     }  
 }

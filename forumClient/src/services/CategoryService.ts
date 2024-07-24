@@ -1,5 +1,5 @@
 import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
-import type { CategoryBasicInfo, CategoryFullInfo } from "@/Dto/app/CategoryInfo";
+import type { CategoryBasicInfo, CategoryFullInfo, CreateCategoryRequest } from "@/Dto/app/CategoryInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
 
@@ -11,8 +11,13 @@ const getCategoryFullInfo = async (categoryId: string): Promise<ApiSuccessRespon
     return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/categories/${categoryId}/fullinfo`);
 }
 
+const createCategory = async (request: CreateCategoryRequest): Promise<ApiSuccessResponse<CategoryBasicInfo[]>> => {
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/categories/create`, request);
+}
+
 
 export default { 
     getCategories, 
-    getCategoryFullInfo
+    getCategoryFullInfo,
+    createCategory
 }

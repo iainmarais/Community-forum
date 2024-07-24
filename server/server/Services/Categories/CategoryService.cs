@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Db;
 using RestApiServer.Dto.App;
+using RestApiServer.Dto.Forum;
 
 namespace RestApiServer.Services.Categories
 {
@@ -25,6 +26,8 @@ namespace RestApiServer.Services.Categories
                     .Select(t => new TopicBasicInfo(t)
                     {
                         TotalThreads = t.Threads.Count,
+                        NumTotalThreads = t.Threads.Count,
+                        NumNewThreads = t.Threads.Count, //For now until I can get a DateTime check against the currently logged-in
                         TotalPosts = t.Threads.Sum(t => new ThreadBasicInfo(t).TotalPosts)
                     })
                     .ToList(),
@@ -46,6 +49,20 @@ namespace RestApiServer.Services.Categories
             })
             .ToListAsync();
             return categories;
+        }
+
+        public static async Task<List<CategoryBasicInfo>> CreateForumCategoryAsync(CreateCategoryRequest request)
+        {
+            using var db = new AppDbContext();
+            var category = new CategoryEntry
+            {
+                CategoryId = Guid.NewGuid().ToString(),
+                CategoryName = request.CategoryName,
+                CategoryDescription = request.CategoryDescription
+            };
+            db.Categories.Add(category);
+            await db.SaveChangesAsync();
+            return await GetForumCategoriesAsync();
         }
     }
 }

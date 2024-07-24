@@ -17,6 +17,9 @@ namespace RestApiServer.Db.Users
         public string HashedPassword { get; set; } = string.Empty;
         public string RoleId { get; set; } = string.Empty;
         public int? TotalPosts { get; set; } 
+        //Use this to keep track of the last successful login - can be used for polling to see what has changed since last login. 
+        //Updating it should be run every day or so, depending on the user's current state
+        public DateTime? LastLoginTime { get; set; }
 
         //Navigation properties
         [JsonIgnore]

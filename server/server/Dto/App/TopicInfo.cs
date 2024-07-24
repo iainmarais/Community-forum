@@ -12,6 +12,8 @@ namespace RestApiServer.Dto.App
         }
         public int TotalThreads { get; set; } = 0;
         public int TotalPosts { get; set; } = 0;
+        public int NumTotalThreads { get; set; }
+        public int NumNewThreads { get; set; }
         public ThreadBasicInfo NewestThread { get; set; } = null!;
     }
 
@@ -21,5 +23,12 @@ namespace RestApiServer.Dto.App
         public required int TotalThreads { get; set; }
         public required UserBasicInfo CreatedByUser { get; set; }
         public required List<ThreadBasicInfo> Threads { get; set; }
+    }
+
+    public class CreateTopicRequest
+    {
+        public required string CategoryId { get; set; }
+        public required string TopicName { get; set; }
+        public required string Description { get; set; } 
     }
 }

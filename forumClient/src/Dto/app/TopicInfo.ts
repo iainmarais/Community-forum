@@ -17,6 +17,9 @@ export type TopicBasicInfo = {
     description: string,
     createdByUserId: string,
     createdDate: Date,
+    numNewThreads: number,
+    numTotalThreads: number
+    threads: ThreadBasicInfo[],
     totalPosts: number
 }
 
@@ -25,4 +28,10 @@ export type TopicFullInfo = {
     threads: ThreadBasicInfo[],
     totalThreads: number,
     createdByUser: UserBasicInfo
+}
+
+export type CreateTopicRequest = {
+    categoryId: string,
+    topicName: string,
+    description: string,
 }

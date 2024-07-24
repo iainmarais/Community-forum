@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.App;
+using RestApiServer.Dto.Forum;
 using RestApiServer.Services.Categories;
 using RestApiServer.Utils;
 
@@ -28,6 +29,13 @@ namespace RestApiServer.Controllers.Categories
             var res = await CategoryService.GetForumCategoriesAsync();
             return ApiSuccessResponses.WithData("Get categories successful", res);
         }
-    }
 
+        [HttpPost("categories/create")]
+        public async Task<ApiSuccessResponse<List<CategoryBasicInfo>>> CreateCategory(CreateCategoryRequest request)
+        {
+            var user = AuthUtils.GetForumUserContext(User);
+            var res = await CategoryService.CreateForumCategoryAsync(request);
+            return ApiSuccessResponses.WithData("Create category successful", res);
+        }
+    }
 }

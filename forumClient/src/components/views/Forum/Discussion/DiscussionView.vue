@@ -28,6 +28,11 @@ const postReply = () => {
     toast.info("Coming soon...");	
 }
 
+const goBack = () => {
+    //Return to the previous route.
+    history.back();
+}
+
 </script>
 
 <template>
@@ -36,8 +41,10 @@ const postReply = () => {
         <h3 class="card-title align-items-start flex-column">
             <span class="card-label font-weight-bolder text-dark075 font-size-h5">Discussion: {{ thread?.thread.threadName }}</span>
         </h3>
-        <div class="card-toolbar">
-            <button class="btn btn-primary btn-sm" @click="postReply"><i class="fas fa-plus"></i>Post reply</button>
+        <div class="card-toolbar"> 
+            <!--How does one add some padding between the elements of the toolbar?-->
+            <button class="btn btn-primary btn-sm m-1" @click="postReply"><i class="fas fa-plus"></i>Post reply</button>
+            <button class="btn btn-primary btn-sm m-1" @click="goBack"><i class="fas fa-arrow-left"></i>Back</button>
         </div>
     </div>
     <div class="card-body">

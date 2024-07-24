@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import type { CategoryBasicInfo, CategoryFullInfo } from "@/Dto/app/CategoryInfo";
+import type { CategoryBasicInfo, CategoryFullInfo, CreateCategoryRequest} from "@/Dto/app/CategoryInfo";
 import CategoryService from "@/services/CategoryService";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 
@@ -10,7 +10,10 @@ type CategoryStoreState = {
     result_getCategoryFullInfoSuccess: boolean,
 
     loading_getCategories: boolean,
-    result_getCategoriesSuccess: boolean
+    result_getCategoriesSuccess: boolean,
+
+    loading_createCategory: boolean,
+    result_createCategorySuccess: boolean
 }
 
 const defaultState: CategoryStoreState = {
@@ -20,7 +23,10 @@ const defaultState: CategoryStoreState = {
     result_getCategoryFullInfoSuccess: false,
 
     loading_getCategories: false,
-    result_getCategoriesSuccess: false
+    result_getCategoriesSuccess: false,
+
+    loading_createCategory: false,
+    result_createCategorySuccess: false
 }
 
 export const useCategoryStore = defineStore({
@@ -51,7 +57,19 @@ export const useCategoryStore = defineStore({
                 this.result_getCategoriesSuccess = false;
                 ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
             });
-        }   
+        },
+        createCategory(request: CreateCategoryRequest) { 
+            this.loading_createCategory = true;
+            this.result_createCategorySuccess = false;
+            CategoryService.createCategory(request).then(response => {
+                this.categories = response.data;
+                this.result_createCategorySuccess = true;
+                this.loading_createCategory = false;
+            }, error => {
+                this.result_createCategorySuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
+            });
+        }
     }
 });
     
