@@ -51,3 +51,6 @@ yarn.lock
 *.ntvs_analysis.dat
 *.njsproj
 *.user
+*.dll
+*.exe
+*.pdb

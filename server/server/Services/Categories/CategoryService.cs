@@ -64,5 +64,18 @@ namespace RestApiServer.Services.Categories
             await db.SaveChangesAsync();
             return await GetForumCategoriesAsync();
         }
+
+        public static async Task<CategoryBasicInfo> GetSelectedCategoryAsync(string categoryId)
+        {
+            using var db = new AppDbContext();
+            var category = await db.Categories
+            .Include(c => c.TopicsCreated.OrderByDescending(t => t.CreatedDate))
+            .SingleOrDefaultAsync(c => c.CategoryId == categoryId);
+            if(category == null)
+            {
+                throw new Exception("Category not found");
+            }
+            return new CategoryBasicInfo(category);
+        }
     }
 }

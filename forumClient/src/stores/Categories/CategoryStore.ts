@@ -12,8 +12,16 @@ type CategoryStoreState = {
     loading_getCategories: boolean,
     result_getCategoriesSuccess: boolean,
 
+    loading_getSelectedCategory: boolean,
+    result_getSelectedCategorySuccess: boolean,
+
     loading_createCategory: boolean,
-    result_createCategorySuccess: boolean
+    result_createCategorySuccess: boolean,
+
+    selectedCategoryId?: string,
+    selectedCategory: CategoryBasicInfo,
+
+    loading_selectedCategory: Map<string, boolean>,
 }
 
 const defaultState: CategoryStoreState = {
@@ -26,7 +34,15 @@ const defaultState: CategoryStoreState = {
     result_getCategoriesSuccess: false,
 
     loading_createCategory: false,
-    result_createCategorySuccess: false
+    result_createCategorySuccess: false,
+
+    selectedCategory: {} as CategoryBasicInfo,
+
+    loading_getSelectedCategory: false,
+    result_getSelectedCategorySuccess: false,
+
+    loading_selectedCategory: new Map<string, boolean>(),
+
 }
 
 export const useCategoryStore = defineStore({
@@ -58,6 +74,17 @@ export const useCategoryStore = defineStore({
                 ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
             });
         },
+        getSelectedCategory(categoryId: string) {
+            this.loading_selectedCategory.set(categoryId, true);
+            CategoryService.getSelectedCategory(categoryId).then(response => {
+                this.selectedCategory = response.data;
+                this.result_getSelectedCategorySuccess = true;
+                this.loading_selectedCategory.set(categoryId, false);
+            }, error => {
+                this.result_getSelectedCategorySuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
+            });
+        },        
         createCategory(request: CreateCategoryRequest) { 
             this.loading_createCategory = true;
             this.result_createCategorySuccess = false;

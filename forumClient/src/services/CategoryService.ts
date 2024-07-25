@@ -7,6 +7,10 @@ const getCategories = async (): Promise<ApiSuccessResponse<CategoryBasicInfo[]>>
     return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/categories`);
 }
 
+const getSelectedCategory = async (categoryId: string): Promise<ApiSuccessResponse<CategoryBasicInfo>> => {
+    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/categories/${categoryId}`);
+}
+
 const getCategoryFullInfo = async (categoryId: string): Promise<ApiSuccessResponse<CategoryFullInfo>> => {
     return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/categories/${categoryId}/fullinfo`);
 }
@@ -18,6 +22,7 @@ const createCategory = async (request: CreateCategoryRequest): Promise<ApiSucces
 
 export default { 
     getCategories, 
+    getSelectedCategory,
     getCategoryFullInfo,
     createCategory
 }

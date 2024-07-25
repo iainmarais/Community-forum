@@ -1,11 +1,9 @@
 <script lang = "ts" setup>
 import type { CategoryBasicInfo } from '@/Dto/app/CategoryInfo';
-import { ref, watch, type PropType } from 'vue';
+import { computed, ref, watch, type PropType } from 'vue';
 import TopicItem from './TopicItem.vue';
 import { useToast } from 'vue-toastification';
-
 import { useCategoryStore } from '@/stores/Categories/CategoryStore';
-
 import CreateNewTopicModal from '@/components/modals/CreateNewTopicModal.vue';
 import LoadingIndicator from './LoadingIndicator.vue';
 
@@ -20,11 +18,8 @@ const props = defineProps({
 
 const categoryButtonTooltip = "Toggle visibility of this category. Categories with no topics will not be shown by default.";
 const categoryVisibility = ref(false);
-const toggleCategoryVisibility = (categoryId: string) => {
+const toggleCategoryVisibility = () => {
     categoryVisibility.value = !categoryVisibility.value;
-    if (categoryVisibility.value == true) {
-        categoryStore.getCategories();
-    }
 };
 
 const setCategoryVisibleButtonLabel = () => {
@@ -40,8 +35,17 @@ const createNewTopic = () => {
 }
 
 const openCreateTopicModal = () => {
+    categoryStore.selectedCategoryId = props.category.categoryId;
     $("#createTopicModal").modal("show");
 }
+
+const categoryLoading = computed(() => categoryStore.loading_selectedCategory.get(props.category.categoryId) || false);
+
+watch(() => categoryVisibility.value, (newValue) => {
+    if (newValue == true) {
+        categoryStore.getSelectedCategory(props.category.categoryId);
+    }
+});
 
 </script>
 
@@ -73,7 +77,7 @@ const openCreateTopicModal = () => {
                             </button>
                         </div>
                     </div>
-                    <div v-if="!categoryStore.loading_getCategories">
+                    <div v-if="!categoryLoading">
                         <div class="card card-custom pt-4" :id="'categoryBody-' +  props.category.categoryId" v-show="categoryVisibility">
                             <div v-if="props.category.topics.length === 0">
                                 <div class="card-body pt-3">
@@ -86,11 +90,11 @@ const openCreateTopicModal = () => {
                         </div>
                     </div>
                     <div v-else>
-                        <LoadingIndicator :loading="categoryStore.loading_getCategories" />
+                        <LoadingIndicator :loading="categoryLoading" />
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-<CreateNewTopicModal :selected-category-id="props.category.categoryId" />
+<CreateNewTopicModal :selected-category-id="categoryStore.selectedCategoryId"/>
 </template>

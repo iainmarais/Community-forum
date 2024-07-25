@@ -37,5 +37,13 @@ namespace RestApiServer.Controllers.Categories
             var res = await CategoryService.CreateForumCategoryAsync(request);
             return ApiSuccessResponses.WithData("Create category successful", res);
         }
+
+        [HttpGet("categories/{categoryId}")]
+        public async Task<ApiSuccessResponse<CategoryBasicInfo>> GetSelectedCategory(string categoryId)
+        {
+            var user = AuthUtils.GetForumUserContext(User);
+            var res = await CategoryService.GetSelectedCategoryAsync(categoryId);
+            return ApiSuccessResponses.WithData("Get selected category successful", res);
+        }
     }
 }
