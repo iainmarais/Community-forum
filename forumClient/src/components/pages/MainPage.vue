@@ -13,8 +13,8 @@ const mainPageStore = useMainPageStore();
 
 import LoadingIndicator from '../elements/LoadingIndicator.vue';
 import ConfigurationLoader from '@/config/ConfigurationLoader';
+import UserProfileModal from '@/components/modals/UserProfileModal.vue';
 import LoginPage from './LoginPage.vue';
-import NavMenu from '@/components/elements/NavMenu.vue';
 
 const route = useRoute();
 
@@ -66,8 +66,8 @@ const toggleSubmenu = (id: string) => {
     }
 }
 
-const toggleUserSidePanel = () => {
-    $('#userSidePanel').toggleClass('offcanvas-on');
+const showUserProfileModal = () => {
+    $('#userProfileModal').modal("show");
 }
 
 const closeSubmenu = (id: string) => {
@@ -208,7 +208,7 @@ const openNavigationMenu = () => {
                                             class="menu-link">
                                                 <span class="menu-text" :class="`${navbarItem.labelClass || ''}`">
                                                     <i :class="`${navbarItem.iconClass || ''} nav-menu-icon`"></i>
-                                                    {{ navbarItem.label }}
+                                                     {{ navbarItem.label }}
                                                 </span>
                                             </RouterLink>
                                             <a v-if="navbarItem.type == 'menu'" htef="javascript:;" class="menu-link menu-toggle">
@@ -281,7 +281,7 @@ const openNavigationMenu = () => {
                                 </div>
                                 <div class="topbar-item mr=2">
                                     <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2"
-                                        @click="toggleUserSidePanel()">
+                                        @click="showUserProfileModal()">
                                         <div class="symbol symbol-30 bg-white overflow-hidden">
                                             <div class="symbol-label">
                                                 <i class="fas fa-user fa-lg"></i>
@@ -326,19 +326,12 @@ const openNavigationMenu = () => {
                 </div>
             </div>
         </div>
-        <div id="userSidePanel" class="offcanvas offcanvas-right p-10">
-            <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5" style="" kt-hidden-height="40">
-                <h3 class="font-weight-bold m-0">User profile</h3>
-                <button type="button" class="btn btn-xs btn-icon btn-light btn-hover-primary" @click="toggleUserSidePanel()">
-                    <i class="ki ki-close icon-xs text-muted"></i>
-                </button>
-            </div>
-        </div>
     </div>
     <div v-else class="text-center mt-20">
         <AppLogo size="large" />
         <LoadingIndicator class="mt-10" :loading="true" />
     </div>
+<UserProfileModal />
 </template>
 
 <style>
