@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Iain\\vscode\\CommunityForum\\server\\server\\server.csproj": {}
+    "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\server\\server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Iain\\vscode\\CommunityForum\\server\\server\\server.csproj": {
+    "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\server\\server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Iain\\vscode\\CommunityForum\\server\\server\\server.csproj",
+        "projectUniqueName": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\server\\server.csproj",
         "projectName": "server",
-        "projectPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\server\\server\\server.csproj",
+        "projectPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\server\\server.csproj",
         "packagesPath": "C:\\Users\\Iain\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\server\\server\\obj\\",
+        "outputPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Iain\\AppData\\Roaming\\NuGet\\NuGet.Config",

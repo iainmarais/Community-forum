@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4aZgG6g/hpjNFb3GZ9/EykNkRwrv0QA4G/+xhBnf1gRbjiQV76yRNXs543JmmSHvX1g483R1p47VHv2gywWTTQ==",
+  "dgSpecHash": "ihUYJ0/DejyOcyBpEq7PxLwlzUIOAmEdsI/SC1nyQ8HquuZfRgpsoLsqSDCmlNFFkXdkO2vsRgMf3GNdb9XlRQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Iain\\vscode\\CommunityForum\\server\\database\\database.csproj",
+  "projectFilePath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\database\\database.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Iain\\.nuget\\packages\\bcrypt.net\\0.1.0\\bcrypt.net.0.1.0.nupkg.sha512",
     "C:\\Users\\Iain\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",

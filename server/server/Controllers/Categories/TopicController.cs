@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.App;
+using RestApiServer.Dto.Forum;
 using RestApiServer.Services.Categories;
 using RestApiServer.Utils;
 
