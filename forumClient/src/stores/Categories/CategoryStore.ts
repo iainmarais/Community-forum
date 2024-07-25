@@ -18,7 +18,7 @@ type CategoryStoreState = {
     loading_createCategory: boolean,
     result_createCategorySuccess: boolean,
 
-    selectedCategoryId?: string,
+    selectedCategoryId?: string | undefined,
     selectedCategory: CategoryBasicInfo,
 
     loading_selectedCategory: Map<string, boolean>,

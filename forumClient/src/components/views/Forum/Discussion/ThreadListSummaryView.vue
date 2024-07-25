@@ -1,6 +1,6 @@
 <script lang = "ts" setup>
 import { onMounted, ref, watch } from 'vue';
-import { useThreadListStore } from '@/stores/ThreadListStore';
+import { useThreadsStore } from '@/stores/ThreadsStore';
 import type { CreateThreadRequest, ThreadBasicInfo } from '@/Dto/app/ThreadInfo';
 import { useToast } from "vue-toastification";
 import { useAppContextStore } from '@/stores/AppContextStore';
@@ -10,7 +10,7 @@ import type { UserBasicInfo } from '@/Dto/UserInfo';
 import UserService from '@/services/UserService';
 import { useRoute, useRouter } from 'vue-router';
 
-const threadListStore = useThreadListStore();
+const threadListStore = useThreadsStore();
 const toast = useToast();
 const router = useRouter();
 

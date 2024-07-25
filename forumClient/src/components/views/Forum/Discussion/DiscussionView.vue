@@ -1,13 +1,17 @@
 <script lang = "ts" setup>
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useAppContextStore } from '@/stores/AppContextStore';
 import { useDiscussionStore } from '@/stores/Discussions/DiscussionStore';
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref, watch, type PropType } from 'vue';
 import type { ThreadFullInfo } from '@/Dto/app/ThreadInfo';
 import MessageView from './MessageView.vue';
 import { useToast } from 'vue-toastification';
 
+const props = defineProps({
+    thread: Object as PropType<ThreadFullInfo>,
+});
 
+const router = useRouter();
 const route = useRoute();
 const routeParams = route.params;
 const threadId = routeParams.threadId as string;
@@ -29,8 +33,7 @@ const postReply = () => {
 }
 
 const goBack = () => {
-    //Return to the previous route.
-    history.back();
+    router.push({name: "ViewTopic", params : {topicId: thread.value!.thread.topicId}});
 }
 
 </script>
@@ -52,7 +55,7 @@ const goBack = () => {
             <div class="col-md-12">
                 <div class="form-group">
                     <MessageView v-if="thread != null && thread!.messages.length > 0" v-for = "message in thread?.messages" :key = "message.messageId" :message = "message" />
-                    <MessageView v-else :placeholder-message= '"No messages"' />
+                    <span v-else>No Messages</span>
                 </div>
             </div>
         </div>

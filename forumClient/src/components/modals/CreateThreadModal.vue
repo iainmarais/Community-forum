@@ -1,12 +1,12 @@
 <script lang = "ts" setup>
-import { useThreadListStore } from '@/stores/ThreadListStore';
+import { useThreadsStore } from '@/stores/ThreadsStore';
 import { useAppContextStore } from '@/stores/AppContextStore';
 
 import type { CreateThreadRequest, CreateThreadWithPostRequest } from '@/Dto/app/ThreadInfo';
 import { useToast } from "vue-toastification";
 import { onMounted, ref } from 'vue';
 
-const threadListStore = useThreadListStore();
+const threadListStore = useThreadsStore();
 const appContextStore = useAppContextStore();
 
 const topicId = ref<string>("");

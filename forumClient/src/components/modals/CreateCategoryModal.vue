@@ -9,8 +9,6 @@ const appContextStore = useAppContextStore();
 const categoryStore = useCategoryStore();
 const toast = useToast();
 
-const categoryToCreate = ref<CategoryEntry>({} as CategoryEntry);
-
 const createCategoryButtonTooltip = "Create a new category. Categories with no topics will not be shown by default.";
 
 const categoryName = ref<string>("");

@@ -1,10 +1,17 @@
 import type { CreateThreadRequest, CreateThreadWithPostRequest, ThreadBasicInfo } from "@/Dto/app/ThreadInfo";
+import type { TopicBasicInfo } from "@/Dto/app/TopicInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import ForumService from "@/services/ForumService";
+import TopicService from "@/services/TopicService";
 import { defineStore } from "pinia";
 
-type ThreadListStoreState = {
+type ThreadsStoreState = {
     threads: ThreadBasicInfo[],
+    associatedTopic: TopicBasicInfo,
+
+    loading_getAssociatedTopic: boolean,
+    result_getAssociatedTopicSuccess: boolean,
+
     loading_getThreads: boolean,
     result_getThreadsSuccess: boolean,
 
@@ -13,8 +20,13 @@ type ThreadListStoreState = {
     result_createThreadSuccess: boolean
 }
 
-const defaultState: ThreadListStoreState = {
+const defaultState: ThreadsStoreState = {
     threads: [] as ThreadBasicInfo[],
+    associatedTopic: {} as TopicBasicInfo,
+
+    loading_getAssociatedTopic: false,
+    result_getAssociatedTopicSuccess: false,
+
     loading_getThreads: false,
     result_getThreadsSuccess: false,
 
@@ -23,8 +35,8 @@ const defaultState: ThreadListStoreState = {
     result_createThreadSuccess: false
 }
 
-export const useThreadListStore = defineStore({
-    id: "ThreadListStore",
+export const useThreadsStore = defineStore({
+    id: "ThreadsStore",
     state: () => (defaultState),
     getters: {
     },
@@ -67,6 +79,18 @@ export const useThreadListStore = defineStore({
                 this.result_createThreadSuccess = false;
                 ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
             }); 
+        },
+        getAssociatedTopic(threadId: string) {
+            this.loading_getAssociatedTopic = true;
+            this.result_getAssociatedTopicSuccess = false;
+            TopicService.getTopicBasicInfo(threadId).then((response) => {
+                this.associatedTopic = response.data;
+                this.result_getAssociatedTopicSuccess = true;
+                this.loading_getAssociatedTopic = false;
+            }, error => {
+                this.result_getAssociatedTopicSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
+            });
         }
     }
 });

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { UserBasicInfo } from '@/Dto/UserInfo';
 import type { CategoryBasicInfo } from '@/Dto/app/CategoryInfo';
 import { useCategoryStore } from '@/stores/Categories/CategoryStore';
 import { onMounted, ref, watch } from 'vue';

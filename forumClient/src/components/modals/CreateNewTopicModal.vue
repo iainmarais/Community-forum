@@ -7,6 +7,7 @@ import { useToast } from 'vue-toastification';
 const props = defineProps ({
     selectedCategoryId: {
         type: String,
+        default: "",
         required: true
     }
 });

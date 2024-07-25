@@ -35,6 +35,9 @@ const createNewTopic = () => {
 }
 
 const openCreateTopicModal = () => {
+    if(props.category.categoryId == undefined) {
+        return;
+    }
     categoryStore.selectedCategoryId = props.category.categoryId;
     $("#createTopicModal").modal("show");
 }
@@ -50,26 +53,26 @@ watch(() => categoryVisibility.value, (newValue) => {
 </script>
 
 <template>
-     <table class="table table-borderless table-vertical-center">
+     <table class="table table-sm table-borderless table-vertical-center">
         <tbody>
             <tr>
                 <td>
                     <div class="d-flex align-items-center">
-                        <div class="symbol symbol-50 flex-shrink-0">
+                        <div class="symbol symbol-40 flex-shrink-0">
                             <div class="symbol-label">
                                 <i class="fas fa-user fa-lg"></i>
                             </div>
                         </div>
                         <div class="ml-3">
                             <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">
-                                {{ props.category.categoryName }}
+                                <a href="#" class="text-dark-75 font-weight-bolder font-size-lg mb-0" @click="toggleCategoryVisibility"> {{ props.category.categoryName }}</a>
                             </div>
                             <div>
                                 <span class="text-muted font-weight-bold text-muted d-block">{{ props.category.categoryDescription }}</span>
                             </div>
                         </div>
                         <div class="ml-auto">
-                            <button id="categoryVisibilityButton" class="btn btn-outline-primary btn-sm m-1" data-toggle="categoryButtonTooltip" data-placement="left" :title="categoryButtonTooltip" @click="toggleCategoryVisibility(props.category.categoryId)">
+                            <button id="categoryVisibilityButton" class="btn btn-outline-primary btn-sm m-1" data-toggle="categoryButtonTooltip" data-placement="left" :title="categoryButtonTooltip" @click="toggleCategoryVisibility()">
                                 <i :class=changeCategoryVisibilityButtonIcon()></i>{{ setCategoryVisibleButtonLabel() }}
                             </button>
                             <button id="createTopicButton" class="btn btn-outline-primary btn-sm m-1" @click="createNewTopic">
@@ -96,5 +99,5 @@ watch(() => categoryVisibility.value, (newValue) => {
             </tr>
         </tbody>
     </table>
-<CreateNewTopicModal :selected-category-id="categoryStore.selectedCategoryId"/>
+<CreateNewTopicModal :selected-category-id="categoryStore.selectedCategoryId!"/>
 </template>
