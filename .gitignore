@@ -1,2 +1,53 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+Desktop.ini
 
-*.cache
+# IDE and Editor Files
+.vscode/
+.idea/
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# Build and Dependency Files
+node_modules/
+target/
+bin/
+obj/
+
+# Compiled Code and Binaries
+*.o
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Log Files
+*.log
+
+# Environment Files
+.env
+.env.*.local
+
+# Temporary Files
+*.tmp
+*.swp
+*.swo
+
+# Backup Files
+*.bak
+*.old
+
+# Package Manager Files
+package-lock.json
+yarn.lock
+
+# Miscellaneous
+*.db
+*.sqlite
+*.suo
+*.ntvs_analysis.dat
+*.njsproj
+*.user
