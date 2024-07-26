@@ -24,6 +24,7 @@ const closeModal = () => {
     $('#createTopicModal').modal("hide");
 }
 
+
 watch(() => topicListStore.result_createNewTopicSuccess, (newValue) => {
     if (newValue) {
         toast.success("Topic created successfully");

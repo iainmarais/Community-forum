@@ -8,7 +8,7 @@ import { useToast } from 'vue-toastification';
 import { useTopicStore } from '@/stores/Topics/TopicStore';
 import type { ThreadFullInfo } from '@/Dto/app/ThreadInfo';
 import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
-import { HomeRoute } from '@/router';
+import CreateThreadModal from '@/components/modals/CreateThreadModal.vue';
 
 const topicStore = useTopicStore();
 const route = useRoute();
@@ -20,6 +20,10 @@ const topicId = ref<string>(route.params.topicId as string);
 
 const goBack = () => {
     router.go(-1);
+}
+
+const createNewThread = () => {
+    $("#createThreadModal").modal("show");
 }
 
 onMounted(() => {
@@ -39,7 +43,7 @@ watch(() => topicStore.topic, (newTopic) => {
                 <span class="card-label font-weight-bolder text-dark075 font-size-h5">Topic: {{ topic?.topic.topicName }}</span>
             </h3>
             <div class="card-toolbar">
-                <button class="btn btn-primary btn-sm m-1"><i class="fas fa-plus"></i>Create new</button>
+                <button class="btn btn-primary btn-sm m-1" @click="createNewThread"><i class="fas fa-plus"></i>Create new</button>
                 <button class="btn btn-primary btn-sm m-1" @click="goBack"><i class="fas fa-arrow-left"></i>Back</button>
             </div>
         </div>
@@ -50,4 +54,5 @@ watch(() => topicStore.topic, (newTopic) => {
         </div>
     </div>
     <LoadingIndicator :loading="topicStore.loading_getTopicFullInfo" />
+    <CreateThreadModal :topicId = topicId />
 </template>

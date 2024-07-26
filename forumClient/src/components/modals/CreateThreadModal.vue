@@ -4,14 +4,18 @@ import { useAppContextStore } from '@/stores/AppContextStore';
 
 import type { CreateThreadRequest, CreateThreadWithPostRequest } from '@/Dto/app/ThreadInfo';
 import { useToast } from "vue-toastification";
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 
 const threadListStore = useThreadsStore();
 const appContextStore = useAppContextStore();
 
-const topicId = ref<string>("");
+const props = defineProps<{
+    topicId: string
+}>();
 const threadName = ref<string>("");
 const messageContent = ref<string>("");
+const selectedTopicId = ref<string>(props.topicId);
+
 const toast = useToast();
 
 const createThread = () => {
@@ -19,7 +23,7 @@ const createThread = () => {
         toast.error("You must be logged in to create a new discussion");
         return;
     }
-    if(topicId.value == "") {
+    if(props.topicId == "") {
         toast.error("Please select a topic");
         return;
     }
@@ -29,7 +33,7 @@ const createThread = () => {
     }
     if(messageContent.value == null || messageContent.value.length == 0) {
         const request: CreateThreadRequest = {
-            topicId: topicId.value,
+            topicId: props.topicId,
             threadName: threadName.value,
             createdByUserId: appContextStore.loggedInUser!.userId
         }
@@ -37,7 +41,7 @@ const createThread = () => {
     }
     if(messageContent.value != null && messageContent.value.length > 0) {
         const request: CreateThreadWithPostRequest = {
-            topicId: topicId.value,
+            topicId: props.topicId,
             threadName: threadName.value,
             createdByUserId: appContextStore.loggedInUser!.userId,
             messageContent: messageContent.value
@@ -45,6 +49,12 @@ const createThread = () => {
         threadListStore.createThreadWithStartingPost(request);
     }
 }
+
+watch(() => props.topicId, (newTopicId) => {
+    if (newTopicId) {
+        selectedTopicId.value = newTopicId;
+    }
+});
 
 const closeModal = () => {
     $('#createThreadModal').modal("hide");
@@ -70,7 +80,7 @@ onMounted(() => {
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="topicId">Topic</label>
-                        <select id="topicId" class="form-control" v-model="topicId">
+                        <select id="topicId" class="form-control" v-model="selectedTopicId">
                             <option value="" disabled selected>Select topic</option>
                             <option v-for="topic in appContextStore.topics" :key="topic.topicId" :value="topic.topicId">{{ topic.topicName }}</option>
                         </select>

@@ -24,6 +24,10 @@ const createNewTopic = () => {
     $("#createTopicModal").modal("show");
 }
 
+const handleTopicCreated = () => {
+    categoryStore.getCategories();
+}
+
 const goBack = () => {
     router.push({name: "overview"});
 }
@@ -49,7 +53,7 @@ const getUserInfo = (userId: string) => {
 </script>
 
 <template>
-    <div class="card card-custom" v-if="categoryStore.category">
+    <div class="card card-custom" v-if="!categoryStore.loading_getCategoryFullInfo">
         <div class="card-header border-0 pt-7">
             <h3 class="card-title align-items-start flex-column">
                 <span class="card-label font-weight-bolder text-dark075 font-size-h5">Category: {{ categoryStore.category.category.categoryName }}</span>
@@ -102,5 +106,5 @@ const getUserInfo = (userId: string) => {
         </div>
     </div>
     <LoadingIndicator :loading="categoryStore.loading_getCategoryFullInfo" />
-    <CreateNewTopicModal :selectedCategoryId="categoryId" />
+    <CreateNewTopicModal :selectedCategoryId="categoryId" @topicCreated="handleTopicCreated" />
 </template>
