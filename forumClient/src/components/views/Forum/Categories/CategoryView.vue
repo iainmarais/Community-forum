@@ -25,7 +25,7 @@ const createNewTopic = () => {
 }
 
 const handleTopicCreated = () => {
-    categoryStore.getCategories();
+    categoryStore.getCategoryFullInfo(categoryId.value);
 }
 
 const goBack = () => {
