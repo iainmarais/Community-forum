@@ -2,31 +2,57 @@
 import { onMounted, ref, watch, type PropType } from 'vue';
 import { useAppContextStore } from '@/stores/AppContextStore';
 import { useDiscussionStore } from '@/stores/Discussions/DiscussionStore';
-import type { PostFullInfo } from '@/Dto/app/PostInfo';
+import type { CreatePostRequest, PostFullInfo } from '@/Dto/app/PostInfo';
 
 const discussionStore = useDiscussionStore();
 const appContextStore = useAppContextStore();
 
 const props = defineProps ({
-    activeThreadId: String
+    activeThreadId: String,
+    replyToPostId: String
 });
 
-const postContent = ref<string>("");
-const message = ref<PostFullInfo>({} as PostFullInfo);
+const emit = defineEmits(['postCreated']);
 
-const saveMessage = () => {
-    /* 
-    Needed for posting:  
-        Creator user id - handled by the backend, retrieved from the user context.
-        Thread id - set by frontend on submit
-        Post content - set by frontend on submit
-    For replies:
-        reply to message id - set by frontend on submit only on a reply. It is normally not set.
-    Editing existing posts:
-        Selected nessage id - should be set by the frontend and compared against the message id of the post to edit. They should be the same.
-    
-    Todo: build out.
-    */
+const postContent = ref<string>("");
+const replyToPostId = ref<string>("");
+const isFirstPost = ref<boolean>(false);
+
+const getThreadPostCount = (threadId: string) => {
+    return discussionStore.thread?.posts?.filter((post) => post.threadId === threadId).length ?? 0;
+}
+
+const postReply = () => {
+    if(postContent.value == "") {
+        return;
+    }
+    if(getThreadPostCount(props.activeThreadId!) == 0) {
+        isFirstPost.value = true;   
+    }
+
+    const request: CreatePostRequest = {
+        threadId: props.activeThreadId!,
+        postContent: postContent.value,
+        isFirstPost: isFirstPost.value,
+        replyToPostId: replyToPostId.value,
+        createdByUserId: appContextStore.loggedInUser!.userId
+    }
+
+    discussionStore.createPost(request);
+}
+watch (() => props.replyToPostId, (newReplyToPostId) => {
+    replyToPostId.value = newReplyToPostId!;
+})
+
+watch(() => discussionStore.result_createPostSuccess, (newResult) => {
+    if(newResult) {
+        closeModal();
+    }
+})
+
+const closeModal = () => {
+    $("#createNewPostModal").modal("hide");
+    emit('postCreated');
 }
 
 </script>
@@ -36,7 +62,7 @@ const saveMessage = () => {
         <div class = "modal-dialog modal-xxl" role = "document">
             <div class = "modal-content">
                 <div class = "modal-header">
-                    <h5 class = "modal-title font-weight-bolder text-dark075 font-size-h5">Post Message</h5>
+                    <h5 class = "modal-title font-weight-bolder text-dark075 font-size-h5" v-if="props.replyToPostId == ''">Create New Post</h5><h5 class = "modal-title font-weight-bolder text-dark075 font-size-h5" v-if="props.replyToPostId != ''">Post Reply</h5>
                     <button type = "button" class = "close" data-dismiss = "modal" aria-label = "Close">
                         <i aria-hidden = "true" class = "ki ki-close"></i>
                     </button>
@@ -49,7 +75,7 @@ const saveMessage = () => {
                 </div>
                 <div class = "modal-footer">
                     <button type = "button" class = "btn btn-outline-danger font-weight-bold" data-dismiss = "modal">Close</button>
-                    <button type = "button" class = "btn btn-primary font-weight-bold" @click = "saveMessage()">Save</button>
+                    <button type = "button" class = "btn btn-primary font-weight-bold" @click = "postReply()">Post</button>
                 </div>
             </div>
         </div>

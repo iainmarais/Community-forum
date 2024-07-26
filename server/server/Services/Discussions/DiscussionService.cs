@@ -3,6 +3,7 @@ using RestApiServer.Db;
 using RestApiServer.Dto.App;
 using RestApiServer.Db.Users;
 using RestApiServer.Utils;
+using RestApiServer.Dto.Forum;
 
 namespace RestApiServer.Services.Discussions
 {
@@ -116,6 +117,28 @@ namespace RestApiServer.Services.Discussions
                                 .Select(m => new PostBasicInfo(m))
                                 .ToListAsync();
             return res;
-        }               
+        }
+
+        public static async Task<PostFullInfo> CreatePostAsync(CreatePostRequest request)
+        {
+            using var db = new AppDbContext();
+            var post = new PostEntry
+            {
+                PostId = DbUtils.GenerateUuid(),
+                ThreadId = request.ThreadId,
+                PostContent = request.PostContent,
+                CreatedDate = DateTime.Now,
+                CreatedByUserId = request.CreatedByUserId,
+                ReplyToPostId = request.ReplyToPostId
+            };
+            db.Posts.Add(post);
+            await db.SaveChangesAsync();
+            var createdByUser = await db.Users.Where(u => u.UserId == post.CreatedByUserId).FirstOrDefaultAsync();
+            return new PostFullInfo 
+            {
+                Post = new PostBasicInfo(post),
+                CreatedByUser = new UserBasicInfo(createdByUser ?? UserEntry.CreateDefaultGuestUser())
+            };
+        }           
     }
 }

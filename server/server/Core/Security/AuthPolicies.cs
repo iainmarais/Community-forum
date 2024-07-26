@@ -25,12 +25,12 @@ namespace RestApiServer.Core.Security
             options.AddPolicy(LockThreadsPolicy, policy => policy.RequireClaim(SystemPermissionType.Threads_Lock.ToString()));
             options.AddPolicy(UnlockThreadsPolicy, policy => policy.RequireClaim(SystemPermissionType.Threads_Unlock.ToString()));
             //Messages
-            options.AddPolicy(CreateMessagesPolicy, policy => policy.RequireClaim(SystemPermissionType.Messages_Create.ToString()));
-            options.AddPolicy(EditMessagesPolicy, policy => policy.RequireClaim(SystemPermissionType.Messages_Edit.ToString()));
-            options.AddPolicy(DeleteMessagesPolicy, policy => policy.RequireClaim(SystemPermissionType.Messages_Delete.ToString()));
-            options.AddPolicy(UpdateMessagesPolicy, policy => policy.RequireClaim(SystemPermissionType.Messages_Update.ToString()));
-            options.AddPolicy(PostImageMessagesPolicy, policy => policy.RequireClaim(SystemPermissionType.Messages_PostImage.ToString()));
-            options.AddPolicy(PostReplyMessagesPolicy, policy => policy.RequireClaim(SystemPermissionType.Messages_PostReply.ToString()));
+            options.AddPolicy(CreatePostsPolicy, policy => policy.RequireClaim(SystemPermissionType.Posts_Create.ToString()));
+            options.AddPolicy(EditPostsPolicy, policy => policy.RequireClaim(SystemPermissionType.Posts_Edit.ToString()));
+            options.AddPolicy(DeletePostsPolicy, policy => policy.RequireClaim(SystemPermissionType.Posts_Delete.ToString()));
+            options.AddPolicy(UpdatePostsPolicy, policy => policy.RequireClaim(SystemPermissionType.Posts_Update.ToString()));
+            options.AddPolicy(PostImagesPolicy, policy => policy.RequireClaim(SystemPermissionType.Posts_PostImage.ToString()));
+            options.AddPolicy(PostRepliesPolicy, policy => policy.RequireClaim(SystemPermissionType.Posts_PostReply.ToString()));
             //Topic related policies
             options.AddPolicy(CreateTopicsPolicy, policy => policy.RequireClaim(SystemPermissionType.Topics_Create.ToString()));
             options.AddPolicy(EditTopicsPolicy, policy => policy.RequireClaim(SystemPermissionType.Topics_Edit.ToString()));
@@ -57,12 +57,12 @@ namespace RestApiServer.Core.Security
         public const string LockThreadsPolicy = "LockThreadsPolicy";
         public const string UnlockThreadsPolicy = "UnlockThreadsPolicy";
         //Messages
-        public const string CreateMessagesPolicy = "CreateMessagesPolicy";
-        public const string EditMessagesPolicy = "EditMessagesPolicy";
-        public const string DeleteMessagesPolicy = "DeleteMessagesPolicy";
-        public const string UpdateMessagesPolicy = "UpdateMessagesPolicy";
-        public const string PostImageMessagesPolicy = "PostImageMessagesPolicy";
-        public const string PostReplyMessagesPolicy = "PostReplyMessagesPolicy";
+        public const string CreatePostsPolicy = "CreatePostsPolicy";
+        public const string EditPostsPolicy = "EditPostsPolicy";
+        public const string DeletePostsPolicy = "DeletePostsPolicy";
+        public const string UpdatePostsPolicy = "UpdatePostsPolicy";
+        public const string PostImagesPolicy = "PostImagesPolicy";
+        public const string PostRepliesPolicy = "PostRepliesPolicy";
         //Topics
         public const string CreateTopicsPolicy = "CreateTopicsPolicy";
         public const string EditTopicsPolicy = "EditTopicsPolicy";

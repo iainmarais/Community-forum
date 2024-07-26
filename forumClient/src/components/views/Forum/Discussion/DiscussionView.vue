@@ -2,7 +2,7 @@
 import { useRoute, useRouter } from 'vue-router';
 import { useDiscussionStore } from '@/stores/Discussions/DiscussionStore';
 import { onMounted, ref, watch, type PropType } from 'vue';
-import type { ThreadFullInfo } from '@/Dto/app/ThreadInfo';
+import type { ThreadBasicInfo, ThreadFullInfo } from '@/Dto/app/ThreadInfo';
 import { useToast } from 'vue-toastification';
 import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
 import CreateNewPostModal from '@/components/modals/CreateNewPostModal.vue';
@@ -12,21 +12,33 @@ import DateUtils from '@/components/utils/DateUtils';
 
 const router = useRouter();
 
+const selectedPostId = ref<string>("");
 const route = useRoute();
-const routeParams = route.params;
-const threadId = routeParams.threadId as string;
-const thread = ref<ThreadFullInfo>({} as ThreadFullInfo);
+const threadId = route.params.threadId as string;
+
+//Weird errors occur without this slightly more fleshed out... Dunno why though...
+const thread = ref<ThreadFullInfo>({
+    thread: {
+        threadName: "",
+    } as ThreadBasicInfo,
+} as ThreadFullInfo);
+
+
 const createdByUser = ref<UserBasicInfo>();
 const discussionStore = useDiscussionStore();
 const toast = useToast();
 
-watch(() => discussionStore.thread, (newThread) => {
-    if (newThread == null) return;
-    thread.value = newThread;
-});
-
 const postReply = () => {
-    $("#createNewPostModal").modal("show");	
+    $("#createNewPostModal").modal("show");
+}
+
+const replyToPostId = (postId: string) => {
+    selectedPostId.value = postId;
+    $("#createNewPostModal").modal("show");
+}
+
+const handlePostCreated = () => {
+    discussionStore.getThreadFullInfo(threadId);
 }
 
 const goBack = () => {
@@ -44,6 +56,11 @@ const getUserInfo = (userId: string) => {
 
 onMounted(() => {
     discussionStore.getThreadFullInfo(threadId);
+});
+
+watch(() => discussionStore.thread, (newThread) => {
+    if (newThread == null) return;
+    thread.value = newThread;
 });
 
 </script>
@@ -73,7 +90,7 @@ onMounted(() => {
                     </div>    
                 </h3>
                 <div class="card-toolbar">
-                    <button class="btn btn-outline-primary btn-sm m-1" @click="postReply"><i class="fas fa-reply"></i>Reply</button>
+                    <button class="btn btn-outline-primary btn-sm m-1" @click="replyToPostId(post.postId)"><i class="fas fa-reply"></i>Reply</button>
                     <button class="btn btn-outline-danger btn-sm m-1" @click=""><i class="fas fa-exclamation"></i>Report post</button>
                 </div>
             </div>
@@ -88,5 +105,5 @@ onMounted(() => {
     
     <LoadingIndicator :loading="discussionStore.loading_discussion" />
 </div>
-<CreateNewPostModal :active-thread-id="threadId" />
+<CreateNewPostModal :active-thread-id=threadId :reply-to-post-id=selectedPostId @post-created="handlePostCreated()"/>
 </template>

@@ -6,7 +6,8 @@ export type Post = {
     isFirstPost: boolean,
     createdByUserId: string,
     postContent: string,
-    createdDate: Date
+    createdDate: Date,
+    replyToPostId: string
 }
 
 export type PostBasicInfo = {
@@ -16,9 +17,18 @@ export type PostBasicInfo = {
     createdByUserId: string,
     postContent: string,
     createdDate: Date,
+    replyToPostId: string
 }
 
 export type PostFullInfo = {
     message: PostBasicInfo,
     createdByUser: UserBasicInfo
+}
+
+export type CreatePostRequest = {
+    threadId: string,
+    isFirstPost: boolean,
+    createdByUserId: string,
+    postContent: string,
+    replyToPostId: string
 }
