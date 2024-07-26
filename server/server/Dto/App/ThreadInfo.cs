@@ -14,13 +14,13 @@ namespace RestApiServer.Dto.App
         public string CreatedByUserFirstname { get; set; } = "";
         public string CreatedByUserLastname { get; set; } = "";
         public int TotalPosts { get; set; } = 0;
-        public MessageBasicInfo NewestMessage { get; set; } = null!;
+        public PostBasicInfo NewestMessage { get; set; } = null!;
     }
 
     public class ThreadFullInfo 
     {
         public required ThreadBasicInfo Thread { get; set; }
-        public required List<MessageBasicInfo> Messages { get; set; }
+        public required List<PostBasicInfo> Posts { get; set; }
         //Represents the user that created the thread
         public required UserBasicInfo CreatedByUser { get; set; }
     }

@@ -39,7 +39,6 @@ const routes: RouteRecordRaw[] = [
                 path: "/thread/:threadId",
                 name: "ViewThread",
                 component: () => import("@/components/views/Forum/Discussion/DiscussionView.vue"),
-                props: true
             },
             {
                 path: "topic/:topicId",

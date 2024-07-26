@@ -55,7 +55,7 @@ namespace RestApiServer.Controllers.Discussions
         }
 
         [HttpGet("thread/{threadId}/posts")]
-        public async Task<ApiSuccessResponse<List<MessageBasicInfo>>> GetThreadPosts(string threadId)
+        public async Task<ApiSuccessResponse<List<PostBasicInfo>>> GetThreadPosts(string threadId)
         {
             var res = await DiscussionService.GetForumThreadPostsAsync(threadId);
             return ApiSuccessResponses.WithData("Get forum thread posts successful", res);

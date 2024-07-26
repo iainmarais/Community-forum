@@ -21,7 +21,7 @@ namespace RestApiServer.Services
             string? loggedInUserRoleName = "";
             using(var db = new AppDbContext())
             {
-                forumStats.TotalPosts = await db.Messages.CountAsync();
+                forumStats.TotalPosts = await db.Posts.CountAsync();
             };
             using(var db2 = new AppDbContext())
             {
@@ -71,7 +71,7 @@ namespace RestApiServer.Services
             var forumStats = new ForumStats();
             using(var db = new AppDbContext())
             {
-                forumStats.TotalPosts = await db.Messages.CountAsync();
+                forumStats.TotalPosts = await db.Posts.CountAsync();
             };
             using(var db2 = new AppDbContext())
             {

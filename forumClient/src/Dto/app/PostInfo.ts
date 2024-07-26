@@ -1,24 +1,24 @@
 import type { UserBasicInfo } from "../UserInfo"
 
-export type Message = {
-    messageId: string,
+export type Post = {
+    postId: string,
     threadId: string,
     isFirstPost: boolean,
     createdByUserId: string,
-    messageContent: string,
+    postContent: string,
     createdDate: Date
 }
 
-export type MessageBasicInfo = {
-    messageId: string,
+export type PostBasicInfo = {
+    postId: string,
     threadId: string,
     isFirstPost: boolean,
     createdByUserId: string,
-    messageContent: string,
+    postContent: string,
     createdDate: Date,
 }
 
-export type MessageFullInfo = {
-    message: MessageBasicInfo,
+export type PostFullInfo = {
+    message: PostBasicInfo,
     createdByUser: UserBasicInfo
 }

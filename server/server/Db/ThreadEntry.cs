@@ -19,7 +19,7 @@ namespace RestApiServer.Db
 
         //Navigation props:
         [JsonIgnore]
-        public List<MessageEntry> Messages { get; set; } = new();
+        public List<PostEntry> Posts { get; set; } = new();
         [JsonIgnore]
         public UserEntry? CreatedByUser { get; set; }
 

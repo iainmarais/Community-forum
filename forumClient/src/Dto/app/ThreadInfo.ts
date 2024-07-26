@@ -1,5 +1,5 @@
 import type { UserBasicInfo } from "../UserInfo"
-import type { MessageBasicInfo } from "./MessageInfo"
+import type { PostBasicInfo } from "./PostInfo"
 
 export type Thread = {
     threadId: string,
@@ -26,7 +26,7 @@ export type ThreadBasicInfo = {
 
 export type ThreadFullInfo = {
     thread: ThreadBasicInfo,
-    messages: MessageBasicInfo[],
+    posts: PostBasicInfo[],
     createdByUser: UserBasicInfo
 }
 

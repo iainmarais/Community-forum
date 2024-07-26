@@ -16,7 +16,7 @@ namespace RestApiServer.Db
         public DbSet<RoleEntry> Roles { get; set; } = null!;
         public DbSet<UserPermissionEntry> UserPermissions { get; set; } = null!;
         public DbSet<UserRefreshTokenEntry> UserRefreshTokens { get; set; } = null!;
-        public DbSet<MessageEntry> Messages { get; set; } = null!;
+        public DbSet<PostEntry> Posts { get; set; } = null!;
         public DbSet<ThreadEntry> Threads { get; set; } = null!;
         public DbSet<TopicEntry> Topics { get; set; } = null!;
         public DbSet<CategoryEntry> Categories { get; set; } = null!;
@@ -61,7 +61,7 @@ namespace RestApiServer.Db
 
             //One to many relationships
             modelBuilder.Entity<ThreadEntry>()
-            .HasMany(t => t.Messages)
+            .HasMany(t => t.Posts)
             .WithOne(m => m.Thread)
             .HasForeignKey(m => m.ThreadId);
 

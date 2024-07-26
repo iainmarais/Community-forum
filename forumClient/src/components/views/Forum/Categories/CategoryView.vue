@@ -6,6 +6,7 @@ import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
 import { useToast } from 'vue-toastification';
 import CreateNewTopicModal from '@/components/modals/CreateNewTopicModal.vue';
 import UserService from '@/services/UserService';
+import DateUtils from '@/components/utils/DateUtils';
 import type { UserBasicInfo } from '@/Dto/UserInfo';
 
 const toast = useToast();
@@ -96,7 +97,7 @@ const getUserInfo = (userId: string) => {
                                 <span class="text-muted font-weight-bold text-muted d-block"> Creator: {{ getUserInfo(topic.createdByUserId)?.username }} </span>
                             </div> 
                             <div>
-                                <span class="text-muted font-weight-bold text-muted d-block"> Created: {{ topic.createdDate }} </span>
+                                <span class="text-muted font-weight-bold text-muted d-block"> Created: {{ DateUtils.formatDate(topic.createdDate) }} </span>
                             </div>
                         </div>
                     </div>

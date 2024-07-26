@@ -13,7 +13,7 @@ namespace RestApiServer.Services.Discussions
         {
             using var db = new AppDbContext();
             var thread = await db.Threads
-            .Include(t => t.Messages.OrderByDescending(m => m.CreatedDate))
+            .Include(t => t.Posts.OrderByDescending(m => m.CreatedDate))
             .Include(t => t.CreatedByUser)
             .SingleOrDefaultAsync(t => t.ThreadId == threadId);
             if(thread == null)
@@ -23,7 +23,7 @@ namespace RestApiServer.Services.Discussions
             var threadFullInfo = new ThreadFullInfo()
             {
                 Thread = new ThreadBasicInfo(thread), 
-                Messages = thread.Messages.Select(m => new MessageBasicInfo(m)).ToList(), 
+                Posts = thread.Posts.Select(m => new PostBasicInfo(m)).ToList(), 
                 CreatedByUser = new UserBasicInfo(thread.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())
             };
             //Need to construct a ThreadFullInfo instance from the thread found by id, the associated messages and the creator.
@@ -48,7 +48,7 @@ namespace RestApiServer.Services.Discussions
         }
 
         
-        public static async Task<ThreadBasicInfo> CreateThreadWithPostAsync(string topicId, string threadName, string createdByUserId, string messageContent)
+        public static async Task<ThreadBasicInfo> CreateThreadWithPostAsync(string topicId, string threadName, string createdByUserId, string postContent)
         {
             var thread = new ThreadEntry
             {
@@ -59,11 +59,11 @@ namespace RestApiServer.Services.Discussions
                 CreatedByUserId = createdByUserId
             };
 
-            var message = new MessageEntry
+            var message = new PostEntry
             {
-                MessageId = DbUtils.GenerateUuid(),
+                PostId = DbUtils.GenerateUuid(),
                 ThreadId = thread.ThreadId,
-                MessageContent = messageContent,
+                PostContent = postContent,
                 CreatedDate = DateTime.Now,
                 CreatedByUserId = createdByUserId,
                 IsFirstPost = true
@@ -74,7 +74,7 @@ namespace RestApiServer.Services.Discussions
                 try
                 {
                     await db.Threads.AddAsync(thread);
-                    await db.Messages.AddAsync(message);
+                    await db.Posts.AddAsync(message);
                     await db.SaveChangesAsync();
                     await txn.CommitAsync();
                 }
@@ -108,12 +108,12 @@ namespace RestApiServer.Services.Discussions
             return res;
         }
 
-        public static async Task<List<MessageBasicInfo>> GetForumThreadPostsAsync(string threadId)
+        public static async Task<List<PostBasicInfo>> GetForumThreadPostsAsync(string threadId)
         {
             using var db = new AppDbContext();
-            var res = await db.Messages
+            var res = await db.Posts
                                 .Where(m => m.ThreadId == threadId)
-                                .Select(m => new MessageBasicInfo(m))
+                                .Select(m => new PostBasicInfo(m))
                                 .ToListAsync();
             return res;
         }               

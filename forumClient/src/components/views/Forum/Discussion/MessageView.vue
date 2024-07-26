@@ -1,9 +1,9 @@
 <script lang = "ts" setup>
-import type { MessageBasicInfo } from '@/Dto/app/MessageInfo';
+import type { PostBasicInfo } from '@/Dto/app/PostInfo';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-    message: Object as PropType<MessageBasicInfo>,
+    post: Object as PropType<PostBasicInfo>,
     placeholderMessage: Object as PropType<string|undefined>
 });
 
@@ -12,7 +12,7 @@ const props = defineProps({
 <template>
     <div class="card card-custom">
         <div class="card-body">
-            <p v-if="message">{{ props.message?.messageContent }}</p>
+            <p v-if="post">{{ props.post?.postContent }}</p>
             <p v-else>{{ props.placeholderMessage }}</p>
         </div>
     </div>

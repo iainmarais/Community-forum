@@ -2,13 +2,13 @@
 import { useRoute, useRouter } from 'vue-router';
 import { onMounted, ref, watch } from 'vue';
 import type { TopicFullInfo } from '@/Dto/app/TopicInfo';
-import ThreadView from '@/components/views/Forum/Discussion/ThreadView.vue';
-import ThreadItem from '@/components/elements/ThreadItem.vue';
 import { useToast } from 'vue-toastification';
 import { useTopicStore } from '@/stores/Topics/TopicStore';
-import type { ThreadFullInfo } from '@/Dto/app/ThreadInfo';
 import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
 import CreateThreadModal from '@/components/modals/CreateThreadModal.vue';
+import type { UserBasicInfo } from '@/Dto/UserInfo';
+import UserService from '@/services/UserService';
+import DateUtils from '@/components/utils/DateUtils';
 
 const topicStore = useTopicStore();
 const route = useRoute();
@@ -16,6 +16,7 @@ const toast = useToast();
 const router = useRouter();
 
 const topic = ref<TopicFullInfo>();
+const createdByUser = ref<UserBasicInfo>();
 const topicId = ref<string>(route.params.topicId as string);
 
 const goBack = () => {
@@ -26,6 +27,30 @@ const createNewThread = () => {
     $("#createThreadModal").modal("show");
 }
 
+const viewThread = (threadId: string) => {
+    toast.info("Viewing thread: " + getThreadInfo(threadId)?.threadName);
+    router.push({ name: "ViewThread", params: { threadId: threadId } });
+}
+
+const getHasNewPosts = (threadId: string) => {
+    var thread = topicStore.topic?.threads?.find((thread) => thread.threadId === threadId);
+    return thread?.hasNewPosts ?? false;
+}
+
+const getUserInfo = (userId: string) => {
+    if (!createdByUser.value) {
+        UserService.getUserById(userId).then((response) => {
+            createdByUser.value = response.data;
+        });
+    }
+    return createdByUser.value;
+}
+
+const getThreadInfo = (threadId: string) => {
+    var thread = topicStore.topic?.threads?.find((thread) => thread.threadId === threadId);
+    return thread;
+}
+
 onMounted(() => {
     topicStore.getTopicFullInfo(topicId.value);
 });
@@ -34,6 +59,7 @@ watch(() => topicStore.topic, (newTopic) => {
     if (newTopic == null) return;
     topic.value = newTopic;
 });
+
 </script>
 
 <template>
@@ -48,9 +74,38 @@ watch(() => topicStore.topic, (newTopic) => {
             </div>
         </div>
         <div class="card-body">
-            <!-- <ThreadView v-if="topic != null && topic.threads.length > 0" v-for = "thread in topic?.threads" :key = "thread.threadId" :thread = "thread" /> -->
-            <ThreadItem v-if="topic != null && topic.threads.length > 0" v-for = "thread in topic?.threads" :key = "thread.threadId" :thread = "thread" />
-            <span v-else>No Threads</span>
+            <table class="table table-borderless table-sm" >
+                <tr v-for="thread in topic?.threads" :key="thread.threadId">
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="symbol symbol-50px me-5">
+                                <span class="symbol-label bg-light">
+                                    <i class="fas fa-folder" style="font-size: 30px"></i>
+                                </span>
+                            </div>
+                            <div class="ml-3">
+                                <div>
+                                    <a class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg" @click="viewThread(thread.threadId)"> {{ thread.threadName }}</a>
+                                </div>
+                                <div>
+                                    <span class="text-muted font-weight-bold text-muted d-block">Created by: {{ getUserInfo(thread.createdByUserId)?.username }}</span>
+                                </div>
+                            </div>
+                            <div class="ml-auto">
+                                <div>
+                                    <span class="text-muted font-weight-bold text-muted d-block"> Created: {{ DateUtils.formatDate(thread.createdDate) }} </span>
+                                </div>
+                                <div>
+                                    <span class="text-muted font-weight-bold text-muted d-block"> Replies: {{ thread.numberOfPosts }} </span>
+                                </div>
+                                <div>
+                                    <span class="text-muted font-weight-bold text-muted d-block"> Has new posts: {{ getHasNewPosts(thread.threadId) ? "Yes" : "No" }} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
     <LoadingIndicator :loading="topicStore.loading_getTopicFullInfo" />

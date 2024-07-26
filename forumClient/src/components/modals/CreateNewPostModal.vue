@@ -2,7 +2,7 @@
 import { onMounted, ref, watch, type PropType } from 'vue';
 import { useAppContextStore } from '@/stores/AppContextStore';
 import { useDiscussionStore } from '@/stores/Discussions/DiscussionStore';
-import { type MessageFullInfo } from '@/Dto/app/MessageInfo';
+import type { PostFullInfo } from '@/Dto/app/PostInfo';
 
 const discussionStore = useDiscussionStore();
 const appContextStore = useAppContextStore();
@@ -12,7 +12,7 @@ const props = defineProps ({
 });
 
 const postContent = ref<string>("");
-const message = ref<MessageFullInfo>({} as MessageFullInfo);
+const message = ref<PostFullInfo>({} as PostFullInfo);
 
 const saveMessage = () => {
     /* 
