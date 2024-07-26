@@ -79,6 +79,11 @@ namespace RestApiServer.Services.Categories
         public static async Task<List<TopicBasicInfo>> CreateForumTopicAsync(string userId, CreateTopicRequest request)
         {
             using var db = new AppDbContext();
+            //Check if a topic with the name already exists. This will help avoid creating duplicates.
+            if(await db.Topics.AnyAsync(t => t.TopicName == request.TopicName))
+            {
+                throw new Exception("Topic already exists");
+            }
             var topic = new TopicEntry
             {
                 TopicId = DbUtils.GenerateUuid(),

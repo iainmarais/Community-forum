@@ -41,7 +41,7 @@ onMounted(() => {
     if(route.params.logoffReason){
         console.log(route.params.logoffReason);
     }
-    appContextStore.buildNavbar();
+    appContextStore.buildNavbar(true);
     const storedToken = localStorage.getItem(TokenKey);
     if(storedToken) {
         loading.value = true;

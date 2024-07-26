@@ -1,15 +1,16 @@
 <script lang = "ts" setup>
 import { useRoute, useRouter } from 'vue-router';
-import { useAppContextStore } from '@/stores/AppContextStore';
 import { useDiscussionStore } from '@/stores/Discussions/DiscussionStore';
 import { onMounted, ref, watch, type PropType } from 'vue';
 import type { ThreadFullInfo } from '@/Dto/app/ThreadInfo';
 import MessageView from './MessageView.vue';
 import { useToast } from 'vue-toastification';
+import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
+import CreateNewPostModal from '@/components/modals/CreateNewPostModal.vue';
 
-const props = defineProps({
-    thread: Object as PropType<ThreadFullInfo>,
-});
+const props = defineProps<{
+    threadId: string
+}>();
 
 const router = useRouter();
 const route = useRoute();
@@ -29,7 +30,7 @@ watch(() => discussionStore.thread, (newThread) => {
 });
 
 const postReply = () => {
-    toast.info("Coming soon...");	
+    $("#createNewPostModal").modal("show");	
 }
 
 const goBack = () => {
@@ -50,7 +51,7 @@ const goBack = () => {
             <button class="btn btn-primary btn-sm m-1" @click="goBack"><i class="fas fa-arrow-left"></i>Back</button>
         </div>
     </div>
-    <div class="card-body">
+    <div class="card-body" v-if="!discussionStore.loading_discussion">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
@@ -60,5 +61,7 @@ const goBack = () => {
             </div>
         </div>
     </div>
+    <LoadingIndicator :loading="discussionStore.loading_discussion" />
 </div>
+<CreateNewPostModal :active-thread-id="threadId" />
 </template>

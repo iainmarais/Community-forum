@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { CreateTopicRequest } from '@/Dto/app/TopicInfo';
 import { useTopicListStore } from '@/stores/TopicListStore';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useToast } from 'vue-toastification';
 
 const props = defineProps ({
@@ -11,6 +11,8 @@ const props = defineProps ({
         required: true
     }
 });
+
+const emit = defineEmits(['topicCreated']);
 
 const toast = useToast();
 const topicListStore = useTopicListStore();
@@ -22,6 +24,14 @@ const closeModal = () => {
     $('#createTopicModal').modal("hide");
 }
 
+watch(() => topicListStore.result_createNewTopicSuccess, (newValue) => {
+    if (newValue) {
+        toast.success("Topic created successfully");
+        emit('topicCreated');
+        closeModal();
+    }
+})
+
 const createTopic = () => {
     if(topicName.value == "") {
         toast.error("Please enter a topic name");
@@ -29,6 +39,10 @@ const createTopic = () => {
     }
     if(topicDescription.value == "") {
         toast.error("Please enter a topic description");
+        return;
+    }
+    if(props.selectedCategoryId.length == 0) {
+        toast.error("Category id can't be empty");
         return;
     }
     const request: CreateTopicRequest = {

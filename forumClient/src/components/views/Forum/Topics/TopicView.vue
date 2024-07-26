@@ -11,23 +11,19 @@ import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
 import { HomeRoute } from '@/router';
 
 const topicStore = useTopicStore();
-
-const props = defineProps<{
-    topicId: string;
-}>();
-
-const topic = ref<TopicFullInfo>();
 const route = useRoute();
 const toast = useToast();
 const router = useRouter();
 
+const topic = ref<TopicFullInfo>();
+const topicId = ref<string>(route.params.topicId as string);
+
 const goBack = () => {
-    router.push({name: "overview"});
+    router.go(-1);
 }
 
-
 onMounted(() => {
-    topicStore.getTopicFullInfo(route.params.topicId as string);
+    topicStore.getTopicFullInfo(topicId.value);
 });
 
 watch(() => topicStore.topic, (newTopic) => {

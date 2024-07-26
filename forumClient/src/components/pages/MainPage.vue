@@ -39,7 +39,9 @@ watch(() => appContextStore.loggedInUser, (newValue) => {
     if(!newValue) {
         router.push(LoginRoute);
     }
-})
+});
+
+
 
 const handleNavbarClick = (item: NavbarItem) => {
     switch(item.id)

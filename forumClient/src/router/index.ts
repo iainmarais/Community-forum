@@ -39,7 +39,11 @@ const routes: RouteRecordRaw[] = [
                 path: "topic/:topicId",
                 name: "ViewTopic",
                 component: () => import("@/components/views/Forum/Topics/TopicView.vue"),
-                props: true
+            },
+            {
+                path: "category/:categoryId",
+                name: "ViewCategory",
+                component: () => import("@/components/views/Forum/Categories/CategoryView.vue"),
             },
         ]
     },

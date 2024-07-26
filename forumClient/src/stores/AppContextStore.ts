@@ -210,14 +210,14 @@ export const useAppContextStore = defineStore({
                     return undefined;
             }
         },
-        buildNavbar() {
+        buildNavbar(isLoggedOff: boolean = false) {
             const contextualNavbar: NavbarItem[] = [];
             for(const navitem of NavigationBar) {
                 if(navitem.type==="item") {
-                    if(this.loggedInUser && navitem.id === "login") {
+                    if(!isLoggedOff && navitem.id === "login") {
                         continue;
                     }
-                    else if(this.loggedInUser === undefined && navitem.id === "logoff") {
+                    else if(isLoggedOff && navitem.id === "logoff") {
                         continue;
                     }
                     else {

@@ -1,12 +1,18 @@
 <script lang = "ts" setup>
 import ForumStatsView from '@/components/views/Forum/General/ForumStatsView.vue';
-import ThreadListSummaryView from '@/components/views/Forum/Discussion/ThreadListSummaryView.vue';
-import TopicListView from '@/components/views/Forum/Topics/TopicListView.vue';
-import CategoryView from '@/components/views/Forum/Categories/CategoryView.vue';
+import CategoryList from '@/components/views/Forum/Categories/CategoryList.vue';
 import { onMounted, ref, watch } from 'vue';
+import CreateCategoryModal from '@/components/modals/CreateCategoryModal.vue';
+import { useCategoryStore } from '@/stores/Categories/CategoryStore';
+
+const categoryStore = useCategoryStore();
+const createNewCategory = () => {
+    $("#createCategoryModal").modal("show");
+}
 
 onMounted(() => {
-    
+    categoryStore.getCategories();
+
 });
 </script>
 
@@ -16,12 +22,14 @@ onMounted(() => {
             <h3 class="card-title align-items-start flex-column">
                 <span class="card-label font-weight-bolder text-dark075 font-size-h5">Forum - Home</span>
             </h3>
+            <div class="card-toolbar">
+                <button class="btn btn-primary btn-sm" @click="createNewCategory"><i class="fas fa-plus"></i>Create new category</button>
+            </div>
         </div>
         <div class="card-body">
-            <CategoryView />
-            <!--Make this scrollable. Future design idea: Add chat to the right of it so that while looking at the discussion view, users can also chat-->
-            <ThreadListSummaryView />
+            <CategoryList />
             <ForumStatsView />
         </div> 
     </div>
+<CreateCategoryModal  />    
 </template>
