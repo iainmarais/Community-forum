@@ -5,6 +5,7 @@ User service.cs - responsible for:
     user administration
 */
 
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Core.CacheManagement;
@@ -33,7 +34,7 @@ namespace RestApiServer.Services
                 userContextIdentifier = userIdentifier[1];
             }
 
-            if(userIdentifier.Contains("@"))
+            if(IsValidEmailAddress(userIdentifier[0]))
             {
                 emailAddress = userIdentifier[0];
                 if(!IsValidEmail(emailAddress))
@@ -210,6 +211,19 @@ namespace RestApiServer.Services
         {
             // Add username validation logic here, e.g., length and allowed characters
             return !string.IsNullOrEmpty(username) && username.Length >= 3 && username.Length <= 50;
+        }
+
+        private static bool IsValidEmailAddress(string userIdentifier)
+        {
+            try 
+            {
+                var mailAddress = new MailAddress(userIdentifier);
+                return mailAddress.Address == userIdentifier;
+            }
+            catch 
+            {
+                return false;
+            }
         }
     }
 }

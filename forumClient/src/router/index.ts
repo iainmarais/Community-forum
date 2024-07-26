@@ -5,6 +5,7 @@ export const RegisterRoute = "register";
 export const LogoffRoute = "logoff";
 export const MainRoute = "home";
 export const HomeRoute = "overview";
+export const ChatRoute = "chat";
 export const NotFoundRoute = "notfound";
 
 const routes: RouteRecordRaw[] = [
@@ -28,6 +29,11 @@ const routes: RouteRecordRaw[] = [
                 path: "/register",
                 name: RegisterRoute,
                 component: () => import("@/components/pages/RegistrationPage.vue")
+            },
+            {
+                path: "/chat",
+                name: ChatRoute,
+                component: () => import("@/components/views/Forum/General/ChatView.vue")
             },
             {
                 path: "/thread/:threadId",
