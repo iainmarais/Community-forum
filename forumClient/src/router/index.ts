@@ -6,6 +6,7 @@ export const LogoffRoute = "logoff";
 export const MainRoute = "home";
 export const HomeRoute = "overview";
 export const ChatRoute = "chat";
+export const GalleryRoute = "gallery";
 export const NotFoundRoute = "notfound";
 
 const routes: RouteRecordRaw[] = [
@@ -33,7 +34,12 @@ const routes: RouteRecordRaw[] = [
             {
                 path: "/chat",
                 name: ChatRoute,
-                component: () => import("@/components/views/Forum/General/ChatView.vue")
+                component: () => import("@/components/views/Forum/Chat/ChatView.vue")
+            },
+            {
+                path: "/gallery",
+                name: GalleryRoute,
+                component: () => import("@/components/views/Forum/Gallery/GalleryView.vue")
             },
             {
                 path: "/thread/:threadId",

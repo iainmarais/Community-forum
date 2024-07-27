@@ -8,13 +8,17 @@ import CreateNewTopicModal from '@/components/modals/CreateNewTopicModal.vue';
 import UserService from '@/services/UserService';
 import DateUtils from '@/components/utils/DateUtils';
 import type { UserBasicInfo } from '@/Dto/UserInfo';
+import { useAppContextStore } from '@/stores/AppContextStore';
+
+const categoryStore = useCategoryStore();
+const appContextStore = useAppContextStore();
 
 const toast = useToast();
 const router = useRouter();
 const route = useRoute();
 
 const categoryId = ref<string>(route.params.categoryId as string || "");
-const categoryStore = useCategoryStore();
+
 const createdByUser = ref<UserBasicInfo>();
 
 onMounted(() => {
@@ -32,6 +36,13 @@ watch(() => route.params.categoryId, (newCategoryId) => {
     //else if it is valid, get the associated category.
     if(categoryId.value) {
         categoryStore.getCategoryFullInfo(categoryId.value);
+    }
+});
+
+watch(() => appContextStore.loggedInUser, newValue => {
+    if (!newValue) {
+        toast.error("You must be logged in to view this page");
+        router.push({name: "login"});
     }
 });
 

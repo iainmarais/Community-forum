@@ -7,7 +7,10 @@ export type Post = {
     createdByUserId: string,
     postContent: string,
     createdDate: Date,
-    replyToPostId: string
+    replyToPostId: string,
+    postReported: boolean,
+    reportReason: string,
+    reportedByUserId: string
 }
 
 export type PostBasicInfo = {
@@ -17,7 +20,10 @@ export type PostBasicInfo = {
     createdByUserId: string,
     postContent: string,
     createdDate: Date,
-    replyToPostId: string
+    replyToPostId: string,
+    postReported: boolean,
+    reportReason: string,
+    reportedByUserId: string
 }
 
 export type PostFullInfo = {
@@ -31,4 +37,11 @@ export type CreatePostRequest = {
     createdByUserId: string,
     postContent: string,
     replyToPostId: string
+}
+
+export type ReportPostRequest = {
+    threadId: string,
+    postId: string,
+    reportReason: string,
+    reportedByUserId: string,
 }

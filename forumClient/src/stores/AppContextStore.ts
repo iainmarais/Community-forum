@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import AxiosClient from "@/http/AxiosClient";
-import router, { LoginRoute, MainRoute, LogoffRoute, RegisterRoute, HomeRoute, ChatRoute } from "@/router";
+import router, { LoginRoute, MainRoute, LogoffRoute, RegisterRoute, HomeRoute, ChatRoute, GalleryRoute } from "@/router";
 import type { RouteParams, RouteQueryAndHash } from "vue-router";
 import type { ForumStats, LoggedInUserInfo } from "@/Dto/app/ForumAppState";
 import ForumService from "@/services/ForumService";
@@ -48,10 +48,17 @@ const NavigationBar: NavbarItem[] = [
         label: "Chat",
         iconClass: "fas fa-comments",
         routename: ChatRoute
+    },
+    {
+        id: "gallery",
+        type: "item",
+        label: "Gallery",
+        iconClass: "fas fa-images",
+        routename: GalleryRoute
     }
 ];
 
-type NavbarLinkItemId = "home" | "login" | "register" | "logoff" | "chat";
+type NavbarLinkItemId = "home" | "login" | "register" | "logoff" | "chat" | "gallery";
 
 type NavbarLinkItem = {
     type: "item",

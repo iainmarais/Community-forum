@@ -4,8 +4,15 @@ import CategoryList from '@/components/views/Forum/Categories/CategoryList.vue';
 import { onMounted, ref, watch } from 'vue';
 import CreateCategoryModal from '@/components/modals/CreateCategoryModal.vue';
 import { useCategoryStore } from '@/stores/Categories/CategoryStore';
+import { useAppContextStore } from '@/stores/AppContextStore';
+import { useToast } from 'vue-toastification';
+import { useRouter } from 'vue-router';
 
 const categoryStore = useCategoryStore();
+const appContextStore = useAppContextStore();
+const toast = useToast();
+const router = useRouter();
+
 const createNewCategory = () => {
     $("#createCategoryModal").modal("show");
 }
@@ -14,6 +21,15 @@ onMounted(() => {
     categoryStore.getCategories();
 
 });
+
+//Sorry mate, you're not allowed to be here without permission. Try knocking on the front door first :)
+watch(() => appContextStore.loggedInUser, newValue => {
+    if (!newValue) {
+        toast.error("You must be logged in to view this page");
+        router.push({name: "login"});
+    }
+});
+
 </script>
 
 <template>

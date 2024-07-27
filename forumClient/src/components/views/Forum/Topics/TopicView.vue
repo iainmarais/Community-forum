@@ -9,8 +9,11 @@ import CreateThreadModal from '@/components/modals/CreateThreadModal.vue';
 import type { UserBasicInfo } from '@/Dto/UserInfo';
 import UserService from '@/services/UserService';
 import DateUtils from '@/components/utils/DateUtils';
+import { useAppContextStore } from '@/stores/AppContextStore';
 
 const topicStore = useTopicStore();
+const appContextStore = useAppContextStore();
+
 const route = useRoute();
 const toast = useToast();
 const router = useRouter();
@@ -75,6 +78,13 @@ watch(() => route.params.topicId, (newTopicId) => {
     }
 });
 
+watch(() => appContextStore.loggedInUser, newValue => {
+    if (!newValue) {
+        toast.error("You must be logged in to view this page");
+        router.push({name: "login"});
+    }
+});
+
 </script>
 
 <template>
@@ -89,7 +99,7 @@ watch(() => route.params.topicId, (newTopicId) => {
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-borderless table-sm" >
+            <table class="table table-borderless table-sm" v-if="topic != null && topic?.threads.length > 0">
                 <tr v-for="thread in topic?.threads" :key="thread.threadId">
                     <td>
                         <div class="d-flex align-items-center">
@@ -121,6 +131,7 @@ watch(() => route.params.topicId, (newTopicId) => {
                     </td>
                 </tr>
             </table>
+            <span v-else>No threads have been created for this topic.</span>
         </div>
     </div>
     <LoadingIndicator :loading="topicStore.loading_getTopicFullInfo" />

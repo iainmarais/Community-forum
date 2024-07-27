@@ -67,6 +67,14 @@ namespace RestApiServer.Controllers.Discussions
             var user = AuthUtils.GetForumUserContext(User);
             var res = await DiscussionService.CreatePostAsync(request);
             return ApiSuccessResponses.WithData("Get forum thread posts successful", res);
-        }                       
+        }
+
+        [HttpPost("thread/{threadId}/posts/{postId}/report")]
+        public async Task<ApiSuccessResponse<string>> ReportPost(ReportPostRequest request)
+        {
+            var user = AuthUtils.GetForumUserContext(User);
+            var res = await DiscussionService.ReportPostAsync(request);
+            return ApiSuccessResponses.WithData("Report post successful", res);
+        }
     }
 }

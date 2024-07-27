@@ -9,30 +9,38 @@ import CreateNewPostModal from '@/components/modals/CreateNewPostModal.vue';
 import type { UserBasicInfo } from '@/Dto/UserInfo';
 import UserService from '@/services/UserService';
 import DateUtils from '@/components/utils/DateUtils';
+import { useAppContextStore } from '@/stores/AppContextStore';
 
+const discussionStore = useDiscussionStore();
+const appContextStore = useAppContextStore();
+
+const toast = useToast();
 const router = useRouter();
+const createdByUser = ref<UserBasicInfo>();
 
 const selectedPostId = ref<string>("");
 const route = useRoute();
 const threadId = ref<string>(route.params.threadId as string || "");
 
-//Weird errors occur without this slightly more fleshed out... Dunno why though...
 const thread = ref<ThreadFullInfo>({
     thread: {
         threadName: "",
     } as ThreadBasicInfo,
 } as ThreadFullInfo);
 
-
-const createdByUser = ref<UserBasicInfo>();
-const discussionStore = useDiscussionStore();
-const toast = useToast();
-
 const postReply = () => {
+    if(!appContextStore.loggedInUser) {
+        toast.error("You must be logged in to post a reply");
+        router.push({name: "login"});
+    }
     $("#createNewPostModal").modal("show");
 }
 
 const replyToPostId = (postId: string) => {
+    if(!appContextStore.loggedInUser) {
+        toast.error("You must be logged in to post a reply");
+        router.push({name: "login"});
+    }
     selectedPostId.value = postId;
     $("#createNewPostModal").modal("show");
 }
@@ -67,16 +75,26 @@ watch(() => discussionStore.thread, (newThread) => {
 
 watch(() => route.params.threadId, (newThreadId) => {
     threadId.value = newThreadId as string || "";
-    //Redirect the user to the home page in the event of this value being "home"
     if(threadId.value === "home") {
         router.push({name: "overview"}); 
     }
-    //else if it is valid, get the associated category.
     if(threadId.value) {
         discussionStore.getThreadFullInfo(threadId.value);
     }
 });
 
+watch(() => appContextStore.loggedInUser, newValue => {
+    if (!newValue) {
+        toast.error("You must be logged in to view this page.");
+        router.push({name: "login"});
+    }
+});
+
+/*
+    Todo, per similarly structured view component:
+        Check if the user's logged in, if not, redirect to login page. This should/will help avoid inconsistencies in the user experience.
+        Last thing I want is someone bellyaching about their post being lost because their session ended.
+*/
 </script>
 
 <template>

@@ -15,6 +15,9 @@ namespace RestApiServer.Db
         public string PostContent { get; set; } = string.Empty;
         public  DateTime CreatedDate { get; set; }
         public string ReplyToPostId { get; set; } = string.Empty;
+        public bool PostReported { get; set; } = false;
+        public string ReportReason { get; set; } = string.Empty;
+        public string ReportedByUserId { get; set; } = string.Empty;
 
         //Navigation property
         [JsonIgnore]

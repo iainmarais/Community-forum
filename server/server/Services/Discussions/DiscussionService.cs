@@ -139,6 +139,23 @@ namespace RestApiServer.Services.Discussions
                 Post = new PostBasicInfo(post),
                 CreatedByUser = new UserBasicInfo(createdByUser ?? UserEntry.CreateDefaultGuestUser())
             };
+        }
+        public static async Task<string> ReportPostAsync(ReportPostRequest request)
+        {
+            using var db = new AppDbContext();
+            var post = await db.Posts
+                                .Where(m => m.PostId == request.PostId)
+                                .FirstOrDefaultAsync();
+            if(post == null)
+            {
+                throw new Exception("Post not found");
+            }
+            post.PostReported = true;
+            post.ReportedByUserId = request.ReportedByUserId;
+            post.ReportReason = request.ReportReason;
+            await db.SaveChangesAsync();
+            var createdByUser = await db.Users.Where(u => u.UserId == post.CreatedByUserId).FirstOrDefaultAsync();
+            return $"Reported post by {createdByUser?.Username ?? "Guest"} on {post.CreatedDate} for reason: {post.ReportReason}";
         }           
     }
 }
