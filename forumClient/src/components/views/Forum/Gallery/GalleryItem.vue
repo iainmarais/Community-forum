@@ -33,30 +33,44 @@ const loadImage = () => {
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group">
-                        <img id="galleryItemImage" class="img-fluid" @load="loadImage" />
+                    <div class="polaroid-frame">
+                        <img id="galleryItemImage" class="polaroid-image" @load="loadImage" />
+                        <div class="polaroid-caption">
+                            <span class="card-label font-weight-bolder text-dark075 font-size-h5">Description: {{ props.item?.galleryItemDescription ?? "" }}</span>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-md-3">
-                    <table class="table table-borderless table-sm">
-                        <tr>
-                            <td>Likes: {{ props.item?.numLikes ?? 0 }}</td>
-                        </tr>
-                        <tr>
-                            <td>Dislikes: {{ props.item?.numDislikes ?? 0 }}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-9">
-                    <button class="btn btn-primary btn-sm m-1" @click="props.item?.galleryItemLink ? openInNewTab(props.item?.galleryItemLink) : ''"><i class="fas fa-link"></i>View</button>
-                    <button class="btn btn-primary btn-sm m-1"><i class="fas fa-thumbs-up"></i>Like</button>
-                    <button class="btn btn-primary btn-sm m-1"><i class="fas fa-thumbs-down"></i>Dislike</button>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<style scoped>
+.polaroid-frame {
+  display: flexbox;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  width: 300px !important; /* Adjust as needed */
+  text-align: center;
+  position: relative;
+}
+
+.polaroid-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px; /* Space between image and caption */
+}
+
+.polaroid-caption {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+  padding: 5px;
+  height: auto;
+  border-top: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+</style>
