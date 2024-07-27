@@ -17,7 +17,7 @@ const router = useRouter();
 
 const topic = ref<TopicFullInfo>();
 const createdByUser = ref<UserBasicInfo>();
-const topicId = ref<string>(route.params.topicId as string);
+const topicId = ref<string>(route.params.topicId as string || "");	
 
 const goBack = () => {
     router.go(-1);
@@ -52,12 +52,27 @@ const getThreadInfo = (threadId: string) => {
 }
 
 onMounted(() => {
-    topicStore.getTopicFullInfo(topicId.value);
+    if (topicId.value) {
+        topicStore.getTopicFullInfo(topicId.value);
+    }
 });
 
 watch(() => topicStore.topic, (newTopic) => {
-    if (newTopic == null) return;
-    topic.value = newTopic;
+    if (newTopic) {
+        topic.value = newTopic;
+    }
+});
+
+watch(() => route.params.topicId, (newTopicId) => {
+    topicId.value = newTopicId as string || "";
+    //Redirect the user to the home page in the event of this value being "home"
+    if(topicId.value === "home") {
+        router.push({name: "overview"}); 
+    }
+    //else if it is valid, get the associated category.
+    if(topicId.value) {
+        topicStore.getTopicFullInfo(topicId.value);
+    }
 });
 
 </script>

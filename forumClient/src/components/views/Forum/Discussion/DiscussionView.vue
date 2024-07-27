@@ -14,7 +14,7 @@ const router = useRouter();
 
 const selectedPostId = ref<string>("");
 const route = useRoute();
-const threadId = route.params.threadId as string;
+const threadId = ref<string>(route.params.threadId as string || "");
 
 //Weird errors occur without this slightly more fleshed out... Dunno why though...
 const thread = ref<ThreadFullInfo>({
@@ -38,7 +38,7 @@ const replyToPostId = (postId: string) => {
 }
 
 const handlePostCreated = () => {
-    discussionStore.getThreadFullInfo(threadId);
+    discussionStore.getThreadFullInfo(threadId.value);
 }
 
 const goBack = () => {
@@ -55,12 +55,26 @@ const getUserInfo = (userId: string) => {
 }
 
 onMounted(() => {
-    discussionStore.getThreadFullInfo(threadId);
+    if (threadId.value) {
+        discussionStore.getThreadFullInfo(threadId.value);
+    }
 });
 
 watch(() => discussionStore.thread, (newThread) => {
     if (newThread == null) return;
     thread.value = newThread;
+});
+
+watch(() => route.params.threadId, (newThreadId) => {
+    threadId.value = newThreadId as string || "";
+    //Redirect the user to the home page in the event of this value being "home"
+    if(threadId.value === "home") {
+        router.push({name: "overview"}); 
+    }
+    //else if it is valid, get the associated category.
+    if(threadId.value) {
+        discussionStore.getThreadFullInfo(threadId.value);
+    }
 });
 
 </script>

@@ -13,12 +13,26 @@ const toast = useToast();
 const router = useRouter();
 const route = useRoute();
 
-const categoryId = ref<string>(route.params.categoryId as string);
+const categoryId = ref<string>(route.params.categoryId as string || "");
 const categoryStore = useCategoryStore();
 const createdByUser = ref<UserBasicInfo>();
 
 onMounted(() => {
-    categoryStore.getCategoryFullInfo(categoryId.value);
+    if(categoryId.value) {
+        categoryStore.getCategoryFullInfo(categoryId.value);        
+    }
+});
+
+watch(() => route.params.categoryId, (newCategoryId) => {
+    categoryId.value = newCategoryId as string || "";
+    //Redirect the user to the home page in the event of this value being "home"
+    if(categoryId.value === "home") {
+        router.push({name: "overview"}); 
+    }
+    //else if it is valid, get the associated category.
+    if(categoryId.value) {
+        categoryStore.getCategoryFullInfo(categoryId.value);
+    }
 });
 
 const createNewTopic = () => {
