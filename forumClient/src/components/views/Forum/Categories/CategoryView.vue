@@ -9,6 +9,7 @@ import UserService from '@/services/UserService';
 import DateUtils from '@/components/utils/DateUtils';
 import type { UserBasicInfo } from '@/Dto/UserInfo';
 import { useAppContextStore } from '@/stores/AppContextStore';
+import type { CategoryFullInfo } from '@/Dto/app/CategoryInfo';
 
 const categoryStore = useCategoryStore();
 const appContextStore = useAppContextStore();
@@ -18,6 +19,8 @@ const router = useRouter();
 const route = useRoute();
 
 const categoryId = ref<string>(route.params.categoryId as string || "");
+const category = ref<CategoryFullInfo>();
+const categoryName = ref<string>("");
 
 const createdByUser = ref<UserBasicInfo>();
 
@@ -45,6 +48,12 @@ watch(() => appContextStore.loggedInUser, newValue => {
         router.push({name: "login"});
     }
 });
+
+watch (() => categoryStore.category, (newCategory) => {
+    if(newCategory) {
+        category.value = newCategory;
+    }
+})
 
 const createNewTopic = () => {
     $("#createTopicModal").modal("show");
@@ -82,7 +91,7 @@ const getUserInfo = (userId: string) => {
     <div class="card card-custom" v-if="!categoryStore.loading_getCategoryFullInfo">
         <div class="card-header border-0 pt-7">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Category: {{ categoryStore.category.category.categoryName }}</span>
+                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Category: {{ category?.category.categoryName }}</span>
             </h3>
             <div class="card-toolbar">
                 <button class="btn btn-primary btn-sm m-1" @click="goBack()"><i class="fas fa-arrow-left"></i>Back</button>
