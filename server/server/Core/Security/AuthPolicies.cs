@@ -35,6 +35,15 @@ namespace RestApiServer.Core.Security
             options.AddPolicy(CreateTopicsPolicy, policy => policy.RequireClaim(SystemPermissionType.Topics_Create.ToString()));
             options.AddPolicy(EditTopicsPolicy, policy => policy.RequireClaim(SystemPermissionType.Topics_Edit.ToString()));
             options.AddPolicy(DeleteTopicsPolicy, policy => policy.RequireClaim(SystemPermissionType.Topics_Delete.ToString()));
+            //Chat related policies
+            options.AddPolicy(CreateChatPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_Create.ToString()));
+            options.AddPolicy(EditChatPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_Edit.ToString()));
+            options.AddPolicy(DeleteChatPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_Delete.ToString()));
+            options.AddPolicy(ChatPostImagesPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_PostImage.ToString()));
+            options.AddPolicy(CreateGroupChatPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_CreateGroup.ToString()));
+            options.AddPolicy(EditGroupChatPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_EditGroup.ToString()));
+            options.AddPolicy(DeleteGroupChatPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_DeleteGroup.ToString()));
+            options.AddPolicy(JoinGroupChatPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_JoinGroup.ToString()));
             
             return options; 
         }
@@ -67,5 +76,14 @@ namespace RestApiServer.Core.Security
         public const string CreateTopicsPolicy = "CreateTopicsPolicy";
         public const string EditTopicsPolicy = "EditTopicsPolicy";
         public const string DeleteTopicsPolicy = "DeleteTopicsPolicy";
+        //Chat 
+        public const string CreateChatPolicy = "CreateChatPolicy";
+        public const string EditChatPolicy = "EditChatPolicy";
+        public const string DeleteChatPolicy = "DeleteChatPolicy";
+        public const string ChatPostImagesPolicy = "ChatPostImagesPolicy";
+        public const string CreateGroupChatPolicy = "CreateGroupChatPolicy";
+        public const string EditGroupChatPolicy = "EditGroupChatPolicy";
+        public const string DeleteGroupChatPolicy = "DeleteGroupChatPolicy";
+        public const string JoinGroupChatPolicy = "JoinGroupChatPolicy";
     }
 }

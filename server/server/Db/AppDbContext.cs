@@ -21,6 +21,10 @@ namespace RestApiServer.Db
         public DbSet<TopicEntry> Topics { get; set; } = null!;
         public DbSet<CategoryEntry> Categories { get; set; } = null!;
         public DbSet<RolePermissionEntry> RolePermissions { get; set; } = null!;
+        public DbSet<ChatMessageEntry> ChatMessages { get; set; } = null!;
+        public DbSet<ChatGroupEntry> ChatGroups { get; set; } = null!;
+        public DbSet<GalleryItemEntry> GalleryItems { get; set; } = null!;
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

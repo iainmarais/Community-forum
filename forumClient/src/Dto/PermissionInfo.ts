@@ -28,7 +28,15 @@ export enum  PermissionType {
     Posts_PostReply = "Posts_PostReply",
     Topics_Create = "Topics_Create",
     Topics_Edit = "Topics_Edit",
-    Topics_Delete = "Topics_Delete"
+    Topics_Delete = "Topics_Delete",
+    Chat_Create = "Chat_Create",
+    Chat_Edit = "Chat_Edit",
+    Chat_Delete = "Chat_Delete",
+    Chat_PostImage = "Chat_PostImage",
+    Chat_CreateGroup = "Chat_CreateGroup",
+    Chat_EditGroup = "Chat_EditGroup",
+    Chat_DeleteGroup = "Chat_DeleteGroup",
+    Chat_JoinGroup = "Chat_JoinGroup",
 }
 
 export type SystemPermissionEntry = {

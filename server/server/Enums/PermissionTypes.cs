@@ -24,6 +24,14 @@ namespace RestApiServer.Enums
         Posts_PostReply,
         Topics_Create,
         Topics_Edit,
-        Topics_Delete
+        Topics_Delete,
+        Chat_Create,
+        Chat_Edit,
+        Chat_Delete,
+        Chat_PostImage,
+        Chat_CreateGroup,
+        Chat_EditGroup,
+        Chat_DeleteGroup,
+        Chat_JoinGroup
     }
 }

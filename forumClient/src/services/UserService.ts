@@ -1,12 +1,16 @@
 import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
-import type { UserInfo } from "@/Dto/UserInfo";
+import type { UpdateUserProfileRequest, UserBasicInfo } from "@/Dto/UserInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
 
-const getUserById = async (userId: string): Promise<ApiSuccessResponse<UserInfo>> => {
+const getUserById = async (userId: string): Promise<ApiSuccessResponse<UserBasicInfo>> => {
     return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/users/${userId}`);
 }
 
+const updateUserProfile = async (request: UpdateUserProfileRequest): Promise<ApiSuccessResponse<UserBasicInfo>> => {
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/users/${request.userId}/profile`, request);
+}
 export default {
-    getUserById
+    getUserById,
+    updateUserProfile
 }

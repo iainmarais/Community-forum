@@ -13,6 +13,7 @@ using RestApiServer.Core.Errorhandler;
 using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.App;
+using RestApiServer.Dto.Forum;
 using RestApiServer.Dto.Login;
 using RestApiServer.Utils;
 
@@ -198,6 +199,20 @@ namespace RestApiServer.Services
                 UserProfile = userProfile
             };
 
+            return res;
+        }
+
+        public static async Task<UserBasicInfo> UpdateUserProfileAsync(UpdateUserProfileRequest request)
+        {
+            using var db = new AppDbContext();
+            var user = await db.Users.SingleAsync(u => u.UserId == request.UserId);
+            user.UserFirstname = request.UserFirstname;
+            user.UserLastname = request.UserLastname;
+            user.UserProfileImageBase64 = request.UserProfileImageBase64;
+            await db.SaveChangesAsync();
+            //Todo: Add user profile update logic here.
+
+            var res = GetUserBasicInfo(user.UserId);
             return res;
         }
 

@@ -57,9 +57,10 @@ namespace RestApiServer.Services
                 LoggedInUser = new LoggedInUserInfo
                 {
                     UserId = user.UserId ?? "",
-                    UserFirstname = user.UserFullname ?? "",
+                    UserFirstname = user.UserFirstname ?? "",
                     UserLastname = user.UserLastname ?? "",
                     RoleName = loggedInUserRoleName ?? "",
+                    UserProfileImageBase64 = user.UserProfileImageBase64 ?? ""
                 }
             };
             return res;

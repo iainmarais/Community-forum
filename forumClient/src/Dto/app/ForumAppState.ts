@@ -5,6 +5,7 @@ export type LoggedInUserInfo = {
     userFirstname: string,
     userLastname: string,
     roleName?: string
+    userProfileImageBase64?: string
     //Add additional props here.
 }
 

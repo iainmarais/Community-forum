@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.Login;
 using RestApiServer.Dto.App;
+using RestApiServer.Dto.Forum;
+using RestApiServer.Utils;
 
 namespace RestApiServer.Controllers
 {
@@ -31,6 +33,14 @@ namespace RestApiServer.Controllers
         {
             var res = await UserService.GetUserBasicInfoAsync(userId);
             return ApiSuccessResponses.WithData("Get user basic info successful", res);
+        }
+
+        [HttpPost("{userId}/profile")]
+        public async Task<ApiSuccessResponse<UserBasicInfo>> UpdateUserProfile(UpdateUserProfileRequest request)
+        {
+            var user = AuthUtils.GetForumUserContext(User);
+            var res = await UserService.UpdateUserProfileAsync(request);
+            return ApiSuccessResponses.WithData("Update user profile successful", res);
         }
 
     }

@@ -10,13 +10,14 @@ namespace RestApiServer.Db.Users
     {
         [Key]
         public string UserId { get; set; } = string.Empty;
+        public string UserProfileImageBase64 { get; set; } = string.Empty;
         public string Username { get; set; } = string.Empty;
         public string EmailAddress { get; set; } = string.Empty;
         public string? UserFirstname { get; set; }
         public string? UserLastname { get; set; }
         public string HashedPassword { get; set; } = string.Empty;
         public string RoleId { get; set; } = string.Empty;
-        public int? TotalPosts { get; set; } 
+        public int? TotalPosts { get; set; }
         //Chat-related
         public bool IsOnline { get; set; } //Typically set by the frontend when the user is logged in. Polling this could be tricky - one needs to use a realtime service such as signalr to keep it up to date
         public bool IsVisible { get; set; } //Controlled by the user from the chat view. If set to false, the user will not be visible in the chat view.
@@ -49,6 +50,7 @@ namespace RestApiServer.Db.Users
         public required string UserId { get; set; }
         public string UserFirstname { get; set; } = "";
         public string UserLastname { get; set; } = "";
+        public string UserProfileImageBase64 { get; set; } = "";
         public string RoleName { get; set; } = "";
     }
 }
