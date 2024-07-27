@@ -39,7 +39,7 @@ There are also plans to develop a mobile client using Dart and Flutter.
    npm install
   ```
 
-###Starting the client and server:
+### Starting the client and server:
 
 server: 
 ```
@@ -52,17 +52,17 @@ cd ..\ForumClient
 npm run serve
 ```
 
-###Development
+### Development
 To start development, ensure both the server and client are running. Changes in the client will be automatically reflected in your browser, while the server may require a restart for changes to take effect.
 
-###Contributing
+### Contributing
 Feel free to submit issues and pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
-###Future Plans
+### Future Plans
 
 Image Gallery: An interface to display and interact with images.
 Chat Function: A real-time chat feature for user communication.
 Mobile Client: Development of a mobile client using Dart and Flutter.
 
-###Licence
+### Licence
 This project is licensed under the MIT License.
