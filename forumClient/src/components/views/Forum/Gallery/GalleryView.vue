@@ -8,7 +8,12 @@ import PlaceholderItem from './PlaceholderItem.vue';
 import CreateGalleryItemModal from '@/components/modals/CreateGalleryItemModal.vue';
 import ImageElement from '@/components/elements/ImageElement.vue';
 import { useToast } from 'vue-toastification';
-import type { ApiFileResponse } from '@/ApiResponses/ApiFileResponse';
+
+//Future plans for the gallery:
+// 1. Add pagination - mission critical for the gallery
+// 2. Add search - important, especially when it grows larger.
+// 3. Add suport for other media files such as video and audio.
+
 
 const toast = useToast();
 const router= useRouter();
@@ -42,8 +47,10 @@ onMounted(async () => {
             </div>
         </div>
         <div class="card-body" v-if="!galleryStore.loading_galleryItems">
-            <div v-for="item in galleryItems" :key="item.galleryItemId">
-                <ImageElement :image-description="item.galleryItemDescription" :image-data="`data:${item.imageData.contentType};base64,${item.imageData.fileContents}`" />
+            <div class="row">
+                <div class="imageContainer" v-for="item in galleryItems" :key="item.galleryItemId">
+                    <ImageElement :image-description="item.galleryItemDescription" :image-data="`data:${item.imageData.contentType};base64,${item.imageData.fileContents}`" :content-type="item.imageData.contentType" />
+                </div>
             </div>
         </div>
         <div class="card-body" v-else>
@@ -55,3 +62,13 @@ onMounted(async () => {
     <LoadingIndicator :loading="galleryStore.loading_galleryItems" />
     <CreateGalleryItemModal />
 </template>
+
+<style>
+    .imageContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+    }
+</style>
