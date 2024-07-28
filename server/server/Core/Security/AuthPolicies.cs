@@ -44,7 +44,10 @@ namespace RestApiServer.Core.Security
             options.AddPolicy(EditGroupChatPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_EditGroup.ToString()));
             options.AddPolicy(DeleteGroupChatPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_DeleteGroup.ToString()));
             options.AddPolicy(JoinGroupChatPolicy, policy => policy.RequireClaim(SystemPermissionType.Chat_JoinGroup.ToString()));
-            
+            //Gallery
+            options.AddPolicy(GalleryImageUploadPolicy, policy => policy.RequireClaim(SystemPermissionType.Gallery_UploadImage.ToString()));
+            options.AddPolicy(GalleryImageDeletePolicy, policy => policy.RequireClaim(SystemPermissionType.Gallery_DeleteImage.ToString()));
+            options.AddPolicy(GalleryImageEditPolicy, policy => policy.RequireClaim(SystemPermissionType.Gallery_EditImage.ToString()));
             return options; 
         }
 
@@ -85,5 +88,8 @@ namespace RestApiServer.Core.Security
         public const string EditGroupChatPolicy = "EditGroupChatPolicy";
         public const string DeleteGroupChatPolicy = "DeleteGroupChatPolicy";
         public const string JoinGroupChatPolicy = "JoinGroupChatPolicy";
+        public const string GalleryImageUploadPolicy = "GalleryImageUploadPolicy";
+        public const string GalleryImageDeletePolicy = "GalleryImageDeletePolicy";
+        public const string GalleryImageEditPolicy = "GalleryImageEditPolicy";
     }
 }

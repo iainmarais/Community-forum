@@ -1,3 +1,5 @@
+using System.Data;
+using RestApiServer.Core.ApiResponses;
 using RestApiServer.Db;
 using RestApiServer.Utils;
 
@@ -9,5 +11,6 @@ namespace RestApiServer.Dto.Forum
         { 
             ClassUtils.CopyFromBaseclass(this, entry);
         }
+        public ApiFileResponse ImageData { get; set; } = new ApiFileResponse();
     }
 }

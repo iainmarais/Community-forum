@@ -32,6 +32,9 @@ namespace RestApiServer.Enums
         Chat_CreateGroup,
         Chat_EditGroup,
         Chat_DeleteGroup,
-        Chat_JoinGroup
+        Chat_JoinGroup,
+        Gallery_UploadImage,
+        Gallery_DeleteImage,
+        Gallery_EditImage
     }
 }

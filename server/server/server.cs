@@ -89,7 +89,9 @@ namespace RestApiServer
             {
                 app.UseCors(productionCorsPolicy);
             }
-
+            
+            app.UseStaticFiles();
+            
             app.UseRouting();
 
             app.MapControllers();

@@ -37,6 +37,9 @@ export enum  PermissionType {
     Chat_EditGroup = "Chat_EditGroup",
     Chat_DeleteGroup = "Chat_DeleteGroup",
     Chat_JoinGroup = "Chat_JoinGroup",
+    Gallery_UploadImage = "Gallery_UploadImage",
+    Gallery_DeleteImage = "Gallery_DeleteImage",
+    Gallery_EditImage = "Gallery_EditImage",
 }
 
 export type SystemPermissionEntry = {
