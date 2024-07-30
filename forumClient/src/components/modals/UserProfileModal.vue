@@ -1,17 +1,27 @@
 <script lang = "ts" setup>
 import type { UpdateUserProfileRequest } from '@/Dto/UserInfo';
-import { useAppContextStore } from '@/stores/AppContextStore';
 import { useUserProfileStore } from '@/stores/UserProfileStore';
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref, watch, type PropType } from 'vue';
 import { useToast } from 'vue-toastification';
 
 const userProfileStore = useUserProfileStore();
-const appContextStore = useAppContextStore();   
 const toast = useToast();
 
-const userFirstName = ref<string>("");
-const userLastName = ref<string>("");
-const userProfileImageBase64 = ref<string>("");
+const props = defineProps({
+    userId: String as PropType<string>,
+    userProfileImageBase64: String as PropType<string>,
+    userFirstname: String as PropType<string>,
+    userLastname: String as PropType<string>,
+});
+
+const userProfileImageBase64 = ref<string>(props.userProfileImageBase64 || "");
+const userFirstName = ref<string>(props.userFirstname || "");
+const userLastName = ref<string>(props.userLastname || "");
+const userId = ref<string>(props.userId || "");
+
+const userProfileImageDescription = ref<string>("Current image");
+
+const newUserProfileImageBase64 = ref<string>("");
 
 const convertToBase64 = (file: File) => {
     return new Promise((resolve, reject) => {
@@ -64,7 +74,7 @@ const handleFileChange = async (event:Event) => {
         try {
             const file = target.files![0];
             const base64 = await convertToBase64(file);
-            userProfileImageBase64.value = base64 as string;
+            newUserProfileImageBase64.value = base64 as string;
         }
         catch (error) {
             toast.error("Could not load image");
@@ -81,15 +91,15 @@ const updateUserProfile = () => {
         toast.error("Please enter a first and last name");
         return;
     }
-    if (userProfileImageBase64.value == "") {
+    if (newUserProfileImageBase64.value == "") {
         toast.error("Please select an image");
         return;
     }
     const request: UpdateUserProfileRequest = {
-        userId: appContextStore.loggedInUser!.userId,
+        userId: userId.value,
         userFirstname: userFirstName.value,
         userLastname: userLastName.value,
-        userProfileImageBase64: userProfileImageBase64.value
+        userProfileImageBase64: newUserProfileImageBase64.value
     }
     userProfileStore.updateUserProfile(request);
     if(userProfileStore.result_updateUserProfileSuccess) {
@@ -103,11 +113,34 @@ watch(userProfileImageBase64, (newValue) =>{
     }
 });
 
+watch(props, newProps => {
+    if(newProps.userId) {
+        userId.value = newProps.userId;
+    }
+    if(newProps.userProfileImageBase64) {
+        userProfileImageBase64.value = newProps.userProfileImageBase64;
+        displayImage(newProps.userProfileImageBase64);
+    }
+    if(newProps.userFirstname) {
+        userFirstName.value = newProps.userFirstname;
+    }
+    if(newProps.userLastname) {
+        userLastName.value = newProps.userLastname;
+    }
+});
+
+watch(newUserProfileImageBase64, newValue => {
+    if(newValue != "") {
+        userProfileImageDescription.value = "New image"; 
+    }
+    else {
+        userProfileImageDescription.value = "Current image";
+    }
+});
+
 onMounted(() => {
-    if (appContextStore.loggedInUser) {
-        userFirstName.value = appContextStore.loggedInUser.userFirstname || "";
-        userLastName.value = appContextStore.loggedInUser.userLastname || "";
-        userProfileImageBase64.value = appContextStore.loggedInUser.userProfileImageBase64 || "";
+    if (userProfileImageBase64.value != "") {
+        displayImage(userProfileImageBase64.value);
     }
 });
 
@@ -127,18 +160,28 @@ onMounted(() => {
                     <table class="table table-borderless table-sm">
                         <tr>
                             <td>First Name</td>
-                            <td><input type="text" class="form-control" v-model="userFirstName" :placeholder="appContextStore.loggedInUser?.userFirstname"></td>
+                            <td><input type="text" class="form-control" v-model="userFirstName" :placeholder="userFirstname"></td>
                         </tr>
                         <tr>
                             <td>Last Name</td>
-                            <td><input type="text" class="form-control" v-model="userLastName" :placeholder="appContextStore.loggedInUser?.userLastname"></td>
+                            <td><input type="text" class="form-control" v-model="userLastName" :placeholder="userLastname"></td>
                         </tr>
                         <tr>
-                            <td>User Profile Image</td>
+                            <td>Profile Image</td>
                             <td><input type="file" class="form-control" @change="handleFileChange"></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><img id="userProfileImage" alt="User profile image"></td>
+                            <td colspan="2">
+                                <div style="display: flex; align-content: center; justify-content: center">
+                                    <div class="polaroid-frame-classic">
+                                        <img class="polaroid-image" id="userProfileImage" alt="User profile image">
+                                        <div class="polaroid-caption">
+                                            <p class="polaroid-caption-title">{{ userFirstName }} {{ userLastName }}</p>
+                                            <p class="polaroid-caption-text">{{ userProfileImageDescription }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                 </div>

@@ -1,5 +1,17 @@
 // These styles construct an element that resembles a classic polaroid photograph.
 
+.polaroid-frame-classic {
+    display: flexbox;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    width: 300px !important; /* Adjust as needed */
+    height: 360px !important;
+    text-align: center;
+    position: relative;
+  }
+
 .polaroid-frame {
     display: flexbox;
     background: white;
@@ -109,6 +121,31 @@
     padding: 5px;
     height: auto;
     border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
+  }
+
+  //Represents the title component of a classic a polaroid caption
+  .polaroid-caption-title {
+    font-family: Arial, sans-serif;
+    margin-top: 5px;
+    margin-bottom: auto;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
+    padding: 0px;
+    background-color: #f9f9f9;
+  }
+
+  //Represents all other text in a polaroid caption
+  .polaroid-caption-text {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    padding: 5px;
+    margin-bottom: auto;
+    font-size: 14px;
+    color: #333;
+    padding: 0px;
     background-color: #f9f9f9;
   }
 
