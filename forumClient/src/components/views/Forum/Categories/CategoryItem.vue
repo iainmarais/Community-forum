@@ -1,0 +1,58 @@
+<script lang = "ts" setup>
+import type { CategoryBasicInfo } from '@/Dto/app/CategoryInfo';
+import { ref, watch, type PropType } from 'vue';
+import { useToast } from 'vue-toastification';
+import { useRouter } from 'vue-router';
+
+const toast = useToast();
+const router = useRouter();
+const props = defineProps({
+    category: Object as PropType<CategoryBasicInfo>
+});
+
+const categoryName = ref<string>("");
+
+const viewCategory = (categoryId: string) => {
+    router.push({ name: "ViewCategory", params: { categoryId: categoryId } });
+    toast.info("Viewing category: " + getCategoryName());
+}
+
+const getCategoryName = () => {
+    return props.category?.categoryName ?? "";
+}
+
+watch (() => props.category, (newCategory) => {
+    if (newCategory) {
+        categoryName.value = newCategory.categoryName;
+    }
+});
+
+</script>
+
+<template>
+    <table class="table table-borderless table-sm">
+        <a v-if="props.category" href="#" @click.prevent="viewCategory(props.category.categoryId)">
+            <tr class="d-flex forum-element">
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="symbol symbol-50px me-5">
+                            <span class="symbol-label bg-light">
+                                <i class="fas fa-folder" style="font-size: 30px"></i>
+                            </span>
+                        </div>
+                        <div class="ml-3">
+                            <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">
+                                {{ props.category.categoryName }}
+                            </div>
+                            <div>
+                                <span class="text-muted font-weight-bold text-muted d-block">
+                                    {{ props.category.categoryDescription }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </a>
+    </table>
+</template>

@@ -20,6 +20,7 @@ namespace RestApiServer.Db
         public DbSet<ThreadEntry> Threads { get; set; } = null!;
         public DbSet<TopicEntry> Topics { get; set; } = null!;
         public DbSet<CategoryEntry> Categories { get; set; } = null!;
+        public DbSet<BoardEntry> Boards { get; set; } = null!;
         public DbSet<RolePermissionEntry> RolePermissions { get; set; } = null!;
         public DbSet<ChatMessageEntry> ChatMessages { get; set; } = null!;
         public DbSet<ChatGroupEntry> ChatGroups { get; set; } = null!;
@@ -84,10 +85,15 @@ namespace RestApiServer.Db
             .WithMany(u => u.TopicsCreated)
             .HasForeignKey(t => t.CreatedByUserId);
 
-            modelBuilder.Entity<CategoryEntry>()
+            modelBuilder.Entity<BoardEntry>()
             .HasMany(c => c.TopicsCreated)
-            .WithOne(t => t.Category)
-            .HasForeignKey(t => t.CategoryId);
+            .WithOne(t => t.Board)
+            .HasForeignKey(t => t.BoardId);
+
+            modelBuilder.Entity<CategoryEntry>()
+            .HasMany(c => c.BoardsCreated)
+            .WithOne(b => b.Category)
+            .HasForeignKey(b => b.CategoryId);
 
         }
         

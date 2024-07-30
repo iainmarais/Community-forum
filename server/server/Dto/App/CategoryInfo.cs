@@ -10,13 +10,13 @@ namespace RestApiServer.Dto.App
         {
             ClassUtils.CopyFromBaseclass(this, category);
         }
-        public List<TopicBasicInfo> Topics { get; set; } = new();
+        public List<BoardBasicInfo> Boards { get; set; } = new();
     }
 
     public class CategoryFullInfo
     {
         public required CategoryBasicInfo Category { get; set; } = null!;
-        public required List<TopicBasicInfo> Topics { get; set; } = new();
-        public required int TotalTopics { get; set; } = 0;
+        public required List<BoardBasicInfo> Boards { get; set; } = new();
+        public required int TotalBoards { get; set; } = 0;
     }
 }

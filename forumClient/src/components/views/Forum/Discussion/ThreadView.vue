@@ -2,8 +2,8 @@
 import type { UserBasicInfo } from '@/Dto/UserInfo';
 import type { ThreadBasicInfo, ThreadFullInfo } from '@/Dto/app/ThreadInfo';
 import UserService from '@/services/UserService';
-import { onMounted, ref, type PropType } from 'vue';
-import { useRouter } from 'vue-router';
+import { onMounted, ref, watch, type PropType } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
 const createdByUser = ref<UserBasicInfo>();
 import DateUtils from '@/components/utils/DateUtils';
@@ -13,10 +13,12 @@ const discussionStore = useDiscussionStore();
 
 const router = useRouter();
 const toast = useToast();
-
+const route = useRoute();
 const props = defineProps ({
     thread: Object as PropType<ThreadFullInfo>,
 });
+
+const threadId = ref<string>(route.params.threadId as string || "");
 
 const viewThread = (threadId: string) => {
     router.push({ name: "ViewThread", params: { threadId: threadId } })
@@ -26,9 +28,16 @@ const viewThread = (threadId: string) => {
     });
 }
 
+watch(() => route.params.threadId, (newThreadId) => {
+    threadId.value = newThreadId as string || "";
+    //Redirect the user to the home page in the event of this value being "home"
+    if(threadId.value === "home") {
+        router.push({name: "home"}); 
+    }
+});
 
 const goBack = () => {
-    router.push({name: "TopicView", params : {topicId: props.thread!.thread.topicId}});
+    router.go(-1);
 }
 
 const getUserInfo = async (userId: string) => {

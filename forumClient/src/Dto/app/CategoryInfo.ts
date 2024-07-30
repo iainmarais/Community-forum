@@ -1,3 +1,4 @@
+import type { BoardBasicInfo } from "./BoardInfo"
 import type { TopicBasicInfo } from "./TopicInfo"
 
 export type CategoryEntry = {
@@ -10,16 +11,20 @@ export type CategoryBasicInfo = {
     categoryId: string,
     categoryName: string,
     categoryDescription: string,
-    topics: TopicBasicInfo[],
+    boards: BoardBasicInfo[],
 }
 
 export type CategoryFullInfo = {
     category: CategoryBasicInfo,
-    topics: TopicBasicInfo[],
-    totalTopics: number
+    boards: BoardBasicInfo[],
+    totalBoards: number
 }
 
 export type CreateCategoryRequest = {
     categoryName: string,
     categoryDescription: string
+}
+
+export type CategorySummary = {
+    totalCategories: number
 }

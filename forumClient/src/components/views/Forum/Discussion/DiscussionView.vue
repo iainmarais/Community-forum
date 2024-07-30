@@ -76,10 +76,7 @@ watch(() => discussionStore.thread, (newThread) => {
 watch(() => route.params.threadId, (newThreadId) => {
     threadId.value = newThreadId as string || "";
     if(threadId.value === "home") {
-        router.push({name: "overview"}); 
-    }
-    if(threadId.value) {
-        discussionStore.getThreadFullInfo(threadId.value);
+        router.push({name: "home"}); 
     }
 });
 

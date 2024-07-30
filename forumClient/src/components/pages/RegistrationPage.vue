@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router';
 
 import { useRegistrationStore } from '@/stores/RegistrationStore';
+import "@/assets/scss/pagestyles.scss";
 
 const registrationStore = useRegistrationStore();
 

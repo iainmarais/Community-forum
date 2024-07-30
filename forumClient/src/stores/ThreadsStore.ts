@@ -53,9 +53,6 @@ export const useThreadsStore = defineStore({
                 ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
             });
         },
-        getThreads() {
-            
-        },
         createThread(request: CreateThreadRequest) {
             this.loading_createThread = true;
             this.result_createThreadSuccess = false;

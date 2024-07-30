@@ -1,5 +1,6 @@
 <script lang= "ts" setup>
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import AppLoader from '@/components/elements/Loaders/AppLoader.vue';
+ 
 
 defineProps({
     loading: {
@@ -10,5 +11,5 @@ defineProps({
 </script>
 
 <template>
-    <PulseLoader :loading="loading" />
+    <AppLoader :loading="loading" />
 </template>

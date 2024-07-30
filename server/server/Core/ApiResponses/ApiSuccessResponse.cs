@@ -45,10 +45,10 @@ namespace RestApiServer.Core.ApiResponses
     }
 
     //Pagination support
-    public class PaginatedData<T, S>
+    public class PaginatedData<D, S>
     {
-        public required T Rows { get; set; }
-        public required int PageNum { get; set; }
+        public required D Rows { get; set; }
+        public required int PageNumber { get; set; }
         public required int RowsPerPage { get; set; }
         public required int TotalPages { get; set; }
         public required S Summary { get; set; }

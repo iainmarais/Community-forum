@@ -45,3 +45,7 @@ export type ReportPostRequest = {
     reportReason: string,
     reportedByUserId: string,
 }
+
+export type PostSummary = {
+    totalPosts: number
+}

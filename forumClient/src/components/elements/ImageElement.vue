@@ -29,8 +29,8 @@ const getFriendlyContentType = () => {
 </script>
 
 <template>
-    <div class="polaroid-frame-md">
-        <div class="polaroid-image-background-md">
+    <div class="polaroid-frame">
+        <div class="polaroid-image-background">
             <img v-if="imageData && imageData?.length > 0" :src="props.imageData" class="polaroid-image" alt="Image"/>
             <img v-else src="@/assets/media/png/placeholderImage300x300.png" class="polaroid-image" alt="placeholder for image" />
         </div>

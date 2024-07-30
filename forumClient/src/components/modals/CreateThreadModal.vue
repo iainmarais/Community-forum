@@ -1,10 +1,9 @@
 <script lang = "ts" setup>
 import { useThreadsStore } from '@/stores/ThreadsStore';
-import { useAppContextStore } from '@/stores/AppContextStore';
-
 import type { CreateThreadRequest, CreateThreadWithPostRequest } from '@/Dto/app/ThreadInfo';
 import { useToast } from "vue-toastification";
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
+import { useAppContextStore } from '@/stores/AppContextStore';
 
 const threadListStore = useThreadsStore();
 const appContextStore = useAppContextStore();
@@ -21,10 +20,6 @@ const toast = useToast();
 const createThread = () => {
     if(appContextStore.loggedInUser == null) {
         toast.error("You must be logged in to create a new discussion");
-        return;
-    }
-    if(props.topicId == "") {
-        toast.error("Please select a topic");
         return;
     }
     if(threadName.value == "") {
@@ -60,10 +55,6 @@ const closeModal = () => {
     $('#createThreadModal').modal("hide");
 }
 
-onMounted(() => {
-    appContextStore.getTopics();
-});
-
 </script>
 
 <template>
@@ -78,13 +69,6 @@ onMounted(() => {
                     </button> 
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="topicId">Topic</label>
-                        <select id="topicId" class="form-control" v-model="selectedTopicId">
-                            <option value="" disabled selected>Select topic</option>
-                            <option v-for="topic in appContextStore.topics" :key="topic.topicId" :value="topic.topicId">{{ topic.topicName }}</option>
-                        </select>
-                    </div>
                     <div class="form-group">
                         <label for="threadName">Thread Name</label>
                         <input type="text" class="form-control" id="threadName" v-model="threadName">

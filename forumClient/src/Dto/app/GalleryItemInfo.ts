@@ -30,3 +30,9 @@ export type DisplayImageData = {
     galleryItemDescription: string;
     galleryItemLink: string;
 }
+
+export type GalleryItemSummary = {
+    totalGalleryItems: number,
+    totalImages: number
+    //Other types to be implemented.
+}

@@ -44,3 +44,6 @@ export type CreateThreadWithPostRequest = {
     
 }
 
+export type ThreadSummary = {
+    totalThreads: number
+}

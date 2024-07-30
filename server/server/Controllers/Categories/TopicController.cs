@@ -21,9 +21,9 @@ namespace RestApiServer.Controllers.Categories
             return ApiSuccessResponses.WithData("Get topic full info successful", res);
         }
         [HttpGet("topics")]
-        public async Task<ApiSuccessResponse<List<TopicBasicInfo>>> GetTopics()
+        public async Task<ApiSuccessResponse<PaginatedData<List<TopicBasicInfo>, TopicSummary>>> GetTopics([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string searchTerm)
         {
-            var res = await TopicService.GetForumTopicsAsync();
+            var res = await TopicService.GetForumTopicsAsync(pageNumber, rowsPerPage, searchTerm);
             return ApiSuccessResponses.WithData("Get forum topics successful", res);
         }
 
@@ -42,7 +42,7 @@ namespace RestApiServer.Controllers.Categories
         }  
 
         [HttpPost("topics/create")]
-        public async Task<ApiSuccessResponse<List<TopicBasicInfo>>> CreateTopic(CreateTopicRequest request)
+        public async Task<ApiSuccessResponse<PaginatedData<List<TopicBasicInfo>,TopicSummary>>> CreateTopic(CreateTopicRequest request)
         {
             var user = AuthUtils.GetForumUserContext(User);
             var res = await TopicService.CreateForumTopicAsync(user.UserId, request);

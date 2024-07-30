@@ -1,6 +1,6 @@
 <script lang = "ts" setup>
 import ForumStatsView from '@/components/views/Forum/General/ForumStatsView.vue';
-import CategoryList from '@/components/views/Forum/Categories/CategoryList.vue';
+import CategoryList from '@/components/views/Forum/Categories/CategoryListView.vue';
 import { onMounted, ref, watch } from 'vue';
 import CreateCategoryModal from '@/components/modals/CreateCategoryModal.vue';
 import { useCategoryStore } from '@/stores/Categories/CategoryStore';

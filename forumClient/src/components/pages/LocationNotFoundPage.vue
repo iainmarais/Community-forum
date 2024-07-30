@@ -1,6 +1,8 @@
 <script lang = "ts" setup>
 import { useRouter } from 'vue-router';
 import { HomeRoute } from '@/router';
+import "@/assets/scss/pagestyles.scss";
+
 const router = useRouter();
 
 const goBack = () => {

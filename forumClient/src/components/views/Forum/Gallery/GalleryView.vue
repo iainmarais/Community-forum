@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router';
 import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
 import { useGalleryStore } from '@/stores/Gallery/GalleryStore';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import type { GalleryItemBasicInfo } from '@/Dto/app/GalleryItemInfo';
 import PlaceholderItem from './PlaceholderItem.vue';
 import CreateGalleryItemModal from '@/components/modals/CreateGalleryItemModal.vue';
@@ -22,17 +22,22 @@ const galleryStore = useGalleryStore();
 const galleryItems = ref<GalleryItemBasicInfo[]>({} as GalleryItemBasicInfo[]);
 
 const goBack = () => {
-    router.go(-1);
+    router.push({name: "home"});
 }
 
 const createGalleryItem = () => {
     $("#createGalleryItemModal").modal("show");
 }
 
-onMounted(async () => {
-    await galleryStore.getGalleryItems();
-    galleryItems.value = galleryStore.galleryItems;
+onMounted(() => {
+    galleryStore.getGalleryItems();
 });
+
+watch(() => galleryStore.galleryItems, (newItems) => {
+    if(newItems) {
+        galleryItems.value = newItems;
+    }
+})
 </script>
 
 <template>
@@ -46,18 +51,27 @@ onMounted(async () => {
                 <button class="btn btn-primary btn-sm m-1" @click="goBack"><i class="fas fa-arrow-left"></i>Back</button>
             </div>
         </div>
-        <div class="card-body" v-if="!galleryStore.loading_galleryItems">
+        <div class="card-body" v-if="!galleryStore.loading_galleryItems && galleryItems">
             <div class="row">
                 <div class="imageContainer" v-for="item in galleryItems" :key="item.galleryItemId">
                     <ImageElement :image-description="item.galleryItemDescription" :image-data="`data:${item.imageData.contentType};base64,${item.imageData.fileContents}`" :content-type="item.imageData.contentType" />
                 </div>
             </div>
         </div>
-        <div class="card-body" v-else>
-            <div>
-                <PlaceholderItem />
+        <div class="card-body" v-else-if="galleryStore.loading_galleryItems">
+            <div class="row">
+                <div class="imageContainer">
+                    <PlaceholderItem :loading="galleryStore.loading_galleryItems" />
+                </div>
             </div>
         </div>
+        <div class="card-body" v-else>
+            <div class="row">
+                <div class="imageContainer">
+                    <PlaceholderItem :loading="false" />
+                </div>
+            </div>
+        </div>        
     </div>
     <LoadingIndicator :loading="galleryStore.loading_galleryItems" />
     <CreateGalleryItemModal />

@@ -1,5 +1,5 @@
 import axios, {type RawAxiosRequestHeaders} from "axios";
-import { LastRoute, TokenKey } from "@/LocalStorage/keys";
+import { Last_Route, Token_Key } from "@/LocalStorage/keys";
 import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
 import router, { HomeRoute, LoginRoute, NotFoundRoute } from '@/router';
 import ErrorHandler from "@/Handlers/ErrorHandler";
@@ -41,7 +41,7 @@ instance.interceptors.response.use((response) => {
 
 const ForceLogoff = () => {
     RemoveToken();
-    localStorage.removeItem(TokenKey);
+    localStorage.removeItem(Token_Key);
 }
 
 export const SetToken = (token:string) => {

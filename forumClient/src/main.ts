@@ -22,6 +22,7 @@ windowA.jQuery = windowA.$ = $;
 import "vue-toastification/dist/index.css";
 import "jquery/dist/jquery.min.js";
 import "./css/app.css";
+import "./css/customstyles.scss";
 
 import ConfigurationLoader from './config/ConfigurationLoader';
 import type { ToastOptionsAndRequiredContent } from "vue-toastification/dist/types/types";

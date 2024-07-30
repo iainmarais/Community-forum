@@ -10,7 +10,7 @@ namespace RestApiServer.Db
     {
         [Key]
         public string TopicId { get; set; } = string.Empty;
-        public string CategoryId { get; set; } = string.Empty;
+        public string BoardId { get; set; } = string.Empty;
         public string TopicName { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string CreatedByUserId { get; set; } = string.Empty;
@@ -21,6 +21,6 @@ namespace RestApiServer.Db
         [JsonIgnore]
         public UserEntry? CreatedByUser { get; set; }
         [JsonIgnore]
-        public CategoryEntry? Category { get; set; }
+        public BoardEntry? Board { get; set; }
     }
 }

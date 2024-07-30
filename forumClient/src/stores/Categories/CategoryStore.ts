@@ -4,7 +4,7 @@ import CategoryService from "@/services/CategoryService";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 
 type CategoryStoreState = {
-    category: CategoryFullInfo,
+    selectedCategory: CategoryFullInfo,
     categories: CategoryBasicInfo[],
     loading_getCategoryFullInfo: boolean,
     result_getCategoryFullInfoSuccess: boolean,
@@ -19,13 +19,13 @@ type CategoryStoreState = {
     result_createCategorySuccess: boolean,
 
     selectedCategoryId?: string | undefined,
-    selectedCategory: CategoryBasicInfo,
+    selectedCategoryBasicInfo: CategoryBasicInfo,
 
     loading_selectedCategory: Map<string, boolean>,
 }
 
 const defaultState: CategoryStoreState = {
-    category: {} as CategoryFullInfo,
+    selectedCategory: {} as CategoryFullInfo,
     categories: [],
     loading_getCategoryFullInfo: false,
     result_getCategoryFullInfoSuccess: false,
@@ -36,7 +36,7 @@ const defaultState: CategoryStoreState = {
     loading_createCategory: false,
     result_createCategorySuccess: false,
 
-    selectedCategory: {} as CategoryBasicInfo,
+    selectedCategoryBasicInfo: {} as CategoryBasicInfo,
 
     loading_getSelectedCategory: false,
     result_getSelectedCategorySuccess: false,
@@ -52,10 +52,10 @@ export const useCategoryStore = defineStore({
 
     },
     actions: {
-        getCategoryFullInfo(categoryId: string) {
+        getSelectedCategory(categoryId: string) {
             this.loading_getCategoryFullInfo = true;
-            CategoryService.getCategoryFullInfo(categoryId).then(response => {
-                this.category = response.data;
+            CategoryService.getSelectedCategory(categoryId).then(response => {
+                this.selectedCategory = response.data;
                 this.result_getCategoryFullInfoSuccess = true;
                 this.loading_getCategoryFullInfo = false;
             }, error => {
@@ -74,10 +74,10 @@ export const useCategoryStore = defineStore({
                 ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
             });
         },
-        getSelectedCategory(categoryId: string) {
+        getSelectedCategoryBasicInfo(categoryId: string) {
             this.loading_selectedCategory.set(categoryId, true);
-            CategoryService.getSelectedCategory(categoryId).then(response => {
-                this.selectedCategory = response.data;
+            CategoryService.getSelectedCategoryBasicInfo(categoryId).then(response => {
+                this.selectedCategoryBasicInfo = response.data;
                 this.result_getSelectedCategorySuccess = true;
                 this.loading_selectedCategory.set(categoryId, false);
             }, error => {

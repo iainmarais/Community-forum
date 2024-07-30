@@ -1,24 +1,24 @@
 {
     "extends": "@vue/tsconfig/tsconfig.web.json",
-    "include": ["vite.env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.ts"],
+    "include": ["vite.config.*", "vite.env.d.ts", "env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.ts"],
+    "files": [],
+    // "references": [
+    //     {
+    //         "path": "./tsconfig.vite-config.json"
+    //     },
+    // ],
     "compilerOptions": {
+        "composite": true,
         "module": "ESNext",
-        "target": "ES2020",
+        "target": "ES2016",
         "baseUrl": ".",
         "lib": ["DOM", "ESNext", "ES2018"],
-        "types": ["jquery"],
+        "types": ["node", "jquery"],
+        "moduleResolution": "Node",
+        "verbatimModuleSyntax": true,
+        "skipLibCheck": true,
         "paths": {
             "@/*": ["src/*"]
         },
-        "moduleResolution": "Node",
-        "verbatimModuleSyntax": true,
-        
-
     },
-    "files": [],
-    "references": [
-    {
-      "path": "./tsconfig.vite-config.json"
-    }
-  ]
 }

@@ -1,7 +1,7 @@
 <script lang = "ts" setup>
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import { useAppContextStore } from '@/stores/AppContextStore';
-import { TokenKey, LastLoggedInUserIdentifier, LastRoute } from '@/LocalStorage/keys';
+import { Token_Key, Last_Logged_In_User_Identifier, Last_Route } from '@/LocalStorage/keys';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import ErrorHandler from '@/Handlers/ErrorHandler';
@@ -19,9 +19,9 @@ const router = useRouter();
 const loading = ref<boolean>(false);
 
 const onLogoff = () => {
-    localStorage.removeItem(TokenKey);
-    localStorage.removeItem(LastRoute);
-    localStorage.removeItem(LastLoggedInUserIdentifier);
+    localStorage.removeItem(Token_Key);
+    localStorage.removeItem(Last_Route);
+    localStorage.removeItem(Last_Logged_In_User_Identifier);
     router.push({name: LoginRoute});
 }
 </script>

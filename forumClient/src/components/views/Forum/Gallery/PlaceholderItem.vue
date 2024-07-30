@@ -1,12 +1,51 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue';
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue';
+import frame0 from "@/assets/media/png/loadingPlaceholderImageFrame0.png";
+import frame1 from "@/assets/media/png/loadingPlaceholderImageFrame1.png";
+import frame2 from "@/assets/media/png/loadingPlaceholderImageFrame2.png";
+import frame3 from "@/assets/media/png/loadingPlaceholderImageFrame3.png";
+const props = defineProps({
+    loading: {
+        type: Boolean,
+        default: true
+    },
+});
+
+const loadingImages = [
+    frame0,
+    frame1,
+    frame2,
+    frame3
+];
+
+const reactiveImages = reactive(loadingImages);
+
+const currentIndex = ref(0);
+
+let interval: any;
+
+const updateCurrentIndex = () => {
+    currentIndex.value = (currentIndex.value + 1) % loadingImages.length;
+};
+
+onMounted(() => {
+    interval = setInterval(updateCurrentIndex, 500);
+});
+
+onUnmounted(() => {
+    clearInterval(interval);
+});
+
 </script>
 
 <template>
     <div class="polaroid-frame">
-        <img src="@/assets/media/png/placeholderImage300x300.png" class="polaroid-image" alt="placeholder for image" />
+        <img v-show="!loading" src="@/assets/media/png/placeholderImage300x300.png" class="polaroid-image" alt="placeholder for image" />
+        <div v-show="loading">
+            <img :src="reactiveImages[currentIndex]" class="polaroid-image" alt="Loading..." />
+        </div>
         <div class="polaroid-caption">
-            <p class="card-label font-weight-bolder text-dark075 font-size-h5">No gallery items found.</p>
+            <span class="font-weight-bolder"> {{loading ? "Loading..." : ""}} </span>
         </div>
     </div>
 </template>

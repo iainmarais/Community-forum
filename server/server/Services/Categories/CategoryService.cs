@@ -13,8 +13,8 @@ namespace RestApiServer.Services.Categories
         {
             using var db = new AppDbContext();
             var category = await db.Categories
-            .Include(c => c.TopicsCreated.OrderByDescending(t => t.CreatedDate))
-            .SingleOrDefaultAsync(c => c.CategoryId == categoryId);
+            .Include(c => c.BoardsCreated.OrderByDescending(b => b.BoardName))
+            .SingleOrDefaultAsync(b => b.CategoryId == categoryId);
             if(category == null)
             {
                 throw new Exception("Category not found");
@@ -22,16 +22,9 @@ namespace RestApiServer.Services.Categories
             var categoryFullInfo = new CategoryFullInfo()
             {
                 Category = new CategoryBasicInfo(category),
-                Topics = category.TopicsCreated
-                    .Select(t => new TopicBasicInfo(t)
-                    {
-                        TotalThreads = t.Threads.Count,
-                        NumTotalThreads = t.Threads.Count,
-                        NumNewThreads = t.Threads.Count, //For now until I can get a DateTime check against the currently logged-in
-                        TotalPosts = t.Threads.Sum(t => new ThreadBasicInfo(t).TotalPosts)
-                    })
-                    .ToList(),
-                TotalTopics = category.TopicsCreated.Count
+                Boards = category.BoardsCreated
+                    .Select(b => new BoardBasicInfo(b)).ToList(),
+                TotalBoards = category.BoardsCreated.Count
             };
             return categoryFullInfo ?? throw new Exception("Category not found");
         }
@@ -40,11 +33,11 @@ namespace RestApiServer.Services.Categories
         {
             using var db = new AppDbContext();
             var categories = await db.Categories
-            .Include(c => c.TopicsCreated.OrderByDescending(t => t.CreatedDate))
+            .Include(c => c.BoardsCreated.OrderByDescending(b => b.BoardName))
             .Select(c => new CategoryBasicInfo(c)
             {
-                Topics = c.TopicsCreated
-                    .Select(t => new TopicBasicInfo(t))
+                Boards = c.BoardsCreated
+                    .Select(b => new BoardBasicInfo(b))
                     .ToList()
             })
             .ToListAsync();
@@ -69,7 +62,7 @@ namespace RestApiServer.Services.Categories
         {
             using var db = new AppDbContext();
             var category = await db.Categories
-            .Include(c => c.TopicsCreated.OrderByDescending(t => t.CreatedDate))
+            .Include(c => c.BoardsCreated.OrderByDescending(b => b.BoardName))
             .SingleOrDefaultAsync(c => c.CategoryId == categoryId);
             if(category == null)
             {

@@ -1,6 +1,6 @@
 import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
 import type { ForumAppState } from "@/Dto/app/ForumAppState";
-import type { MessageBasicInfo } from "@/Dto/app/MessageInfo";
+import type { PostBasicInfo } from "@/Dto/app/PostInfo";
 import type { CreateThreadRequest, CreateThreadWithPostRequest, ThreadBasicInfo } from "@/Dto/app/ThreadInfo";
 import type { TopicBasicInfo } from "@/Dto/app/TopicInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
@@ -22,12 +22,8 @@ const getThreadsByTopic = async (topicId: string): Promise<ApiSuccessResponse<Th
     return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/threads/${topicId}`);
 }
 
-const getThreadPosts = async (threadId: string): Promise<ApiSuccessResponse<MessageBasicInfo[]>> => {
+const getThreadPosts = async (threadId: string): Promise<ApiSuccessResponse<PostBasicInfo[]>> => {
     return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/threads/${threadId}/posts`);
-}
-
-const getTopics = async (): Promise<ApiSuccessResponse<TopicBasicInfo[]>> => {
-    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/topics`);
 }
 
 const getNewestTopics = async (): Promise<ApiSuccessResponse<TopicBasicInfo[]>> => {
@@ -47,7 +43,6 @@ export default {
     getThreadSummary,
     getThreadsByTopic,
     getThreadPosts,
-    getTopics,
     getNewestTopics,
     createThread,
     createThreadWithStartingPost

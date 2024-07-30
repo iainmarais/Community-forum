@@ -5,7 +5,7 @@ import { ref, watch } from 'vue';
 import { useToast } from 'vue-toastification';
 
 const props = defineProps ({
-    selectedCategoryId: {
+    selectedBoardId: {
         type: String,
         default: "",
         required: true
@@ -42,7 +42,7 @@ const createTopic = () => {
         toast.error("Please enter a topic description");
         return;
     }
-    if(props.selectedCategoryId.length == 0) {
+    if(props.selectedBoardId.length == 0) {
         toast.error("Category id can't be empty");
         return;
     }
@@ -50,7 +50,7 @@ const createTopic = () => {
         topicName: topicName.value,
         description: topicDescription.value,
         //The category id should be the one that the topics in this category share.
-        categoryId: props.selectedCategoryId,
+        boardId: props.selectedBoardId,
     }
     topicListStore.createNewTopic(request);
 }

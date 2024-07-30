@@ -3,7 +3,7 @@ import type { ThreadBasicInfo } from "./ThreadInfo"
 
 export type TopicEntry = {
     topicId: string,
-    categoryId: string,
+    boardId: string,
     topicName: string,
     description: string,
     createdByUserId: string,
@@ -12,7 +12,7 @@ export type TopicEntry = {
 
 export type TopicBasicInfo = {
     topicId: string,
-    categoryId: string,
+    boardId: string,
     topicName: string,
     description: string,
     createdByUserId: string,
@@ -31,7 +31,11 @@ export type TopicFullInfo = {
 }
 
 export type CreateTopicRequest = {
-    categoryId: string,
+    boardId: string,
     topicName: string,
     description: string,
+}
+
+export type TopicSummary = {
+    totalTopics: number
 }

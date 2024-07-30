@@ -24,4 +24,8 @@ namespace RestApiServer.Dto.App
         public required UserBasicInfo CreatedByUser { get; set; }
         public required List<ThreadBasicInfo> Threads { get; set; }
     }
+    public class TopicSummary 
+    {
+        public required int TotalTopics { get; set; } = 0;
+    }
 }

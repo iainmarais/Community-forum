@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using RestApiServer.Core.ApiResponses;
 using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.App;
@@ -30,13 +31,47 @@ namespace RestApiServer.Services.Categories
 
             return topicFullInfo ?? throw new Exception("Topic not found");
         }
-        public static async Task<List<TopicBasicInfo>> GetForumTopicsAsync()
+        public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> GetForumTopicsAsync(int pageNumber,int rowsPerPage, string searchTerm)
         {
             using var db = new AppDbContext();
-            var res = await db.Topics
+            var topics = db.Topics
                                 .Select(t => new TopicBasicInfo(t))
-                                .ToListAsync();
-            return res;
+                                .Include(t => t.CreatedByUser)
+                                .AsEnumerable();
+            var filteredTopics = topics;
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                filteredTopics = (from t in filteredTopics 
+                                where t.TopicName.ToLower().Contains(searchTerm)
+                                || t.Description.ToLower().Contains(searchTerm)
+                                || t.CreatedByUser.Username.ToLower().Contains(searchTerm)
+                                select t);
+            }
+            var filteredTotal = filteredTopics.Count();
+            var skip = (pageNumber - 1) * rowsPerPage;
+            var pageRows = filteredTopics.Skip(skip).Take(rowsPerPage);
+            var topicRows = new List<TopicBasicInfo>();
+            foreach (var topic in pageRows)
+            {
+                topicRows.Add(topic);
+            }
+            int totalPages = 1;
+            if(filteredTotal > rowsPerPage)
+            {
+                totalPages = filteredTotal / rowsPerPage;
+            }
+            return new()
+            {
+                Rows = topicRows,
+                RowsPerPage = rowsPerPage,
+                PageNumber = pageNumber,
+                TotalPages = totalPages,
+                Summary = new()
+                {
+                    TotalTopics = filteredTotal
+                }
+            };
         }
 
         public static async Task<List<TopicBasicInfo>> GetNewestForumTopicsAsync()
@@ -76,7 +111,7 @@ namespace RestApiServer.Services.Categories
             return res;
         }
 
-        public static async Task<List<TopicBasicInfo>> CreateForumTopicAsync(string userId, CreateTopicRequest request)
+        public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> CreateForumTopicAsync(string userId, CreateTopicRequest request)
         {
             using var db = new AppDbContext();
             //Check if a topic with the name already exists. This will help avoid creating duplicates.
@@ -87,7 +122,7 @@ namespace RestApiServer.Services.Categories
             var topic = new TopicEntry
             {
                 TopicId = DbUtils.GenerateUuid(),
-                CategoryId = request.CategoryId,
+                BoardId = request.BoardId,
                 TopicName = request.TopicName,
                 Description = request.Description,
                 CreatedByUserId = userId,
@@ -95,7 +130,7 @@ namespace RestApiServer.Services.Categories
             };
             db.Topics.Add(topic);
             await db.SaveChangesAsync();
-            return await GetForumTopicsAsync();
+            return await GetForumTopicsAsync(1, 10, "");
         }       
     }
 }

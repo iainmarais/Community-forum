@@ -5,10 +5,6 @@ body.modal-open {
 .modal-xxl{
     min-width:90%
 }
-.waybill-pieces-popover{
-    max-height: 40vh;
-    overflow: auto;
-}
 .popover{
     max-width: 100%;
 }
@@ -64,17 +60,7 @@ label.required:after{
 .header-menu .menu-nav > .menu-item > .menu-link{
     padding: 0.70rem 1rem
 }
-.bg-waybill-approved{
-    background-color: #70C593;
-}
-.bg-waybill-finalized{
-    /* background-color: #0BB783; */
-    background-color: #7ca4cc;
-}
-.bg-waybill-unfinalized{
-    /* color: #FFA800; */
-    background-color: #FFB57D;
-}
+
 .dropdown-item{
     cursor: pointer;
 }
@@ -84,15 +70,6 @@ label.required:after{
 .area-label{
     display: block;
     text-align: center;
-    height: auto;
-}
-.shipment-cancellation-label{
-    /* max-width: 80px !important;
-    min-width: 50px !important; */
-    display: inline-flex;
-    align-items: center;
-    white-space: normal;
-    /* overflow: hidden; */
     height: auto;
 }
 

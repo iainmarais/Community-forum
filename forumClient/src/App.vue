@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import '@/assets/plugins/global/plugins.bundle.js?url';
-import "@/assets/js/scripts.bundle.js?url";
+// import "@/assets/js/scripts.bundle.js?url";
 
 import { RouterView } from 'vue-router';
 import { onMounted } from 'vue';
@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="">
+    <div>
         <RouterView />
     </div>
 </template>

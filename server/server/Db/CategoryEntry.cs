@@ -14,7 +14,7 @@ namespace RestApiServer.Db
 
         //Navigation properties
         [JsonIgnore]
-        public List<TopicEntry> TopicsCreated { get; set; } = new();
+        public List<BoardEntry> BoardsCreated { get; set; } = new();
 
     }
 

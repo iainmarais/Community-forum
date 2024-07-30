@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import AxiosClient from "@/http/AxiosClient";
-import router, { LoginRoute, MainRoute, LogoffRoute, RegisterRoute, HomeRoute, ChatRoute, GalleryRoute } from "@/router";
+import router, { LoginRoute, MainRoute, LogoffRoute, RegisterRoute, HomeRoute, ChatRoute, GalleryRoute, SearchRoute } from "@/router";
 import type { RouteParams, RouteQueryAndHash } from "vue-router";
 import type { ForumStats, LoggedInUserInfo } from "@/Dto/app/ForumAppState";
 import ForumService from "@/services/ForumService";
@@ -8,6 +8,7 @@ import type { TopicBasicInfo } from "@/Dto/app/TopicInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import type { PermissionType } from "@/Dto/PermissionInfo";
 import { useToast } from "vue-toastification";
+import TopicService from "@/services/TopicService";
 
 const toast = useToast();
 
@@ -55,12 +56,19 @@ const NavigationBar: NavbarItem[] = [
         label: "Gallery",
         iconClass: "fas fa-images",
         routename: GalleryRoute
+    },
+    {
+        id: "search",
+        type: "item",
+        label: "Search",
+        iconClass: "fas fa-search",
+        routename: SearchRoute
     }
 ];
 
-type NavbarLinkItemId = "home" | "login" | "register" | "logoff" | "chat" | "gallery";
+type NavbarLinkItemId = "home" | "login" | "register" | "logoff" | "chat" | "gallery" | "search";
 
-type NavbarLinkItem = {
+export type NavbarLinkItem = {
     type: "item",
     id: NavbarLinkItemId;
     label: string;
@@ -73,7 +81,7 @@ type NavbarLinkItem = {
     featureFlag?: FeatureId;
 }
 
-type NavbarMenuItem = {
+export type NavbarMenuItem = {
     type: "menu",
     id: string;
     label: string;
@@ -82,7 +90,7 @@ type NavbarMenuItem = {
     items: (NavbarLinkItem[] | NavbarSubmenuItem[]);
 }
 
-type NavbarSubmenuItem = {
+export type NavbarSubmenuItem = {
     type: "submenu";
     id: string;
     label: string;
@@ -99,7 +107,7 @@ type AppContextState = {
     appLoading: boolean;
     loggedInUser?: LoggedInUserInfo;
     navbar: NavbarItem[];
-    pollers: number[];
+    pollers: any[];
     topics: TopicBasicInfo[];
     forumStats: ForumStats;
     previousRoute?: {
@@ -202,14 +210,8 @@ export const useAppContextStore = defineStore({
         getPublicAppState() {
             //Todo: Build this out. It will be necessary for enabling guest mode. It might not be used but better be safe than sorry.
         },
-        getTopics() {
-            ForumService.getTopics().then((response) => {
-                this.topics = response.data;
-            })
-        },
         onAppReady() {
             this.buildNavbar();
-            this.getTopics();
             //Not yet using polling
             this.startPollers();
             this.appLoading = false;
