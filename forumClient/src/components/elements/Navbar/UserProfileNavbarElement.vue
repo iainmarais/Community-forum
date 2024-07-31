@@ -2,7 +2,7 @@
 import { useAppContextStore } from '@/stores/AppContextStore';
 import { onMounted, ref, watch, type PropType } from 'vue';
 import { useToast } from 'vue-toastification';
-import UserProfileModal from '../modals/UserProfileModal.vue';
+import UserProfileModal from '@/components/modals/UserProfileModal.vue';
 
 const openUserProfileModal = () => {
     $("#userProfileModal").modal("show");
@@ -65,7 +65,8 @@ watch(userProfileImageBase64, (newValue) =>{
 
 <template>
     <div class="user-profile-navbar-element">
-        <img class="navbar-userprofile-image" id="navbarUserProfileImage" alt="User profile image" @click="openUserProfileModal">
+        <img v-if="userProfileImageBase64" class="navbar-userprofile-image" id="navbarUserProfileImage" alt="User profile image" @click="openUserProfileModal">
+        <img v-else src="@/assets/media/png/placeholderImage300x300.png" class="navbar-userprofile-image" id="navbarUserProfileImage" alt="placeholder for image" @click="openUserProfileModal">
     </div>
 <UserProfileModal :user-firstname="userFirstName" :user-lastname="userLastName" :user-id="appContextStore.loggedInUser?.userId" :user-profile-image-base64="userProfileImageBase64" />
 </template>

@@ -24,7 +24,7 @@ const appContextStore = useAppContextStore();
 
 const loading = ref<boolean>(false);
 
-const loginMethod = ref<LoginMethod>("");
+const loginMethod = ref<LoginMethod>("identifier_password");
 
 const route = useRoute();
 
@@ -54,10 +54,10 @@ onMounted(() => {
     setTimeout(() => {
         if(loginMethod.value="identifier_password") {
             if(identifier.value) {
-                document.getElementById("userIdentifierInput").focus();
+                document.getElementById("userIdentifierInput")?.focus();
             }
             else {
-                document.getElementById("passwordInput").focus();
+                document.getElementById("passwordInput")?.focus();
             }
         }
     }, 50);
@@ -90,9 +90,9 @@ const postLoginRoute = () => {
     }
     const lastRoute = localStorage.getItem(Last_Route); //Get the last route from localStorage if not login or logoff.
     
-    if(lastRoute != null) {
+    if(lastRoute) {
         const lastRouteJson = JSON.parse(lastRoute);
-        postLoginRoute = lastRouteJson;
+        postLoginRoute = lastRouteJson;  
     }
 
     if(route.query.logoffMethod != "manual") {
@@ -105,6 +105,9 @@ const postLoginRoute = () => {
                 }
             }
         }
+    }
+    if(lastRoute == LogoffRoute) {
+        router.replace({name: HomeRoute, params: {}});
     }
     router.replace(postLoginRoute);
 }
@@ -154,7 +157,7 @@ const postLoginRoute = () => {
                                                         name="password" placeholder="Password" v-model="password" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <ButtonWithLoadingIndicator class="btn btn-primary btn-sm" @click="login()">
+                                                    <ButtonWithLoadingIndicator class="btn btn-primary btn-sm" @click.prevent="login()">
                                                         Log in
                                                     </ButtonWithLoadingIndicator>
                                                 </div>

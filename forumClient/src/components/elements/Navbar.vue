@@ -5,8 +5,8 @@ import AppLogo from '@/components/elements/AppLogo.vue';
 import { watch } from 'vue';
 import { LoginRoute, MainRoute } from '@/router';
 import { useNavigationStore } from '@/stores/NavigationStore';
-import Searchbar from './Searchbar.vue';
-import UserProfileNavbarElement from './UserProfileNavbarElement.vue';
+import Searchbar from '@/components/elements/Navbar/Searchbar.vue';
+import UserProfileNavbarElement from '@/components/elements/Navbar/UserProfileNavbarElement.vue';
 
 const appContextStore = useAppContextStore();
 const navigationStore = useNavigationStore();

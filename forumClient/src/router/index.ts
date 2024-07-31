@@ -89,12 +89,13 @@ const router = createRouter({
 
 router.beforeEach(async (to, from) =>{
     NProgress.start();
-    if(to.name != LoginRoute) {
+    if(to.name !== LoginRoute && to.name !== LogoffRoute) {
         const storeRoute = {
             name: to.name,
             params: to.params,
             query: to.query
         };
+        console.log("Route stored: " + JSON.stringify(storeRoute));
         localStorage.setItem(Last_Route, JSON.stringify(storeRoute));
     }
 });
