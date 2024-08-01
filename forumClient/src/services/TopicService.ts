@@ -1,4 +1,5 @@
 import type { ApiSuccessResponse, PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
+import type { ThreadBasicInfo, ThreadSummary } from "@/Dto/app/ThreadInfo";
 import type { CreateTopicRequest, TopicBasicInfo, TopicFullInfo, TopicSummary } from "@/Dto/app/TopicInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
@@ -15,20 +16,19 @@ const getTopicBasicInfo = async (topicId: string): Promise<ApiSuccessResponse<To
     return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/topics/${topicId}/basicinfo`);
 }
 
-const getTopics = async (pageNumber: number, rowsPerPage: number, searchQuery?: string): Promise<ApiSuccessResponse<PaginatedData<TopicBasicInfo[], TopicSummary>>> => {
+const getThreadsForTopic = async (topicId: string, pageNumber: number, rowsPerPage: number, searchTerm?: string): Promise<ApiSuccessResponse<PaginatedData<ThreadBasicInfo[],ThreadSummary>>> => {
     const queryParams = [];
-    if (searchQuery) {
-        queryParams.push(`searchQuery=${searchQuery}`);
-    }
     queryParams.push(`pageNumber=${pageNumber}`);
     queryParams.push(`rowsPerPage=${rowsPerPage}`);
-    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/topics?${queryParams.join("&")}`);
+    if(searchTerm) {
+        queryParams.push(`searchTerm=${searchTerm}`);
+    }
+    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/topics/${topicId}/threads?${queryParams.join('&')}`);
 }
-
 
 export default { 
     getTopicFullInfo,
     createNewTopic,
     getTopicBasicInfo,
-    getTopics
+    getThreadsForTopic
 }

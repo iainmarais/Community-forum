@@ -1,5 +1,5 @@
-import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
-import type { BoardBasicInfo, BoardFullInfo, CreateBoardRequest } from "@/Dto/app/BoardInfo";
+import type { ApiSuccessResponse, PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
+import type { BoardBasicInfo, BoardFullInfo, BoardSummary, CreateBoardRequest } from "@/Dto/app/BoardInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
 
@@ -14,9 +14,14 @@ const createBoard = async (request: CreateBoardRequest): Promise<ApiSuccessRespo
     return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/boards/create`, request);
 }
 
+const getTopicsForBoard = async (boardId: string): Promise<ApiSuccessResponse<PaginatedData<BoardFullInfo[], BoardSummary>>> => {
+    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/boards/${boardId}/topics`);
+}
+
 
 export default { 
     getBoards, 
     getSelectedBoard,
-    createBoard
+    createBoard,
+    getTopicsForBoard
 }

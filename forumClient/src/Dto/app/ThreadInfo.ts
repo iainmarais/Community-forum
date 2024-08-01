@@ -4,28 +4,23 @@ import type { PostBasicInfo } from "./PostInfo"
 export type Thread = {
     threadId: string,
     threadName: string,
-    dateCreated: Date,
+    createdDate: Date,
     topicId: string,
-    threadStarterId: string,
+    createdByUserId: string,
     numberOfPosts: number,
     hasNewPosts: boolean
 }
 
 export type ThreadBasicInfo = {
-    threadId: string,
-    threadName: string,
-    createdDate: Date,
-    topicId: string,
-    createdByUserId: string,
-    numberOfPosts: number,
-    hasNewPosts: boolean,
-    createdByUsername?: string,
-    createdByUserFirstname?: string,
-    createdByUserLastname?: string
+    thread: Thread
+    totalPosts: number,
+    newestMessage: PostBasicInfo,
+    createdByUser: UserBasicInfo
 }
 
 export type ThreadFullInfo = {
-    thread: ThreadBasicInfo,
+    thread: Thread,
+    totalPosts: number,
     posts: PostBasicInfo[],
     createdByUser: UserBasicInfo
 }

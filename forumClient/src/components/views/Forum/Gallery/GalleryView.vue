@@ -53,8 +53,15 @@ watch(() => galleryStore.galleryItems, (newItems) => {
         </div>
         <div class="card-body" v-if="!galleryStore.loading_galleryItems && galleryItems">
             <div class="row">
-                <div class="imageContainer" v-for="item in galleryItems" :key="item.galleryItemId">
-                    <ImageElement :image-description="item.galleryItemDescription" :image-data="`data:${item.imageData.contentType};base64,${item.imageData.fileContents}`" :content-type="item.imageData.contentType" />
+                <div class="imageContainer" v-for="item in galleryItems" :key="item.galleryItem.galleryItemId">
+                    <ImageElement 
+                        :item="item" 
+                        :image-description="item.galleryItem.galleryItemDescription" 
+                        :image-name="item.galleryItem.galleryItemName" 
+                        :created-date="item.galleryItem.createdDate" 
+                        :image-data="`data:${item.imageData.contentType};base64,${item.imageData.fileContents}`" 
+                        :content-type="item.imageData.contentType" 
+                    />
                 </div>
             </div>
         </div>

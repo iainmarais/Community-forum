@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { CreateTopicRequest } from '@/Dto/app/TopicInfo';
-import { useTopicListStore } from '@/stores/TopicListStore';
+import { useTopicsStore } from '@/stores/Topics/TopicsStore';
 import { ref, watch } from 'vue';
 import { useToast } from 'vue-toastification';
 
@@ -15,7 +15,7 @@ const props = defineProps ({
 const emit = defineEmits(['topicCreated']);
 
 const toast = useToast();
-const topicListStore = useTopicListStore();
+const topicListStore = useTopicsStore();
 
 const topicName = ref<string>("");
 const topicDescription = ref<string>("");

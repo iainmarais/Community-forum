@@ -4,6 +4,7 @@ using RestApiServer.Dto.App;
 using RestApiServer.Db.Users;
 using RestApiServer.Utils;
 using RestApiServer.Dto.Forum;
+using RestApiServer.Core.ApiResponses;
 
 namespace RestApiServer.Services.Discussions
 {
@@ -23,8 +24,12 @@ namespace RestApiServer.Services.Discussions
             }
             var threadFullInfo = new ThreadFullInfo()
             {
-                Thread = new ThreadBasicInfo(thread), 
-                Posts = thread.Posts.Select(m => new PostBasicInfo(m)).ToList(), 
+                Thread = thread,
+                TotalPosts = thread.Posts.Count,
+                Posts = thread.Posts.Select(p => new PostBasicInfo()
+                {
+                    Post = p
+                }).ToList(), 
                 CreatedByUser = new UserBasicInfo(thread.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())
             };
             //Need to construct a ThreadFullInfo instance from the thread found by id, the associated messages and the creator.
@@ -41,11 +46,16 @@ namespace RestApiServer.Services.Discussions
                 TopicId = topicId,
                 ThreadName = threadName,
                 CreatedDate = DateTime.Now,
-                CreatedByUserId = createdByUserId
+                CreatedByUserId = createdByUserId,
             };
             await db.Threads.AddAsync(thread);
             await db.SaveChangesAsync();
-            return new ThreadBasicInfo(thread);
+            return new ThreadBasicInfo()
+            {
+                Thread = thread,
+                TotalPosts = thread.Posts.Count(),
+                CreatedByUser = new UserBasicInfo(thread.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())
+            };
         }
 
         
@@ -85,7 +95,12 @@ namespace RestApiServer.Services.Discussions
                     throw new Exception("Could not create post.", ex);
                 }
             }
-            return new ThreadBasicInfo(thread);
+            return new ThreadBasicInfo()
+            {
+                Thread = thread,
+                TotalPosts = thread.Posts.Count(),
+                CreatedByUser = new UserBasicInfo(thread.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())
+            };
         } 
 
         public static async Task<List<ThreadBasicInfo>> GetForumThreadSummaryAsync()
@@ -94,7 +109,12 @@ namespace RestApiServer.Services.Discussions
             //Unless I need to do any alteration or joining here, I am simply going to return the data as a list asynchronously.
             var res = await db.Threads
                                 .OrderByDescending(t => t.CreatedDate)
-                                .Select(t => new ThreadBasicInfo(t))
+                                .Select(t => new ThreadBasicInfo()
+                                {
+                                    Thread = t,
+                                    TotalPosts = t.Posts.Count(),
+                                    CreatedByUser = new UserBasicInfo(t.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())                                    
+                                })
                                 .ToListAsync();
             return res;
         }
@@ -102,21 +122,64 @@ namespace RestApiServer.Services.Discussions
         public static async Task<List<ThreadBasicInfo>> GetForumThreadsByTopicAsync(string topicId)
         {
             using var db = new AppDbContext();
-            var res = await db.Threads
-                                .Where(t => t.TopicId == topicId)
-                                .Select(t => new ThreadBasicInfo(t))
-                                .ToListAsync();
+            var res = await (from thread in db.Threads 
+                            where thread.TopicId == topicId 
+                            join user in db.Users on thread.CreatedByUserId equals user.UserId
+                            select new ThreadBasicInfo() 
+                            { 
+                                Thread = thread,
+                                CreatedByUser = new UserBasicInfo(user),
+                                TotalPosts = thread.Posts.Count()
+                            }).ToListAsync();
             return res;
         }
 
-        public static async Task<List<PostBasicInfo>> GetForumThreadPostsAsync(string threadId)
+        public static async Task<PaginatedData<List<PostFullInfo>, PostSummary>> GetPaginatedPostsForThreadAsync(string threadId, int pageNumber, int rowsPerPage, string? searchTerm)
         {
             using var db = new AppDbContext();
-            var res = await db.Posts
-                                .Where(m => m.ThreadId == threadId)
-                                .Select(m => new PostBasicInfo(m))
-                                .ToListAsync();
-            return res;
+            var posts = (from post in db.Posts
+                                where post.ThreadId == threadId
+                                join user in db.Users on post.CreatedByUserId equals user.UserId
+                                select new PostFullInfo()
+                                {
+                                    Post = post,
+                                    CreatedByUser = new UserBasicInfo(user)
+                                }).AsEnumerable();
+            var filteredPosts = posts;
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                filteredPosts = (from p in filteredPosts
+                                where p.Post.PostContent.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || p.CreatedByUser.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || p.CreatedByUser.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || p.CreatedByUser.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                  select p);
+            }
+            var filteredTotal = filteredPosts.Count();
+            var skip = (pageNumber - 1) * rowsPerPage;
+            var pageRows = filteredPosts.Skip(skip).Take(rowsPerPage);
+            var postRows = new List<PostFullInfo>();
+            foreach (var post in pageRows)
+            {
+                postRows.Add(post);
+            }
+            int totalPages = 1;
+            if(filteredTotal > rowsPerPage)
+            {
+                totalPages = filteredTotal / rowsPerPage;
+            }
+            return new() 
+            {
+                Rows = postRows,
+                TotalPages = totalPages,
+                PageNumber = pageNumber,
+                RowsPerPage = rowsPerPage,
+                Summary = new()
+                {
+                    TotalPosts = filteredTotal
+                }
+            };                 
         }
 
         public static async Task<PostFullInfo> CreatePostAsync(CreatePostRequest request)
@@ -136,7 +199,15 @@ namespace RestApiServer.Services.Discussions
             var createdByUser = await db.Users.Where(u => u.UserId == post.CreatedByUserId).FirstOrDefaultAsync();
             return new PostFullInfo 
             {
-                Post = new PostBasicInfo(post),
+                Post = new PostEntry()
+                {
+                    PostId = post.PostId,
+                    ThreadId = post.ThreadId,
+                    PostContent = post.PostContent,
+                    CreatedDate = post.CreatedDate,
+                    CreatedByUserId = post.CreatedByUserId,
+                    ReplyToPostId = post.ReplyToPostId
+                },
                 CreatedByUser = new UserBasicInfo(createdByUser ?? UserEntry.CreateDefaultGuestUser())
             };
         }

@@ -21,9 +21,12 @@ namespace RestApiServer.Services.Categories
             }
             var categoryFullInfo = new CategoryFullInfo()
             {
-                Category = new CategoryBasicInfo(category),
+                Category = category,
                 Boards = category.BoardsCreated
-                    .Select(b => new BoardBasicInfo(b)).ToList(),
+                    .Select(b => new BoardBasicInfo()
+                    {
+                        Board = b
+                    }).ToList(),
                 TotalBoards = category.BoardsCreated.Count
             };
             return categoryFullInfo ?? throw new Exception("Category not found");
@@ -34,10 +37,14 @@ namespace RestApiServer.Services.Categories
             using var db = new AppDbContext();
             var categories = await db.Categories
             .Include(c => c.BoardsCreated.OrderByDescending(b => b.BoardName))
-            .Select(c => new CategoryBasicInfo(c)
+            .Select(c => new CategoryBasicInfo()
             {
+                Category = c,
                 Boards = c.BoardsCreated
-                    .Select(b => new BoardBasicInfo(b))
+                    .Select(b => new BoardBasicInfo()
+                    {
+                        Board = b
+                    })
                     .ToList()
             })
             .ToListAsync();
@@ -68,7 +75,16 @@ namespace RestApiServer.Services.Categories
             {
                 throw new Exception("Category not found");
             }
-            return new CategoryBasicInfo(category);
+            return new CategoryBasicInfo()
+            {
+                Category = category,
+                Boards = category.BoardsCreated
+                    .Select(b => new BoardBasicInfo()
+                    {
+                        Board = b
+                    })
+                    .ToList()
+            };
         }
     }
 }

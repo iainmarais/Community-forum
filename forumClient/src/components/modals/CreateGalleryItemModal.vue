@@ -11,7 +11,7 @@ const itemName = ref<string>("");
 const itemDescription = ref<string>("");
 const selectedFile = ref<File|null>(null);
 
-const imageToDisplay = ref<DisplayImageData>({} as DisplayImageData);
+const imageToDisplay = ref<HTMLImageElement|null>(null);
 
 const onFileChange = (event: Event) => {
     const target = event.target as HTMLInputElement;
@@ -44,7 +44,7 @@ const closeModal = () => {
 
 watch(() => selectedFile.value, newValue => {
     if(newValue) {
-        imageToDisplay.value.galleryItemLink = URL.createObjectURL(newValue);
+        imageToDisplay.value!.src = URL.createObjectURL(newValue);
     }
 });
 
@@ -80,7 +80,8 @@ watch(() => galleryStore.result_createGalleryItemSuccess, newValue => {
                         <input type="file" class="form-control" id="image" @change="onFileChange">
                     </div>
                     <div class="form-group">
-                        <ImageElement :image-to-display=imageToDisplay />
+                        <!--Need to fix this to display the image-->
+                        <ImageElement v-if="imageToDisplay" :image-to-display=imageToDisplay />
                     </div>
                 </div>
                 <div class="modal-footer">

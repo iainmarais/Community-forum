@@ -20,12 +20,6 @@ namespace RestApiServer.Controllers.Categories
             var res = await TopicService.GetForumTopicFullInfoAsync(topicId);
             return ApiSuccessResponses.WithData("Get topic full info successful", res);
         }
-        [HttpGet("topics")]
-        public async Task<ApiSuccessResponse<PaginatedData<List<TopicBasicInfo>, TopicSummary>>> GetTopics([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string searchTerm)
-        {
-            var res = await TopicService.GetForumTopicsAsync(pageNumber, rowsPerPage, searchTerm);
-            return ApiSuccessResponses.WithData("Get forum topics successful", res);
-        }
 
         [HttpGet("topics/newest")]
         public async Task<ApiSuccessResponse<List<TopicBasicInfo>>> GetNewestTopics()
@@ -42,11 +36,18 @@ namespace RestApiServer.Controllers.Categories
         }  
 
         [HttpPost("topics/create")]
-        public async Task<ApiSuccessResponse<PaginatedData<List<TopicBasicInfo>,TopicSummary>>> CreateTopic(CreateTopicRequest request)
+        public async Task<ApiSuccessResponse<TopicFullInfo>> CreateTopic(CreateTopicRequest request)
         {
             var user = AuthUtils.GetForumUserContext(User);
             var res = await TopicService.CreateForumTopicAsync(user.UserId, request);
             return ApiSuccessResponses.WithData("Create topic successful", res);
+        }
+
+        [HttpGet("topics/{topicId}/threads")]
+        public async Task<ApiSuccessResponse<PaginatedData<List<ThreadBasicInfo>, ThreadSummary>>> GetPaginatedThreadsForTopic(string topicId, [FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string? searchTerm)
+        {
+            var res = await TopicService.GetPaginatedThreadsForTopicAsync(topicId, pageNumber, rowsPerPage, searchTerm);
+            return ApiSuccessResponses.WithData("Get paginated forum topics successful", res);
         }
     }  
 }

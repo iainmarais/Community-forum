@@ -5,12 +5,9 @@ using RestApiServer.Utils;
 
 namespace RestApiServer.Dto.Forum
 {
-    public class GalleryItemBasicInfo : GalleryItemEntry
+    public class GalleryItemBasicInfo
     {
-        public GalleryItemBasicInfo(GalleryItemEntry entry)
-        { 
-            ClassUtils.CopyFromBaseclass(this, entry);
-        }
-        public ApiFileResponse ImageData { get; set; } = new ApiFileResponse();
+        public required GalleryItemEntry GalleryItem { get; set; } = null!;
+        public required ApiFileResponse ImageData { get; set; } = new ApiFileResponse();
     }
 }

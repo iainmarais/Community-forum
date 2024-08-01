@@ -1,13 +1,17 @@
+import type { PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
+import type { ThreadBasicInfo, ThreadSummary } from "@/Dto/app/ThreadInfo";
 import type { CreateTopicRequest, TopicBasicInfo, TopicFullInfo } from "@/Dto/app/TopicInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import ForumService from "@/services/ForumService";
 import TopicService from "@/services/TopicService";
 import { defineStore } from "pinia";
 
-type TopicListStoreState = {
-    topics: TopicBasicInfo[],
+type TopicsStoreState = {
+    topic: TopicFullInfo | undefined,
+    threads: PaginatedData<ThreadBasicInfo[], ThreadSummary>,
     newestTopics: TopicBasicInfo[],
-    hasNewPosts: boolean
+    hasNewPosts: boolean,
+
     loading_getTopics: boolean,
     result_getTopicsSuccess: boolean,
 
@@ -19,14 +23,19 @@ type TopicListStoreState = {
 
     loading_createNewTopic: boolean,
     result_createNewTopicSuccess: boolean,
+    
+    currentPageNumber: number,
+    rowsPerPage: number,
 
-    topicFullInfo?: TopicFullInfo
+    searchQuery?: string
 }
 
-const defaultState: TopicListStoreState = {
-    topics: [] as TopicBasicInfo[],
+const defaultState: TopicsStoreState = {
+    topic: undefined,
+    threads: {} as PaginatedData<ThreadBasicInfo[], ThreadSummary>,
     newestTopics: [] as TopicBasicInfo[],
     hasNewPosts: false,
+
     loading_getTopics: false,
     result_getTopicsSuccess: false,
 
@@ -37,28 +46,18 @@ const defaultState: TopicListStoreState = {
     result_getTopicFullInfoSuccess: false,
 
     loading_createNewTopic: false,
-    result_createNewTopicSuccess: false
+    result_createNewTopicSuccess: false,
+
+    currentPageNumber: 1,
+    rowsPerPage: 10,
 }
 
-export const useTopicListStore = defineStore({
-    id: "TopicListStore",
+export const useTopicsStore = defineStore({
+    id: "TopicsStore",
     state: () => (defaultState),
     getters: {
     },
     actions: {
-        getTopics() {
-            this.loading_getTopics = true;
-            this.result_getTopicsSuccess = false;
-            ForumService.getTopics().then((response) => {
-                this.topics = response.data;
-                this.result_getTopicsSuccess = true;
-                this.loading_getTopics = false;
-            }, error => {
-                this.result_getTopicsSuccess = false;
-                ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
-            })
-        },
-
         getNewestTopics() {
             this.loading_getNewestTopics = true;
             this.result_getNewestTopicsSuccess = false;
@@ -76,7 +75,7 @@ export const useTopicListStore = defineStore({
             this.loading_getTopicFullInfo = true;
             this.result_getTopicFullInfoSuccess = false;
             TopicService.getTopicFullInfo(topicId).then((response) => {
-                this.topicFullInfo = response.data;
+                this.topic = response.data;
                 this.result_getTopicFullInfoSuccess = true;
                 this.loading_getTopicFullInfo = false;
             }, error => {
@@ -89,7 +88,7 @@ export const useTopicListStore = defineStore({
             this.loading_createNewTopic = true;
             this.result_createNewTopicSuccess = false;
             TopicService.createNewTopic(request).then((response) => {
-                this.topicFullInfo = response.data;
+                this.topic = response.data;
                 this.result_createNewTopicSuccess = true;
                 this.loading_createNewTopic = false;
             }, error => {
@@ -97,6 +96,24 @@ export const useTopicListStore = defineStore({
                 ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
                 this.loading_createNewTopic = false;
             })
+        },
+
+        getThreadsForTopic() {
+            this.loading_getTopics = true;
+            this.result_getTopicsSuccess = false;
+            if(!this.topic){
+                return;
+            }
+            TopicService.getThreadsForTopic(this.topic?.topic.topicId, this.currentPageNumber, this.rowsPerPage, this.searchQuery).then((response) => {
+                this.threads = response.data;
+                this.result_getTopicsSuccess = true;
+                this.loading_getTopics = false;
+            }, error => {
+                this.result_getTopicsSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
+                this.loading_getTopics = false;
+            })
         }
+
     }
 })

@@ -14,20 +14,11 @@ export type Post = {
 }
 
 export type PostBasicInfo = {
-    postId: string,
-    threadId: string,
-    isFirstPost: boolean,
-    createdByUserId: string,
-    postContent: string,
-    createdDate: Date,
-    replyToPostId: string,
-    postReported: boolean,
-    reportReason: string,
-    reportedByUserId: string
+    post: Post
 }
 
 export type PostFullInfo = {
-    message: PostBasicInfo,
+    post: Post
     createdByUser: UserBasicInfo
 }
 

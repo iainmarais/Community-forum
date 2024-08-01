@@ -21,7 +21,7 @@ watch(
     if (newCategories.length === 0) return;
     categories.value = newCategories;
     newCategories.forEach((category) => {
-      categoryVisibility.value[category.categoryId] = false; // Initialize visibility state
+      categoryVisibility.value[category.category.categoryId] = false; // Initialize visibility state
     });
   }
 );
@@ -31,7 +31,7 @@ watch(
   <div class="card card-custom">
     <div class="card-body" v-if="categoryStore.categories?.length > 0">
         <table class="table table-borderless table-sm">
-            <CategoryItem :category="category" v-for="category in categories" :key="category.categoryId" />
+            <CategoryItem :category="category" v-for="category in categories" :key="category.category.categoryId" />
         </table>
     </div>
     <div v-else class="card-body">

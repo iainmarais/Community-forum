@@ -11,8 +11,9 @@ namespace RestApiServer.Services.Gallery
         {
             using var db = new AppDbContext();
             var items = await db.GalleryItems
-                .Select(i => new GalleryItemBasicInfo(i)
+                .Select(i => new GalleryItemBasicInfo()
                 {
+                    GalleryItem = i,
                     ImageData = GetFileAsync(SplitString(i.GalleryItemLink, '/').Last()).Result
                 })
                 .ToListAsync();
@@ -23,8 +24,12 @@ namespace RestApiServer.Services.Gallery
         {
             using var db = new AppDbContext();
             var item = await db.GalleryItems
-                .Select(i => new GalleryItemBasicInfo(i))
-                .SingleOrDefaultAsync(i => i.GalleryItemId == itemId);
+                .Select(i => new GalleryItemBasicInfo()
+                {
+                    GalleryItem = i,
+                    ImageData = GetFileAsync(SplitString(i.GalleryItemLink, '/').Last()).Result
+                })
+                .SingleOrDefaultAsync(i => i.GalleryItem.GalleryItemId == itemId);
             return item ?? throw new Exception("Item not found");
         }
 

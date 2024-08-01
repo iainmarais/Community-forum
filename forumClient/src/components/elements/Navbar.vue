@@ -1,5 +1,5 @@
 <script lang = "ts" setup>
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { useAppContextStore, type NavbarItem, type NavbarLinkItem, type NavbarSubmenuItem, type NavbarMenuItem } from '@/stores/AppContextStore';
 import AppLogo from '@/components/elements/AppLogo.vue';
 import { watch } from 'vue';
@@ -11,10 +11,16 @@ import UserProfileNavbarElement from '@/components/elements/Navbar/UserProfileNa
 const appContextStore = useAppContextStore();
 const navigationStore = useNavigationStore();
 const router = useRouter();
+const route = useRoute();
 
-watch(() => router, _ => {
-    navigationStore.setBreadcrumbs([]);
-}, {flush: 'pre', immediate: true, deep: true });
+// watch(() => router, _ => {
+//     navigationStore.setBreadcrumbs([]);
+// }, {flush: 'pre', immediate: true, deep: true });
+
+watch(() => route, _ => {
+	navigationStore.setBreadcrumbs([]);
+}, { flush: 'pre', immediate: true, deep: true });
+
 
 watch(() => appContextStore.loggedInUser, (newValue) => {
     if(newValue) {
@@ -26,17 +32,17 @@ watch(() => appContextStore.loggedInUser, (newValue) => {
 });
 
 
-const handleNavbarClick = (item: NavbarItem) => {
-    if(item == item as NavbarLinkItem) {
-            switch(item.id)
-        {   
-            case "logoff":
-                appContextStore.logoff();
-            default:
-                router.push(item.routename);
-        }
-    }
-}
+// const handleNavbarClick = (item: NavbarItem) => {
+//     if(item == item as NavbarLinkItem) {
+//             switch(item.id)
+//         {   
+//             case "logoff":
+//                 appContextStore.logoff();
+//             default:
+//                 router.push(item.routename);
+//         }
+//     }
+// }
 
 const toggleSubmenu = (id: string) => {
     const elem = $(`#${id}`);
@@ -68,9 +74,9 @@ const onNavitemToggle = (navitem: NavbarItem) => {
             elem.addClass(openClass);
         }
     }
-    if(navitem.type=="item") {
-        handleNavbarClick(navitem);
-    }
+    // if(navitem.type=="item") {
+    //     handleNavbarClick(navitem);
+    // }
 }
 
 const closeSubmenu = (id: string) => {

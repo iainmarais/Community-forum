@@ -18,7 +18,7 @@ watch(() => boardsStore.boards, (newBoards) => {
     if (newBoards.length === 0) return;
     boards.value = newBoards;
     newBoards.forEach((board) => {
-        boardVisibility.value[board.boardId] = false; // Initialize visibility state
+        boardVisibility.value[board.board.boardId] = false; // Initialize visibility state
     });
   }
 );
@@ -29,7 +29,7 @@ watch(() => boardsStore.boards, (newBoards) => {
     <div class="card card-custom">
       <div class="card-body" v-if="boardsStore.boards?.length > 0">
           <table class="table table-borderless table-sm">
-              <BoardItem :board="board" v-for="board in boards" :key="board.boardId" />
+              <BoardItem :board="board" v-for="board in boards" :key="board.board.boardId" />
           </table>
       </div>
       <div v-else class="card-body">

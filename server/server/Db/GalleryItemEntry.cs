@@ -15,5 +15,6 @@ namespace RestApiServer.Db
         public string GalleryItemLink { get; set; } = string.Empty; //The url of the image, varchar(255) should do it.
         public int NumLikes { get; set; } = 0; //int(10)
         public int NumDislikes { get; set; } = 0; //int(10)
+        public DateTime CreatedDate { get; set; } = DateTime.Now; 
     }
 }

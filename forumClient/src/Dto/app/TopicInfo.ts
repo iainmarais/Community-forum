@@ -11,20 +11,21 @@ export type TopicEntry = {
 }
 
 export type TopicBasicInfo = {
-    topicId: string,
-    boardId: string,
-    topicName: string,
-    description: string,
-    createdByUserId: string,
-    createdDate: Date,
+    topic: TopicEntry,
+    totalThreads: number,
+    totalPosts: number,
+    numTotalThreads: number,
     numNewThreads: number,
-    numTotalThreads: number
-    threads: ThreadBasicInfo[],
-    totalPosts: number
+    newestThread: ThreadBasicInfo,
+    createdByUser: UserBasicInfo
 }
 
 export type TopicFullInfo = {
-    topic: TopicBasicInfo,
+    topic: TopicEntry,
+    totalPosts: number,
+    numTotalThreads: number,
+    numNewThreads: number,
+    newestThread: ThreadBasicInfo,
     threads: ThreadBasicInfo[],
     totalThreads: number,
     createdByUser: UserBasicInfo

@@ -55,9 +55,9 @@ namespace RestApiServer.Controllers.Discussions
         }
 
         [HttpGet("thread/{threadId}/posts")]
-        public async Task<ApiSuccessResponse<List<PostBasicInfo>>> GetThreadPosts(string threadId)
+        public async Task<ApiSuccessResponse<PaginatedData<List<PostFullInfo>, PostSummary>>> GetPaginatedPostsForThread(string threadId, [FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string? searchTerm)
         {
-            var res = await DiscussionService.GetForumThreadPostsAsync(threadId);
+            var res = await DiscussionService.GetPaginatedPostsForThreadAsync(threadId, pageNumber, rowsPerPage, searchTerm);
             return ApiSuccessResponses.WithData("Get forum thread posts successful", res);
         }
         [HttpPost("thread/{threadId}/posts/create")]

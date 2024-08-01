@@ -18,12 +18,12 @@ const viewCategory = (categoryId: string) => {
 }
 
 const getCategoryName = () => {
-    return props.category?.categoryName ?? "";
+    return props.category?.category.categoryName ?? "";
 }
 
 watch (() => props.category, (newCategory) => {
     if (newCategory) {
-        categoryName.value = newCategory.categoryName;
+        categoryName.value = newCategory.category.categoryName;
     }
 });
 
@@ -31,7 +31,7 @@ watch (() => props.category, (newCategory) => {
 
 <template>
     <table class="table table-borderless table-sm">
-        <a v-if="props.category" href="#" @click.prevent="viewCategory(props.category.categoryId)">
+        <a v-if="props.category" href="#" @click.prevent="viewCategory(props.category.category.categoryId)">
             <tr class="d-flex forum-element">
                 <td>
                     <div class="d-flex align-items-center">
@@ -42,11 +42,11 @@ watch (() => props.category, (newCategory) => {
                         </div>
                         <div class="ml-3">
                             <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">
-                                {{ props.category.categoryName }}
+                                {{ props.category.category.categoryName }}
                             </div>
                             <div>
                                 <span class="text-muted font-weight-bold text-muted d-block">
-                                    {{ props.category.categoryDescription }}
+                                    {{ props.category.category.categoryDescription }}
                                 </span>
                             </div>
                         </div>

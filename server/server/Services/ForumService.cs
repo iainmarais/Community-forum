@@ -10,47 +10,34 @@ namespace RestApiServer.Services
     public class ForumService
     {
         private readonly AppDbContext _dbContext;
-        public ForumService(AppDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
-        public static async Task<ForumAppState> GetForumAppStateAsync(string userId)
-        {
-            //As much as I would like to condense this, it seems impossible to achieve with EFCore whining about using the same db context and executing concurrent actions against it.
-            var forumStats = new ForumStats();
-            string? loggedInUserRoleName = "";
-            using(var db = new AppDbContext())
-            {
-                forumStats.TotalPosts = await db.Posts.CountAsync();
-            };
-            using(var db2 = new AppDbContext())
-            {
-                forumStats.TotalUsers = await db2.Users.CountAsync();
-            };
-            using(var db3 = new AppDbContext())
-            {
-                forumStats.TotalThreads = await db3.Threads.CountAsync();
-            };
-            using(var db4 = new AppDbContext())
-            {
-                forumStats.MostActiveUsers = await db4.Users
-                                                        .Where(u => u.TotalPosts >= 500)
-                                                        .Select(u => new UserBasicInfo(u))
-                                                        .ToListAsync();
-            }
-            using(var db5 = new AppDbContext())
-            {
-                forumStats.TotalTopics = await db5.Topics.CountAsync();
-            }
-            var user = await UserService.GetUserBasicInfoAsync(userId);
-            using(var db6 = new AppDbContext())
-            {
-                loggedInUserRoleName = await db6.Roles.Where(r => r.RoleId == user.RoleId).Select(r => r.RoleName).FirstOrDefaultAsync();
-            } 
 
-            {
-                forumStats.PopularTopics = TopicService.GetPopularForumTopicsAsync().Result.Count;
-            }
+        public ForumService()
+        {
+            _dbContext = new AppDbContext();
+        }
+
+        public async Task<ForumAppState> GetForumAppStateAsync(string userId)
+        {
+            // Initialize forumStats
+            var forumStats = new ForumStats();
+
+            // Retrieve data using a single DbContext instance
+            forumStats.TotalPosts = await _dbContext.Posts.CountAsync();
+            forumStats.TotalUsers = await _dbContext.Users.CountAsync();
+            forumStats.TotalThreads = await _dbContext.Threads.CountAsync();
+            forumStats.MostActiveUsers = await _dbContext.Users
+                .Where(u => u.TotalPosts >= 500)
+                .Select(u => new UserBasicInfo(u))
+                .ToListAsync();
+            forumStats.TotalTopics = await _dbContext.Topics.CountAsync();
+            forumStats.PopularTopics = (await TopicService.GetPopularForumTopicsAsync()).Count;
+
+            var user = await UserService.GetUserBasicInfoAsync(userId);
+            var loggedInUserRoleName = await _dbContext.Roles
+                .Where(r => r.RoleId == user.RoleId)
+                .Select(r => r.RoleName)
+                .FirstOrDefaultAsync();
+
             var res = new ForumAppState
             {
                 ForumStats = forumStats,
@@ -63,45 +50,31 @@ namespace RestApiServer.Services
                     UserProfileImageBase64 = user.UserProfileImageBase64 ?? ""
                 }
             };
+
             return res;
         }
-        
-        public static async Task<ForumAppState> GetForumPublicAppStateAsync()
-        {
-            //As much as I would like to condense this, it seems impossible to achieve with EFCore whining about using the same db context and executing concurrent actions against it.
-            var forumStats = new ForumStats();
-            using(var db = new AppDbContext())
-            {
-                forumStats.TotalPosts = await db.Posts.CountAsync();
-            };
-            using(var db2 = new AppDbContext())
-            {
-                forumStats.TotalUsers = await db2.Users.CountAsync();
-            };
-            using(var db3 = new AppDbContext())
-            {
-                forumStats.TotalThreads = await db3.Threads.CountAsync();
-            };
-            using(var db4 = new AppDbContext())
-            {
-                forumStats.MostActiveUsers = await db4.Users
-                                                        .Where(u => u.TotalPosts >= 500)
-                                                        .Select(u => new UserBasicInfo(u))
-                                                        .ToListAsync();
-            }
-            using(var db5 = new AppDbContext())
-            {
-                forumStats.TotalTopics = await db5.Topics.CountAsync();
-            }
 
-            {
-                forumStats.PopularTopics = TopicService.GetPopularForumTopicsAsync().Result.Count;
-            }
+        public async Task<ForumAppState> GetForumPublicAppStateAsync()
+        {
+            var forumStats = new ForumStats();
+
+            forumStats.TotalPosts = await _dbContext.Posts.CountAsync();
+            forumStats.TotalUsers = await _dbContext.Users.CountAsync();
+            forumStats.TotalThreads = await _dbContext.Threads.CountAsync();
+            forumStats.MostActiveUsers = await _dbContext.Users
+                .Where(u => u.TotalPosts >= 500)
+                .Select(u => new UserBasicInfo(u))
+                .ToListAsync();
+            forumStats.TotalTopics = await _dbContext.Topics.CountAsync();
+            forumStats.PopularTopics = (await TopicService.GetPopularForumTopicsAsync()).Count;
+
             var res = new ForumAppState
             {
                 ForumStats = forumStats,
             };
+
             return res;
-        }        
+        }
     }
+
 }

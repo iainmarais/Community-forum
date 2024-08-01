@@ -32,18 +32,18 @@ const getUserInfo = (userId: string) => {
 
 watch(() => props.topic, (newTopic) => {
     if (newTopic) {
-        topicName.value = newTopic.topicName;
+        topicName.value = newTopic.topic.topicName;
     }
 });
 
 const getTopicName = () => {
-    return props.topic?.topicName ?? "";
+    return props.topic?.topic.topicName ?? "";
 }
 </script>
 
 <template>
     <table class="table table-borderless table-sm forum-container">
-        <a v-if="props.topic" href="#" @click.prevent="viewTopic(props.topic?.topicId)">
+        <a v-if="props.topic" href="#" @click.prevent="viewTopic(props.topic?.topic.topicId)">
             <tr class="d-flex forum-element" v-if="topic != null">
                 <td class="w-50">
                     <div class="d-flex align-items-center">
@@ -54,10 +54,10 @@ const getTopicName = () => {
                         </div>                                        
                         <div class="ml-3">
                             <div>
-                                <span class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ topic.topicName }}</span>
+                                <span class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ topic.topic.topicName }}</span>
                             </div>
                             <div>
-                                <span class="text-muted font-weight-bold text-muted d-block">{{ topic.description }}</span>
+                                <span class="text-muted font-weight-bold text-muted d-block">{{ topic.topic.description }}</span>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ const getTopicName = () => {
                     <div class="d-flex align-items-center">
                         <div class="ml-3">
                             <div>
-                                <span class="text-muted font-weight-bold text-muted d-block">Created by: {{ getUserInfo(topic.createdByUserId)?.username ?? "" }}</span>
+                                <span class="text-muted font-weight-bold text-muted d-block">Created by: {{ getUserInfo(topic.topic.createdByUserId)?.username ?? "" }}</span>
                             </div>
                         </div>
                     </div>

@@ -23,64 +23,34 @@ namespace RestApiServer.Services.Categories
             }
             var topicFullInfo = new TopicFullInfo()
             {
-                Topic = new TopicBasicInfo(topic),
-                Threads = topic.Threads.Select(t => new ThreadBasicInfo(t)).ToList(),
+                Topic = topic,
+                Threads = topic.Threads.Select(t => new ThreadBasicInfo()
+                {
+                    Thread = t,
+                    TotalPosts = t.Posts.Count,
+                }).ToList(),
                 TotalThreads = topic.Threads.Count,
+                NumTotalThreads = topic.Threads.Count,
+                TotalPosts = topic.Threads.Sum(t => t.Posts.Count),
                 CreatedByUser = new UserBasicInfo(topic.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())
             };
 
             return topicFullInfo ?? throw new Exception("Topic not found");
         }
-        public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> GetForumTopicsAsync(int pageNumber,int rowsPerPage, string searchTerm)
-        {
-            using var db = new AppDbContext();
-            var topics = db.Topics
-                                .Select(t => new TopicBasicInfo(t))
-                                .Include(t => t.CreatedByUser)
-                                .AsEnumerable();
-            var filteredTopics = topics;
-            if(!string.IsNullOrEmpty(searchTerm))
-            {
-                searchTerm = searchTerm.ToLower();
-                filteredTopics = (from t in filteredTopics 
-                                where t.TopicName.ToLower().Contains(searchTerm)
-                                || t.Description.ToLower().Contains(searchTerm)
-                                || t.CreatedByUser.Username.ToLower().Contains(searchTerm)
-                                select t);
-            }
-            var filteredTotal = filteredTopics.Count();
-            var skip = (pageNumber - 1) * rowsPerPage;
-            var pageRows = filteredTopics.Skip(skip).Take(rowsPerPage);
-            var topicRows = new List<TopicBasicInfo>();
-            foreach (var topic in pageRows)
-            {
-                topicRows.Add(topic);
-            }
-            int totalPages = 1;
-            if(filteredTotal > rowsPerPage)
-            {
-                totalPages = filteredTotal / rowsPerPage;
-            }
-            return new()
-            {
-                Rows = topicRows,
-                RowsPerPage = rowsPerPage,
-                PageNumber = pageNumber,
-                TotalPages = totalPages,
-                Summary = new()
-                {
-                    TotalTopics = filteredTotal
-                }
-            };
-        }
-
+    
         public static async Task<List<TopicBasicInfo>> GetNewestForumTopicsAsync()
         {
             using var db = new AppDbContext();
             var res = await db.Topics
                                 .OrderByDescending(t => t.CreatedDate)
                                 .Take(10)
-                                .Select(t => new TopicBasicInfo(t))
+                                .Select(t => new TopicBasicInfo()
+                                {
+                                    Topic = t,
+                                    TotalPosts = t.Threads.Sum(t => t.Posts.Count),
+                                    TotalThreads = t.Threads.Count,
+                                    NumTotalThreads = t.Threads.Count,
+                                })
                                 .ToListAsync();
             return res;
         }
@@ -105,13 +75,20 @@ namespace RestApiServer.Services.Categories
             //Get the topic entries that match the found topic ids.
             var res = await db.Topics
                                 .Where(t => popularTopics.Contains(t.TopicId))
-                                .Select(t => new TopicBasicInfo(t))
+                                .Include(t => t.CreatedByUser)
+                                .Select(t => new TopicBasicInfo()
+                                {
+                                    Topic = t,
+                                    TotalPosts = t.Threads.Sum(t => t.Posts.Count),
+                                    TotalThreads = t.Threads.Count,
+                                    NumTotalThreads = t.Threads.Count,
+                                })
                                 .ToListAsync();
             //Return the result.
             return res;
         }
 
-        public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> CreateForumTopicAsync(string userId, CreateTopicRequest request)
+        public static async Task<TopicFullInfo> CreateForumTopicAsync(string userId, CreateTopicRequest request)
         {
             using var db = new AppDbContext();
             //Check if a topic with the name already exists. This will help avoid creating duplicates.
@@ -130,7 +107,79 @@ namespace RestApiServer.Services.Categories
             };
             db.Topics.Add(topic);
             await db.SaveChangesAsync();
-            return await GetForumTopicsAsync(1, 10, "");
-        }       
+            var associatedThreads = db.Threads.Where(t => t.TopicId == topic.TopicId);
+            var res = new TopicFullInfo()
+            {
+                Topic = topic,
+                Threads = topic.Threads.Select(t => new ThreadBasicInfo()
+                {
+                    Thread = t,
+                    TotalPosts = t.Posts.Count,
+                }).ToList(),
+                TotalThreads = topic.Threads.Count,
+                NumTotalThreads = topic.Threads.Count,
+                TotalPosts = topic.Threads.Sum(t => t.Posts.Count),
+                CreatedByUser = new UserBasicInfo(topic.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())
+            };
+            return res;
+        }
+
+        public static async Task<PaginatedData<List<ThreadBasicInfo>, ThreadSummary>> GetPaginatedThreadsForTopicAsync(string topicId, int pageNumber, int rowsPerPage, string? searchTerm)
+        {
+            using var db = new AppDbContext();
+            var threads = (from t in db.Threads
+                            where t.TopicId == topicId
+                            join u in db.Users on t.CreatedByUserId equals u.UserId
+                            select new ThreadEntry()
+                            {
+                                CreatedByUser = new UserBasicInfo(u),
+                                ThreadId = t.ThreadId,
+                                TopicId = t.TopicId,
+                                ThreadName = t.ThreadName,
+                                CreatedDate = t.CreatedDate,
+                                CreatedByUserId = t.CreatedByUserId
+                            })
+                            .AsEnumerable();
+            var filteredThreads = threads;
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                filteredThreads = (from t in filteredThreads 
+                                where t.ThreadName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || t.CreatedByUser.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || t.CreatedByUser.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || t.CreatedByUser!.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                  select t);
+            }
+            var filteredTotal = filteredThreads.Count();
+            var skip = (pageNumber - 1) * rowsPerPage;
+            var pageRows = filteredThreads.Skip(skip).Take(rowsPerPage);
+            var threadRows = new List<ThreadBasicInfo>();
+            foreach (var thread in pageRows)
+            {
+                threadRows.Add(new ThreadBasicInfo() 
+                {
+                    Thread = thread,
+                    TotalPosts = thread.Posts.Count,
+                    CreatedByUser = new UserBasicInfo(thread.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())
+                });
+            }
+            int totalPages = 1;
+            if(filteredTotal > rowsPerPage)
+            {
+                totalPages = filteredTotal / rowsPerPage;
+            }
+            return new()
+            {
+                Rows = threadRows,
+                PageNumber = pageNumber,
+                RowsPerPage = rowsPerPage,
+                TotalPages = totalPages,
+                Summary = new()
+                {
+                    TotalThreads = filteredTotal
+                }
+            };
+        }      
     }
 }

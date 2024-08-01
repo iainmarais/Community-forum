@@ -8,16 +8,11 @@ export type GalleryItemEntry = {
     galleryItemLink: string;
     numLikes: number;
     numDislikes: number;
+    createdDate: Date;
 }
 
 export type GalleryItemBasicInfo = {
-    galleryItemId: string;
-    createdByUserId: string;
-    galleryItemName: string;
-    galleryItemDescription: string;
-    galleryItemLink: string;
-    numLikes: number;
-    numDislikes: number;
+    galleryItem: GalleryItemEntry;
     imageData: ApiFileResponse;
 }
 

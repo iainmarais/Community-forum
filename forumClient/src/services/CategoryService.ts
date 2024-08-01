@@ -1,4 +1,5 @@
-import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
+import type { ApiSuccessResponse, PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
+import type { BoardBasicInfo, BoardFullInfo, BoardSummary } from "@/Dto/app/BoardInfo";
 import type { CategoryBasicInfo, CategoryFullInfo, CreateCategoryRequest } from "@/Dto/app/CategoryInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
@@ -18,6 +19,11 @@ const getSelectedCategory = async (categoryId: string): Promise<ApiSuccessRespon
 const createCategory = async (request: CreateCategoryRequest): Promise<ApiSuccessResponse<CategoryBasicInfo[]>> => {
     return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/categories/create`, request);
 }
+
+const getBoardsForCategory = async (boardId: string): Promise<ApiSuccessResponse<PaginatedData<BoardBasicInfo[], BoardSummary>>> => {
+    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/categories/${boardId}/boards`);
+}
+
 
 
 export default { 

@@ -8,15 +8,11 @@ export type BoardEntry = {
 }
 
 export type BoardBasicInfo = {
-    boardId: string,
-    boardName: string,
-    boardDescription: string,
-    createdByUserId: string, 
-    topics: TopicBasicInfo[], 
+    board: BoardEntry, 
 }
 
 export type BoardFullInfo = {
-    board: BoardBasicInfo,
+    board: BoardEntry,
     topics: TopicBasicInfo[],
     totalTopics: number
 }

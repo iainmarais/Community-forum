@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using RestApiServer.Core.ApiResponses;
 using RestApiServer.Db;
+using RestApiServer.Db.Users;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 
@@ -13,7 +15,10 @@ namespace RestApiServer.Services.Boards
         {
             using var db = new AppDbContext();
             var boards = await db.Boards
-            .Select(b => new BoardBasicInfo(b))
+            .Select(b => new BoardBasicInfo()
+            {
+                Board = b,
+            })
             .ToListAsync();
             return boards;
         }
@@ -46,13 +51,75 @@ namespace RestApiServer.Services.Boards
             }
             var boardFullInfo = new BoardFullInfo()
             {
-                Board = new BoardBasicInfo(board),
+                Board = new BoardEntry()
+                {
+                    BoardId = board.BoardId,
+                    BoardName = board.BoardName,
+                    BoardDescription = board.BoardDescription,
+                    CategoryId = board.CategoryId,
+                    CreatedByUserId = board.CreatedByUserId
+                },
                 Topics = board.TopicsCreated
-                    .Select(t => new TopicBasicInfo(t))
+                    .Select(t => new TopicBasicInfo()
+                    {
+                        Topic = t,
+                        TotalPosts = t.Threads.Sum(t => t.Posts.Count),
+                        TotalThreads = t.Threads.Count,
+                        NumTotalThreads = t.Threads.Count
+                    })
                     .ToList(),
                 TotalTopics = board.TopicsCreated.Count
             };
             return boardFullInfo ?? throw new Exception("Board not found");
+        }
+        public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> GetAssociatedBoardTopicsAsync(string boardId, int pageNumber, int rowsPerPage, string searchTerm)
+        {
+            using var db = new AppDbContext();
+            var topics = db.Topics
+                    .Where(t => t.BoardId == boardId)
+                    .Select(t => new TopicBasicInfo()
+                    {
+                        Topic = t,
+                        TotalPosts = t.Threads.Sum(t => t.Posts.Count),
+                        TotalThreads = t.Threads.Count,
+                        NumTotalThreads = t.Threads.Count,
+                    })
+                    .Include(t => t.CreatedByUser)
+                    .AsEnumerable();
+            var filteredTopics = topics;
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                filteredTopics = (from t in filteredTopics 
+                                where t.Topic.TopicName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || t.Topic.Description.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || t.CreatedByUser!.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                  select t);
+            }
+            var filteredTotal = filteredTopics.Count();
+            var skip = (pageNumber - 1) * rowsPerPage;
+            var pageRows = filteredTopics.Skip(skip).Take(rowsPerPage);
+            var topicRows = new List<TopicBasicInfo>();
+            foreach (var topic in pageRows)
+            {
+                topicRows.Add(topic);
+            }
+            int totalPages = 1;
+            if(filteredTotal > rowsPerPage)
+            {
+                totalPages = filteredTotal / rowsPerPage;
+            }
+            return new()
+            {
+                Rows = topicRows,
+                RowsPerPage = rowsPerPage,
+                PageNumber = pageNumber,
+                TotalPages = totalPages,
+                Summary = new()
+                {
+                    TotalTopics = filteredTotal
+                }
+            };            
         }
     }
 }

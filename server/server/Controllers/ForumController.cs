@@ -18,14 +18,16 @@ namespace RestApiServer.Controllers
         public async Task<ApiSuccessResponse<ForumAppState>> GetAppState()
         {
             var user = AuthUtils.GetForumUserContext(User);
-            var res = await ForumService.GetForumAppStateAsync(user.UserId);
+            var svc = new ForumService();
+            var res = await svc.GetForumAppStateAsync(user.UserId);
             return ApiSuccessResponses.WithData("Get forum state successful", res);
         }
 
         [HttpGet("public/state")]
         public async Task<ApiSuccessResponse<ForumAppState>> GetPublicAppState()
         {
-            var res = await ForumService.GetForumPublicAppStateAsync();
+            var svc = new ForumService();
+            var res = await svc.GetForumPublicAppStateAsync();
             return ApiSuccessResponses.WithData("Get forum state successful", res);
         }
 

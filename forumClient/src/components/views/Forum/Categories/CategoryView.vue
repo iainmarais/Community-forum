@@ -76,7 +76,7 @@ const goBack = () => {
             </div>
         </div>
         <div class="card-body">
-            <BoardItem v-for="board in category?.boards" :key="board.boardId" :board="board" />
+            <BoardItem v-for="board in category?.boards" :key="board.board.boardId" :board="board" />
         </div>
     </div>
     <LoadingIndicator :loading="categoryStore.loading_getCategoryFullInfo" />

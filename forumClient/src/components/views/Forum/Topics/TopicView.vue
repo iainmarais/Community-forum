@@ -3,22 +3,20 @@ import { useRoute, useRouter } from 'vue-router';
 import { onMounted, ref, watch } from 'vue';
 import type { TopicFullInfo } from '@/Dto/app/TopicInfo';
 import { useToast } from 'vue-toastification';
-import { useTopicStore } from '@/stores/Topics/TopicStore';
+import { useTopicsStore } from '@/stores/Topics/TopicsStore';
 import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
 import CreateThreadModal from '@/components/modals/CreateThreadModal.vue';
 import { useAppContextStore } from '@/stores/AppContextStore';
 import ThreadItem from '@/components/views/Forum/Discussion/ThreadItem.vue';
 
-const topicStore = useTopicStore();
+const topicsStore = useTopicsStore();
 const appContextStore = useAppContextStore();
 
 const route = useRoute();
 const toast = useToast();
 const router = useRouter();
+const filterDebounceTimer = ref<NodeJS.Timeout|null>();
 
-const topic = ref<TopicFullInfo>();
-
-const topicName = ref<string>("");
 const topicId = ref<string>(route.params.topicId as string || "");	
 
 const goBack = () => {
@@ -29,17 +27,31 @@ const createNewThread = () => {
     $("#createThreadModal").modal("show");
 }
 
-onMounted(() => {
-    if (topicId.value) {
-        topicStore.getTopicFullInfo(topicId.value);
+const searchTopicsInputPressed = () => {
+    if(topicsStore.loading_getTopics && !filterDebounceTimer.value) {
+        topicsStore.currentPageNumber = 1;
+        topicsStore.getThreadsForTopic();
     }
+}
+
+onMounted(() => {
+    if(route.params.topicId) {
+        topicsStore.getTopicFullInfo(topicId.value);
+    }
+    topicsStore.currentPageNumber = 1;
+    topicsStore.getThreadsForTopic();
 });
 
-watch(() => topicStore.topic, (newTopic) => {
-    if (newTopic) {
-        topic.value = newTopic;
-        topicName.value = newTopic.topic.topicName;
+
+watch(() => topicsStore.searchQuery, (newSearchQuery) => {
+    if(filterDebounceTimer.value) {
+        clearTimeout(filterDebounceTimer.value);
     }
+    filterDebounceTimer.value = setTimeout(() => {
+        topicsStore.loading_getTopics = true;
+        topicsStore.currentPageNumber = 1;
+        topicsStore.getThreadsForTopic();
+    }, 500);
 });
 
 watch(() => route.params.topicId, (newTopicId) => {
@@ -59,21 +71,22 @@ watch(() => appContextStore.loggedInUser, newValue => {
 </script>
 
 <template>
-    <div v-if="!topicStore.loading_getTopicFullInfo" class="card card-custom">
+    <div v-if="!topicsStore.loading_getTopicFullInfo" class="card card-custom">
         <div class="card-header border-0 pt-7">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Topic: {{ topicName ?? "" }}</span>
+                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Topic: {{ topicsStore.topic?.topic.topicName ?? "" }}</span>
             </h3>
             <div class="card-toolbar">
+                <input class="form-control form-control-solid w-300px" type="text" placeholder="Search posts" v-model="topicsStore.searchQuery" @keyup.enter="searchTopicsInputPressed"/>
                 <button class="btn btn-primary btn-sm m-1" @click="createNewThread"><i class="fas fa-plus"></i>Create new</button>
                 <button class="btn btn-primary btn-sm m-1" @click="goBack"><i class="fas fa-arrow-left"></i>Back</button>
             </div>
         </div>
         <div class="card-body">
-            <ThreadItem v-if="topic?.threads" v-for ="thread in topic?.threads" :key="thread.threadId" :thread="thread" />
+            <ThreadItem v-if="topicsStore.threads" v-for ="thread in topicsStore.threads.rows" :key="thread.thread.threadId" :thread="thread" />
             <span v-else>No threads have been created for this topic.</span>
         </div>
     </div>
-    <LoadingIndicator :loading="topicStore.loading_getTopicFullInfo" />
-    <CreateThreadModal v-if="topic !== undefined" :topicId = topic.topic.topicId />
+    <LoadingIndicator :loading="topicsStore.loading_getTopicFullInfo" />
+    <CreateThreadModal v-if="topicsStore.topic !== undefined" :topicId = topicsStore.topic.topic.topicId />
 </template>

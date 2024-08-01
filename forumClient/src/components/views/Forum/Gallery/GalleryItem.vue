@@ -12,12 +12,12 @@ function openInNewTab(url: string) {
 
 //Load the image from the gallery item link and display it. It is a url pointing to the image.
 const loadImage = () => {
-    if(!props.item?.galleryItemLink) {
+    if(!props.item?.galleryItem.galleryItemLink) {
         //If null, return.
         return;
     }
     const imgElement = document.getElementById("galleryItemImage") as HTMLImageElement;
-    imgElement.src = props.item?.galleryItemLink;
+    imgElement.src = props.item?.galleryItem.galleryItemLink;
 }
 
 </script>
@@ -27,7 +27,7 @@ const loadImage = () => {
     <div class="card card-custom">
         <div class="card-header border-0 pt-7">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Image: {{ props.item?.galleryItemName ?? "" }}</span>
+                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Image: {{ props.item?.galleryItem.galleryItemName ?? "" }}</span>
             </h3>
         </div>
         <div class="card-body">
@@ -36,7 +36,7 @@ const loadImage = () => {
                     <div class="polaroid-frame-classic">
                         <img id="galleryItemImage" class="polaroid-image" @load="loadImage" />
                         <div class="polaroid-caption">
-                            <span class="card-label font-weight-bolder text-dark075 font-size-h5">Description: {{ props.item?.galleryItemDescription ?? "" }}</span>
+                            <span class="card-label font-weight-bolder text-dark075 font-size-h5">Description: {{ props.item?.galleryItem.galleryItemDescription ?? "" }}</span>
                         </div>
                     </div>
                 </div>

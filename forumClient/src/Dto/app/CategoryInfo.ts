@@ -8,14 +8,12 @@ export type CategoryEntry = {
 }
 
 export type CategoryBasicInfo = {
-    categoryId: string,
-    categoryName: string,
-    categoryDescription: string,
+    category: CategoryEntry,
     boards: BoardBasicInfo[],
 }
 
 export type CategoryFullInfo = {
-    category: CategoryBasicInfo,
+    category: CategoryEntry,
     boards: BoardBasicInfo[],
     totalBoards: number
 }

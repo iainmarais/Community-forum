@@ -22,7 +22,7 @@ const viewBoard = (boardId: string) => {
 }
 
 const getBoardName = () => {
-    return props.board?.boardName ?? "";
+    return props.board?.board.boardName ?? "";
 }
 
 const getUserInfo = (userId: string) => {
@@ -36,7 +36,7 @@ const getUserInfo = (userId: string) => {
 
 watch(() => props.board, (newBoard) => {
     if (newBoard) {
-        boardName.value = newBoard.boardName;
+        boardName.value = newBoard.board.boardName;
     }
 });
 
@@ -44,7 +44,7 @@ watch(() => props.board, (newBoard) => {
 
 <template> 
     <table class="table table-borderless table-sm forum-container">
-        <a v-if="props.board" href="#" @click.prevent="viewBoard(props.board.boardId)">
+        <a v-if="props.board" href="#" @click.prevent="viewBoard(props.board.board.boardId)">
             <tr class="d-flex forum-element" v-if="board != null">
                 <td class="w-50">
                     <div class="d-flex align-items-center">
@@ -55,10 +55,10 @@ watch(() => props.board, (newBoard) => {
                         </div>                                        
                         <div class="ml-3">
                             <div>
-                                <span class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ board.boardName }}</span>
+                                <span class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ board.board.boardName }}</span>
                             </div>
                             <div>
-                                <span class="text-muted font-weight-bold text-muted d-block">{{ board.boardDescription }}</span>
+                                <span class="text-muted font-weight-bold text-muted d-block">{{ board.board.boardDescription }}</span>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ watch(() => props.board, (newBoard) => {
                     <div class="d-flex align-items-center">
                         <div class="ml-3">
                             <div>
-                                <span class="text-muted font-weight-bold text-muted d-block">Created by: {{ getUserInfo(board.createdByUserId)?.username ?? "" }}</span>
+                                <span class="text-muted font-weight-bold text-muted d-block">Created by: {{ getUserInfo(board.board.createdByUserId)?.username ?? "" }}</span>
                             </div>
                         </div>
                     </div>
