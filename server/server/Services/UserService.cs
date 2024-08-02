@@ -56,7 +56,11 @@ namespace RestApiServer.Services
             //Handle the user context
             if(string.IsNullOrEmpty(userContextIdentifier))
             {
-                user = await db.Users.SingleOrDefaultAsync( u => u.Username.ToLower() == username || u.EmailAddress.ToLower() == emailAddress);
+                user = await (from u in db.Users 
+                                join r in db.Roles on u.RoleId equals r.RoleId
+                                where u.Username == username 
+                                || u.EmailAddress == emailAddress 
+                                select u).SingleOrDefaultAsync();
                 if(user == null)
                 {
                     throw ClientInducedException.MessageOnly("Invalid username or email address provided, or user does not exist.");
@@ -98,7 +102,7 @@ namespace RestApiServer.Services
             return new UserBasicInfo(user);
         }
 
-        public static async Task<UserBasicInfo> Register(string username, string emailAddress, string cleartextpassword, string retypePassword) 
+        public static async Task<UserBasicInfo> Register(string username, string roleType, string emailAddress, string cleartextpassword, string retypePassword) 
         {   
             //Someone's obviously fucked something up here. The question is have they unfucked it yet? :D
             if(username == null || emailAddress == null)
@@ -117,6 +121,11 @@ namespace RestApiServer.Services
             {
                 throw ClientInducedException.MessageOnly("Passwords do not match.");
             }
+            if(roleType == null)
+            {
+                //User did not specify a role, assume user (RoleId = 1)
+                roleType = "User";
+            }
 
             using var db = new AppDbContext();
             //Check if there is already a user present with this username or email address.
@@ -129,6 +138,9 @@ namespace RestApiServer.Services
             var user = new UserEntry
             {
                 UserId = DbUtils.GenerateUuid(),
+                AdminUserId = DbUtils.GenerateUuid(),
+                ForumUserId = DbUtils.GenerateUuid(),
+                RoleId = db.Roles.Single(r => r.RoleType.ToString().Contains(roleType)).RoleId,
                 Username = username,
                 EmailAddress = emailAddress,
                 HashedPassword = AuthUtils.HashPassword(cleartextpassword, salt),
@@ -141,35 +153,29 @@ namespace RestApiServer.Services
 
         public static async Task<UserLoginResponse> LoginSuccessResponse(AppDbContext db, string userId, string src)
         {
-            //Works with MySql.
-            // var userResult = await (from user in db.Users 
-            //                 where user.UserId == userId 
-            //                 select new 
-            //                 {
-            //                     User = user,
-            //                     Permissions = (
-            //                         from userPermission in db.UserPermissions
-            //                         join systemPermission in db.SystemPermissions
-            //                         on userPermission.SystemPermissionId equals systemPermission.SystemPermissionId
-            //                         where userPermission.UserId == userId
-            //                         select systemPermission.Permission
-            //                     ).Distinct().ToList()
-            //                 }).SingleAsync();
+            var userResult = await (from u in db.Users 
+                                    where u.UserId == userId 
+                                    join role in db.Roles on u.RoleId equals role.RoleId
+                                    select new 
+                                    {
+                                        User = u,
+                                        Role = role
+                                    }).SingleAsync();
+            if(userResult == null)
+            {
+                throw ClientInducedException.MessageOnly("User not found");
+            }
 
-            //When using MariaDb, use this approach:
-            //To be brutally honest I prefer doing it like this - it makes more sense from a logical perspective as its a bit more procedure-oriented.
-            var user = await db.Users.SingleAsync(u => u.UserId == userId) ?? throw new Exception("User not found");
             var permissions = await (from userPermission in db.UserPermissions
                                     join systemPermission in db.SystemPermissions
                                     on userPermission.SystemPermissionId equals systemPermission.SystemPermissionId
                                     where userPermission.UserId == userId
                                     select systemPermission.Permission).Distinct().ToListAsync();
-            var role = await db.Roles.SingleAsync(r => r.RoleId == user.RoleId) ?? throw new Exception("Role not found");
-            var userResult = new
+            var user = new
             {
-                User = user,
+                User = userResult.User,
                 Permissions = permissions,
-                Role = role
+                Role = userResult.Role
             };
             var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.UserId == userId && t.Source == src).ToListAsync();
             db.RemoveRange(existingRefreshTokensForSource);
@@ -186,7 +192,12 @@ namespace RestApiServer.Services
             };
             await db.UserRefreshTokens.AddAsync(newRefreshToken);
             //Create the access token.
-            var(accessToken, accessTokenExpiration) = AuthUtils.GenerateUserAccessToken(userId, userResult.Permissions);
+            var(accessToken, accessTokenExpiration) = AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, user.Permissions);
+
+            //update the user's last login time
+            var userEntry = db.Users.Single(u => u.UserId == userId);
+            userEntry.LastLoginTime = DateTime.Now;
+            db.Update(userEntry);
 
             await db.SaveChangesAsync();
             var userProfile = GetUserBasicInfo(userId);

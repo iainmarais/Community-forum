@@ -3,21 +3,25 @@ using RestApiServer.Enums;
 
 namespace RestApiServer.Core.Security
 {
+
     public static class UserAuthorisationPolicies
     {
+        private static List<string> ValidAdminUserClaimsRequirements = new(){"UserId", "AdminUserId"};
+        private static List<string> ValidForumUserClaimsRequirements = new(){"UserId", "ForumUserId"};
+        private static string UserClaimRequirement = "UserId";
         public static Microsoft.AspNetCore.Authorization.AuthorizationOptions Configure(Microsoft.AspNetCore.Authorization.AuthorizationOptions options)
         {
             //User related policies
-            options.AddPolicy(CreateUsersPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_Create.ToString()));
-            options.AddPolicy(EditUsersPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_Edit.ToString()));
-            options.AddPolicy(DeleteUsersPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_Delete.ToString()));
-            options.AddPolicy(ChangeUserRolePolicy, policy => policy.RequireClaim(SystemPermissionType.Users_ChangeRoles.ToString()));
-            options.AddPolicy(ChangeUserPasswordPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_ChangePassword.ToString()));
-            options.AddPolicy(BanUserPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_BanUser.ToString()));
+            options.AddPolicy(CreateUsersPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_Create.ToString(),ValidAdminUserClaimsRequirements));
+            options.AddPolicy(EditUsersPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_Edit.ToString(),ValidAdminUserClaimsRequirements));
+            options.AddPolicy(DeleteUsersPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_Delete.ToString(),ValidAdminUserClaimsRequirements));
+            options.AddPolicy(ChangeUserRolePolicy, policy => policy.RequireClaim(SystemPermissionType.Users_ChangeRoles.ToString(),ValidAdminUserClaimsRequirements));
+            options.AddPolicy(ChangeUserPasswordPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_ChangePassword.ToString(),ValidAdminUserClaimsRequirements));
+            options.AddPolicy(BanUserPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_BanUser.ToString(),ValidAdminUserClaimsRequirements));
             //Role related policies
-            options.AddPolicy(CreateRolesPolicy, policy => policy.RequireClaim(SystemPermissionType.Roles_Create.ToString()));
-            options.AddPolicy(EditRolesPolicy, policy => policy.RequireClaim(SystemPermissionType.Roles_Edit.ToString()));
-            options.AddPolicy(DeleteRolesPolicy, policy => policy.RequireClaim(SystemPermissionType.Roles_Delete.ToString()));
+            options.AddPolicy(CreateRolesPolicy, policy => policy.RequireClaim(SystemPermissionType.Roles_Create.ToString(),ValidAdminUserClaimsRequirements));
+            options.AddPolicy(EditRolesPolicy, policy => policy.RequireClaim(SystemPermissionType.Roles_Edit.ToString(),ValidAdminUserClaimsRequirements));
+            options.AddPolicy(DeleteRolesPolicy, policy => policy.RequireClaim(SystemPermissionType.Roles_Delete.ToString(),ValidAdminUserClaimsRequirements));
             //Threads
             options.AddPolicy(CreateThreadsPolicy, policy => policy.RequireClaim(SystemPermissionType.Threads_Create.ToString()));
             options.AddPolicy(EditThreadsPolicy, policy => policy.RequireClaim(SystemPermissionType.Threads_Edit.ToString()));

@@ -18,7 +18,7 @@ namespace RestApiServer.Controllers
         [HttpPost("register")]
         public async Task<ApiSuccessResponse<UserBasicInfo>> RegisterUser(UserRegistrationRequest request)
         {
-            var res = await UserService.Register(request.Username, request.EmailAddress, request.Password, request.RetypePassword);
+            var res = await UserService.Register(request.Username, request.RoleType, request.EmailAddress, request.Password, request.RetypePassword);
             return ApiSuccessResponses.WithData("User registration successful", res);
         }
 

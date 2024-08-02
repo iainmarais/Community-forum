@@ -10,11 +10,18 @@ namespace RestApiServer.Db.Users
     {
         [Key]
         public string UserId { get; set; } = string.Empty;
+        public string AdminUserId { get; set; } = string.Empty;
+        public string ForumUserId { get; set; } = string.Empty;
         public string UserProfileImageBase64 { get; set; } = string.Empty;
         public string Username { get; set; } = string.Empty;
         public string EmailAddress { get; set; } = string.Empty;
+        public string? Address { get; set; }
+        public string? CityName { get; set; }
+        public string? CountryName { get; set; }
+        public string? PostalCode { get; set; }
         public string? UserFirstname { get; set; }
         public string? UserLastname { get; set; }
+        public string? Gender { get; set; } //Male, female or other. FYI I do not subscribe to wokery, so therefore I will not and shall not cater to it.
         public string HashedPassword { get; set; } = string.Empty;
         public string RoleId { get; set; } = string.Empty;
         public int? TotalPosts { get; set; }

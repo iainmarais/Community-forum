@@ -12,22 +12,63 @@ namespace RestApiServer.Utils
 {
     public static class AuthUtils
     {
-        public struct UserContext
+        public struct ForumUserContext
         {
             public string UserId { get; set; }
+            public string ForumUserId { get; set; }
+        }
+
+        public struct AdminUserContext 
+        {
+            public string UserId { get; set; }
+            public string AdminUserId { get; set; }
         }
         public const string Claim_UserId="UserId";
+        public const string Claim_User_ForumUserId = "ForumUserId";
+        public const string Claim_User_AdminUserId = "AdminUserId";
 
-        public static UserContext GetForumUserContext(ClaimsPrincipal context)
+        //Forum user context - currently in use.
+
+        public static ForumUserContext GetForumUserContext(ClaimsPrincipal context)
         {
-            var claim_UserId = context.Claims.FirstOrDefault(c => c.Type == Claim_UserId)?.Value;
-            if (claim_UserId == null)
+            var claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
+            var claim_User_ForumUserId = context.Claims.Where(c => c.Type == Claim_User_ForumUserId).SingleOrDefault().Value;
+            if(claim_UserId == null)
             {
-                throw new ArgumentException("UserId claim not found.");
+                throw new Exception("User id not found in claims");
             }
-            return new UserContext
+
+            if(claim_User_ForumUserId == null)
             {
-                UserId = claim_UserId
+                throw new Exception("Forum user id not found in claims");
+            }
+
+            return new ForumUserContext
+            {
+                UserId = claim_UserId,
+                ForumUserId = claim_User_ForumUserId
+            };
+        }
+
+        //Admin user context
+        public static AdminUserContext GetAdminUserContext(ClaimsPrincipal context)
+        {
+            var claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
+            var claim_User_AdminUserId = context.Claims.Where(c => c.Type == Claim_User_AdminUserId).SingleOrDefault().Value;
+
+            if(claim_UserId == null)
+            {
+                throw new Exception("User id not found in claims");
+            }
+
+            if(claim_User_AdminUserId == null)
+            {
+                throw new Exception("Admin user id not found in claims");
+            }
+            return new AdminUserContext
+            {
+                UserId = claim_UserId,
+                AdminUserId = claim_User_AdminUserId
             };
         }
         public static string GenerateSalt()
@@ -55,7 +96,7 @@ namespace RestApiServer.Utils
         }
 
         //Generates the user's access token.
-        public static (string, long) GenerateUserAccessToken(string userId, List<SystemPermissionType> Permissions)
+        public static (string, long) GenerateAdminUserAccessToken(string userId, string adminUserId, List<SystemPermissionType> Permissions)
         {
             string secret = ConfigurationLoader.GetConfigValue(EnvironmentVariable.JwtSharedSecret);
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
@@ -63,7 +104,39 @@ namespace RestApiServer.Utils
 
             var claims = new List<Claim>
             {
-                new Claim(Claim_UserId, userId)
+                new Claim(Claim_UserId, userId),
+                new Claim(Claim_User_AdminUserId, adminUserId),
+            };
+
+            // Add permissions as claims
+            Permissions.ForEach(p =>
+            {
+                claims.Add(new Claim(p.ToString(), "true"));
+            });
+
+            var expiration = DateTime.UtcNow.AddMinutes(ConfigurationLoader.GetConfigValueAsInt(EnvironmentVariable.JwtExpirationMins));
+
+            var token = new JwtSecurityToken(
+                claims: claims,
+                expires: expiration,
+                signingCredentials: credentials
+            );
+
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            return (tokenString, expiration.Ticks);
+        }
+
+        //Forum context
+        public static (string, long) GenerateForumUserAccessToken(string userId, string forumUserId, List<SystemPermissionType> Permissions)
+        {
+            string secret = ConfigurationLoader.GetConfigValue(EnvironmentVariable.JwtSharedSecret);
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new List<Claim>
+            {
+                new Claim(Claim_UserId, userId),
+                new Claim(Claim_User_ForumUserId, forumUserId),
             };
 
             // Add permissions as claims
@@ -88,5 +161,44 @@ namespace RestApiServer.Utils
         {
             return context.HasClaim(c => c.Type == permission.ToString() && c.Value == "true");
         }
+
+        // public static ClaimsPrincipal AddIdentityToPrincipal(ClaimsPrincipal principal, ClaimsIdentity newIdentity)
+        // {
+        //     var combinedPrincipal = new ClaimsPrincipal(principal);
+        //     combinedPrincipal.AddIdentity(newIdentity);
+        //     return combinedPrincipal;
+        // }
+        // public static ClaimsIdentity GenerateAdminUserIdentity(string userId, string adminUserId, List<SystemPermissionType> permissions)
+        // {
+        //     var claims = new List<Claim>
+        //     {
+        //         new Claim(Claim_UserId, userId),
+        //         new Claim(Claim_User_AdminUserId, adminUserId),
+        //     };
+
+        //     // Add permissions as claims
+        //     permissions.ForEach(p =>
+        //     {
+        //         claims.Add(new Claim(p.ToString(), "true"));
+        //     });
+
+        //     return new ClaimsIdentity(claims, "AdminUser");
+        // }
+        // public static ClaimsIdentity GenerateForumUserIdentity(string userId, string forumUserId, List<SystemPermissionType> permissions)
+        // {
+        //     var claims = new List<Claim>
+        //     {
+        //         new Claim(Claim_UserId, userId),
+        //         new Claim(Claim_User_ForumUserId, forumUserId),
+        //     };
+
+        //     // Add permissions as claims
+        //     permissions.ForEach(p =>
+        //     {
+        //         claims.Add(new Claim(p.ToString(), "true"));
+        //     });
+
+        //     return new ClaimsIdentity(claims, "ForumUser");
+        // }                
     }
 }
