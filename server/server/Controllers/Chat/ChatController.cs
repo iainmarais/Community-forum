@@ -9,6 +9,7 @@ namespace RestApiServer.Controllers
 {
     [ApiController]
     [Route("v1/chat")]
+    [Authorize]
     public class ChatController : ControllerBase
     {
         [HttpGet("messages")]

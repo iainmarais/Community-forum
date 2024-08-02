@@ -64,7 +64,8 @@ namespace RestApiServer
                 {
                     policy.AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader();
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("Content-Disposition");
                 });
             });
 
@@ -75,7 +76,8 @@ namespace RestApiServer
                 {
                     policy.AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader();
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("Content-Disposition");
                 });
             });
 
@@ -157,7 +159,7 @@ namespace RestApiServer
                 }
                 catch(UnauthorizedAccessException ex)
                 {
-                    errorResponse = new ApiClientErrorResponse
+                    errorResponse = new ApiErrorResponse
                     {
                         ResponseMessage = ex.Message
                     };

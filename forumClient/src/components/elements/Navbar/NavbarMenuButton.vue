@@ -51,7 +51,7 @@ watch (() => props.menuItem, (newValue) => {
         <VBtn v-if="navMenu" @click="openMenu()" class="navbar-button" :prepend-icon="navMenu.iconClass">
             {{ navMenu.label }}
         </VBtn>
-        <VMenu v-if="navMenu" v-model="isOpen" :close-on-content-click="false" transition="scale-transition" offset-y min-width="auto">
+        <VMenu v-if="navMenu" v-model="isOpen" :close-on-content-click="true" transition="scale-transition" offset-y min-width="auto">
             <VList>
                 <VListGroup v-for="subitem in navMenuItems" :key="subitem.label">
                     <template v-slot:activator="{ props }">

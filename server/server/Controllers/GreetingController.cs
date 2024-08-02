@@ -1,6 +1,7 @@
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestApiServer.Controllers
 {

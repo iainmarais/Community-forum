@@ -16,7 +16,6 @@ const appContextStore = useAppContextStore();
 
 const toast = useToast();
 const router = useRouter();
-const createdByUser = ref<UserBasicInfo>();
 const filterDebounceTimer = ref<NodeJS.Timeout|null>();
 
 const selectedPostId = ref<string>("");
@@ -32,11 +31,11 @@ const postReply = () => {
 }
 
 const searchPostsInputPressed = () => {
-    if(discussionStore.loading_getPosts && !filterDebounceTimer.value) {
+    if (!filterDebounceTimer.value) {
         discussionStore.currentPageNumber = 1;
         discussionStore.getPostsForThread();
     }
-}
+};
 
 const replyToPostId = (postId: string) => {
     if(!appContextStore.loggedInUser) {
@@ -56,29 +55,32 @@ const goBack = () => {
 }
 
 onMounted(() => {
-  if (threadId.value) {
-    discussionStore.getThreadFullInfo(threadId.value);
-  }
-  discussionStore.currentPageNumber = 1;
-  discussionStore.getPostsForThread();
+    if (route.params && threadId.value) {
+        discussionStore.getThreadFullInfo(threadId.value).then(() => {
+            discussionStore.currentPageNumber = 1;
+            discussionStore.getPostsForThread();
+        });
+    }
 });
 
 watch(() => discussionStore.searchQuery, (newSearchQuery) => {
-    if(filterDebounceTimer.value) {
+    if (filterDebounceTimer.value) {
         clearTimeout(filterDebounceTimer.value);
     }
     filterDebounceTimer.value = setTimeout(() => {
-        discussionStore.loading_getPosts = true;
         discussionStore.currentPageNumber = 1;
         discussionStore.getPostsForThread();
     }, 500);
 });
 
 watch(() => route.params.threadId, (newThreadId) => {
-  threadId.value = newThreadId as string || "";
-  if (threadId.value) {
-    discussionStore.getThreadFullInfo(threadId.value);
-  }
+    if (newThreadId) {
+        threadId.value = newThreadId as string;
+        discussionStore.getThreadFullInfo(threadId.value).then(() => {
+            discussionStore.currentPageNumber = 1;
+            discussionStore.getPostsForThread();
+        });
+    }
 });
 
 watch(() => appContextStore.loggedInUser, newValue => {
@@ -96,8 +98,8 @@ watch(() => appContextStore.loggedInUser, newValue => {
 </script>
 
 <template>
-<div class="card card-custom">
-    <div class="card-header border-0 pt-7" v-if="!discussionStore.loading_discussion && discussionStore.thread">
+<div class="card card-custom" v-if="!discussionStore.loading_getThreadFullInfo && discussionStore.thread">
+    <div class="card-header border-0 pt-7">
         <h3 class="card-title align-items-start flex-column">
             <span class="card-label font-weight-bolder text-dark075 font-size-h5">Discussion: {{ discussionStore.thread.thread.threadName }}</span>
         </h3>
@@ -133,7 +135,7 @@ watch(() => appContextStore.loggedInUser, newValue => {
             </div>
         </div>
     </div>
-    <LoadingIndicator :loading="discussionStore.loading_getPosts" />
+    <LoadingIndicator v-else :loading="discussionStore.loading_getPosts" />
 </div>
 <CreateNewPostModal :active-thread-id=threadId :reply-to-post-id=selectedPostId @post-created="handlePostCreated()"/>
 </template>

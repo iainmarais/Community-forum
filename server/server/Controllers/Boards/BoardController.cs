@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.App;
@@ -9,6 +10,7 @@ namespace RestApiServer.Controllers.Boards
 {
     [ApiController]
     [Route("v1/forum")]
+    [Authorize]
     public class BoardController : ControllerBase
     {
         [HttpGet("boards")]

@@ -6,11 +6,11 @@ import type { CreatePostRequest, PostBasicInfo, PostFullInfo, PostSummary } from
 import type { PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
 
 type DiscussionStoreState = {
-    thread: ThreadFullInfo | undefined,
+    thread: ThreadFullInfo,
     post: PostFullInfo | undefined,
     posts: PaginatedData<PostFullInfo[], PostSummary>
 
-    loading_discussion: boolean,
+    loading_getThreadFullInfo: boolean,
     result_discussionSuccess: boolean,
 
     loading_createPost: boolean,
@@ -26,12 +26,12 @@ type DiscussionStoreState = {
 }
 
 const defaultState: DiscussionStoreState = {
-    thread: undefined,
+    thread: {} as ThreadFullInfo,
     post: undefined,
 
     posts: {} as PaginatedData<PostFullInfo[], PostSummary>,
 
-    loading_discussion: false,
+    loading_getThreadFullInfo: false,
     result_discussionSuccess: false,
 
     loading_createPost: false,
@@ -51,12 +51,12 @@ export const useDiscussionStore = defineStore({
     },
     actions: {
         getThreadFullInfo(threadId: string) {
-            this.loading_discussion = true;
+            this.loading_getThreadFullInfo = true;
             this.result_discussionSuccess = false;
-            DiscussionService.getThreadFullInfo(threadId).then((response) => {
+            return DiscussionService.getThreadFullInfo(threadId).then((response) => {
                 this.thread = response.data;
                 this.result_discussionSuccess = true;
-                this.loading_discussion = false;
+                this.loading_getThreadFullInfo = false;
             }, error => {
                 this.result_discussionSuccess = false;
                 ErrorHandler.handleApiErrorResponse(error);  // Improved error logging
@@ -64,10 +64,6 @@ export const useDiscussionStore = defineStore({
         },
         getPostsForThread() {
             this.loading_getPosts = true;
-            this.result_getPostsSuccess = false;
-            if(!this.thread){
-                return;
-            }
             DiscussionService.getPostsForThread(this.thread?.thread.threadId, this.currentPageNumber, this.rowsPerPage, this.searchQuery).then((response) => {
                 this.posts = response.data;
                 this.result_getPostsSuccess = true;

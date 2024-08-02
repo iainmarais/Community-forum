@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.Forum;
@@ -9,13 +10,14 @@ namespace RestApiServer.Controllers.Gallery
 
     [ApiController]
     [Route("v1/gallery")]
+    [Authorize]
     public class GalleryController : ControllerBase
     {
 
         [HttpGet("items")]
         public async Task<ApiSuccessResponse<List<GalleryItemBasicInfo>>> GetGalleryItems()
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthUtils.GetForumUserContext(User); //How can I see why this somehow fails?
             var res = await GalleryService.GetGalleryItemsAsync();
             return ApiSuccessResponses.WithData("Get gallery items successful", res);
         }

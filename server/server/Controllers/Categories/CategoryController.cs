@@ -11,6 +11,7 @@ namespace RestApiServer.Controllers.Categories
 
     [ApiController]
     [Route("v1/forum")]
+    [Authorize]
     public class CategoryController : ControllerBase
     {
 

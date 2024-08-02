@@ -35,13 +35,13 @@ const searchTopicsInputPressed = () => {
 }
 
 onMounted(() => {
-    if(route.params.topicId) {
-        topicsStore.getTopicFullInfo(topicId.value);
+    if (route.params && topicId.value) {
+        topicsStore.getTopicFullInfo(topicId.value).then(() => {
+            topicsStore.currentPageNumber = 1;
+            topicsStore.getThreadsForTopic();
+        });
     }
-    topicsStore.currentPageNumber = 1;
-    topicsStore.getThreadsForTopic();
 });
-
 
 watch(() => topicsStore.searchQuery, (newSearchQuery) => {
     if(filterDebounceTimer.value) {
@@ -56,9 +56,11 @@ watch(() => topicsStore.searchQuery, (newSearchQuery) => {
 
 watch(() => route.params.topicId, (newTopicId) => {
     topicId.value = newTopicId as string || "";
-    if(topicId.value === "home") {
-        router.push({name: "home"}); 
+    if(topicId.value) {
+        topicsStore.getTopicFullInfo(topicId.value);
     }
+    topicsStore.currentPageNumber = 1;
+    topicsStore.getThreadsForTopic();
 });
 
 watch(() => appContextStore.loggedInUser, newValue => {
@@ -71,10 +73,10 @@ watch(() => appContextStore.loggedInUser, newValue => {
 </script>
 
 <template>
-    <div v-if="!topicsStore.loading_getTopicFullInfo" class="card card-custom">
+    <div v-if="!topicsStore.loading_getTopicFullInfo && topicsStore.topic" class="card card-custom">
         <div class="card-header border-0 pt-7">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Topic: {{ topicsStore.topic?.topic.topicName ?? "" }}</span>
+                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Topic: {{ topicsStore.topic.topic.topicName ?? "" }}</span>
             </h3>
             <div class="card-toolbar">
                 <input class="form-control form-control-solid w-300px" type="text" placeholder="Search posts" v-model="topicsStore.searchQuery" @keyup.enter="searchTopicsInputPressed"/>
@@ -87,6 +89,6 @@ watch(() => appContextStore.loggedInUser, newValue => {
             <span v-else>No threads have been created for this topic.</span>
         </div>
     </div>
-    <LoadingIndicator :loading="topicsStore.loading_getTopicFullInfo" />
+    <LoadingIndicator v-else :loading="topicsStore.loading_getTopicFullInfo" />
     <CreateThreadModal v-if="topicsStore.topic !== undefined" :topicId = topicsStore.topic.topic.topicId />
 </template>

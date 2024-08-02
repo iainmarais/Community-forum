@@ -6,6 +6,8 @@ using RestApiServer.Dto.Login;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Utils;
+using Microsoft.AspNetCore.Authorization;
+using RestApiServer.Core.Security;
 
 namespace RestApiServer.Controllers
 {
@@ -36,6 +38,7 @@ namespace RestApiServer.Controllers
         }
 
         [HttpPost("{userId}/profile")]
+        [Authorize(policy:UserAuthorisationPolicies.EditUsersPolicy)]
         public async Task<ApiSuccessResponse<UserBasicInfo>> UpdateUserProfile(UpdateUserProfileRequest request)
         {
             var user = AuthUtils.GetForumUserContext(User);

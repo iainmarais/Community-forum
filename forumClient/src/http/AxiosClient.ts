@@ -1,17 +1,19 @@
-import axios, {type RawAxiosRequestHeaders} from "axios";
+import axios, { type RawAxiosRequestHeaders } from "axios";
 import { Last_Route, Token_Key } from "@/LocalStorage/keys";
 import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
 import router, { HomeRoute, LoginRoute, NotFoundRoute } from '@/router';
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import { useToast } from "vue-toastification";
 
-const instance = axios.create();
+const instance = axios.create({
+    timeout: 10000
+});
 const toast = useToast();
 
 instance.interceptors.response.use((response) => {
     return response;
 }, (error) => {
-    if (error?.response?.status === 401 && error.response.config.url) {
+    if (error?.response?.status === 401) {
             // Chucked a sickie 'cause you're not allowed, mate.
             ForceLogoff();
             router.replace({ name: LoginRoute });
@@ -62,7 +64,7 @@ const Put = async <T>(url: string, data: any) : Promise<ApiSuccessResponse<T>> =
     return response.data as ApiSuccessResponse<T>;
 }
 
-const Post = async <T>(url: string, data: any, headers?: RawAxiosRequestHeaders) : Promise<ApiSuccessResponse<T>> => {
+const Post = async <T>(url: string, data: any) : Promise<ApiSuccessResponse<T>> => {
     const response = await instance.post(url, data, { headers });
     return response.data as ApiSuccessResponse<T>;
 }
@@ -83,6 +85,10 @@ const Get_WithBlobResponse = async <T>(url: string) : Promise<any> => {
     const response = await instance.get(url, {responseType: 'blob'});
     return response.data as ApiSuccessResponse<T>;
 }
+
+const headers: RawAxiosRequestHeaders = {
+    'Content-Type': 'application/json'
+};
 
 export default {
     Get,

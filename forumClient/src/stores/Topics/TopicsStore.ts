@@ -7,7 +7,7 @@ import TopicService from "@/services/TopicService";
 import { defineStore } from "pinia";
 
 type TopicsStoreState = {
-    topic: TopicFullInfo | undefined,
+    topic: TopicFullInfo,
     threads: PaginatedData<ThreadBasicInfo[], ThreadSummary>,
     newestTopics: TopicBasicInfo[],
     hasNewPosts: boolean,
@@ -31,7 +31,7 @@ type TopicsStoreState = {
 }
 
 const defaultState: TopicsStoreState = {
-    topic: undefined,
+    topic: {} as TopicFullInfo,
     threads: {} as PaginatedData<ThreadBasicInfo[], ThreadSummary>,
     newestTopics: [] as TopicBasicInfo[],
     hasNewPosts: false,
@@ -74,7 +74,7 @@ export const useTopicsStore = defineStore({
         getTopicFullInfo(topicId: string) {
             this.loading_getTopicFullInfo = true;
             this.result_getTopicFullInfoSuccess = false;
-            TopicService.getTopicFullInfo(topicId).then((response) => {
+            return TopicService.getTopicFullInfo(topicId).then((response) => {
                 this.topic = response.data;
                 this.result_getTopicFullInfoSuccess = true;
                 this.loading_getTopicFullInfo = false;
@@ -100,10 +100,6 @@ export const useTopicsStore = defineStore({
 
         getThreadsForTopic() {
             this.loading_getTopics = true;
-            this.result_getTopicsSuccess = false;
-            if(!this.topic){
-                return;
-            }
             TopicService.getThreadsForTopic(this.topic?.topic.topicId, this.currentPageNumber, this.rowsPerPage, this.searchQuery).then((response) => {
                 this.threads = response.data;
                 this.result_getTopicsSuccess = true;

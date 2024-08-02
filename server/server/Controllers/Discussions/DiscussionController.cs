@@ -12,6 +12,7 @@ namespace RestApiServer.Controllers.Discussions
 {
     [ApiController]
     [Route("v1/forum")]
+    [Authorize]
     public class DiscussionController : ControllerBase
     {
         [HttpGet("thread/{threadId}/fullinfo")]
