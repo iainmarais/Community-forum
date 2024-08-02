@@ -26,7 +26,8 @@ export default defineConfig({
             chunkFileNames: `[name]` + hash + `.js`,
             assetFileNames: `[name]` + hash + `.[ext]`
           }
-    }
+    },
+    sourcemap: true
   },
   server: {
     host: '0.0.0.0',

@@ -6,6 +6,7 @@ namespace RestApiServer.Dto.App
     public class BoardBasicInfo
     {
         public required BoardEntry Board { get; set; } = null!;
+        public required UserBasicInfo CreatedByUser { get; set; } = null!;
     }
 
     public class BoardFullInfo

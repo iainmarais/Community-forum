@@ -40,19 +40,6 @@ const goBack = () => {
     router.go(-1);
 }
 
-const getUserInfo = async (userId: string) => {
-    if (!createdByUser.value) {
-        try {
-            const response = await UserService.getUserById(userId);
-            createdByUser.value = response.data;
-        } catch (error) {
-            toast.error("Could not load user.");
-            console.log(error);
-        }
-    }
-    return createdByUser.value;
-};
-
 onMounted(() => {
   discussionStore.getThreadFullInfo(props.thread!.thread.threadId);
 })

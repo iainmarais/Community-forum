@@ -14,7 +14,7 @@
         "baseUrl": ".",
         "lib": ["DOM", "ESNext", "ES2018"],
         "types": ["node", "jquery"],
-        "moduleResolution": "Node",
+        "moduleResolution": "Node", 
         "verbatimModuleSyntax": true,
         "skipLibCheck": true,
         "paths": {

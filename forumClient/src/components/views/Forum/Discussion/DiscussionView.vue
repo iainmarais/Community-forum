@@ -55,21 +55,12 @@ const goBack = () => {
     router.go(-1);
 }
 
-const getUserInfo = (userId: string) => {
-    if (!createdByUser.value) {
-        UserService.getUserById(userId).then((response) => {
-            createdByUser.value = response.data;
-        });
-    }
-    return createdByUser.value;
-}
-
 onMounted(() => {
-    if (route.params.threadId) {
-        discussionStore.getThreadFullInfo(threadId.value);
-    }
-    discussionStore.currentPageNumber = 1;
-    discussionStore.getPostsForThread();
+  if (threadId.value) {
+    discussionStore.getThreadFullInfo(threadId.value);
+  }
+  discussionStore.currentPageNumber = 1;
+  discussionStore.getPostsForThread();
 });
 
 watch(() => discussionStore.searchQuery, (newSearchQuery) => {
@@ -84,10 +75,10 @@ watch(() => discussionStore.searchQuery, (newSearchQuery) => {
 });
 
 watch(() => route.params.threadId, (newThreadId) => {
-    threadId.value = newThreadId as string || "";
-    if(threadId.value === "home") {
-        router.push({name: "home"}); 
-    }
+  threadId.value = newThreadId as string || "";
+  if (threadId.value) {
+    discussionStore.getThreadFullInfo(threadId.value);
+  }
 });
 
 watch(() => appContextStore.loggedInUser, newValue => {
@@ -117,7 +108,7 @@ watch(() => appContextStore.loggedInUser, newValue => {
             <input class="form-control form-control-solid w-300px" type="text" placeholder="Search posts" v-model="discussionStore.searchQuery" @keyup.enter="searchPostsInputPressed"/>
         </div>
     </div>
-    <div class="card-body" v-if="!discussionStore.loading_discussion && discussionStore.thread">
+    <div class="card-body" v-if="!discussionStore.loading_getPosts && discussionStore.thread">
         <div class="card card-custom" v-for="post in discussionStore.posts.rows">
             <div class="card-header border-0 pt-7">
                 <h3 class="card-title align-items-start flex-column">
@@ -126,7 +117,7 @@ watch(() => appContextStore.loggedInUser, newValue => {
                             <!-- <div class="symbol-label" :style="`background-image: url(${getUserInfo(post.createdByUserId)?.profileImageUrl})`"></div> -->
                             <i class="fas fa-user" style="font-size: 30px"></i>
                         </div>
-                        <span class="card-label font-weight-bolder text-dark075 font-size-h5">{{ getUserInfo(post.post.createdByUserId)?.username}}</span>
+                        <span class="card-label font-weight-bolder text-dark075 font-size-h5">{{ post.createdByUser.username }}</span>
                     </div>    
                 </h3>
                 <div class="card-toolbar">
@@ -142,8 +133,7 @@ watch(() => appContextStore.loggedInUser, newValue => {
             </div>
         </div>
     </div>
-    
-    <LoadingIndicator :loading="discussionStore.loading_discussion" />
+    <LoadingIndicator :loading="discussionStore.loading_getPosts" />
 </div>
 <CreateNewPostModal :active-thread-id=threadId :reply-to-post-id=selectedPostId @post-created="handlePostCreated()"/>
 </template>

@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Db;
-using RestApiServer.Db.Users;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 
@@ -14,12 +13,13 @@ namespace RestApiServer.Services.Boards
         public static async Task<List<BoardBasicInfo>> GetForumBoardsAsync()
         {
             using var db = new AppDbContext();
-            var boards = await db.Boards
-            .Select(b => new BoardBasicInfo()
-            {
-                Board = b,
-            })
-            .ToListAsync();
+            var boards = await (from board in db.Boards 
+                                join user in db.Users on board.CreatedByUserId equals user.UserId
+                                select new BoardBasicInfo
+                                {
+                                    Board = board,
+                                    CreatedByUser = new UserBasicInfo(user)
+                                }).ToListAsync();
             return boards;
         }
 
@@ -72,38 +72,43 @@ namespace RestApiServer.Services.Boards
             };
             return boardFullInfo ?? throw new Exception("Board not found");
         }
-        public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> GetAssociatedBoardTopicsAsync(string boardId, int pageNumber, int rowsPerPage, string searchTerm)
+        public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> GetTopicsForBoardAsync(string boardId, int pageNumber, int rowsPerPage, string? searchTerm)
         {
             using var db = new AppDbContext();
-            var topics = db.Topics
-                    .Where(t => t.BoardId == boardId)
-                    .Select(t => new TopicBasicInfo()
-                    {
-                        Topic = t,
-                        TotalPosts = t.Threads.Sum(t => t.Posts.Count),
-                        TotalThreads = t.Threads.Count,
-                        NumTotalThreads = t.Threads.Count,
-                    })
-                    .Include(t => t.CreatedByUser)
-                    .AsEnumerable();
-            var filteredTopics = topics;
-            if(!string.IsNullOrEmpty(searchTerm))
-            {
-                searchTerm = searchTerm.ToLower();
-                filteredTopics = (from t in filteredTopics 
-                                where t.Topic.TopicName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                || t.Topic.Description.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                || t.CreatedByUser!.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                  select t);
-            }
+
+            var topics = (from topic in db.Topics
+                            where topic.BoardId == boardId
+                            join user in db.Users on topic.CreatedByUserId equals user.UserId
+                            select new TopicBasicInfo
+                            {
+                                Topic = topic,
+                                TotalPosts = topic.Threads.Sum(t => t.Posts.Count),
+                                TotalThreads = topic.Threads.Count,
+                                NumTotalThreads = topic.Threads.Count,
+                                CreatedByUser = new UserBasicInfo(user)
+                            }).AsEnumerable();
+
+                var filteredTopics = topics;
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    searchTerm = searchTerm.ToLower();
+                    filteredTopics = (from t in filteredTopics
+                                    where t.Topic.TopicName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || t.CreatedByUser.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || t.CreatedByUser.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || t.CreatedByUser!.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || t.Topic.Description.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    select t);
+                }
             var filteredTotal = filteredTopics.Count();
             var skip = (pageNumber - 1) * rowsPerPage;
             var pageRows = filteredTopics.Skip(skip).Take(rowsPerPage);
             var topicRows = new List<TopicBasicInfo>();
-            foreach (var topic in pageRows)
+            foreach(var topic in pageRows)
             {
                 topicRows.Add(topic);
-            }
+            } 
             int totalPages = 1;
             if(filteredTotal > rowsPerPage)
             {
@@ -112,14 +117,14 @@ namespace RestApiServer.Services.Boards
             return new()
             {
                 Rows = topicRows,
-                RowsPerPage = rowsPerPage,
                 PageNumber = pageNumber,
+                RowsPerPage = rowsPerPage,
                 TotalPages = totalPages,
                 Summary = new()
                 {
                     TotalTopics = filteredTotal
                 }
-            };            
-        }
+            };                          
+        }        
     }
 }

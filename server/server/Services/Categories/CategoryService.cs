@@ -12,22 +12,20 @@ namespace RestApiServer.Services.Categories
         public static async Task<CategoryFullInfo> GetForumCategoryFullInfoAsync(string categoryId)
         {
             using var db = new AppDbContext();
-            var category = await db.Categories
-            .Include(c => c.BoardsCreated.OrderByDescending(b => b.BoardName))
-            .SingleOrDefaultAsync(b => b.CategoryId == categoryId);
-            if(category == null)
-            {
-                throw new Exception("Category not found");
-            }
+            var category = await db.Categories.SingleAsync(c => c.CategoryId == categoryId);
+            var boards = (from b in db.Boards
+                                where b.CategoryId == category.CategoryId
+                                join user in db.Users on b.CreatedByUserId equals user.UserId
+                                select new BoardBasicInfo()
+                                {
+                                    Board = b,
+                                    CreatedByUser = new UserBasicInfo(user)
+                                }).ToList();
             var categoryFullInfo = new CategoryFullInfo()
             {
                 Category = category,
-                Boards = category.BoardsCreated
-                    .Select(b => new BoardBasicInfo()
-                    {
-                        Board = b
-                    }).ToList(),
-                TotalBoards = category.BoardsCreated.Count
+                Boards = boards,
+                TotalBoards = boards.Count()
             };
             return categoryFullInfo ?? throw new Exception("Category not found");
         }
@@ -35,19 +33,19 @@ namespace RestApiServer.Services.Categories
         public static async Task<List<CategoryBasicInfo>> GetForumCategoriesAsync()
         {
             using var db = new AppDbContext();
-            var categories = await db.Categories
-            .Include(c => c.BoardsCreated.OrderByDescending(b => b.BoardName))
-            .Select(c => new CategoryBasicInfo()
-            {
-                Category = c,
-                Boards = c.BoardsCreated
-                    .Select(b => new BoardBasicInfo()
-                    {
-                        Board = b
-                    })
-                    .ToList()
-            })
-            .ToListAsync();
+            var categories = await (from category in db.Categories
+                                    select new CategoryBasicInfo()
+                                    {
+                                        Category = category,
+                                        Boards = (from b in db.Boards
+                                                where b.CategoryId == category.CategoryId
+                                                join user in db.Users on b.CreatedByUserId equals user.UserId
+                                                select new BoardBasicInfo()
+                                                {
+                                                    Board = b,
+                                                    CreatedByUser = new UserBasicInfo(user)
+                                                }).AsEnumerable().ToList()
+                                    }).ToListAsync();
             return categories;
         }
 
@@ -75,15 +73,19 @@ namespace RestApiServer.Services.Categories
             {
                 throw new Exception("Category not found");
             }
+            var boards = from board in db.Boards
+                            where board.CategoryId == category.CategoryId
+                            join user in db.Users on board.CreatedByUserId equals user.UserId
+                            orderby board.BoardName descending 
+                            select new BoardBasicInfo()
+                            {
+                                Board = board,
+                                CreatedByUser = new UserBasicInfo(user)
+                            };            
             return new CategoryBasicInfo()
             {
                 Category = category,
-                Boards = category.BoardsCreated
-                    .Select(b => new BoardBasicInfo()
-                    {
-                        Board = b
-                    })
-                    .ToList()
+                Boards = boards.ToList()
             };
         }
     }

@@ -17,6 +17,63 @@ export type FeatureId = "None";
 
 const NavigationBar: NavbarItem[] = [
     {
+        id: "compactMenu",
+        type: "menu",
+        label: "Menu",
+        iconClass: "fas fa-bars",
+        items: [
+            {
+                id: "home",
+                type: "item",
+                label: "Home",
+                iconClass: "fas fa-home",
+                routename: HomeRoute
+            },
+            {
+                id: "login",
+                type: "item",
+                label: "Log in",
+                iconClass: "fas fa-sign-in-alt",
+                routename: LoginRoute
+            },
+            {
+                id: "logoff",
+                type: "item",
+                label: "Log off",
+                iconClass: "fas fa-sign-out-alt",
+                routename: LogoffRoute
+            },
+            {
+                id: "register",
+                type: "item",
+                label: "Register",
+                iconClass: "fas fa-user-plus",
+                routename: RegisterRoute
+            },
+            {
+                id: "chat",
+                type: "item",
+                label: "Chat",
+                iconClass: "fas fa-comments",
+                routename: ChatRoute
+            },
+            {
+                id: "gallery",
+                type: "item",
+                label: "Gallery",
+                iconClass: "fas fa-images",
+                routename: GalleryRoute
+            },
+            {
+                id: "search",
+                type: "item",
+                label: "Search",
+                iconClass: "fas fa-search",
+                routename: SearchRoute
+            },
+        ]
+    },
+    {
         id: "home",
         type: "item",
         label: "Home",

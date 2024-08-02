@@ -34,6 +34,14 @@ namespace RestApiServer.Controllers.Boards
             var res = await BoardService.GetSelectedBoardAsync(boardId);
             return ApiSuccessResponses.WithData("Get selected board successful", res);
         }
+
+        [HttpGet("boards/{boardId}/topics")]
+        public async Task<ApiSuccessResponse<PaginatedData<List<TopicBasicInfo>, TopicSummary>>> GetTopicsForBoard(string boardId, [FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string? searchTerm)
+        {
+            var user = AuthUtils.GetForumUserContext(User);
+            var res = await BoardService.GetTopicsForBoardAsync(boardId, pageNumber, rowsPerPage, searchTerm);
+            return ApiSuccessResponses.WithData("Get selected board successful", res);
+        }        
         
     }
 }
