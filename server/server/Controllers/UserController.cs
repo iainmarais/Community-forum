@@ -41,7 +41,7 @@ namespace RestApiServer.Controllers
         [Authorize(policy:UserAuthorisationPolicies.EditUsersPolicy)]
         public async Task<ApiSuccessResponse<UserBasicInfo>> UpdateUserProfile(UpdateUserProfileRequest request)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthUtils.GetAdminUserContext(User);
             var res = await UserService.UpdateUserProfileAsync(request);
             return ApiSuccessResponses.WithData("Update user profile successful", res);
         }

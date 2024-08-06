@@ -1,30 +1,37 @@
 
-export type UserInfo = {
+export type UserEntry = {
     userId: string,
     userProfileImageBase64: string,
     username: string,
     emailAddress: string,
+    address?: string,
+    cityName?: string,
+    countryName?: string,
+    postalCode?: string,
     userFirstname?: string,
     userLastname?: string,
+    gender?:  string,
     roleId: string,
-    totalPosts?: number
+    totalPosts?: number,
+    isOnline: boolean,
+    isVisible: boolean,
+    lastLoginTime: Date
 }
 export type UserBasicInfo = {
-    userId: string,
-    userProfileImageBase64: string,
-    username: string,
-    emailAddress: string,
-    userFirstname?: string,
-    userLastname?: string,
-    roleId: string,
-    totalPosts?: number
+    user: UserEntry,
+    userFullName: string
 }
 
 export type UpdateUserProfileRequest = {
     userId: string,
     userProfileImageBase64: string,
     userFirstname: string,
-    userLastname: string
+    userLastname: string,
+    address: string,
+    cityName: string,
+    countryName: string,
+    postalCode: string,
+    gender: string
 }
 
 export type UserSummary = {

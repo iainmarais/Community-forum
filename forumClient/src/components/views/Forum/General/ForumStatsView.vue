@@ -74,9 +74,9 @@ watch(() => forumStatsStore.forumStats, (newStats) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="user in mostActiveUsers" :key="user.userId">
-                            <td>{{ user.username }}</td>
-                            <td>{{ user.totalPosts }}</td>
+                        <tr v-for="user in mostActiveUsers" :key="user.user.userId">
+                            <td>{{ user.user.username }}</td>
+                            <td>{{ user.user.totalPosts }}</td>
                         </tr>
                     </tbody>
                 </table>

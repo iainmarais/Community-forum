@@ -28,7 +28,7 @@ namespace RestApiServer.Core.Security
                     };
                     allowedActions.Add(thread.ThreadId, allowedThreadActions);
                 }
-                if(thread.CreatedByUserId != userId && roles.Single(r => r.RoleId == user.RoleId).RoleType != RoleType.Admin)
+                if(thread.CreatedByUserId != userId && roles.Single(r => r.RoleId == user.User.RoleId).RoleType != RoleType.Admin)
                 {
                     List<AllowedUserAction> allowedThreadActions = new()
                     {
@@ -39,7 +39,7 @@ namespace RestApiServer.Core.Security
                 }
                 else
                 {
-                    throw new($"No actions have been defined for the user {user.Username} on thread {thread.ThreadName}");
+                    throw new($"No actions have been defined for the user {user.User.Username} on thread {thread.ThreadName}");
                 }
 
             };

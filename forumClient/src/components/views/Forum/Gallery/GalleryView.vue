@@ -51,7 +51,7 @@ watch(() => galleryStore.galleryItems, (newItems) => {
                 <button class="btn btn-primary btn-sm m-1" @click="goBack"><i class="fas fa-arrow-left"></i>Back</button>
             </div>
         </div>
-        <div class="card-body" v-if="!galleryStore.loading_galleryItems && galleryItems">
+        <div class="card-body" v-if="!galleryStore.loading_galleryItems && galleryItems.length > 0">
             <div class="row">
                 <div class="imageContainer" v-for="item in galleryItems" :key="item.galleryItem.galleryItemId">
                     <ImageElement 

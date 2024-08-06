@@ -1,7 +1,6 @@
 <script lang = "ts" setup>
 import { useRouter } from 'vue-router';
-
-
+import ContactsAndChatsTabView from './ContactsAndChatsTabView.vue';
 
 const router = useRouter();
 
@@ -61,7 +60,7 @@ const goBack = () => {
                     <div class="card card-custom">
                         <div class="card-header border-0 pt-7">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Contacts and chats</span>
+                                <ContactsAndChatsTabView />
                             </h3>
                             <div class="card-toolbar">
                                 <!--tab navigation-->

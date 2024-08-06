@@ -66,7 +66,7 @@ const getTopicName = () => {
                     <div class="d-flex align-items-center">
                         <div class="ml-3">
                             <div>
-                                <span class="text-muted font-weight-bold text-muted d-block">Created by: {{ getUserInfo(topic.topic.createdByUserId)?.username ?? "" }}</span>
+                                <span class="text-muted font-weight-bold text-muted d-block">Created by: {{ getUserInfo(topic.topic.createdByUserId)?.user.username ?? "" }}</span>
                             </div>
                         </div>
                     </div>

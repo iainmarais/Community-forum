@@ -119,7 +119,7 @@ watch(() => appContextStore.loggedInUser, newValue => {
                             <!-- <div class="symbol-label" :style="`background-image: url(${getUserInfo(post.createdByUserId)?.profileImageUrl})`"></div> -->
                             <i class="fas fa-user" style="font-size: 30px"></i>
                         </div>
-                        <span class="card-label font-weight-bolder text-dark075 font-size-h5">{{ post.createdByUser.username }}</span>
+                        <span class="card-label font-weight-bolder text-dark075 font-size-h5">{{ post.createdByUser.user.username }}</span>
                     </div>    
                 </h3>
                 <div class="card-toolbar">

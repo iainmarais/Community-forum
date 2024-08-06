@@ -12,7 +12,10 @@ namespace RestApiServer.Services
             using var db = new AppDbContext();
             var messages = await db.ChatMessages
                 .Where(m => m.CreatedByUserId == userId)
-                .Select(m => new ChatMessageBasicInfo(m))
+                .Select(m => new ChatMessageBasicInfo()
+                {
+                    Message = m
+                })
                 .ToListAsync();
             return messages;
         }

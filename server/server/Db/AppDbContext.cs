@@ -26,6 +26,8 @@ namespace RestApiServer.Db
         public DbSet<ChatGroupEntry> ChatGroups { get; set; } = null!;
         public DbSet<GalleryItemEntry> GalleryItems { get; set; } = null!;
 
+        public DbSet<ContactEntry> Contacts { get; set; } = null!;
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

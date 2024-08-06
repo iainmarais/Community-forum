@@ -51,7 +51,7 @@ const getUserInfo = (userId: string) => {
                             <span class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg" > {{ props.thread.thread.threadName }}</span>
                         </div>
                         <div>
-                            <span class="text-muted font-weight-bold text-muted d-block">Created by: {{ getUserInfo(props.thread.thread.createdByUserId)?.username }}</span>
+                            <span class="text-muted font-weight-bold text-muted d-block">Created by: {{ getUserInfo(props.thread.thread.createdByUserId)?.user.username }}</span>
                         </div>
                     </div>
                 </div>

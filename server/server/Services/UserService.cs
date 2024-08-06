@@ -90,7 +90,10 @@ namespace RestApiServer.Services
             {
                 using var db = new AppDbContext();
                 var user = db.Users.Single(u => u.UserId == userId);
-                var userBasicInfo = new UserBasicInfo(user);
+                var userBasicInfo = new UserBasicInfo()
+                {
+                    User = user
+                };
                 ShortTermCache.AddToCache(userId, userBasicInfo);
                 return userBasicInfo;
             }
@@ -99,7 +102,10 @@ namespace RestApiServer.Services
         {        
             using var db = new AppDbContext();
             var user = await db.Users.SingleAsync(u => u.UserId == userId);
-            return new UserBasicInfo(user);
+            return new UserBasicInfo()
+            {
+                User = user
+            };
         }
 
         public static async Task<UserBasicInfo> Register(string username, string roleType, string emailAddress, string cleartextpassword, string retypePassword) 
@@ -148,7 +154,10 @@ namespace RestApiServer.Services
             };
             await db.Users.AddAsync(user);
             await db.SaveChangesAsync();
-            return new UserBasicInfo(user);
+            return new UserBasicInfo()
+            {
+                User = user
+            };
         }
 
         public static async Task<UserLoginResponse> LoginSuccessResponse(AppDbContext db, string userId, string src)

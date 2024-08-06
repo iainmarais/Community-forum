@@ -18,7 +18,10 @@ namespace RestApiServer.Services.Boards
                                 select new BoardBasicInfo
                                 {
                                     Board = board,
-                                    CreatedByUser = new UserBasicInfo(user)
+                                    CreatedByUser = new UserBasicInfo()
+                                    {
+                                        User = user
+                                    }
                                 }).ToListAsync();
             return boards;
         }
@@ -85,7 +88,10 @@ namespace RestApiServer.Services.Boards
                                 TotalPosts = topic.Threads.Sum(t => t.Posts.Count),
                                 TotalThreads = topic.Threads.Count,
                                 NumTotalThreads = topic.Threads.Count,
-                                CreatedByUser = new UserBasicInfo(user)
+                                CreatedByUser = new UserBasicInfo()
+                                {
+                                    User = user
+                                }
                             }).AsEnumerable();
 
                 var filteredTopics = topics;
@@ -95,9 +101,9 @@ namespace RestApiServer.Services.Boards
                     searchTerm = searchTerm.ToLower();
                     filteredTopics = (from t in filteredTopics
                                     where t.Topic.TopicName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                    || t.CreatedByUser.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                    || t.CreatedByUser.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                    || t.CreatedByUser!.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || t.CreatedByUser.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || t.CreatedByUser.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || t.CreatedByUser!.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                     || t.Topic.Description.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                     select t);
                 }

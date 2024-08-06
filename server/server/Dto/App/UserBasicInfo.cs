@@ -3,13 +3,15 @@ using RestApiServer.Utils;
 
 namespace RestApiServer.Dto.App
 {
-    public class UserBasicInfo : UserEntry
+    public class UserBasicInfo
     {
-        public UserBasicInfo(UserEntry user)
-        {
-            ClassUtils.CopyFromBaseclass(this, user);
-        }
-
-        public string UserFullname { get => $"{UserFirstname} {UserLastname}"; }
+        public required UserEntry User { get; set; }
+        public string UserFullname { get => $"{User.UserFirstname} {User.UserLastname}"; }
+    }
+    public class UserFullInfo
+    {
+        public required UserEntry User { get; set; }
+        public List<UserBasicInfo> Contacts { get; set; }
+        public string UserFullname { get => $"{User.UserFirstname} {User.UserLastname}"; }   
     }
 }

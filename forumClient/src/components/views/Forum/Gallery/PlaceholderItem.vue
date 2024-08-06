@@ -45,7 +45,7 @@ onUnmounted(() => {
             <img :src="reactiveImages[currentIndex]" class="polaroid-image" alt="Loading..." />
         </div>
         <div class="polaroid-caption">
-            <span class="font-weight-bolder"> {{loading ? "Loading..." : ""}} </span>
+            <span class="font-weight-bolder"> {{loading ? "Loading..." : "No images found"}} </span>
         </div>
     </div>
 </template>

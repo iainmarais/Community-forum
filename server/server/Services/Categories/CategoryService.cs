@@ -19,7 +19,10 @@ namespace RestApiServer.Services.Categories
                                 select new BoardBasicInfo()
                                 {
                                     Board = b,
-                                    CreatedByUser = new UserBasicInfo(user)
+                                    CreatedByUser = new UserBasicInfo()
+                                    {
+                                        User = user
+                                    }
                                 }).ToList();
             var categoryFullInfo = new CategoryFullInfo()
             {
@@ -43,7 +46,10 @@ namespace RestApiServer.Services.Categories
                                                 select new BoardBasicInfo()
                                                 {
                                                     Board = b,
-                                                    CreatedByUser = new UserBasicInfo(user)
+                                                    CreatedByUser = new UserBasicInfo()
+                                                    {
+                                                        User = user
+                                                    }
                                                 }).AsEnumerable().ToList()
                                     }).ToListAsync();
             return categories;
@@ -80,7 +86,10 @@ namespace RestApiServer.Services.Categories
                             select new BoardBasicInfo()
                             {
                                 Board = board,
-                                CreatedByUser = new UserBasicInfo(user)
+                                CreatedByUser = new UserBasicInfo()
+                                {
+                                    User = user
+                                }
                             };            
             return new CategoryBasicInfo()
             {

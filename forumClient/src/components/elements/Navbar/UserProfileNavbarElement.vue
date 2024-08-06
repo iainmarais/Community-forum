@@ -3,6 +3,8 @@ import { useAppContextStore } from '@/stores/AppContextStore';
 import { onMounted, ref, watch, type PropType } from 'vue';
 import { useToast } from 'vue-toastification';
 import UserProfileModal from '@/components/modals/UserProfileModal.vue';
+import type { UserBasicInfo } from '@/Dto/UserInfo';
+import UserService from '@/services/UserService';
 
 const openUserProfileModal = () => {
     $("#userProfileModal").modal("show");
@@ -11,9 +13,8 @@ const openUserProfileModal = () => {
 const appContextStore = useAppContextStore();
 const toast = useToast();
 
+const loggedInUserInfo = ref<UserBasicInfo|null>(null);
 const userProfileImageBase64 = ref<string>("");
-const userFirstName = ref<string>("");
-const userLastName = ref<string>("");
 const imageData = ref<string>(""); 
 
 const convertFromBase64 = (imageDataBase64: string) => {
@@ -47,11 +48,21 @@ const displayImage = async (imageDataBase64: string) => {
     }
 }
 
+const getUserInfo = (userId: string) => {
+    if (!loggedInUserInfo.value) {
+        UserService.getUserById(userId).then((response) => {
+            loggedInUserInfo.value = response.data;
+            if (loggedInUserInfo.value) {
+                userProfileImageBase64.value = loggedInUserInfo.value.user.userProfileImageBase64;
+            }
+        });
+    }
+    return loggedInUserInfo.value;
+}
+
 onMounted(() => {
     if (appContextStore.loggedInUser) {
-        userFirstName.value = appContextStore.loggedInUser.userFirstname || "";
-        userLastName.value = appContextStore.loggedInUser.userLastname || "";
-        userProfileImageBase64.value = appContextStore.loggedInUser.userProfileImageBase64 || "";
+        getUserInfo(appContextStore.loggedInUser.userId);
     }
 });
 
@@ -68,7 +79,7 @@ watch(userProfileImageBase64, (newValue) =>{
         <img v-if="userProfileImageBase64" class="navbar-userprofile-image" id="navbarUserProfileImage" alt="User profile image" @click="openUserProfileModal">
         <img v-else src="@/assets/media/png/placeholderImage300x300.png" class="navbar-userprofile-image" id="navbarUserProfileImage" alt="placeholder for image" @click="openUserProfileModal">
     </div>
-<UserProfileModal :user-firstname="userFirstName" :user-lastname="userLastName" :user-id="appContextStore.loggedInUser?.userId" :user-profile-image-base64="userProfileImageBase64" />
+<UserProfileModal :user-info="loggedInUserInfo!" />
 </template>
 
 <style lang="scss" scoped>

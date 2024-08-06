@@ -32,7 +32,10 @@ namespace RestApiServer.Services.Categories
                 TotalThreads = topic.Threads.Count,
                 NumTotalThreads = topic.Threads.Count,
                 TotalPosts = topic.Threads.Sum(t => t.Posts.Count),
-                CreatedByUser = new UserBasicInfo(topic.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())
+                CreatedByUser = new UserBasicInfo()
+                {
+                    User = topic.CreatedByUser ?? throw new Exception("Topic creator not found")
+                }
             };
 
             return topicFullInfo ?? throw new Exception("Topic not found");
@@ -119,7 +122,10 @@ namespace RestApiServer.Services.Categories
                 TotalThreads = topic.Threads.Count,
                 NumTotalThreads = topic.Threads.Count,
                 TotalPosts = topic.Threads.Sum(t => t.Posts.Count),
-                CreatedByUser = new UserBasicInfo(topic.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())
+                CreatedByUser = new UserBasicInfo()
+                {
+                    User = topic.CreatedByUser ?? throw new Exception("Topic creator not found")
+                }
             };
             return res;
         }
@@ -130,14 +136,14 @@ namespace RestApiServer.Services.Categories
             var threads = (from t in db.Threads
                             where t.TopicId == topicId
                             join u in db.Users on t.CreatedByUserId equals u.UserId
-                            select new ThreadEntry()
+                            select new ThreadBasicInfo()
                             {
-                                CreatedByUser = new UserBasicInfo(u),
-                                ThreadId = t.ThreadId,
-                                TopicId = t.TopicId,
-                                ThreadName = t.ThreadName,
-                                CreatedDate = t.CreatedDate,
-                                CreatedByUserId = t.CreatedByUserId
+                                Thread = t,
+                                CreatedByUser = new UserBasicInfo()
+                                {
+                                    User = u
+                                },
+                                TotalPosts = t.Posts.Count
                             })
                             .AsEnumerable();
             var filteredThreads = threads;
@@ -145,10 +151,10 @@ namespace RestApiServer.Services.Categories
             {
                 searchTerm = searchTerm.ToLower();
                 filteredThreads = (from t in filteredThreads 
-                                where t.ThreadName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                || t.CreatedByUser.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                || t.CreatedByUser.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                || t.CreatedByUser!.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                where t.Thread.ThreadName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || t.CreatedByUser.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || t.CreatedByUser.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                || t.CreatedByUser!.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                   select t);
             }
             var filteredTotal = filteredThreads.Count();
@@ -157,12 +163,7 @@ namespace RestApiServer.Services.Categories
             var threadRows = new List<ThreadBasicInfo>();
             foreach (var thread in pageRows)
             {
-                threadRows.Add(new ThreadBasicInfo() 
-                {
-                    Thread = thread,
-                    TotalPosts = thread.Posts.Count,
-                    CreatedByUser = new UserBasicInfo(thread.CreatedByUser ?? UserEntry.CreateDefaultGuestUser())
-                });
+                threadRows.Add(thread);
             }
             int totalPages = 1;
             if(filteredTotal > rowsPerPage)

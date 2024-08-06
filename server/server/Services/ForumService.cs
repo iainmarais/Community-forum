@@ -27,14 +27,17 @@ namespace RestApiServer.Services
             forumStats.TotalThreads = await _dbContext.Threads.CountAsync();
             forumStats.MostActiveUsers = await _dbContext.Users
                 .Where(u => u.TotalPosts >= 500)
-                .Select(u => new UserBasicInfo(u))
+                .Select(u => new UserBasicInfo()
+                {
+                    User = u,
+                })
                 .ToListAsync();
             forumStats.TotalTopics = await _dbContext.Topics.CountAsync();
             forumStats.PopularTopics = (await TopicService.GetPopularForumTopicsAsync()).Count;
 
             var user = await UserService.GetUserBasicInfoAsync(userId);
             var loggedInUserRoleName = await _dbContext.Roles
-                .Where(r => r.RoleId == user.RoleId)
+                .Where(r => r.RoleId == user.User.RoleId)
                 .Select(r => r.RoleName)
                 .FirstOrDefaultAsync();
 
@@ -43,11 +46,11 @@ namespace RestApiServer.Services
                 ForumStats = forumStats,
                 LoggedInUser = new LoggedInUserInfo
                 {
-                    UserId = user.UserId ?? "",
-                    UserFirstname = user.UserFirstname ?? "",
-                    UserLastname = user.UserLastname ?? "",
+                    UserId = user.User.UserId ?? "",
+                    UserFirstname = user.User.UserFirstname ?? "",
+                    UserLastname = user.User.UserLastname ?? "",
                     RoleName = loggedInUserRoleName ?? "",
-                    UserProfileImageBase64 = user.UserProfileImageBase64 ?? ""
+                    UserProfileImageBase64 = user.User.UserProfileImageBase64 ?? ""
                 }
             };
 
@@ -63,7 +66,10 @@ namespace RestApiServer.Services
             forumStats.TotalThreads = await _dbContext.Threads.CountAsync();
             forumStats.MostActiveUsers = await _dbContext.Users
                 .Where(u => u.TotalPosts >= 500)
-                .Select(u => new UserBasicInfo(u))
+                .Select(u => new UserBasicInfo()
+                {
+                    User = u,
+                })
                 .ToListAsync();
             forumStats.TotalTopics = await _dbContext.Topics.CountAsync();
             forumStats.PopularTopics = (await TopicService.GetPopularForumTopicsAsync()).Count;
