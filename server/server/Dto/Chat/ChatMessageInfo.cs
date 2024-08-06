@@ -7,4 +7,11 @@ namespace RestApiServer.Dto.App
     {
         public required ChatMessageEntry Message { get; set; } = null!;
     }
+
+    public class ChatMessageFullInfo
+    {
+        public required ChatMessageEntry Message { get; set; } = null!;
+        public required UserBasicInfo Sender { get; set; } //This is the user who sent the message
+        public required UserBasicInfo Recipient { get; set; }
+    }
 }
