@@ -1,5 +1,7 @@
 export type ContactEntry = {
     contactId: string;
+    userId: string;
+    createdByUserId: string;
     contactName: string;
     contactEmailAddress: string;
     aboutMessage: string;
