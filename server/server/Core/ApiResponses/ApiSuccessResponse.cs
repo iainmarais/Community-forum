@@ -42,6 +42,11 @@ namespace RestApiServer.Core.ApiResponses
         {
             return new ApiSuccessResponse<object>(message, null, null);
         }
+
+        public static ApiSuccessResponse<object> WithMessage(string message)
+        {
+            return new ApiSuccessResponse<object>(message, null, null);
+        }
     }
 
     //Pagination support

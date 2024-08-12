@@ -1,13 +1,12 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.IdentityModel.JsonWebTokens;
 using System.Text;
 using RestApiServer.Core.Config;
 using RestApiServer.Core.Security;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Core.Errorhandler;
 using RestApiServer.Utils;
-using RestApiServer.Db;
+using RestApiServer.Hubs;
 
 
 namespace RestApiServer
@@ -31,6 +30,7 @@ namespace RestApiServer
             });
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddSignalR();
 
             builder.Services.AddAuthentication(options=> 
             {
@@ -97,6 +97,7 @@ namespace RestApiServer
             app.UseRouting();
 
             app.MapControllers();
+            app.MapHub<ChatServiceHub>("/v1/chat");
             
             app.Use(async (context, next) =>
             {
