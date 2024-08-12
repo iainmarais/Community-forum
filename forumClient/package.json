@@ -23,6 +23,7 @@
     "vue-router": "^4.4.0"
   },
   "devDependencies": {
+    "@microsoft/signalr": "^8.0.7",
     "@types/bootstrap": "^5.2.10",
     "@types/jquery": "^3.5.30",
     "@types/node": "^20.1.0",
@@ -37,6 +38,7 @@
     "popper": "^1.0.1",
     "sass": "^1.77.8",
     "sass-loader": "^14.2.1",
+    "signalr": "^2.4.3",
     "smoothscroll": "^0.4.0",
     "sweetalert2": "^11.6.13",
     "typescript": "^5.5.2",

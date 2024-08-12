@@ -97,7 +97,8 @@ namespace RestApiServer
             app.UseRouting();
 
             app.MapControllers();
-            app.MapHub<ChatServiceHub>("/v1/chat");
+            app.MapHub<ChatServiceHub>("/v1/hubs/chat");
+            app.MapHub<ForumServiceHub>("/v1/hubs/forumstats");
             
             app.Use(async (context, next) =>
             {

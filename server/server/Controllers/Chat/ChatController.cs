@@ -2,9 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using RestApiServer.Core.ApiResponses;
-using RestApiServer.Dto.App;
 using RestApiServer.Dto.Chat;
-using RestApiServer.Dto.Forum;
 using RestApiServer.Hubs;
 using RestApiServer.Services;
 using RestApiServer.Utils;
@@ -30,7 +28,7 @@ namespace RestApiServer.Controllers
             //Send the full request to the service.
             var message = await ChatService.SendMessageAsync(chatId, user.UserId, request);
 
-            await _ChatHub.Clients.Group(chatId).SendAsync("ReceiveMessage", chatId, user.UserId, request.Message);
+            await _ChatHub.Clients.Group(chatId).SendAsync("ReceiveMessage", chatId, user.UserId, message);
 
             return ApiSuccessResponses.WithMessage("Message Sent");
         }

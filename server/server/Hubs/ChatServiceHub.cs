@@ -11,7 +11,12 @@ namespace RestApiServer.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            string chatId = Context.GetHttpContext().Request.Query["chatId"];
+            var context = Context.GetHttpContext();
+            if(context == null || context.Request.Query.ContainsKey("chatId") == false)
+            {
+                return;
+            }
+            string chatId = context.Request.Query["chatId"]!;
             await Groups.AddToGroupAsync(Context.ConnectionId, chatId);
 
             await base.OnConnectedAsync();
@@ -19,7 +24,12 @@ namespace RestApiServer.Hubs
 
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
-            string chatId = Context.GetHttpContext().Request.Query["chatId"];
+            var context = Context.GetHttpContext();
+            if(context == null || context.Request.Query.ContainsKey("chatId") == false)
+            {
+                return;
+            }
+            string chatId = context.Request.Query["chatId"]!;
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, chatId);
          
             await base.OnDisconnectedAsync(exception);

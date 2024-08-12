@@ -17,14 +17,24 @@ onMounted(() => {
 })
 
 watch(() => forumStatsStore.forumStats, (newStats) => {
-    if (newStats == null) return;
-    totalTopics.value = newStats.totalTopics ?? 0;
-    totalThreads.value = newStats.totalThreads ?? 0;;
-    totalPosts.value = newStats.totalPosts ?? 0;;
-    totalUsers.value = newStats.totalUsers ?? 0;;
-    mostActiveUsers.value = newStats.mostActiveUsers ?? [];
-    popularTopics.value = newStats.popularTopics ?? 0;;
+    if(newStats) {
+        totalTopics.value = newStats.totalTopics;
+        totalThreads.value = newStats.totalThreads;
+        totalPosts.value = newStats.totalPosts;
+        totalUsers.value = newStats.totalUsers;
+        mostActiveUsers.value = newStats.mostActiveUsers;
+        popularTopics.value = newStats.popularTopics;
+    }
 });
+
+watch (() => forumStatsStore.forumStats, (oldStats, newStats) => {
+    if(newStats !== oldStats) {
+        forumStatsStore.updateForumStats();
+    }
+})
+
+
+
 </script>
 
 <template>
