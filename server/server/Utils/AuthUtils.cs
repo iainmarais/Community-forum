@@ -29,47 +29,61 @@ namespace RestApiServer.Utils
 
         //Forum user context - currently in use.
 
-        public static ForumUserContext GetForumUserContext(ClaimsPrincipal context)
+        public static ForumUserContext GetForumUserContext(ClaimsPrincipal? context)
         {
-            var claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
-            var claim_User_ForumUserId = context.Claims.Where(c => c.Type == Claim_User_ForumUserId).SingleOrDefault().Value;
-            if(claim_UserId == null)
+            if(context == null)
             {
-                throw new Exception("User id not found in claims");
+                throw new Exception("Context is null");
             }
-
-            if(claim_User_ForumUserId == null)
+            else
             {
-                throw new Exception("Forum user id not found in claims");
+                var claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
+                var claim_User_ForumUserId = context.Claims.Where(c => c.Type == Claim_User_ForumUserId).SingleOrDefault().Value;
+                if(claim_UserId == null)
+                {
+                    throw new Exception("User id not found in claims");
+                }
+
+                if(claim_User_ForumUserId == null)
+                {
+                    throw new Exception("Forum user id not found in claims");
+                }
+
+                return new ForumUserContext
+                {
+                    UserId = claim_UserId,
+                    ForumUserId = claim_User_ForumUserId
+                };
             }
-
-            return new ForumUserContext
-            {
-                UserId = claim_UserId,
-                ForumUserId = claim_User_ForumUserId
-            };
         }
 
         //Admin user context
-        public static AdminUserContext GetAdminUserContext(ClaimsPrincipal context)
+        public static AdminUserContext GetAdminUserContext(ClaimsPrincipal? context)
         {
-            var claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
-            var claim_User_AdminUserId = context.Claims.Where(c => c.Type == Claim_User_AdminUserId).SingleOrDefault().Value;
-
-            if(claim_UserId == null)
+            if(context == null)
             {
-                throw new Exception("User id not found in claims");
+                throw new Exception("Context is null");
             }
+            else
+            {
+                var claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
+                var claim_User_AdminUserId = context.Claims.Where(c => c.Type == Claim_User_AdminUserId).SingleOrDefault().Value;
 
-            if(claim_User_AdminUserId == null)
-            {
-                throw new Exception("Admin user id not found in claims");
+                if(claim_UserId == null)
+                {
+                    throw new Exception("User id not found in claims");
+                }
+
+                if(claim_User_AdminUserId == null)
+                {
+                    throw new Exception("Admin user id not found in claims");
+                }
+                return new AdminUserContext
+                {
+                    UserId = claim_UserId,
+                    AdminUserId = claim_User_AdminUserId
+                };
             }
-            return new AdminUserContext
-            {
-                UserId = claim_UserId,
-                AdminUserId = claim_User_AdminUserId
-            };
         }
         public static string GenerateSalt()
         {

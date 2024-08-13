@@ -1,56 +1,68 @@
-import type { UserBasicInfo } from "@/Dto/UserInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
-import UserService from "@/services/UserService";
 import * as signalR from "@microsoft/signalr";
+import SignalRService from "@/services/SignalRService";
 
-//Get the user's info from the server using an API call.
-const getUserInfo = async (userId: string): Promise<UserBasicInfo> => {
-    try {
-        const response = await UserService.getUserById(userId);
-        return response.data;
-    } catch (err) {
-        ErrorHandler.handleApiErrorResponse(err);
-        return {} as UserBasicInfo; // Return an empty object if there's an error
-    }
-};
+export type ConnectionRequest = {
+    protocol: string,
+    version: number,
+    type: number,
+    target: string,
+    arguments: string[],
+}
+//Urls used by the server:
+const signalRV1HttpBaseUrl = `${ConfigurationLoader.getConfig().apiV1.baseUrl}/hubs`;
+const signalRV1WssBaseUrl = `${ConfigurationLoader.getConfig().signalRV1.baseUrl}/hubs`;
 
-type connectionParam = {
-    name: string,
-    value: string,
+interface SignalRConnectionOptions {
+    hubName: string;
+    methodName: string;
+    onReceiveMessage: (messageType: string, ...args: any[]) => void;
+    userId?: string;
 }
 
-//The idea is to be able to instance the connection with different parameters, eg for chat and forum stats.
-//This also means the hub name will be different. 
-//Currently only chat is available.
 
-export const createSignalRConnection = (
-    hubName: string,
-    connectionParams: connectionParam[]
-) => {
-    const paramString = connectionParams
-        .map((param) => `${encodeURIComponent(param.name)}=${encodeURIComponent(param.value)}`)
-        .join("&");
+const negotiateConnection = async (hubName: string) => {
+    const negotiationResponse = await SignalRService.postNegotiate(1, hubName);
+    return negotiationResponse.data;
+}
 
-    const url = `${ConfigurationLoader.getConfig().apiV1.baseUrl}/hubs/${hubName}?${paramString}`;
+const createSignalRConnection = async ({hubName, methodName, onReceiveMessage, userId} : SignalRConnectionOptions): Promise<signalR.HubConnection> => {
 
-    const conn = new signalR.HubConnectionBuilder()
-        .withUrl(url)
-        .build();
+    const connection = new signalR.HubConnectionBuilder()
+    .withUrl(`${signalRV1WssBaseUrl}/${hubName}?userId=${userId}`,{
+        transport: signalR.HttpTransportType.WebSockets,
+        skipNegotiation: true,
+    })
+    .withAutomaticReconnect()
+    .configureLogging(signalR.LogLevel.Information)
+    .build();
 
-    conn.on("ReceiveMessage", async (userId:string, message:string) => {
-        try {
-            const user = await getUserInfo(userId);
-            console.log(user);
-            console.log(message);
-        } catch (err) {
-           ErrorHandler.handleApiErrorResponse(err); 
-        }
+    //Connection handlers for receiving messages:
+    connection.on(methodName, async (messageType: string, ...args: any[]) => {
+       await onReceiveMessage(messageType, ...args);
     });
 
-    conn.start()
-        .then(() => console.log(`Connection to hub ${hubName} started`))
-        .catch((err) => ErrorHandler.handleApiErrorResponse(err));
+    connection.onclose(error => {
+        if(error) {
+            ErrorHandler.handleApiErrorResponse(error);
+        }
+        console.warn(`Connection to hub ${hubName} closed.`);
+    });
 
-    return conn;
+    try {
+        await connection.start();
+        console.log(`Connection to hub ${hubName} established`);
+    }
+    catch (error) {
+        ErrorHandler.handleApiErrorResponse(error);
+        throw new Error(`Connection to hub ${hubName} failed. Please try again later.`);
+    }
+
+    return connection;
+}
+
+export default {
+    createSignalRConnection,
+    negotiateConnection
 };

@@ -9,16 +9,10 @@ namespace RestApiServer.Services
 {
     public class ForumService
     {
-        private readonly AppDbContext _dbContext;
-
-        public ForumService()
-        {
-            _dbContext = new AppDbContext();
-        }
-
-        public async Task<ForumAppState> GetForumAppStateAsync(string userId)
+        public static async Task<ForumAppState> GetForumAppStateAsync(string userId)
         {
             // Initialize forumStats
+            using var _dbContext = new AppDbContext();
             var forumStats = new ForumStats();
 
             // Retrieve data using a single DbContext instance
@@ -57,8 +51,9 @@ namespace RestApiServer.Services
             return res;
         }
 
-        public async Task<ForumAppState> GetForumPublicAppStateAsync()
+        public static async Task<ForumAppState> GetForumPublicAppStateAsync()
         {
+            using var _dbContext = new AppDbContext();
             var forumStats = new ForumStats();
 
             forumStats.TotalPosts = await _dbContext.Posts.CountAsync();

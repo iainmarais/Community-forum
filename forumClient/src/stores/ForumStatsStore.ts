@@ -1,15 +1,19 @@
-import type { ForumStats, LoggedInUserInfo } from "@/Dto/app/ForumAppState";
+import type { ForumAppState, ForumStats, LoggedInUserInfo } from "@/Dto/app/ForumAppState";
 import ErrorHandler from "@/Handlers/ErrorHandler";
-import { createSignalRConnection } from "@/http/SignalRConnection";
+import createSignalRConnection, { type ConnectionRequest } from "@/http/SignalRConnection";
 import ForumService from "@/services/ForumService";
 import { defineStore } from "pinia";
+import { useSignalRConnectionStore } from "./SignalRConnectionStore";
 
 type ForumStatsStoreState = {
     loading_getForumStats: boolean,
     result_getForumStatsSuccess: boolean,
     forumStats: ForumStats,
-    loggedInUser: LoggedInUserInfo | null
+    loggedInUser: LoggedInUserInfo | null,
 }
+
+const signalRConnectionStore = useSignalRConnectionStore();
+const forumStatsConnection = signalRConnectionStore.signalRConnection;
 
 const defaultState: ForumStatsStoreState = {
     loading_getForumStats: false,
@@ -22,9 +26,8 @@ const defaultState: ForumStatsStoreState = {
         mostActiveUsers: [],
         popularTopics: 0
     },
-    loggedInUser: {} as LoggedInUserInfo
+    loggedInUser: {} as LoggedInUserInfo,
 }
-
 
 export const useForumStatsStore = defineStore({
     id: "ForumStatsStore",
@@ -44,18 +47,14 @@ export const useForumStatsStore = defineStore({
                 this.loading_getForumStats = false;
             });
         },
+        connectToForumStatsHub() {
+            signalRConnectionStore.connectToHub("forumstats", "GetForumStats", (messageType, ...args) => {this.handleSignalRMessage(messageType, ...args)} ,this.loggedInUser?.userId);
+        },
         updateForumStats() {
-            //Use signalR to update the forum stats. This can be triggered by a watcher on the vue component.
-            const forumStatsConn = createSignalRConnection("forumStats", []);
-            forumStatsConn.on("GetForumStats", (userId: string, updatedForumStats: ForumStats) => {
-                userId = this.loggedInUser!.userId;
-                this.forumStats = updatedForumStats;
-                this.result_getForumStatsSuccess = true;
-                console.log("Updated forum stats");
-            });
-            forumStatsConn.start()
-                .then(() => console.log("Connection to forum stats hub started"))
-                .catch((err) => ErrorHandler.handleApiErrorResponse(err));
+            signalRConnectionStore.sendMessage("GetForumStats", [this.loggedInUser?.userId]);
+        },
+        handleSignalRMessage (messageType: string, ...args: string[]) {
+            console.log(`Handling message of type ${messageType}, with args:`, args)
         }
     }
 });

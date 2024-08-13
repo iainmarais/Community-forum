@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
+using RestApiServer.Dto.App;
+using RestApiServer.Services;
 
 namespace RestApiServer.Hubs
 {
@@ -6,7 +8,10 @@ namespace RestApiServer.Hubs
     {
         public async Task GetForumStats(string userId)
         {
+            var forumStats = await GetForumStatsForUser(userId);
             await Clients.Caller.SendAsync("GetForumStats", userId);
+
+            await Clients.Caller.SendAsync("UpdateForumStats", forumStats);
         }
         public override async Task OnConnectedAsync()
         {
@@ -38,6 +43,12 @@ namespace RestApiServer.Hubs
 
             await Clients.Caller.SendAsync("GetForumStats", userId);
             await base.OnDisconnectedAsync(exception);
+        }
+
+        private async Task<ForumStats> GetForumStatsForUser(string userId)
+        {
+            var res = await ForumService.GetForumAppStateAsync(userId);
+            return res.ForumStats;
         }
     }
 }

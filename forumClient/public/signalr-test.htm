@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalR Test</title>
+    <script src="signalr.min.js"></script>
+</head>
+<body>
+    <h1>SignalR Hub Test</h1>
+    <button id="connectBtn">Connect to Hub</button>
+    <button id="sendBtn">Send Message</button>
+    <div id="messages"></div>
+
+    <script>
+        const connectButton = document.getElementById("connectBtn");
+        const sendButton = document.getElementById("sendBtn");
+        const messagesDiv = document.getElementById("messages");
+
+        // Replace with your actual SignalR hub URL
+        const hubUrl = "https://localhost:5051/v1/hubs/forumStats";
+
+        let connection = new signalR.HubConnectionBuilder()
+            .withUrl(hubUrl)
+            .withAutomaticReconnect()
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        connection.on("ReceiveMessage", (message) => {
+            const msgDiv = document.createElement("div");
+            msgDiv.textContent = `Received: ${message}`;
+            messagesDiv.appendChild(msgDiv);
+        });
+
+        connectButton.addEventListener("click", async () => {
+            try {
+                await connection.start();
+                console.log("Connected to SignalR hub");
+            } catch (error) {
+                console.error("Error connecting to hub:", error);
+            }
+        });
+
+        sendButton.addEventListener("click", async () => {
+            try {
+                const userId = "25189fcf-f222-4320-9ccd-e450e13fdea2"; // Example user ID
+                await connection.invoke("GetForumStats", userId);
+                console.log("Message sent to hub");
+            } catch (error) {
+                console.error("Error sending message:", error);
+            }
+        });
+    </script>
+</body>
+</html>

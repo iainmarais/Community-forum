@@ -25,11 +25,10 @@ namespace RestApiServer.Controllers
         public async Task<ApiSuccessResponse<ForumAppState>> GetAppState()
         {
             var user = AuthUtils.GetForumUserContext(User);
-            var svc = new ForumService();
-            var res = await svc.GetForumAppStateAsync(user.UserId);
+            var res = await ForumService.GetForumAppStateAsync(user.UserId);
 
             //Send the full app state to the client using SignalR.
-            await _ForumServiceHub.Clients.Group(user.UserId).SendAsync("GetForumState", user.UserId, res);
+            await _ForumServiceHub.Clients.Group(user.UserId).SendAsync("GetForumStats", user.UserId, res);
 
             return ApiSuccessResponses.WithData("Get forum state successful", res);
         }
@@ -37,8 +36,7 @@ namespace RestApiServer.Controllers
         [HttpGet("public/state")]
         public async Task<ApiSuccessResponse<ForumAppState>> GetPublicAppState()
         {
-            var svc = new ForumService();
-            var res = await svc.GetForumPublicAppStateAsync();
+            var res = await ForumService.GetForumPublicAppStateAsync();
             return ApiSuccessResponses.WithData("Get forum state successful", res);
         }
 

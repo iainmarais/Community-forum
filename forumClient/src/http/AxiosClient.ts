@@ -4,6 +4,11 @@ import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
 import router, { HomeRoute, LoginRoute, NotFoundRoute } from '@/router';
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import { useToast } from "vue-toastification";
+import type { SignalRConnectionResponse } from "@/Dto/SignalRConnectionResponse";
+
+interface RequestHeaders {
+    [key: string]: string,
+}
 
 const instance = axios.create({
     timeout: 10000
@@ -69,6 +74,14 @@ const Post = async <T>(url: string, data: any) : Promise<ApiSuccessResponse<T>> 
     return response.data as ApiSuccessResponse<T>;
 }
 
+const PostNegotiate = async <T>(url: string, data: any, requestHeaders?: RequestHeaders) : Promise<ApiSuccessResponse<T>> => {
+    const response = await instance.post(url, data, { headers: {...instance.defaults.headers.common, ...requestHeaders} });
+    return {
+        data: response.data,
+        message: "Negotiation successful"
+    } as ApiSuccessResponse<T>;
+}
+
 const Delete = async <T>(url: string, data: any) : Promise<ApiSuccessResponse<T>> => {
     const response = await instance.delete(url, data);
     return response.data as ApiSuccessResponse<T>;
@@ -94,6 +107,7 @@ export default {
     Get,
     Put,
     Post,
+    PostNegotiate,
     Delete,
     Post_WithBlobResponse,
     Get_WithBlobResponse,

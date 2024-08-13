@@ -3,7 +3,7 @@ import type { UserBasicInfo } from '@/Dto/UserInfo';
 import { useForumStatsStore } from '@/stores/ForumStatsStore';
 import { onMounted, ref, watch} from 'vue';
 
-const forumStatsStore = useForumStatsStore();
+const forumStatsStore = useForumStatsStore(); 
 
 const totalTopics = ref<number>();
 const totalThreads = ref<number>();
@@ -14,6 +14,7 @@ const popularTopics = ref<number>();
 
 onMounted(() => {
     forumStatsStore.getForumStats();
+    forumStatsStore.connectToForumStatsHub();
 })
 
 watch(() => forumStatsStore.forumStats, (newStats) => {
@@ -27,13 +28,9 @@ watch(() => forumStatsStore.forumStats, (newStats) => {
     }
 });
 
-watch (() => forumStatsStore.forumStats, (oldStats, newStats) => {
-    if(newStats !== oldStats) {
+watch(() => forumStatsStore.handleSignalRMessage, (newMessage) => {
         forumStatsStore.updateForumStats();
-    }
 })
-
-
 
 </script>
 
