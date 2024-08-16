@@ -7,8 +7,17 @@ namespace RestApiServer.Hubs
 {
     public class ForumServiceHub : Hub
     {
-        public async Task GetForumStats(string userId)
+        private readonly SignalRMessageProcessor _MessageProcessor;
+
+        public ForumServiceHub()
         {
+            _MessageProcessor = new SignalRMessageProcessor();
+
+            _MessageProcessor.RegisterHandler("GetForumStats", GetForumStats);
+        }
+
+        public async Task GetForumStats(string userId,  List<string>? args)
+        {   
             var forumStats = await GetForumStatsForUser(userId);
             await Clients.Caller.SendAsync("GetForumStats", userId);
 
@@ -52,40 +61,10 @@ namespace RestApiServer.Hubs
             return res.ForumStats;
         }
 
+        //Can this not be turned into a standalone module?
         public async Task ProcessIncomingMessage(string jsonString)
         {
-            try
-            {
-                var messages = JsonSerializer.Deserialize<List<SignalRMessage>>(jsonString);
-                if(messages != null && messages.Any())
-                {
-                    foreach(var message in messages)
-                    {
-                        if(message.Target == "GetForumStats")
-                        {
-                            await GetForumStats(message.Arguments[0]);
-                        }
-                    }
-                }
-            }
-            catch(JsonException ex)
-            {
-                Console.WriteLine($"Deserialisation of the incoming arg string failed.\n{ex.Message}");
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine($"Could not process incoming string.\n{ex.Message}");
-            }
+            await _MessageProcessor.ProcessIncomingMessage(jsonString);
         }
-    }
-
-    public class SignalRMessage
-    {
-        public string Protocol { get; set; } = "";
-        public int Version { get; set; }
-        public int Type  { get; set; }
-        public string Target { get; set; } = "";
-        public string UserId { get; set; } = "";
-        public string[] Arguments { get; set; } = [];
     }
 }
