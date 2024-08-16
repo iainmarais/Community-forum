@@ -57,3 +57,7 @@ yarn.lock
 /server/server/obj
 /server/server/bin
 /server/server/obj
+/server/database/bin
+/server/database/obj
+/server/server/bin
+/server/server/obj
