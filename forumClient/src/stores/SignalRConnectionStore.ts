@@ -22,6 +22,13 @@ export const useSignalRConnectionStore = defineStore({
     state: () => (defaultState),
     getters: {},
     actions: {
+        async negotiateConnection(userId:string) {
+            //For now, execute the postNegotiate action on the helper library and log the outputs. The idea is to determine which method to use, preferably websockets.
+            var response = await SignalRConnection.negotiateConnection(userId);
+            if(response.data) {
+                console.log(`Available transports: ${response.data.availableTransports}`);
+            }
+        },
         async connectToHub(hubName: string, methodName: string, onReceiveMessage: (messageType: string, ...args: any[]) => void, userId?: string) {
             try {
                 const options = {
@@ -47,12 +54,13 @@ export const useSignalRConnectionStore = defineStore({
         onReceiveMessage(messageType: string, ...args: any[]) {
             this.messages.push(`Type: ${messageType}, Args: ${JSON.stringify(args)}`);
         },
-
         async sendMessage(methodName: string, ...args: any[]) {
             if(this.signalRConnection) {
                 try {
-                    await this.signalRConnection.invoke(methodName, ...args);
+                    //The args I need to push include the protocol, version, type and target, and the userId.
+                    await this.signalRConnection.invoke(methodName, JSON.stringify(args));
                 } catch (error) {
+                    console.log(error);
                     ErrorHandler.handleApiErrorResponse(error);
                 }
             }

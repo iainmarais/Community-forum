@@ -28,8 +28,10 @@ watch(() => forumStatsStore.forumStats, (newStats) => {
     }
 });
 
-watch(() => forumStatsStore.handleSignalRMessage, (newMessage) => {
+watch(() => forumStatsStore.forumStats, (newMessage) => {
+    if(newMessage) {
         forumStatsStore.updateForumStats();
+    }
 })
 
 </script>

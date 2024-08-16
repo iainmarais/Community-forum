@@ -10,6 +10,16 @@ type ForumStatsStoreState = {
     result_getForumStatsSuccess: boolean,
     forumStats: ForumStats,
     loggedInUser: LoggedInUserInfo | null,
+    args: SignalRMessage
+}
+
+type SignalRMessage = {
+    protocol: string,
+    version: number,
+    type: number,
+    target: string,
+    userId: string,
+    arguments: string[],
 }
 
 const signalRConnectionStore = useSignalRConnectionStore();
@@ -27,6 +37,7 @@ const defaultState: ForumStatsStoreState = {
         popularTopics: 0
     },
     loggedInUser: {} as LoggedInUserInfo,
+    args: {} as SignalRMessage
 }
 
 export const useForumStatsStore = defineStore({
@@ -51,7 +62,15 @@ export const useForumStatsStore = defineStore({
             signalRConnectionStore.connectToHub("forumstats", "GetForumStats", (messageType, ...args) => {this.handleSignalRMessage(messageType, ...args)} ,this.loggedInUser?.userId);
         },
         updateForumStats() {
-            signalRConnectionStore.sendMessage("GetForumStats", [this.loggedInUser?.userId]);
+            this.args = {
+                protocol: "json",
+                version: 1,
+                type: 1,
+                target: "GetForumStats",
+                userId: this.loggedInUser!.userId,
+                arguments: []
+            }
+            signalRConnectionStore.sendMessage("ProcessIncomingMessage", this.args);
         },
         handleSignalRMessage (messageType: string, ...args: string[]) {
             console.log(`Handling message of type ${messageType}, with args:`, args)

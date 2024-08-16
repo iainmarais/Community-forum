@@ -73,7 +73,7 @@ const login = () => {
         localStorage.setItem(Token_Key, response.data.accessToken);
         localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
         postLoginRoute();
-        Toast_UserLoginSuccessful(response.data.userProfile.username);
+        Toast_UserLoginSuccessful(response.data.userProfile.user.username);
     }, error => {
         ErrorHandler.handleApiErrorResponse(error);
         loading.value = false;

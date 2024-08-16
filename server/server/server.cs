@@ -7,6 +7,7 @@ using RestApiServer.Core.ApiResponses;
 using RestApiServer.Core.Errorhandler;
 using RestApiServer.Utils;
 using RestApiServer.Hubs;
+using Serilog;
 
 
 namespace RestApiServer
@@ -14,8 +15,18 @@ namespace RestApiServer
     public class Server
     {
         public static void StartServer(string[] args)
-        {
+        {   
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .WriteTo.Seq("http://localhost:5341")
+                .WriteTo.File("logs/server.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
             var builder = WebApplication.CreateBuilder(args);
+            builder.Host.UseSerilog();
+
             EncodingProvider encodingProvider = CodePagesEncodingProvider.Instance;
             Encoding.RegisterProvider(encodingProvider);
             ConfigurationLoader.LoadConfig();

@@ -286,6 +286,30 @@
               "target": "Package",
               "version": "[1.0.1, )"
             },
+            "serilog": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            },
+            "serilog.aspnetcore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "serilog.extensions.hosting": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "serilog.sinks.console": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "serilog.sinks.file": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "serilog.sinks.seq": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "swagger": {
               "target": "Package",
               "version": "[1.0.0, )"

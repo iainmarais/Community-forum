@@ -33,14 +33,14 @@ watch(() => router, _ => {
     mainPageStore.setBreadcrumbs([]);
 }, {flush: 'pre', immediate: true, deep: true });
 
+//Need to watch the app context store for the logged-in user
+//It should check to see if this value is not null or undefined before proceeding to the main page
+
 watch(() => appContextStore.loggedInUser, (newValue) => {
     if(newValue) {
-        router.push(MainRoute);
+        router.push({name: MainRoute});
     }
-    if(!newValue) {
-        router.push(LoginRoute);
-    }
-});
+}, {flush: 'pre', immediate: true, deep: true });
 
 
 
