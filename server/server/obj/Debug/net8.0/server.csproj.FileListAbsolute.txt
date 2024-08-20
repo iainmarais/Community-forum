@@ -115,7 +115,6 @@ C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8
 C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
 C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Microsoft.CodeAnalysis.Razor.dll
-C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
@@ -181,3 +180,14 @@ C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\obj\Debug\net8
 C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\obj\Debug\net8.0\server.pdb
 C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\obj\Debug\net8.0\server.genruntimeconfig.cache
 C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\obj\Debug\net8.0\ref\server.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Serilog.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Serilog.Sinks.File.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\Serilog.Sinks.Seq.dll
+C:\Users\Iain\vscode\CommunityForum\Community-forum\server\server\bin\Debug\net8.0\System.Text.Json.dll
