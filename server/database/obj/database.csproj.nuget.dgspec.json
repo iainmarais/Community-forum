@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\database\\database.csproj": {}
+    "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\database\\database.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\database\\database.csproj": {
+    "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\database\\database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\database\\database.csproj",
+        "projectUniqueName": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\database\\database.csproj",
         "projectName": "database",
-        "projectPath": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\database\\database.csproj",
+        "projectPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\database\\database.csproj",
         "packagesPath": "C:\\Users\\Iain\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\database\\obj\\",
+        "outputPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\database\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\Iain\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,15 +22,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\restapiserver\\RestApiServer.csproj": {
-                "projectPath": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\restapiserver\\RestApiServer.csproj"
+              "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\restapiserver\\RestApiServer.csproj": {
+                "projectPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\restapiserver\\RestApiServer.csproj"
               }
             }
           }
@@ -166,25 +161,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\restapiserver\\RestApiServer.csproj": {
+    "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\restapiserver\\RestApiServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\restapiserver\\RestApiServer.csproj",
+        "projectUniqueName": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\restapiserver\\RestApiServer.csproj",
         "projectName": "RestApiServer",
-        "projectPath": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\restapiserver\\RestApiServer.csproj",
+        "projectPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\restapiserver\\RestApiServer.csproj",
         "packagesPath": "C:\\Users\\Iain\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\restapiserver\\obj\\",
+        "outputPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\restapiserver\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\Iain\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -192,7 +183,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -258,6 +248,18 @@
               "target": "Package",
               "version": "[8.0.2, )"
             },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Serilog.Sinks.Seq": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "microsoft.aspnetcore": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -302,6 +304,10 @@
               "target": "Package",
               "version": "[1.0.1, )"
             },
+            "serilog": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
             "swagger": {
               "target": "Package",
               "version": "[1.0.0, )"
@@ -334,7 +340,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
