@@ -1,0 +1,990 @@
+2024-09-30 18:02:05.062 +02:00 [INF] Starting up... Please be patient.
+2024-09-30 18:02:06.649 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-30 18:02:06.796 +02:00 [ERR] Hosting failed to start
+System.InvalidOperationException: Unable to configure HTTPS endpoint. No server certificate was specified, and the default developer certificate could not be found or is out of date.
+To generate a developer certificate run 'dotnet dev-certs https'. To trust the certificate (Windows and macOS only) run 'dotnet dev-certs https --trust'.
+For more information on configuring HTTPS see https://go.microsoft.com/fwlink/?linkid=848054.
+   at Microsoft.AspNetCore.Hosting.ListenOptionsHttpsExtensions.UseHttps(ListenOptions listenOptions, Action`1 configureOptions)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2024-09-30 18:02:06.857 +02:00 [FTL] Server startup failed.
+System.InvalidOperationException: Unable to configure HTTPS endpoint. No server certificate was specified, and the default developer certificate could not be found or is out of date.
+To generate a developer certificate run 'dotnet dev-certs https'. To trust the certificate (Windows and macOS only) run 'dotnet dev-certs https --trust'.
+For more information on configuring HTTPS see https://go.microsoft.com/fwlink/?linkid=848054.
+   at Microsoft.AspNetCore.Hosting.ListenOptionsHttpsExtensions.UseHttps(ListenOptions listenOptions, Action`1 configureOptions)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\vscode\CommunityForum\Community-forum\server\restapiserver\server.cs:line 274
+2024-09-30 18:02:41.630 +02:00 [INF] Starting up... Please be patient.
+2024-09-30 18:02:42.631 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-30 18:02:42.754 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-09-30 18:02:42.811 +02:00 [INF] Now listening on: https://localhost:5051
+2024-09-30 18:02:42.819 +02:00 [INF] Now listening on: http://localhost:5050
+2024-09-30 18:02:42.821 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-30 18:02:42.822 +02:00 [INF] Hosting environment: Development
+2024-09-30 18:02:42.823 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-09-30 18:04:00.461 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 18:04:00.488 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:00.494 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 36.2661ms
+2024-09-30 18:04:00.514 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 18:04:00.516 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:00.977 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '15/08/2024 22:07:28 PM', Current time (UTC): '30/09/2024 16:04:00 PM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-09-30 18:04:01.017 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '15/08/2024 22:07:28 PM', Current time (UTC): '30/09/2024 16:04:00 PM'.
+2024-09-30 18:04:01.024 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-09-30 18:04:01.031 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-09-30 18:04:01.247 +02:00 [INF] GET 401 /v1/forum/state "00:00:00.3187415"ms  Unauthorized, body: 
+2024-09-30 18:04:01.261 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 401 null application/json; charset=utf-8 747.0476ms
+2024-09-30 18:04:07.565 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/login - null null
+2024-09-30 18:04:07.568 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:07.569 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/login - 204 null null 4.3243ms
+2024-09-30 18:04:07.572 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/login - application/json 47
+2024-09-30 18:04:07.578 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:07.588 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 18:04:07.609 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:04:09.759 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 2139.6497ms
+2024-09-30 18:04:09.762 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 18:04:10.032 +02:00 [INF] POST 500 /v1/users/login "00:00:02.3192915"ms  Something went wrong Unknown database 'communityforum' , body: {"userIdentifier":"iain","password":"C3r3$123"}
+2024-09-30 18:04:10.039 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 2467.8445ms
+2024-09-30 18:04:13.855 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/login - null null
+2024-09-30 18:04:13.858 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:13.860 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/login - 204 null null 4.6584ms
+2024-09-30 18:04:13.862 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/login - application/json 47
+2024-09-30 18:04:13.867 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:13.870 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 18:04:13.871 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:04:14.099 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 226.0457ms
+2024-09-30 18:04:14.101 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 18:04:14.318 +02:00 [INF] POST 500 /v1/users/login "00:00:00.3447611"ms  Something went wrong Unknown database 'communityforum' , body: {"userIdentifier":"iain","password":"C3r3$123"}
+2024-09-30 18:04:14.320 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 458.1898ms
+2024-09-30 18:04:22.026 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/login - null null
+2024-09-30 18:04:22.029 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:22.030 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/login - 204 null null 4.0058ms
+2024-09-30 18:04:22.032 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/login - application/json 47
+2024-09-30 18:04:22.036 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:22.037 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 18:04:22.038 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:04:22.302 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 259.3415ms
+2024-09-30 18:04:22.303 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 18:04:22.520 +02:00 [INF] POST 500 /v1/users/login "00:00:00.3763681"ms  Something went wrong Unknown database 'communityforum' , body: {"userIdentifier":"iain","password":"C3r3$123"}
+2024-09-30 18:04:22.523 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 490.5472ms
+2024-09-30 18:04:25.634 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 18:04:25.636 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:25.637 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 3.5144ms
+2024-09-30 18:04:25.639 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 18:04:25.643 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:25.646 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-09-30 18:04:25.650 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-09-30 18:04:25.668 +02:00 [INF] GET 401 /v1/forum/state "00:00:00.0065861"ms  Unauthorized, body: 
+2024-09-30 18:04:25.670 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 401 null application/json; charset=utf-8 31.445ms
+2024-09-30 18:04:30.815 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/login - null null
+2024-09-30 18:04:30.818 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:30.819 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/login - 204 null null 4.2337ms
+2024-09-30 18:04:30.821 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/login - application/json 47
+2024-09-30 18:04:30.823 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:04:30.827 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 18:04:30.828 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:04:31.066 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 230.1525ms
+2024-09-30 18:04:31.068 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 18:04:31.295 +02:00 [INF] POST 500 /v1/users/login "00:00:00.3545948"ms  Something went wrong Unknown database 'communityforum' , body: {"userIdentifier":"iain","password":"C3r3$123"}
+2024-09-30 18:04:31.297 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 476.6908ms
+2024-09-30 18:05:26.235 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/login - null null
+2024-09-30 18:05:26.245 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:05:26.246 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/login - 204 null null 10.8705ms
+2024-09-30 18:05:26.251 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/login - application/json 47
+2024-09-30 18:05:26.256 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:05:26.258 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 18:05:26.260 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:05:26.468 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 205.3455ms
+2024-09-30 18:05:26.469 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 18:05:26.681 +02:00 [INF] POST 500 /v1/users/login "00:00:00.3207349"ms  Something went wrong Unknown database 'communityforum' , body: {"userIdentifier":"Iain","password":"C3r3$123"}
+2024-09-30 18:05:26.684 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 432.8109ms
+2024-09-30 18:05:33.732 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 18:05:33.742 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:05:33.753 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 21.7725ms
+2024-09-30 18:05:33.767 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 18:05:33.777 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:05:33.780 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-09-30 18:05:33.782 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-09-30 18:05:33.803 +02:00 [INF] GET 401 /v1/forum/state "00:00:00.0043210"ms  Unauthorized, body: 
+2024-09-30 18:05:33.813 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 401 null application/json; charset=utf-8 45.5374ms
+2024-09-30 18:05:43.043 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:05:43.047 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:05:43.049 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:05:43.056 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:05:43.254 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 194.7686ms
+2024-09-30 18:05:43.256 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:05:43.478 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.3200053"ms  Something went wrong Unknown database 'communityforum' , body: 
+2024-09-30 18:05:43.481 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 437.1241ms
+2024-09-30 18:06:07.952 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:06:07.959 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:06:07.960 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:06:07.961 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:06:08.225 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 261.3968ms
+2024-09-30 18:06:08.226 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:06:08.475 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.3979231"ms  Something went wrong Unknown database 'communityforum' , body: 
+2024-09-30 18:06:08.477 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 525.5873ms
+2024-09-30 18:06:21.809 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/register - null null
+2024-09-30 18:06:21.811 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:06:21.813 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/register - 204 null null 3.4511ms
+2024-09-30 18:06:21.815 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:06:21.846 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:06:21.848 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:06:21.852 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:06:21.860 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:06:21.861 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:06:21.862 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:06:21.940 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:06:22.134 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 269.5419ms
+2024-09-30 18:06:22.135 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:06:22.355 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.3831539"ms  Something went wrong Unknown database 'communityforum' , body: 
+2024-09-30 18:06:22.357 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 504.9205ms
+2024-09-30 18:06:22.632 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 685.9153ms
+2024-09-30 18:06:22.634 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:06:22.880 +02:00 [INF] POST 500 /v1/users/register "00:00:00.9316438"ms  Something went wrong Unknown database 'communityforum' , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:06:22.885 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 1070.4031ms
+2024-09-30 18:09:49.947 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:09:49.968 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:09:49.969 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:09:49.970 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:09:50.383 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 407.2913ms
+2024-09-30 18:09:50.384 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:09:50.635 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.5482916"ms  Something went wrong Unknown database 'communityforum' , body: 
+2024-09-30 18:09:50.641 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 693.282ms
+2024-09-30 18:09:58.882 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/register - null null
+2024-09-30 18:09:58.884 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:09:58.887 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/register - 204 null null 4.6222ms
+2024-09-30 18:09:58.905 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:09:58.912 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:09:58.923 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:09:58.920 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:09:58.925 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:09:58.926 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:09:58.927 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:09:58.929 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:09:59.119 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 184.4131ms
+2024-09-30 18:09:59.122 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:09:59.308 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.2952960"ms  Something went wrong Unknown database 'communityforum' , body: 
+2024-09-30 18:09:59.437 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 525.108ms
+2024-09-30 18:09:59.435 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 497.6504ms
+2024-09-30 18:09:59.443 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:09:59.660 +02:00 [INF] POST 500 /v1/users/register "00:00:00.6398986"ms  Something went wrong Unknown database 'communityforum' , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:09:59.663 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 757.909ms
+2024-09-30 18:12:07.019 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:12:07.032 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:12:07.035 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:12:07.037 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:12:07.222 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 175.896ms
+2024-09-30 18:12:07.224 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:12:07.427 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.2868791"ms  Something went wrong Unknown database 'communityforum' , body: 
+2024-09-30 18:12:07.431 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 411.8719ms
+2024-09-30 18:43:18.344 +02:00 [INF] Starting up... Please be patient.
+2024-09-30 18:43:18.560 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer\server.cs:line 102
+2024-09-30 18:43:44.186 +02:00 [INF] Starting up... Please be patient.
+2024-09-30 18:43:44.432 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer\server.cs:line 102
+2024-09-30 18:44:18.257 +02:00 [INF] Starting up... Please be patient.
+2024-09-30 18:44:19.439 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-30 18:44:19.613 +02:00 [INF] Now listening on: https://localhost:5051
+2024-09-30 18:44:19.614 +02:00 [INF] Now listening on: http://localhost:5050
+2024-09-30 18:44:19.630 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-30 18:44:19.632 +02:00 [INF] Hosting environment: Development
+2024-09-30 18:44:19.633 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-09-30 18:44:28.295 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:44:28.549 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:44:28.744 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:44:28.781 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:44:30.551 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 1763.6618ms
+2024-09-30 18:44:30.557 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:44:30.853 +02:00 [INF] GET 500 /v1/users/undefined "00:00:02.1200172"ms  Something went wrong Sequence contains no elements. , body: 
+2024-09-30 18:44:30.863 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 2656.9103ms
+2024-09-30 18:44:43.967 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/register - null null
+2024-09-30 18:44:43.970 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:44:43.972 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/register - 204 null null 5.018ms
+2024-09-30 18:44:43.975 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:44:43.994 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:44:44.016 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:44:44.027 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:44:44.027 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:44:44.030 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:44:44.046 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:44:44.047 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:44:44.171 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 119.4862ms
+2024-09-30 18:44:44.173 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:44:44.312 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.2090606"ms  Something went wrong Sequence contains no elements. , body: 
+2024-09-30 18:44:44.315 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 288.0061ms
+2024-09-30 18:44:44.516 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 483.3251ms
+2024-09-30 18:44:44.523 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:44:44.689 +02:00 [INF] POST 500 /v1/users/register "00:00:00.5976077"ms  Something went wrong Sequence contains no elements , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:44:44.692 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 717.0694ms
+2024-09-30 18:45:42.816 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:45:42.820 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:45:42.823 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:45:42.824 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:45:43.079 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 252.4958ms
+2024-09-30 18:45:43.081 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:45:43.283 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.3782647"ms  Something went wrong Sequence contains no elements. , body: 
+2024-09-30 18:45:43.287 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 470.5496ms
+2024-09-30 18:46:04.990 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/register - null null
+2024-09-30 18:46:04.995 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:46:04.998 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/register - 204 null null 8.0955ms
+2024-09-30 18:46:05.041 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:46:05.041 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:46:05.044 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:46:05.045 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:46:05.047 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:46:05.047 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:46:05.050 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:46:05.051 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:46:05.291 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 237.1043ms
+2024-09-30 18:46:05.291 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 233.2523ms
+2024-09-30 18:46:05.292 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:46:05.294 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:46:05.467 +02:00 [INF] POST 500 /v1/users/register "00:00:00.3387126"ms  Something went wrong Sequence contains no elements , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:46:05.629 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.4994075"ms  Something went wrong Sequence contains no elements. , body: 
+2024-09-30 18:46:05.629 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 588.1893ms
+2024-09-30 18:46:05.633 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 591.8791ms
+2024-09-30 18:47:20.743 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:47:20.748 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:47:20.750 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:47:20.754 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:47:20.910 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 147.1352ms
+2024-09-30 18:47:20.911 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:47:21.094 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.2550080"ms  Something went wrong Sequence contains no elements. , body: 
+2024-09-30 18:47:21.097 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 353.5532ms
+2024-09-30 18:47:32.818 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/register - null null
+2024-09-30 18:47:32.820 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:47:32.824 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/register - 204 null null 6.5377ms
+2024-09-30 18:47:32.865 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:47:32.872 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:47:32.874 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:47:32.877 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:47:32.878 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:47:32.879 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:47:32.880 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:47:32.881 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:47:41.710 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 8826.0485ms
+2024-09-30 18:47:41.710 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 246.4963ms
+2024-09-30 18:47:41.711 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:47:41.713 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:47:41.877 +02:00 [INF] POST 500 /v1/users/register "00:00:08.9174789"ms  Something went wrong Sequence contains no elements , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:47:41.984 +02:00 [INF] GET 500 /v1/users/undefined "00:00:09.0495006"ms  Something went wrong Sequence contains no elements. , body: 
+2024-09-30 18:47:41.989 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 9116.9389ms
+2024-09-30 18:47:41.986 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 9120.5591ms
+2024-09-30 18:48:27.525 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:48:27.528 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:48:27.531 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:48:27.535 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:48:27.619 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 77.4063ms
+2024-09-30 18:48:27.621 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:48:27.660 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.1105301"ms  Something went wrong Sequence contains no elements. , body: 
+2024-09-30 18:48:27.671 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 145.7288ms
+2024-09-30 18:48:44.911 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/register - null null
+2024-09-30 18:48:44.912 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:48:44.914 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/register - 204 null null 3.8225ms
+2024-09-30 18:48:44.946 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:48:44.948 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 18:48:44.960 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:48:44.963 +02:00 [INF] CORS policy execution successful.
+2024-09-30 18:48:44.964 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:48:44.967 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:48:44.965 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:48:47.104 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:48:47.339 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 2369.3389ms
+2024-09-30 18:48:47.384 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:48:47.430 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 261.0667ms
+2024-09-30 18:48:47.587 +02:00 [INF] POST 500 /v1/users/register "00:00:02.5459836"ms  Something went wrong Sequence contains no elements , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:48:47.588 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 18:48:47.590 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 2643.8888ms
+2024-09-30 18:48:47.752 +02:00 [INF] GET 500 /v1/users/undefined "00:00:02.7056100"ms  Something went wrong Sequence contains no elements. , body: 
+2024-09-30 18:48:47.814 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 2865.3003ms
+2024-09-30 18:51:26.795 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:51:31.940 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:51:31.944 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:51:35.349 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 3399.3657ms
+2024-09-30 18:51:35.351 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:51:35.531 +02:00 [INF] POST 500 /v1/users/register "00:00:03.5026493"ms  Something went wrong Sequence contains no elements , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:51:35.535 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 8739.6837ms
+2024-09-30 18:52:11.077 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:52:11.080 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:52:11.082 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:52:22.515 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 11428.6638ms
+2024-09-30 18:52:22.516 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:52:22.628 +02:00 [INF] POST 500 /v1/users/register "00:00:11.4930159"ms  Something went wrong Sequence contains no elements , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:52:22.630 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 11552.8003ms
+2024-09-30 18:52:42.134 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:52:46.444 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:52:46.453 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:52:53.229 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 6766.6044ms
+2024-09-30 18:52:53.230 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:52:53.399 +02:00 [INF] POST 500 /v1/users/register "00:00:06.8714355"ms  Something went wrong Sequence contains no elements , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:52:53.401 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 11266.711ms
+2024-09-30 18:53:46.733 +02:00 [INF] Starting up... Please be patient.
+2024-09-30 18:53:47.758 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-30 18:53:47.940 +02:00 [INF] Now listening on: https://localhost:5051
+2024-09-30 18:53:47.941 +02:00 [INF] Now listening on: http://localhost:5050
+2024-09-30 18:53:47.944 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-30 18:53:47.945 +02:00 [INF] Hosting environment: Development
+2024-09-30 18:53:47.945 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-09-30 18:53:51.886 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:53:52.084 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:53:52.126 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:54:06.162 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 14016.655ms
+2024-09-30 18:54:06.167 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:54:06.482 +02:00 [INF] POST 500 /v1/users/register "00:00:14.4157896"ms  Something went wrong Sequence contains no elements , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:54:06.493 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 14607.3964ms
+2024-09-30 18:55:03.363 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:55:10.442 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:55:10.443 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:55:18.321 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 7876.4972ms
+2024-09-30 18:55:18.323 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:55:18.450 +02:00 [INF] POST 500 /v1/users/register "00:00:07.9516677"ms  Something went wrong Sequence contains no elements , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:55:18.454 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 15091.1534ms
+2024-09-30 18:55:58.552 +02:00 [INF] Starting up... Please be patient.
+2024-09-30 18:55:59.654 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-30 18:55:59.816 +02:00 [INF] Now listening on: https://localhost:5051
+2024-09-30 18:55:59.831 +02:00 [INF] Now listening on: http://localhost:5050
+2024-09-30 18:55:59.834 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-30 18:55:59.835 +02:00 [INF] Hosting environment: Development
+2024-09-30 18:55:59.836 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-09-30 18:56:10.464 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 18:56:10.641 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:56:10.674 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 18:56:46.638 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 35946.5403ms
+2024-09-30 18:56:46.642 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 18:56:46.946 +02:00 [INF] POST 500 /v1/users/register "00:00:36.2878310"ms  Something went wrong Sequence contains no elements , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 18:56:46.963 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 36499.8882ms
+2024-09-30 19:07:38.450 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 19:07:38.456 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:07:38.457 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:07:45.702 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 7244.5219ms
+2024-09-30 19:07:45.704 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:07:45.854 +02:00 [INF] POST 500 /v1/users/register "00:00:07.3288259"ms  Something went wrong Requested value 'Administrator' was not found. , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 19:07:45.857 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 7406.7566ms
+2024-09-30 19:36:49.866 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 19:36:49.871 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:36:49.872 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:37:09.939 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 20063.8396ms
+2024-09-30 19:37:09.941 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:37:10.120 +02:00 [INF] POST 500 /v1/users/register "00:00:20.1659311"ms  Something went wrong Requested value 'admin' was not found. , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 19:37:10.131 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 20264.2567ms
+2024-09-30 19:37:37.276 +02:00 [INF] Starting up... Please be patient.
+2024-09-30 19:37:38.358 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-30 19:37:38.565 +02:00 [INF] Now listening on: https://localhost:5051
+2024-09-30 19:37:38.575 +02:00 [INF] Now listening on: http://localhost:5050
+2024-09-30 19:37:38.579 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-30 19:37:38.580 +02:00 [INF] Hosting environment: Development
+2024-09-30 19:37:38.581 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-09-30 19:37:40.756 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 19:37:40.865 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:37:40.883 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:37:52.244 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 11355.8358ms
+2024-09-30 19:37:52.251 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:37:52.518 +02:00 [INF] POST 500 /v1/users/register "00:00:11.6435061"ms  Something went wrong Requested value 'admin' was not found. , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 19:37:52.525 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 11769.7115ms
+2024-09-30 19:37:54.099 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 19:37:54.104 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:37:54.105 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:38:22.850 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 28743.475ms
+2024-09-30 19:38:22.851 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:38:22.983 +02:00 [INF] POST 500 /v1/users/register "00:00:28.8196429"ms  Something went wrong Requested value 'admin' was not found. , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 19:38:22.986 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 28886.9693ms
+2024-09-30 19:39:21.788 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 19:39:21.801 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:39:21.802 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:39:39.919 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 18112.9006ms
+2024-09-30 19:39:39.920 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:39:40.084 +02:00 [INF] POST 500 /v1/users/register "00:00:18.2047101"ms  Something went wrong Input string was not in a correct format. Failure to parse near offset 15. Expected an ASCII digit. , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 19:39:40.088 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 18299.5548ms
+2024-09-30 19:40:14.031 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 19:40:14.034 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:40:14.035 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:40:16.333 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 2289.0457ms
+2024-09-30 19:40:16.335 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:40:16.513 +02:00 [INF] POST 500 /v1/users/register "00:00:02.3883621"ms  Something went wrong Input string was not in a correct format. Failure to parse near offset 15. Expected an ASCII digit. , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 19:40:16.516 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 2484.8823ms
+2024-09-30 19:40:59.817 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 19:40:59.825 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:40:59.827 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:41:02.805 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 2973.6029ms
+2024-09-30 19:41:02.807 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:41:02.962 +02:00 [INF] POST 500 /v1/users/register "00:00:03.0613001"ms  Something went wrong Input string was not in a correct format. Failure to parse near offset 15. Expected an ASCII digit. , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 19:41:02.966 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 3149.3972ms
+2024-09-30 19:41:15.208 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 19:41:15.210 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:41:15.211 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:41:26.121 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 10907.479ms
+2024-09-30 19:41:26.125 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:41:26.283 +02:00 [INF] POST 500 /v1/users/register "00:00:10.9973086"ms  Something went wrong Input string was not in a correct format. Failure to parse near offset 15. Expected an ASCII digit. , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 19:41:26.287 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 500 null application/json; charset=utf-8 11079.4986ms
+2024-09-30 19:41:45.415 +02:00 [INF] Starting up... Please be patient.
+2024-09-30 19:41:46.773 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-30 19:41:46.964 +02:00 [INF] Now listening on: https://localhost:5051
+2024-09-30 19:41:46.972 +02:00 [INF] Now listening on: http://localhost:5050
+2024-09-30 19:41:46.975 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-30 19:41:46.976 +02:00 [INF] Hosting environment: Development
+2024-09-30 19:41:46.977 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-09-30 19:41:50.811 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/register - application/json 107
+2024-09-30 19:41:50.922 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:41:50.941 +02:00 [INF] Route matched with {action = "RegisterUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] RegisterUser(RestApiServer.Dto.Login.UserRegistrationRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:42:01.723 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.UserBasicInfo, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:42:01.812 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RegisterUser (RestApiServer) in 10865.1579ms
+2024-09-30 19:42:01.816 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RegisterUser (RestApiServer)'
+2024-09-30 19:42:01.937 +02:00 [INF] POST 200 /v1/users/register "00:00:10.9686887"ms  , body: {"username":"iain","emailAddress":"iainmarais@gmail.com","password":"C3r3$123","retypePassword":"C3r3$123"}
+2024-09-30 19:42:01.947 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/register - 200 null application/json; charset=utf-8 11137.5944ms
+2024-09-30 19:42:35.767 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/login - null null
+2024-09-30 19:42:35.772 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:35.776 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/login - 204 null null 9.6261ms
+2024-09-30 19:42:35.781 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/login - application/json 47
+2024-09-30 19:42:35.783 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:35.788 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 19:42:35.793 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:42:36.580 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:42:36.591 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 795.049ms
+2024-09-30 19:42:36.592 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-09-30 19:42:36.699 +02:00 [INF] POST 200 /v1/users/login "00:00:00.8078991"ms  , body: {"userIdentifier":"iain","password":"C3r3$123"}
+2024-09-30 19:42:36.704 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 923.5207ms
+2024-09-30 19:42:36.757 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/undefined - null null
+2024-09-30 19:42:36.763 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:36.765 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/undefined - 204 null null 8.3743ms
+2024-09-30 19:42:36.772 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 19:42:36.779 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:37.057 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 19:42:37.062 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:42:37.197 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 132.529ms
+2024-09-30 19:42:37.199 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 19:42:37.298 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.5157799"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} Something went wrong Sequence contains no elements. , body: 
+2024-09-30 19:42:37.303 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 530.6831ms
+2024-09-30 19:42:38.772 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:42:38.775 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:38.777 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 4.1481ms
+2024-09-30 19:42:38.778 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:42:38.782 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:38.794 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:42:38.833 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:42:39.145 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:42:39.156 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 318.8453ms
+2024-09-30 19:42:39.158 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:42:39.159 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.3726947"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:42:39.162 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 383.4324ms
+2024-09-30 19:42:39.183 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/users/undefined - null null
+2024-09-30 19:42:39.189 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:42:39.190 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/categories - null null
+2024-09-30 19:42:39.212 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:39.199 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:39.189 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/categories - null null
+2024-09-30 19:42:39.207 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:39.214 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/categories - 204 null null 23.8228ms
+2024-09-30 19:42:39.240 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/categories - null null
+2024-09-30 19:42:39.242 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 19:42:39.256 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:39.261 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:42:39.266 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:39.271 +02:00 [INF] Route matched with {action = "GetUserBasicInfo", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.UserBasicInfo]] GetUserBasicInfo(System.String) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-09-30 19:42:39.273 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/categories - 204 null null 83.2679ms
+2024-09-30 19:42:39.274 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:42:39.277 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Categories.CategoryController.GetCategories (RestApiServer)'
+2024-09-30 19:42:39.445 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer) in 158.7776ms
+2024-09-30 19:42:39.447 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.GetUserBasicInfo (RestApiServer)'
+2024-09-30 19:42:39.486 +02:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Dto.App.CategoryBasicInfo]]] GetCategories() on controller RestApiServer.Controllers.Categories.CategoryController (RestApiServer).
+2024-09-30 19:42:39.536 +02:00 [INF] GET 500 /v1/users/undefined "00:00:00.2952125"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} Something went wrong Sequence contains no elements. , body: 
+2024-09-30 19:42:39.550 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/users/undefined - 500 null application/json; charset=utf-8 366.6493ms
+2024-09-30 19:42:39.603 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:42:39.605 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 160.1659ms
+2024-09-30 19:42:39.609 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:42:39.610 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.3511869"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:42:39.613 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 423.395ms
+2024-09-30 19:42:40.047 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.CategoryBasicInfo, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-30 19:42:40.053 +02:00 [INF] Executed action RestApiServer.Controllers.Categories.CategoryController.GetCategories (RestApiServer) in 510.6316ms
+2024-09-30 19:42:40.055 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Categories.CategoryController.GetCategories (RestApiServer)'
+2024-09-30 19:42:40.056 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/categories - null null
+2024-09-30 19:42:40.056 +02:00 [INF] GET 200 /v1/forum/categories "00:00:00.7805671"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:42:40.058 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:42:40.060 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/categories - 200 null application/json; charset=utf-8 819.8783ms
+2024-09-30 19:42:40.064 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Categories.CategoryController.GetCategories (RestApiServer)'
+2024-09-30 19:42:40.069 +02:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Dto.App.CategoryBasicInfo]]] GetCategories() on controller RestApiServer.Controllers.Categories.CategoryController (RestApiServer).
+2024-09-30 19:42:40.083 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.CategoryBasicInfo, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-30 19:42:40.086 +02:00 [INF] Executed action RestApiServer.Controllers.Categories.CategoryController.GetCategories (RestApiServer) in 14.6574ms
+2024-09-30 19:42:40.088 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Categories.CategoryController.GetCategories (RestApiServer)'
+2024-09-30 19:42:40.089 +02:00 [INF] GET 200 /v1/forum/categories "00:00:00.0255357"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:42:40.091 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/categories - 200 null application/json; charset=utf-8 35.6054ms
+2024-09-30 19:43:09.171 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:43:09.181 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:43:09.183 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 11.5697ms
+2024-09-30 19:43:09.185 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:43:09.188 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:43:09.189 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:43:09.190 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:43:09.221 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:43:09.222 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 30.0818ms
+2024-09-30 19:43:09.224 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:43:09.225 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0357623"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:43:09.227 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 42.0271ms
+2024-09-30 19:43:39.181 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:43:39.183 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:43:39.185 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 4.5747ms
+2024-09-30 19:43:39.187 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:43:39.196 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:43:39.197 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:43:39.198 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:43:39.230 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:43:39.232 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 31.3067ms
+2024-09-30 19:43:39.233 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:43:39.234 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0374478"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:43:39.236 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 48.7439ms
+2024-09-30 19:44:09.174 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:44:09.183 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:44:09.184 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 9.8451ms
+2024-09-30 19:44:09.186 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:44:09.190 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:44:09.192 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:44:09.193 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:44:09.224 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:44:09.225 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 30.4708ms
+2024-09-30 19:44:09.227 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:44:09.228 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0368989"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:44:09.230 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 43.9216ms
+2024-09-30 19:44:39.166 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:44:39.173 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:44:39.174 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 8.0914ms
+2024-09-30 19:44:39.176 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:44:39.179 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:44:39.182 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:44:39.183 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:44:39.212 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:44:39.215 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 29.3894ms
+2024-09-30 19:44:39.216 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:44:39.218 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0353990"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:44:39.219 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 43.096ms
+2024-09-30 19:45:09.174 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:45:09.180 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:45:09.181 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.6755ms
+2024-09-30 19:45:09.183 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:45:09.186 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:45:09.189 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:45:09.190 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:45:09.221 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:45:09.223 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 29.9992ms
+2024-09-30 19:45:09.224 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:45:09.225 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0364527"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:45:09.227 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 43.7302ms
+2024-09-30 19:45:39.174 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:45:39.178 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:45:39.179 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.3711ms
+2024-09-30 19:45:39.182 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:45:39.186 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:45:39.187 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:45:39.189 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:45:39.227 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:45:39.229 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 38.0122ms
+2024-09-30 19:45:39.231 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:45:39.232 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0450438"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:45:39.234 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 51.6932ms
+2024-09-30 19:46:09.181 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:46:09.211 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:46:09.212 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 31.147ms
+2024-09-30 19:46:09.215 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:46:09.218 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:46:09.219 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:46:09.220 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:46:09.251 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:46:09.252 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 30.1946ms
+2024-09-30 19:46:09.254 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:46:09.255 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0359056"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:46:09.257 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 41.47ms
+2024-09-30 19:46:39.171 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:46:39.176 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:46:39.177 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 5.7113ms
+2024-09-30 19:46:39.179 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:46:39.182 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:46:39.184 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:46:39.185 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:46:39.216 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:46:39.218 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 30.6396ms
+2024-09-30 19:46:39.219 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:46:39.221 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0371846"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:46:39.222 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 43.3085ms
+2024-09-30 19:47:09.172 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:47:09.178 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:47:09.179 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.1929ms
+2024-09-30 19:47:09.181 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:47:09.184 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:47:09.185 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:47:09.188 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:47:09.220 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:47:09.222 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 31.0289ms
+2024-09-30 19:47:09.224 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:47:09.225 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0404316"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:47:09.227 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 45.708ms
+2024-09-30 19:47:39.178 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:47:39.184 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:47:39.186 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.7652ms
+2024-09-30 19:47:39.190 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:47:39.196 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:47:39.197 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:47:39.198 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:47:39.229 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:47:39.230 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 29.7009ms
+2024-09-30 19:47:39.232 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:47:39.233 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0358874"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:47:39.235 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 44.2659ms
+2024-09-30 19:48:09.174 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:48:09.181 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:48:09.182 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.6085ms
+2024-09-30 19:48:09.183 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:48:09.186 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:48:09.188 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:48:09.191 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:48:09.230 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:48:09.233 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 36.7095ms
+2024-09-30 19:48:09.236 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:48:09.240 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0531953"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:48:09.243 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 59.1531ms
+2024-09-30 19:48:39.170 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:48:39.178 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:48:39.179 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 8.873ms
+2024-09-30 19:48:39.181 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:48:39.186 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:48:39.187 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:48:39.188 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:48:39.217 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:48:39.219 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 28.3896ms
+2024-09-30 19:48:39.221 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:48:39.222 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0353568"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:48:39.224 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 43.157ms
+2024-09-30 19:49:09.167 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:49:09.175 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:49:09.176 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 9.6395ms
+2024-09-30 19:49:09.179 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:49:09.184 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:49:09.185 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:49:09.186 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:49:09.217 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:49:09.219 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 30.1536ms
+2024-09-30 19:49:09.221 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:49:09.222 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0370083"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:49:09.224 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 45.1124ms
+2024-09-30 19:49:39.169 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:49:39.176 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:49:39.177 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.6127ms
+2024-09-30 19:49:39.178 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:49:39.183 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:49:39.184 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:49:39.185 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:49:39.214 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:49:39.216 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 28.1323ms
+2024-09-30 19:49:39.218 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:49:39.219 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0351596"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:49:39.221 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 42.4926ms
+2024-09-30 19:50:09.178 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:50:09.185 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:50:09.186 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.8907ms
+2024-09-30 19:50:09.188 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:50:09.195 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:50:09.196 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:50:09.197 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:50:09.226 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:50:09.228 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 28.0609ms
+2024-09-30 19:50:09.230 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:50:09.231 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0348358"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:50:09.233 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 44.9482ms
+2024-09-30 19:50:39.168 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:50:39.175 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:50:39.177 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 8.3281ms
+2024-09-30 19:50:39.179 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:50:39.184 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:50:39.186 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:50:39.186 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:50:39.215 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:50:39.217 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 28.3108ms
+2024-09-30 19:50:39.219 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:50:39.220 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0345511"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:50:39.222 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 43.0554ms
+2024-09-30 19:51:09.169 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:51:09.174 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:51:09.175 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 6.8451ms
+2024-09-30 19:51:09.177 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:51:09.180 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:51:09.183 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:51:09.184 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:51:09.211 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:51:09.214 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 27.2968ms
+2024-09-30 19:51:09.216 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:51:09.217 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0337825"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:51:09.219 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 41.6601ms
+2024-09-30 19:51:39.175 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:51:39.178 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:51:39.179 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 3.5277ms
+2024-09-30 19:51:39.184 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:51:39.188 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:51:39.191 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:51:39.192 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:51:39.226 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:51:39.227 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 33.0268ms
+2024-09-30 19:51:39.229 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:51:39.230 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0396676"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:51:39.232 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 48.0203ms
+2024-09-30 19:52:09.180 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:52:09.182 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:52:09.184 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 3.9607ms
+2024-09-30 19:52:09.199 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:52:09.202 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:52:09.204 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:52:09.205 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:52:09.232 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:52:09.234 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 26.8351ms
+2024-09-30 19:52:09.235 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:52:09.236 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0323089"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:52:09.237 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 39.0811ms
+2024-09-30 19:52:39.170 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:52:39.176 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:52:39.177 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.4143ms
+2024-09-30 19:52:39.179 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:52:39.182 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:52:39.186 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:52:39.186 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:52:39.305 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:52:39.307 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 118.1339ms
+2024-09-30 19:52:39.308 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:52:39.309 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.1243564"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:52:39.311 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 131.5387ms
+2024-09-30 19:53:09.172 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:53:09.178 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:53:09.179 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 6.8ms
+2024-09-30 19:53:09.184 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:53:09.188 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:53:09.190 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:53:09.191 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:53:09.219 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:53:09.220 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 27.4097ms
+2024-09-30 19:53:09.222 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:53:09.223 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0337227"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:53:09.225 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 40.7091ms
+2024-09-30 19:53:39.179 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:53:39.184 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:53:39.185 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 6.9476ms
+2024-09-30 19:53:39.187 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:53:39.190 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:53:39.193 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:53:39.194 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:53:39.222 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:53:39.225 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 27.6988ms
+2024-09-30 19:53:39.227 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:53:39.228 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0352409"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:53:39.230 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 42.9288ms
+2024-09-30 19:54:09.169 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:54:09.174 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:54:09.175 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 6.3508ms
+2024-09-30 19:54:09.177 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:54:09.180 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:54:09.184 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:54:09.184 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:54:09.214 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:54:09.215 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 28.704ms
+2024-09-30 19:54:09.217 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:54:09.218 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0345021"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:54:09.219 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 42.566ms
+2024-09-30 19:54:39.180 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:54:39.186 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:54:39.188 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.3066ms
+2024-09-30 19:54:39.189 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:54:39.193 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:54:39.197 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:54:39.198 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:54:39.224 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:54:39.228 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 27.683ms
+2024-09-30 19:54:39.229 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:54:39.230 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0336136"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:54:39.232 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 42.3762ms
+2024-09-30 19:55:09.175 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:55:09.182 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:55:09.183 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.7572ms
+2024-09-30 19:55:09.185 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:55:09.188 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:55:09.190 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:55:09.192 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:55:09.220 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:55:09.223 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 28.5021ms
+2024-09-30 19:55:09.225 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:55:09.226 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0368336"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:55:09.228 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 42.9394ms
+2024-09-30 19:55:39.178 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:55:39.184 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:55:39.186 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.5656ms
+2024-09-30 19:55:39.188 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:55:39.199 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:55:39.201 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:55:39.201 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:55:39.236 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:55:39.240 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 35.8543ms
+2024-09-30 19:55:39.244 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:55:39.246 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0453672"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:55:39.248 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 60.5133ms
+2024-09-30 19:56:09.171 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:56:09.181 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:56:09.182 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 10.8612ms
+2024-09-30 19:56:09.183 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:56:09.188 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:56:09.191 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:56:09.192 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:56:09.228 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:56:09.230 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 32.2914ms
+2024-09-30 19:56:09.232 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:56:09.233 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0431091"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:56:09.235 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 51.8077ms
+2024-09-30 19:56:39.167 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:56:39.173 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:56:39.175 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 8.0926ms
+2024-09-30 19:56:39.176 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:56:39.181 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:56:39.182 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:56:39.183 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:56:39.209 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:56:39.211 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 26.4581ms
+2024-09-30 19:56:39.213 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:56:39.214 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0325179"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:56:39.216 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 39.5656ms
+2024-09-30 19:57:09.171 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:57:09.176 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:57:09.177 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 6.1132ms
+2024-09-30 19:57:09.181 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:57:09.186 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:57:09.187 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:57:09.188 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:57:09.225 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:57:09.227 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 36.4741ms
+2024-09-30 19:57:09.229 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:57:09.230 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0430275"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:57:09.231 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 50.9613ms
+2024-09-30 19:57:39.173 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:57:39.177 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:57:39.178 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 4.2769ms
+2024-09-30 19:57:39.180 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:57:39.188 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:57:39.190 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:57:39.191 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:57:39.221 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:57:39.225 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 31.4576ms
+2024-09-30 19:57:39.227 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:57:39.228 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0385951"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:57:39.229 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 49.1551ms
+2024-09-30 19:58:09.170 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:58:09.177 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:58:09.178 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 8.0758ms
+2024-09-30 19:58:09.179 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:58:09.184 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:58:09.185 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:58:09.186 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:58:09.212 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:58:09.214 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 25.8728ms
+2024-09-30 19:58:09.216 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:58:09.217 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0320667"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:58:09.219 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 39.5885ms
+2024-09-30 19:58:39.169 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:58:39.175 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:58:39.177 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.8139ms
+2024-09-30 19:58:39.178 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:58:39.181 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:58:39.185 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:58:39.185 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:58:39.219 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:58:39.220 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 32.4765ms
+2024-09-30 19:58:39.222 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:58:39.223 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0386665"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:58:39.225 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 46.1637ms
+2024-09-30 19:59:09.174 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:59:09.179 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:59:09.180 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 6.1444ms
+2024-09-30 19:59:09.182 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:59:09.184 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:59:09.185 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:59:09.186 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:59:09.216 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:59:09.219 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 27.7757ms
+2024-09-30 19:59:09.220 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:59:09.221 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0363792"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:59:09.223 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 41.6579ms
+2024-09-30 19:59:39.175 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:59:39.183 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:59:39.184 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 9.193ms
+2024-09-30 19:59:39.186 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 19:59:39.190 +02:00 [INF] CORS policy execution successful.
+2024-09-30 19:59:39.191 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:59:39.192 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 19:59:39.221 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 19:59:39.223 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 28.4729ms
+2024-09-30 19:59:39.224 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 19:59:39.225 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0341249"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 19:59:39.227 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 41.0731ms
+2024-09-30 20:00:09.181 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 20:00:09.191 +02:00 [INF] CORS policy execution successful.
+2024-09-30 20:00:09.192 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 10.8595ms
+2024-09-30 20:00:09.194 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 20:00:09.199 +02:00 [INF] CORS policy execution successful.
+2024-09-30 20:00:09.200 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 20:00:09.201 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 20:00:09.230 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 20:00:09.232 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 28.109ms
+2024-09-30 20:00:09.233 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 20:00:09.234 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0340513"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 20:00:09.236 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 42.5628ms
+2024-09-30 20:00:39.177 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 20:00:39.183 +02:00 [INF] CORS policy execution successful.
+2024-09-30 20:00:39.184 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.554ms
+2024-09-30 20:00:39.186 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 20:00:39.189 +02:00 [INF] CORS policy execution successful.
+2024-09-30 20:00:39.190 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 20:00:39.193 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 20:00:39.221 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 20:00:39.223 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 27.0812ms
+2024-09-30 20:00:39.225 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 20:00:39.226 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0359197"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 20:00:39.228 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 41.4836ms
+2024-09-30 20:01:09.166 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-09-30 20:01:09.172 +02:00 [INF] CORS policy execution successful.
+2024-09-30 20:01:09.173 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.101ms
+2024-09-30 20:01:09.176 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-09-30 20:01:09.183 +02:00 [INF] CORS policy execution successful.
+2024-09-30 20:01:09.185 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 20:01:09.185 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-09-30 20:01:09.215 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-30 20:01:09.216 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 28.9147ms
+2024-09-30 20:01:09.218 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-09-30 20:01:09.219 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0345612"ms {User:a89b2204-fe3c-4387-8303-838a7e90fa10} , body: 
+2024-09-30 20:01:09.221 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 44.7602ms

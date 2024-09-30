@@ -25,9 +25,8 @@ namespace RestApiServer
 
             try
             {
-
+                Log.Information("Starting up... Please be patient.");
                 var builder = WebApplication.CreateBuilder(args);
-                
 
                 //Use serilog
                 builder.Host.UseSerilog();
