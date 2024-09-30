@@ -1,5 +1,4 @@
 <script lang = "ts" setup>
-import type { UserBasicInfo } from '@/Dto/UserInfo';
 import { useAdminStore } from '@/stores/AdminStore';
 import { useToast } from 'vue-toastification';
 import { onMounted, ref } from 'vue';
@@ -11,18 +10,22 @@ const tabs = ref([
     {
         id: 1,
         name: 'Users',
+        iconClass: 'fas fa-user',
     },
     {
         id: 2,
         name: 'Roles',
+        iconClass: 'fas fa-lock',
     },
     {
         id: 3,
         name: 'Logs',
+        iconClass: 'fas fa-file-alt',
     },
     {
         id: 4,
         name: 'Content management',
+        iconClass: 'fas fa-wrench',
     },
 ]);
 
@@ -31,11 +34,12 @@ onMounted(() => {
     adminStore.getRoles();
 });
 
-const updateUserInfo = (selectedUser: UserBasicInfo) => {
-    toast.info("Edit selected user - coming soon.")
+const setActiveTab = (tabId: number) => {
+    activeTab.value = tabId;
 }
 
 const activeTab = ref(1);
+
 </script>
 
 <template>
@@ -46,81 +50,52 @@ const activeTab = ref(1);
             </h3>
         </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <!--Tabbed navigation: Create the tab bar here: Users, Role permissions, Logs, Content management etc-->
-                    <div class="card card-custom">
-                        <div class="card-header border-0 pt-7">
-                            <v-tabs v-model = "activeTab" background-color="transparent">
-                                <v-tab v-for="tab in tabs" :key="tab.id">
-                                    {{ tab.name }}
-                                </v-tab>
-                            </v-tabs>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" v-for="tab in tabs" :key="tab.id">
+                    <a class="nav-link" :id="`#tab-${tab.id}-tab`" data-toggle="tab" :href="`#tab-${tab.id}`" role="tab" :aria-controls="`tab-${tab.id}`" aria-selected="true" @click="setActiveTab(tab.id)">
+                        <i :class= tab.iconClass></i> {{ tab.name }}
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane container fade" v-for="tab in tabs" :key="tab.id" :id="`tab-${tab.id}`" role="tabpanel" :aria-labelledby="`tab-${tab.id}-tab`" v-show="activeTab === tab.id">
+                    <div v-if="activeTab === 1">
+                        <!--User management functions will go here.-->
+                        <div v-if="adminStore.users">
+                            <table class="table table-borderless table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="element in adminStore.users">
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="card-body">
-                            <v-tab-item v-if="activeTab===0">
-                                <div class= "card card-custom">
-                                    <div class= "card-header border-0 pt-7">
-                                        <button class="btn btn-primary btn-sm m-1" @click="">Create new user</button>
-                                    </div>
-                                    <div class= "card-body">
-                                        <table class="table table-borderless table-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th>User name</th>
-                                                    <th>Email address</th>
-                                                    <th>Role</th>
-                                                    <th>Actions</th>
-                                                    <th></th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody v-for="user in adminStore.users">
-                                                <tr>
-                                                    <td>{{ user.user.username }}</td>
-                                                    <td>{{ user.user.emailAddress }}</td>
-                                                    <!--Need to see if the role id on the user matches one of the roles and show only that role name-->
-                                                    <td v-if="adminStore.roles.filter((role) => role.role.roleId === user.user.roleId)">{{ adminStore.roles.filter((role) => role.role.roleId === user.user.roleId)[0].role.roleName }}</td>
-                                                    <td v-else>None</td>
-                                                    <td>
-                                                        <button class = "btn btn-sm btn-primary" @click="updateUserInfo(user)">Edit</button>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-sm btn-primary">Reset password</button>
-                                                    </td>
-                                                    <td>
-                                                        <button class = "btn btn-sm btn-danger">Delete</button>
-                                                    </td>
-                                                </tr> 
-                                            </tbody>                            
-                                        </table>
-                                    </div>
-                                </div>
-                            </v-tab-item>
-                            <v-tab-item v-if="activeTab===1">
-                                <table class="table table-borderless table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th>Role name</th>
-                                            <th>Number of users</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody v-for="role in adminStore.roles">
-                                        <tr>
-                                            <td> {{ role.role.roleName }}</td>
-                                            <td> {{ adminStore.users.filter((user) => user.user.roleId === role.role.roleId).length  }} </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </v-tab-item>
-                            <v-tab-item v-if="activeTab===2">
-                                <p>Manage logs - coming soon...</p>
-                            </v-tab-item>
-                            <v-tab-item v-if="activeTab===3">
-                                <p>Manage content - coming soon...</p>
-                            </v-tab-item>
+                    </div>
+                    <div v-if="activeTab === 2">
+                        <!--Role management functions will go here.-->
+                        <div v-if="adminStore.roles">
+                            <table class="table table-borderless table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="element in adminStore.roles">
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
+                    <div v-if="activeTab === 3">
+                    </div>
+                    <div v-if="activeTab === 4">
                     </div>
                 </div>
             </div>

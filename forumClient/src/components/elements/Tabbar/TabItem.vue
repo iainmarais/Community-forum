@@ -8,13 +8,15 @@ const props = defineProps({
     //Add a prop for associated content? Not sure yet if I will need this.
 });    
 
+const emit = defineEmits(['tabSelected']); // Emit an update for v-model
+
 //Destructure this into properties that can be used by a parent component
 const { tabId, tabIcon, tabName, isActive } = props;
 </script>
 
 <template>
     <li class="nav-item">
-        <a class="nav-link" :class="{'active': isActive}" :href="`#${tabId}`" data-bs-toggle="tab">
+        <a class="nav-link" data-toggle="tab" :class="{'active': isActive}" :href='`#${tabId}`' @click="emit('tabSelected', tabId)">
             <i :class="tabIcon"></i>
             {{ tabName }}
         </a>
