@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bcrypt.Net" Version="0.1.0" />
+    <PackageReference Include="Dotnetenv" Version="3.0.0" />
+    <PackageReference Include="microsoft.aspnetcore" Version="2.2.0" />
+    <PackageReference Include="microsoft.aspnetcore.app" Version="2.2.8" />    
+    <PackageReference Include="microsoft.aspnetcore.hosting" Version="2.2.7" />
+    <PackageReference Include="microsoft.aspnetcore.mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.openapi" Version="8.0.6" />
+    <PackageReference Include="microsoft.aspnetcore.server.kestrel" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+    <PackageReference Include="microsoft.extensions.configuration.environmentvariables" Version="8.0.0" />
+    <PackageReference Include="microsoft.extensions.configuration.json" Version="8.0.0" />
+    <PackageReference Include="microsoft.extensions.dependencyinjection" Version="8.0.0" />
+    <PackageReference Include="microsoft.extensions.hosting" Version="8.0.0" />
+    <PackageReference Include="microsoft.identitymodel.tokens" Version="7.6.2" />
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="7.6.2" />
+    <PackageReference Include="microsoft.aspnetcore.authentication.jwtbearer" Version="8.0.6" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="openapi" Version="1.0.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.NetTopologySuite" Version="8.0.2" />
+    <PackageReference Include="swagger" Version="1.0.0" />
+    <PackageReference Include="swashbuckle" Version="5.6.0" />
+    <PackageReference Include="swashbuckle.aspnetcore" Version="6.6.2" />
+    </ItemGroup>
+</Project>

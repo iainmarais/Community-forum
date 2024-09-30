@@ -39,7 +39,7 @@ const onLogoff = () => {
                         <span>Are you sure you want to log off?</span>
                     </div>
                     <div class="form-group">
-                        <ButtonWithLoadingIndicator class="btn btn-primary" :loading="loading" @click = "onLogoff()">Log off</ButtonWithLoadingIndicator>
+                        <ButtonWithLoadingIndicator :label="'Log off'" :icon="'fas fa-sign-out-alt'" :loading="loading" @click = "onLogoff()">Log off</ButtonWithLoadingIndicator>
                     </div>
                 </div>
             </div>

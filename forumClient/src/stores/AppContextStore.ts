@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import AxiosClient from "@/http/AxiosClient";
-import router, { LoginRoute, MainRoute, LogoffRoute, RegisterRoute, HomeRoute, ChatRoute, GalleryRoute, SearchRoute } from "@/router";
+import router, { LoginRoute, MainRoute, AdminRoute, LogoffRoute, RegisterRoute, HomeRoute, ChatRoute, GalleryRoute, SearchRoute } from "@/router";
 import type { RouteParams, RouteQueryAndHash } from "vue-router";
 import type { ForumStats, LoggedInUserInfo } from "@/Dto/app/ForumAppState";
 import ForumService from "@/services/ForumService";
@@ -71,6 +71,13 @@ const NavigationBar: NavbarItem[] = [
                 iconClass: "fas fa-search",
                 routename: SearchRoute
             },
+            {
+                id: "admin",
+                type: "item",
+                label: "Administration",
+                iconClass: "fas fa-user-shield",
+                routename: AdminRoute
+            },
         ]
     },
     {
@@ -121,10 +128,17 @@ const NavigationBar: NavbarItem[] = [
         label: "Search",
         iconClass: "fas fa-search",
         routename: SearchRoute
-    }
+    },
+    {
+        id: "admin",
+        type: "item",
+        label: "Admin",
+        iconClass: "fas fa-user-shield",
+        routename: AdminRoute
+    },
 ];
 
-type NavbarLinkItemId = "home" | "login" | "register" | "logoff" | "chat" | "gallery" | "search";
+type NavbarLinkItemId = "home" | "admin" | "login" | "register" | "logoff" | "chat" | "gallery" | "search";
 
 export type NavbarLinkItem = {
     type: "item",
@@ -247,8 +261,12 @@ export const useAppContextStore = defineStore({
                 //Note to self:
                 //Restructure this method to get details like app config and the logged-in user's details.
                 //Stats should be done by the pollers.
-                this.forumStats = response.data.forumStats;
-                this.loggedInUser = response.data.loggedInUser ?? undefined;
+                if(!response.data.forumStats) {
+                    this.forumStats = defaultState.forumStats;
+                }
+                if(!response.data.loggedInUser) {
+                    this.loggedInUser = defaultState.loggedInUser;
+                }
                 try {
                     // This might still be built using flagsmith or some other feature flagging lib.
                 }

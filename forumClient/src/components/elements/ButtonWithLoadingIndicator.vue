@@ -1,32 +1,53 @@
 <script lang = "ts" setup>
+    import { defineProps, defineEmits } from 'vue';
     const props = defineProps({
+        label: {
+            type: String,
+        },
         loading: {
             type: Boolean,
             default: false
         },
         disabled: {
             type: Boolean,
+            default: false
         },
-        ButtonClass: {
-            type: String
-        },
-        LoadingClass: {
+        buttonClass: {
             type: String,
-            default: "spinner-border-sm spinner-right"
+            default: "btn-primary btn-sm"
+        },
+        icon: {
+            type: String,
+            default: ""
         }
     });
 
-    const GetLoadingClass = () => {
-        var buttonClass= `${props.ButtonClass || ''}`
-        if(props.loading) {
-            buttonClass += props.LoadingClass;
+    const emit = defineEmits(['click']);
+
+    function handleClick(event: Event) {
+        if (!props.loading) {
+            emit('click', event);
         }
-        return buttonClass;
     }
 </script>
 
 <template>
-    <button :disabled="disabled || props.loading" :class="GetLoadingClass()">
-        <slot></slot>
+    <button class= "btn btn-primary btn-sm" @click="handleClick">
+        <template v-if="loading">
+            <v-progress-circular indeterminate color="white" size="20" class="me-2" />
+            Loading...
+        </template>
+        <template v-else>
+            <i v-if="icon" :class="icon"></i> {{ label }}
+        </template>
     </button>
 </template>
+
+<style scoped>
+/* 
+Optional: Style spinner to align properly with the button content 
+*/
+.v-progress-circular {
+    vertical-align: middle;
+}
+</style>

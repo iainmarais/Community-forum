@@ -1,4 +1,4 @@
-import type { UserInfo } from "@/Dto/UserInfo";
+import type { UserBasicInfo, UserEntry } from "@/Dto/UserInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import RegistrationService from "@/services/RegistrationService";
 import { defineStore } from "pinia";
@@ -11,7 +11,7 @@ type RegistrationStoreState = {
 
     loading_RegistrationInProgress: boolean,
     result_RegistrationSuccess: boolean,
-    userResult: UserInfo
+    userResult: UserBasicInfo
 }
 
 const defaultState: RegistrationStoreState = {
@@ -22,7 +22,7 @@ const defaultState: RegistrationStoreState = {
 
     loading_RegistrationInProgress: false,
     result_RegistrationSuccess: false,
-    userResult: {} as UserInfo
+    userResult: {} as UserBasicInfo
 }
 
 export const useRegistrationStore = defineStore({
@@ -44,6 +44,18 @@ export const useRegistrationStore = defineStore({
                 ErrorHandler.handleApiErrorResponse(error);
             })
 
+        },
+        RegisterUserWithRole(request: {username: string, emailAddress: string, roleType: string, password: string, retypePassword: string}) {
+            this.loading_RegistrationInProgress = true;
+            RegistrationService.RegisterUser(request).then((response) => {
+                this.loading_RegistrationInProgress = false;
+                this.result_RegistrationSuccess = true;
+                this.userResult = response.data;
+            }, error => {
+                this.loading_RegistrationInProgress = false;
+                this.result_RegistrationSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            })
         }
     }
 });

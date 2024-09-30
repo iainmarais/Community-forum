@@ -25,6 +25,7 @@ const appContextStore = useAppContextStore();
 const loading = ref<boolean>(false);
 
 const loginMethod = ref<LoginMethod>("identifier_password");
+const loginInProgress = ref<boolean>(false);
 
 const route = useRoute();
 
@@ -68,15 +69,17 @@ const login = () => {
         userIdentifier: identifier.value,
         password: password.value
     }
+    loginInProgress.value = true;
     LoginService.LoginUser(request).then(response => {
         SetToken(response.data.accessToken);
         localStorage.setItem(Token_Key, response.data.accessToken);
         localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
+        loginInProgress.value = false;
         postLoginRoute();
-        Toast_UserLoginSuccessful(response.data.userProfile.username);
+        Toast_UserLoginSuccessful(response.data.userProfile.user.username);
     }, error => {
         ErrorHandler.handleApiErrorResponse(error);
-        loading.value = false;
+        loginInProgress.value = false;
     });
     
 }
@@ -157,7 +160,7 @@ const postLoginRoute = () => {
                                                         name="password" placeholder="Password" v-model="password" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <ButtonWithLoadingIndicator class="btn btn-primary btn-sm" @click.prevent="login()">
+                                                    <ButtonWithLoadingIndicator :icon="'fas fa-sign-in-alt'" :loading="loginInProgress" :label="'Log in'" @click.prevent="login()">
                                                         Log in
                                                     </ButtonWithLoadingIndicator>
                                                 </div>

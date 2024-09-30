@@ -4641,7 +4641,7 @@
           "lib/net7.0/ZstdSharp.dll": {}
         }
       },
-      "server/1.0.0": {
+      "RestApiServer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -4670,10 +4670,10 @@
           "swashbuckle.aspnetcore": "6.6.2"
         },
         "compile": {
-          "bin/placeholder/server.dll": {}
+          "bin/placeholder/RestApiServer.dll": {}
         },
         "runtime": {
-          "bin/placeholder/server.dll": {}
+          "bin/placeholder/RestApiServer.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -12387,10 +12387,10 @@
         "zstdsharp.port.nuspec"
       ]
     },
-    "server/1.0.0": {
+    "RestApiServer/1.0.0": {
       "type": "project",
-      "path": "../server/server.csproj",
-      "msbuildProject": "../server/server.csproj"
+      "path": "../restapiserver/RestApiServer.csproj",
+      "msbuildProject": "../restapiserver/RestApiServer.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -12404,6 +12404,7 @@
       "MySql.EntityFrameworkCore >= 8.0.2",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.2",
       "Pomelo.EntityFrameworkCore.MySql.NetTopologySuite >= 8.0.2",
+      "RestApiServer >= 1.0.0",
       "microsoft.aspnetcore >= 2.2.0",
       "microsoft.aspnetcore.authentication.jwtbearer >= 8.0.6",
       "microsoft.aspnetcore.hosting >= 2.2.7",
@@ -12415,26 +12416,30 @@
       "microsoft.extensions.hosting >= 8.0.0",
       "microsoft.identitymodel.tokens >= 7.6.2",
       "openapi >= 1.0.1",
-      "server >= 1.0.0",
       "swagger >= 1.0.0",
       "swashbuckle >= 5.6.0",
       "swashbuckle.aspnetcore >= 6.6.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Iain\\.nuget\\packages\\": {}
+    "C:\\Users\\Iain\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\database\\database.csproj",
+      "projectUniqueName": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\database\\database.csproj",
       "projectName": "database",
-      "projectPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\database\\database.csproj",
+      "projectPath": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\database\\database.csproj",
       "packagesPath": "C:\\Users\\Iain\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\database\\obj\\",
+      "outputPath": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\database\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\Iain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12442,14 +12447,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\server\\server.csproj": {
-              "projectPath": "C:\\Users\\Iain\\vscode\\CommunityForum\\Community-forum\\server\\server\\server.csproj"
+            "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\restapiserver\\RestApiServer.csproj": {
+              "projectPath": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\restapiserver\\RestApiServer.csproj"
             }
           }
         }
@@ -12581,7 +12587,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

@@ -30,9 +30,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/server/bin/Debug/net8.0/server.dll",
+            "program": "${workspaceFolder}/RestApiServer/bin/Debug/net8.0/RestApiServer.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/server",
+            "cwd": "${workspaceFolder}/RestApiServer",
             "stopAtEntry": false,
             "console": "externalTerminal",
             "env": {

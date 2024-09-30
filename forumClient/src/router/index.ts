@@ -11,6 +11,7 @@ export const ChatRoute = "chat";
 export const GalleryRoute = "gallery";
 export const SearchRoute = "search";
 export const NotFoundRoute = "notfound";
+export const AdminRoute = "admin";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,9 +33,9 @@ const router = createRouter({
                     component: () => import("@/components/views/Forum/General/HomeView.vue")
                 },
                 {
-                    path: "/register",
-                    name: RegisterRoute,
-                    component: () => import("@/components/pages/RegistrationPage.vue")
+                    path: "/admin",
+                    name: AdminRoute,
+                    component: () => import("@/components/views/Forum/General/AdminView.vue")
                 },
                 {
                     path: "/chat",
@@ -82,6 +83,11 @@ const router = createRouter({
             path: "/login",
             name: LoginRoute,
             component: () => import("@/components/pages/LoginPage.vue")
+        },
+        {
+            path: "/register",
+            name: RegisterRoute,
+            component: () => import("@/components/pages/RegistrationPage.vue")
         },
     ]
 });

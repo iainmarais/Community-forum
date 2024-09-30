@@ -190,57 +190,59 @@ onMounted(() => {
                 </div>
                 <div class="modal-body">
                     <table class="table table-borderless table-sm">
-                        <tr>
-                            <td>First Name</td>
-                            <td><input type="text" class="form-control" v-model="userFirstName" :placeholder="userInfo?.user.userFirstname"></td>
-                        </tr>
-                        <tr>
-                            <td>Last Name</td>
-                            <td><input type="text" class="form-control" v-model="userLastName" :placeholder="userInfo?.user.userLastname"></td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td><input type="text" class="form-control" v-model="address" :placeholder="userInfo?.user.address"></td>
-                        </tr>
-                        <tr>
-                            <td>City</td>
-                            <td><input type="text" class="form-control" v-model="cityName" :placeholder="userInfo?.user.cityName"></td>
-                        </tr>
-                        <tr>
-                            <td>Country</td>
-                            <td><input type="text" class="form-control" v-model="countryName" :placeholder="userInfo?.user.countryName"></td>
-                        </tr>
-                        <tr>
-                            <td>Postal Code</td>
-                            <td><input type="text" class="form-control" v-model="postalCode" :placeholder="userInfo?.user.postalCode"></td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>
-                                <select class="form-control" v-model="gender">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Profile Image</td>
-                            <td><input type="file" class="form-control" @change="handleFileChange"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <div style="display: flex; align-content: center; justify-content: center">
-                                    <div class="polaroid-frame-classic">
-                                        <img class="polaroid-image" id="userProfileImage" alt="User profile image">
-                                        <div class="polaroid-caption">
-                                            <p class="polaroid-caption-title">{{ userFirstName }} {{ userLastName }}</p>
-                                            <p class="polaroid-caption-text">{{ userProfileImageDescription }}</p>
+                        <tbody>
+                            <tr>
+                                <td>First Name</td>
+                                <td><input type="text" class="form-control" v-model="userFirstName" :placeholder="userInfo?.user.userFirstname"></td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td><input type="text" class="form-control" v-model="userLastName" :placeholder="userInfo?.user.userLastname"></td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td><input type="text" class="form-control" v-model="address" :placeholder="userInfo?.user.address"></td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td><input type="text" class="form-control" v-model="cityName" :placeholder="userInfo?.user.cityName"></td>
+                            </tr>
+                            <tr>
+                                <td>Country</td>
+                                <td><input type="text" class="form-control" v-model="countryName" :placeholder="userInfo?.user.countryName"></td>
+                            </tr>
+                            <tr>
+                                <td>Postal Code</td>
+                                <td><input type="text" class="form-control" v-model="postalCode" :placeholder="userInfo?.user.postalCode"></td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>
+                                    <select class="form-control" v-model="gender">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Profile Image</td>
+                                <td><input type="file" class="form-control" @change="handleFileChange"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div style="display: flex; align-content: center; justify-content: center">
+                                        <div class="polaroid-frame-classic">
+                                            <img class="polaroid-image" id="userProfileImage" alt="User profile image">
+                                            <div class="polaroid-caption">
+                                                <p class="polaroid-caption-title">{{ userFirstName }} {{ userLastName }}</p>
+                                                <p class="polaroid-caption-text">{{ userProfileImageDescription }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">

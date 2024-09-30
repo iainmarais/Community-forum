@@ -51,7 +51,7 @@ app.use(router);
 app.use(Toast, toastOptions);
 app.mount('#app');
 
-app.config.errorHandler = function (err, vm, info) {
+app.config.errorHandler = function (err: any, vm: any, info: any) {
     console.error(err);
     if(err instanceof Error) {
         if(ConfigurationLoader.getConfig().envName === "local") {

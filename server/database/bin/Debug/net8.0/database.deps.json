@@ -17,6 +17,7 @@
           "MySql.EntityFrameworkCore": "8.0.2",
           "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
           "Pomelo.EntityFrameworkCore.MySql.NetTopologySuite": "8.0.2",
+          "RestApiServer": "1.0.0",
           "Microsoft.AspNetCore": "2.2.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.6",
           "Microsoft.AspNetCore.Hosting": "2.2.7",
@@ -28,7 +29,6 @@
           "Microsoft.Extensions.Hosting": "8.0.0",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
           "Openapi": "1.0.1",
-          "server": "1.0.0",
           "Swagger": "1.0.0",
           "Swashbuckle": "5.6.0",
           "Swashbuckle.AspNetCore": "6.6.2"
@@ -2315,7 +2315,7 @@
           }
         }
       },
-      "server/1.0.0": {
+      "RestApiServer/1.0.0": {
         "dependencies": {
           "BCrypt.Net": "0.1.0",
           "DotNetEnv": "3.0.0",
@@ -2342,7 +2342,10 @@
           "Swashbuckle.AspNetCore": "6.6.2"
         },
         "runtime": {
-          "server.dll": {}
+          "RestApiServer.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -4159,7 +4162,7 @@
       "path": "zstdsharp.port/0.7.1",
       "hashPath": "zstdsharp.port.0.7.1.nupkg.sha512"
     },
-    "server/1.0.0": {
+    "RestApiServer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

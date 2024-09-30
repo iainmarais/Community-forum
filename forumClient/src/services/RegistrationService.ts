@@ -1,9 +1,9 @@
 import ConfigurationLoader from '@/config/ConfigurationLoader';
 import AxiosClient from '@/http/AxiosClient';
 import type { ApiSuccessResponse } from '@/ApiResponses/ApiSuccessResponse';
-import type { UserInfo } from '@/Dto/UserInfo';
+import type { UserBasicInfo, UserRegistrationRequest } from '@/Dto/UserInfo';
 
-const RegisterUser = async (request: {username: string, emailAddress: string, password: string, retypePassword: string}): Promise<ApiSuccessResponse<UserInfo>> => {
+const RegisterUser = async (request: UserRegistrationRequest): Promise<ApiSuccessResponse<UserBasicInfo>> => {
     return AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/users/register`, request);
 }
 
