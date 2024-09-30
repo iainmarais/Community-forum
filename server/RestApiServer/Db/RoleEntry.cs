@@ -9,7 +9,8 @@ namespace RestApiServer.Db
     public class RoleEntry
     {
         [Key]
-        public required string RoleId { get; set; }
+        public required string RoleId { get; set; } = Guid.NewGuid().ToString();
+        [Required]
         public required string RoleName { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter<RoleType>))]
         public RoleType RoleType { get; set;}

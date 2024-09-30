@@ -13,6 +13,7 @@ namespace RestApiServer.Db
         //Backend
         public DbSet<UserEntry> Users { get; set; } = null!;
         public DbSet<SystemPermissionEntry> SystemPermissions { get; set; } = null!;
+        public DbSet<PermissionEntry> Permissions { get; set; } = null!;
         public DbSet<RoleEntry> Roles { get; set; } = null!;
         public DbSet<UserPermissionEntry> UserPermissions { get; set; } = null!;
         public DbSet<UserRefreshTokenEntry> UserRefreshTokens { get; set; } = null!;
@@ -65,6 +66,29 @@ namespace RestApiServer.Db
             modelBuilder.Entity<SystemPermissionEntry>()
             .Property(prop => prop.Permission)
             .HasConversion(GetEnumValueConverter<SystemPermissionType>());
+
+            modelBuilder.Entity<PermissionEntry>()
+            .HasKey(p => p.PermissionId);
+
+            modelBuilder.Entity<RoleEntry>()
+            .HasKey(r => r.RoleId);
+
+            modelBuilder.Entity<RolePermissionEntry>()
+            .HasKey(rp => rp.RolePermissionId);
+
+
+            //Foreign key relationships for the RolePermissionEntry table
+            modelBuilder.Entity<RolePermissionEntry>()
+            .HasOne(rp => rp.Role)
+            .WithMany()
+            .HasForeignKey(rp => rp.RoleId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<RolePermissionEntry>()
+            .HasOne(rp => rp.Permission)
+            .WithMany()
+            .HasForeignKey(rp => rp.PermissionId)
+            .OnDelete(DeleteBehavior.Cascade);
 
             //One to many relationships
             modelBuilder.Entity<ThreadEntry>()

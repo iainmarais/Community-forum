@@ -235,34 +235,6 @@ namespace RestApiServer
                 app.UseAuthentication();
                 app.UseAuthorization();
 
-                if (args.Contains("setup-database-only"))
-                {
-                    if(args.Contains("seed-data"))
-                    {
-                        DbUtils.SetupDatabase(true);
-                    }
-                    else
-                    {
-                        DbUtils.SetupDatabase();
-                    }
-                    return;
-                }
-
-                if (args.Contains("setup-database"))
-                {
-                    //How do I get the actual database from the context here to pass it to the setup database function? <scratch-head />
-
-                    if(args.Contains("seed-data"))
-                    {
-                        DbUtils.SetupDatabase(true);
-                    }
-                    else
-                    {
-                        DbUtils.SetupDatabase();
-                    }
-                    //Once done, continue and start the server.
-                } 
-
                 if(args.Contains("help"))
                 {
                     //List the args available and exit.
