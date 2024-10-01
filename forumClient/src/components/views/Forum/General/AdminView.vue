@@ -65,12 +65,17 @@ const activeTab = ref(1);
                             <table class="table table-borderless table-sm">
                                 <thead>
                                     <tr>
-                                        <th>User</th>
+                                        <th>User name</th>
+                                        <th>Email address</th>
+                                        <th>Role</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="element in adminStore.users">
-                                        <td></td>
+                                        <td>{{ element.user.username }}</td>
+                                        <td>{{ element.user.emailAddress }}</td>
+                                        <!--Identify the role from the roles on the database using the user roleId-->
+                                        <td>{{ adminStore.roles.filter(role => role.role.roleId === element.user.roleId)[0].role.roleName }}</td>
                                     </tr>
                                 </tbody>
                             </table>

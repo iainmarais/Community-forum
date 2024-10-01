@@ -9,6 +9,7 @@ using RestApiServer.Core.Errorhandler;
 using RestApiServer.Utils;
 using RestApiServer.Db;
 using Serilog;
+using RestApiServer.Hubs;
 
 
 namespace RestApiServer
@@ -116,7 +117,10 @@ namespace RestApiServer
 
                 //Toplevel registration of endpoints
                 app.MapControllers(); // Maps the API controllers
-                app.MapHub<ChatHub>("/hubs/chat"); // Maps the SignalR hub
+                app.MapHub<ChatHub>("/v1/hubs/chat"); // Maps the SignalR hub for chat
+                app.MapHub<ForumStatsHub>("/v1/hubs/forumstats");
+
+                app.UseWebSockets();
 
                 app.Use(async (context, next) =>
                 {
