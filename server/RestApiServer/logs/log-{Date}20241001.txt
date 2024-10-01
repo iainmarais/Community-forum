@@ -8421,3 +8421,419 @@ System.InvalidOperationException: StatusCode cannot be set because the response 
 2024-10-01 16:13:47.927 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - 101 null null 339983.2577ms
 2024-10-01 16:13:49.634 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - null null
 2024-10-01 16:13:49.640 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 18:31:11.669 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 18:31:13.283 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 18:31:13.482 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-01 18:31:13.489 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-01 18:31:13.493 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-01 18:31:13.494 +02:00 [INF] Hosting environment: Development
+2024-10-01 18:31:13.495 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-01 18:32:16.582 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstatshub - null null
+2024-10-01 18:32:16.845 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstatshub - 404 null application/json; charset=utf-8 264.5278ms
+2024-10-01 18:32:16.852 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5051/v1/hubs/forumstatshub, Response status code: 404
+2024-10-01 18:32:24.793 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstatshub - null null
+2024-10-01 18:32:24.818 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstatshub - 404 null application/json; charset=utf-8 24.5984ms
+2024-10-01 18:32:24.826 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5051/v1/hubs/forumstatshub, Response status code: 404
+2024-10-01 18:32:43.950 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - null null
+2024-10-01 18:32:43.954 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 18:44:07.091 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/hubs/forumstats - null null
+2024-10-01 18:44:07.094 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 18:44:07.100 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 18:44:07.128 +02:00 [INF] GET 400 /v1/hubs/forumstats "00:00:00.0070873"ms  , body: 
+2024-10-01 18:44:07.136 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/hubs/forumstats - 400 null text/plain 45.1545ms
+2024-10-01 18:44:07.372 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/favicon.ico - null null
+2024-10-01 18:44:07.399 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/favicon.ico - 404 null application/json; charset=utf-8 27.035ms
+2024-10-01 18:44:07.402 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5051/favicon.ico, Response status code: 404
+2024-10-01 19:26:52.828 +02:00 [FTL] Unable to reload configuration.
+System.Security.Cryptography.CryptographicException: The specified network password is not correct.
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FilterPFXStore(ReadOnlySpan`1 rawData, SafePasswordHandle password, PfxCertStoreFlags pfxCertStoreFlags)
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FromBlobOrFile(ReadOnlySpan`1 rawData, String fileName, SafePasswordHandle password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate..ctor(String fileName, String password, X509KeyStorageFlags keyStorageFlags)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Certificates.CertificateConfigLoader.LoadCertificate(CertificateConfig certInfo, String endpointName)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.TlsConfigurationLoader.ApplyHttpsConfiguration(HttpsConnectionAdapterOptions httpsOptions, EndpointConfig endpoint, KestrelServerOptions serverOptions, CertificateConfig defaultCertificateConfig, ConfigurationReader configurationReader)
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.Reload()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.RebindAsync()
+2024-10-01 19:26:53.173 +02:00 [FTL] Unable to reload configuration.
+System.Security.Cryptography.CryptographicException: The specified network password is not correct.
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FilterPFXStore(ReadOnlySpan`1 rawData, SafePasswordHandle password, PfxCertStoreFlags pfxCertStoreFlags)
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FromBlobOrFile(ReadOnlySpan`1 rawData, String fileName, SafePasswordHandle password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate..ctor(String fileName, String password, X509KeyStorageFlags keyStorageFlags)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Certificates.CertificateConfigLoader.LoadCertificate(CertificateConfig certInfo, String endpointName)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.TlsConfigurationLoader.ApplyHttpsConfiguration(HttpsConnectionAdapterOptions httpsOptions, EndpointConfig endpoint, KestrelServerOptions serverOptions, CertificateConfig defaultCertificateConfig, ConfigurationReader configurationReader)
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.Reload()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.RebindAsync()
+2024-10-01 19:27:01.673 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 19:27:03.071 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 19:27:03.193 +02:00 [ERR] Hosting failed to start
+System.Security.Cryptography.CryptographicException: The specified network password is not correct.
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FilterPFXStore(ReadOnlySpan`1 rawData, SafePasswordHandle password, PfxCertStoreFlags pfxCertStoreFlags)
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FromBlobOrFile(ReadOnlySpan`1 rawData, String fileName, SafePasswordHandle password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate..ctor(String fileName, String password, X509KeyStorageFlags keyStorageFlags)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Certificates.CertificateConfigLoader.LoadCertificate(CertificateConfig certInfo, String endpointName)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.TlsConfigurationLoader.ApplyHttpsConfiguration(HttpsConnectionAdapterOptions httpsOptions, EndpointConfig endpoint, KestrelServerOptions serverOptions, CertificateConfig defaultCertificateConfig, ConfigurationReader configurationReader)
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.Reload()
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.LoadInternal()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2024-10-01 19:27:03.254 +02:00 [FTL] Server startup failed.
+System.Security.Cryptography.CryptographicException: The specified network password is not correct.
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FilterPFXStore(ReadOnlySpan`1 rawData, SafePasswordHandle password, PfxCertStoreFlags pfxCertStoreFlags)
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FromBlobOrFile(ReadOnlySpan`1 rawData, String fileName, SafePasswordHandle password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate..ctor(String fileName, String password, X509KeyStorageFlags keyStorageFlags)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Certificates.CertificateConfigLoader.LoadCertificate(CertificateConfig certInfo, String endpointName)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.TlsConfigurationLoader.ApplyHttpsConfiguration(HttpsConnectionAdapterOptions httpsOptions, EndpointConfig endpoint, KestrelServerOptions serverOptions, CertificateConfig defaultCertificateConfig, ConfigurationReader configurationReader)
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.Reload()
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.LoadInternal()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\vscode\CommunityForum\Community-forum\server\restapiserver\server.cs:line 250
+2024-10-01 19:27:29.858 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 19:27:30.917 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 19:27:31.048 +02:00 [ERR] Hosting failed to start
+System.Security.Cryptography.CryptographicException: The specified network password is not correct.
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FilterPFXStore(ReadOnlySpan`1 rawData, SafePasswordHandle password, PfxCertStoreFlags pfxCertStoreFlags)
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FromBlobOrFile(ReadOnlySpan`1 rawData, String fileName, SafePasswordHandle password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate..ctor(String fileName, String password, X509KeyStorageFlags keyStorageFlags)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Certificates.CertificateConfigLoader.LoadCertificate(CertificateConfig certInfo, String endpointName)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.TlsConfigurationLoader.ApplyHttpsConfiguration(HttpsConnectionAdapterOptions httpsOptions, EndpointConfig endpoint, KestrelServerOptions serverOptions, CertificateConfig defaultCertificateConfig, ConfigurationReader configurationReader)
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.Reload()
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.LoadInternal()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2024-10-01 19:27:31.102 +02:00 [FTL] Server startup failed.
+System.Security.Cryptography.CryptographicException: The specified network password is not correct.
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FilterPFXStore(ReadOnlySpan`1 rawData, SafePasswordHandle password, PfxCertStoreFlags pfxCertStoreFlags)
+   at System.Security.Cryptography.X509Certificates.CertificatePal.FromBlobOrFile(ReadOnlySpan`1 rawData, String fileName, SafePasswordHandle password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate..ctor(String fileName, String password, X509KeyStorageFlags keyStorageFlags)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Certificates.CertificateConfigLoader.LoadCertificate(CertificateConfig certInfo, String endpointName)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.TlsConfigurationLoader.ApplyHttpsConfiguration(HttpsConnectionAdapterOptions httpsOptions, EndpointConfig endpoint, KestrelServerOptions serverOptions, CertificateConfig defaultCertificateConfig, ConfigurationReader configurationReader)
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.Reload()
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.LoadInternal()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\vscode\CommunityForum\Community-forum\server\restapiserver\server.cs:line 250
+2024-10-01 19:29:40.826 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 19:29:41.868 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 19:29:42.015 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-01 19:29:42.067 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-01 19:29:42.070 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-01 19:29:42.071 +02:00 [INF] Hosting environment: Development
+2024-10-01 19:29:42.072 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-01 19:30:17.884 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstatshub - null null
+2024-10-01 19:30:18.083 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstatshub - 404 null application/json; charset=utf-8 200.9154ms
+2024-10-01 19:30:18.090 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5051/v1/hubs/forumstatshub, Response status code: 404
+2024-10-01 19:30:23.516 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - null null
+2024-10-01 19:30:23.526 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 19:30:25.929 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 19:30:25.982 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:02.4107585"ms  , body: 
+2024-10-01 19:30:25.987 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - 101 null null 2470.8536ms
+2024-10-01 19:32:08.423 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/hubs/forumstats - null null
+2024-10-01 19:32:08.427 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 19:32:08.431 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 19:32:08.450 +02:00 [INF] GET 400 /v1/hubs/forumstats "00:00:00.0063746"ms  , body: 
+2024-10-01 19:32:08.452 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/hubs/forumstats - 400 null text/plain 28.7544ms
+2024-10-01 19:32:20.576 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - null null
+2024-10-01 19:32:20.582 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:32:20.584 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:32:20.602 +02:00 [INF] GET 405 /v1/hubs/forumstats/negotiate "00:00:00.0031746"ms  , body: 
+2024-10-01 19:32:20.603 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - 405 0 text/plain 27.3363ms
+2024-10-01 19:32:38.113 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 19:32:38.117 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:32:38.125 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:32:38.160 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0091650"ms  , body: 
+2024-10-01 19:32:38.163 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 50.1047ms
+2024-10-01 19:36:26.038 +02:00 [INF] Config changed. Stopping the following endpoints: 'https://localhost:5051'
+2024-10-01 19:36:26.059 +02:00 [INF] Config changed. Starting the following endpoints: 'https://localhost:5051'
+2024-10-01 19:44:46.060 +02:00 [INF] Config changed. Stopping the following endpoints: 'https://localhost:5051'
+2024-10-01 19:44:46.065 +02:00 [INF] Config changed. Starting the following endpoints: 'https://localhost:5051'
+2024-10-01 19:44:46.068 +02:00 [INF] Certificate with thumbprint B4528FD98BDF3653EB131452CEC03A891018651D lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 19:44:46.074 +02:00 [INF] Certificate with thumbprint B4528FD98BDF3653EB131452CEC03A891018651D lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 19:46:19.200 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 19:46:19.203 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:46:19.204 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:46:19.233 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0019576"ms  , body: 
+2024-10-01 19:46:19.238 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 38.7441ms
+2024-10-01 19:46:58.625 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 19:46:59.705 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 19:46:59.851 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-01 19:46:59.857 +02:00 [INF] Certificate with thumbprint B4528FD98BDF3653EB131452CEC03A891018651D lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 19:46:59.895 +02:00 [INF] Certificate with thumbprint B4528FD98BDF3653EB131452CEC03A891018651D lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 19:46:59.914 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-01 19:46:59.916 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-01 19:46:59.917 +02:00 [INF] Hosting environment: Development
+2024-10-01 19:46:59.917 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-01 19:51:59.868 +02:00 [INF] Config changed. Stopping the following endpoints: 'https://localhost:5051'
+2024-10-01 19:51:59.882 +02:00 [INF] Config changed. Starting the following endpoints: 'https://localhost:5051'
+2024-10-01 19:51:59.883 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 19:51:59.884 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 19:52:20.015 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 19:52:21.018 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 19:52:21.155 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-01 19:52:21.160 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 19:52:21.200 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 19:52:21.209 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-01 19:52:21.217 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-01 19:52:21.218 +02:00 [INF] Hosting environment: Development
+2024-10-01 19:52:21.219 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-01 19:53:44.507 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 19:53:45.726 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 19:53:45.868 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-01 19:53:45.873 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 19:53:45.913 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 19:53:45.924 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-01 19:53:45.925 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-01 19:53:45.926 +02:00 [INF] Hosting environment: Development
+2024-10-01 19:53:45.927 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-01 19:54:17.190 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - null null
+2024-10-01 19:54:17.294 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:54:17.296 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:54:17.334 +02:00 [INF] GET 405 /v1/hubs/forumstats/negotiate "00:00:00.0723681"ms  , body: 
+2024-10-01 19:54:17.342 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - 405 0 text/plain 153.3664ms
+2024-10-01 19:55:03.056 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - null null
+2024-10-01 19:55:03.064 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:55:03.070 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:55:03.092 +02:00 [INF] GET 405 /v1/hubs/forumstats/negotiate "00:00:00.0089796"ms  , body: 
+2024-10-01 19:55:03.095 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - 405 0 text/plain 43.6588ms
+2024-10-01 19:55:04.034 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - null null
+2024-10-01 19:55:04.040 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:55:04.041 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:55:04.061 +02:00 [INF] GET 405 /v1/hubs/forumstats/negotiate "00:00:00.0039532"ms  , body: 
+2024-10-01 19:55:04.063 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - 405 0 text/plain 28.5892ms
+2024-10-01 19:55:05.009 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - null null
+2024-10-01 19:55:05.015 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:55:05.017 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:55:05.036 +02:00 [INF] GET 405 /v1/hubs/forumstats/negotiate "00:00:00.0036058"ms  , body: 
+2024-10-01 19:55:05.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - 405 0 text/plain 28.97ms
+2024-10-01 19:55:08.359 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - null null
+2024-10-01 19:55:08.362 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:55:08.364 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:55:08.386 +02:00 [INF] GET 405 /v1/hubs/forumstats/negotiate "00:00:00.0045584"ms  , body: 
+2024-10-01 19:55:08.388 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - 405 0 text/plain 28.8786ms
+2024-10-01 19:59:04.783 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 19:59:04.785 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:59:04.804 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 19:59:04.850 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0226118"ms  , body: 
+2024-10-01 19:59:04.852 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 69.079ms
+2024-10-01 20:01:27.738 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 20:01:27.741 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:01:27.742 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:01:27.774 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0021063"ms  , body: 
+2024-10-01 20:01:27.775 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 37.0931ms
+2024-10-01 20:02:25.797 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - null null
+2024-10-01 20:02:25.799 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 20:04:18.079 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/hubs/forumstats - null null
+2024-10-01 20:04:18.089 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 20:04:18.092 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 20:04:18.112 +02:00 [INF] GET 400 /v1/hubs/forumstats "00:00:00.0042519"ms  , body: 
+2024-10-01 20:04:18.117 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/hubs/forumstats - 400 null text/plain 37.4954ms
+2024-10-01 20:04:18.264 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/favicon.ico - null null
+2024-10-01 20:04:18.346 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/favicon.ico - 404 null application/json; charset=utf-8 81.4233ms
+2024-10-01 20:04:18.350 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5051/favicon.ico, Response status code: 404
+2024-10-01 20:09:47.138 +02:00 [INF] Config changed. Stopping the following endpoints: 'https://localhost:5051'
+2024-10-01 20:09:52.163 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 20:09:52.213 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:07:26.3656564"ms  , body: 
+2024-10-01 20:09:52.216 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - 101 null null 446419.0408ms
+2024-10-01 20:09:52.220 +02:00 [INF] Config changed. Starting the following endpoints: 'https://localhost:5051'
+2024-10-01 20:10:03.139 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 20:10:04.183 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 20:10:04.363 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-01 20:10:04.409 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-01 20:10:04.410 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-01 20:10:04.411 +02:00 [INF] Hosting environment: Development
+2024-10-01 20:10:04.411 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-01 20:10:47.922 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 20:10:48.038 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:10:48.049 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:10:48.095 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0882999"ms  , body: 
+2024-10-01 20:10:48.102 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 182.0983ms
+2024-10-01 20:12:15.930 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 20:12:15.935 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:12:15.936 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:12:15.966 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0029195"ms  , body: 
+2024-10-01 20:12:15.968 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 37.8022ms
+2024-10-01 20:12:22.799 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 20:12:22.803 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:12:22.804 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:12:22.833 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0032474"ms  , body: 
+2024-10-01 20:12:22.835 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 35.9651ms
+2024-10-01 20:13:21.993 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 20:13:21.998 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:13:21.999 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:13:22.021 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0017750"ms  , body: 
+2024-10-01 20:13:22.022 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 29.7458ms
+2024-10-01 20:13:23.287 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 20:13:23.289 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:13:23.290 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:13:23.340 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0029814"ms  , body: 
+2024-10-01 20:13:23.345 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 58.0379ms
+2024-10-01 20:13:24.852 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 20:13:24.854 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:13:24.855 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:13:24.879 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0025608"ms  , body: 
+2024-10-01 20:13:24.881 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 29.3378ms
+2024-10-01 20:13:35.408 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - null null
+2024-10-01 20:13:35.410 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 20:13:42.794 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 20:13:42.841 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:07.3867090"ms  , body: 
+2024-10-01 20:13:42.844 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - 101 null null 7436.2406ms
+2024-10-01 20:13:50.094 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - null null
+2024-10-01 20:13:50.096 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 20:16:12.249 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 20:16:12.332 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:02:22.1986818"ms  , body: 
+2024-10-01 20:16:12.335 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:5051/v1/hubs/forumstats - 101 null null 142240.394ms
+2024-10-01 20:27:54.598 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 20:27:56.605 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 20:27:56.831 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-01 20:27:56.881 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-01 20:27:56.882 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-01 20:27:56.883 +02:00 [INF] Hosting environment: Development
+2024-10-01 20:27:56.884 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-01 20:28:46.842 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 20:28:46.992 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:28:47.007 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:28:47.072 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.1118537"ms  , body: 
+2024-10-01 20:28:47.080 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/hubs/forumstats/negotiate - 200 273 application/json 240.0849ms
+2024-10-01 20:51:08.416 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 20:51:09.884 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 20:51:11.230 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-01 20:51:11.277 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-01 20:51:11.278 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-01 20:51:11.279 +02:00 [INF] Hosting environment: Development
+2024-10-01 20:51:11.279 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-01 20:51:24.885 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/ - null null
+2024-10-01 20:51:25.309 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/ - 404 null application/json; charset=utf-8 425.4408ms
+2024-10-01 20:51:25.321 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5051/, Response status code: 404
+2024-10-01 20:52:18.310 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - null null
+2024-10-01 20:52:18.350 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:52:18.356 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:52:18.377 +02:00 [INF] GET 405 /v1/hubs/forumstats/negotiate "00:00:00.0400005"ms  , body: 
+2024-10-01 20:52:18.381 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/hubs/forumstats/negotiate - 405 0 text/plain 71.4413ms
+2024-10-01 20:52:39.376 +02:00 [INF] Request starting HTTP/2 POST https://localhost/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 20:52:39.383 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:52:39.392 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 20:52:39.412 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0127349"ms  , body: 
+2024-10-01 20:52:39.415 +02:00 [INF] Request finished HTTP/2 POST https://localhost/v1/hubs/forumstats/negotiate - 200 273 application/json 39.4421ms
+2024-10-01 21:52:16.778 +02:00 [INF] Config changed. Stopping the following endpoints: 'https://localhost:5051'
+2024-10-01 21:52:36.565 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 21:52:37.721 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 21:52:37.889 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-01 21:52:37.907 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-01 21:52:37.909 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-01 21:52:37.911 +02:00 [INF] Hosting environment: Development
+2024-10-01 21:52:37.911 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-01 21:52:40.181 +02:00 [INF] Request starting HTTP/2 POST https://localhost/v1/hubs/forumstats/negotiate - null 0
+2024-10-01 21:52:40.297 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 21:52:40.310 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats/negotiate'
+2024-10-01 21:52:40.355 +02:00 [INF] POST 200 /v1/hubs/forumstats/negotiate "00:00:00.0933008"ms  , body: 
+2024-10-01 21:52:40.362 +02:00 [INF] Request finished HTTP/2 POST https://localhost/v1/hubs/forumstats/negotiate - 200 273 application/json 182.3373ms
+2024-10-01 22:11:59.831 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 22:12:22.020 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 22:13:12.264 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 22:14:20.198 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 22:14:47.576 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 22:18:39.548 +02:00 [INF] Starting up... Please be patient.
+2024-10-01 22:18:42.288 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-01 22:18:42.374 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-01 22:18:42.397 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-01 22:18:42.433 +02:00 [INF] Now listening on: http://[::]:5050
+2024-10-01 22:18:42.434 +02:00 [INF] Now listening on: https://[::]:5051
+2024-10-01 22:18:42.436 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-01 22:18:42.436 +02:00 [INF] Hosting environment: Development
+2024-10-01 22:18:42.437 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-01 22:18:51.656 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:18:51.759 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:26:06.629 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:26:06.633 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:32:08.073 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:32:08.158 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:13:16.3805481"ms  , body: 
+2024-10-01 22:32:08.164 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 796509.7441ms
+2024-10-01 22:32:29.594 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:32:29.601 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:32:37.112 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:32:37.154 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:07.5140177"ms  , body: 
+2024-10-01 22:32:37.156 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 7561.7338ms
+2024-10-01 22:33:01.203 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:33:01.207 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:33:04.060 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:33:04.102 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:02.8542424"ms  , body: 
+2024-10-01 22:33:04.104 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 2900.8594ms
+2024-10-01 22:33:22.782 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:33:22.785 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:33:23.789 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:33:23.827 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:01.0067913"ms  , body: 
+2024-10-01 22:33:23.829 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 1047.4243ms
+2024-10-01 22:34:38.532 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:34:38.539 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:34:40.129 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:34:40.177 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:01.5985631"ms  , body: 
+2024-10-01 22:34:40.179 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 1646.8339ms
+2024-10-01 22:35:44.191 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:35:44.200 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:35:59.746 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:35:59.783 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:09:53.1204395"ms  , body: 
+2024-10-01 22:35:59.785 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 593155.9411ms
+2024-10-01 22:36:01.404 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:36:01.407 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:36:39.574 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:36:39.603 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:38.1694733"ms  , body: 
+2024-10-01 22:36:39.605 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 38200.5526ms
+2024-10-01 22:36:42.285 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:36:42.287 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:19.250 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:19.283 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:36.9661954"ms  , body: 
+2024-10-01 22:37:19.286 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 37000.6544ms
+2024-10-01 22:37:29.482 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:37:29.484 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:30.593 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:30.637 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:01.1105334"ms  , body: 
+2024-10-01 22:37:30.639 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 1156.8659ms
+2024-10-01 22:37:32.671 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:37:32.673 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:32.687 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:32.728 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:00.0154410"ms  , body: 
+2024-10-01 22:37:32.730 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 59.5003ms
+2024-10-01 22:37:33.574 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:37:33.576 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:33.590 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:33.634 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:00.0160884"ms  , body: 
+2024-10-01 22:37:33.636 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 62.2005ms
+2024-10-01 22:37:34.418 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:37:34.422 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:34.437 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:34.475 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:00.0196482"ms  , body: 
+2024-10-01 22:37:34.477 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 58.1018ms
+2024-10-01 22:37:51.548 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:37:51.551 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:51.570 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:51.603 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:00.0210114"ms  , body: 
+2024-10-01 22:37:51.605 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 57.4311ms
+2024-10-01 22:37:57.297 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:37:57.299 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:59.599 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:37:59.633 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:02.3012888"ms  , body: 
+2024-10-01 22:37:59.635 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 2338.0882ms
+2024-10-01 22:39:42.585 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - null null
+2024-10-01 22:39:42.598 +02:00 [INF] Executing endpoint '/v1/hubs/forumstats'
+2024-10-01 22:39:43.564 +02:00 [INF] Executed endpoint '/v1/hubs/forumstats'
+2024-10-01 22:39:43.602 +02:00 [INF] GET 101 /v1/hubs/forumstats "00:00:00.9680593"ms  , body: 
+2024-10-01 22:39:43.604 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5050/v1/hubs/forumstats - 101 null null 1018.7672ms

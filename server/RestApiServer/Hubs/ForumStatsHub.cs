@@ -5,6 +5,7 @@ using RestApiServer.Db.Users;
 using RestApiServer.Dto.App;
 using RestApiServer.Services;
 using RestApiServer.Services.Categories;
+using Serilog;
 using System.Threading.Tasks;
 
 namespace RestApiServer.Hubs
@@ -13,6 +14,7 @@ namespace RestApiServer.Hubs
     {
         public async Task<ForumAppState> GetForumAppStateAsync(string userId)
         {
+            Log.Information($"User id sent: {userId}, Getting forum app state");
             using var _dbContext = new AppDbContext();
 
             var forumStats = new ForumStats();

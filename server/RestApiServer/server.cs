@@ -35,10 +35,15 @@ namespace RestApiServer
                 EncodingProvider encodingProvider = CodePagesEncodingProvider.Instance;
                 Encoding.RegisterProvider(encodingProvider);
                 ConfigurationLoader.LoadConfig();
+
+                builder.WebHost.ConfigureKestrel(options => {
+                    options.ListenAnyIP(5050); //HTTP port
+                    options.ListenAnyIP(5051, o => o.UseHttps("C:\\Users\\Iain\\localhost-dev-server.pfx", "C3r3$123")); //HTTPS port
+                });
                 
-                List<int> dontLogStatusCodes = [ 404 ];
-                List<string> dontLogEndpoints = ["/health/info", "/api/greeting"];
-                List<string> dontLogBodyEndpoints = [];
+                List<int> dontLogStatusCodes = new() { 404 };
+                List<string> dontLogEndpoints =new()  {"health/info", "/api/greeting"};
+                List<string> dontLogBodyEndpoints = new();
 
                 builder.Services.AddControllers().AddJsonOptions(options =>
                 {
@@ -117,8 +122,10 @@ namespace RestApiServer
 
                 //Toplevel registration of endpoints
                 app.MapControllers(); // Maps the API controllers
+
+                //Map the SignalR hubs
                 app.MapHub<ChatHub>("/v1/hubs/chat"); // Maps the SignalR hub for chat
-                app.MapHub<ForumStatsHub>("/v1/hubs/forumstats");
+                app.MapHub<ForumStatsHub>("/v1/hubs/forumstats"); 
 
                 app.UseWebSockets();
 
@@ -167,7 +174,8 @@ namespace RestApiServer
                             {
                                 ResponseMessage = "You are not allowed to perform this action"
                             };
-                            //SystemInsights.ReportError($"{method} {url}, User not allowed to perform action");
+
+                            Log.Information($"{method} {url}, User not allowed to perform action");
                             await context.Response.WriteAsJsonAsync(errorResponse);
                         }
                     }
@@ -237,17 +245,10 @@ namespace RestApiServer
                 });
 
                 app.UseAuthentication();
-                app.UseAuthorization();
-
-                if(args.Contains("help"))
-                {
-                    //List the args available and exit.
-                    Console.WriteLine("setup-database-only: Sets up the database only and exits");
-                    Console.WriteLine("setup-database: Sets up the database and starts the server");
-                    return;
-                }                       
+                app.UseAuthorization();                    
 
                 app.Run();
+
             }
 
             catch (Exception ex)
