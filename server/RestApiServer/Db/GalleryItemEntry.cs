@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+using RestApiServer.Db.Users;
 
 namespace RestApiServer.Db
 {
@@ -16,5 +18,9 @@ namespace RestApiServer.Db
         public int NumLikes { get; set; } = 0; //int(10)
         public int NumDislikes { get; set; } = 0; //int(10)
         public DateTime CreatedDate { get; set; } = DateTime.Now; 
+
+        //Navigation properties:
+        [JsonIgnore]
+        public UserEntry? CreatedByUser { get; set; } = null!;
     }
 }

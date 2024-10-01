@@ -76,6 +76,17 @@ namespace RestApiServer.Db
             modelBuilder.Entity<RolePermissionEntry>()
             .HasKey(rp => rp.RolePermissionId);
 
+            modelBuilder.Entity<ContactEntry>()
+            .HasKey(c => c.ContactId);
+
+            modelBuilder.Entity<GalleryItemEntry>()
+            .HasKey(gi => gi.GalleryItemId);
+
+            modelBuilder.Entity<GalleryItemEntry>()
+            .HasOne(g => g.CreatedByUser) // Navigation property on GalleryItem
+            .WithMany(u => u.GalleryItems) // Navigation property on UserEntry
+            .HasForeignKey(g => g.CreatedByUserId) // Foreign key on GalleryItem
+            .OnDelete(DeleteBehavior.Restrict); // Optional: Set delete behavior
 
             //Foreign key relationships for the RolePermissionEntry table
             modelBuilder.Entity<RolePermissionEntry>()

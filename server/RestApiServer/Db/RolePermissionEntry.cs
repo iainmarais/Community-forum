@@ -16,8 +16,7 @@ namespace RestApiServer.Db
         public required string PermissionId { get; set; } = string.Empty;
         //Navigation properties:
         [JsonIgnore]
-        public required RoleEntry Role { get; set; } = null!;
-        
+        public required RoleEntry Role { get; set; } = null!;       
         [JsonIgnore]
         public required PermissionEntry Permission { get; set; } = null!;
     }

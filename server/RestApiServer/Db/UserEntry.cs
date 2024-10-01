@@ -62,6 +62,8 @@ namespace RestApiServer.Db.Users
         public List<ThreadEntry> ThreadsCreated { get; set; } = new();
         [JsonIgnore]
         public List<TopicEntry> TopicsCreated { get; set; } = new();
+        [JsonIgnore]
+        public List<GalleryItemEntry> GalleryItems { get; set; } = new();
 
         //Guest placeholder user
         public static UserEntry CreateDefaultGuestUser()
