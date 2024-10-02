@@ -2,9 +2,29 @@
 import { useAdminStore } from '@/stores/AdminStore';
 import { useToast } from 'vue-toastification';
 import { onMounted, ref } from 'vue';
+import { createHubConnection, initConnection, sendSignalRMessage } from '@/components/utils/SignalRHelper';
 
 const adminStore = useAdminStore();
 const toast = useToast();
+
+const hubs: Record<string, string> = {
+    "Chat": "chat",
+    "Forum stats": "forumStats"
+}
+
+const selectedHub = ref<string>("");
+const hubMethodName = ref<string>("");
+const args = ref<string>("");
+const clientMethodName = ref<string>("");
+
+const connectToHub = (hubName: string, clientMethodName: string) => {
+    createHubConnection(hubName);
+    initConnection(hubName, clientMethodName);
+}
+
+const sendMessage = (hubMethodName: string, args: string) => {  
+    sendSignalRMessage(hubMethodName, args);
+}
 
 const tabs = ref([
     {
@@ -27,6 +47,11 @@ const tabs = ref([
         name: 'Content management',
         iconClass: 'fas fa-wrench',
     },
+    {
+        id: 5,
+        name: "Testing and development",
+        iconClass: 'fas fa-gear',
+    }
 ]);
 
 onMounted(() => {
@@ -101,6 +126,58 @@ const activeTab = ref(1);
                     <div v-if="activeTab === 3">
                     </div>
                     <div v-if="activeTab === 4">
+                    </div>
+                    <div v-if="activeTab === 5">
+                        <!--Testing and development functions will go here, including for testing SignalR communication.-->
+                        <div class= "card card-custom">
+                            <div class="card-header border-0 pt-7">
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="card-label font-weight-bolder text-dark075 font-size-h5">Testing and development</span>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <!--Form group--> 
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>SignalR Hubs</label>
+                                            <div class="form-row align-items-center">
+                                                <div class="col-md-3">
+                                                    <select class="form-control" v-model="selectedHub">
+                                                        <option v-for="hub in hubs">{{ hub }}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input placeholder = "Client method name" type="text" class="form-control" v-model="clientMethodName" />
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <button class="btn btn-primary w-100" @click="connectToHub(selectedHub, clientMethodName)">Connect</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Test connection: send method name and JSON message</label>
+                                            <div class="form-row align-items-center">
+                                                <div class="col-md-3">
+                                                    <input type="text" class="form-control" v-model="hubMethodName"  placeholder="Hub method name" >
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input type="text" class="form-control" v-model="args" placeholder="Arguments">
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <button class="btn btn-primary w-100" @click="sendMessage(hubMethodName, args)">Test</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <!--Output from the SignalR server-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

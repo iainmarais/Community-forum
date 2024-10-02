@@ -50,9 +50,6 @@ namespace RestApiServer
                     //Todo: Build out if necessary.
                 });
 
-                //Add SignalR to services
-                builder.Services.AddSignalR();
-
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
 
@@ -86,9 +83,10 @@ namespace RestApiServer
                 {
                     options.AddPolicy(productionCorsPolicy, policy =>
                     {
-                        policy.AllowAnyOrigin()
+                        policy.WithOrigins("http://localhost:5173")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
+                        .AllowCredentials()
                         .WithExposedHeaders("Content-Disposition");
                     });
                 });
@@ -98,12 +96,16 @@ namespace RestApiServer
                 {
                     options.AddPolicy(developmentCorsPolicy, policy =>
                     {
-                        policy.AllowAnyOrigin()
+                        policy.WithOrigins("http://localhost:5173")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
+                        .AllowCredentials()
                         .WithExposedHeaders("Content-Disposition");
                     });
                 });
+
+                //Add SignalR to services
+                builder.Services.AddSignalR();
 
                 var app = builder.Build();
 

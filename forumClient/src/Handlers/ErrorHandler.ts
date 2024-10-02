@@ -53,11 +53,20 @@ const handleApiErrorResponse = async (error: any): Promise<void> => {
     }
 }
 
+const handleSignalRErrorResponse = async (message: string, error: any): Promise<void> => {
+    const errorMessage = JSON.stringify(error);
+    console.error(errorMessage);
+    if(error.message && typeof error.message === "string" && error.message.length > 0) {
+        toast.error(`SignalR error - ${message}:` + error.message);
+    }
+}
+
 const generalError = (errorMessage: string) => {
     toast.error(errorMessage);
 }
 
 export default {
     handleApiErrorResponse,
+    handleSignalRErrorResponse,
     generalError
 }
