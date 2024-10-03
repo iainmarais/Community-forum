@@ -83,7 +83,22 @@ namespace RestApiServer
                 {
                     options.AddPolicy(productionCorsPolicy, policy =>
                     {
-                        policy.WithOrigins("http://localhost:5173")
+                        policy.SetIsOriginAllowed(origin =>
+                        {
+                            if (origin.StartsWith("http://localhost"))
+                            {
+                                return true;
+                            }
+                            //Allow https from localhost
+                            if (origin.StartsWith("https://localhost"))
+                            {
+                                return true;
+                            }
+                            //Allow http from local network range:
+                            var allocatedNetworkRange="192.168.0.";
+                            Uri uri = new(origin);
+                            return uri.Host.StartsWith(allocatedNetworkRange);
+                        })
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials()
@@ -96,7 +111,22 @@ namespace RestApiServer
                 {
                     options.AddPolicy(developmentCorsPolicy, policy =>
                     {
-                        policy.WithOrigins("http://localhost:5173")
+                        policy.SetIsOriginAllowed(origin =>
+                        {
+                            if (origin.StartsWith("http://localhost"))
+                            {
+                                return true;
+                            }
+                            //Allow https from localhost
+                            if (origin.StartsWith("https://localhost"))
+                            {
+                                return true;
+                            }
+                            //Allow http from local network range:
+                            var allocatedNetworkRange="192.168.0.";
+                            Uri uri = new(origin);
+                            return uri.Host.StartsWith(allocatedNetworkRange);
+                        })
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials()

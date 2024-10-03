@@ -64,7 +64,7 @@ const Put = async <T>(url: string, data: any) : Promise<ApiSuccessResponse<T>> =
     return response.data as ApiSuccessResponse<T>;
 }
 
-const Post = async <T>(url: string, data: any) : Promise<ApiSuccessResponse<T>> => {
+const Post = async <T>(url: string, data: any, headers?: any) : Promise<ApiSuccessResponse<T>> => {
     const response = await instance.post(url, data, { headers });
     return response.data as ApiSuccessResponse<T>;
 }

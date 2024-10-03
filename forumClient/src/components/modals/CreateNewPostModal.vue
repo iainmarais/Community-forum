@@ -19,7 +19,7 @@ const replyToPostId = ref<string>("");
 const isFirstPost = ref<boolean>(false);
 
 const getThreadPostCount = (threadId: string) => {
-    return discussionStore.thread?.posts?.filter((post) => post.threadId === threadId).length ?? 0;
+    return discussionStore.thread?.posts?.filter((post) => post.post.threadId === threadId).length ?? 0;
 }
 
 const postReply = () => {

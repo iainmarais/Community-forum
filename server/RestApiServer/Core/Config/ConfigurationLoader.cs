@@ -14,6 +14,7 @@ namespace RestApiServer.Core.Config
             EnvironmentVariable.JwtExpirationMins,
             EnvironmentVariable.JwtSharedSecret,
             EnvironmentVariable.ShortTermCacheExpirationSecs,
+            EnvironmentVariable.AspnetCoreUrls
         };
 
         private static bool IsConfigLoaded = false;

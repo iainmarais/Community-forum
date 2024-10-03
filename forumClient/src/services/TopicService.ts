@@ -8,6 +8,16 @@ const getTopicFullInfo = async (topicId: string): Promise<ApiSuccessResponse<Top
     return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/topics/${topicId}/fullinfo`);
 }
 
+const getTopics = async (pageNumber: number, rowsPerPage: number, searchTerm?: string): Promise<ApiSuccessResponse<PaginatedData<TopicBasicInfo[],TopicSummary>>> => {
+    const queryParams = [];
+    queryParams.push(`pageNumber=${pageNumber}`);
+    queryParams.push(`rowsPerPage=${rowsPerPage}`);
+    if(searchTerm) {
+        queryParams.push(`searchTerm=${searchTerm}`);
+    }
+    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/topics?${queryParams.join('&')}`);
+}
+
 const createNewTopic = async (request: CreateTopicRequest): Promise<ApiSuccessResponse<TopicFullInfo>> => {
     return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/topics/create`, request);
 }
@@ -30,5 +40,6 @@ export default {
     getTopicFullInfo,
     createNewTopic,
     getTopicBasicInfo,
-    getThreadsForTopic
+    getThreadsForTopic,
+    getTopics
 }

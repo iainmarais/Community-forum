@@ -19,5 +19,6 @@ namespace RestApiServer.Core.Config
         public static EnvironmentVariable MySqlUsername { get => new EnvironmentVariable("MYSQL_USERNAME"); }
         public static EnvironmentVariable MySqlPassword { get => new EnvironmentVariable("MYSQL_PASSWORD"); }
         public static EnvironmentVariable ShortTermCacheExpirationSecs { get => new EnvironmentVariable("SHORT_TERM_CACHE_EXPIRATION_SECS", "60"); }
+        public static EnvironmentVariable AspnetCoreUrls { get => new EnvironmentVariable("ASPNETCORE_URLS"); }
     }
 }

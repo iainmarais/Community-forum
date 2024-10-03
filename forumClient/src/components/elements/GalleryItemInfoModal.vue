@@ -39,7 +39,7 @@ watch(() => props.item, (newItem) => {
                 </div>
                 <!--Add more details here-->
                 <div class="modal-body" v-if="props.item">
-                    <p>Uploaded by {{ getUserInfo(props.item.galleryItem.createdByUserId)?.userFirstname }} {{ getUserInfo(props.item.galleryItem.createdByUserId)?.userLastname }}</p>
+                    <p>Uploaded by {{ getUserInfo(props.item.galleryItem.createdByUserId)?.user.userFirstname }} {{ getUserInfo(props.item.galleryItem.createdByUserId)?.user.userLastname }}</p>
                 </div>
                 <div class ="modal-body" v-else>
                     <p>Could not load info.</p>

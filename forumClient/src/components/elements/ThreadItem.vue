@@ -25,7 +25,7 @@ onMounted(() => {
     //Todo: Use the onmounted lifecycle hook to get the number of new posts since last view
 });
 
-watch(() => props.thread?.topicId, (newTopicId) => {
+watch(() => props.thread?.thread.topicId, (newTopicId) => {
     if (newTopicId == null) {
         //If this is not null or undefined, use it to grab the basic info of the associated topic, else return.
         return;
@@ -36,7 +36,7 @@ watch(() => props.thread?.topicId, (newTopicId) => {
 
 //Leaving this here for now. Might be useful in the future.
 const goBack = () => {
-    router.push({name: "TopicView", params : {topicId: props.thread!.topicId}});
+    router.push({name: "TopicView", params : {topicId: props.thread!.thread.topicId}});
 }
 
 const viewThread = (threadId: string) => {
@@ -72,12 +72,12 @@ const getUserInfo = (userId: string) => {
                             </div>
                             <div class="ml-3">
                                 <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">
-                                    <a href="#" @click="viewThread(props.thread!.threadId)">{{ props.thread!.threadName }}</a>
+                                    <a href="#" @click="viewThread(props.thread!.thread.threadId)">{{ props.thread!.thread.threadName }}</a>
                                 </div>
                                 <div>
                                     <div class="ml-auto">
-                                        <span class="text-muted font-weight-bold text-muted font-size-sm d-block">Started by: {{ getUserInfo(props.thread!.createdByUserId!)?.username ?? "N/A" }}</span>
-                                        <span class="text-muted font-weight-bold text-muted font-size-sm d-block">Date Started: {{ DateUtils.formatDate(props.thread?.createdDate!) ?? "N/A" }}</span>
+                                        <span class="text-muted font-weight-bold text-muted font-size-sm d-block">Started by: {{ getUserInfo(props.thread!.thread.createdByUserId!)?.user.username ?? "N/A" }}</span>
+                                        <span class="text-muted font-weight-bold text-muted font-size-sm d-block">Date Started: {{ DateUtils.formatDate(props.thread?.thread.createdDate!) ?? "N/A" }}</span>
                                     </div>
                                 </div>
                             </div>
