@@ -5,6 +5,7 @@ import { useAppContextStore } from '@/stores/AppContextStore';
 import { useUserProfileStore } from '@/stores/UserProfileStore';
 import { onMounted, ref, watch, type PropType } from 'vue';
 import { useToast } from 'vue-toastification';
+import CustomSelector from '@/components/elements/CustomSelector.vue';
 
 const userProfileStore = useUserProfileStore();
 const appContextStore = useAppContextStore();
@@ -218,11 +219,16 @@ onMounted(() => {
                             <tr>
                                 <td>Gender</td>
                                 <td>
-                                    <select class="form-control" v-model="gender">
+                                    <CustomSelector 
+                                        :style-class="'form-control'"
+                                        :options="[{value: 'Male', displayText: 'Male'}, {value: 'Female', displayText: 'Female'}, {value: 'Other', displayText: 'Other'}]" 
+                                        :selected-value="loggedInUserInfo?.user.gender!"
+                                        v-model="gender" />
+                                    <!-- <select class="form-control" v-model="gender">
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                         <option value="Other">Other</option>
-                                    </select>
+                                    </select> -->
                                 </td>
                             </tr>
                             <tr>
