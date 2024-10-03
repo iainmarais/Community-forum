@@ -13540,3 +13540,104 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2024-10-03 15:23:24.614 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
 2024-10-03 15:23:24.616 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0689010"ms {User:55bdba28-34c3-48d4-a9f2-4cd4a3afb829} , body: 
 2024-10-03 15:23:24.620 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 96.8772ms
+2024-10-03 15:23:54.491 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:23:54.510 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:23:54.525 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 34.0961ms
+2024-10-03 15:23:54.551 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:23:54.569 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:23:54.572 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:23:54.574 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-10-03 15:23:54.680 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-03 15:23:54.733 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 147.8838ms
+2024-10-03 15:23:54.740 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:23:54.752 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.1809040"ms {User:55bdba28-34c3-48d4-a9f2-4cd4a3afb829} , body: 
+2024-10-03 15:23:54.757 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 205.6198ms
+2024-10-03 15:24:24.509 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:24:24.528 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:24:24.530 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 21.4233ms
+2024-10-03 15:24:24.532 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:24:24.546 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:24:24.548 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:24:24.549 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-10-03 15:24:24.596 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-03 15:24:24.599 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 45.8906ms
+2024-10-03 15:24:24.601 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:24:24.602 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0547143"ms {User:55bdba28-34c3-48d4-a9f2-4cd4a3afb829} , body: 
+2024-10-03 15:24:24.607 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 74.1699ms
+2024-10-03 15:24:54.487 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:24:54.500 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:24:54.502 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 14.9115ms
+2024-10-03 15:24:54.506 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:24:54.517 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:24:54.519 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:24:54.521 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-10-03 15:24:54.566 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-03 15:24:54.569 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 43.3269ms
+2024-10-03 15:24:54.572 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:24:54.574 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0544339"ms {User:55bdba28-34c3-48d4-a9f2-4cd4a3afb829} , body: 
+2024-10-03 15:24:54.577 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 71.2534ms
+2024-10-03 15:25:24.503 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:25:24.517 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:25:24.519 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 15.994ms
+2024-10-03 15:25:24.524 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:25:24.535 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:25:24.541 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:25:24.544 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-10-03 15:25:24.584 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-03 15:25:24.588 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 39.6795ms
+2024-10-03 15:25:24.591 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:25:24.593 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0523999"ms {User:55bdba28-34c3-48d4-a9f2-4cd4a3afb829} , body: 
+2024-10-03 15:25:24.596 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 71.7517ms
+2024-10-03 15:25:54.491 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:25:54.520 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:25:54.523 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 31.8268ms
+2024-10-03 15:25:54.526 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:25:54.542 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:25:54.544 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:25:54.549 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-10-03 15:25:54.607 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-03 15:25:54.610 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 55.4363ms
+2024-10-03 15:25:54.616 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:25:54.618 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0746402"ms {User:55bdba28-34c3-48d4-a9f2-4cd4a3afb829} , body: 
+2024-10-03 15:25:54.621 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 95.4501ms
+2024-10-03 15:26:24.483 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:26:24.498 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:26:24.500 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 16.8914ms
+2024-10-03 15:26:24.511 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:26:24.528 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:26:24.531 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:26:24.532 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-10-03 15:26:24.580 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-03 15:26:24.584 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 48.5315ms
+2024-10-03 15:26:24.592 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:26:24.594 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0639948"ms {User:55bdba28-34c3-48d4-a9f2-4cd4a3afb829} , body: 
+2024-10-03 15:26:24.597 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 86.3991ms
+2024-10-03 15:26:54.483 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:26:54.487 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:26:54.490 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 6.6571ms
+2024-10-03 15:26:54.501 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:26:54.510 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:26:54.516 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:26:54.518 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-10-03 15:26:54.576 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-03 15:26:54.602 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 78.8639ms
+2024-10-03 15:26:54.605 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:26:54.607 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0915049"ms {User:55bdba28-34c3-48d4-a9f2-4cd4a3afb829} , body: 
+2024-10-03 15:26:54.610 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 108.761ms
+2024-10-03 15:27:24.490 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:27:24.495 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:27:24.497 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 7.1411ms
+2024-10-03 15:27:24.509 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:27:24.517 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:27:24.519 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:27:24.525 +02:00 [INF] Route matched with {action = "GetAppState", controller = "Forum"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.App.ForumAppState]] GetAppState() on controller RestApiServer.Controllers.ForumController (RestApiServer).
+2024-10-03 15:27:24.572 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.App.ForumAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-03 15:27:24.576 +02:00 [INF] Executed action RestApiServer.Controllers.ForumController.GetAppState (RestApiServer) in 45.6641ms
+2024-10-03 15:27:24.580 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.ForumController.GetAppState (RestApiServer)'
+2024-10-03 15:27:24.582 +02:00 [INF] GET 200 /v1/forum/state "00:00:00.0634343"ms {User:55bdba28-34c3-48d4-a9f2-4cd4a3afb829} , body: 
+2024-10-03 15:27:24.589 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/forum/state - 200 null application/json; charset=utf-8 79.4637ms
+2024-10-03 15:27:55.532 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - null null
+2024-10-03 15:28:10.448 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/forum/admin/roles - null null
+2024-10-03 15:28:14.987 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:28:50.174 +02:00 [INF] CORS policy execution successful.
+2024-10-03 15:29:12.017 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/forum/state - 204 null null 76484.811ms

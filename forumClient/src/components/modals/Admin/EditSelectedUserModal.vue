@@ -53,6 +53,34 @@ const closeModal = () => {
                             <input type="text" class="form-control" v-model="userLastname" :placeholder=selectedUser?.user.userLastname />
                         </div>
                     </div>
+                    <p>Address and contact info</p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control" :placeholder=selectedUser?.user.address />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">City/Town</label>
+                            <input type="text" class="form-control" :placeholder=selectedUser?.user.cityName />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Postcode</label>
+                            <input type="text" class="form-control" :placeholder=selectedUser?.user.postalCode />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Country</label>
+                            <input type="text" class="form-control" :placeholder=selectedUser?.user.countryName />
+                        </div>
+                    </div>
+                    <p>Personal details</p>
+                    <div class="row">
+                        <label class="form-label">Gender</label>
+                        <select class="form-control" v-model="selectedUser?.user.gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>                  
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" @click="closeModal()">Close</button>
