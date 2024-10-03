@@ -55,4 +55,12 @@ export type UserRegistrationRequest = {
     retypePassword: string
 }
 
+export type CreateUserRequest = {
+   username: string,
+   emailAddress: string,
+   roleName: string,
+   password: string,
+   retypePassword: string, 
+}
+
 //Enhancement: Add more request types as needed, e.g. if a user needs to reset a password they've forgotten

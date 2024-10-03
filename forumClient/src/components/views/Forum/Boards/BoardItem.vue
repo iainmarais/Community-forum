@@ -44,7 +44,7 @@ watch(() => props.board, (newBoard) => {
 
 <template> 
     <table class="table table-borderless table-sm forum-container">
-        <a v-if="props.board" href="#" @click.prevent="viewBoard(props.board.board.boardId)">
+        <tbody v-if="props.board" href="#" @click.prevent="viewBoard(props.board.board.boardId)">
             <tr class="d-flex forum-element" v-if="board != null">
                 <td class="w-50">
                     <div class="d-flex align-items-center">
@@ -73,6 +73,6 @@ watch(() => props.board, (newBoard) => {
                     </div>
                 </td>
             </tr>
-        </a>
+        </tbody>
     </table>
 </template>

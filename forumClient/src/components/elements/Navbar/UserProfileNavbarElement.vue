@@ -1,21 +1,20 @@
 <script lang = "ts" setup>
-import { useAppContextStore } from '@/stores/AppContextStore';
-import { onMounted, ref, watch, type PropType } from 'vue';
 import { useToast } from 'vue-toastification';
 import UserProfileModal from '@/components/modals/UserProfileModal.vue';
-import type { UserBasicInfo } from '@/Dto/UserInfo';
-import UserService from '@/services/UserService';
+import type { LoggedInUserInfo } from '@/Dto/app/ForumAppState';
+import { onMounted, ref, watch, type PropType } from 'vue';
+import { useAppContextStore } from '@/stores/AppContextStore';
+
+const appContextStore = useAppContextStore();
 
 const openUserProfileModal = () => {
     $("#userProfileModal").modal("show");
 }
 
-const appContextStore = useAppContextStore();
 const toast = useToast();
+const loggedInUserInfo = ref<LoggedInUserInfo|null>();
 
-const loggedInUserInfo = ref<UserBasicInfo|null>(null);
 const userProfileImageBase64 = ref<string>("");
-const imageData = ref<string>(""); 
 
 const convertFromBase64 = (imageDataBase64: string) => {
     return new Promise<Blob>((resolve, reject) => {
@@ -48,27 +47,23 @@ const displayImage = async (imageDataBase64: string) => {
     }
 }
 
-const getUserInfo = (userId: string) => {
-    if (!loggedInUserInfo.value) {
-        UserService.getUserById(userId).then((response) => {
-            loggedInUserInfo.value = response.data;
-            if (loggedInUserInfo.value) {
-                userProfileImageBase64.value = loggedInUserInfo.value.user.userProfileImageBase64;
-            }
-        });
-    }
-    return loggedInUserInfo.value;
-}
-
-onMounted(() => {
-    if (appContextStore.loggedInUser) {
-        getUserInfo(appContextStore.loggedInUser.userId);
+watch(() => appContextStore.loggedInUser, (newUser) => {
+    if(newUser) {
+        loggedInUserInfo.value = newUser;
+        if(newUser.userProfileImageBase64) {
+            userProfileImageBase64.value = newUser.userProfileImageBase64;
+            displayImage(newUser.userProfileImageBase64);
+        }
     }
 });
 
-watch(userProfileImageBase64, (newValue) =>{
-    if(newValue != "") {
-        displayImage(newValue);
+onMounted(() => {
+    if(appContextStore.loggedInUser != null) {
+        loggedInUserInfo.value = appContextStore.loggedInUser;
+        if(appContextStore.loggedInUser.userProfileImageBase64) {
+            userProfileImageBase64.value = appContextStore.loggedInUser.userProfileImageBase64;
+            displayImage(appContextStore.loggedInUser.userProfileImageBase64);
+        }
     }
 });
 
@@ -79,7 +74,7 @@ watch(userProfileImageBase64, (newValue) =>{
         <img v-if="userProfileImageBase64" class="navbar-userprofile-image" id="navbarUserProfileImage" alt="User profile image" @click="openUserProfileModal">
         <img v-else src="@/assets/media/png/placeholderImage300x300.png" class="navbar-userprofile-image" id="navbarUserProfileImage" alt="placeholder for image" @click="openUserProfileModal">
     </div>
-<UserProfileModal :user-info="loggedInUserInfo!" />
+<UserProfileModal :userId = "loggedInUserInfo?.userId"/>
 </template>
 
 <style lang="scss" scoped>

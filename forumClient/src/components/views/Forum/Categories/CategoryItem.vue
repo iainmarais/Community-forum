@@ -31,30 +31,28 @@ watch (() => props.category, (newCategory) => {
 
 <template>
     <table class="table table-borderless table-sm">
-        <a v-if="props.category" href="#" @click.prevent="viewCategory(props.category.category.categoryId)">
-            <tbody>
-                <tr class="d-flex forum-element">
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <div class="symbol symbol-50px me-5">
-                                <span class="symbol-label bg-light">
-                                    <i class="fas fa-folder" style="font-size: 30px"></i>
+        <tbody v-if="props.category" @click.prevent=viewCategory(props.category.category.categoryId)>
+            <tr class="d-flex forum-element">
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="symbol symbol-50px me-5">
+                            <span class="symbol-label bg-light">
+                                <i class="fas fa-folder" style="font-size: 30px"></i>
+                            </span>
+                        </div>
+                        <div class="ml-3">
+                            <div class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">
+                                {{ props.category.category.categoryName }}
+                            </div>
+                            <div>
+                                <span class="text-muted font-weight-bold text-muted d-block">
+                                    {{ props.category.category.categoryDescription }}
                                 </span>
                             </div>
-                            <div class="ml-3">
-                                <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">
-                                    {{ props.category.category.categoryName }}
-                                </div>
-                                <div>
-                                    <span class="text-muted font-weight-bold text-muted d-block">
-                                        {{ props.category.category.categoryDescription }}
-                                    </span>
-                                </div>
-                            </div>
                         </div>
-                    </td>
-                </tr>
-            </tbody>
-        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </template>

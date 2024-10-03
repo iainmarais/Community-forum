@@ -61,7 +61,8 @@ onUnmounted(() => {
                 <Searchbar />
             </div>
             <div class=".navbar-userprofile">
-                <UserProfileNavbarElement  />
+                <!--This element needs fixing.-->
+                <UserProfileNavbarElement />
             </div>
         </div>
       </div>

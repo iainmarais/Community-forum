@@ -264,8 +264,14 @@ export const useAppContextStore = defineStore({
                 if(!response.data.forumStats) {
                     this.forumStats = defaultState.forumStats;
                 }
+                else {
+                    this.forumStats = response.data.forumStats;
+                }
                 if(!response.data.loggedInUser) {
                     this.loggedInUser = defaultState.loggedInUser;
+                }
+                else {
+                    this.loggedInUser = response.data.loggedInUser;
                 }
                 try {
                     // This might still be built using flagsmith or some other feature flagging lib.

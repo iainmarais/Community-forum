@@ -19,6 +19,22 @@ namespace RestApiServer.Controllers.Admin
             return ApiSuccessResponses.WithoutData("Assign role successful");
         }
 
+        [HttpPost("users/create")]
+        public async Task<ApiSuccessResponse<object>> CreateUser(CreateUserRequest req)
+        {
+            var user = AuthUtils.GetForumUserContext(User);
+            await AdminService.CreateUserAsync(user.UserId, req);
+            return ApiSuccessResponses.WithoutData("Create user successful");
+        }
+
+        [HttpPost("users/update")]
+        public async Task<ApiSuccessResponse<object>> CreateUser(UserBasicInfo userToUpdate)
+        {
+            var user = AuthUtils.GetForumUserContext(User);
+            await AdminService.UpdateUserAsync(user.UserId, userToUpdate);
+            return ApiSuccessResponses.WithoutData("Create user successful");
+        }        
+
         [HttpGet("roles")]
         public async Task<ApiSuccessResponse<List<RoleBasicInfo>>> GetRoles()
         {

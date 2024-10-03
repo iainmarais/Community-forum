@@ -1,29 +1,60 @@
 <script lang = "ts" setup>
 import type { UpdateUserProfileRequest, UserBasicInfo } from '@/Dto/UserInfo';
+import UserService from '@/services/UserService';
+import { useAppContextStore } from '@/stores/AppContextStore';
 import { useUserProfileStore } from '@/stores/UserProfileStore';
 import { onMounted, ref, watch, type PropType } from 'vue';
 import { useToast } from 'vue-toastification';
 
 const userProfileStore = useUserProfileStore();
-const toast = useToast();
+const appContextStore = useAppContextStore();
 
 const props = defineProps({
-    userInfo: Object as PropType<UserBasicInfo>,
+    userId: String as PropType<string>,
 });
 
-const userProfileImageBase64 = ref<string>(props.userInfo?.user.userProfileImageBase64 || "");
-const userFirstName = ref<string>(props.userInfo?.user.userFirstname || "");
-const userLastName = ref<string>(props.userInfo?.user.userLastname || "");
-const userId = ref<string>(props.userInfo?.user.userId || "");
-const address = ref<string>(props.userInfo?.user.address || "");
-const cityName = ref<string>(props.userInfo?.user.cityName || "");
-const countryName = ref<string>(props.userInfo?.user.countryName || "");
-const postalCode = ref<string>(props.userInfo?.user.postalCode || "");
-const gender = ref<string>(props.userInfo?.user.gender || "");
+const loggedInUserInfo = ref<UserBasicInfo>();
+
+watch(() => props.userId, (newUserId) => {
+    console.log(props.userId);
+    if (newUserId) {
+        loggedInUserInfo.value = getUserInfo(newUserId);
+    }
+})
+
+const toast = useToast();
+
+watch(() => appContextStore.loggedInUser, (newUser) => {
+    if(newUser) {
+        loggedInUserInfo.value = getUserInfo(newUser.userId);
+    }
+});
+const userProfileImageBase64 = ref<string>(loggedInUserInfo.value?.user.userProfileImageBase64 || "");
+const userFirstName = ref<string>(loggedInUserInfo.value?.user.userFirstname || "");
+const userLastName = ref<string>(loggedInUserInfo.value?.user.userLastname || "");
+const userId = ref<string>(loggedInUserInfo.value?.user.userId || "");
+const address = ref<string>(loggedInUserInfo.value?.user.address || "");
+const cityName = ref<string>(loggedInUserInfo.value?.user.cityName || "");
+const countryName = ref<string>(loggedInUserInfo.value?.user.countryName || "");
+const postalCode = ref<string>(loggedInUserInfo.value?.user.postalCode || "");
+const gender = ref<string>(loggedInUserInfo.value?.user.gender || "");
 
 const userProfileImageDescription = ref<string>("Current image");
 
 const newUserProfileImageBase64 = ref<string>("");
+
+const getUserInfo = (userId: string) => {
+    if (!loggedInUserInfo.value) {
+        UserService.getUserById(userId).then((response) => {
+            loggedInUserInfo.value = response.data;
+            if (loggedInUserInfo.value) {
+                userProfileImageBase64.value = loggedInUserInfo.value.user.userProfileImageBase64;
+            }
+        });
+    }
+    return loggedInUserInfo.value;
+}
+
 
 const convertToBase64 = (file: File) => {
     return new Promise((resolve, reject) => {
@@ -130,37 +161,6 @@ watch(userProfileImageBase64, (newValue) =>{
     }
 });
 
-watch(props, newProps => {
-    if(newProps.userInfo?.user.userId) {
-        userId.value = newProps.userInfo.user.userId;
-    }
-    if(newProps.userInfo?.user.userProfileImageBase64) {
-        userProfileImageBase64.value = newProps.userInfo.user.userProfileImageBase64;
-        displayImage(newProps.userInfo.user.userProfileImageBase64);
-    }
-    if(newProps.userInfo?.user.userFirstname) {
-        userFirstName.value = newProps.userInfo.user.userFirstname;
-    }
-    if(newProps.userInfo?.user.userLastname) {
-        userLastName.value = newProps.userInfo.user.userLastname;
-    }
-    if(newProps.userInfo?.user.address) {
-        address.value = newProps.userInfo.user.address;
-    }
-    if(newProps.userInfo?.user.cityName) {
-        cityName.value = newProps.userInfo.user.cityName;
-    }
-    if(newProps.userInfo?.user.countryName) {
-        countryName.value = newProps.userInfo.user.countryName;
-    }
-    if(newProps.userInfo?.user.postalCode) {
-        postalCode.value = newProps.userInfo.user.postalCode;
-    }
-    if(newProps.userInfo?.user.gender) {
-        gender.value = newProps.userInfo.user.gender;
-    }
-});
-
 watch(newUserProfileImageBase64, newValue => {
     if(newValue != "") {
         userProfileImageDescription.value = "New image"; 
@@ -193,27 +193,27 @@ onMounted(() => {
                         <tbody>
                             <tr>
                                 <td>First Name</td>
-                                <td><input type="text" class="form-control" v-model="userFirstName" :placeholder="userInfo?.user.userFirstname"></td>
+                                <td><input type="text" class="form-control" v-model="userFirstName" :placeholder="loggedInUserInfo?.user.userFirstname"></td>
                             </tr>
                             <tr>
                                 <td>Last Name</td>
-                                <td><input type="text" class="form-control" v-model="userLastName" :placeholder="userInfo?.user.userLastname"></td>
+                                <td><input type="text" class="form-control" v-model="userLastName" :placeholder="loggedInUserInfo?.user.userLastname"></td>
                             </tr>
                             <tr>
                                 <td>Address</td>
-                                <td><input type="text" class="form-control" v-model="address" :placeholder="userInfo?.user.address"></td>
+                                <td><input type="text" class="form-control" v-model="address" :placeholder="loggedInUserInfo?.user.address"></td>
                             </tr>
                             <tr>
                                 <td>City</td>
-                                <td><input type="text" class="form-control" v-model="cityName" :placeholder="userInfo?.user.cityName"></td>
+                                <td><input type="text" class="form-control" v-model="cityName" :placeholder="loggedInUserInfo?.user.cityName"></td>
                             </tr>
                             <tr>
                                 <td>Country</td>
-                                <td><input type="text" class="form-control" v-model="countryName" :placeholder="userInfo?.user.countryName"></td>
+                                <td><input type="text" class="form-control" v-model="countryName" :placeholder="loggedInUserInfo?.user.countryName"></td>
                             </tr>
                             <tr>
                                 <td>Postal Code</td>
-                                <td><input type="text" class="form-control" v-model="postalCode" :placeholder="userInfo?.user.postalCode"></td>
+                                <td><input type="text" class="form-control" v-model="postalCode" :placeholder="loggedInUserInfo?.user.postalCode"></td>
                             </tr>
                             <tr>
                                 <td>Gender</td>

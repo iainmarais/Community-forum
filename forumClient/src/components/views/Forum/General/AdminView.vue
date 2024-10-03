@@ -1,8 +1,12 @@
 <script lang = "ts" setup>
 import { useAdminStore } from '@/stores/AdminStore';
 import { useToast } from 'vue-toastification';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { createHubConnection, initConnection, sendSignalRMessage } from '@/components/utils/SignalRHelper';
+import { type UserBasicInfo } from '@/Dto/UserInfo';
+
+import CreateNewUserModal from '@/components/modals/Admin/CreateNewUserModal.vue';
+import EditSelectedUserModal from '@/components/modals/Admin/EditSelectedUserModal.vue';
 
 const adminStore = useAdminStore();
 const toast = useToast();
@@ -12,11 +16,39 @@ const hubs: Record<string, string> = {
     "Forum stats": "forumStats"
 }
 
+const selectedUser = ref<UserBasicInfo>({} as UserBasicInfo);
+
 const selectedHub = ref<string>("");
 const hubMethodName = ref<string>("");
 const args = ref<string>("");
 const clientMethodName = ref<string>("");
 
+
+//User management
+const openCreateUserModal = () => {
+    $("#createUserModal").modal("show");
+}
+
+
+const editSelectedUser = () => {
+    //If selected user is null, toast error message and return.
+    if(!selectedUser.value) {
+        toast.error("No user selected.");
+        return;
+    }
+    console.log(selectedUser.value);
+    adminStore.selectedUser = selectedUser.value;
+    $("#editSelectedUserModal").modal("show");
+}
+
+const deleteSelectedUser = () => {
+    if(!selectedUser.value) {
+        toast.error("No user selected.");
+        return;
+    }
+}
+
+//SignalR testing and development.
 const connectToHub = (hubName: string, clientMethodName: string) => {
     createHubConnection(hubName);
     initConnection(hubName, clientMethodName);
@@ -71,7 +103,7 @@ const activeTab = ref(1);
     <div class="card card-custom">
         <div class="card-header border-0 pt-7">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Administration</span>
+                <span class="card-label font-weight-bolder text-dark075 font-size-h5">Administration and Management</span>
             </h3>
         </div>
         <div class="card-body">
@@ -87,23 +119,54 @@ const activeTab = ref(1);
                     <div v-if="activeTab === 1">
                         <!--User management functions will go here.-->
                         <div v-if="adminStore.users">
-                            <table class="table table-borderless table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>User name</th>
-                                        <th>Email address</th>
-                                        <th>Role</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="element in adminStore.users">
-                                        <td>{{ element.user.username }}</td>
-                                        <td>{{ element.user.emailAddress }}</td>
-                                        <!--Identify the role from the roles on the database using the user roleId-->
-                                        <td>{{ adminStore.roles.filter(role => role.role.roleId === element.user.roleId)[0].role.roleName }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="card card-custom">
+                                <div class="card-header border-0 pt-7">
+                                    <h3 class="card-title align-items-start flex-column">
+                                        <span class = "card-label font-weight-bolder text-dark075 font-size-h5">Manage users</span>
+                                    </h3>
+                                    <div class="card-toolbar" style="display:flex; gap: 10px;">
+                                        <!--toolbar-->
+                                        <button class="btn-sm btn-primary" @click="openCreateUserModal">
+                                            <i class="fas fa-plus"></i>
+                                            Create new
+                                        </button>
+                                        <button class ="btn-sm btn-primary" @click="editSelectedUser">
+                                            <i class="fas fa-edit"></i>
+                                            Edit selected
+                                        </button>
+                                        <button class="btn-sm btn-outline-danger" @click="deleteSelectedUser">
+                                            <i class="fas fa-trash"></i>
+                                            Delete selected
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <table class="table table-borderless table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>User name</th>
+                                                    <th>Email address</th>
+                                                    <th>Role</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="element in adminStore.users" :key="element.user.userId">
+                                                    <td>
+
+                                                        <input type="radio" class="form-check-input" name="selectedUser" v-model="selectedUser" :value="element" />
+                                                    </td>
+                                                    <td>{{ element.user.username }}</td>
+                                                    <td>{{ element.user.emailAddress }}</td>
+                                                    <!--Identify the role from the roles on the database using the user roleId-->
+                                                    <td>{{ adminStore.roles.filter(role => role.role.roleId === element.user.roleId)[0].role.roleName }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div v-if="activeTab === 2">
@@ -183,4 +246,6 @@ const activeTab = ref(1);
             </div>
         </div>
     </div>
+    <CreateNewUserModal />
+    <EditSelectedUserModal />
 </template>
