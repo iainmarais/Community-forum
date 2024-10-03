@@ -12,6 +12,8 @@ using Serilog;
 using RestApiServer.Hubs;
 using System.Net;
 using System.Net.Sockets;
+using RestApiServer.Security;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace RestApiServer

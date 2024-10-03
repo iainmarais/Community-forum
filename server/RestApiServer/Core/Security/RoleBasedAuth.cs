@@ -1,13 +1,35 @@
+using Microsoft.EntityFrameworkCore;
+using RestApiServer.Db;
+using Serilog;
+
 namespace RestApiServer.Security
 {
     public static class RoleBasedAuth
     {
         public static void Configure(Microsoft.AspNetCore.Authorization.AuthorizationOptions options)
-        {
-            //Establish new policies based on roles. This is a more modular approach to hard-coding policies in the endpoints.
-            options.AddPolicy("EditUsersPolicy", policy => policy.RequireRole("Admin", "Manager"));
-            options.AddPolicy("CreateUsersPolicy", policy => policy.RequireRole("Admin"));
-            //Todo: Expand these policies. Will need to create the permissions table and a role-permission many-to-many relationship in the DB.
+        {   
+            try
+            {
+                //Create these mappings dynamically rather than hardcoding them - kills boilerplate.
+                using var db = new AppDbContext();
+
+                var permissions = db.RolePermissions
+                    .Include(rp => rp.Role)
+                    .Include(rp => rp.Permission)
+                    .Where(rp => rp.IsAllowed == true)
+                    .ToList();
+
+                foreach(var permission in permissions)
+                {
+                    Console.WriteLine($"Adding permission {permission.Permission.PermissionName} to role {permission.Role.RoleName}");
+                    options.AddPolicy(permission.Permission.PermissionName, policy => policy.RequireRole(permission.Role.RoleName));
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Log.Error("Something went horribly wrong configuring role-based authorisation.", ex);
+            }
         }
     }
 }

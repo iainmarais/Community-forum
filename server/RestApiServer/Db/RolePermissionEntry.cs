@@ -14,9 +14,10 @@ namespace RestApiServer.Db
         //Foreign key - Permissions table -> PermissionId column.
         [ForeignKey("Permissions")]
         public required string PermissionId { get; set; } = string.Empty;
+        public required bool IsAllowed { get; set; } = false; //Default deny. Screw you, would-be hackers. No rights? No access!
         //Navigation properties:
         [JsonIgnore]
-        public required RoleEntry Role { get; set; } = null!;       
+        public required RoleEntry Role { get; set; } = null!;
         [JsonIgnore]
         public required PermissionEntry Permission { get; set; } = null!;
     }

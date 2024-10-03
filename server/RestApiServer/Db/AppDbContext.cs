@@ -68,6 +68,10 @@ namespace RestApiServer.Db
             .HasConversion(GetEnumValueConverter<SystemPermissionType>());
 
             modelBuilder.Entity<PermissionEntry>()
+            .Property(prop => prop.PermissionType)
+            .HasConversion(GetEnumValueConverter<PermissionType>());
+
+            modelBuilder.Entity<PermissionEntry>()
             .HasKey(p => p.PermissionId);
 
             modelBuilder.Entity<RoleEntry>()
@@ -131,7 +135,6 @@ namespace RestApiServer.Db
             .HasMany(c => c.BoardsCreated)
             .WithOne(b => b.Category)
             .HasForeignKey(b => b.CategoryId);
-
         }
         
         //Helpers

@@ -111,7 +111,6 @@ namespace RestApiServer.Services
 
         public static async Task<UserBasicInfo> Register(UserRegistrationRequest req) 
         {   
-            //Someone's obviously fucked something up here. The question is have they unfucked it yet? :D
             if(req.Username == null || req.EmailAddress == null || req.Password == null || req.RetypePassword == null)
             {
                 throw ClientInducedException.MessageOnly("Username and email address are required");

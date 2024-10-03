@@ -140,7 +140,7 @@ const updateUserProfile = () => {
     }
 
     const request: UpdateUserProfileRequest = {
-        userId: userId.value,
+        userId: loggedInUserInfo.value!.user.userId,
         userFirstname: userFirstName.value,
         userLastname: userLastName.value,
         userProfileImageBase64: newUserProfileImageBase64.value,
