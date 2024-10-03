@@ -122,6 +122,10 @@ namespace RestApiServer.Services.Admin
                 userEntryToUpdate.PostalCode = userToUpdate.User.PostalCode;
             }
             //Add more as needed.
+            if(!string.IsNullOrEmpty(userToUpdate.User.Gender))
+            {
+                userEntryToUpdate.Gender = userToUpdate.User.Gender;
+            }
             
             //Update the user's details with those coming in
             db.Users.Update(userEntryToUpdate);
