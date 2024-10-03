@@ -20,5 +20,9 @@ namespace RestApiServer.Core.Config
         public static EnvironmentVariable MySqlPassword { get => new EnvironmentVariable("MYSQL_PASSWORD"); }
         public static EnvironmentVariable ShortTermCacheExpirationSecs { get => new EnvironmentVariable("SHORT_TERM_CACHE_EXPIRATION_SECS", "60"); }
         public static EnvironmentVariable AspnetCoreUrls { get => new EnvironmentVariable("ASPNETCORE_URLS"); }
+        public static EnvironmentVariable ServerListenLocalhostIp = new EnvironmentVariable("SERVER_LISTEN_LOCALHOST_IP", "127.0.0.1");
+        public static EnvironmentVariable ServerListenPrimaryIp = new EnvironmentVariable("SERVER_LISTEN_PRIMARY_IP", "0.0.0.0");
+        public static EnvironmentVariable ServerHttpsPort = new EnvironmentVariable("SERVER_HTTPS_PORT", "443");
+        public static EnvironmentVariable ServerHttpPort = new EnvironmentVariable("SERVER_HTTP_PORT", "80");
     }
 }

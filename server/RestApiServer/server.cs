@@ -10,6 +10,7 @@ using RestApiServer.Utils;
 using RestApiServer.Db;
 using Serilog;
 using RestApiServer.Hubs;
+using System.Net;
 
 
 namespace RestApiServer
@@ -37,8 +38,18 @@ namespace RestApiServer
                 ConfigurationLoader.LoadConfig();
 
                 builder.WebHost.ConfigureKestrel(options => {
-                    options.ListenAnyIP(5050); //HTTP port
-                    options.ListenAnyIP(5051, o => o.UseHttps("C:\\Users\\Iain\\localhost-dev-server.pfx", "C3r3$123")); //HTTPS port
+                    var serverListenPrimaryIp = ConfigurationLoader.GetConfigValue(EnvironmentVariable.ServerListenPrimaryIp);
+                    var serverListenSecondaryIp = ConfigurationLoader.GetConfigValue(EnvironmentVariable.ServerListenLocalhostIp);
+                    var httpPort = ConfigurationLoader.GetConfigValueAsInt(EnvironmentVariable.ServerHttpPort);
+                    var httpsPort = ConfigurationLoader.GetConfigValueAsInt(EnvironmentVariable.ServerHttpsPort);
+
+                    options.Listen(IPAddress.Parse(serverListenPrimaryIp), httpPort); //HTTP port
+                    options.Listen(IPAddress.Parse(serverListenSecondaryIp), httpPort); //HTTP port
+                    
+                    //Add a guard against using HTTPS without a certificate, and kill some boilerplate code while I'm at it, lolz.
+                    
+                    options.Listen(IPAddress.Parse(serverListenPrimaryIp), httpsPort, o => o.UseHttps("C:\\Users\\Iain\\localhost-dev-server.pfx", "C3r3$123")); //HTTPS port
+                    options.Listen(IPAddress.Parse(serverListenSecondaryIp), httpsPort, o => o.UseHttps("C:\\Users\\Iain\\localhost-dev-server.pfx", "C3r3$123")); //HTTPS port
                 });
                 
                 List<int> dontLogStatusCodes = new() { 404 };
