@@ -11,6 +11,7 @@ using RestApiServer.Db;
 using Serilog;
 using RestApiServer.Hubs;
 using System.Net;
+using System.Net.Sockets;
 
 
 namespace RestApiServer
@@ -37,19 +38,28 @@ namespace RestApiServer
                 Encoding.RegisterProvider(encodingProvider);
                 ConfigurationLoader.LoadConfig();
 
-                builder.WebHost.ConfigureKestrel(options => {
+
+                builder.WebHost.ConfigureKestrel(options => 
+                {
                     var serverListenPrimaryIp = ConfigurationLoader.GetConfigValue(EnvironmentVariable.ServerListenPrimaryIp);
                     var serverListenSecondaryIp = ConfigurationLoader.GetConfigValue(EnvironmentVariable.ServerListenLocalhostIp);
                     var httpPort = ConfigurationLoader.GetConfigValueAsInt(EnvironmentVariable.ServerHttpPort);
                     var httpsPort = ConfigurationLoader.GetConfigValueAsInt(EnvironmentVariable.ServerHttpsPort);
 
-                    options.Listen(IPAddress.Parse(serverListenPrimaryIp), httpPort); //HTTP port
                     options.Listen(IPAddress.Parse(serverListenSecondaryIp), httpPort); //HTTP port
-                    
-                    //Add a guard against using HTTPS without a certificate, and kill some boilerplate code while I'm at it, lolz.
-                    
-                    options.Listen(IPAddress.Parse(serverListenPrimaryIp), httpsPort, o => o.UseHttps("C:\\Users\\Iain\\localhost-dev-server.pfx", "C3r3$123")); //HTTPS port
                     options.Listen(IPAddress.Parse(serverListenSecondaryIp), httpsPort, o => o.UseHttps("C:\\Users\\Iain\\localhost-dev-server.pfx", "C3r3$123")); //HTTPS port
+                    try
+                    {
+                        options.Listen(IPAddress.Parse(serverListenPrimaryIp), httpPort); //HTTP port       
+                        options.Listen(IPAddress.Parse(serverListenPrimaryIp), httpsPort, o => o.UseHttps("C:\\Users\\Iain\\localhost-dev-server.pfx", "C3r3$123")); //HTTPS port
+                        
+                    }
+                    catch (SocketException ex)
+                    {
+                        Log.Error("Could not bind socket, falling back to listen all.");
+                        options.Listen(IPAddress.Parse("0.0.0.0"), httpPort); //HTTP port       
+                        options.Listen(IPAddress.Parse("0.0.0.0"), httpsPort, o => o.UseHttps("C:\\Users\\Iain\\localhost-dev-server.pfx", "C3r3$123")); //HTTPS port
+                    }
                 });
                 
                 List<int> dontLogStatusCodes = new() { 404 };
