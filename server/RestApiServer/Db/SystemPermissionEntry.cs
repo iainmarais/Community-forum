@@ -19,3 +19,9 @@ namespace RestApiServer.Db
         public List<UserPermissionEntry> UserPermissions { get; set; } = new();
     }
 }
+
+/*
+    Note to self:
+    System permissions will most likely be used to either control visibility of certain elements, such as for development etc, which can be assigned on a per-user basis.
+    Alternatively, these can be associated with a developer role.
+*/
