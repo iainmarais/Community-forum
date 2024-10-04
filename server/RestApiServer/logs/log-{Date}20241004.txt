@@ -391,3 +391,77 @@ Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
 2024-10-04 13:30:05.668 +02:00 [INF] Application started. Press Ctrl+C to shut down.
 2024-10-04 13:30:05.670 +02:00 [INF] Hosting environment: Development
 2024-10-04 13:30:05.671 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-04 13:47:28.223 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 13:47:28.379 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:47:28.414 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 13:47:30.100 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-04 13:47:30.165 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 1744.5743ms
+2024-10-04 13:47:30.170 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:47:30.348 +02:00 [INF] POST 200 /v1/users/login "00:00:01.8943988"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 13:47:30.360 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 2139.6338ms
+2024-10-04 13:50:14.747 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 13:50:14.755 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:50:14.757 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 13:50:15.265 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-04 13:50:15.269 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 506.076ms
+2024-10-04 13:50:15.272 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:50:15.403 +02:00 [INF] POST 200 /v1/users/login "00:00:00.5197961"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 13:50:15.407 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 660.4904ms
+2024-10-04 14:06:02.664 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 14:06:02.672 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 14:06:02.674 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 14:06:02.947 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 263.4779ms
+2024-10-04 14:06:02.950 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 14:06:03.252 +02:00 [INF] POST 400 /v1/users/login "00:00:00.4497704"ms  Invalid username or email address provided, or user does not exist., body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 14:06:03.256 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 400 null application/json; charset=utf-8 592.3661ms
+2024-10-04 14:06:50.800 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 14:06:50.807 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 14:06:50.809 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 14:06:51.193 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 375.9219ms
+2024-10-04 14:06:51.199 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 14:06:51.509 +02:00 [INF] POST 400 /v1/users/login "00:00:00.5517639"ms  Invalid username or email address provided, or user does not exist., body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 14:06:51.518 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 400 null application/json; charset=utf-8 717.9695ms
+2024-10-04 14:07:05.396 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 14:07:05.404 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 14:07:05.407 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 14:07:34.561 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 29142.2004ms
+2024-10-04 14:07:34.564 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 14:07:34.814 +02:00 [INF] POST 400 /v1/users/login "00:00:29.2889663"ms  Invalid username or email address provided, or user does not exist., body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 14:07:34.822 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 400 null application/json; charset=utf-8 29425.9447ms
+2024-10-04 14:07:38.859 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 14:07:38.864 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 14:07:38.871 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 14:07:41.217 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-04 14:07:41.223 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 2346.9825ms
+2024-10-04 14:07:41.226 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 14:07:41.375 +02:00 [INF] POST 200 /v1/users/login "00:00:02.3651779"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 14:07:41.380 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 2520.8726ms
+2024-10-04 14:15:15.894 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 14:15:15.898 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 14:15:15.900 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 14:15:16.428 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-04 14:15:16.432 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 519.7862ms
+2024-10-04 14:15:16.435 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 14:15:16.549 +02:00 [INF] POST 200 /v1/users/login "00:00:00.5412572"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 14:15:16.555 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 660.6175ms
