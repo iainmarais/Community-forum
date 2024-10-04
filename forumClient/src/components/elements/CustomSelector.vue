@@ -16,7 +16,11 @@ const props = defineProps({
         type: String
     }
 });
-
+/*
+Future plans:
+Expand this to pull data from an API endpoint and dynamically populate the options?
+Add a prop to specify such?
+*/
 const emit = defineEmits(['update:selectedValue']);
 
 const handleChange = (event: Event) => {

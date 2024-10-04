@@ -11,14 +11,11 @@ namespace RestApiServer.Db
     {
         [Key]
         public required string SystemPermissionId { get; set; }
-        public required string PermissionName { get; set; }
+        public required string SystemPermissionName { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter<SystemPermissionType>))]
-        public SystemPermissionType Permission { get; set; }
+        public SystemPermissionType SystemPermissionType { get; set; }
         public string? Description { get; set; }
-        //Roles with these permissions - set them to false by default. If using RBAC and role-based auth, I probably don't need to set these boolean props since they will be managed in the DB.
-        public bool IsAdminPermission { get; set; } = false;
-        public bool IsModeratorPermission { get; set; } = false;
-        public bool IsUserPermission { get; set; } = false;
-        public bool IsGuestPermission { get; set; } = false;
+        [JsonIgnore]
+        public List<UserPermissionEntry> UserPermissions { get; set; } = new();
     }
 }

@@ -15,5 +15,7 @@ namespace RestApiServer.Db
         [JsonConverter(typeof(JsonStringEnumConverter<RoleType>))]
         public RoleType RoleType { get; set;}
         public string? Description { get; set; }
+        [JsonIgnore]
+        public required List<RolePermissionEntry> RolePermissions { get; set; } = new();
     }
 }

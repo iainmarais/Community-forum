@@ -64,7 +64,7 @@ namespace RestApiServer.Db
             .HasConversion(GetEnumValueConverter<RoleType>());
 
             modelBuilder.Entity<SystemPermissionEntry>()
-            .Property(prop => prop.Permission)
+            .Property(prop => prop.SystemPermissionType)
             .HasConversion(GetEnumValueConverter<SystemPermissionType>());
 
             modelBuilder.Entity<PermissionEntry>()
@@ -94,16 +94,22 @@ namespace RestApiServer.Db
 
             //Foreign key relationships for the RolePermissionEntry table
             modelBuilder.Entity<RolePermissionEntry>()
-            .HasOne(rp => rp.Role)
-            .WithMany()
-            .HasForeignKey(rp => rp.RoleId)
-            .OnDelete(DeleteBehavior.Cascade);
+                .HasOne(rp => rp.Role)
+                .WithMany(r => r.RolePermissions)
+                .HasForeignKey(rp => rp.RoleId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<RolePermissionEntry>()
-            .HasOne(rp => rp.Permission)
-            .WithMany()
-            .HasForeignKey(rp => rp.PermissionId)
-            .OnDelete(DeleteBehavior.Cascade);
+                .HasOne(rp => rp.Permission)
+                .WithMany(p => p.RolePermissions)
+                .HasForeignKey(rp => rp.PermissionId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RolePermissionEntry>()
+                .HasIndex(rp => rp.PermissionId);
+
+            modelBuilder.Entity<RolePermissionEntry>()
+                .HasIndex(rp => rp.RoleId);
 
             //One to many relationships
             modelBuilder.Entity<ThreadEntry>()
@@ -135,6 +141,29 @@ namespace RestApiServer.Db
             .HasMany(c => c.BoardsCreated)
             .WithOne(b => b.Category)
             .HasForeignKey(b => b.CategoryId);
+
+            //User permissions
+            modelBuilder.Entity<UserPermissionEntry>()
+                .HasKey(up => up.UserPermissionId); // Primary Key
+
+            modelBuilder.Entity<UserPermissionEntry>()
+                .HasOne(up => up.User)
+                .WithMany(u => u.UserPermissions)
+                .HasForeignKey(up => up.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<UserPermissionEntry>()
+                .HasOne(up => up.SystemPermission)
+                .WithMany(sp => sp.UserPermissions)
+                .HasForeignKey(up => up.SystemPermissionId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Indexes
+            modelBuilder.Entity<UserPermissionEntry>()
+                .HasIndex(up => up.UserId);
+
+            modelBuilder.Entity<UserPermissionEntry>()
+                .HasIndex(up => up.SystemPermissionId);            
         }
         
         //Helpers

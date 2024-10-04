@@ -96,7 +96,7 @@ namespace RestApiServer.Utils
         }
 
         //Generates the user's access token.
-        public static (string, long) GenerateAdminUserAccessToken(string userId, string adminUserId, List<SystemPermissionType> Permissions)
+        public static (string, long) GenerateAdminUserAccessToken(string userId, string adminUserId, List<SystemPermissionType> SystemPermissions, List<RoleType> Roles)
         {
             string secret = ConfigurationLoader.GetConfigValue(EnvironmentVariable.JwtSharedSecret);
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
@@ -108,8 +108,14 @@ namespace RestApiServer.Utils
                 new Claim(Claim_User_AdminUserId, adminUserId),
             };
 
+            //Add roles as claims
+            Roles.ForEach(role => 
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.ToString()));
+            });
+
             // Add permissions as claims
-            Permissions.ForEach(p =>
+            SystemPermissions.ForEach(p =>
             {
                 claims.Add(new Claim(p.ToString(), "true"));
             });
@@ -127,7 +133,7 @@ namespace RestApiServer.Utils
         }
 
         //Forum context
-        public static (string, long) GenerateForumUserAccessToken(string userId, string forumUserId, List<SystemPermissionType> Permissions)
+        public static (string, long) GenerateForumUserAccessToken(string userId, string forumUserId, List<SystemPermissionType> SystemPermissions, List<RoleType> Roles)
         {
             string secret = ConfigurationLoader.GetConfigValue(EnvironmentVariable.JwtSharedSecret);
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
@@ -139,8 +145,13 @@ namespace RestApiServer.Utils
                 new Claim(Claim_User_ForumUserId, forumUserId),
             };
 
+            Roles.ForEach(role => 
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.ToString()));
+            });
+
             // Add permissions as claims
-            Permissions.ForEach(p =>
+            SystemPermissions.ForEach(p =>
             {
                 claims.Add(new Claim(p.ToString(), "true"));
             });
@@ -157,48 +168,16 @@ namespace RestApiServer.Utils
             return (tokenString, expiration.Ticks);
         }
 
-        public static bool CheckHasAuthorisation(ClaimsPrincipal context, SystemPermissionType permission)
+        public static bool CheckHasAuthorisation(ClaimsPrincipal context, SystemPermissionType permission, RoleType role)
         {
-            return context.HasClaim(c => c.Type == permission.ToString() && c.Value == "true");
-        }
-
-        // public static ClaimsPrincipal AddIdentityToPrincipal(ClaimsPrincipal principal, ClaimsIdentity newIdentity)
-        // {
-        //     var combinedPrincipal = new ClaimsPrincipal(principal);
-        //     combinedPrincipal.AddIdentity(newIdentity);
-        //     return combinedPrincipal;
-        // }
-        // public static ClaimsIdentity GenerateAdminUserIdentity(string userId, string adminUserId, List<SystemPermissionType> permissions)
-        // {
-        //     var claims = new List<Claim>
-        //     {
-        //         new Claim(Claim_UserId, userId),
-        //         new Claim(Claim_User_AdminUserId, adminUserId),
-        //     };
-
-        //     // Add permissions as claims
-        //     permissions.ForEach(p =>
-        //     {
-        //         claims.Add(new Claim(p.ToString(), "true"));
-        //     });
-
-        //     return new ClaimsIdentity(claims, "AdminUser");
-        // }
-        // public static ClaimsIdentity GenerateForumUserIdentity(string userId, string forumUserId, List<SystemPermissionType> permissions)
-        // {
-        //     var claims = new List<Claim>
-        //     {
-        //         new Claim(Claim_UserId, userId),
-        //         new Claim(Claim_User_ForumUserId, forumUserId),
-        //     };
-
-        //     // Add permissions as claims
-        //     permissions.ForEach(p =>
-        //     {
-        //         claims.Add(new Claim(p.ToString(), "true"));
-        //     });
-
-        //     return new ClaimsIdentity(claims, "ForumUser");
-        // }                
+            // Check if the user has the required claim (permission)
+            bool hasPermissionClaim = context.HasClaim(c => c.Type == permission.ToString() && c.Value == "true");
+            
+            // Check if the user is in the required role
+            bool isInRole = context.IsInRole(role.ToString());
+            
+            // Return true if either condition is met
+            return hasPermissionClaim || isInRole;
+        }            
     }
 }

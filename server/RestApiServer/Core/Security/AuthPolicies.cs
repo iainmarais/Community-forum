@@ -1,5 +1,6 @@
 using RestApiServer.Db;
 using RestApiServer.Enums;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestApiServer.Core.Security
 {
@@ -8,8 +9,10 @@ namespace RestApiServer.Core.Security
     {
         private static List<string> ValidAdminUserClaimsRequirements = new(){"UserId", "AdminUserId"};
         private static List<string> ValidForumUserClaimsRequirements = new(){"UserId", "ForumUserId"};
+        //For chat. Todo: Create claims handler for this and extend the user datamodel.
+        private static List<string> ValidChatUserClaimsRequirements = new(){ "UserId", "ChatUserId"};
         private static string UserClaimRequirement = "UserId";
-        public static Microsoft.AspNetCore.Authorization.AuthorizationOptions Configure(Microsoft.AspNetCore.Authorization.AuthorizationOptions options)
+        public static AuthorizationOptions Configure(AuthorizationOptions options)
         {
             //User related policies
             options.AddPolicy(CreateUsersPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_Create.ToString(),ValidAdminUserClaimsRequirements));

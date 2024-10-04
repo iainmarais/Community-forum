@@ -71,7 +71,7 @@ namespace RestApiServer.Services
                 {
                     throw ClientInducedException.MessageOnly("Invalid password entered.");
                 }
-                return await LoginSuccessResponse(db, user.UserId, src);
+                return await LoginSuccessResponse(db, user.UserId, user.RoleId, src);
             }
             else
             {
@@ -169,7 +169,7 @@ namespace RestApiServer.Services
             };
         }
 
-        public static async Task<UserLoginResponse> LoginSuccessResponse(AppDbContext db, string userId, string src)
+        public static async Task<UserLoginResponse> LoginSuccessResponse(AppDbContext db, string userId, string roleId, string src)
         {
             var userResult = await (from u in db.Users 
                                     where u.UserId == userId 
@@ -184,16 +184,26 @@ namespace RestApiServer.Services
                 throw ClientInducedException.MessageOnly("User not found");
             }
 
-            var permissions = await (from userPermission in db.UserPermissions
-                                    join systemPermission in db.SystemPermissions
-                                    on userPermission.SystemPermissionId equals systemPermission.SystemPermissionId
-                                    where userPermission.UserId == userId
-                                    select systemPermission.Permission).Distinct().ToListAsync();
+            var permissions = await (from up in db.UserPermissions
+                                    join sp in db.SystemPermissions
+                                    on up.SystemPermissionId equals sp.SystemPermissionId
+                                    where up.UserId == userId
+                                    select sp.SystemPermissionType)
+                                    .Distinct().ToListAsync();
+
+            //Permissions for roles
+            var rolePermissions = await (from rp in db.RolePermissions
+                                    join p in db.Permissions
+                                    on rp.PermissionId equals p.PermissionId
+                                    where rp.RoleId == roleId
+                                    select p.PermissionType)
+                                    .Distinct().ToListAsync();                                    
             var user = new
             {
-                User = userResult.User,
+                userResult.User,
                 Permissions = permissions,
-                Role = userResult.Role
+                RolePermissions = rolePermissions,
+                userResult.Role
             };
             var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.UserId == userId && t.Source == src).ToListAsync();
             db.RemoveRange(existingRefreshTokensForSource);
@@ -209,8 +219,8 @@ namespace RestApiServer.Services
                 Source = src
             };
             await db.UserRefreshTokens.AddAsync(newRefreshToken);
-            //Create the access token.
-            var(accessToken, accessTokenExpiration) = AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, user.Permissions);
+            //Create the access token. Update: Add roles as a new list.
+            var(accessToken, accessTokenExpiration) = AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, user.Permissions, new() {userResult.Role.RoleType});
 
             //update the user's last login time
             var userEntry = db.Users.Single(u => u.UserId == userId);

@@ -1,0 +1,393 @@
+2024-10-04 09:46:44.713 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 09:46:54.802 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+2024-10-04 09:46:55.193 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 09:46:55.342 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-04 09:46:55.377 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-04 09:46:55.379 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-04 09:46:55.382 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 09:46:55.384 +02:00 [INF] Hosting environment: Development
+2024-10-04 09:46:55.386 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-04 09:48:10.303 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 09:48:10.507 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 09:48:10.546 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 09:48:12.492 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-04 09:48:12.571 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 2014.1176ms
+2024-10-04 09:48:12.579 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 09:48:12.780 +02:00 [INF] POST 200 /v1/users/login "00:00:02.1768166"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 09:48:12.795 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 2496.2855ms
+2024-10-04 10:28:50.625 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 10:28:54.663 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+2024-10-04 10:28:55.078 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 10:28:55.234 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-04 10:28:55.268 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-04 10:28:55.270 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-04 10:28:55.273 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 10:28:55.274 +02:00 [INF] Hosting environment: Development
+2024-10-04 10:28:55.276 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-04 10:28:58.384 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 10:28:58.619 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 10:28:58.646 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 10:28:59.144 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 489.0196ms
+2024-10-04 10:28:59.159 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 10:28:59.277 +02:00 [INF] POST 500 /v1/users/login "00:00:00.7602589"ms  Something went wrong Converter for model type 'SystemPermissionType' cannot be used for 'PermissionEntry.PermissionType' because its type is 'PermissionType'. , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 10:28:59.288 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 909.2006ms
+2024-10-04 10:30:08.698 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 10:30:18.044 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+2024-10-04 10:30:18.378 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 10:30:18.521 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-04 10:30:18.555 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-04 10:30:18.557 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-04 10:30:18.561 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 10:30:18.563 +02:00 [INF] Hosting environment: Development
+2024-10-04 10:30:18.565 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-04 10:30:25.301 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 10:30:25.481 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 10:30:25.581 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 10:30:27.227 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-04 10:30:27.297 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 1707.0577ms
+2024-10-04 10:30:27.302 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 10:30:27.487 +02:00 [INF] POST 200 /v1/users/login "00:00:01.9182920"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 10:30:27.503 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 2203.7983ms
+2024-10-04 10:33:34.795 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 10:33:40.329 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+2024-10-04 10:33:40.617 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 10:33:40.782 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-04 10:33:40.821 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-04 10:33:40.823 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-04 10:33:40.826 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 10:33:40.828 +02:00 [INF] Hosting environment: Development
+2024-10-04 10:33:40.830 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-04 10:33:52.062 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 10:33:52.238 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 10:33:52.270 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 10:33:53.783 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-04 10:33:53.855 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 1577.5421ms
+2024-10-04 10:33:53.860 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 10:33:54.046 +02:00 [INF] POST 200 /v1/users/login "00:00:01.7200297"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 10:33:54.058 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 1997.8308ms
+2024-10-04 11:19:04.558 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:19:05.033 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:20:03.453 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:20:03.908 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:21:10.628 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:21:17.181 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 11:21:17.377 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-04 11:21:17.414 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-04 11:21:17.418 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-04 11:21:17.420 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 11:21:17.423 +02:00 [INF] Hosting environment: Development
+2024-10-04 11:21:17.424 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-04 11:27:20.967 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:27:21.322 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:30:41.131 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:30:41.542 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:31:39.962 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:31:41.665 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:32:01.295 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:32:01.604 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:34:26.789 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:34:28.769 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:37:39.605 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:37:40.811 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:38:02.131 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:38:02.425 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:38:55.567 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:38:57.016 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:39:19.677 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:39:20.162 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:41:12.666 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:41:13.224 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:43:28.400 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:43:28.823 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:43:51.051 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:43:51.634 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:44:09.242 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:44:09.608 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:47:40.392 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:47:41.112 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:48:14.049 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:48:15.236 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:48:35.698 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:48:37.189 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:54:43.689 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:54:45.055 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 11:55:15.803 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 11:55:17.229 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-04 12:46:15.138 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 12:46:20.354 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+2024-10-04 12:46:20.687 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 12:46:20.850 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-04 12:46:20.880 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-04 12:46:20.882 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-04 12:46:20.883 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 12:46:20.884 +02:00 [INF] Hosting environment: Development
+2024-10-04 12:46:20.886 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-04 13:12:38.668 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 13:13:03.032 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+2024-10-04 13:13:04.095 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 13:13:04.364 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-04 13:13:04.395 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-04 13:13:04.397 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-04 13:13:04.399 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 13:13:04.400 +02:00 [INF] Hosting environment: Development
+2024-10-04 13:13:04.402 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-04 13:14:32.451 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 13:14:37.834 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+2024-10-04 13:14:38.165 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 13:14:38.345 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-04 13:14:38.373 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-04 13:14:38.375 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-04 13:14:38.378 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 13:14:38.380 +02:00 [INF] Hosting environment: Development
+2024-10-04 13:14:38.381 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-04 13:14:48.624 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 13:14:48.863 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:14:48.966 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 13:14:50.861 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 1881.02ms
+2024-10-04 13:14:50.867 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:14:51.384 +02:00 [INF] POST 500 /v1/users/login "00:00:02.3672772"ms  Something went wrong Unknown column 's.SystemPermissionType' in 'field list' , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 13:14:51.407 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 2783.9008ms
+2024-10-04 13:16:51.830 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 13:16:56.660 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+2024-10-04 13:16:56.914 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 13:16:57.048 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-04 13:16:57.078 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-04 13:16:57.080 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-04 13:16:57.083 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 13:16:57.084 +02:00 [INF] Hosting environment: Development
+2024-10-04 13:16:57.086 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-04 13:17:10.826 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 13:17:11.009 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:17:11.055 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 13:17:12.706 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 1643.8883ms
+2024-10-04 13:17:12.711 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:17:13.214 +02:00 [INF] POST 500 /v1/users/login "00:00:02.0671637"ms  Something went wrong Unknown column 's.SystemPermissionType' in 'field list' , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 13:17:13.240 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 2414.8939ms
+2024-10-04 13:18:38.140 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 13:18:38.152 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:18:38.154 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 13:18:43.477 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 5316.5195ms
+2024-10-04 13:18:43.481 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:18:44.061 +02:00 [INF] POST 500 /v1/users/login "00:00:05.6442978"ms  Something went wrong Unknown column 's.SystemPermissionType' in 'field list' , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 13:18:44.069 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 5929.0739ms
+2024-10-04 13:18:53.491 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 13:18:59.221 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:18:59.223 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 13:19:48.844 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 49614.1102ms
+2024-10-04 13:19:48.847 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:19:49.311 +02:00 [INF] POST 500 /v1/users/login "00:00:49.8770509"ms  Something went wrong Unknown column 's.SystemPermissionType' in 'field list' , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 13:19:49.318 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 55826.9376ms
+2024-10-04 13:20:03.740 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 13:20:03.744 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:20:03.746 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 13:21:06.803 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 63053.7286ms
+2024-10-04 13:21:06.807 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:21:07.315 +02:00 [INF] POST 500 /v1/users/login "00:01:03.2964253"ms  Something went wrong Unknown column 's.SystemPermissionType' in 'field list' , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 13:21:07.327 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 63587.0551ms
+2024-10-04 13:24:48.745 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 63
+2024-10-04 13:24:48.754 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:24:48.758 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-04 13:24:59.115 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-04 13:24:59.220 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 10456.4132ms
+2024-10-04 13:24:59.224 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-04 13:24:59.403 +02:00 [INF] POST 200 /v1/users/login "00:00:10.4724462"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123"
+}
+2024-10-04 13:24:59.411 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 10666.5485ms
+2024-10-04 13:30:00.658 +02:00 [INF] Starting up... Please be patient.
+2024-10-04 13:30:05.296 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+2024-10-04 13:30:05.522 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-04 13:30:05.637 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-04 13:30:05.663 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-04 13:30:05.666 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-04 13:30:05.668 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-04 13:30:05.670 +02:00 [INF] Hosting environment: Development
+2024-10-04 13:30:05.671 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer

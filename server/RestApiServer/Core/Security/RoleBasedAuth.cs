@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using RestApiServer.Db;
 using Serilog;
 
@@ -6,7 +7,7 @@ namespace RestApiServer.Security
 {
     public static class RoleBasedAuth
     {
-        public static void Configure(Microsoft.AspNetCore.Authorization.AuthorizationOptions options)
+        public static void Configure(AuthorizationOptions options)
         {   
             try
             {

@@ -55,28 +55,10 @@ namespace RestApiServer.Enums
     */ 
     public enum PermissionType 
     {
-        ViewUserProfiles,
-        ViewReports,
-        ViewAuditLogs,
-        UnbanUsers,
-        SuspendUsers,
-        PinPosts,
-        ManageSponsors,
-        ManageRoles,
-        ManagePermissions,
-        ManageCategories,
-        LockPosts,
-        EditUsers,
-        EditPosts,
-        EditEvents,
-        EditContent,
-        EditAnnouncements,
-        DeletePosts,
-        CreateUsers,
-        CreateEvents,
-        CreateContent,
-        CreateAnnouncements,
-        BanUsers,
-        AssignRoles,
+        Administrative,
+        Content,
+        General,
+        Moderation
+        //Add more as needed.
     }
 }

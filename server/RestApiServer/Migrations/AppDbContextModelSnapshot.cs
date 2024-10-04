@@ -241,6 +241,10 @@ namespace RestApiServer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("PermissionType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("PermissionId");
 
                     b.ToTable("Permissions");
@@ -316,6 +320,9 @@ namespace RestApiServer.Migrations
                 {
                     b.Property<string>("RolePermissionId")
                         .HasColumnType("varchar(255)");
+
+                    b.Property<bool>("IsAllowed")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("PermissionId")
                         .IsRequired()
@@ -442,13 +449,17 @@ namespace RestApiServer.Migrations
 
                     b.Property<string>("SystemPermissionId")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("UserPermissionId");
+
+                    b.HasIndex("SystemPermissionId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserPermissions");
                 });
@@ -585,15 +596,15 @@ namespace RestApiServer.Migrations
             modelBuilder.Entity("RestApiServer.Db.RolePermissionEntry", b =>
                 {
                     b.HasOne("RestApiServer.Db.PermissionEntry", "Permission")
-                        .WithMany()
+                        .WithMany("RolePermissions")
                         .HasForeignKey("PermissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("RestApiServer.Db.RoleEntry", "Role")
-                        .WithMany()
+                        .WithMany("RolePermissions")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Permission");
@@ -639,6 +650,25 @@ namespace RestApiServer.Migrations
                     b.Navigation("CreatedByUser");
                 });
 
+            modelBuilder.Entity("RestApiServer.Db.UserPermissionEntry", b =>
+                {
+                    b.HasOne("RestApiServer.Db.SystemPermissionEntry", "SystemPermission")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("SystemPermissionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("RestApiServer.Db.Users.UserEntry", "User")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("SystemPermission");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("RestApiServer.Db.BoardEntry", b =>
                 {
                     b.Navigation("TopicsCreated");
@@ -647,6 +677,21 @@ namespace RestApiServer.Migrations
             modelBuilder.Entity("RestApiServer.Db.CategoryEntry", b =>
                 {
                     b.Navigation("BoardsCreated");
+                });
+
+            modelBuilder.Entity("RestApiServer.Db.PermissionEntry", b =>
+                {
+                    b.Navigation("RolePermissions");
+                });
+
+            modelBuilder.Entity("RestApiServer.Db.RoleEntry", b =>
+                {
+                    b.Navigation("RolePermissions");
+                });
+
+            modelBuilder.Entity("RestApiServer.Db.SystemPermissionEntry", b =>
+                {
+                    b.Navigation("UserPermissions");
                 });
 
             modelBuilder.Entity("RestApiServer.Db.ThreadEntry", b =>
@@ -666,6 +711,8 @@ namespace RestApiServer.Migrations
                     b.Navigation("ThreadsCreated");
 
                     b.Navigation("TopicsCreated");
+
+                    b.Navigation("UserPermissions");
                 });
 #pragma warning restore 612, 618
         }

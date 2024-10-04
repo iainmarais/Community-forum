@@ -108,6 +108,7 @@ namespace RestApiServer
                 builder.Services.AddAuthorization(
                     options => 
                     {
+                        RoleBasedAuth.Configure(options);
                         UserAuthorisationPolicies.Configure(options);
                     }
                 );

@@ -25,8 +25,7 @@ namespace RestApiServer.Controllers.Discussions
         [HttpPost("threads/create")]
         [Authorize(policy:UserAuthorisationPolicies.CreateThreadsPolicy)]
         public async Task<ApiSuccessResponse<object>> CreateThread(CreateThreadRequest request)
-        {
-            Console.WriteLine(AuthUtils.CheckHasAuthorisation(User, Enums.SystemPermissionType.Threads_Create));           
+        {        
             var user = AuthUtils.GetForumUserContext(User);
             await DiscussionService.CreateThreadAsync(request.TopicId, request.ThreadName, user.UserId);
             return ApiSuccessResponses.WithoutData("Create forum thread successful");
@@ -37,7 +36,6 @@ namespace RestApiServer.Controllers.Discussions
         public async Task<ApiSuccessResponse<object>> CreateThreadWithPost(CreateThreadWithPostRequest request)
         {	
             var user = AuthUtils.GetForumUserContext(User);
-            Console.WriteLine(AuthUtils.CheckHasAuthorisation(User, Enums.SystemPermissionType.Threads_Create));
             await DiscussionService.CreateThreadWithPostAsync(request.TopicId, request.ThreadName, user.UserId, request.MessageContent);
             return ApiSuccessResponses.WithoutData("Create forum thread successful");
         }  
