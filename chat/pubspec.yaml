@@ -3,10 +3,12 @@ environment:
 
 dependencies:
   bloc: ^8.1.4
+  dotenv: ^4.2.0
   equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
+  flutter_dotenv: ^5.1.0
   http: ^0.13.4
   provider: ^6.0.0
 

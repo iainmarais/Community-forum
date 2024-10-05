@@ -12,13 +12,18 @@ class LoginButtonPressed extends LoginEvent
     final String UserIdentifier;
     final String Password;
 
-    LoginButtonPressed(this.UserIdentifier, this.Password);
+    LoginButtonPressed({required this.UserIdentifier, required this.Password});
 
     @override
     List<Object> get props => [UserIdentifier, Password];
 }
 
-class Logoff extends LoginEvent
+class LogoffButtonPressed extends LoginEvent
 {
-    //Handle our logoff logic here.
+    
+}
+
+class ForgotPasswordButtonPressed extends LoginEvent
+{
+    
 }

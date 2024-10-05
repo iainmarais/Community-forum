@@ -1,3 +1,7 @@
+args
+3.0
+file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/args-2.5.0/
+file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/args-2.5.0/lib/
 async
 2.18
 file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/async-2.11.0/
@@ -14,6 +18,10 @@ collection
 2.18
 file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.18.0/
 file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.18.0/lib/
+dotenv
+2.16
+file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/dotenv-4.2.0/
+file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/dotenv-4.2.0/lib/
 equatable
 2.12
 file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/equatable-2.0.5/
@@ -22,6 +30,10 @@ flutter_bloc
 2.12
 file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_bloc-8.1.6/
 file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_bloc-8.1.6/lib/
+flutter_dotenv
+2.12
+file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_dotenv-5.1.0/
+file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_dotenv-5.1.0/lib/
 http
 2.19
 file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/http-0.13.6/
