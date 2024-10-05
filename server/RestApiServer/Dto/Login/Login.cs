@@ -12,6 +12,14 @@ namespace RestApiServer.Dto.Login
         public required UserBasicInfo UserProfile { get; set; }
     }
 
+    public class UserRefreshResponse
+    {
+        public required string NewAccessToken { get; set; } = "";
+        public required long NewAccessTokenExpiration { get; set; }
+        public required string RefreshToken { get; set; } = "";
+        public required UserBasicInfo UserProfile { get; set; }
+    }
+
     public class UserLoginRequest
     {
         public required string UserIdentifier { get; set; }
@@ -25,5 +33,11 @@ namespace RestApiServer.Dto.Login
         public required string Password { get; set; }
         public required string RetypePassword { get; set; }
         public string? RoleType { get; set; } = "User";
+    }
+
+    public class UserRefreshRequest
+    {
+        public required string OldAccessToken { get; set; }
+        public required string UserRefreshToken { get; set; }
     }
 }

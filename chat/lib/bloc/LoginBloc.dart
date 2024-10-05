@@ -17,7 +17,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
             {
                 //Tell the GUI we are busy.
                 emit(LoginLoading());
-
+                
+                //Todo: Turn into a member function. I also need to grab and set the access and refresh tokens.
                 var loginEndpoint = Uri.parse("${ApiConfig.ApiV1BaseUrl}/users/login");
                 var userLoginReq = UserLoginRequest(UserIdentifier: event.UserIdentifier, Password: event.Password);
 

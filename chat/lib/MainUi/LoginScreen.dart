@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:ChatApp/bloc/LoginBloc.dart';
 import 'package:ChatApp/bloc/LoginEvent.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatefulWidget 
 {
@@ -109,11 +110,11 @@ class _LoginScreenState extends State<LoginScreen>
               children: [
                 ElevatedButton.icon(
                     onPressed: () => ResetPassword(),
-                    icon: const Icon(Icons.person),
+                    icon: const FaIcon(FontAwesomeIcons.question),
                     label: const Text('Forgot Password?')),
                 ElevatedButton.icon(
                     onPressed: () => LoginUser(),
-                    icon: const Icon(Icons.login),
+                    icon: const FaIcon(FontAwesomeIcons.rightToBracket),
                     label: const Text('Log in')),
               ],
             )

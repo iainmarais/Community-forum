@@ -22,14 +22,14 @@ namespace RestApiServer.Security
 
                 foreach(var permission in permissions)
                 {
-                    Console.WriteLine($"Adding permission {permission.Permission.PermissionName} to role {permission.Role.RoleName}");
+                    Log.Information($"Adding permission {permission.Permission.PermissionName} to role {permission.Role.RoleName}");
                     options.AddPolicy(permission.Permission.PermissionName, policy => policy.RequireRole(permission.Role.RoleName));
                 }
             }
 
             catch (Exception ex)
             {
-                Log.Error("Something went horribly wrong configuring role-based authorisation.", ex);
+                Log.Error($"Something went horribly wrong configuring role-based authorisation.\n {ex.Message}", ex);
             }
         }
     }

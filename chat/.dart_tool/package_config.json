@@ -62,10 +62,16 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "http",
-      "rootUri": "file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/http-0.13.6",
+      "name": "font_awesome_flutter",
+      "rootUri": "file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/font_awesome_flutter-10.7.0",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
     },
     {
       "name": "http_parser",
@@ -78,6 +84,18 @@
       "rootUri": "file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/material_color_utilities-0.11.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "material_design_icons_flutter",
+      "rootUri": "file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/material_design_icons_flutter-7.0.7296",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "material_symbols_icons",
+      "rootUri": "file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/material_symbols_icons-4.2785.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "meta",
@@ -140,13 +158,19 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "web",
+      "rootUri": "file:///C:/Users/Iain/AppData/Local/Pub/Cache/hosted/pub.dev/web-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "ChatApp",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-10-05T07:10:09.330314Z",
+  "generated": "2024-10-05T09:32:36.488447Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///C:/Users/Iain/Downloads/flutter",

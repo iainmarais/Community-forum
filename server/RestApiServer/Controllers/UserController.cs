@@ -25,6 +25,14 @@ namespace RestApiServer.Controllers
             
         }
 
+        [HttpPost("auth/refresh")]
+        public async Task<ApiSuccessResponse<UserRefreshResponse>> RefreshUserSession(UserRefreshRequest req, string src)
+        {
+            var user = AuthUtils.GetAdminUserContext(User);
+            var res = await UserService.RefreshUserSessionAsync(user.UserId, req, src);
+            return ApiSuccessResponses.WithData("User auth state refresh successful", res);
+        }
+
         [HttpPost("login")]
         public async Task<ApiSuccessResponse<UserLoginResponse>> LoginUser(UserLoginRequest request)
         {

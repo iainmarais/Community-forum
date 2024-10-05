@@ -83,3 +83,91 @@
 2024-10-05 10:41:14.740 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
 2024-10-05 10:41:15.228 +02:00 [INF] POST 200 /v1/users/login "00:00:00.6358988"ms  , body: {"userIdentifier":"iain","password":"C3r3$123"}
 2024-10-05 10:41:15.236 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 1143.0308ms
+2024-10-05 10:55:16.440 +02:00 [INF] Starting up... Please be patient.
+2024-10-05 10:55:27.086 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+2024-10-05 10:55:27.584 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-05 10:55:27.828 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-05 10:55:27.873 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-05 10:55:27.875 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-05 10:55:27.878 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-05 10:55:27.880 +02:00 [INF] Hosting environment: Development
+2024-10-05 10:55:27.883 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-05 10:57:22.041 +02:00 [INF] Starting up... Please be patient.
+2024-10-05 10:57:28.529 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ Unknown column 'r.IsAllowed' in 'field list'
+2024-10-05 10:57:28.910 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-05 10:57:29.085 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-05 10:57:29.115 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-05 10:57:29.117 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-05 10:57:29.120 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-05 10:57:29.122 +02:00 [INF] Hosting environment: Development
+2024-10-05 10:57:29.124 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-05 11:00:22.229 +02:00 [INF] Starting up... Please be patient.
+2024-10-05 11:00:26.095 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-05 11:00:26.278 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-05 11:00:26.308 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-05 11:00:26.311 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-05 11:00:26.314 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-05 11:00:26.315 +02:00 [INF] Hosting environment: Development
+2024-10-05 11:00:26.317 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-05 11:01:21.895 +02:00 [INF] Starting up... Please be patient.
+2024-10-05 11:01:28.286 +02:00 [INF] Adding permission Users_Create to role Administrator
+2024-10-05 11:01:28.290 +02:00 [INF] Adding permission Users_Edit to role Administrator
+2024-10-05 11:01:28.292 +02:00 [INF] Adding permission Users_Delete to role Administrator
+2024-10-05 11:01:28.294 +02:00 [INF] Adding permission Users_ChangeRoles to role Administrator
+2024-10-05 11:01:28.296 +02:00 [INF] Adding permission Users_ChangePassword to role Administrator
+2024-10-05 11:01:28.299 +02:00 [INF] Adding permission Users_BanUser to role Administrator
+2024-10-05 11:01:28.301 +02:00 [INF] Adding permission Users_MuteUser to role Administrator
+2024-10-05 11:01:28.303 +02:00 [INF] Adding permission Users_WarnUser to role Administrator
+2024-10-05 11:01:28.307 +02:00 [INF] Adding permission Roles_Create to role Administrator
+2024-10-05 11:01:28.309 +02:00 [INF] Adding permission Roles_Edit to role Administrator
+2024-10-05 11:01:28.310 +02:00 [INF] Adding permission Roles_Delete to role Administrator
+2024-10-05 11:01:28.312 +02:00 [INF] Adding permission Threads_Create to role Administrator
+2024-10-05 11:01:28.316 +02:00 [INF] Adding permission Threads_Edit to role Administrator
+2024-10-05 11:01:28.317 +02:00 [INF] Adding permission Threads_Delete to role Administrator
+2024-10-05 11:01:28.319 +02:00 [INF] Adding permission Threads_Lock to role Administrator
+2024-10-05 11:01:28.320 +02:00 [INF] Adding permission Threads_Unlock to role Administrator
+2024-10-05 11:01:28.322 +02:00 [INF] Adding permission Posts_Create to role Administrator
+2024-10-05 11:01:28.323 +02:00 [INF] Adding permission Posts_Edit to role Administrator
+2024-10-05 11:01:28.326 +02:00 [INF] Adding permission Posts_Delete to role Administrator
+2024-10-05 11:01:28.327 +02:00 [INF] Adding permission Posts_Update to role Administrator
+2024-10-05 11:01:28.331 +02:00 [INF] Adding permission Posts_PostImage to role Administrator
+2024-10-05 11:01:28.333 +02:00 [INF] Adding permission Posts_PostReply to role Administrator
+2024-10-05 11:01:28.334 +02:00 [INF] Adding permission Topics_Create to role Administrator
+2024-10-05 11:01:28.336 +02:00 [INF] Adding permission Topics_Edit to role Administrator
+2024-10-05 11:01:28.337 +02:00 [INF] Adding permission Topics_Delete to role Administrator
+2024-10-05 11:01:28.339 +02:00 [INF] Adding permission Chat_Create to role Administrator
+2024-10-05 11:01:28.341 +02:00 [INF] Adding permission Chat_Edit to role Administrator
+2024-10-05 11:01:28.343 +02:00 [INF] Adding permission Chat_Delete to role Administrator
+2024-10-05 11:01:28.352 +02:00 [INF] Adding permission Chat_PostImage to role Administrator
+2024-10-05 11:01:28.364 +02:00 [INF] Adding permission Gallery_UploadImage to role Administrator
+2024-10-05 11:01:28.368 +02:00 [INF] Adding permission Gallery_DeleteImage to role Administrator
+2024-10-05 11:01:28.371 +02:00 [INF] Adding permission Gallery_EditImage to role Administrator
+2024-10-05 11:01:28.373 +02:00 [INF] Adding permission Mod_ModeratePosts to role Administrator
+2024-10-05 11:01:28.379 +02:00 [INF] Adding permission Mod_PinThread to role Administrator
+2024-10-05 11:01:28.382 +02:00 [INF] Adding permission Mod_LockThread to role Administrator
+2024-10-05 11:01:28.385 +02:00 [INF] Adding permission Mod_MoveThread to role Administrator
+2024-10-05 11:01:28.387 +02:00 [INF] Adding permission Mod_BanUser to role Administrator
+2024-10-05 11:01:28.389 +02:00 [INF] Adding permission Mod_MuteUser to role Administrator
+2024-10-05 11:01:28.395 +02:00 [INF] Adding permission Mod_ViewReportedContent to role Administrator
+2024-10-05 11:01:28.397 +02:00 [INF] Adding permission Mod_RestorePost to role Administrator
+2024-10-05 11:01:28.400 +02:00 [INF] Adding permission Mod_WarnUser to role Administrator
+2024-10-05 11:01:28.847 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-05 11:01:29.066 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-05 11:01:29.107 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-05 11:01:29.113 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-05 11:01:29.117 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-05 11:01:29.120 +02:00 [INF] Hosting environment: Development
+2024-10-05 11:01:29.124 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-05 11:03:07.672 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/users/login - null null
+2024-10-05 11:03:07.724 +02:00 [INF] CORS policy execution successful.
+2024-10-05 11:03:07.754 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/users/login - 204 null null 89.291ms
+2024-10-05 11:03:07.833 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/users/login - application/json; charset=utf-8 47
+2024-10-05 11:03:07.870 +02:00 [INF] CORS policy execution successful.
+2024-10-05 11:03:08.245 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-05 11:03:08.310 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-05 11:03:13.073 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-05 11:03:13.250 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 4918.5467ms
+2024-10-05 11:03:13.255 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-05 11:03:13.711 +02:00 [INF] POST 200 /v1/users/login "00:00:05.1899021"ms  , body: {"userIdentifier":"iain","password":"C3r3$123"}
+2024-10-05 11:03:13.731 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 5898.4345ms

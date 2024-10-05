@@ -3,6 +3,7 @@ User service.cs - responsible for:
     logins
     user registrations
     user administration
+    refreshing login states using user refresh tokens
 */
 
 using System.Net.Mail;
@@ -167,6 +168,80 @@ namespace RestApiServer.Services
             {
                 User = user
             };
+        }
+
+        public static async Task<UserRefreshResponse> RefreshUserSessionAsync(string userId, UserRefreshRequest req, string src)
+        {
+            using var db = new AppDbContext();
+
+            //Find our user.
+            var userResult  = await (from u in db.Users
+                                    where u.UserId == userId
+                                    join role in db.Roles on u.RoleId equals role.RoleId
+                                    select new 
+                                    {
+                                        User = u,
+                                        Role = role,
+                                    }).SingleAsync();
+            
+            if(userResult == null)
+            {
+                throw ClientInducedException.MessageOnly("User not found");
+            }
+
+            var permissions = await (from up in db.UserPermissions
+                                    join sp in db.SystemPermissions
+                                    on up.SystemPermissionId equals sp.SystemPermissionId
+                                    where up.UserId == userId
+                                    select sp.SystemPermissionType)
+                                    .Distinct().ToListAsync();
+
+            //Permissions for roles
+            var rolePermissions = await (from rp in db.RolePermissions
+                                    join p in db.Permissions
+                                    on rp.PermissionId equals p.PermissionId
+                                    where rp.RoleId == userResult.User.RoleId
+                                    select p.PermissionType)
+                                    .Distinct().ToListAsync(); 
+
+            var user = new
+            {
+                userResult.User,
+                Permissions = permissions,
+                RolePermissions = rolePermissions,
+                userResult.Role
+            };
+
+            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.UserId == userId && t.Source == src).ToListAsync();
+            db.RemoveRange(existingRefreshTokensForSource);
+
+            var(userRefreshToken, userRefreshTokenExpiration) = AuthUtils.GenerateRefreshToken();
+
+            var newRefreshToken = new UserRefreshTokenEntry
+            {
+                UserRefreshTokenId = DbUtils.GenerateUuid(),
+                UserId = userId,
+                RefreshToken = userRefreshToken,
+                RefreshTokenExpirationDate = userRefreshTokenExpiration,
+                Source = src
+            };     
+
+            await db.UserRefreshTokens.AddAsync(newRefreshToken);
+
+            //Create the access token. Update: Add roles as a new list.
+            var(accessToken, accessTokenExpiration) = AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, user.Permissions, new() {userResult.Role.RoleType});
+
+            var userProfile = GetUserBasicInfo(userId);
+            //Return the result
+            var res = new UserRefreshResponse()
+            {
+                NewAccessToken = accessToken,
+                NewAccessTokenExpiration = accessTokenExpiration,
+                RefreshToken = userRefreshToken,
+                UserProfile = userProfile
+            };
+            
+            return res;
         }
 
         public static async Task<UserLoginResponse> LoginSuccessResponse(AppDbContext db, string userId, string roleId, string src)
