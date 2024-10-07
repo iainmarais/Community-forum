@@ -253,7 +253,18 @@ namespace RestApiServer.Db
 
         public static List<SystemPermissionEntry> PresetSystemPermissions = new()
         {
-            //Todo: Build out.            
+            //Todo: Build out.
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "dev_view_areas_under_construction",
+                SystemPermissionName = "Development: View areas under construction",
+                SystemPermissionType = SystemPermissionType.Visibility,
+                Description = "Allows a user to view areas under construction. This is for development purposes only.",
+            }            
+        };
+        public static List<CategoryEntry> PresetCategories = new()
+        {
+            //Todo: Build out.  
         };
     }
 }

@@ -7,7 +7,7 @@ namespace RestApiServer.Security
 {
     public static class RoleBasedAuth
     {
-        public static void Configure(AuthorizationOptions options)
+        public static AuthorizationOptions Configure(AuthorizationOptions options)
         {   
             try
             {
@@ -31,6 +31,8 @@ namespace RestApiServer.Security
             {
                 Log.Error($"Something went horribly wrong configuring role-based authorisation.\n {ex.Message}", ex);
             }
+
+            return options;
         }
     }
 }
