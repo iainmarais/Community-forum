@@ -23,14 +23,14 @@ namespace RestApiServer.Services
 {
     public class UserService
     {
-        public static async Task<UserLoginResponse> Login(string inputUserIdentifier, string password)
+        public static async Task<UserLoginResponse> Login(UserLoginRequest req)
         {
             string userContextIdentifier = "";   
             string username = "";
             string emailAddress = "";
             UserEntry? user = null;
             
-            var userIdentifier = inputUserIdentifier.Trim().ToLower().Split(':');
+            var userIdentifier = req.UserIdentifier.Trim().ToLower().Split(':');
             if(userIdentifier.Length > 1)
             {
                 //What context is this user logging in to?
@@ -69,7 +69,7 @@ namespace RestApiServer.Services
                     throw ClientInducedException.MessageOnly("Invalid username or email address provided, or user does not exist.");
                 }
 
-                if(!AuthUtils.VerifyPassword(password, user.HashedPassword))
+                if(!AuthUtils.VerifyPassword(req.Password, user.HashedPassword))
                 {
                     throw ClientInducedException.MessageOnly("Invalid password entered.");
                 }
@@ -89,7 +89,7 @@ namespace RestApiServer.Services
                     throw ClientInducedException.MessageOnly("Invalid username or email address provided, or user does not exist.");
                 }
 
-                if(!AuthUtils.VerifyPassword(password, user.HashedPassword))
+                if(!AuthUtils.VerifyPassword(req.Password, user.HashedPassword))
                 {
                     throw ClientInducedException.MessageOnly("Invalid password entered.");
                 }
@@ -105,7 +105,7 @@ namespace RestApiServer.Services
                     throw ClientInducedException.MessageOnly("Invalid username or email address provided, or user does not exist.");
                 }
 
-                if(!AuthUtils.VerifyPassword(password, user.HashedPassword))
+                if(!AuthUtils.VerifyPassword(req.Password, user.HashedPassword))
                 {
                     throw ClientInducedException.MessageOnly("Invalid password entered.");
                 }
@@ -184,11 +184,7 @@ namespace RestApiServer.Services
             }
 
             var salt = AuthUtils.GenerateSalt();
-            //Debug: See what user roles are present:
-            foreach(var role in db.Roles)
-            {
-                Console.WriteLine(role.RoleType);
-            }
+            
             if(!Enum.TryParse(req.RoleType, out RoleType parsedRoleType))
             {
                 throw ClientInducedException.MessageOnly("Invalid role type");
@@ -377,7 +373,7 @@ namespace RestApiServer.Services
             {
                 AccessToken = accessToken,
                 AccessTokenExpiration = accessTokenExpiration,
-                RefreshToken = userRefreshToken,
+                UserRefreshToken = userRefreshToken,
                 UserProfile = userProfile
             };
 

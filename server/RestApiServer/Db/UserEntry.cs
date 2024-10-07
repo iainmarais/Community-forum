@@ -32,32 +32,9 @@ namespace RestApiServer.Db.Users
         //Updating it should be run every day or so, depending on the user's current state
         public DateTime LastLoginTime { get; set; }
 
-        /*
-        //Create the SQL code to create the database table from this c# class, ignore navigation props.
-        create table if not exists users (
-            userId varchar(50) primary key,
-            adminUserId varchar(50),
-            forumUserId varchar(50),
-            userProfileImageBase64 varchar(2000),
-            username varchar(20),
-            emailAddress varchar(50),
-            address varchar(50),
-            city varchar(50),
-            country varchar(50),
-            postalCode varchar(10),
-            userFirstname varchar(50),
-            userLastname varchar(50),
-            gender varchar(10),
-            hashedPassword varchar(2000),
-            roleId varchar(50),
-            totalPosts int,
-            isOnline bit,
-            isVisible bit,
-            lastLoginTime datetime
-        )
-
-        */
         //Navigation properties
+        [JsonIgnore]
+        public UserEntry User { get; set; } = new();
         [JsonIgnore]
         public List<ThreadEntry> ThreadsCreated { get; set; } = new();
         [JsonIgnore]
@@ -67,7 +44,7 @@ namespace RestApiServer.Db.Users
         [JsonIgnore]       
         public List<UserPermissionEntry> UserPermissions { get; set; } = new(); 
         [JsonIgnore]
-        public UserRefreshTokenEntry? UserRefreshToken { get; set; }
+        public List<UserRefreshTokenEntry> UserRefreshTokens { get; set; } = new();
 
         //Guest placeholder user
         public static UserEntry CreateDefaultGuestUser()

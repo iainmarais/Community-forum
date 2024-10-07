@@ -16,6 +16,6 @@ namespace RestApiServer.Db
         public RoleType RoleType { get; set;}
         public string? Description { get; set; }
         [JsonIgnore]
-        public required List<RolePermissionEntry> RolePermissions { get; set; } = new();
+        public List<RolePermissionEntry> RolePermissions { get; set; } = new();
     }
 }

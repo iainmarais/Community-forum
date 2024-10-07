@@ -38,7 +38,7 @@ namespace RestApiServer.Controllers
         [HttpPost("login")]
         public async Task<ApiSuccessResponse<UserLoginResponse>> LoginUser(UserLoginRequest request)
         {
-            var res = await UserService.Login(request.UserIdentifier, request.Password);
+            var res = await UserService.Login(request);
             Console.WriteLine(res.UserProfile);
             return ApiSuccessResponses.WithData("User login successful", res);
         }

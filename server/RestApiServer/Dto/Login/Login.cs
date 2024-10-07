@@ -8,7 +8,7 @@ namespace RestApiServer.Dto.Login
     {
         public required string AccessToken { get; set; } = "";
         public required long AccessTokenExpiration { get; set; }
-        public required string RefreshToken { get; set; } = "";
+        public required string UserRefreshToken { get; set; } = "";
         public required UserBasicInfo UserProfile { get; set; }
     }
 
@@ -24,6 +24,8 @@ namespace RestApiServer.Dto.Login
     {
         public required string UserIdentifier { get; set; }
         public required string Password { get; set;}
+        //Default to forum if not set.
+        public required string UserContext { get; set; } = "forum";
     }
 
     public class UserRegistrationRequest

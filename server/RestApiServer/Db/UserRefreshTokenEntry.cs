@@ -10,15 +10,14 @@ namespace RestApiServer.Db
     {
         [Key]
         public required string UserRefreshTokenId { get; set; }
-        //Point this to the UserId prop on the UserEntry object.
+        //Point this to the UserId prop on the UserEntry object. The corresponding table is called "users" in mariadb.
         [ForeignKey("Users")]
         public required string UserId { get; set; }
         public required string RefreshToken { get; set; }
         public required DateTime RefreshTokenExpirationDate { get; set; }
         public required string Source { get; set; }
         public required bool IsRevoked { get; set; }
-
         [JsonIgnore]
-        public UserEntry? User { get; set; } = new();
+        public UserEntry User { get; set; } = new();
     }
 }

@@ -1,4 +1,5 @@
 export type UserLoginRequest = {
     userIdentifier: string,
-    password: string
+    password: string,
+    userContext: string
 }

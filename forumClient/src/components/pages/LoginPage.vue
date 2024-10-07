@@ -1,5 +1,5 @@
 <script lang = "ts" setup>
-import { Last_Logged_In_User_Identifier, Last_Route, Token_Key } from '@/LocalStorage/keys';
+import { Last_Logged_In_User_Identifier, Last_Route, Token_Key, User_Refresh_Token } from '@/LocalStorage/keys';
 import { SetToken } from '@/http/AxiosClient';
 import router, { LoginRoute, MainRoute, LogoffRoute, RegisterRoute, HomeRoute } from '@/router';
 import LoginService from '@/services/LoginService';
@@ -12,6 +12,7 @@ import { Toast_UserLoginSuccessful } from '../prepopulatedToasts';
 import { useMainPageStore } from '@/stores/MainPageStore';
 import "@/assets/scss/pagestyles.scss";
 import Navbar from '../elements/Navbar.vue';
+import type { UserLoginRequest } from '../../Dto/UserLoginRequest';
 
 //Add additional login methods here.
 type LoginMethod = "identifier_password";
@@ -65,15 +66,18 @@ onMounted(() => {
 });
 
 const login = () => {
-    const request = {
+    const request:UserLoginRequest = {
         userIdentifier: identifier.value,
-        password: password.value
+        password: password.value,
+        //Hardcoded this here since in this case the user is logging in via the forum
+        userContext: "forum"
     }
     loginInProgress.value = true;
     LoginService.LoginUser(request).then(response => {
         SetToken(response.data.accessToken);
         localStorage.setItem(Token_Key, response.data.accessToken);
         localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
+        localStorage.setItem(User_Refresh_Token, response.data.userRefreshToken);
         loginInProgress.value = false;
         postLoginRoute();
         Toast_UserLoginSuccessful(response.data.userProfile.user.username);

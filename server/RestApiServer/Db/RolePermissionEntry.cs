@@ -17,8 +17,8 @@ namespace RestApiServer.Db
         public required bool IsAllowed { get; set; } = false; //Default deny. Screw you, would-be hackers. No rights? No access!
         //Navigation properties:
         [JsonIgnore]
-        public required RoleEntry Role { get; set; } = null!;
+        public RoleEntry Role { get; set; } = null!;
         [JsonIgnore]
-        public required PermissionEntry Permission { get; set; } = null!;
+        public PermissionEntry Permission { get; set; } = null!;
     }
 }

@@ -14,6 +14,8 @@ namespace RestApiServer.Core.Security
         private static string UserClaimRequirement = "UserId";
         public static AuthorizationOptions Configure(AuthorizationOptions options)
         {
+            using var db = new AppDbContext();
+            //This needs reworking to use system permissions in the db, and iteratively
             //User related policies
             options.AddPolicy(CreateUsersPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_Create.ToString(),ValidAdminUserClaimsRequirements));
             options.AddPolicy(EditUsersPolicy, policy => policy.RequireClaim(SystemPermissionType.Users_Edit.ToString(),ValidAdminUserClaimsRequirements));

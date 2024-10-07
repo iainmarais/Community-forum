@@ -172,10 +172,16 @@ namespace RestApiServer.Db
                 .HasKey(urt => urt.UserRefreshTokenId);
 
             modelBuilder.Entity<UserEntry>()
-            .HasOne(u => u.UserRefreshToken)
+            .HasMany(u => u.UserRefreshTokens)
             .WithOne(urt => urt.User)
-            .HasForeignKey<UserRefreshTokenEntry>(urt => urt.UserId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .HasForeignKey(urt => urt.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            //Seed data - important structures only.
+            modelBuilder.Entity<RoleEntry>().HasData(
+                //Use the preset roles to seed this.
+                PresetRoles.ToArray()
+            );
         }
         
         //Helpers
@@ -186,5 +192,70 @@ namespace RestApiServer.Db
                 v => DbUtils.ParseEnumFromString<T>(v)
             );
         }
+
+        public static List<RoleEntry> PresetRoles = new()
+        {
+            new RoleEntry 
+            { 
+                RoleId="Admin", 
+                RoleType=RoleType.Admin, 
+                RoleName="Administrator", 
+                Description="Administrators have unrestricted access to administrate the forum and chat services.", 
+            },
+            new RoleEntry 
+            { 
+                RoleId="Moderator", 
+                RoleType=RoleType.Moderator, 
+                RoleName="Moderator", 
+                Description="Moderators are trusted community members of the forum.",                
+            },
+            new RoleEntry 
+            { 
+                RoleId="JuniorModerator", 
+                RoleType=RoleType.JuniorModerator, 
+                RoleName="Junior Moderator", 
+                Description="Moderators are trusted community members of the forum.",               
+            },
+            new RoleEntry 
+            { 
+                RoleId="User", 
+                RoleType=RoleType.User, 
+                RoleName="Regular User", 
+                Description="Users have limited rights to the forum, but can create posts and upload content, and edit their own posts.",                
+            },
+            new RoleEntry
+            {
+                RoleId = "Guest",
+                RoleType = RoleType.Guest,
+                RoleName="Guest",
+                Description = "Guests have limited rights to the forum, and can only post in authorised areas."
+            }
+        };
+        public static List<PermissionEntry> PresetPermissions = new()
+        { 
+            //Basic user permissions:
+            new PermissionEntry
+            {
+                PermissionId = "createPosts",
+                PermissionName = "Create Posts",
+                PermissionType = PermissionType.Content,
+                Description = "Allows a user to create new posts. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+            },
+            new PermissionEntry
+            {
+                PermissionId = "uploadImages",
+                PermissionName = "Upload images",
+                PermissionType = PermissionType.Content,
+                Description = "Allows a user to upload images to the gallery."
+            },
+            
+        };
+
+        public static List<SystemPermissionEntry> PresetSystemPermissions = new()
+        {
+            //Todo: Build out.            
+        };
     }
 }
+
+

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestApiServer.Db;
 
@@ -11,9 +12,11 @@ using RestApiServer.Db;
 namespace RestApiServer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241007122933_updateDb-Foreignkey-users-userid")]
+    partial class updateDbForeignkeyusersuserid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -314,36 +317,6 @@ namespace RestApiServer.Migrations
                     b.HasKey("RoleId");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            RoleId = "Admin",
-                            Description = "Administrators have unrestricted access to administrate the forum and chat services.",
-                            RoleName = "Administrator",
-                            RoleType = "Admin"
-                        },
-                        new
-                        {
-                            RoleId = "Moderator",
-                            Description = "Moderators are trusted community members of the forum.",
-                            RoleName = "Moderator",
-                            RoleType = "Moderator"
-                        },
-                        new
-                        {
-                            RoleId = "JuniorModerator",
-                            Description = "Moderators are trusted community members of the forum.",
-                            RoleName = "Junior Moderator",
-                            RoleType = "JuniorModerator"
-                        },
-                        new
-                        {
-                            RoleId = "User",
-                            Description = "Users have limited rights to the forum, but can create posts and upload content, and edit their own posts.",
-                            RoleName = "Regular User",
-                            RoleType = "User"
-                        });
                 });
 
             modelBuilder.Entity("RestApiServer.Db.RolePermissionEntry", b =>
