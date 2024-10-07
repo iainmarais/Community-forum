@@ -37,7 +37,8 @@ namespace RestApiServer.Dto.Login
 
     public class UserRefreshRequest
     {
-        public required string OldAccessToken { get; set; }
-        public required string UserRefreshToken { get; set; }
+        public required string RefreshToken { get; set; }
+        public string? UserContext { get; set; } = "forum";
+
     }
 }

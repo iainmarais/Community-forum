@@ -86,6 +86,7 @@ namespace RestApiServer.Utils
             return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
         }
 
+        //Generates the user's refresh token. Suggestions for improvements relating to security: Capture the IP address of the client from where the login originated, and on logoff, revoke it or even mark as invalid in the db.
         public static (string, DateTime) GenerateRefreshToken()
         {
             var refreshTokenExpiration = DateTime.UtcNow.AddDays(60);
@@ -95,7 +96,7 @@ namespace RestApiServer.Utils
             return (Convert.ToBase64String(rndNum), refreshTokenExpiration);
         }
 
-        //Generates the user's access token.
+        //Generates the user's access token. Suggestions for improvements relating to security: Capture the IP address of the client from where the login originated.
         public static (string, long) GenerateAdminUserAccessToken(string userId, string adminUserId, List<SystemPermissionType> SystemPermissions, List<RoleType> Roles)
         {
             string secret = ConfigurationLoader.GetConfigValue(EnvironmentVariable.JwtSharedSecret);

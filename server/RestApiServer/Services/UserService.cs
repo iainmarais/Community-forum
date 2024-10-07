@@ -23,7 +23,7 @@ namespace RestApiServer.Services
 {
     public class UserService
     {
-        public static async Task<UserLoginResponse> Login(string inputUserIdentifier, string password, string src)
+        public static async Task<UserLoginResponse> Login(string inputUserIdentifier, string password)
         {
             string userContextIdentifier = "";   
             string username = "";
@@ -56,6 +56,7 @@ namespace RestApiServer.Services
             using var db = new AppDbContext();
 
             //Handle the user context
+            //If no context is given, default to forum user context
             if(string.IsNullOrEmpty(userContextIdentifier))
             {
                 user = await (from u in db.Users 
@@ -72,7 +73,48 @@ namespace RestApiServer.Services
                 {
                     throw ClientInducedException.MessageOnly("Invalid password entered.");
                 }
-                return await LoginSuccessResponse(db, user.UserId, user.RoleId, src);
+            
+                userContextIdentifier = "forum";
+                return await LoginSuccessResponse(db, user.UserId, user.RoleId, userContextIdentifier);
+            }
+            if(userContextIdentifier == "admin")
+            {
+                user = await (from u in db.Users 
+                                join r in db.Roles on u.RoleId equals r.RoleId
+                                where u.Username == username 
+                                || u.EmailAddress == emailAddress 
+                                select u).SingleOrDefaultAsync();
+                if(user == null)
+                {
+                    throw ClientInducedException.MessageOnly("Invalid username or email address provided, or user does not exist.");
+                }
+
+                if(!AuthUtils.VerifyPassword(password, user.HashedPassword))
+                {
+                    throw ClientInducedException.MessageOnly("Invalid password entered.");
+                }
+                return await LoginSuccessResponse(db, user.UserId, user.RoleId, userContextIdentifier);
+            }            
+            //Handle the forum user context here.
+            if(userContextIdentifier == "forum")
+            {
+                user = await (from u in db.Users join r in db.Roles on u.RoleId equals r.RoleId where u.Username == username || u.EmailAddress == emailAddress select u).SingleOrDefaultAsync();
+
+                if(user == null)
+                {
+                    throw ClientInducedException.MessageOnly("Invalid username or email address provided, or user does not exist.");
+                }
+
+                if(!AuthUtils.VerifyPassword(password, user.HashedPassword))
+                {
+                    throw ClientInducedException.MessageOnly("Invalid password entered.");
+                }
+                return await LoginSuccessResponse(db, user.UserId, user.RoleId, userContextIdentifier);
+
+            }
+            if(userContextIdentifier == "chat")
+            {
+                throw ClientInducedException.MessageOnly("Chat context not yet implemented.");
             }
             else
             {
@@ -170,23 +212,37 @@ namespace RestApiServer.Services
             };
         }
 
-        public static async Task<UserRefreshResponse> RefreshUserSessionAsync(string userId, UserRefreshRequest req, string src)
+        public static async Task<UserRefreshResponse> RefreshUserSessionAsync(string userId, UserRefreshRequest req)
         {
             using var db = new AppDbContext();
 
-            //Find our user.
-            var userResult  = await (from u in db.Users
-                                    where u.UserId == userId
+            //Find the user in the db given the incoming user Id:
+            var userResult = await (from u in db.Users 
+                                    where u.UserId == userId 
                                     join role in db.Roles on u.RoleId equals role.RoleId
                                     select new 
                                     {
                                         User = u,
-                                        Role = role,
+                                        Role = role
                                     }).SingleAsync();
-            
-            if(userResult == null)
+
+            //SingleOrDefaultAsync will find a result or return a functionally null yet valid result.
+            if(userResult == null || userResult.User.UserId != userId)
             {
-                throw ClientInducedException.MessageOnly("User not found");
+                throw ClientInducedException.MessageOnly("User not found in database.");
+            }
+            //Else, continue to check our token.
+            var existingRefreshToken = await db.UserRefreshTokens.SingleAsync(urt => urt.UserId == userId && urt.Source == req.UserContext);
+
+            if(existingRefreshToken.RefreshTokenExpirationDate < DateTime.UtcNow)
+            {
+                throw ClientInducedException.MessageOnly("Refresh token has expired.");
+            }
+
+            //If this token was revoked, e.g. by logging off, we can't proceed any further.
+            if(existingRefreshToken.IsRevoked)
+            {
+                throw ClientInducedException.MessageOnly("User refresh token has been revoked.");
             }
 
             var permissions = await (from up in db.UserPermissions
@@ -200,10 +256,9 @@ namespace RestApiServer.Services
             var rolePermissions = await (from rp in db.RolePermissions
                                     join p in db.Permissions
                                     on rp.PermissionId equals p.PermissionId
-                                    where rp.RoleId == userResult.User.RoleId
+                                    where rp.RoleId == userResult.Role.RoleId
                                     select p.PermissionType)
-                                    .Distinct().ToListAsync(); 
-
+                                    .Distinct().ToListAsync();                                    
             var user = new
             {
                 userResult.User,
@@ -211,10 +266,10 @@ namespace RestApiServer.Services
                 RolePermissions = rolePermissions,
                 userResult.Role
             };
+            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.UserId == userId && t.Source == req.UserContext).ToListAsync();
 
-            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.UserId == userId && t.Source == src).ToListAsync();
             db.RemoveRange(existingRefreshTokensForSource);
-
+            //Create the user refresh token.
             var(userRefreshToken, userRefreshTokenExpiration) = AuthUtils.GenerateRefreshToken();
 
             var newRefreshToken = new UserRefreshTokenEntry
@@ -223,28 +278,33 @@ namespace RestApiServer.Services
                 UserId = userId,
                 RefreshToken = userRefreshToken,
                 RefreshTokenExpirationDate = userRefreshTokenExpiration,
-                Source = src
-            };     
-
+                Source = req.UserContext ?? "Unknown",
+                IsRevoked = false
+            };
             await db.UserRefreshTokens.AddAsync(newRefreshToken);
-
-            //Create the access token. Update: Add roles as a new list.
-            var(accessToken, accessTokenExpiration) = AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, user.Permissions, new() {userResult.Role.RoleType});
+            //Now, one can create the new access and refresh tokens.
+            var (newAccessToken, newAccessTokenExpiration) = req.UserContext switch
+            {
+                "admin" => AuthUtils.GenerateAdminUserAccessToken(userId, userResult.User.AdminUserId, permissions, new(){ userResult.Role.RoleType }),
+                "forum" => AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }),
+                //Add more as needed to handle various contexts.
+                _ => throw ClientInducedException.MessageOnly("Unknown user context.")
+            };
 
             var userProfile = GetUserBasicInfo(userId);
-            //Return the result
-            var res = new UserRefreshResponse()
+
+            var res = new UserRefreshResponse
             {
-                NewAccessToken = accessToken,
-                NewAccessTokenExpiration = accessTokenExpiration,
+                NewAccessToken = newAccessToken,
+                NewAccessTokenExpiration = newAccessTokenExpiration,
                 RefreshToken = userRefreshToken,
                 UserProfile = userProfile
             };
-            
+
             return res;
         }
 
-        public static async Task<UserLoginResponse> LoginSuccessResponse(AppDbContext db, string userId, string roleId, string src)
+        public static async Task<UserLoginResponse> LoginSuccessResponse(AppDbContext db, string userId, string roleId, string userContext)
         {
             var userResult = await (from u in db.Users 
                                     where u.UserId == userId 
@@ -280,7 +340,7 @@ namespace RestApiServer.Services
                 RolePermissions = rolePermissions,
                 userResult.Role
             };
-            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.UserId == userId && t.Source == src).ToListAsync();
+            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.UserId == userId && t.Source == userContext).ToListAsync();
             db.RemoveRange(existingRefreshTokensForSource);
             //Create the user refresh token.
             var(userRefreshToken, userRefreshTokenExpiration) = AuthUtils.GenerateRefreshToken();
@@ -291,11 +351,19 @@ namespace RestApiServer.Services
                 UserId = userId,
                 RefreshToken = userRefreshToken,
                 RefreshTokenExpirationDate = userRefreshTokenExpiration,
-                Source = src
+                Source = userContext,
+                IsRevoked = false
             };
             await db.UserRefreshTokens.AddAsync(newRefreshToken);
             //Create the access token. Update: Add roles as a new list.
-            var(accessToken, accessTokenExpiration) = AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, user.Permissions, new() {userResult.Role.RoleType});
+                        //Now, one can create the new access and refresh tokens.
+            var (accessToken, accessTokenExpiration) = userContext switch
+            {
+                "admin" => AuthUtils.GenerateAdminUserAccessToken(userId, userResult.User.AdminUserId, permissions, new(){ userResult.Role.RoleType }),
+                "forum" => AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }),
+                //Add more as needed to handle various contexts.
+                _ => throw ClientInducedException.MessageOnly("Unknown user context.")
+            };
 
             //update the user's last login time
             var userEntry = db.Users.Single(u => u.UserId == userId);

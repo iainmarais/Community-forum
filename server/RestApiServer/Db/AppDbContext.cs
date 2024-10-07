@@ -86,6 +86,9 @@ namespace RestApiServer.Db
             modelBuilder.Entity<GalleryItemEntry>()
             .HasKey(gi => gi.GalleryItemId);
 
+            modelBuilder.Entity<UserEntry>()
+            .HasKey(u => u.UserId);
+
             modelBuilder.Entity<GalleryItemEntry>()
             .HasOne(g => g.CreatedByUser) // Navigation property on GalleryItem
             .WithMany(u => u.GalleryItems) // Navigation property on UserEntry
@@ -164,6 +167,15 @@ namespace RestApiServer.Db
 
             modelBuilder.Entity<UserPermissionEntry>()
                 .HasIndex(up => up.SystemPermissionId);            
+
+            modelBuilder.Entity<UserRefreshTokenEntry>()
+                .HasKey(urt => urt.UserRefreshTokenId);
+
+            modelBuilder.Entity<UserEntry>()
+            .HasOne(u => u.UserRefreshToken)
+            .WithOne(urt => urt.User)
+            .HasForeignKey<UserRefreshTokenEntry>(urt => urt.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
         }
         
         //Helpers
