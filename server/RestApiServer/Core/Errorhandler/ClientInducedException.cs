@@ -29,7 +29,7 @@ namespace RestApiServer.Core.Errorhandler
     public class InputValidationError
     {
         public string? Message { get; set; }
-        public InputValidationTarget Target { get; set; }
+        public required InputValidationTarget Target { get; set; }
 
         public static InputValidationError RequiredDataMissing(InputValidationTarget target)
         {

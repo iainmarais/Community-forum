@@ -51,7 +51,7 @@ namespace RestApiServer.Controllers
         }
 
         [HttpPost("{userId}/profile")]
-        [Authorize(policy: UserAuthorisationPolicies.EditUsersPolicy)]
+        [Authorize(policy: "EditUsersPolicy")]
         public async Task<ApiSuccessResponse<UserBasicInfo>> UpdateUserProfile(UpdateUserProfileRequest request)
         {
             var user = AuthUtils.GetAdminUserContext(User);

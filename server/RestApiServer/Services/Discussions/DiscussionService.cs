@@ -147,7 +147,7 @@ namespace RestApiServer.Services.Discussions
         public static async Task<PaginatedData<List<PostFullInfo>, PostSummary>> GetPaginatedPostsForThreadAsync(string threadId, int pageNumber, int rowsPerPage, string? searchTerm)
         {
             using var db = new AppDbContext();
-            var posts = (from post in db.Posts
+            var postsQuery = from post in db.Posts
                                 where post.ThreadId == threadId
                                 join user in db.Users on post.CreatedByUserId equals user.UserId
                                 select new PostFullInfo()
@@ -157,8 +157,12 @@ namespace RestApiServer.Services.Discussions
                                     {
                                         User = user
                                     }
-                                }).AsEnumerable();
-            var filteredPosts = posts;
+                                };
+
+            var posts = await postsQuery.ToListAsync();
+
+            var filteredPosts = posts.AsQueryable();
+
             if(!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
@@ -169,19 +173,13 @@ namespace RestApiServer.Services.Discussions
                                 || p.CreatedByUser.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                   select p);
             }
-            var filteredTotal = filteredPosts.Count();
+            var filteredTotal = await filteredPosts.CountAsync();
+
             var skip = (pageNumber - 1) * rowsPerPage;
-            var pageRows = filteredPosts.Skip(skip).Take(rowsPerPage);
-            var postRows = new List<PostFullInfo>();
-            foreach (var post in pageRows)
-            {
-                postRows.Add(post);
-            }
-            int totalPages = 1;
-            if(filteredTotal > rowsPerPage)
-            {
-                totalPages = filteredTotal / rowsPerPage;
-            }
+            var postRows = await filteredPosts.Skip(skip).Take(rowsPerPage).ToListAsync();
+
+            int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
+
             return new() 
             {
                 Rows = postRows,

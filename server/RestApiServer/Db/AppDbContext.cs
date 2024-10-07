@@ -264,7 +264,24 @@ namespace RestApiServer.Db
         };
         public static List<CategoryEntry> PresetCategories = new()
         {
-            //Todo: Build out.  
+            new CategoryEntry 
+            {
+                CategoryId = "General",
+                CategoryName = "General",
+                CategoryDescription = "General discussions for the forum.",
+            },
+            new CategoryEntry
+            {
+                CategoryId = "ITSupport",
+                CategoryName = "Computer and IT Support",
+                CategoryDescription = "Everything pertaining to computer and IT support can be discussed here.",
+            },
+            new CategoryEntry
+            {
+                CategoryId = "Development",
+                CategoryName = "Software development",
+                CategoryDescription = "Everything pertaining to software development can be discussed here.",
+            }
         };
     }
 }

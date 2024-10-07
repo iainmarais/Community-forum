@@ -133,7 +133,7 @@ namespace RestApiServer.Services.Categories
         public static async Task<PaginatedData<List<ThreadBasicInfo>, ThreadSummary>> GetPaginatedThreadsForTopicAsync(string topicId, int pageNumber, int rowsPerPage, string? searchTerm)
         {
             using var db = new AppDbContext();
-            var threads = (from t in db.Threads
+            var threadsQuery =  (from t in db.Threads
                             where t.TopicId == topicId
                             join u in db.Users on t.CreatedByUserId equals u.UserId
                             select new ThreadBasicInfo()
@@ -144,9 +144,13 @@ namespace RestApiServer.Services.Categories
                                     User = u
                                 },
                                 TotalPosts = t.Posts.Count
-                            })
-                            .AsEnumerable();
-            var filteredThreads = threads;
+                            });
+
+            var threads = await threadsQuery.ToListAsync();
+
+
+            var filteredThreads = threads.AsQueryable();
+
             if(!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
@@ -157,19 +161,14 @@ namespace RestApiServer.Services.Categories
                                 || t.CreatedByUser!.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                   select t);
             }
-            var filteredTotal = filteredThreads.Count();
+            var filteredTotal = await filteredThreads.CountAsync();
+            
             var skip = (pageNumber - 1) * rowsPerPage;
-            var pageRows = filteredThreads.Skip(skip).Take(rowsPerPage);
-            var threadRows = new List<ThreadBasicInfo>();
-            foreach (var thread in pageRows)
-            {
-                threadRows.Add(thread);
-            }
-            int totalPages = 1;
-            if(filteredTotal > rowsPerPage)
-            {
-                totalPages = filteredTotal / rowsPerPage;
-            }
+
+            var threadRows = await filteredThreads.Skip(skip).Take(rowsPerPage).ToListAsync();
+
+            int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
+
             return new()
             {
                 Rows = threadRows,

@@ -106,10 +106,10 @@ namespace RestApiServer
                     };
                 });
                 builder.Services.AddAuthorization(
-                    options => 
+                    async options => 
                     {
                         RoleBasedAuth.Configure(options);
-                        UserAuthorisationPolicies.Configure(options);
+                        await UserAuthorisationPolicies.Configure(options);
                     }
                 );
 

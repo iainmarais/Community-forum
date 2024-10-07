@@ -9,7 +9,7 @@ namespace RestApiServer.Dto.App
         public required ThreadEntry Thread { get; set; } = null!;
         public required int TotalPosts { get; set; } = 0;
         public PostBasicInfo NewestMessage { get; set; } = null!;
-        public UserBasicInfo? CreatedByUser { get; set; }
+        public UserBasicInfo CreatedByUser { get; set; } = null!;
     }
 
     public class ThreadFullInfo 

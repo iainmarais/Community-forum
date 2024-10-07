@@ -19,8 +19,8 @@ namespace RestApiServer.Db.Users
         public string? CityName { get; set; }
         public string? CountryName { get; set; }
         public string? PostalCode { get; set; }
-        public string? UserFirstname { get; set; }
-        public string? UserLastname { get; set; }
+        public string UserFirstname { get; set; } = string.Empty;
+        public string UserLastname { get; set; } = string.Empty;
         public string? Gender { get; set; } //Male, female or other. FYI I do not subscribe to wokery, so therefore I will not and shall not cater to it.
         public string HashedPassword { get; set; } = string.Empty;
         public string RoleId { get; set; } = string.Empty;

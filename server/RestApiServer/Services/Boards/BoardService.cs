@@ -79,7 +79,7 @@ namespace RestApiServer.Services.Boards
         {
             using var db = new AppDbContext();
 
-            var topics = (from topic in db.Topics
+            var topicsQuery = from topic in db.Topics
                             where topic.BoardId == boardId
                             join user in db.Users on topic.CreatedByUserId equals user.UserId
                             select new TopicBasicInfo
@@ -92,34 +92,33 @@ namespace RestApiServer.Services.Boards
                                 {
                                     User = user
                                 }
-                            }).AsEnumerable();
+                            };
 
-                var filteredTopics = topics;
+                var topics = await topicsQuery.ToListAsync();
+
+                var filteredTopics = topics.AsQueryable();
 
                 if (!string.IsNullOrEmpty(searchTerm))
                 {
                     searchTerm = searchTerm.ToLower();
                     filteredTopics = (from t in filteredTopics
                                     where t.Topic.TopicName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                    || t.CreatedByUser.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                    || t.CreatedByUser.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || t.CreatedByUser!.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || t.CreatedByUser!.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                     || t.CreatedByUser!.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                     || t.Topic.Description.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                    select t);
+                                    select t).AsQueryable();
                 }
-            var filteredTotal = filteredTopics.Count();
+
+            //Count the results asynchronously
+            var filteredTotal = await filteredTopics.CountAsync();
             var skip = (pageNumber - 1) * rowsPerPage;
-            var pageRows = filteredTopics.Skip(skip).Take(rowsPerPage);
-            var topicRows = new List<TopicBasicInfo>();
-            foreach(var topic in pageRows)
-            {
-                topicRows.Add(topic);
-            } 
-            int totalPages = 1;
-            if(filteredTotal > rowsPerPage)
-            {
-                totalPages = filteredTotal / rowsPerPage;
-            }
+
+            //Take the results asynchronously
+            var topicRows = await filteredTopics.Skip(skip).Take(rowsPerPage).ToListAsync();
+
+            int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
+            
             return new()
             {
                 Rows = topicRows,

@@ -8,9 +8,9 @@ namespace RestApiServer.Db
     public class CategoryEntry
     {
         [Key]
-        public string CategoryId { get; set; } = string.Empty;
-        public string CategoryName { get; set; } = string.Empty;
-        public string CategoryDescription { get; set; } = string.Empty;
+        public required string CategoryId { get; set; } = string.Empty;
+        public required string CategoryName { get; set; } = string.Empty;
+        public required string CategoryDescription { get; set; } = string.Empty;
 
         //Navigation properties
         [JsonIgnore]

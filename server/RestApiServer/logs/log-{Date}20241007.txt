@@ -2099,3 +2099,96 @@ Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
    at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
    at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
    at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-07 16:58:15.206 +02:00 [INF] Starting up... Please be patient.
+2024-10-07 16:58:19.572 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ Unknown database 'communityforum'
+2024-10-07 16:58:19.998 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 16:58:20.104 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-07 16:58:20.117 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-07 16:58:20.121 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-07 16:58:20.122 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-07 16:58:20.123 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 16:58:20.124 +02:00 [INF] Hosting environment: Development
+2024-10-07 16:58:20.125 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-07 17:23:04.685 +02:00 [INF] Starting up... Please be patient.
+2024-10-07 17:23:07.173 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ Unknown database 'communityforum'
+2024-10-07 17:23:07.530 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 17:23:07.612 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-07 17:23:07.623 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-07 17:23:07.627 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-07 17:23:07.628 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-07 17:23:07.629 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 17:23:07.629 +02:00 [INF] Hosting environment: Development
+2024-10-07 17:23:07.630 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-07 17:24:07.402 +02:00 [INF] Starting up... Please be patient.
+2024-10-07 17:24:09.984 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ Unknown database 'communityforum'
+2024-10-07 17:24:10.326 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 17:24:10.405 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-07 17:24:10.416 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-07 17:24:10.419 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-07 17:24:10.419 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-07 17:24:10.420 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 17:24:10.421 +02:00 [INF] Hosting environment: Development
+2024-10-07 17:24:10.421 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-07 17:25:37.914 +02:00 [INF] Starting up... Please be patient.
+2024-10-07 17:25:41.416 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ Unknown database 'communityforum'
+2024-10-07 17:25:41.956 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 17:25:42.033 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-07 17:25:42.045 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-07 17:25:42.049 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-07 17:25:42.049 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-07 17:25:42.051 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 17:25:42.051 +02:00 [INF] Hosting environment: Development
+2024-10-07 17:25:42.053 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-07 18:10:32.008 +02:00 [INF] Starting up... Please be patient.
+2024-10-07 18:10:34.443 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ Unknown database 'communityforum'
+2024-10-07 18:10:34.878 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 18:10:34.979 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-07 18:10:34.995 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-07 18:10:35.005 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-07 18:10:35.007 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-07 18:10:35.013 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 18:10:35.014 +02:00 [INF] Hosting environment: Development
+2024-10-07 18:10:35.015 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-07 18:16:14.958 +02:00 [INF] Starting up... Please be patient.
+2024-10-07 18:16:17.766 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ Unknown database 'communityforum'
+2024-10-07 18:16:18.117 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 18:16:18.194 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-07 18:16:18.206 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-07 18:16:18.210 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-07 18:16:18.211 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-07 18:16:18.212 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 18:16:18.212 +02:00 [INF] Hosting environment: Development
+2024-10-07 18:16:18.213 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-07 18:19:38.082 +02:00 [INF] Starting up... Please be patient.
+2024-10-07 18:19:40.708 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ Unknown database 'communityforum'
+2024-10-07 18:21:45.437 +02:00 [INF] Starting up... Please be patient.
+2024-10-07 18:21:47.758 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ Unknown database 'communityforum'
+2024-10-07 18:21:47.949 +02:00 [ERR] Something went horribly wrong configuring user-based authorisation.
+ {ex.Message}
+2024-10-07 18:24:14.370 +02:00 [INF] Starting up... Please be patient.
+2024-10-07 18:24:14.589 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-07 18:24:53.006 +02:00 [INF] Starting up... Please be patient.
+2024-10-07 18:24:55.823 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 18:24:55.915 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-07 18:24:55.926 +02:00 [INF] Certificate with thumbprint 667F6F6890DBA7456BFD7D4659DA47B7E94A9737 lacks the subjectAlternativeName (SAN) extension and may not be accepted by browsers.
+2024-10-07 18:24:55.930 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-07 18:24:55.931 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-07 18:24:55.932 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 18:24:55.932 +02:00 [INF] Hosting environment: Development
+2024-10-07 18:24:55.933 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer

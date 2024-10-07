@@ -13,7 +13,7 @@ namespace RestApiServer.Services.Categories
         {
             using var db = new AppDbContext();
             var category = await db.Categories.SingleAsync(c => c.CategoryId == categoryId);
-            var boards = (from b in db.Boards
+            var boards = await (from b in db.Boards
                                 where b.CategoryId == category.CategoryId
                                 join user in db.Users on b.CreatedByUserId equals user.UserId
                                 select new BoardBasicInfo()
@@ -23,7 +23,7 @@ namespace RestApiServer.Services.Categories
                                     {
                                         User = user
                                     }
-                                }).ToList();
+                                }).ToListAsync();
             var categoryFullInfo = new CategoryFullInfo()
             {
                 Category = category,

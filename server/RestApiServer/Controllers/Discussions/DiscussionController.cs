@@ -23,7 +23,7 @@ namespace RestApiServer.Controllers.Discussions
             return ApiSuccessResponses.WithData("Get discussion state successful", res);
         }
         [HttpPost("threads/create")]
-        [Authorize(policy:UserAuthorisationPolicies.CreateThreadsPolicy)]
+        [Authorize(policy:"CreateThreadsPolicy")]
         public async Task<ApiSuccessResponse<object>> CreateThread(CreateThreadRequest request)
         {        
             var user = AuthUtils.GetForumUserContext(User);
@@ -32,7 +32,7 @@ namespace RestApiServer.Controllers.Discussions
         }
 
         [HttpPost("threads/createAndPost")]
-        [Authorize(policy:UserAuthorisationPolicies.CreateThreadsPolicy)]
+        [Authorize(policy:"CreateThreadsPolicy")]
         public async Task<ApiSuccessResponse<object>> CreateThreadWithPost(CreateThreadWithPostRequest request)
         {	
             var user = AuthUtils.GetForumUserContext(User);
@@ -60,7 +60,7 @@ namespace RestApiServer.Controllers.Discussions
             return ApiSuccessResponses.WithData("Get forum thread posts successful", res);
         }
         [HttpPost("thread/{threadId}/posts/create")]
-        [Authorize(policy:UserAuthorisationPolicies.CreatePostsPolicy)]
+        [Authorize(policy:"CreatePostsPolicy")]
         public async Task<ApiSuccessResponse<PostFullInfo>> CreateThreadPost(CreatePostRequest request)
         {
             var user = AuthUtils.GetForumUserContext(User);

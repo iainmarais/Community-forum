@@ -12,7 +12,7 @@ namespace RestApiServer.Dto.App
         public required int NumTotalThreads { get; set; }
         public int NumNewThreads { get; set; }
         public ThreadBasicInfo NewestThread { get; set; } = null!;
-        public UserBasicInfo? CreatedByUser { get; set; }
+        public UserBasicInfo CreatedByUser { get; set; } = null!;
     }
 
     public class TopicFullInfo
