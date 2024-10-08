@@ -28,46 +28,49 @@ namespace RestApiServer.Services
             using var db = new AppDbContext();
             UserEntry? foundUser = null;
             //User is logging in with an email address.
-            if(req.UserIdentifier.Contains("@"))
+            if(!string.IsNullOrEmpty(req.UserIdentifier))
             {
-                foundUser = await (from u in db.Users 
-                                join r in db.Roles on u.RoleId equals r.RoleId
-                                where u.EmailAddress == req.UserIdentifier
-                                select u).SingleOrDefaultAsync();
+                foundUser = await FindUserAsync(db, req.UserIdentifier);
+
+                //User not found or does not exit at this point.
+                if (foundUser== null)
+                {
+                    throw ClientInducedException.MessageOnly("User not found or does not exist.");
+                }
+                //Handle the user context now.
                 switch(req.UserContext)
                 {
                     case "forum":
                     case "admin":
-                        return await LoginSuccessResponse(db, foundUser!.UserId, foundUser.RoleId, req.UserContext);
+                        return await LoginSuccessResponse(db, foundUser.UserId, foundUser.RoleId, req.UserContext);
                     case "chat":
                         throw ClientInducedException.MessageOnly("Chat context not yet implemented.");
                     default:
                         throw ClientInducedException.MessageOnly("Invalid user context.");
                 }
             }
-            //Username only
-            else if(!req.UserIdentifier.Contains("@"))
-            {
-                foundUser = await (from u in db.Users 
-                                join r in db.Roles on u.RoleId equals r.RoleId
-                                where u.Username == req.UserIdentifier
-                                select u).SingleOrDefaultAsync();
-                switch(req.UserContext)
-                {
-                    case "forum":
-                    case "admin":
-                        return await LoginSuccessResponse(db, foundUser!.UserId, foundUser.RoleId, req.UserContext);
-                    case "chat":
-                        throw ClientInducedException.MessageOnly("Chat context not yet implemented.");
-                    default:
-                        throw ClientInducedException.MessageOnly("Invalid user context.");
-                }
-            }
-            //Invalid username.
+            //Invalid username or email address.
             else
             {
-                throw ClientInducedException.MessageOnly("User not found in database. Please check your login credentials.")   ;
+                throw ClientInducedException.MessageOnly("Please check your login credentials.")   ;
             }
+        }
+
+        //Find the user asynchronously
+        private static async Task<UserEntry?> FindUserAsync(AppDbContext db, string userIdentifier)
+        {
+            if (userIdentifier.Contains("@"))
+            {
+                // User is logging in with an email address.
+                return await (from u in db.Users 
+                    join r in db.Roles on u.RoleId equals r.RoleId
+                    where u.EmailAddress == userIdentifier
+                    select u).SingleOrDefaultAsync();
+            }
+            return await (from u in db.Users 
+                join r in db.Roles on u.RoleId equals r.RoleId
+                where u.Username == userIdentifier
+                select u).SingleOrDefaultAsync();
         }
 
         public static UserBasicInfo GetUserBasicInfo(string userId)
