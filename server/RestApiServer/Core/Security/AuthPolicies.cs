@@ -26,7 +26,7 @@ namespace RestApiServer.Core.Security
                             //General, access, interactive and visibility permissions can be authorised for all regular users. Role-based auth can be used to counteract some of these if necessary.
                             case SystemPermissionType.General:
                             case SystemPermissionType.Access:
-                            case SystemPermissionType.Interactive:
+                            case SystemPermissionType.Interactivity:
                             case SystemPermissionType.Visibility:
                                 List<string> validGeneralClaimsRequirements =
                                 [

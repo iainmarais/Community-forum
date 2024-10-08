@@ -248,6 +248,29 @@ namespace RestApiServer.Migrations
                     b.HasKey("PermissionId");
 
                     b.ToTable("Permissions");
+
+                    b.HasData(
+                        new
+                        {
+                            PermissionId = "content_createPosts",
+                            Description = "Allows users and guests to create new posts, though with some restrictions on guests.",
+                            PermissionName = "Content: Create Posts",
+                            PermissionType = "Content"
+                        },
+                        new
+                        {
+                            PermissionId = "content_createThreads",
+                            Description = "Allows registered users to create new threads.",
+                            PermissionName = "Content: Create Threads",
+                            PermissionType = "Content"
+                        },
+                        new
+                        {
+                            PermissionId = "content_uploadImages",
+                            Description = "Allows a user to upload images to the gallery.",
+                            PermissionName = "Content: Upload images",
+                            PermissionType = "Content"
+                        });
                 });
 
             modelBuilder.Entity("RestApiServer.Db.PostEntry", b =>
@@ -343,6 +366,13 @@ namespace RestApiServer.Migrations
                             Description = "Users have limited rights to the forum, but can create posts and upload content, and edit their own posts.",
                             RoleName = "Regular User",
                             RoleType = "User"
+                        },
+                        new
+                        {
+                            RoleId = "Guest",
+                            Description = "Guests have limited rights to the forum, and can only post in authorised areas.",
+                            RoleName = "Guest",
+                            RoleType = "Guest"
                         });
                 });
 
@@ -390,6 +420,78 @@ namespace RestApiServer.Migrations
                     b.HasKey("SystemPermissionId");
 
                     b.ToTable("SystemPermissions");
+
+                    b.HasData(
+                        new
+                        {
+                            SystemPermissionId = "dev_view_areas_under_construction",
+                            Description = "Allows a user to view areas under construction. This is for development purposes only.",
+                            SystemPermissionName = "Development: View areas under construction",
+                            SystemPermissionType = "Development"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "vis_view_hidden_content",
+                            Description = "Allows a user to view hidden content.",
+                            SystemPermissionName = "Visibility: View hidden content",
+                            SystemPermissionType = "Visibility"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "vis_view_deleted_posts",
+                            Description = "Allows a user to view deleted posts.",
+                            SystemPermissionName = "Visibility: View deleted posts",
+                            SystemPermissionType = "Visibility"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "vis_view_banned_users",
+                            Description = "Allows a user to view banned users.",
+                            SystemPermissionName = "Visibility: View banned users",
+                            SystemPermissionType = "Visibility"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "vis_view_user_activity",
+                            Description = "Allows a user to view user activity.",
+                            SystemPermissionName = "Visibility: View user activity",
+                            SystemPermissionType = "Visibility"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "interactive_create_posts",
+                            Description = "Allows a user to create new posts. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+                            SystemPermissionName = "Interactive: Create posts",
+                            SystemPermissionType = "Interactivity"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "interactive_upload_images",
+                            Description = "Allows a user to upload images to the gallery.",
+                            SystemPermissionName = "Interactive: Upload images",
+                            SystemPermissionType = "Interactivity"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "interactive_edit_posts",
+                            Description = "Allows a user to edit their own posts.",
+                            SystemPermissionName = "Interactive: Edit posts",
+                            SystemPermissionType = "Interactivity"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "interactive_reply_to_posts",
+                            Description = "Allows a user to reply to other users posts.",
+                            SystemPermissionName = "Interactive: Reply to posts",
+                            SystemPermissionType = "Interactivity"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "interactive_delete_own_posts",
+                            Description = "Allows a user to delete their own posts.",
+                            SystemPermissionName = "Interactive: Delete own posts",
+                            SystemPermissionType = "Interactivity"
+                        });
                 });
 
             modelBuilder.Entity("RestApiServer.Db.ThreadEntry", b =>
@@ -565,12 +667,11 @@ namespace RestApiServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserFirstname")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UserId1")
-                        .HasColumnType("varchar(255)");
-
                     b.Property<string>("UserLastname")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserProfileImageBase64")
@@ -582,8 +683,6 @@ namespace RestApiServer.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("UserId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Users");
                 });
@@ -704,15 +803,6 @@ namespace RestApiServer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("RestApiServer.Db.Users.UserEntry", b =>
-                {
-                    b.HasOne("RestApiServer.Db.Users.UserEntry", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
 
                     b.Navigation("User");
                 });

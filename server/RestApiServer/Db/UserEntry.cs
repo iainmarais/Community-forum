@@ -34,8 +34,6 @@ namespace RestApiServer.Db.Users
 
         //Navigation properties
         [JsonIgnore]
-        public UserEntry User { get; set; } = new();
-        [JsonIgnore]
         public List<ThreadEntry> ThreadsCreated { get; set; } = new();
         [JsonIgnore]
         public List<TopicEntry> TopicsCreated { get; set; } = new();

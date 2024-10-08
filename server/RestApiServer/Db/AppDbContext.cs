@@ -182,6 +182,14 @@ namespace RestApiServer.Db
                 //Use the preset roles to seed this.
                 PresetRoles.ToArray()
             );
+
+            modelBuilder.Entity<SystemPermissionEntry>().HasData(
+                PresetSystemPermissions.ToArray()
+            );
+
+            modelBuilder.Entity<PermissionEntry>().HasData(
+                PresetPermissions.ToArray()
+            );
         }
         
         //Helpers
@@ -233,18 +241,25 @@ namespace RestApiServer.Db
         };
         public static List<PermissionEntry> PresetPermissions = new()
         { 
-            //Basic user permissions:
+            //Basic user permissions - these are tied to roles:
             new PermissionEntry
             {
-                PermissionId = "createPosts",
-                PermissionName = "Create Posts",
+                PermissionId = "content_createPosts",
+                PermissionName = "Content: Create Posts",
                 PermissionType = PermissionType.Content,
-                Description = "Allows a user to create new posts. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+                Description = "Allows users and guests to create new posts, though with some restrictions on guests.",
             },
             new PermissionEntry
             {
-                PermissionId = "uploadImages",
-                PermissionName = "Upload images",
+                PermissionId = "content_createThreads",
+                PermissionName = "Content: Create Threads",
+                PermissionType = PermissionType.Content,
+                Description = "Allows registered users to create new threads.",
+            },
+            new PermissionEntry
+            {
+                PermissionId = "content_uploadImages",
+                PermissionName = "Content: Upload images",
                 PermissionType = PermissionType.Content,
                 Description = "Allows a user to upload images to the gallery."
             },
@@ -253,14 +268,86 @@ namespace RestApiServer.Db
 
         public static List<SystemPermissionEntry> PresetSystemPermissions = new()
         {
-            //Todo: Build out.
+            //Development permissions
             new SystemPermissionEntry
             {
                 SystemPermissionId = "dev_view_areas_under_construction",
                 SystemPermissionName = "Development: View areas under construction",
-                SystemPermissionType = SystemPermissionType.Visibility,
+                SystemPermissionType = SystemPermissionType.Development,
                 Description = "Allows a user to view areas under construction. This is for development purposes only.",
-            }            
+            },
+            //Testing permissions
+
+            //Production permissions
+
+            //Visibility permissions
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "vis_view_hidden_content",
+                SystemPermissionName = "Visibility: View hidden content",
+                SystemPermissionType = SystemPermissionType.Visibility,
+                Description = "Allows a user to view hidden content.",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "vis_view_deleted_posts",
+                SystemPermissionName = "Visibility: View deleted posts",
+                SystemPermissionType = SystemPermissionType.Visibility,
+                Description = "Allows a user to view deleted posts.",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "vis_view_banned_users",
+                SystemPermissionName = "Visibility: View banned users",
+                SystemPermissionType = SystemPermissionType.Visibility,
+                Description = "Allows a user to view banned users.",  
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "vis_view_user_activity",
+                SystemPermissionName = "Visibility: View user activity",
+                SystemPermissionType = SystemPermissionType.Visibility,
+                Description = "Allows a user to view user activity.",
+            },
+            //Interactivity permissions
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_create_posts",
+                SystemPermissionName = "Interactive: Create posts",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to create new posts. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_upload_images",
+                SystemPermissionName = "Interactive: Upload images",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to upload images to the gallery."
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_edit_posts",
+                SystemPermissionName = "Interactive: Edit posts",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to edit their own posts."
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_reply_to_posts",
+                SystemPermissionName = "Interactive: Reply to posts",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to reply to other users posts."
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_delete_own_posts",
+                SystemPermissionName = "Interactive: Delete own posts",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to delete their own posts."
+            }
+            //Access permissions
+            
+            //General permissions
         };
         public static List<CategoryEntry> PresetCategories = new()
         {

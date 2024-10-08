@@ -4,7 +4,7 @@ namespace RestApiServer.Enums
     {
         Visibility,
         Access,
-        Interactive,
+        Interactivity,
         General,
         Development,
         Testing,
