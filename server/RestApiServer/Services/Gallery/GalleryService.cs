@@ -7,6 +7,7 @@ namespace RestApiServer.Services.Gallery
 {
     public class GalleryService
     {
+        //Do we paginate this or build a paginated data getter around it?
         public static async Task<List<GalleryItemBasicInfo>> GetGalleryItemsAsync()
         {
             using var db = new AppDbContext();

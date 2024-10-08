@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.CompilerServices;
+using Serilog;
 
 namespace RestApiServer.Utils
 {
@@ -11,13 +13,12 @@ namespace RestApiServer.Utils
             where T : class
             where U : class
         {
-            ArgumentNullException.ThrowIfNull(src);
-            ArgumentNullException.ThrowIfNull(dst);
+            // Return null if either object is null
+            if (src == null || dst == null) return null;
 
             CopyProps(src, dst);
             return dst;
         }
-
         private static void CopyProps(object src, object dst)
         {
             var srcType = src.GetType();
@@ -28,35 +29,26 @@ namespace RestApiServer.Utils
                 if (srcProp.CanRead)
                 {
                     var dstProp = dstType.GetProperty(srcProp.Name);
-                    if (dstProp != null && dstProp.CanWrite && dstProp.PropertyType.IsAssignableFrom(srcProp.PropertyType))
+                    if (dstProp?.CanWrite == true && dstProp.PropertyType.IsAssignableFrom(srcProp.PropertyType))
                     {
                         try
                         {
                             var value = srcProp.GetValue(src);
                             dstProp.SetValue(dst, value);
                         }
-                        catch (Exception ex) when (ex is TargetException || ex is ArgumentException || ex is TargetInvocationException)
+                        catch (TargetException ex)
                         {
-                            Console.WriteLine($"Error setting property {srcProp.Name}: {ex.Message}");
+                            Log.Error($"Error setting property {srcProp.Name}: {ex.Message}");
                         }
                     }
                 }
             }
         }
 
-        public static T DeepCopy<T>(T src) where T : class
+        private static object DeepCopyInternal(object? src, Dictionary<object, object> visited)
         {
-            if (src == null) throw new ArgumentNullException(nameof(src));
-
-            var visited = new Dictionary<object, object>(new ReferenceEqualityComparer());
-
-            return (T)DeepCopyInternal(src, visited);
-        }
-
-        private static object DeepCopyInternal(object src, Dictionary<object, object> visited)
-        {
-            if (visited.ContainsKey(src))
-                return visited[src];
+            if (src == null) return null; // Return null if the source is null.
+            if (visited.TryGetValue(src, out var existing)) return existing;
 
             var type = src.GetType();
 
@@ -95,7 +87,7 @@ namespace RestApiServer.Utils
                         list.Add(DeepCopyInternal(item, visited));
                     }
                 }
-                else if (copiedCollection is ICollection collection)
+                else
                 {
                     var addMethod = type.GetMethod("Add");
                     if (addMethod != null)
@@ -139,21 +131,13 @@ namespace RestApiServer.Utils
                     return Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(type.GetGenericArguments()));
                 }
             }
-
             return Activator.CreateInstance(type);
         }
 
         private class ReferenceEqualityComparer : IEqualityComparer<object>
         {
-            bool IEqualityComparer<object>.Equals(object x, object y)
-            {
-                return ReferenceEquals(x, y);
-            }
-
-            int IEqualityComparer<object>.GetHashCode(object obj)
-            {
-                return System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(obj);
-            }
+            public bool Equals(object x, object y) => ReferenceEquals(x, y);
+            public int GetHashCode(object obj) => RuntimeHelpers.GetHashCode(obj);
         }
     }
 }

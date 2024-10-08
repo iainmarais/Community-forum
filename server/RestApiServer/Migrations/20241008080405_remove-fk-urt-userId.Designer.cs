@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestApiServer.Db;
 
@@ -11,9 +12,11 @@ using RestApiServer.Db;
 namespace RestApiServer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241008080405_remove-fk-urt-userId")]
+    partial class removefkurtuserId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -589,10 +592,6 @@ namespace RestApiServer.Migrations
                     b.Property<string>("UserRefreshTokenId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("AssignedToUserId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
                     b.Property<bool>("IsRevoked")
                         .HasColumnType("tinyint(1)");
 
@@ -607,9 +606,13 @@ namespace RestApiServer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("UserRefreshTokenId");
 
-                    b.HasIndex("AssignedToUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserRefreshTokens");
                 });
@@ -800,7 +803,7 @@ namespace RestApiServer.Migrations
                 {
                     b.HasOne("RestApiServer.Db.Users.UserEntry", "User")
                         .WithMany("UserRefreshTokens")
-                        .HasForeignKey("AssignedToUserId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

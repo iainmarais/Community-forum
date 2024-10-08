@@ -160,6 +160,11 @@ namespace RestApiServer.Db
                 .WithMany(sp => sp.UserPermissions)
                 .HasForeignKey(up => up.SystemPermissionId)
                 .OnDelete(DeleteBehavior.Restrict);
+            
+            modelBuilder.Entity<UserRefreshTokenEntry>()
+                .HasOne(urt => urt.User)
+                .WithMany(u => u.UserRefreshTokens)
+                .HasForeignKey(urt => urt.AssignedToUserId);
 
             // Indexes
             modelBuilder.Entity<UserPermissionEntry>()
@@ -170,12 +175,6 @@ namespace RestApiServer.Db
 
             modelBuilder.Entity<UserRefreshTokenEntry>()
                 .HasKey(urt => urt.UserRefreshTokenId);
-
-            modelBuilder.Entity<UserEntry>()
-            .HasMany(u => u.UserRefreshTokens)
-            .WithOne(urt => urt.User)
-            .HasForeignKey(urt => urt.UserId)
-            .OnDelete(DeleteBehavior.Cascade);
 
             //Seed data - important structures only.
             modelBuilder.Entity<RoleEntry>().HasData(

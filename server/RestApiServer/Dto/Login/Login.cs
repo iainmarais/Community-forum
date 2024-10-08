@@ -28,6 +28,12 @@ namespace RestApiServer.Dto.Login
         public required string UserContext { get; set; } = "forum";
     }
 
+    public class UserContextResponse
+    {
+        public required string UserId;
+        public required string RoleId;
+        public required string UserContext;
+    }
     public class UserRegistrationRequest
     {
         public required string Username { get; set; }

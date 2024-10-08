@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestApiServer.Db;
 
@@ -11,9 +12,11 @@ using RestApiServer.Db;
 namespace RestApiServer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241008095112_update-userentry-urtentry")]
+    partial class updateuserentryurtentry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -607,9 +610,14 @@ namespace RestApiServer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("SystemPermissionEntrySystemPermissionId")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("UserRefreshTokenId");
 
                     b.HasIndex("AssignedToUserId");
+
+                    b.HasIndex("SystemPermissionEntrySystemPermissionId");
 
                     b.ToTable("UserRefreshTokens");
                 });
@@ -804,6 +812,10 @@ namespace RestApiServer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("RestApiServer.Db.SystemPermissionEntry", null)
+                        .WithMany("UserRefreshTokens")
+                        .HasForeignKey("SystemPermissionEntrySystemPermissionId");
+
                     b.Navigation("User");
                 });
 
@@ -830,6 +842,8 @@ namespace RestApiServer.Migrations
             modelBuilder.Entity("RestApiServer.Db.SystemPermissionEntry", b =>
                 {
                     b.Navigation("UserPermissions");
+
+                    b.Navigation("UserRefreshTokens");
                 });
 
             modelBuilder.Entity("RestApiServer.Db.ThreadEntry", b =>

@@ -25,101 +25,48 @@ namespace RestApiServer.Services
     {
         public static async Task<UserLoginResponse> Login(UserLoginRequest req)
         {
-            string userContextIdentifier = "";   
-            string username = "";
-            string emailAddress = "";
-            UserEntry? user = null;
-            
-            var userIdentifier = req.UserIdentifier.Trim().ToLower().Split(':');
-            if(userIdentifier.Length > 1)
-            {
-                //What context is this user logging in to?
-                userContextIdentifier = userIdentifier[1];
-            }
-
-            if(IsValidEmailAddress(userIdentifier[0]))
-            {
-                emailAddress = userIdentifier[0];
-                if(!IsValidEmail(emailAddress))
-                {
-                    throw ClientInducedException.MessageOnly("Invalid email address provided. Please try again.");
-                }
-            }
-            else
-            {
-                username = userIdentifier[0];
-                if(!IsValidUsername(username))
-                {
-                    throw ClientInducedException.MessageOnly("Invalid username provided. Please try again.");
-                }
-            }
             using var db = new AppDbContext();
-
-            //Handle the user context
-            //If no context is given, default to forum user context
-            if(string.IsNullOrEmpty(userContextIdentifier))
+            UserEntry? foundUser = null;
+            //User is logging in with an email address.
+            if(req.UserIdentifier.Contains("@"))
             {
-                user = await (from u in db.Users 
+                foundUser = await (from u in db.Users 
                                 join r in db.Roles on u.RoleId equals r.RoleId
-                                where u.Username == username 
-                                || u.EmailAddress == emailAddress 
+                                where u.EmailAddress == req.UserIdentifier
                                 select u).SingleOrDefaultAsync();
-                if(user == null)
+                switch(req.UserContext)
                 {
-                    throw ClientInducedException.MessageOnly("Invalid username or email address provided, or user does not exist.");
+                    case "forum":
+                    case "admin":
+                        return await LoginSuccessResponse(db, foundUser!.UserId, foundUser.RoleId, req.UserContext);
+                    case "chat":
+                        throw ClientInducedException.MessageOnly("Chat context not yet implemented.");
+                    default:
+                        throw ClientInducedException.MessageOnly("Invalid user context.");
                 }
-
-                if(!AuthUtils.VerifyPassword(req.Password, user.HashedPassword))
-                {
-                    throw ClientInducedException.MessageOnly("Invalid password entered.");
-                }
-            
-                userContextIdentifier = "forum";
-                return await LoginSuccessResponse(db, user.UserId, user.RoleId, userContextIdentifier);
             }
-            if(userContextIdentifier == "admin")
+            //Username only
+            else if(!req.UserIdentifier.Contains("@"))
             {
-                user = await (from u in db.Users 
+                foundUser = await (from u in db.Users 
                                 join r in db.Roles on u.RoleId equals r.RoleId
-                                where u.Username == username 
-                                || u.EmailAddress == emailAddress 
+                                where u.Username == req.UserIdentifier
                                 select u).SingleOrDefaultAsync();
-                if(user == null)
+                switch(req.UserContext)
                 {
-                    throw ClientInducedException.MessageOnly("Invalid username or email address provided, or user does not exist.");
+                    case "forum":
+                    case "admin":
+                        return await LoginSuccessResponse(db, foundUser!.UserId, foundUser.RoleId, req.UserContext);
+                    case "chat":
+                        throw ClientInducedException.MessageOnly("Chat context not yet implemented.");
+                    default:
+                        throw ClientInducedException.MessageOnly("Invalid user context.");
                 }
-
-                if(!AuthUtils.VerifyPassword(req.Password, user.HashedPassword))
-                {
-                    throw ClientInducedException.MessageOnly("Invalid password entered.");
-                }
-                return await LoginSuccessResponse(db, user.UserId, user.RoleId, userContextIdentifier);
-            }            
-            //Handle the forum user context here.
-            if(userContextIdentifier == "forum")
-            {
-                user = await (from u in db.Users join r in db.Roles on u.RoleId equals r.RoleId where u.Username == username || u.EmailAddress == emailAddress select u).SingleOrDefaultAsync();
-
-                if(user == null)
-                {
-                    throw ClientInducedException.MessageOnly("Invalid username or email address provided, or user does not exist.");
-                }
-
-                if(!AuthUtils.VerifyPassword(req.Password, user.HashedPassword))
-                {
-                    throw ClientInducedException.MessageOnly("Invalid password entered.");
-                }
-                return await LoginSuccessResponse(db, user.UserId, user.RoleId, userContextIdentifier);
-
             }
-            if(userContextIdentifier == "chat")
-            {
-                throw ClientInducedException.MessageOnly("Chat context not yet implemented.");
-            }
+            //Invalid username.
             else
             {
-                //Since there are no alternate contexts the user can log into, throw an exception if this is attempted.
-                throw ClientInducedException.MessageOnly("Alternative user context not implemented yet.");
+                throw ClientInducedException.MessageOnly("User not found in database. Please check your login credentials.")   ;
             }
         }
 
@@ -228,7 +175,7 @@ namespace RestApiServer.Services
                 throw ClientInducedException.MessageOnly("User not found in database.");
             }
             //Else, continue to check our token.
-            var existingRefreshToken = await db.UserRefreshTokens.SingleAsync(urt => urt.UserId == userId && urt.Source == req.UserContext);
+            var existingRefreshToken = await db.UserRefreshTokens.SingleAsync(urt => urt.AssignedToUserId == userId && urt.Source == req.UserContext);
 
             if(existingRefreshToken.RefreshTokenExpirationDate < DateTime.UtcNow)
             {
@@ -262,7 +209,7 @@ namespace RestApiServer.Services
                 RolePermissions = rolePermissions,
                 userResult.Role
             };
-            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.UserId == userId && t.Source == req.UserContext).ToListAsync();
+            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.AssignedToUserId == userId && t.Source == req.UserContext).ToListAsync();
 
             db.RemoveRange(existingRefreshTokensForSource);
             //Create the user refresh token.
@@ -271,7 +218,7 @@ namespace RestApiServer.Services
             var newRefreshToken = new UserRefreshTokenEntry
             {
                 UserRefreshTokenId = DbUtils.GenerateUuid(),
-                UserId = userId,
+                AssignedToUserId = userId,
                 RefreshToken = userRefreshToken,
                 RefreshTokenExpirationDate = userRefreshTokenExpiration,
                 Source = req.UserContext ?? "Unknown",
@@ -336,15 +283,19 @@ namespace RestApiServer.Services
                 RolePermissions = rolePermissions,
                 userResult.Role
             };
-            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.UserId == userId && t.Source == userContext).ToListAsync();
-            db.RemoveRange(existingRefreshTokensForSource);
+            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.AssignedToUserId == userId && t.Source == userContext).ToListAsync();
+
+            if(existingRefreshTokensForSource.Count > 0)
+            {
+                db.RemoveRange(existingRefreshTokensForSource);
+            }
             //Create the user refresh token.
             var(userRefreshToken, userRefreshTokenExpiration) = AuthUtils.GenerateRefreshToken();
 
             var newRefreshToken = new UserRefreshTokenEntry
             {
                 UserRefreshTokenId = DbUtils.GenerateUuid(),
-                UserId = userId,
+                AssignedToUserId = userId,
                 RefreshToken = userRefreshToken,
                 RefreshTokenExpirationDate = userRefreshTokenExpiration,
                 Source = userContext,
