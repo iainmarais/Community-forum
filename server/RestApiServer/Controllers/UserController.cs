@@ -29,8 +29,8 @@ namespace RestApiServer.Controllers
         [HttpPost("auth/refresh")]
         public async Task<ApiSuccessResponse<UserRefreshResponse>> RefreshUserSession(UserRefreshRequest req)
         {
-            //Todo: Change this user context getter to listen for the user context and return the appropriate one, and update all enpoints where it is used.
-            var user = AuthUtils.GetAdminUserContext(User);
+            //Todo: Change this user context getter to listen for the user context and return the appropriate one, and update all endpoints where it is used.
+            var user = AuthUtils.GetForumUserContext(User);
             var res = await UserService.RefreshUserSessionAsync(user.UserId, req);
             return ApiSuccessResponses.WithData("User auth state refresh successful", res);
         }

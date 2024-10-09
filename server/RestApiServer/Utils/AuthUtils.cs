@@ -31,8 +31,8 @@ namespace RestApiServer.Utils
 
         public static ForumUserContext GetForumUserContext(ClaimsPrincipal context)
         {
-            string? claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
-            string? claim_User_ForumUserId = context.Claims.Where(c => c.Type == Claim_User_ForumUserId).SingleOrDefault().Value;
+            string? claim_UserId = context.Claims.FirstOrDefault(c => c.Type == Claim_UserId)?.Value;
+            string? claim_User_ForumUserId = context.Claims.FirstOrDefault(c => c.Type == Claim_User_ForumUserId)?.Value;
             if(string.IsNullOrEmpty(claim_UserId))
             {
                 throw new Exception("User id not found in claims");
@@ -53,8 +53,8 @@ namespace RestApiServer.Utils
         //Admin user context
         public static AdminUserContext GetAdminUserContext(ClaimsPrincipal context)
         {
-            string? claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
-            string? claim_User_AdminUserId = context.Claims.Where(c => c.Type == Claim_User_AdminUserId).SingleOrDefault().Value;
+            string? claim_UserId = context.Claims.FirstOrDefault(c => c.Type == Claim_UserId)?.Value;
+            string? claim_User_AdminUserId = context.Claims.FirstOrDefault(c => c.Type == Claim_User_AdminUserId)?.Value;
 
             if(string.IsNullOrEmpty(claim_UserId))
             {

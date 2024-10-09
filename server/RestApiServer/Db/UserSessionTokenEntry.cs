@@ -20,6 +20,7 @@ namespace RestApiServer.Db
         public required string SessionToken { get; set; }
         public bool IsExpired => DateExpired < DateTime.UtcNow;
         public required DateTime DateExpired { get; set; }
+        public required string Source { get; set; }
         [JsonIgnore]
         public UserEntry User { get; set; } = null!;
     }

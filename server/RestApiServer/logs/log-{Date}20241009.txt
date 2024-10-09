@@ -198,3 +198,273 @@ Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
 2024-10-09 11:03:19.680 +02:00 [INF] Application started. Press Ctrl+C to shut down.
 2024-10-09 11:03:19.682 +02:00 [INF] Hosting environment: Development
 2024-10-09 11:03:19.684 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-09 11:03:35.866 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 92
+2024-10-09 11:03:36.085 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:03:36.117 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:03:37.710 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 1574.5157ms
+2024-10-09 11:03:37.715 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:03:38.227 +02:00 [INF] POST 500 /v1/users/login "00:00:02.0649227"ms  Something went wrong An error occurred while saving the entity changes. See the inner exception for details. Data too long for column 'SessionToken' at row 1, body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123",
+    "userContext": "forum"
+}
+2024-10-09 11:03:38.243 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 500 null application/json; charset=utf-8 2378.7808ms
+2024-10-09 11:05:45.675 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 92
+2024-10-09 11:05:45.685 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:05:45.687 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:05:45.824 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-09 11:05:45.910 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 219.6128ms
+2024-10-09 11:05:45.919 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:05:46.028 +02:00 [INF] POST 200 /v1/users/login "00:00:00.2393373"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123",
+    "userContext": "forum"
+}
+2024-10-09 11:05:46.035 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 359.0847ms
+2024-10-09 11:32:03.864 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 192
+2024-10-09 11:32:03.875 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:32:03.882 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:32:03.899 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-10-09 11:32:03.923 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 37.2257ms
+2024-10-09 11:32:03.926 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:32:04.006 +02:00 [INF] POST 400 /v1/users/auth/refresh "00:00:00.0556602"ms  , body: {
+    "userId":"18b9b50e-1540-4afe-8ca6-5df988b0f7d3",
+    "request":
+    {
+        "refreshToken":"jy2SSmt0a0/GFfgIC4smWuAtIAkAnFUclCJwX5DxNhE=",
+        "userContext": "forum"
+    }
+}
+2024-10-09 11:32:04.012 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 400 null application/problem+json; charset=utf-8 149.4ms
+2024-10-09 11:32:12.581 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 188
+2024-10-09 11:32:12.600 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:32:12.606 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:32:12.621 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-10-09 11:32:12.627 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 10.2018ms
+2024-10-09 11:32:12.631 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:32:12.677 +02:00 [INF] POST 400 /v1/users/auth/refresh "00:00:00.0372722"ms  , body: {
+    "userId":"18b9b50e-1540-4afe-8ca6-5df988b0f7d3",
+    "req":
+    {
+        "refreshToken":"jy2SSmt0a0/GFfgIC4smWuAtIAkAnFUclCJwX5DxNhE=",
+        "userContext": "forum"
+    }
+}
+2024-10-09 11:32:12.681 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 400 null application/problem+json; charset=utf-8 100.2105ms
+2024-10-09 11:33:00.876 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 183
+2024-10-09 11:33:00.911 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:33:00.913 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:33:00.919 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-10-09 11:33:00.924 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 6.5467ms
+2024-10-09 11:33:00.931 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:33:00.961 +02:00 [INF] POST 400 /v1/users/auth/refresh "00:00:00.0211751"ms  , body: {
+    "userId":"18b9b50e-1540-4afe-8ca6-5df988b0f7d3",
+    "req": {
+        "refreshToken":"jy2SSmt0a0/GFfgIC4smWuAtIAkAnFUclCJwX5DxNhE=",
+        "userContext": "forum"
+    }
+}
+2024-10-09 11:33:00.965 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 400 null application/problem+json; charset=utf-8 88.281ms
+2024-10-09 11:35:20.043 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 98
+2024-10-09 11:35:20.059 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:35:20.061 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:35:20.162 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 91.4133ms
+2024-10-09 11:35:20.163 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:35:20.226 +02:00 [INF] POST 500 /v1/users/auth/refresh "00:00:00.1377289"ms  Something went wrong Object reference not set to an instance of an object. , body: {
+   "refreshToken":"jy2SSmt0a0/GFfgIC4smWuAtIAkAnFUclCJwX5DxNhE=",
+   "userContext": "forum"
+}
+2024-10-09 11:35:20.230 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 500 null application/json; charset=utf-8 186.4689ms
+2024-10-09 11:36:02.491 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 98
+2024-10-09 11:36:02.513 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:36:02.517 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:36:13.177 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 10644.9613ms
+2024-10-09 11:36:13.180 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:36:13.289 +02:00 [INF] POST 500 /v1/users/auth/refresh "00:00:10.7175965"ms  Something went wrong Object reference not set to an instance of an object. , body: {
+   "refreshToken":"jy2SSmt0a0/GFfgIC4smWuAtIAkAnFUclCJwX5DxNhE=",
+   "userContext": "forum"
+}
+2024-10-09 11:36:13.295 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 500 null application/json; charset=utf-8 10803.8073ms
+2024-10-09 11:36:17.574 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 92
+2024-10-09 11:36:17.578 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:36:17.580 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:36:17.709 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-09 11:36:17.714 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 126.1064ms
+2024-10-09 11:36:17.718 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:36:18.377 +02:00 [INF] POST 200 /v1/users/login "00:00:00.1421325"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123",
+    "userContext": "forum"
+}
+2024-10-09 11:36:18.384 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 809.5991ms
+2024-10-09 11:36:21.927 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 98
+2024-10-09 11:36:21.937 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:36:21.940 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:36:27.736 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 5790.5387ms
+2024-10-09 11:36:27.740 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:36:27.824 +02:00 [INF] POST 500 /v1/users/auth/refresh "00:00:05.8491769"ms  Something went wrong Object reference not set to an instance of an object. , body: {
+   "refreshToken":"jy2SSmt0a0/GFfgIC4smWuAtIAkAnFUclCJwX5DxNhE=",
+   "userContext": "forum"
+}
+2024-10-09 11:36:27.831 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 500 null application/json; charset=utf-8 5903.7276ms
+2024-10-09 11:38:47.812 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 98
+2024-10-09 11:38:47.833 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:38:47.835 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:38:55.567 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 7722.9776ms
+2024-10-09 11:38:55.576 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:39:27.646 +02:00 [INF] POST 500 /v1/users/auth/refresh "00:00:39.7655077"ms  Something went wrong Object reference not set to an instance of an object. , body: {
+   "refreshToken":"jy2SSmt0a0/GFfgIC4smWuAtIAkAnFUclCJwX5DxNhE=",
+   "userContext": "forum"
+}
+2024-10-09 11:39:27.656 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 500 null application/json; charset=utf-8 39843.7298ms
+2024-10-09 11:45:40.618 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 11:45:49.267 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 11:45:49.274 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 11:45:49.276 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 11:45:49.279 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 11:45:49.284 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 11:45:49.286 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 11:45:49.293 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 11:45:49.297 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 11:45:49.299 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 11:45:49.301 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 11:45:49.303 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 11:45:49.306 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 11:45:49.308 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 11:45:49.312 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 11:45:49.317 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 11:45:49.320 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 11:45:49.331 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 11:45:49.334 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 11:45:49.337 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 11:45:49.863 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-09 11:45:50.043 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-09 11:45:50.084 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-09 11:45:50.087 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-09 11:45:50.092 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-09 11:45:50.096 +02:00 [INF] Hosting environment: Development
+2024-10-09 11:45:50.098 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-09 11:46:06.418 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 92
+2024-10-09 11:46:06.674 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:46:06.741 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:46:07.926 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-09 11:46:08.061 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 1294.2345ms
+2024-10-09 11:46:08.069 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:46:08.408 +02:00 [INF] POST 200 /v1/users/login "00:00:01.5759555"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123",
+    "userContext": "forum"
+}
+2024-10-09 11:46:08.443 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 2028.4356ms
+2024-10-09 11:46:27.087 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 98
+2024-10-09 11:46:27.097 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:46:27.118 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:46:35.322 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 8199.3328ms
+2024-10-09 11:46:35.330 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:46:35.627 +02:00 [INF] POST 500 /v1/users/auth/refresh "00:00:08.3220262"ms  Something went wrong User id not found in claims , body: {
+   "refreshToken":"0DjkpbjRA+8IblQ9pckTotOT5oeZsYR6WZQzlKYWCko=",
+   "userContext": "forum"
+}
+2024-10-09 11:46:35.650 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 500 null application/json; charset=utf-8 8563.2794ms
+2024-10-09 11:47:53.076 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 92
+2024-10-09 11:47:53.084 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:47:53.086 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:47:53.277 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-09 11:47:53.283 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 191.7427ms
+2024-10-09 11:47:53.284 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:47:53.443 +02:00 [INF] POST 200 /v1/users/login "00:00:00.2079436"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123",
+    "userContext": "forum"
+}
+2024-10-09 11:47:53.448 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 373.6391ms
+2024-10-09 11:48:11.706 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 98
+2024-10-09 11:48:11.712 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:48:11.713 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:48:24.547 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 12826.2569ms
+2024-10-09 11:48:24.551 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:48:24.632 +02:00 [INF] POST 500 /v1/users/auth/refresh "00:00:12.8770880"ms  Something went wrong User id not found in claims , body: {
+   "refreshToken":"dt1nynp9M+UrFeVzif2br7a069Z52lhSvoT5mIAZh4I=",
+   "userContext": "forum"
+}
+2024-10-09 11:48:24.636 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 500 null application/json; charset=utf-8 12930.6188ms
+2024-10-09 11:49:44.465 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 98
+2024-10-09 11:49:44.551 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:49:44.552 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:49:49.959 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 5401.5339ms
+2024-10-09 11:49:49.962 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:49:50.015 +02:00 [INF] POST 500 /v1/users/auth/refresh "00:00:05.5391380"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} Something went wrong Admin user id not found in claims , body: {
+   "refreshToken":"dt1nynp9M+UrFeVzif2br7a069Z52lhSvoT5mIAZh4I=",
+   "userContext": "forum"
+}
+2024-10-09 11:49:50.027 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 500 null application/json; charset=utf-8 5562.0318ms
+2024-10-09 11:49:58.321 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 98
+2024-10-09 11:49:58.330 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:49:58.333 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:50:25.765 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 27418.0408ms
+2024-10-09 11:50:25.771 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:50:28.632 +02:00 [INF] POST 500 /v1/users/auth/refresh "00:00:30.3033312"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} Something went wrong Admin user id not found in claims , body: {
+   "refreshToken":"dt1nynp9M+UrFeVzif2br7a069Z52lhSvoT5mIAZh4I=",
+   "userContext": "forum"
+}
+2024-10-09 11:50:28.648 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 500 null application/json; charset=utf-8 30327.1116ms
+2024-10-09 11:50:35.014 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 98
+2024-10-09 11:50:35.066 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:50:35.068 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:51:22.426 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 47349.0339ms
+2024-10-09 11:51:22.432 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:51:22.480 +02:00 [INF] POST 500 /v1/users/auth/refresh "00:00:47.4148639"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} Something went wrong Admin user id not found in claims , body: {
+   "refreshToken":"dt1nynp9M+UrFeVzif2br7a069Z52lhSvoT5mIAZh4I=",
+   "userContext": "forum"
+}
+2024-10-09 11:51:22.487 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 500 null application/json; charset=utf-8 47473.424ms
+2024-10-09 11:52:05.996 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 11:52:12.785 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 11:52:12.790 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 11:52:12.792 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 11:52:12.794 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 11:52:12.800 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 11:52:12.802 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 11:52:12.804 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 11:52:12.806 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 11:52:12.808 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 11:52:12.809 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 11:52:12.811 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 11:52:12.817 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 11:52:12.819 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 11:52:12.821 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 11:52:12.823 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 11:52:12.825 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 11:52:12.826 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 11:52:12.828 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 11:52:12.833 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 11:52:13.032 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-09 11:52:13.208 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-09 11:52:13.249 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-09 11:52:13.251 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-09 11:52:13.256 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-09 11:52:13.258 +02:00 [INF] Hosting environment: Development
+2024-10-09 11:52:13.260 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-09 11:52:18.461 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 92
+2024-10-09 11:52:18.699 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:52:18.741 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:52:20.235 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-09 11:52:20.332 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 1570.0197ms
+2024-10-09 11:52:20.341 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:52:20.630 +02:00 [INF] POST 200 /v1/users/login "00:00:01.8017681"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123",
+    "userContext": "forum"
+}
+2024-10-09 11:52:20.649 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 2190.8351ms
+2024-10-09 11:52:47.095 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - application/json 98
+2024-10-09 11:52:47.189 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:52:47.201 +02:00 [INF] Route matched with {action = "RefreshUserSession", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserRefreshResponse]] RefreshUserSession(RestApiServer.Dto.Login.UserRefreshRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:52:57.308 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserRefreshResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-09 11:52:57.326 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer) in 10081.5563ms
+2024-10-09 11:52:57.338 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.RefreshUserSession (RestApiServer)'
+2024-10-09 11:52:57.342 +02:00 [INF] POST 200 /v1/users/auth/refresh "00:00:10.2315258"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: {
+   "refreshToken":"dgvyr98vnOCfKrU8uZr+4qvBof0MFi+oyQuKEedK2RA=",
+   "userContext": "forum"
+}
+2024-10-09 11:52:57.349 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/auth/refresh - 200 null application/json; charset=utf-8 10253.8212ms

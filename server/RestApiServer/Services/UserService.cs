@@ -238,7 +238,7 @@ namespace RestApiServer.Services
             };
 
             //Find and remove any previous session tokens.
-            var existingSessionTokensForSource =  await db.UserRefreshTokens.Where(t => t.AssignedToUserId == userId && t.Source == req.UserContext).ToListAsync();
+            var existingSessionTokensForSource =  await db.UserSessionTokens.Where(t => t.AssignedToUserId == userId && t.Source == req.UserContext).ToListAsync();
 
             if(existingSessionTokensForSource.Count > 0)
             {
@@ -252,7 +252,8 @@ namespace RestApiServer.Services
                 SessionToken = newUserSessionToken,
                 DateCreated = DateTime.UtcNow,
                 IsRevoked = false,
-                DateExpired = new DateTime(newUserSessionTokenExpiration)
+                DateExpired = new DateTime(newUserSessionTokenExpiration),
+                Source = req.UserContext
             };
 
             await db.UserSessionTokens.AddAsync(newSessionTokenEntry);
@@ -336,7 +337,7 @@ namespace RestApiServer.Services
 
 
             //Find and remove any previous session tokens.
-            var existingSessionTokensForSource =  await db.UserRefreshTokens.Where(t => t.AssignedToUserId == userId && t.Source == userContext).ToListAsync();
+            var existingSessionTokensForSource =  await db.UserSessionTokens.Where(t => t.AssignedToUserId == userId && t.Source == userContext).ToListAsync();
 
             if(existingSessionTokensForSource.Count > 0)
             {
@@ -350,7 +351,8 @@ namespace RestApiServer.Services
                 SessionToken = userSessionToken,
                 DateCreated = DateTime.UtcNow,
                 IsRevoked = false,
-                DateExpired = new DateTime(userSessionTokenExpiration)
+                DateExpired = new DateTime(userSessionTokenExpiration),
+                Source = userContext
             };
 
             await db.UserSessionTokens.AddAsync(newSessionTokenEntry);
