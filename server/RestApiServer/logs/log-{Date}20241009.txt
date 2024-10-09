@@ -488,3 +488,23 @@ Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
    at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
    at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
    at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 13:24:20.045 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:24:20.440 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 13:29:03.145 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:29:03.550 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
