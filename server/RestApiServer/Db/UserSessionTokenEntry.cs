@@ -16,6 +16,7 @@ namespace RestApiServer.Db
         public required string AssignedToUserId { get; set; }
         public required bool IsRevoked { get; set; } = false;
         public DateTime? DateRevoked { get; set; }
+        [StringLength(8000)]
         public required string SessionToken { get; set; }
         public bool IsExpired => DateExpired < DateTime.UtcNow;
         public required DateTime DateExpired { get; set; }

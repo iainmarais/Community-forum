@@ -12,6 +12,7 @@ namespace RestApiServer.Db
         public required string UserRefreshTokenId { get; set; }
         [ForeignKey("AssignedToUserId")]
         public required string AssignedToUserId { get; set; }
+        [StringLength(8000)]
         public required string RefreshToken { get; set; }
         public required DateTime RefreshTokenExpirationDate { get; set; }
         public required string Source { get; set; }
