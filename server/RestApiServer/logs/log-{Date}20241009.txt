@@ -508,3 +508,108 @@ Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
    at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
    at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
    at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 13:31:11.936 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:31:12.390 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 13:32:15.939 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:32:17.476 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 13:33:16.081 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:33:25.236 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ The seed entity for entity type 'RoleEntry' cannot be added because no value was provided for the required property 'RoleId'.
+2024-10-09 13:33:26.283 +02:00 [ERR] Something went horribly wrong configuring user-based authorisation.
+ The seed entity for entity type 'RoleEntry' cannot be added because no value was provided for the required property 'RoleId'.
+2024-10-09 13:35:49.210 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:35:49.521 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 13:36:21.052 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:36:25.053 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ The seed entity for entity type 'RoleEntry' cannot be added because no value was provided for the required property 'RoleId'.
+2024-10-09 13:36:25.224 +02:00 [ERR] Something went horribly wrong configuring user-based authorisation.
+ The seed entity for entity type 'RoleEntry' cannot be added because no value was provided for the required property 'RoleId'.
+2024-10-09 13:38:29.058 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:38:29.318 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 13:42:13.331 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:42:16.604 +02:00 [ERR] Something went horribly wrong configuring role-based authorisation.
+ The seed entity for entity type 'RoleEntry' cannot be added because no value was provided for the required property 'RoleId'.
+2024-10-09 13:42:16.771 +02:00 [ERR] Something went horribly wrong configuring user-based authorisation.
+ The seed entity for entity type 'RoleEntry' cannot be added because no value was provided for the required property 'RoleId'.
+2024-10-09 13:43:10.052 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:43:10.404 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 13:55:58.389 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:56:00.327 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 13:59:19.987 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:59:20.358 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 13:59:46.353 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 13:59:46.813 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 14:00:10.840 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 14:00:11.382 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
