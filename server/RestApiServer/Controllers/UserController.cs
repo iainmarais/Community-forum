@@ -24,12 +24,14 @@ namespace RestApiServer.Controllers
             return ApiSuccessResponses.WithData("User registration successful", res);
             
         }
-
         //This may need some work still, so will not yet use it. If users want to use the chat and get logged off, they can log in again for now.
         [HttpPost("auth/refresh")]
+        [Authorize]
         public async Task<ApiSuccessResponse<UserRefreshResponse>> RefreshUserSession(UserRefreshRequest req)
         {
-            //Todo: Change this user context getter to listen for the user context and return the appropriate one, and update all endpoints where it is used.
+            //Todo:
+            //When dealing with a bearer token, I need to see what the user context is. 
+            //Either that, or I need to create a dedicated admin portal for the forum.
             var user = AuthUtils.GetForumUserContext(User);
             var res = await UserService.RefreshUserSessionAsync(user.UserId, req);
             return ApiSuccessResponses.WithData("User auth state refresh successful", res);

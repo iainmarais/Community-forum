@@ -14,13 +14,14 @@ using System.Net;
 using System.Net.Sockets;
 using RestApiServer.Security;
 using Microsoft.AspNetCore.Identity;
+using RestApiServer.Db.Ops;
 
 
 namespace RestApiServer
 {
     public class Server
     {
-        public static void StartServer(string[] args)
+        public static async Task StartServer(string[] args)
         {
             Log.Logger  = new LoggerConfiguration()
                 .Enrich.FromLogContext()
@@ -313,7 +314,13 @@ namespace RestApiServer
                 });
 
                 app.UseAuthentication();
-                app.UseAuthorization();                    
+                app.UseAuthorization();
+
+                if(args.Contains("--seed-data"))
+                {
+                    //Call our DbOps.SeedDataAsync() method here.
+                    await DbOps.SeedDataAsync();
+                }
 
                 app.Run();
 
