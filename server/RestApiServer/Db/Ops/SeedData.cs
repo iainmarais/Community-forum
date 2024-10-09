@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Enums;
+using Serilog;
 
 namespace RestApiServer.Db.Ops
 {
@@ -253,70 +254,76 @@ namespace RestApiServer.Db.Ops
         {
             //Create our db context instance.
             using var db  = new AppDbContext();
-            
-            if(!db.Roles.Any())
+            try
             {
-                await db.Roles.AddRangeAsync(PresetRoles);
-                await db.SaveChangesAsync();
-            }
-            if(!db.SystemPermissions.Any())
-            {
-                await db.SystemPermissions.AddRangeAsync(PresetSystemPermissions);
-                await db.SaveChangesAsync();
-            }
-            if(!db.Permissions.Any())
-            {
-                await db.Permissions.AddRangeAsync(PresetPermissions);
-                await db.SaveChangesAsync();
-            }
-            else
-            {
-                foreach (var role in PresetRoles)
+                if(!db.Roles.Any())
                 {
-                    var existingRole = await db.Roles.FindAsync(role.RoleId);
-                    if (existingRole == null)
-                    {
-                        await db.Roles.AddAsync(role);
-                    }
-                    else
-                    {
-                        //Update the existing role data.
-                        existingRole.RoleName = role.RoleName;
-                        existingRole.RoleType = role.RoleType;
-                        existingRole.Description = role.Description;
-                    }
+                    await db.Roles.AddRangeAsync(PresetRoles);
+                    await db.SaveChangesAsync();
                 }
+                if(!db.SystemPermissions.Any())
+                {
+                    await db.SystemPermissions.AddRangeAsync(PresetSystemPermissions);
+                    await db.SaveChangesAsync();
+                }
+                if(!db.Permissions.Any())
+                {
+                    await db.Permissions.AddRangeAsync(PresetPermissions);
+                    await db.SaveChangesAsync();
+                }
+                else
+                {
+                    foreach (var role in PresetRoles)
+                    {
+                        var existingRole = await db.Roles.FindAsync(role.RoleId);
+                        if (existingRole == null)
+                        {
+                            await db.Roles.AddAsync(role);
+                        }
+                        else
+                        {
+                            //Update the existing role data.
+                            existingRole.RoleName = role.RoleName;
+                            existingRole.RoleType = role.RoleType;
+                            existingRole.Description = role.Description;
+                        }
+                    }
 
-                foreach (var permission in PresetPermissions)
-                {
-                    var existingPermission = await db.Permissions.FindAsync(permission.PermissionId);
-                    if(existingPermission == null)
+                    foreach (var permission in PresetPermissions)
                     {
-                        await db.Permissions.AddAsync(permission);
+                        var existingPermission = await db.Permissions.FindAsync(permission.PermissionId);
+                        if(existingPermission == null)
+                        {
+                            await db.Permissions.AddAsync(permission);
+                        }
+                        else
+                        {
+                            //Update the existing entry, bar the PermissionId.
+                            existingPermission.PermissionName = permission.PermissionName;
+                            existingPermission.PermissionType = permission.PermissionType;
+                        }
                     }
-                    else
+                    foreach (var systemPermission in PresetSystemPermissions)
                     {
-                        //Update the existing entry, bar the PermissionId.
-                        existingPermission.PermissionName = permission.PermissionName;
-                        existingPermission.PermissionType = permission.PermissionType;
+                        var existingSystemPermission = await db.SystemPermissions.FindAsync(systemPermission.SystemPermissionId);
+                        if(existingSystemPermission == null)
+                        {
+                            await db.SystemPermissions.AddAsync(systemPermission);
+                        }
+                        else
+                        {
+                            //Update it.
+                            existingSystemPermission.SystemPermissionName = systemPermission.SystemPermissionName;
+                            existingSystemPermission.SystemPermissionType = systemPermission.SystemPermissionType;
+                        }
                     }
+                    //Save the changes.
+                    await db.SaveChangesAsync();
                 }
-                foreach (var systemPermission in PresetSystemPermissions)
-                {
-                    var existingSystemPermission = await db.SystemPermissions.FindAsync(systemPermission.SystemPermissionId);
-                    if(existingSystemPermission == null)
-                    {
-                        await db.SystemPermissions.AddAsync(systemPermission);
-                    }
-                    else
-                    {
-                        //Update it.
-                        existingSystemPermission.SystemPermissionName = systemPermission.SystemPermissionName;
-                        existingSystemPermission.SystemPermissionType = systemPermission.SystemPermissionType;
-                    }
-                }
-                //Save the changes.
-                await db.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Something went wrong during seeding the database.\n", ex.Message);
             }
         }
     }

@@ -319,11 +319,17 @@ namespace RestApiServer
                 if(args.Contains("--seed-data"))
                 {
                     //Call our DbOps.SeedDataAsync() method here.
+                    Log.Information("Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.");
                     await DbOps.SeedDataAsync();
+                    Log.Information("Seeding completed. Continuing with server startup.");
+                    app.Run();
                 }
 
-                app.Run();
-
+                //No args passed, start normally.
+                else
+                {
+                    app.Run();
+                }
             }
 
             catch(SocketException ex)

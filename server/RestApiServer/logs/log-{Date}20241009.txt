@@ -787,3 +787,224 @@ Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
     "userContext": "forum"
 }
 2024-10-09 15:54:55.761 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 1416.506ms
+2024-10-09 16:22:32.426 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 16:22:40.885 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 16:22:40.889 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 16:22:40.891 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 16:22:40.892 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 16:22:40.894 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 16:22:40.896 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 16:22:40.897 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 16:22:40.899 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 16:22:40.900 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 16:22:40.902 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 16:22:40.904 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 16:22:40.905 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 16:22:40.907 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 16:22:40.908 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 16:22:40.914 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 16:22:40.915 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 16:22:40.917 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 16:22:40.919 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 16:22:40.920 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 16:22:41.053 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-09 16:22:41.173 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-09 16:22:41.198 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-09 16:22:41.200 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-09 16:22:41.203 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-09 16:22:41.204 +02:00 [INF] Hosting environment: Development
+2024-10-09 16:22:41.206 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-09 16:23:35.473 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 16:23:39.476 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 16:23:39.481 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 16:23:39.484 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 16:23:39.487 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 16:23:39.498 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 16:23:39.501 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 16:23:39.509 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 16:23:39.512 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 16:23:39.515 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 16:23:39.517 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 16:23:39.526 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 16:23:39.528 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 16:23:39.531 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 16:23:39.533 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 16:23:39.548 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 16:23:39.551 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 16:23:39.559 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 16:23:39.564 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 16:23:39.568 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 16:25:56.327 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 16:26:00.518 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 16:26:00.523 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 16:26:00.526 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 16:26:00.533 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 16:26:00.536 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 16:26:00.539 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 16:26:00.541 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 16:26:00.544 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 16:26:00.551 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 16:26:00.553 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 16:26:00.556 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 16:26:00.559 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 16:26:00.561 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 16:26:00.568 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 16:26:00.571 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 16:26:00.573 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 16:26:00.575 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 16:26:00.578 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 16:26:00.585 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 16:26:00.609 +02:00 [INF] Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.
+2024-10-09 16:27:31.695 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 16:27:34.778 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 16:27:34.782 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 16:27:34.785 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 16:27:34.787 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 16:27:34.795 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 16:27:34.798 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 16:27:34.800 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 16:27:34.804 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 16:27:34.807 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 16:27:34.811 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 16:27:34.814 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 16:27:34.822 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 16:27:34.829 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 16:27:34.834 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 16:27:34.845 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 16:27:34.848 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 16:27:34.855 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 16:27:34.872 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 16:27:34.879 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 16:27:34.946 +02:00 [INF] Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.
+2024-10-09 16:27:57.736 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 16:28:00.189 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 16:28:00.192 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 16:28:00.194 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 16:28:00.196 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 16:28:00.198 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 16:28:00.200 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 16:28:00.201 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 16:28:00.203 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 16:28:00.205 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 16:28:00.206 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 16:28:00.208 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 16:28:00.210 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 16:28:00.212 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 16:28:00.215 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 16:28:00.217 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 16:28:00.219 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 16:28:00.220 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 16:28:00.222 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 16:28:00.223 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 16:28:00.262 +02:00 [INF] Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.
+2024-10-09 16:28:37.802 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 16:28:42.813 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 16:28:42.817 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 16:28:42.819 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 16:28:42.821 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 16:28:42.822 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 16:28:42.824 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 16:28:42.828 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 16:28:42.829 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 16:28:42.831 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 16:28:42.833 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 16:28:42.836 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 16:28:42.838 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 16:28:42.839 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 16:28:42.841 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 16:28:42.845 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 16:28:42.847 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 16:28:42.848 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 16:28:42.851 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 16:28:42.853 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 16:28:47.179 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-09 16:28:47.339 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-09 16:28:47.371 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-09 16:28:47.373 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-09 16:28:47.375 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-09 16:28:47.377 +02:00 [INF] Hosting environment: Development
+2024-10-09 16:28:47.381 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-09 16:30:57.620 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 16:31:01.404 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 16:31:01.408 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 16:31:01.411 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 16:31:01.413 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 16:31:01.415 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 16:31:01.418 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 16:31:01.420 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 16:31:01.422 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 16:31:01.423 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 16:31:01.425 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 16:31:01.427 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 16:31:01.429 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 16:31:01.431 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 16:31:01.434 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 16:31:01.436 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 16:31:01.437 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 16:31:01.439 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 16:31:01.440 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 16:31:01.442 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 16:31:01.536 +02:00 [INF] Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.
+2024-10-09 16:31:49.412 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 16:31:53.256 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 16:31:53.261 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 16:31:53.263 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 16:31:53.265 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 16:31:53.266 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 16:31:53.268 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 16:31:53.269 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 16:31:53.271 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 16:31:53.274 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 16:31:53.276 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 16:31:53.278 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 16:31:53.279 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 16:31:53.281 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 16:31:53.283 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 16:31:53.284 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 16:31:53.286 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 16:31:53.289 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 16:31:53.290 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 16:31:53.292 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 16:31:53.353 +02:00 [INF] Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.
+2024-10-09 16:32:18.798 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 16:32:22.659 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 16:32:22.662 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 16:32:22.664 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 16:32:22.666 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 16:32:22.668 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 16:32:22.670 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 16:32:22.672 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 16:32:22.676 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 16:32:22.677 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 16:32:22.679 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 16:32:22.680 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 16:32:22.682 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 16:32:22.684 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 16:32:22.685 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 16:32:22.686 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 16:32:22.690 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 16:32:22.693 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 16:32:22.695 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 16:32:22.697 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 16:32:22.795 +02:00 [INF] Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.
+2024-10-09 16:33:22.925 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 16:33:26.765 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 16:33:26.770 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 16:33:26.772 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 16:33:26.774 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 16:33:26.776 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 16:33:26.778 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 16:33:26.780 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 16:33:26.782 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 16:33:26.783 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 16:33:26.788 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 16:33:26.789 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 16:33:26.791 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 16:33:26.793 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 16:33:26.795 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 16:33:26.796 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 16:33:26.798 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 16:33:26.800 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 16:33:26.803 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 16:33:26.805 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 16:33:26.869 +02:00 [INF] Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.
