@@ -255,6 +255,8 @@ namespace RestApiServer.Services
                 DateExpired = new DateTime(newUserSessionTokenExpiration)
             };
 
+            await db.UserSessionTokens.AddAsync(newSessionTokenEntry);
+
             var userProfile = GetUserBasicInfo(userId);
 
             var res = new UserRefreshResponse
@@ -350,6 +352,8 @@ namespace RestApiServer.Services
                 IsRevoked = false,
                 DateExpired = new DateTime(userSessionTokenExpiration)
             };
+
+            await db.UserSessionTokens.AddAsync(newSessionTokenEntry);
 
             //update the user's last login time
             var userEntry = db.Users.Single(u => u.UserId == userId);

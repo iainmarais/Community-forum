@@ -132,3 +132,69 @@ Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
    at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
    at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
    at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 11:01:03.757 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 11:01:07.833 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 11:01:07.837 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 11:01:07.839 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 11:01:07.841 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 11:01:07.842 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 11:01:07.844 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 11:01:07.846 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 11:01:07.848 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 11:01:07.849 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 11:01:07.851 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 11:01:07.852 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 11:01:07.854 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 11:01:07.859 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 11:01:07.861 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 11:01:07.863 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 11:01:07.864 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 11:01:07.866 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 11:01:07.868 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 11:01:07.870 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 11:01:08.004 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-09 11:01:08.153 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-09 11:01:08.172 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-09 11:01:08.174 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-09 11:01:08.176 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-09 11:01:08.177 +02:00 [INF] Hosting environment: Development
+2024-10-09 11:01:08.178 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-09 11:01:25.964 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:5051/v1/users/login - application/json 92
+2024-10-09 11:01:26.176 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:01:26.208 +02:00 [INF] Route matched with {action = "LoginUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Login.UserLoginResponse]] LoginUser(RestApiServer.Dto.Login.UserLoginRequest) on controller RestApiServer.Controllers.UserController (RestApiServer).
+2024-10-09 11:01:27.355 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Login.UserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-09 11:01:27.449 +02:00 [INF] Executed action RestApiServer.Controllers.UserController.LoginUser (RestApiServer) in 1231.3722ms
+2024-10-09 11:01:27.454 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.UserController.LoginUser (RestApiServer)'
+2024-10-09 11:01:27.954 +02:00 [INF] POST 200 /v1/users/login "00:00:01.4157769"ms  , body: {
+    "userIdentifier": "iain",
+    "password": "C3r3$123",
+    "userContext": "forum"
+}
+2024-10-09 11:01:27.997 +02:00 [INF] Request finished HTTP/1.1 POST https://localhost:5051/v1/users/login - 200 null application/json; charset=utf-8 2034.7877ms
+2024-10-09 11:03:14.857 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 11:03:19.291 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 11:03:19.296 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 11:03:19.299 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 11:03:19.300 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 11:03:19.302 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 11:03:19.303 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 11:03:19.305 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 11:03:19.307 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 11:03:19.309 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 11:03:19.311 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 11:03:19.312 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 11:03:19.315 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 11:03:19.319 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 11:03:19.320 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 11:03:19.322 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 11:03:19.324 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 11:03:19.326 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 11:03:19.328 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 11:03:19.333 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 11:03:19.460 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-09 11:03:19.645 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-09 11:03:19.674 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-09 11:03:19.677 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-09 11:03:19.680 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-09 11:03:19.682 +02:00 [INF] Hosting environment: Development
+2024-10-09 11:03:19.684 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
