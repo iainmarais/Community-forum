@@ -318,6 +318,72 @@ namespace RestApiServer.Db
             },
             new SystemPermissionEntry
             {
+                SystemPermissionId = "interactive_create_boards",
+                SystemPermissionName = "Interactive: Create boards",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to create new boards. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_create_threads",
+                SystemPermissionName = "Interactive: Create threads",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to create new threads. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+            },
+            //Interactivity: Editing
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_edit_posts",
+                SystemPermissionName = "Interactive: Edit posts",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to edit existing posts. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_edit_boards",
+                SystemPermissionName = "Interactive: Edit boards",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to edit existing boards. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_edit_threads",
+                SystemPermissionName = "Interactive: Edit threads",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to edit existing threads. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+            },
+            //Interactivity: Delete existing boards, threads, posts
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_delete_posts",
+                SystemPermissionName = "Interactive: Delete posts",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to delete existing posts. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_delete_boards",
+                SystemPermissionName = "Interactive: Delete boards",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to delete existing boards. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_delete_threads",
+                SystemPermissionName = "Interactive: Delete threads",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to delete existing threads. All registered users have such permission, aside from guests, who may only post in authorised areas.",
+            },
+            //General interactivity
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_vote_in_polls",
+                SystemPermissionName = "Interactive: Vote in polls",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to vote in polls.",
+            },
+            new SystemPermissionEntry
+            {
                 SystemPermissionId = "interactive_upload_images",
                 SystemPermissionName = "Interactive: Upload images",
                 SystemPermissionType = SystemPermissionType.Interactivity,
@@ -325,17 +391,17 @@ namespace RestApiServer.Db
             },
             new SystemPermissionEntry
             {
-                SystemPermissionId = "interactive_edit_posts",
-                SystemPermissionName = "Interactive: Edit posts",
-                SystemPermissionType = SystemPermissionType.Interactivity,
-                Description = "Allows a user to edit their own posts."
-            },
-            new SystemPermissionEntry
-            {
                 SystemPermissionId = "interactive_reply_to_posts",
                 SystemPermissionName = "Interactive: Reply to posts",
                 SystemPermissionType = SystemPermissionType.Interactivity,
                 Description = "Allows a user to reply to other users posts."
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "interactive_edit_own_posts",
+                SystemPermissionName = "Interactive: Edit own posts",
+                SystemPermissionType = SystemPermissionType.Interactivity,
+                Description = "Allows a user to edit their own posts."
             },
             new SystemPermissionEntry
             {
@@ -352,19 +418,19 @@ namespace RestApiServer.Db
         {
             new CategoryEntry 
             {
-                CategoryId = "General",
+                CategoryId = Guid.NewGuid().ToString(),
                 CategoryName = "General",
                 CategoryDescription = "General discussions for the forum.",
             },
             new CategoryEntry
             {
-                CategoryId = "ITSupport",
+                CategoryId = Guid.NewGuid().ToString(),
                 CategoryName = "Computer and IT Support",
                 CategoryDescription = "Everything pertaining to computer and IT support can be discussed here.",
             },
             new CategoryEntry
             {
-                CategoryId = "Development",
+                CategoryId = Guid.NewGuid().ToString(),
                 CategoryName = "Software development",
                 CategoryDescription = "Everything pertaining to software development can be discussed here.",
             }

@@ -305,8 +305,7 @@ namespace RestApiServer.Services
                 IsRevoked = false
             };
             await db.UserRefreshTokens.AddAsync(newRefreshToken);
-            //Create the access token. Update: Add roles as a new list.
-                        //Now, one can create the new access and refresh tokens.
+
             var (accessToken, accessTokenExpiration) = userContext switch
             {
                 "admin" => AuthUtils.GenerateAdminUserAccessToken(userId, userResult.User.AdminUserId, permissions, new(){ userResult.Role.RoleType }),
@@ -358,19 +357,6 @@ namespace RestApiServer.Services
         {
             // Add username validation logic here, e.g., length and allowed characters
             return !string.IsNullOrEmpty(username) && username.Length >= 3 && username.Length <= 50;
-        }
-
-        private static bool IsValidEmailAddress(string userIdentifier)
-        {
-            try 
-            {
-                var mailAddress = new MailAddress(userIdentifier);
-                return mailAddress.Address == userIdentifier;
-            }
-            catch 
-            {
-                return false;
-            }
         }
     }
 }
