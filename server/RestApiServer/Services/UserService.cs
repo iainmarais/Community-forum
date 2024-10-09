@@ -229,7 +229,7 @@ namespace RestApiServer.Services
             };
             await db.UserRefreshTokens.AddAsync(newRefreshToken);
             //Now, one can create the new access and refresh tokens.
-            var (newAccessToken, newAccessTokenExpiration) = req.UserContext switch
+            var (newUserSessionToken, newUserSessionTokenExpiration) = req.UserContext switch
             {
                 "admin" => AuthUtils.GenerateAdminUserAccessToken(userId, userResult.User.AdminUserId, permissions, new(){ userResult.Role.RoleType }),
                 "forum" => AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }),
@@ -237,12 +237,30 @@ namespace RestApiServer.Services
                 _ => throw ClientInducedException.MessageOnly("Unknown user context.")
             };
 
+            //Find and remove any previous session tokens.
+            var existingSessionTokensForSource =  await db.UserRefreshTokens.Where(t => t.AssignedToUserId == userId && t.Source == req.UserContext).ToListAsync();
+
+            if(existingSessionTokensForSource.Count > 0)
+            {
+                db.RemoveRange(existingSessionTokensForSource);
+            }
+
+            var newSessionTokenEntry = new UserSessionTokenEntry
+            {
+                UserSessionTokenId = DbUtils.GenerateUuid(),
+                AssignedToUserId = userId,
+                SessionToken = newUserSessionToken,
+                DateCreated = DateTime.UtcNow,
+                IsRevoked = false,
+                DateExpired = new DateTime(newUserSessionTokenExpiration)
+            };
+
             var userProfile = GetUserBasicInfo(userId);
 
             var res = new UserRefreshResponse
             {
-                NewAccessToken = newAccessToken,
-                NewAccessTokenExpiration = newAccessTokenExpiration,
+                NewAccessToken = newUserSessionToken,
+                NewAccessTokenExpiration = newUserSessionTokenExpiration,
                 RefreshToken = userRefreshToken,
                 UserProfile = userProfile
             };
@@ -306,12 +324,31 @@ namespace RestApiServer.Services
             };
             await db.UserRefreshTokens.AddAsync(newRefreshToken);
 
-            var (accessToken, accessTokenExpiration) = userContext switch
+            var (userSessionToken, userSessionTokenExpiration) = userContext switch
             {
                 "admin" => AuthUtils.GenerateAdminUserAccessToken(userId, userResult.User.AdminUserId, permissions, new(){ userResult.Role.RoleType }),
                 "forum" => AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }),
                 //Add more as needed to handle various contexts.
                 _ => throw ClientInducedException.MessageOnly("Unknown user context.")
+            };
+
+
+            //Find and remove any previous session tokens.
+            var existingSessionTokensForSource =  await db.UserRefreshTokens.Where(t => t.AssignedToUserId == userId && t.Source == userContext).ToListAsync();
+
+            if(existingSessionTokensForSource.Count > 0)
+            {
+                db.RemoveRange(existingSessionTokensForSource);
+            }
+
+            var newSessionTokenEntry = new UserSessionTokenEntry
+            {
+                UserSessionTokenId = DbUtils.GenerateUuid(),
+                AssignedToUserId = userId,
+                SessionToken = userSessionToken,
+                DateCreated = DateTime.UtcNow,
+                IsRevoked = false,
+                DateExpired = new DateTime(userSessionTokenExpiration)
             };
 
             //update the user's last login time
@@ -324,8 +361,8 @@ namespace RestApiServer.Services
             //Return the result
             var res = new UserLoginResponse()
             {
-                AccessToken = accessToken,
-                AccessTokenExpiration = accessTokenExpiration,
+                AccessToken = userSessionToken,
+                AccessTokenExpiration = userSessionTokenExpiration,
                 UserRefreshToken = userRefreshToken,
                 UserProfile = userProfile
             };

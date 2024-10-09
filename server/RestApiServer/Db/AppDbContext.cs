@@ -17,6 +17,7 @@ namespace RestApiServer.Db
         public DbSet<RoleEntry> Roles { get; set; } = null!;
         public DbSet<UserPermissionEntry> UserPermissions { get; set; } = null!;
         public DbSet<UserRefreshTokenEntry> UserRefreshTokens { get; set; } = null!;
+        public DbSet<UserSessionTokenEntry> UserSessionTokens { get; set; } = null!;
         public DbSet<PostEntry> Posts { get; set; } = null!;
         public DbSet<ThreadEntry> Threads { get; set; } = null!;
         public DbSet<TopicEntry> Topics { get; set; } = null!;
@@ -175,6 +176,18 @@ namespace RestApiServer.Db
 
             modelBuilder.Entity<UserRefreshTokenEntry>()
                 .HasKey(urt => urt.UserRefreshTokenId);
+
+            modelBuilder.Entity<UserSessionTokenEntry>()
+                .HasIndex(ust => ust.SessionToken)
+                .IsUnique();
+            
+            modelBuilder.Entity<UserSessionTokenEntry>()
+                .HasKey(ust => ust.UserSessionTokenId);
+
+            modelBuilder.Entity<UserSessionTokenEntry>()
+                .HasOne(ust => ust.User)
+                .WithMany(u => u.UserSessionTokens)
+                .HasForeignKey(ust => ust.AssignedToUserId);
 
             //Seed data - important structures only.
             modelBuilder.Entity<RoleEntry>().HasData(

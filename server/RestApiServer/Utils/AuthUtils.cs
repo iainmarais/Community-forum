@@ -31,16 +31,16 @@ namespace RestApiServer.Utils
 
         public static ForumUserContext GetForumUserContext(ClaimsPrincipal context)
         {
-            var claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
-            var claim_User_ForumUserId = context.Claims.Where(c => c.Type == Claim_User_ForumUserId).SingleOrDefault().Value;
-            if(claim_UserId == null)
+            string? claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
+            string? claim_User_ForumUserId = context.Claims.Where(c => c.Type == Claim_User_ForumUserId).SingleOrDefault().Value;
+            if(string.IsNullOrEmpty(claim_UserId))
             {
                 throw new Exception("User id not found in claims");
             }
 
-            if(claim_User_ForumUserId == null)
+            if(string.IsNullOrEmpty(claim_User_ForumUserId))
             {
-                throw new Exception("Forum user id not found in claims");
+                throw new Exception("Admin user id not found in claims");
             }
 
             return new ForumUserContext
@@ -53,15 +53,15 @@ namespace RestApiServer.Utils
         //Admin user context
         public static AdminUserContext GetAdminUserContext(ClaimsPrincipal context)
         {
-            var claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
-            var claim_User_AdminUserId = context.Claims.Where(c => c.Type == Claim_User_AdminUserId).SingleOrDefault().Value;
+            string? claim_UserId = context.Claims.Where(c => c.Type == Claim_UserId).SingleOrDefault().Value;
+            string? claim_User_AdminUserId = context.Claims.Where(c => c.Type == Claim_User_AdminUserId).SingleOrDefault().Value;
 
-            if(claim_UserId == null)
+            if(string.IsNullOrEmpty(claim_UserId))
             {
                 throw new Exception("User id not found in claims");
             }
 
-            if(claim_User_AdminUserId == null)
+            if(string.IsNullOrEmpty(claim_User_AdminUserId))
             {
                 throw new Exception("Admin user id not found in claims");
             }

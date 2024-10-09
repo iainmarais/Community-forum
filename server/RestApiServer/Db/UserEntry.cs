@@ -43,6 +43,8 @@ namespace RestApiServer.Db.Users
         public List<UserPermissionEntry> UserPermissions { get; set; } = new(); 
         [JsonIgnore]
         public List<UserRefreshTokenEntry> UserRefreshTokens { get; set; } = new();
+        [JsonIgnore]
+        public List<UserSessionTokenEntry> UserSessionTokens { get; set; } = new();
 
         //Guest placeholder user
         public static UserEntry CreateDefaultGuestUser()

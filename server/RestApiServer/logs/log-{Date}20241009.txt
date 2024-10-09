@@ -18,3 +18,117 @@ Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
    at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
    at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
    at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 09:45:30.604 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 09:45:35.986 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 09:45:35.992 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 09:45:35.994 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 09:45:35.995 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 09:45:35.997 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 09:45:35.999 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 09:45:36.000 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 09:45:36.002 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 09:45:36.004 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 09:45:36.006 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 09:45:36.011 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 09:45:36.013 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 09:45:36.014 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 09:45:36.016 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 09:45:36.017 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 09:45:36.019 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 09:45:36.020 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 09:45:36.024 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 09:45:36.027 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 09:45:36.171 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-09 09:45:36.315 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-09 09:45:36.339 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-09 09:45:36.341 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-09 09:45:36.343 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-09 09:45:36.344 +02:00 [INF] Hosting environment: Development
+2024-10-09 09:45:36.345 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-09 09:48:59.797 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 09:49:04.727 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-09 09:49:04.732 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-09 09:49:04.734 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-09 09:49:04.736 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-09 09:49:04.739 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-09 09:49:04.740 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-09 09:49:04.742 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-09 09:49:04.743 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-09 09:49:04.745 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-09 09:49:04.747 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-09 09:49:04.748 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-09 09:49:04.750 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-09 09:49:04.752 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-09 09:49:04.756 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-09 09:49:04.758 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-09 09:49:04.760 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-09 09:49:04.761 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-09 09:49:04.763 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-09 09:49:04.765 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-09 09:49:04.924 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-09 09:49:05.084 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2024-10-09 09:49:05.110 +02:00 [INF] Now listening on: http://127.0.0.1:5050
+2024-10-09 09:49:05.113 +02:00 [INF] Now listening on: https://127.0.0.1:5051
+2024-10-09 09:49:05.116 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-09 09:49:05.118 +02:00 [INF] Hosting environment: Development
+2024-10-09 09:49:05.120 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-09 10:46:51.233 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 10:46:51.840 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 10:48:39.026 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 10:48:39.421 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 10:49:31.297 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 10:49:31.942 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 10:58:59.803 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 10:59:00.364 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 10:59:18.914 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 10:59:19.514 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176
+2024-10-09 10:59:51.816 +02:00 [INF] Starting up... Please be patient.
+2024-10-09 10:59:52.557 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 176

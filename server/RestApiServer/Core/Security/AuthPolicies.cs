@@ -13,7 +13,6 @@ namespace RestApiServer.Core.Security
         private static List<string> ValidForumUserClaimsRequirements = new(){"UserId", "ForumUserId"};
         //For chat. Todo: Create claims handler for this and extend the user datamodel.
         private static List<string> ValidChatUserClaimsRequirements = new(){ "UserId", "ChatUserId"};
-        private static string UserClaimRequirement = "UserId";
         public static async Task<AuthorizationOptions> Configure(AuthorizationOptions options)
         {
             try 
