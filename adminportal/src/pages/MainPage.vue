@@ -7,12 +7,20 @@ import NavigationBar from '@/components/NavigationBar.vue';
 import { useMainPageStore } from '@/stores/MainPageStore';
 import { Token_Key } from '@/LocalStorage/keys';
 import { SetToken } from '@/http/AxiosClient';
+import { useAppContextStore } from '@/stores/AppContextStore';
 
 const route = useRoute();
 
-
+const appContextStore = useAppContextStore();
 const mainPageStore = useMainPageStore();
 
+onMounted(() => {
+    const storedToken = localStorage.getItem(Token_Key);
+    if(storedToken) {
+        SetToken(storedToken);
+    }
+    appContextStore.getAppState();
+});
 
 
 </script>

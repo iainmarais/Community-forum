@@ -1,5 +1,10 @@
 <script lang = "ts" setup>
+import { useAppContextStore } from '@/stores/AppContextStore';
 import { onMounted, onUnmounted, ref } from 'vue';
+import NavbarLinkButton from './Navbar/NavbarLinkButton.vue';
+import NavbarMenuButton from './Navbar/NavbarMenuButton.vue';
+
+const appContextStore = useAppContextStore();
 
 const isWidescreen = ref(window.innerWidth > 1200);
 
@@ -19,7 +24,6 @@ onUnmounted(() => {
 </script>
 
 <template> 
-
     <div class = "navbar">
         <div class = "navbar-inner">
             <div class="navbar-brand">
@@ -27,15 +31,10 @@ onUnmounted(() => {
             </div>
             <div class="navbar-content">
                 <ul class="navbar-items">
-                    <li class="navbar-item">
-                        <a href = "#"><i class="fas fa-house"></i>Home</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href = "#"><i class="fas fa-circle-question"></i>About</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href = "#"><i class="fas fa-id-card"></i>Contact</a>
-                    </li>
+                    <div v-for="navbarItem in appContextStore.navbar">
+                        <NavbarMenuButton v-if="!isWidescreen && navbarItem.type==='menu'" :menuItem="navbarItem" />
+                        <NavbarLinkButton v-if="isWidescreen && navbarItem.type==='item'" :key="navbarItem.id" :dstName="navbarItem.routename" :dstParams="navbarItem.routeParams" :iconClass="navbarItem.iconClass" :labelText="navbarItem.label" />
+                    </div>
                 </ul>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import AxiosClient from "@/http/AxiosClient";
-import router, { LoginRoute, HomeRoute } from "@/router";
+import router, { LoginRoute, HomeRoute, ContentManagementRoute } from "@/router";
 import type { RouteParams, RouteQueryAndHash } from "vue-router";
 
 import ErrorHandler from "@/Handlers/ErrorHandler";
@@ -36,6 +36,13 @@ const NavigationBar: NavbarItem[] = [
                 iconClass: "fas fa-sign-in-alt",
                 routename: LoginRoute
             },
+            {
+                id: "contentmgmt",
+                type: "item",
+                label: "Content management",
+                iconClass: "fa fa-bars",
+                routename: ContentManagementRoute
+            },
         ]
     },
     {
@@ -52,9 +59,16 @@ const NavigationBar: NavbarItem[] = [
         iconClass: "fas fa-sign-in-alt",
         routename: LoginRoute
     },
+    {
+        id: "contentmgmt",
+        type: "item",
+        label: "Content management",
+        iconClass: "fa fa-bars",
+        routename: ContentManagementRoute
+    },    
 ];
 
-type NavbarLinkItemId = "home" | "admin" | "login" | "register" | "logoff" | "chat" | "gallery" | "search";
+type NavbarLinkItemId = "home" | "login" | "logoff" | "contentmgmt";
 
 export type NavbarLinkItem = {
     type: "item",
@@ -136,6 +150,19 @@ export const useAppContextStore = defineStore({
                 return true;
             }
             return permissions.some(permission => permissions.includes(permission));
+        },
+
+        getAppState() {
+            this.appLoading = true;
+            
+            this.onAppReady();
+            //Handle login, logoff on error, etc here.
+        },
+
+        onAppReady() {
+            this.buildNavbar();
+            this.appLoading = false;
+            console.log(`App loading: ${this.appLoading}`)
         },
 
         //Use this to update nav bar elements like new posts, new threads, etc.

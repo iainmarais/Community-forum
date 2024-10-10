@@ -6,6 +6,7 @@ import NProgress from "NProgress";
 export const NotFoundRoute = "notfound";
 export const HomeRoute = "home";
 export const LoginRoute = "login";
+export const ContentManagementRoute = "contentmgmt";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
             path: "/login",
             name: LoginRoute,
             component: () => import("@/pages/LoginPage.vue")
+        },
+        {
+            path: "/contentmgmt",
+            name: ContentManagementRoute,
+            component: () => import("@/pages/PageUnderconstruction.vue")
         },
 
         //Catch all
