@@ -19,6 +19,7 @@
   "devDependencies": {
     "@mdi/font": "^7.4.47",
     "@types/jquery": "^3.5.31",
+    "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vue/tsconfig": "^0.5.1",
     "axios": "^1.7.7",
