@@ -4,10 +4,10 @@ using RestApiServer.Core.ApiResponses;
 using RestApiServer.Core.Security;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
-using RestApiServer.Services;
+using RestApiServer.Services.Forum;
 using RestApiServer.Utils;
 
-namespace RestApiServer.Controllers
+namespace RestApiServer.Controllers.Forum
 {
     [ApiController]
     [Route("v1/forum")]

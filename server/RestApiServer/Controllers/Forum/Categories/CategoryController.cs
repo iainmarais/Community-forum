@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
-using RestApiServer.Services.Categories;
+using RestApiServer.Services.Forum.Categories;
 using RestApiServer.Utils;
 
-namespace RestApiServer.Controllers.Categories
+namespace RestApiServer.Controllers.Forum.Categories
 {
 
     [ApiController]

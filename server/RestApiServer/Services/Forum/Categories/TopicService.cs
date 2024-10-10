@@ -6,7 +6,7 @@ using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Utils;
 
-namespace RestApiServer.Services.Categories
+namespace RestApiServer.Services.Forum.Categories
 {
     public class TopicService
     {

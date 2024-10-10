@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
-using RestApiServer.Services.Boards;
+using RestApiServer.Services.Forum.Boards;
 using RestApiServer.Utils;
 
-namespace RestApiServer.Controllers.Boards
+namespace RestApiServer.Controllers.Forum.Boards
 {
     [ApiController]
     [Route("v1/forum")]

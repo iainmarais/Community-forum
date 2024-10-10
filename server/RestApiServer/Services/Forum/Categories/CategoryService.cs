@@ -3,7 +3,7 @@ using RestApiServer.Db;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 
-namespace RestApiServer.Services.Categories
+namespace RestApiServer.Services.Forum.Categories
 {
 
     public class CategoryService

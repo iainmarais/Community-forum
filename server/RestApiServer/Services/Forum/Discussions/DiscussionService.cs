@@ -6,7 +6,7 @@ using RestApiServer.Utils;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Core.ApiResponses;
 
-namespace RestApiServer.Services.Discussions
+namespace RestApiServer.Services.Forum.Discussions
 {
 
     public class DiscussionService

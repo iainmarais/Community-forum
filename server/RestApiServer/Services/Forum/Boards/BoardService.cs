@@ -4,7 +4,7 @@ using RestApiServer.Db;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 
-namespace RestApiServer.Services.Boards
+namespace RestApiServer.Services.Forum.Boards
 {
 
     public class BoardService

@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.Forum;
-using RestApiServer.Services.Gallery;
+using RestApiServer.Services.Forum.Gallery;
 using RestApiServer.Utils;
 
-namespace RestApiServer.Controllers.Gallery
+namespace RestApiServer.Controllers.Forum.Gallery
 {
 
     [ApiController]

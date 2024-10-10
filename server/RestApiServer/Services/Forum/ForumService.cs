@@ -3,9 +3,9 @@ using RestApiServer.Db;
 using RestApiServer.Dto.App;
 using RestApiServer.Db.Users;
 using RestApiServer.Utils;
-using RestApiServer.Services.Categories;
+using RestApiServer.Services.Forum.Categories;
 
-namespace RestApiServer.Services
+namespace RestApiServer.Services.Forum
 {
     public class ForumService
     {

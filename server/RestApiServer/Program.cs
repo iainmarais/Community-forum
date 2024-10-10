@@ -4,9 +4,9 @@
 
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            Server.StartServer(args);
+            await Server.StartServer(args);
         }
     }
 }

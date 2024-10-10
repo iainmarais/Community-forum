@@ -3,7 +3,7 @@ using RestApiServer.Core.ApiResponses;
 using RestApiServer.Db;
 using RestApiServer.Dto.Forum;
 
-namespace RestApiServer.Services.Gallery
+namespace RestApiServer.Services.Forum.Gallery
 {
     public class GalleryService
     {

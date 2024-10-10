@@ -320,6 +320,8 @@ namespace RestApiServer.Db.Ops
                     //Save the changes.
                     await db.SaveChangesAsync();
                 }
+                //Not sure if necessary. Need to test it.
+                return;
             }
             catch (Exception ex)
             {
