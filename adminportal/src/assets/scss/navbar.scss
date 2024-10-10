@@ -1,0 +1,221 @@
+/* src/styles/navbar.scss */
+
+/* Variables */
+$navy-dark: darken(navy, 16%);
+$navy-light: darken(navy, 6%);
+$primary-color: #0c038a;
+$primary-hover: #0056b3;
+$primary-active: #003f7f;
+$text-color: #fff;
+$font-family: Arial, Helvetica, sans-serif;
+$border-radius: 5px;
+
+/* Base Styles for the Navigation Bar */
+.navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $navy-dark;
+  padding: 10px 20px;
+  color: $text-color;
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $text-color;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 40px; // Adjust logo size
+      margin-right: 10px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 15px; // Space between links
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: $border-radius;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: #555;
+        color: #ddd;
+      }
+
+      &.active {
+        background-color: $primary-color;
+        color: $text-color;
+      }
+    }
+  }
+
+  &__menu-button {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: $text-color;
+    background: none;
+    border: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #ddd;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #1b005a;
+      margin-top: 10px;
+      padding: 0;
+
+      a {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid #444;
+
+        &:last-child {
+          border-bottom: none; // Remove border from last item
+        }
+      }
+
+      &.active {
+        display: flex;
+      }
+    }
+
+    &__menu-button {
+      display: block;
+    }
+  }
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Navbar Inner */
+.navbar-inner {
+  display: flex;
+  max-width: 100%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: $navy-dark;
+  color: $text-color;
+
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+      .navbar-items {
+        width: fit-content;
+        list-style-type: none; /* Remove default list style */
+        padding: 0;            /* Remove default padding */
+        margin: 0;             /* Remove default margin */
+        display: flex;         /* Use flexbox for horizontal alignment */
+        gap: 10px;             /* Add space between buttons */
+      
+        li {
+          background-color: $primary-color;   /* Button background color */
+          color: $text-color;                 /* Button text color */
+          padding: 10px 20px;                 /* Button padding */
+          border: none;                       /* Remove default border */
+          border-radius: $border-radius;      /* Rounded corners */
+          cursor: pointer;                    /* Pointer cursor on hover */
+          transition: background-color 0.3s ease; /* Smooth transition on hover */
+      
+          &:hover {
+            background-color: $primary-hover; /* Darker background on hover */
+          }
+      
+          &:active {
+            background-color: $primary-active; /* Even darker background on click */
+          }
+          a {
+            color: inherit;             /* Inherit text color from the list item */
+            text-decoration: none;      /* Remove underline */
+            display: block;             /* Make the link fill the entire list item */
+          }
+        }
+      }    
+  }
+  /* Navbar Search */
+  .navbar-search {
+    margin-left: auto;
+    margin-right: 20px;
+    display: flex;
+    align-items:center;
+
+    .navbar-search-button {
+        background-color: $primary-color;
+        color: &text-color;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: $primary-hover;
+        }
+
+        &:active {
+            background-color: $primary-active;
+        }
+    }
+
+  }
+
+  .navbar-user-item {
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+/* Navbar Menu Item */
+.navbar-menu-item,
+.navbar-menu-item-submenu {
+  margin: 4px;
+  font-weight: bold;
+  font-family: $font-family;
+  cursor: pointer;
+}
+
+/* Navbar Button */
+.navbar-button {
+  font-weight: bold;
+  font-family: $font-family;
+  background-color: $navy-light;
+  color: $text-color;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.navbar-button-text {
+  margin-left: 0.5rem;
+  font-family: $font-family;
+  font-weight: bold;
+}
