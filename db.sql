@@ -56,17 +56,15 @@ CREATE TABLE IF NOT EXISTS `chatgroups` (
 -- Dumping structure for table communityforum.chatmessages
 CREATE TABLE IF NOT EXISTS `chatmessages` (
   `ChatMessageId` varchar(255) NOT NULL,
-  `ChatId` varchar(255) NOT NULL DEFAULT '',
-  `ChatGroupId` varchar(255) NOT NULL DEFAULT '',
-  `CreatedByUserId` varchar(255) NOT NULL DEFAULT '',
-  `RecipientUserId` varchar(255) NOT NULL DEFAULT '',
+  `ChatId` longtext NOT NULL,
+  `ChatGroupId` longtext NOT NULL,
+  `CreatedByUserId` longtext NOT NULL,
+  `RecipientUserId` longtext NOT NULL,
   `ChatMessageContent` longtext NOT NULL,
   `CreatedDate` datetime(6) NOT NULL,
   `IsEdited` tinyint(1) NOT NULL,
   `EditedTime` datetime(6) NOT NULL,
-  PRIMARY KEY (`ChatMessageId`),
-  KEY `FK_chatmessages_chats` (`ChatId`),
-  CONSTRAINT `FK_chatmessages_chats` FOREIGN KEY (`ChatId`) REFERENCES `chats` (`ChatId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`ChatMessageId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
@@ -74,10 +72,10 @@ CREATE TABLE IF NOT EXISTS `chatmessages` (
 -- Dumping structure for table communityforum.chats
 CREATE TABLE IF NOT EXISTS `chats` (
   `ChatId` varchar(255) NOT NULL,
-  `ChatGroupId` varchar(255) NOT NULL DEFAULT '',
+  `ChatGroupId` longtext NOT NULL,
   `ChatName` longtext NOT NULL,
-  `CreatedByUserId` varchar(255) NOT NULL DEFAULT '',
-  `SecondParticipantUserId` varchar(255) NOT NULL DEFAULT '',
+  `CreatedByUserId` longtext NOT NULL,
+  `SecondParticipantUserId` longtext NOT NULL,
   `CreatedDate` datetime(6) NOT NULL,
   PRIMARY KEY (`ChatId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -87,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `chats` (
 -- Dumping structure for table communityforum.contacts
 CREATE TABLE IF NOT EXISTS `contacts` (
   `ContactId` varchar(255) NOT NULL,
-  `UserId` varchar(255) NOT NULL DEFAULT '',
+  `UserId` longtext NOT NULL,
   `CreatedByUserId` longtext NOT NULL,
   `ContactName` longtext NOT NULL,
   `ContactEmailAddress` longtext NOT NULL,
@@ -119,8 +117,8 @@ CREATE TABLE IF NOT EXISTS `galleryitems` (
 -- Dumping structure for table communityforum.permissions
 CREATE TABLE IF NOT EXISTS `permissions` (
   `PermissionId` varchar(255) NOT NULL,
-  `PermissionName` varchar(255) NOT NULL DEFAULT '',
-  `PermissionType` varchar(255) DEFAULT NULL,
+  `PermissionName` longtext NOT NULL,
+  `PermissionType` longtext NOT NULL,
   `Description` longtext NOT NULL,
   PRIMARY KEY (`PermissionId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -132,13 +130,15 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `PostId` varchar(255) NOT NULL,
   `ThreadId` varchar(255) NOT NULL,
   `IsFirstPost` tinyint(1) NOT NULL,
-  `CreatedByUserId` varchar(255) NOT NULL DEFAULT '',
+  `CreatedByUserId` longtext NOT NULL,
   `PostContent` longtext NOT NULL,
   `CreatedDate` datetime(6) NOT NULL,
-  `ReplyToPostId` varchar(255) NOT NULL DEFAULT '',
+  `ReplyToPostId` longtext NOT NULL,
   `PostReported` tinyint(1) NOT NULL,
   `ReportReason` longtext NOT NULL,
-  `ReportedByUserId` varchar(255) NOT NULL DEFAULT '',
+  `ReportedByUserId` longtext NOT NULL,
+  `DateMarkedForDeletion` datetime(6) NOT NULL DEFAULT '0001-01-01 00:00:00.000000',
+  `IsMarkedForDelete` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`PostId`),
   KEY `IX_Posts_ThreadId` (`ThreadId`),
   CONSTRAINT `FK_Posts_Threads_ThreadId` FOREIGN KEY (`ThreadId`) REFERENCES `threads` (`ThreadId`) ON DELETE CASCADE
@@ -151,12 +151,12 @@ CREATE TABLE IF NOT EXISTS `rolepermissions` (
   `RolePermissionId` varchar(255) NOT NULL,
   `RoleId` varchar(255) NOT NULL,
   `PermissionId` varchar(255) NOT NULL,
-  `IsAllowed` tinyint(4) NOT NULL DEFAULT 0,
+  `IsAllowed` tinyint(1) NOT NULL,
   PRIMARY KEY (`RolePermissionId`),
-  KEY `fk_role` (`RoleId`),
-  KEY `fk_permission` (`PermissionId`),
-  CONSTRAINT `fk_permission` FOREIGN KEY (`PermissionId`) REFERENCES `permissions` (`PermissionId`),
-  CONSTRAINT `fk_role` FOREIGN KEY (`RoleId`) REFERENCES `roles` (`RoleId`)
+  KEY `IX_RolePermissions_PermissionId` (`PermissionId`),
+  KEY `IX_RolePermissions_RoleId` (`RoleId`),
+  CONSTRAINT `FK_RolePermissions_Permissions_PermissionId` FOREIGN KEY (`PermissionId`) REFERENCES `permissions` (`PermissionId`),
+  CONSTRAINT `FK_RolePermissions_Roles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `roles` (`RoleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
@@ -164,8 +164,8 @@ CREATE TABLE IF NOT EXISTS `rolepermissions` (
 -- Dumping structure for table communityforum.roles
 CREATE TABLE IF NOT EXISTS `roles` (
   `RoleId` varchar(255) NOT NULL,
-  `RoleName` varchar(50) NOT NULL DEFAULT '',
-  `RoleType` varchar(50) NOT NULL DEFAULT '',
+  `RoleName` longtext NOT NULL,
+  `RoleType` longtext NOT NULL,
   `Description` longtext DEFAULT NULL,
   PRIMARY KEY (`RoleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -175,13 +175,9 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- Dumping structure for table communityforum.systempermissions
 CREATE TABLE IF NOT EXISTS `systempermissions` (
   `SystemPermissionId` varchar(255) NOT NULL,
-  `PermissionName` longtext NOT NULL,
-  `Permission` longtext NOT NULL,
+  `SystemPermissionType` longtext NOT NULL,
+  `SystemPermissionName` longtext NOT NULL,
   `Description` longtext DEFAULT NULL,
-  `IsAdminPermission` tinyint(1) NOT NULL,
-  `IsModeratorPermission` tinyint(1) NOT NULL,
-  `IsUserPermission` tinyint(1) NOT NULL,
-  `IsGuestPermission` tinyint(1) NOT NULL,
   PRIMARY KEY (`SystemPermissionId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -225,9 +221,13 @@ CREATE TABLE IF NOT EXISTS `topics` (
 -- Dumping structure for table communityforum.userpermissions
 CREATE TABLE IF NOT EXISTS `userpermissions` (
   `UserPermissionId` varchar(255) NOT NULL,
-  `UserId` longtext NOT NULL,
-  `SystemPermissionId` longtext NOT NULL,
-  PRIMARY KEY (`UserPermissionId`)
+  `UserId` varchar(255) NOT NULL,
+  `SystemPermissionId` varchar(255) NOT NULL,
+  PRIMARY KEY (`UserPermissionId`),
+  KEY `IX_UserPermissions_SystemPermissionId` (`SystemPermissionId`),
+  KEY `IX_UserPermissions_UserId` (`UserId`),
+  CONSTRAINT `FK_UserPermissions_SystemPermissions_SystemPermissionId` FOREIGN KEY (`SystemPermissionId`) REFERENCES `systempermissions` (`SystemPermissionId`),
+  CONSTRAINT `FK_UserPermissions_Users_UserId` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
@@ -235,11 +235,14 @@ CREATE TABLE IF NOT EXISTS `userpermissions` (
 -- Dumping structure for table communityforum.userrefreshtokens
 CREATE TABLE IF NOT EXISTS `userrefreshtokens` (
   `UserRefreshTokenId` varchar(255) NOT NULL,
-  `UserId` longtext NOT NULL,
-  `RefreshToken` longtext NOT NULL,
+  `AssignedToUserId` varchar(255) NOT NULL,
+  `RefreshToken` varchar(8000) NOT NULL,
   `RefreshTokenExpirationDate` datetime(6) NOT NULL,
   `Source` longtext NOT NULL,
-  PRIMARY KEY (`UserRefreshTokenId`)
+  `IsRevoked` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`UserRefreshTokenId`),
+  KEY `IX_UserRefreshTokens_AssignedToUserId` (`AssignedToUserId`),
+  CONSTRAINT `FK_UserRefreshTokens_Users_AssignedToUserId` FOREIGN KEY (`AssignedToUserId`) REFERENCES `users` (`UserId`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
@@ -247,8 +250,8 @@ CREATE TABLE IF NOT EXISTS `userrefreshtokens` (
 -- Dumping structure for table communityforum.users
 CREATE TABLE IF NOT EXISTS `users` (
   `UserId` varchar(255) NOT NULL,
-  `AdminUserId` varchar(255) NOT NULL DEFAULT '',
-  `ForumUserId` varchar(255) NOT NULL DEFAULT '',
+  `AdminUserId` longtext NOT NULL,
+  `ForumUserId` longtext NOT NULL,
   `UserProfileImageBase64` longtext NOT NULL,
   `Username` longtext NOT NULL,
   `EmailAddress` longtext NOT NULL,
@@ -265,7 +268,28 @@ CREATE TABLE IF NOT EXISTS `users` (
   `IsOnline` tinyint(1) NOT NULL,
   `IsVisible` tinyint(1) NOT NULL,
   `LastLoginTime` datetime(6) NOT NULL,
-  PRIMARY KEY (`UserId`)
+  `UserId1` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`UserId`),
+  KEY `IX_Users_UserId1` (`UserId1`),
+  CONSTRAINT `FK_Users_Users_UserId1` FOREIGN KEY (`UserId1`) REFERENCES `users` (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table communityforum.usersessiontokens
+CREATE TABLE IF NOT EXISTS `usersessiontokens` (
+  `UserSessionTokenId` varchar(255) NOT NULL,
+  `DateCreated` datetime(6) NOT NULL,
+  `AssignedToUserId` varchar(255) NOT NULL,
+  `IsRevoked` tinyint(1) NOT NULL,
+  `DateRevoked` datetime(6) DEFAULT NULL,
+  `SessionToken` varchar(8000) NOT NULL,
+  `DateExpired` datetime(6) NOT NULL,
+  `Source` longtext NOT NULL,
+  PRIMARY KEY (`UserSessionTokenId`),
+  UNIQUE KEY `IX_UserSessionTokens_SessionToken` (`SessionToken`) USING HASH,
+  KEY `IX_UserSessionTokens_AssignedToUserId` (`AssignedToUserId`),
+  CONSTRAINT `FK_UserSessionTokens_Users_AssignedToUserId` FOREIGN KEY (`AssignedToUserId`) REFERENCES `users` (`UserId`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
