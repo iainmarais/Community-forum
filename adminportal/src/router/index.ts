@@ -15,7 +15,7 @@ const router = createRouter({
     routes: [
         {
             path: "/",
-            name: "Home",
+            name: HomeRoute,
             component: () => import("@/pages/MainPage.vue"),
             children: [
                 {
@@ -53,7 +53,7 @@ const router = createRouter({
 router.beforeEach(async (to, from) =>{
     NProgress.start();
     //Todo: correct this once the name has been created.
-    if(to.name !== "Name_of_Login_Route") {
+    if(to.name !== LoginRoute) {
         const storeRoute = {
             name: to.name,
             params: to.params,

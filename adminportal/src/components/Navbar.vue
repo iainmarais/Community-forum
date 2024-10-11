@@ -3,6 +3,7 @@ import { useAppContextStore } from '@/stores/AppContextStore';
 import { onMounted, onUnmounted, ref } from 'vue';
 import NavbarLinkButton from './Navbar/NavbarLinkButton.vue';
 import NavbarMenuButton from './Navbar/NavbarMenuButton.vue';
+import AppLogo from './elements/AppLogo.vue';
 
 const appContextStore = useAppContextStore();
 
@@ -27,6 +28,7 @@ onUnmounted(() => {
     <div class = "navbar">
         <div class = "navbar-inner">
             <div class="navbar-brand">
+                <AppLogo size="small" />
                 <a href = "#">Admin Portal</a>
             </div>
             <div class="navbar-content">

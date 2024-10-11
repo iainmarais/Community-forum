@@ -11,7 +11,8 @@ import { useMainPageStore } from '@/stores/MainPageStore';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useToast } from 'vue-toastification';
-import NavigationBar from '@/components/Navbar.vue';
+import Navbar from '@/components/Navbar.vue';
+import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 
 const toast = useToast();
 type LoginMethod = "identifier_password";
@@ -123,7 +124,7 @@ const postLoginRoute = () => {
     <div class="d-flex flex-column flex-root">
         <div class="d-flex flex-row flex-column-fluid page">
             <div class="d-flex flex-column flex-row-fluid">
-                <NavigationBar />
+                <Navbar />
                 <div class="subheader py-2" v-if="mainPageStore.breadcrumbs.length > 0">
                     <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
                         <div class="d-flex align-items-center flex-wrap mr-1">
@@ -155,7 +156,11 @@ const postLoginRoute = () => {
                                         <label>Password:</label>
                                         <input type="password" class="form-control" v-model="password"/>
                                     </div>
-                                    <button class="btn btn-primary" @click.prevent="login">Log in</button>
+                                    <ButtonWithLoadingIndicator class="btn btn-primary" 
+                                    :icon="'fas fa-sign-in-alt'" :label="'Log in'"
+                                    :loading="loginInProgress" @click.prevent="login">
+                                        Log in
+                                    </ButtonWithLoadingIndicator>
                                 </div>
                             </div>
                         </div>

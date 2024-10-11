@@ -32,6 +32,10 @@ const toastOptions = {
     }
 };
 
+import $ from 'jquery';
+const windowA = window as any;
+windowA.jQuery = windowA.$ = $;
+
 const vuetify = createVuetify({
     components,
     directives,
