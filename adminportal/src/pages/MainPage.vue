@@ -1,9 +1,9 @@
 <script lang = "ts" setup>
-import router, { HomeRoute } from '@/router';
+import router, { HomeRoute, MainRoute, LoginRoute } from '@/router';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import ConfigurationLoader from '@/config/ConfigurationLoader';
-import NavigationBar from '@/components/NavigationBar.vue';
+import Navbar from '@/components/Navbar.vue';
 import { useMainPageStore } from '@/stores/MainPageStore';
 import { Token_Key } from '@/LocalStorage/keys';
 import { SetToken } from '@/http/AxiosClient';
@@ -22,6 +22,20 @@ onMounted(() => {
     appContextStore.getAppState();
 });
 
+watch(() => router, _ => {
+    mainPageStore.setBreadcrumbs([]);
+}, {flush: "pre", immediate: true, deep: true});
+
+watch(() => appContextStore.loggedInUser, (newValue) => {
+    //If the user is logged in 
+    if (newValue) {
+        router.push(MainRoute);
+    }
+    //Return to login screen.
+    if(!newValue) {
+        router.push(LoginRoute);
+    }
+});
 
 </script>
 
@@ -29,7 +43,7 @@ onMounted(() => {
     <div class="d-flex flex-column flex-root">
         <div class="d-flex flex-row flex-column-fluid page">
             <div class="d-flex flex-column flex-row-fluid">
-                <NavigationBar />
+                <Navbar />
             </div>
             <div class="subheader py-2" v-if="mainPageStore.breadcrumbs.length > 0">
                 <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -56,3 +70,18 @@ onMounted(() => {
         </div>
     </div>
 </template>
+
+<style>
+.header-logo {
+    position: relative;
+    top: 50px;
+    transform: translateY(-50%);
+    padding-right: 0px;
+}
+
+.header-menu-wrapper .header-logo {
+	background-color: #1D1F32;
+	padding-right: 0px;
+}
+
+</style>

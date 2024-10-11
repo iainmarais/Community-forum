@@ -6,7 +6,9 @@ import NProgress from "NProgress";
 export const NotFoundRoute = "notfound";
 export const HomeRoute = "home";
 export const LoginRoute = "login";
+export const LogoffRoute = "logoff";
 export const ContentManagementRoute = "contentmgmt";
+export const MainRoute = "main";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,19 +17,30 @@ const router = createRouter({
             path: "/",
             name: "Home",
             component: () => import("@/pages/MainPage.vue"),
-            children: []
+            children: [
+                {
+                    path: "/main",
+                    name: MainRoute,
+                    //Todo: build out.
+                    component: () => import("@/pages/PageUnderconstruction.vue")
+                },
+                {
+                    path: "/contentmgmt",
+                    name: ContentManagementRoute,
+                    component: () => import("@/pages/PageUnderconstruction.vue")
+                },
+                {
+                    path: "/logoff",
+                    name: LogoffRoute,
+                    component: () => import("@/components/Views/LogoffView.vue")
+                },
+            ]
         },
         {
             path: "/login",
             name: LoginRoute,
             component: () => import("@/pages/LoginPage.vue")
         },
-        {
-            path: "/contentmgmt",
-            name: ContentManagementRoute,
-            component: () => import("@/pages/PageUnderconstruction.vue")
-        },
-
         //Catch all
         {
             path: "/:catchAll(.*)",

@@ -29,5 +29,8 @@ export const useMainPageStore = defineStore({
             document.title = `Admin portal - ${title}`
             this.pageTitle = title;
         },
+        setBreadcrumbs(breadcrumbs: Breadcrumb[]) {
+            this.breadcrumbs = breadcrumbs;
+        },
     }
 });

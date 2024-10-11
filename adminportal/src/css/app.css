@@ -1,0 +1,82 @@
+body.modal-open {
+    height: 100vh;
+    overflow: hidden !important;
+}
+.modal-xxl{
+    min-width:90%
+}
+.popover{
+    max-width: 100%;
+}
+label.required:after{
+    content: " *";
+    color: orangered
+}
+.textarea-with-overlay-container{
+    display:inline-block;
+    position:relative;
+    width: 100%;
+  }
+  
+.textarea-with-overlay-button{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+}
+
+.textarea-with-overlay-textare{
+    display:block;
+}
+
+.modal-dialog.fill-screen{
+    overflow-y: initial !important
+}
+.modal-body.fill-screen{
+    max-height: 70vh;
+    overflow-y: auto;
+}
+.modal.fade.stackable {
+    background: rgba(0,0,0,0.5);
+}
+.swal2-container .swal2-html-container{
+    max-height: 400px !important;
+}
+
+.gray-border-left{ 
+    border-left: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+.fc-h-event{
+    border: 0px !important;
+}
+.fc-event{
+    border: 0px !important;
+}
+
+.header-menu .menu-nav > .menu-item > .menu-link .menu-text{
+    font-size: 1.1rem;
+}
+
+.header-menu .menu-nav > .menu-item > .menu-link{
+    padding: 0.70rem 1rem
+}
+
+.dropdown-item{
+    cursor: pointer;
+}
+.dropdown-item.disabled > i{
+    color: #B5B5C3 !important
+}
+.area-label{
+    display: block;
+    text-align: center;
+    height: auto;
+}
+
+.swal-wide{
+    width:850px !important;
+}
+
+.text-decoration-underline{
+    text-decoration: underline;
+}

@@ -1,0 +1,26 @@
+2024-10-11 14:15:37.561 +02:00 [INF] Starting up... Please be patient.
+2024-10-11 14:15:47.554 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-11 14:15:47.567 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-11 14:15:47.569 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-11 14:15:47.571 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-11 14:15:47.581 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-11 14:15:47.583 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-11 14:15:47.585 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-11 14:15:47.586 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-11 14:15:47.587 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-11 14:15:47.589 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-11 14:15:47.590 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-11 14:15:47.591 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-11 14:15:47.592 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-11 14:15:47.593 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-11 14:15:47.594 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-11 14:15:47.595 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-11 14:15:47.596 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-11 14:15:47.597 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-11 14:15:47.598 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-11 14:15:47.828 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-11 14:15:48.415 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-11 14:15:48.421 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-11 14:15:48.425 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-11 14:15:48.426 +02:00 [INF] Hosting environment: Development
+2024-10-11 14:15:48.427 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer

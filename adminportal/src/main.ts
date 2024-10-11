@@ -8,6 +8,11 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi';
 
 import 'vuetify/styles'; // Ensure you are using css-loader
 
+import "vue-toastification/dist/index.css";
+import "jquery/dist/jquery.min.js";
+import "./css/app.css";
+import "./css/customstyles.scss";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'font-awesome/css/font-awesome.min.css';

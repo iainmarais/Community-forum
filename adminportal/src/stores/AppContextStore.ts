@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import AxiosClient from "@/http/AxiosClient";
-import router, { LoginRoute, HomeRoute, ContentManagementRoute } from "@/router";
+import router, { LoginRoute, HomeRoute, ContentManagementRoute, LogoffRoute } from "@/router";
 import type { RouteParams, RouteQueryAndHash } from "vue-router";
 
 import ErrorHandler from "@/Handlers/ErrorHandler";
@@ -10,7 +10,10 @@ import NProgress from "NProgress";
 import { Last_Route } from "@/LocalStorage/keys";
 import type { PermissionType } from "@/Dto/PermissionInfo";
 import type { LoggedInUserInfo } from "@/Dto/LoggedInUserInfo";
+import AdminPortalService from "@/Services/AdminPortalService";
+import type { ForumAppStats } from "@/Dto/AdminPortal/AdminPortalAppState";
 
+const documentTitle = "Community Forum - Admin portal";
 const toast = useToast();
 
 export type FeatureId = "None";
@@ -43,6 +46,13 @@ const NavigationBar: NavbarItem[] = [
                 iconClass: "fa fa-bars",
                 routename: ContentManagementRoute
             },
+            {
+                id: "logoff",
+                type: "item",
+                label: "Log off",
+                iconClass: "fas fa-sign-out-alt",
+                routename: LogoffRoute
+            },
         ]
     },
     {
@@ -65,7 +75,14 @@ const NavigationBar: NavbarItem[] = [
         label: "Content management",
         iconClass: "fa fa-bars",
         routename: ContentManagementRoute
-    },    
+    }, 
+    {
+        id: "logoff",
+        type: "item",
+        label: "Log off",
+        iconClass: "fas fa-sign-out-alt",
+        routename: LogoffRoute
+    },       
 ];
 
 type NavbarLinkItemId = "home" | "login" | "logoff" | "contentmgmt";
@@ -108,6 +125,7 @@ type AppContextState = {
     clientName: string;
     appLoading: boolean;
     loggedInUser?: LoggedInUserInfo;
+    appStats: ForumAppStats;
     navbar: NavbarItem[];
     previousRoute?: {
         path: string,
@@ -121,6 +139,7 @@ const defaultState: AppContextState = {
     clientName: "",
     appLoading: true,
     loggedInUser: {} as LoggedInUserInfo,
+    appStats: {} as ForumAppStats,
     navbar: [],
 }
 
@@ -154,9 +173,30 @@ export const useAppContextStore = defineStore({
 
         getAppState() {
             this.appLoading = true;
-            
-            this.onAppReady();
-            //Handle login, logoff on error, etc here.
+            AdminPortalService.getAdminPortalAppState().then(async response => {
+                this.appLoading = false;
+                toast.success("App state updated from server");
+                if(!response.data.loggedInUser) {
+                    this.loggedInUser = defaultState.loggedInUser;
+                }
+                if(!response.data.forumAppStats) {
+                    this.appStats = defaultState.appStats;
+                }
+                try {
+                    //If something goes wrong 
+                }
+                catch (error: any) {
+                    toast.error(error.message);
+                }
+                finally {
+                    this.onAppReady();
+                }
+            }, error => {
+                if(error.response?.status === 401) {
+                    ErrorHandler.handleApiErrorResponse(error);
+                    this.logoff("Authentication failed. Please log in again.");
+                }
+            });
         },
 
         onAppReady() {
@@ -229,7 +269,7 @@ export const useAppContextStore = defineStore({
 });
 
 router.beforeEach((to, from) => {
-    document.title = `Forum - ${to.name as string}`;
+    document.title = `${documentTitle} - ${to.name as string}`;
     if(from && from.name) {
         useAppContextStore().previousRoute = {
             path: from.path,
