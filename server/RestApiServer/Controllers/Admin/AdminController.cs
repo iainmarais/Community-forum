@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.Admin;
@@ -49,6 +50,14 @@ namespace RestApiServer.Controllers.Admin
             var user = AuthUtils.GetForumUserContext(User);
             var users = await AdminService.GetUsersAsync(user.UserId);
             return ApiSuccessResponses.WithData("Get users successful", users);
+        }
+        [HttpGet("appstate")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<AdminPortalAppState>> GetAdminPortalAppState()
+        {
+            var user = AuthUtils.GetAdminUserContext(User);
+            var appState = await AdminPortalService.GetAdminPortalAppStateAsync(user.UserId);
+            return ApiSuccessResponses.WithData("Get app state successful", appState);
         }
     }
 }
