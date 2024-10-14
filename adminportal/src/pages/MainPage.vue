@@ -44,6 +44,7 @@ watch(() => appContextStore.loggedInUser, (newValue) => {
 <template>
     <div v-if="!appContextStore.appLoading">
         <div class="d-flex flex-column flex-root">
+            <!--Navigation area-->
             <div class="d-flex flex-row flex-column-fluid page">
                 <div class="d-flex flex-column flex-row-fluid">
                     <Navbar />
@@ -64,6 +65,7 @@ watch(() => appContextStore.loggedInUser, (newValue) => {
                     </div>
                 </div>
             </div>
+            <!--Content area-->
             <div class="content d-flex flex-column flex-column-fluid">
                 <div class="d-flex flex-column-fluid">
                     <div class="container">
