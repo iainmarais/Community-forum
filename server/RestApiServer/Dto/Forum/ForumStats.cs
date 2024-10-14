@@ -1,6 +1,7 @@
 using RestApiServer.Db.Users;
+using RestApiServer.Dto.App;
 
-namespace RestApiServer.Dto.App
+namespace RestApiServer.Dto.Forum
 {
     public class ForumAppState
     {

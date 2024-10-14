@@ -1,8 +1,9 @@
 using RestApiServer.Db;
 using RestApiServer.Db.Users;
+using RestApiServer.Dto.App;
 using RestApiServer.Utils;
 
-namespace RestApiServer.Dto.App
+namespace RestApiServer.Dto.Forum
 {
     public class ThreadBasicInfo
     {

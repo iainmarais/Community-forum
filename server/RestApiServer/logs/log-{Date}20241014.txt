@@ -1,0 +1,72 @@
+2024-10-14 10:34:51.063 +02:00 [INF] Starting up... Please be patient.
+2024-10-14 10:34:58.558 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-14 10:34:58.566 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-14 10:34:58.570 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-14 10:34:58.571 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-14 10:34:58.574 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-14 10:34:58.576 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-14 10:34:58.577 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-14 10:34:58.580 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-14 10:34:58.582 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-14 10:34:58.583 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-14 10:34:58.584 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-14 10:34:58.586 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-14 10:34:58.587 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-14 10:34:58.594 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-14 10:34:58.595 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-14 10:34:58.596 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-14 10:34:58.597 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-14 10:34:58.598 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-14 10:34:58.599 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-14 10:34:58.736 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-14 10:34:58.900 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-14 10:34:58.915 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-14 10:34:58.919 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 10:34:58.922 +02:00 [INF] Hosting environment: Development
+2024-10-14 10:34:58.924 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-14 10:35:06.131 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - null null
+2024-10-14 10:35:06.146 +02:00 [INF] CORS policy execution successful.
+2024-10-14 10:35:06.163 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - 204 null null 23.2757ms
+2024-10-14 10:35:06.169 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/admin/login - application/json 69
+2024-10-14 10:35:06.177 +02:00 [INF] CORS policy execution successful.
+2024-10-14 10:35:06.331 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (admin)
+2024-10-14 10:35:06.338 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-10-14 10:35:06.418 +02:00 [INF] POST 401 /v1/admin/login "00:00:00.1280948"ms  Unauthorized, body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-14 10:35:06.430 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/admin/login - 401 null application/json; charset=utf-8 260.7399ms
+2024-10-14 10:35:10.723 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - null null
+2024-10-14 10:35:10.726 +02:00 [INF] CORS policy execution successful.
+2024-10-14 10:35:10.728 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - 204 null null 5.6963ms
+2024-10-14 10:35:10.731 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/admin/login - application/json 69
+2024-10-14 10:35:10.737 +02:00 [INF] CORS policy execution successful.
+2024-10-14 10:35:10.747 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (admin)
+2024-10-14 10:35:10.751 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-10-14 10:35:10.781 +02:00 [INF] POST 401 /v1/admin/login "00:00:00.0102922"ms  Unauthorized, body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-14 10:35:10.785 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/admin/login - 401 null application/json; charset=utf-8 53.7431ms
+2024-10-14 10:39:09.065 +02:00 [INF] Starting up... Please be patient.
+2024-10-14 10:39:15.415 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-14 10:39:15.423 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-14 10:39:15.425 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-14 10:39:15.429 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-14 10:39:15.430 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-14 10:39:15.432 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-14 10:39:15.437 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-14 10:39:15.439 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-14 10:39:15.440 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-14 10:39:15.447 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-14 10:39:15.449 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-14 10:39:15.452 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-14 10:39:15.453 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-14 10:39:15.454 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-14 10:39:15.455 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-14 10:39:15.456 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-14 10:39:15.457 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-14 10:39:15.457 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-14 10:39:15.458 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-14 10:39:15.598 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-14 10:39:15.849 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-14 10:39:15.867 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-14 10:39:15.870 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 10:39:15.871 +02:00 [INF] Hosting environment: Development
+2024-10-14 10:39:15.871 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.App;
+using RestApiServer.Dto.Forum;
 using RestApiServer.Services;
 using RestApiServer.Services.Forum.Categories;
 using Serilog;

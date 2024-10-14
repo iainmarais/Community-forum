@@ -2,7 +2,7 @@ using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Utils;
 
-namespace RestApiServer.Dto.App
+namespace RestApiServer.Dto.Forum
 {
     public class CategoryBasicInfo
     {

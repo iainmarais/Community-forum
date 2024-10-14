@@ -4,6 +4,7 @@ using RestApiServer.Dto.App;
 using RestApiServer.Db.Users;
 using RestApiServer.Utils;
 using RestApiServer.Services.Forum.Categories;
+using RestApiServer.Dto.Forum;
 
 namespace RestApiServer.Services.Forum
 {
