@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.Admin;
@@ -11,6 +12,7 @@ namespace RestApiServer.Controllers.Admin
     public class AdminPortalController : ControllerBase
     {
         [HttpGet("appstate")]
+        [Authorize(Roles = "Admin")]
         public async Task<ApiSuccessResponse<AdminPortalAppState>> GetAdminPortalAppState()
         {
             var user = AuthUtils.GetAdminUserContext(User);

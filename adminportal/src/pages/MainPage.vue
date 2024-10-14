@@ -63,11 +63,11 @@ watch(() => appContextStore.loggedInUser, (newValue) => {
                         </div>
                     </div>
                 </div>
-                <div class="content d-flex flex-column flex-column-fluid">
-                    <div class="d-flex flex-column-fluid">
-                        <div class="container">
-                            <RouterView :key="route.fullPath" />
-                        </div>
+            </div>
+            <div class="content d-flex flex-column flex-column-fluid">
+                <div class="d-flex flex-column-fluid">
+                    <div class="container">
+                        <RouterView :key="route.fullPath" />
                     </div>
                 </div>
             </div>

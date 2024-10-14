@@ -10,6 +10,7 @@ namespace RestApiServer.Dto.Admin
         public int TotalCategories { get; set; } = 0;
         public int TotalUsers { get; set; } = 0;
         public int TotalThreads { get; set; } = 0;
+        public int TotalTopics { get; set; } = 0;
         public int TotalPosts { get; set; } = 0;
         public int TotalGalleryItems { get; set; } = 0;
         public int TotalImages { get; set; } = 0;

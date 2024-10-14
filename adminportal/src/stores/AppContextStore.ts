@@ -11,7 +11,7 @@ import { Last_Route } from "@/LocalStorage/keys";
 import type { PermissionType } from "@/Dto/PermissionInfo";
 import type { LoggedInUserInfo } from "@/Dto/LoggedInUserInfo";
 import AdminPortalService from "@/Services/AdminPortalService";
-import type { ForumAppStats } from "@/Dto/AdminPortal/AdminPortalAppState";
+import type { AdminPortalStats } from "@/Dto/AdminPortal/AdminPortalAppState";
 
 const documentTitle = "Community Forum - Admin portal";
 const toast = useToast();
@@ -125,7 +125,7 @@ type AppContextState = {
     clientName: string;
     appLoading: boolean;
     loggedInUser?: LoggedInUserInfo;
-    appStats: ForumAppStats;
+    appStats: AdminPortalStats;
     navbar: NavbarItem[];
     previousRoute?: {
         path: string,
@@ -139,7 +139,7 @@ const defaultState: AppContextState = {
     clientName: "",
     appLoading: true,
     loggedInUser: {} as LoggedInUserInfo,
-    appStats: {} as ForumAppStats,
+    appStats: {} as AdminPortalStats,
     navbar: [],
 }
 
@@ -179,7 +179,7 @@ export const useAppContextStore = defineStore({
                 if(!response.data.loggedInUser) {
                     this.loggedInUser = defaultState.loggedInUser;
                 }
-                if(!response.data.forumAppStats) {
+                if(!response.data.adminPortalStats) {
                     this.appStats = defaultState.appStats;
                 }
                 try {

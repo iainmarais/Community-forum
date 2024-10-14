@@ -1,7 +1,6 @@
 import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
 import type { AdminLoginRequest, AdminUserLoginResponse } from "@/Dto/AdminPortal/AdminLoginRequest";
 import type { AdminPortalAppState } from "@/Dto/AdminPortal/AdminPortalAppState";
-import type { LoggedInUserInfo } from "@/Dto/LoggedInUserInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
 

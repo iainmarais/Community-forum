@@ -8,21 +8,21 @@ export const HomeRoute = "home";
 export const LoginRoute = "login";
 export const LogoffRoute = "logoff";
 export const ContentManagementRoute = "contentmgmt";
-export const MainRoute = "main";
+export const MainRoute = "";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
             path: "/",
-            name: HomeRoute,
+            name: MainRoute,
             component: () => import("@/pages/MainPage.vue"),
             children: [
                 {
-                    path: "/main",
-                    name: MainRoute,
+                    path: "/home",
+                    name: HomeRoute,
                     //Todo: build out.
-                    component: () => import("@/pages/PageUnderconstruction.vue")
+                    component: () => import("@/components/Views/Overview.vue")
                 },
                 {
                     path: "/contentmgmt",

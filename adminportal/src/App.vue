@@ -14,7 +14,6 @@ import { onMounted } from 'vue';
 
 onMounted(() => {
     var defaultAllowList = Tooltip.Default as any;
-
 });
 
 </script>
