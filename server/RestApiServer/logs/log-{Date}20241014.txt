@@ -70,3 +70,177 @@ RolesAuthorizationRequirement:User.IsInRole must be true for one of the followin
 2024-10-14 10:39:15.870 +02:00 [INF] Application started. Press Ctrl+C to shut down.
 2024-10-14 10:39:15.871 +02:00 [INF] Hosting environment: Development
 2024-10-14 10:39:15.871 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-14 10:41:23.774 +02:00 [INF] Starting up... Please be patient.
+2024-10-14 10:41:30.466 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-14 10:41:30.745 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-14 10:41:30.797 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-14 10:41:30.799 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-14 10:41:30.800 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-14 10:41:30.802 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-14 10:41:30.803 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-14 10:41:30.804 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-14 10:41:30.828 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-14 10:41:30.867 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-14 10:41:30.868 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-14 10:41:30.869 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-14 10:41:30.870 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-14 10:41:30.871 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-14 10:41:30.873 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-14 10:41:30.875 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-14 10:41:30.881 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-14 10:41:30.882 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-14 10:41:30.885 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-14 10:41:30.922 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-14 10:41:31.177 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-14 10:41:31.191 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-14 10:41:31.197 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 10:41:31.202 +02:00 [INF] Hosting environment: Development
+2024-10-14 10:41:31.203 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-14 11:29:44.309 +02:00 [INF] Starting up... Please be patient.
+2024-10-14 11:29:48.863 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-14 11:29:48.867 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-14 11:29:48.869 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-14 11:29:48.870 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-14 11:29:48.871 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-14 11:29:48.872 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-14 11:29:48.873 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-14 11:29:48.874 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-14 11:29:48.875 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-14 11:29:48.875 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-14 11:29:48.876 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-14 11:29:48.877 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-14 11:29:48.882 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-14 11:29:48.883 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-14 11:29:48.884 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-14 11:29:48.884 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-14 11:29:48.885 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-14 11:29:48.886 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-14 11:29:48.887 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-14 11:29:49.017 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-14 11:29:49.250 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-14 11:29:49.252 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-14 11:29:49.256 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 11:29:49.258 +02:00 [INF] Hosting environment: Development
+2024-10-14 11:29:49.259 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-14 11:29:59.831 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - null null
+2024-10-14 11:29:59.849 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:29:59.865 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - 204 null null 26.0223ms
+2024-10-14 11:29:59.871 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/admin/login - application/json 69
+2024-10-14 11:29:59.880 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:30:00.000 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-14 11:30:00.037 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Controllers.Admin.AdminLoginController (RestApiServer).
+2024-10-14 11:30:00.171 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer) in 123.4486ms
+2024-10-14 11:30:00.178 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-14 11:30:00.236 +02:00 [INF] POST 500 /v1/admin/login "00:00:00.2893656"ms  Something went wrong User id not found in claims , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-14 11:30:00.246 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/admin/login - 500 null application/json; charset=utf-8 375.2353ms
+2024-10-14 11:30:13.882 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - null null
+2024-10-14 11:30:13.885 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:30:13.887 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - 204 null null 6.217ms
+2024-10-14 11:30:13.891 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/admin/login - application/json 69
+2024-10-14 11:30:13.896 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:30:13.902 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-14 11:30:13.904 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Controllers.Admin.AdminLoginController (RestApiServer).
+2024-10-14 11:30:13.954 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer) in 41.2771ms
+2024-10-14 11:30:13.958 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-14 11:30:14.003 +02:00 [INF] POST 500 /v1/admin/login "00:00:00.0800945"ms  Something went wrong User id not found in claims , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-14 11:30:14.007 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/admin/login - 500 null application/json; charset=utf-8 116.7156ms
+2024-10-14 11:31:02.648 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - null null
+2024-10-14 11:31:02.662 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:31:02.664 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - 204 null null 15.1999ms
+2024-10-14 11:31:02.665 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/admin/login - application/json 69
+2024-10-14 11:31:02.669 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:31:02.673 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-14 11:31:02.676 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Controllers.Admin.AdminLoginController (RestApiServer).
+2024-10-14 11:31:07.081 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer) in 4400.9461ms
+2024-10-14 11:31:07.087 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-14 11:31:13.226 +02:00 [INF] POST 500 /v1/admin/login "00:00:09.7572903"ms  Something went wrong User id not found in claims , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-14 11:31:13.260 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/admin/login - 500 null application/json; charset=utf-8 10594.2695ms
+2024-10-14 11:32:28.757 +02:00 [INF] Starting up... Please be patient.
+2024-10-14 11:32:35.389 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-14 11:32:35.393 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-14 11:32:35.395 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-14 11:32:35.396 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-14 11:32:35.398 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-14 11:32:35.399 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-14 11:32:35.400 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-14 11:32:35.401 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-14 11:32:35.405 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-14 11:32:35.407 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-14 11:32:35.408 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-14 11:32:35.409 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-14 11:32:35.411 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-14 11:32:35.412 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-14 11:32:35.413 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-14 11:32:35.415 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-14 11:32:35.416 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-14 11:32:35.421 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-14 11:32:35.422 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-14 11:32:35.562 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-14 11:32:35.740 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-14 11:32:35.750 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-14 11:32:35.754 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 11:32:35.756 +02:00 [INF] Hosting environment: Development
+2024-10-14 11:32:35.757 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-14 11:32:43.449 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - null null
+2024-10-14 11:32:43.465 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:32:43.472 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - 204 null null 26.5307ms
+2024-10-14 11:32:43.488 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/admin/login - application/json 69
+2024-10-14 11:32:43.498 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:32:43.609 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-14 11:32:43.639 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Controllers.Admin.AdminLoginController (RestApiServer).
+2024-10-14 11:32:44.134 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer) in 487.0109ms
+2024-10-14 11:32:44.138 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-14 11:32:44.466 +02:00 [INF] POST 400 /v1/admin/login "00:00:00.7789150"ms  Access denied. User is not an administrator., body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-14 11:32:44.476 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/admin/login - 400 null application/json; charset=utf-8 988.2188ms
+2024-10-14 11:33:38.636 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - null null
+2024-10-14 11:33:38.642 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:33:38.645 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/admin/login - 204 null null 9.4481ms
+2024-10-14 11:33:38.670 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/admin/login - application/json 69
+2024-10-14 11:33:38.682 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:33:38.686 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-14 11:33:38.687 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Controllers.Admin.AdminLoginController (RestApiServer).
+2024-10-14 11:33:39.171 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-14 11:33:39.228 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer) in 536.9087ms
+2024-10-14 11:33:39.231 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-14 11:33:39.392 +02:00 [INF] POST 200 /v1/admin/login "00:00:00.5483156"ms  , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-14 11:33:39.395 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/admin/login - 200 null application/json; charset=utf-8 725.2226ms
+2024-10-14 11:33:39.476 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-14 11:33:39.492 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:33:39.495 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 18.6634ms
+2024-10-14 11:33:39.500 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-14 11:33:39.522 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:33:39.660 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 404 null application/json; charset=utf-8 159.4678ms
+2024-10-14 11:33:39.667 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5051/v1/adminportal/appstate, Response status code: 404
+2024-10-14 11:33:56.167 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-14 11:33:56.190 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:33:56.199 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 31.5867ms
+2024-10-14 11:33:56.204 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-14 11:33:56.217 +02:00 [INF] CORS policy execution successful.
+2024-10-14 11:33:56.249 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 404 null application/json; charset=utf-8 44.9908ms
+2024-10-14 11:33:56.253 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5051/v1/adminportal/appstate, Response status code: 404
+2024-10-14 11:40:48.837 +02:00 [INF] Starting up... Please be patient.
+2024-10-14 11:40:53.939 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-14 11:40:53.943 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-14 11:40:53.945 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-14 11:40:53.946 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-14 11:40:53.947 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-14 11:40:53.949 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-14 11:40:53.950 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-14 11:40:53.951 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-14 11:40:53.953 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-14 11:40:53.954 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-14 11:40:53.959 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-14 11:40:53.960 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-14 11:40:53.961 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-14 11:40:53.963 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-14 11:40:53.964 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-14 11:40:53.966 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-14 11:40:53.967 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-14 11:40:53.968 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-14 11:40:53.969 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-14 11:40:54.148 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-14 11:40:54.377 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-14 11:40:54.414 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-14 11:40:54.419 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 11:40:54.420 +02:00 [INF] Hosting environment: Development
+2024-10-14 11:40:54.421 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer

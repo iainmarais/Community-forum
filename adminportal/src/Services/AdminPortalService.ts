@@ -7,7 +7,7 @@ import AxiosClient from "@/http/AxiosClient";
 
 const adminLogin = async (request: AdminLoginRequest) : Promise<ApiSuccessResponse<AdminUserLoginResponse>> => {
     //Login to the admin portal
-    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/admin/login`, request);
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/login`, request);
 }
 
 const getAdminPortalAppState = async (): Promise<ApiSuccessResponse<AdminPortalAppState>> => {

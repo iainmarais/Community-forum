@@ -5,6 +5,7 @@ using RestApiServer.Db.Users;
 using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.AdminLogin;
 using RestApiServer.Dto.App;
+using RestApiServer.Enums;
 using RestApiServer.Utils;
 
 namespace RestApiServer.Services.Admin
@@ -19,28 +20,39 @@ namespace RestApiServer.Services.Admin
             if(!string.IsNullOrEmpty(req.UserIdentifier))
             {
                 foundUser = await FindUserAsync(db, req.UserIdentifier);
-
                 //User not found or does not exit at this point.
                 if (foundUser== null)
                 {
                     throw ClientInducedException.MessageOnly("User not found or does not exist.");
                 }
-                //Handle the user context now.
-                switch(req.UserContext)
+
+                var foundUserRole = await db.Roles.SingleOrDefaultAsync(r => r.RoleId == foundUser!.RoleId);
+                if(foundUserRole == null || foundUserRole!.RoleType != RoleType.Admin)
                 {
-                    case "forum":
-                    case "admin":
-                        return await LoginSuccessResponse(db, foundUser.UserId, foundUser.RoleId, req.UserContext);
-                    case "chat":
-                        throw ClientInducedException.MessageOnly("Chat context not yet implemented.");
-                    default:
-                        throw ClientInducedException.MessageOnly("Invalid user context.");
-                }
+                    throw ClientInducedException.MessageOnly("Access denied. User is not an administrator.");
+                }                
+                //Handle the user context now.
+                ValidateUserContext(req.UserContext);
+                return await LoginSuccessResponse(db, foundUser.UserId, foundUser.RoleId, req.UserContext);
             }
             //Invalid username or email address.
             else
             {
                 throw ClientInducedException.MessageOnly("Please check your login credentials.")   ;
+            }
+        }
+
+        private static void ValidateUserContext(string userContext)
+        {
+            switch(userContext)
+            {
+                case "admin":
+                    return;
+                case "chat":
+                case "forum":
+                    throw ClientInducedException.MessageOnly("Provided user context not valid in this use case.");
+                default:
+                    throw ClientInducedException.MessageOnly("Invalid user context.");
             }
         }
 
@@ -76,8 +88,7 @@ namespace RestApiServer.Services.Admin
             }
 
             var permissions = await (from up in db.UserPermissions
-                                    join sp in db.SystemPermissions
-                                    on up.SystemPermissionId equals sp.SystemPermissionId
+                                    join sp in db.SystemPermissions on up.SystemPermissionId equals sp.SystemPermissionId
                                     where up.UserId == userId
                                     select sp.SystemPermissionType)
                                     .Distinct().ToListAsync();

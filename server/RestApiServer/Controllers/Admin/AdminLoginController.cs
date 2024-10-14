@@ -9,15 +9,13 @@ using RestApiServer.Utils;
 namespace RestApiServer.Controllers.Admin
 {
     [ApiController]
-    [Route("v1/admin")]
+    [Route("v1/adminportal")]
     public class AdminLoginController : ControllerBase
     {
         [HttpPost("login")]
-        //Only administrators should have login access to this endpoint.
-        [Authorize(Roles = "admin")]
         public async Task<ApiSuccessResponse<AdminUserLoginResponse>> AdminLogin(AdminUserLoginRequest req)
         {
-            var user = AuthUtils.GetAdminUserContext(User);
+            //Removed user check since all user validation is being handled by the service code.
             var res = await AdminLoginService.AdminLoginAsync(req);
             return ApiSuccessResponses.WithData("User login successful", res);
         }
