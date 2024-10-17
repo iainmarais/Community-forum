@@ -1,6 +1,7 @@
-import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
+import type { ApiSuccessResponse, PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
 import type { AdminLoginRequest, AdminUserLoginResponse } from "@/Dto/AdminPortal/AdminLoginRequest";
 import type { AdminPortalAppState } from "@/Dto/AdminPortal/AdminPortalAppState";
+import type { UserBasicInfo, UserSummary } from "@/Dto/AdminPortal/UserInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
 
@@ -16,8 +17,14 @@ const getAdminPortalAppState = async (): Promise<ApiSuccessResponse<AdminPortalA
     return res;
 }
 
+const getUserInfo = async (): Promise<ApiSuccessResponse<PaginatedData<UserBasicInfo[],UserSummary>>> => {
+    var res = await AxiosClient.Get<PaginatedData<UserBasicInfo[], UserSummary>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users`);
+    return res;
+}
+
 
 export default {
     getAdminPortalAppState,
-    adminLogin
+    adminLogin,
+    getUserInfo
 }

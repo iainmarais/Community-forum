@@ -20,3 +20,9 @@ export type UserBasicInfo = {
     user: UserEntry,
     userFullName: string
 }
+
+export type UserSummary = {
+    totalUsers: number, 
+    mostActiveUsers: number,
+    newUsers: number
+}

@@ -2,6 +2,15 @@
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
+import { useUserManagementStore } from '@/stores/UserManagementStore';
+import { onMounted } from 'vue';
+
+const UserManagementStore = useUserManagementStore();
+
+onMounted(() => {
+    
+})
+
 </script>
 
 <template>
