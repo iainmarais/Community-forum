@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
 import { Last_Route } from "@/LocalStorage/keys";
-import NProgress from "NProgress";
+import nprogress from "nprogress";
 
 
 export const NotFoundRoute = "notfound";
@@ -8,6 +8,8 @@ export const HomeRoute = "home";
 export const LoginRoute = "login";
 export const LogoffRoute = "logoff";
 export const ContentManagementRoute = "contentmgmt";
+export const UserManagementRoute = "usermgmt";
+export const PermissionsManagement = "permissionsmgmt";
 export const MainRoute = "";
 
 const router = createRouter({
@@ -34,6 +36,16 @@ const router = createRouter({
                     name: LogoffRoute,
                     component: () => import("@/components/Views/LogoffView.vue")
                 },
+                {
+                    path: "/usermgmt",
+                    name: UserManagementRoute,
+                    component: () => import("@/pages/PageUnderconstruction.vue")
+                },
+                {
+                    path: "/permissionsmgmt",
+                    name: PermissionsManagement,
+                    component: () => import("@/pages/PageUnderconstruction.vue")
+                }
             ]
         },
         {
@@ -51,7 +63,7 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from) =>{
-    NProgress.start();
+    nprogress.start();
     //Todo: correct this once the name has been created.
     if(to.name !== LoginRoute) {
         const storeRoute = {
@@ -66,7 +78,7 @@ router.beforeEach(async (to, from) =>{
 });
 
 router.afterEach(async (to, from) => {
-    NProgress.done();
+    nprogress.done();
 });
 
 router.onError((error) => {

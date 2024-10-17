@@ -28,10 +28,10 @@ const openMenu = () => {
 watch(() => navMenu.value, (newValue) => {
     const items: NavbarItem[] = [];
     for(const item of newValue!.items) {
-        if(appContextStore.loggedInUser && item.id=="login") {
+        if(appContextStore.currentLoggedInUser && item.id=="login") {
                 continue; 
             }
-        if(appContextStore.loggedInUser==undefined && item.id=="logoff") {
+        if(appContextStore.currentLoggedInUser==undefined && item.id=="logoff") {
                 continue;
             }
             items.push({...item});

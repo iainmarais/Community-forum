@@ -1,19 +1,20 @@
 import type { LoggedInUserInfo } from "../LoggedInUserInfo"
 
 export type AdminPortalAppState = {
-    loggedInUser: LoggedInUserInfo | null,
+    currentLoggedInUser: LoggedInUserInfo | null,
     adminPortalStats: AdminPortalStats
 }
 
 export type AdminPortalStats = {
-    TotalCategories: number;
-    TotalUsers: number;
-    TotalThreads: number;
-    TotalTopics: number;
-    TotalPosts: number;
-    TotalGalleryItems: number;
-    TotalImages: number;
-    TotalVideos: number;
-    TotalFiles: number;
-    TotalAudioFiles: number;
+    totalCategories: number;
+    totalBoards: number;
+    totalUsers: number;
+    totalThreads: number;
+    totalTopics: number;
+    totalPosts: number;
+    totalGalleryItems: number;
+    totalImages: number;
+    totalVideos: number;
+    totalFiles: number;
+    totalAudioFiles: number;
 }

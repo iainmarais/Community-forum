@@ -9,7 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "font-awesome": "^4.7.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
     "pinia": "^2.2.4",
     "router": "^2.0.0",
     "vue": "^3.5.10",
@@ -17,6 +18,7 @@
     "vuetify": "^3.7.2"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "@mdi/font": "^7.4.47",
     "@types/bootstrap": "^5.2.10",
     "@types/jquery": "^3.5.31",
@@ -24,8 +26,8 @@
     "@vitejs/plugin-vue": "^5.1.4",
     "@vue/tsconfig": "^0.5.1",
     "axios": "^1.7.7",
-    "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "font-awesome": "^4.7.0",
     "fontawesome-free": "^1.0.4",
     "jquery": "^3.7.1",
     "nprogress": "^0.2.0",
@@ -33,7 +35,6 @@
     "typescript": "^5.5.3",
     "vite": "^5.4.8",
     "vue-toastification": "^2.0.0-rc.5",
-    "vue-tsc": "^2.1.6",
-    "vue3-toastify": "^0.2.3"
+    "vue-tsc": "^2.1.6"
   }
 }

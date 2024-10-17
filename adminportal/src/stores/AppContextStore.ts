@@ -1,12 +1,10 @@
 import { defineStore } from "pinia";
 import AxiosClient from "@/http/AxiosClient";
-import router, { LoginRoute, HomeRoute, ContentManagementRoute, LogoffRoute } from "@/router";
+import router, { LoginRoute, HomeRoute, ContentManagementRoute, LogoffRoute, UserManagementRoute, PermissionsManagement } from "@/router";
 import type { RouteParams, RouteQueryAndHash } from "vue-router";
-
 import ErrorHandler from "@/Handlers/ErrorHandler";
-
 import { useToast } from "vue-toastification";
-import NProgress from "NProgress";
+import nprogress from "nprogress";
 import { Last_Route } from "@/LocalStorage/keys";
 import type { PermissionType } from "@/Dto/PermissionInfo";
 import type { LoggedInUserInfo } from "@/Dto/LoggedInUserInfo";
@@ -23,7 +21,7 @@ const NavigationBar: NavbarItem[] = [
         id: "compactMenu",
         type: "menu",
         label: "Menu",
-        iconClass: "fas fa-bars",
+        iconClass: "fa-solid  fa-bars",
         items: [
             {
                 id: "home",
@@ -36,7 +34,7 @@ const NavigationBar: NavbarItem[] = [
                 id: "login",
                 type: "item",
                 label: "Log in",
-                iconClass: "fas fa-sign-in-alt",
+                iconClass: "fa-solid fa-right-to-bracket",
                 routename: LoginRoute
             },
             {
@@ -47,10 +45,24 @@ const NavigationBar: NavbarItem[] = [
                 routename: ContentManagementRoute
             },
             {
+                id: "usermgmt",
+                type: "item",
+                label: "User management",
+                iconClass: "fa fa-user",
+                routename: UserManagementRoute
+            },
+            {
+                id: "permissionsmgmt",
+                type: "item",
+                label: "Permissions management",
+                iconClass: "fa fa-key",
+                routename: PermissionsManagement
+            },   
+            {
                 id: "logoff",
                 type: "item",
                 label: "Log off",
-                iconClass: "fas fa-sign-out-alt",
+                iconClass: "fa-solid fa-right-from-bracket",
                 routename: LogoffRoute
             },
         ]
@@ -66,7 +78,7 @@ const NavigationBar: NavbarItem[] = [
         id: "login",
         type: "item",
         label: "Log in",
-        iconClass: "fas fa-sign-in-alt",
+        iconClass: "fa-solid  fa-right-to-bracket",
         routename: LoginRoute
     },
     {
@@ -77,15 +89,29 @@ const NavigationBar: NavbarItem[] = [
         routename: ContentManagementRoute
     }, 
     {
+        id: "usermgmt",
+        type: "item",
+        label: "User management",
+        iconClass: "fa fa-user",
+        routename: UserManagementRoute
+    },    
+    {
+        id: "permissionsmgmt",
+        type: "item",
+        label: "Permissions management",
+        iconClass: "fa fa-key",
+        routename: PermissionsManagement
+    },     
+    {
         id: "logoff",
         type: "item",
         label: "Log off",
-        iconClass: "fas fa-sign-out-alt",
+        iconClass: "fa-solid fa-right-from-bracket",
         routename: LogoffRoute
     },       
 ];
 
-type NavbarLinkItemId = "home" | "login" | "logoff" | "contentmgmt";
+type NavbarLinkItemId = "home" | "login" | "logoff" | "usermgmt" | "permissionsmgmt" | "contentmgmt";
 
 export type NavbarLinkItem = {
     type: "item",
@@ -124,7 +150,7 @@ export type NavbarItem = NavbarMenuItem | NavbarLinkItem | NavbarSubmenuItem;
 type AppContextState = {
     clientName: string;
     appLoading: boolean;
-    loggedInUser?: LoggedInUserInfo;
+    currentLoggedInUser?: LoggedInUserInfo;
     appStats: AdminPortalStats;
     navbar: NavbarItem[];
     previousRoute?: {
@@ -138,7 +164,7 @@ type AppContextState = {
 const defaultState: AppContextState = {
     clientName: "",
     appLoading: true,
-    loggedInUser: {} as LoggedInUserInfo,
+    currentLoggedInUser: {} as LoggedInUserInfo,
     appStats: {} as AdminPortalStats,
     navbar: [],
 }
@@ -148,8 +174,8 @@ export const useAppContextStore = defineStore({
     state: () => (defaultState),
     getters: {
         loggedInUserFullName(): string {
-            if(this.loggedInUser){
-                return this.loggedInUser.userFirstname + " " + this.loggedInUser.userLastname;
+            if(this.currentLoggedInUser){
+                return this.currentLoggedInUser.userFirstname + " " + this.currentLoggedInUser.userLastname;
             }
             else {
                 return "Anonymous";
@@ -162,7 +188,7 @@ export const useAppContextStore = defineStore({
         },
 
         getHasPermission(permissions: PermissionType[]) {
-            if(!this.loggedInUser) {
+            if(!this.currentLoggedInUser) {
                 return false;
             }
             if(permissions.length === 0) {
@@ -176,8 +202,8 @@ export const useAppContextStore = defineStore({
             AdminPortalService.getAdminPortalAppState().then(async response => {
                 this.appLoading = false;
                 toast.success("App state updated from server");
-                if(!response.data.loggedInUser) {
-                    this.loggedInUser = defaultState.loggedInUser;
+                if(!response.data.currentLoggedInUser) {
+                    this.currentLoggedInUser = defaultState.currentLoggedInUser;
                 }
                 if(!response.data.adminPortalStats) {
                     this.appStats = defaultState.appStats;
@@ -259,7 +285,7 @@ export const useAppContextStore = defineStore({
             this.navbar = contextualNavbar;
         },
         logoff(reason?: string) {
-            this.loggedInUser = undefined;
+            this.currentLoggedInUser = undefined;
 
             AxiosClient.ForceLogoff();
             this.previousRoute = undefined;
@@ -269,6 +295,7 @@ export const useAppContextStore = defineStore({
 });
 
 router.beforeEach((to, from) => {
+    nprogress.start();
     document.title = `${documentTitle} - ${to.name as string}`;
     if(from && from.name) {
         useAppContextStore().previousRoute = {

@@ -1,7 +1,5 @@
 {
-    "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["vite.config.ts", "vite-env.d.ts", "env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.ts"],
-  "files": [],
   "compilerOptions": {
         "composite": true,
         "module": "ESNext",
@@ -12,6 +10,7 @@
         "moduleResolution": "Node", 
         "verbatimModuleSyntax": true,
         "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
         "paths": {
             "@/*": ["src/*"]
         },

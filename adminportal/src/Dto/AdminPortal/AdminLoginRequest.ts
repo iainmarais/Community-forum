@@ -8,6 +8,6 @@ export type AdminLoginRequest = {
 };
 
 export type AdminUserLoginResponse = ValidTokenResponse & {
-    adminUserProfile: UserBasicInfo,
     adminUserRefreshToken:  string,
+    adminUserProfile: UserBasicInfo,
 }

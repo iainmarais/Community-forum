@@ -11,7 +11,9 @@ const adminLogin = async (request: AdminLoginRequest) : Promise<ApiSuccessRespon
 
 const getAdminPortalAppState = async (): Promise<ApiSuccessResponse<AdminPortalAppState>> => {
     //Get the admin portal app state from the server
-    return await AxiosClient.Get<AdminPortalAppState>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/appstate`);
+    var res = await AxiosClient.Get<AdminPortalAppState>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/appstate`);
+    console.log(res);
+    return res;
 }
 
 

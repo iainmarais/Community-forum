@@ -28,7 +28,7 @@ watch(() => router, _ => {
     mainPageStore.setBreadcrumbs([]);
 }, {flush: "pre", immediate: true, deep: true});
 
-watch(() => appContextStore.loggedInUser, (newValue) => {
+watch(() => appContextStore.currentLoggedInUser, (newValue) => {
     //If the user is logged in 
     if (newValue) {
         router.push(MainRoute);

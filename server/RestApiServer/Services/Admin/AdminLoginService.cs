@@ -169,8 +169,8 @@ namespace RestApiServer.Services.Admin
             {
                 AccessToken = userSessionToken,
                 AccessTokenExpiration = userSessionTokenExpiration,
-                UserRefreshToken = userRefreshToken,
-                UserProfile = userProfile
+                AdminUserRefreshToken = userRefreshToken,
+                AdminUserProfile = userProfile
             };
 
             return res;                       

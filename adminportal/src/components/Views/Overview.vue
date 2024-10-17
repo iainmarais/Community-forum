@@ -1,37 +1,28 @@
 <script lang = "ts" setup>
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useAdminPortalStore } from '@/stores/AdminPortalStore';
-import { useAppContextStore } from '@/stores/AppContextStore';
 import { useToast } from 'vue-toastification';
-import type { AdminPortalStats } from '@/Dto/AdminPortal/AdminPortalAppState';
+import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
+import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
 
 const adminPortalStore = useAdminPortalStore();
-const appContextStore = useAppContextStore();
 const toast = useToast();
-
-const adminPortalStats = ref<AdminPortalStats>();
 
 const refresh = () => {
     adminPortalStore.getAdminPortalAppState();
-    adminPortalStats.value = adminPortalStore.adminPortalAppState.adminPortalStats;
 }
 
 onMounted (() => {
-    if(!appContextStore.appStats) {
-        toast.error("Could not retrieve initial admin portal stats.");
-    }
-    adminPortalStats.value = appContextStore.appStats;
-    //Update this from the admin portal store every 5 seconds
-    const updateInterval = setInterval(() => {
-        adminPortalStore.getAdminPortalAppState();
-        adminPortalStats.value = adminPortalStore.adminPortalAppState.adminPortalStats;
-    }, 5000);
-    
-    onBeforeUnmount(() => {
-        clearInterval(updateInterval);
-    });
+    adminPortalStore.getAdminPortalAppState();
 });
+
+watch(() => adminPortalStore.appStats, (newValue) => {
+    if(!newValue || Object.keys(newValue).length === 0) {
+        toast.error("Could not update the app state.");
+        return;
+    };
+}, { deep: true });
 
 </script>
 
@@ -44,11 +35,17 @@ onMounted (() => {
                 </span>
             </h3>
             <div class="card-toolbar">
-                <button class="btn btn-primary btn-sm" @click.prevent="refresh()">Refresh</button>
+                <ButtonWithLoadingIndicator :label="'Refresh'" :icon="'fas fa-sync'" :loading="adminPortalStore.loading_getAdminPortalAppState" class="btn btn-primary btn-sm" @click.prevent="refresh()">
+                    Refresh
+                </ButtonWithLoadingIndicator>
             </div>
         </div>
         <div class="card-body">
-            <div v-if="adminPortalStats !== undefined">
+            <div v-if="adminPortalStore.loading_getAdminPortalAppState" class="text-center">
+            <LoadingIndicator :loading="adminPortalStore.loading_getAdminPortalAppState" />
+                Loading...
+            </div>
+            <div v-else>
                 <table class = "table table-borderless table-sm">
                     <thead>
                         <tr>
@@ -60,13 +57,18 @@ onMounted (() => {
                             <th>Total users</th>
                         </tr>
                     </thead>
-                    <tbody v-for="stat in adminPortalStats">
+                    <tbody>
                         <tr>
-                            <td>{{ stat }}</td>
+                            <td>{{ adminPortalStore.appStats.totalCategories }}</td>
+                            <td>{{ adminPortalStore.appStats.totalBoards }}</td>
+                            <td>{{ adminPortalStore.appStats.totalThreads }}</td>
+                            <td>{{ adminPortalStore.appStats.totalPosts }}</td>
+                            <td>{{ adminPortalStore.appStats.totalGalleryItems }}</td>
+                            <td>{{ adminPortalStore.appStats.totalUsers }}</td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div>  
         </div>
     </div>
 </template>

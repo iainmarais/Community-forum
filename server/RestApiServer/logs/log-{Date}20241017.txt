@@ -1,0 +1,671 @@
+2024-10-17 08:33:14.147 +02:00 [INF] Starting up... Please be patient.
+2024-10-17 08:33:36.931 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-17 08:33:36.936 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-17 08:33:36.948 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-17 08:33:36.949 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-17 08:33:36.951 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-17 08:33:36.953 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-17 08:33:36.963 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-17 08:33:36.965 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-17 08:33:36.969 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-17 08:33:36.971 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-17 08:33:36.976 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-17 08:33:36.977 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-17 08:33:36.978 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-17 08:33:36.980 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-17 08:33:36.981 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-17 08:33:36.983 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-17 08:33:36.984 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-17 08:33:36.986 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-17 08:33:36.987 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-17 08:33:37.224 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-17 08:33:37.431 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-17 08:33:37.460 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-17 08:33:37.464 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-17 08:33:37.466 +02:00 [INF] Hosting environment: Development
+2024-10-17 08:33:37.468 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-17 08:33:37.664 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 08:33:37.694 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:33:37.710 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 42.4119ms
+2024-10-17 08:33:37.745 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 08:33:37.749 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:33:38.093 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17/10/2024 01:28:33 AM', Current time (UTC): '17/10/2024 06:33:38 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-10-17 08:33:38.152 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17/10/2024 01:28:33 AM', Current time (UTC): '17/10/2024 06:33:38 AM'.
+2024-10-17 08:33:38.167 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2024-10-17 08:33:38.191 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-10-17 08:33:38.292 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.4098930"ms  Unauthorized, body: 
+2024-10-17 08:33:38.303 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 558.5108ms
+2024-10-17 08:33:43.611 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - null null
+2024-10-17 08:33:43.615 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:33:43.617 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - 204 null null 5.4485ms
+2024-10-17 08:33:43.619 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/login - application/json 69
+2024-10-17 08:33:43.630 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:33:43.642 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-17 08:33:43.674 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Controllers.Admin.AdminLoginController (RestApiServer).
+2024-10-17 08:33:44.595 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 08:33:44.666 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer) in 982.8743ms
+2024-10-17 08:33:44.669 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-17 08:33:44.916 +02:00 [INF] POST 200 /v1/adminportal/login "00:00:01.0397030"ms  , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-17 08:33:44.932 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/login - 200 null application/json; charset=utf-8 1312.7336ms
+2024-10-17 08:33:44.964 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 08:33:44.977 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:33:44.979 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 14.9801ms
+2024-10-17 08:33:44.986 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 08:33:44.994 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:33:45.027 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 08:33:45.036 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 08:33:45.177 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 08:33:45.186 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 143.4316ms
+2024-10-17 08:33:45.190 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 08:33:45.354 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1962977"ms  , body: 
+2024-10-17 08:33:45.357 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 370.4076ms
+2024-10-17 08:43:36.174 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 08:43:36.186 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:43:36.188 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 14.197ms
+2024-10-17 08:43:36.200 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 08:43:36.218 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:43:36.223 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 08:43:36.226 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 08:43:36.376 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 08:43:36.381 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 145.5299ms
+2024-10-17 08:43:36.384 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 08:43:36.566 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1690968"ms  , body: 
+2024-10-17 08:43:36.570 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 370.2458ms
+2024-10-17 08:56:51.722 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 08:56:51.730 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:56:51.737 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2024-10-17 08:56:51.739 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-10-17 08:56:51.822 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.0048857"ms  Unauthorized, body: 
+2024-10-17 08:56:51.839 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 116.9243ms
+2024-10-17 08:56:56.577 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 08:56:56.687 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:56:56.689 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2024-10-17 08:56:56.692 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-10-17 08:56:56.743 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.0049047"ms  Unauthorized, body: 
+2024-10-17 08:56:56.760 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 182.3319ms
+2024-10-17 08:56:58.708 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - null null
+2024-10-17 08:56:58.711 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:56:58.712 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - 204 null null 4.0524ms
+2024-10-17 08:56:58.716 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/login - application/json 69
+2024-10-17 08:56:58.727 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:56:58.731 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-17 08:56:58.733 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Controllers.Admin.AdminLoginController (RestApiServer).
+2024-10-17 08:56:58.829 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 08:56:58.833 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer) in 95.5087ms
+2024-10-17 08:56:58.835 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-17 08:56:58.978 +02:00 [INF] POST 200 /v1/adminportal/login "00:00:00.1060715"ms  , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-17 08:56:58.982 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/login - 200 null application/json; charset=utf-8 266.2219ms
+2024-10-17 08:56:59.018 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 08:56:59.024 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:56:59.027 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 9.0962ms
+2024-10-17 08:56:59.034 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 08:56:59.038 +02:00 [INF] CORS policy execution successful.
+2024-10-17 08:56:59.041 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 08:56:59.042 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 08:56:59.069 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 08:56:59.071 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 26.092ms
+2024-10-17 08:56:59.073 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 08:56:59.172 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0353088"ms  , body: 
+2024-10-17 08:56:59.173 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 139.2729ms
+2024-10-17 09:29:56.859 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 09:29:56.902 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:29:56.903 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 44.0709ms
+2024-10-17 09:29:56.909 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 09:29:56.914 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:29:56.916 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 09:29:56.918 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 09:29:56.996 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 09:29:56.999 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 76.9412ms
+2024-10-17 09:29:57.001 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 09:29:57.103 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0874842"ms  , body: 
+2024-10-17 09:29:57.106 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 197.4967ms
+2024-10-17 09:44:29.979 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 09:44:30.048 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:44:30.055 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2024-10-17 09:44:30.062 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-10-17 09:44:30.187 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.0093239"ms  Unauthorized, body: 
+2024-10-17 09:44:30.232 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 252.7281ms
+2024-10-17 09:44:38.416 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - null null
+2024-10-17 09:44:38.531 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:44:38.536 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - 204 null null 120.4588ms
+2024-10-17 09:44:38.785 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/login - application/json 69
+2024-10-17 09:44:38.820 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:44:38.821 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-17 09:44:38.829 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Controllers.Admin.AdminLoginController (RestApiServer).
+2024-10-17 09:44:39.049 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 09:44:39.052 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer) in 219.2127ms
+2024-10-17 09:44:39.058 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-17 09:44:39.417 +02:00 [INF] POST 200 /v1/adminportal/login "00:00:00.2389708"ms  , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-17 09:44:39.437 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/login - 200 null application/json; charset=utf-8 652.0758ms
+2024-10-17 09:44:39.888 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 09:44:40.319 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:44:40.353 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 465.3481ms
+2024-10-17 09:44:40.369 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 09:44:40.378 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:44:40.380 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 09:44:40.382 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 09:44:40.418 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 09:44:40.433 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 46.2009ms
+2024-10-17 09:44:40.465 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 09:44:40.849 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0903576"ms  , body: 
+2024-10-17 09:44:40.851 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 482.5764ms
+2024-10-17 09:44:40.952 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 09:44:41.102 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:44:41.104 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 09:44:41.121 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 09:44:41.281 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 09:44:41.285 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 134.5171ms
+2024-10-17 09:44:41.292 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 09:44:41.514 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1913842"ms  , body: 
+2024-10-17 09:44:41.518 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 565.307ms
+2024-10-17 09:53:52.514 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 09:53:52.518 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:53:52.519 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 4.2781ms
+2024-10-17 09:53:52.528 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 09:53:52.544 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:53:52.546 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 09:53:52.547 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 09:53:52.596 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 09:53:52.598 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 48.6055ms
+2024-10-17 09:53:52.600 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 09:53:52.676 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0578522"ms  , body: 
+2024-10-17 09:53:52.679 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 150.9201ms
+2024-10-17 09:53:53.624 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 09:53:53.627 +02:00 [INF] CORS policy execution successful.
+2024-10-17 09:53:53.629 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 09:53:53.632 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 09:53:53.783 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 09:53:53.785 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 149.1019ms
+2024-10-17 09:53:53.787 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 09:53:53.887 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1624000"ms  , body: 
+2024-10-17 09:53:53.892 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 268.3953ms
+2024-10-17 12:08:57.577 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 12:08:57.594 +02:00 [INF] CORS policy execution successful.
+2024-10-17 12:08:57.595 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 17.5545ms
+2024-10-17 12:08:57.606 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 12:08:57.614 +02:00 [INF] CORS policy execution successful.
+2024-10-17 12:08:57.616 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 12:08:57.618 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 12:08:57.696 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 12:08:57.698 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 72.7018ms
+2024-10-17 12:08:57.708 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 12:08:57.790 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0967295"ms  , body: 
+2024-10-17 12:08:57.792 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 185.4364ms
+2024-10-17 12:09:01.841 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 12:09:01.858 +02:00 [INF] CORS policy execution successful.
+2024-10-17 12:09:01.865 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 12:09:01.866 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 12:09:01.913 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 12:09:01.914 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 41.9007ms
+2024-10-17 12:09:01.916 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 12:09:01.998 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0570740"ms  , body: 
+2024-10-17 12:09:02.000 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 158.8284ms
+2024-10-17 12:53:05.217 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 12:53:06.866 +02:00 [INF] CORS policy execution successful.
+2024-10-17 12:53:06.868 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 1650.5413ms
+2024-10-17 12:53:06.873 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 12:53:06.888 +02:00 [INF] CORS policy execution successful.
+2024-10-17 12:53:06.890 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 12:53:06.898 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 12:53:07.057 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 12:53:07.078 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 174.9191ms
+2024-10-17 12:53:07.085 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 12:53:07.258 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1970678"ms  , body: 
+2024-10-17 12:53:07.264 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 390.5182ms
+2024-10-17 12:53:13.148 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 12:53:13.153 +02:00 [INF] CORS policy execution successful.
+2024-10-17 12:53:13.153 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 5.3824ms
+2024-10-17 12:53:13.156 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 12:53:13.165 +02:00 [INF] CORS policy execution successful.
+2024-10-17 12:53:13.167 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 12:53:13.168 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 12:53:13.231 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 12:53:13.233 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 60.7105ms
+2024-10-17 12:53:13.234 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 12:53:13.359 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0694747"ms  , body: 
+2024-10-17 12:53:13.362 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 205.9045ms
+2024-10-17 13:14:45.112 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:14:45.120 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:14:45.122 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 9.8389ms
+2024-10-17 13:14:45.138 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:14:45.143 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:14:45.147 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:14:45.149 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 13:14:45.204 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 13:14:45.206 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 54.0567ms
+2024-10-17 13:14:45.207 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:14:45.317 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0620482"ms  , body: 
+2024-10-17 13:14:45.318 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 180.5105ms
+2024-10-17 13:14:52.623 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:14:52.635 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:14:52.637 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 13.9788ms
+2024-10-17 13:14:52.646 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:14:52.651 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:14:52.653 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:14:52.656 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 13:14:52.704 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 13:14:52.706 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 43.0708ms
+2024-10-17 13:14:52.707 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:14:52.790 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0599844"ms  , body: 
+2024-10-17 13:14:52.797 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 151.3589ms
+2024-10-17 13:16:30.617 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:16:30.651 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:16:30.652 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 35.3057ms
+2024-10-17 13:16:30.656 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:16:30.660 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:16:30.662 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:16:30.670 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 13:16:30.721 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 13:16:30.723 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 49.8765ms
+2024-10-17 13:16:30.725 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:16:30.836 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0659435"ms  , body: 
+2024-10-17 13:16:30.838 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 181.7852ms
+2024-10-17 13:16:33.494 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:16:33.504 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:16:33.507 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:16:33.511 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 13:16:33.545 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 13:16:33.554 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 33.4734ms
+2024-10-17 13:16:33.556 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:16:33.627 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0513023"ms  , body: 
+2024-10-17 13:16:33.629 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 135.6791ms
+2024-10-17 13:16:40.269 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:16:40.273 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:16:40.274 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 5.2677ms
+2024-10-17 13:16:40.277 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:16:40.287 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:16:40.289 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:16:40.290 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 13:16:40.355 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 13:16:40.361 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 66.9403ms
+2024-10-17 13:16:40.365 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:16:40.523 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0789711"ms  , body: 
+2024-10-17 13:16:40.525 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 248.0654ms
+2024-10-17 13:16:40.568 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:16:40.571 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:16:40.573 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:16:40.576 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 13:16:40.637 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 13:16:40.640 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 33.3579ms
+2024-10-17 13:16:40.642 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:16:40.773 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0709915"ms  , body: 
+2024-10-17 13:16:40.776 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 207.8465ms
+2024-10-17 13:16:46.280 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:16:46.283 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:16:46.285 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 4.5637ms
+2024-10-17 13:16:46.305 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:16:46.315 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:16:46.318 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:16:46.319 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 13:16:46.351 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 13:16:46.354 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 32.3432ms
+2024-10-17 13:16:46.357 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:16:46.470 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0412398"ms  , body: 
+2024-10-17 13:16:46.472 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 167.4566ms
+2024-10-17 13:19:37.265 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:19:37.299 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:19:37.301 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 36.5725ms
+2024-10-17 13:19:37.312 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:19:37.323 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:19:37.325 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:19:37.326 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 13:19:37.383 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 13:19:37.392 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 58.0186ms
+2024-10-17 13:19:37.395 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:19:37.501 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0757419"ms  , body: 
+2024-10-17 13:19:37.503 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 191.1684ms
+2024-10-17 13:19:37.555 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:19:37.557 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:19:37.559 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:19:37.561 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 13:19:37.643 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 13:19:37.650 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 79.6389ms
+2024-10-17 13:19:37.653 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:19:37.789 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0968915"ms  , body: 
+2024-10-17 13:19:37.791 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 236.6096ms
+2024-10-17 13:29:28.961 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:29:28.981 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:29:28.982 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 21.3909ms
+2024-10-17 13:29:28.986 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 13:29:28.988 +02:00 [INF] CORS policy execution successful.
+2024-10-17 13:29:28.990 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:29:28.991 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 13:29:29.037 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 13:29:29.039 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 46.0514ms
+2024-10-17 13:29:29.041 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 13:29:29.164 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0540231"ms  , body: 
+2024-10-17 13:29:29.167 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 180.9561ms
+2024-10-17 14:33:42.296 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 14:33:42.605 +02:00 [INF] CORS policy execution successful.
+2024-10-17 14:33:42.608 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 311.8691ms
+2024-10-17 14:33:42.813 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 14:33:43.436 +02:00 [INF] CORS policy execution successful.
+2024-10-17 14:33:43.439 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 14:33:43.446 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 14:33:43.581 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 14:33:43.584 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 105.1604ms
+2024-10-17 14:33:43.586 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 14:33:43.761 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1508466"ms  , body: 
+2024-10-17 14:33:43.764 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 950.3949ms
+2024-10-17 14:45:35.648 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 14:45:35.651 +02:00 [INF] CORS policy execution successful.
+2024-10-17 14:45:35.656 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2024-10-17 14:45:35.658 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-10-17 14:45:35.760 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.0071247"ms  Unauthorized, body: 
+2024-10-17 14:45:35.771 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 122.686ms
+2024-10-17 14:45:57.379 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - null null
+2024-10-17 14:45:57.384 +02:00 [INF] CORS policy execution successful.
+2024-10-17 14:45:57.388 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - 204 null null 8.6685ms
+2024-10-17 14:45:57.391 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/login - application/json 69
+2024-10-17 14:45:57.398 +02:00 [INF] CORS policy execution successful.
+2024-10-17 14:45:57.400 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-17 14:45:57.401 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Controllers.Admin.AdminLoginController (RestApiServer).
+2024-10-17 14:45:57.525 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 14:45:57.528 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer) in 120.7594ms
+2024-10-17 14:45:57.530 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-17 14:45:57.640 +02:00 [INF] POST 200 /v1/adminportal/login "00:00:00.1309958"ms  , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-17 14:45:57.643 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/login - 200 null application/json; charset=utf-8 252.3645ms
+2024-10-17 14:45:57.843 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 14:45:57.847 +02:00 [INF] CORS policy execution successful.
+2024-10-17 14:45:57.851 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 7.6292ms
+2024-10-17 14:45:57.857 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 14:45:57.875 +02:00 [INF] CORS policy execution successful.
+2024-10-17 14:45:57.877 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 14:45:57.879 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 14:45:57.925 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 14:45:57.927 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 42.7766ms
+2024-10-17 14:45:57.929 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 14:45:58.022 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0548380"ms  , body: 
+2024-10-17 14:45:58.025 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 167.8097ms
+2024-10-17 14:45:58.073 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 14:45:58.076 +02:00 [INF] CORS policy execution successful.
+2024-10-17 14:45:58.082 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 14:45:58.092 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 14:45:58.206 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 14:45:58.223 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 57.8453ms
+2024-10-17 14:45:58.230 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 14:45:58.339 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1522594"ms  , body: 
+2024-10-17 14:45:58.341 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 268.1057ms
+2024-10-17 14:51:37.133 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 14:51:37.148 +02:00 [INF] CORS policy execution successful.
+2024-10-17 14:51:37.149 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 16.1743ms
+2024-10-17 14:51:37.158 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 14:51:37.163 +02:00 [INF] CORS policy execution successful.
+2024-10-17 14:51:37.164 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 14:51:37.166 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 14:51:37.203 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 14:51:37.205 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 37.0517ms
+2024-10-17 14:51:37.210 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 14:51:37.339 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0491286"ms  , body: 
+2024-10-17 14:51:37.344 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 186.3022ms
+2024-10-17 15:03:57.238 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:03:57.248 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:03:57.250 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 12.493ms
+2024-10-17 15:03:57.253 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:03:57.270 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:03:57.274 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:03:57.275 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:03:57.313 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:03:57.318 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 38.5097ms
+2024-10-17 15:03:57.321 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:03:57.393 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0505116"ms  , body: 
+2024-10-17 15:03:57.395 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 141.0695ms
+2024-10-17 15:04:19.641 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:04:19.665 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:04:19.667 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 25.8486ms
+2024-10-17 15:04:19.671 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:04:19.685 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:04:19.687 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:04:19.689 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:04:19.716 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:04:19.718 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 23.2271ms
+2024-10-17 15:04:19.720 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:04:19.802 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0349649"ms  , body: 
+2024-10-17 15:04:19.804 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 132.5199ms
+2024-10-17 15:04:20.935 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:04:20.946 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:04:20.951 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:04:20.954 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:04:20.989 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:04:20.990 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 33.1957ms
+2024-10-17 15:04:20.996 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:04:21.065 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0512824"ms  , body: 
+2024-10-17 15:04:21.067 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 131.7879ms
+2024-10-17 15:08:36.783 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:08:36.892 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:08:36.893 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 109.534ms
+2024-10-17 15:08:36.897 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:08:36.912 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:08:36.913 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:08:36.915 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:08:36.946 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:08:36.948 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 31.1972ms
+2024-10-17 15:08:36.950 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:08:37.041 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0393319"ms  , body: 
+2024-10-17 15:08:37.044 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 146.6416ms
+2024-10-17 15:08:39.125 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:08:39.129 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:08:39.133 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:08:39.137 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:08:39.177 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:08:39.179 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 37.4138ms
+2024-10-17 15:08:39.181 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:08:39.258 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0499579"ms  , body: 
+2024-10-17 15:08:39.260 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 134.7791ms
+2024-10-17 15:08:47.880 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:08:47.888 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:08:47.890 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 9.5106ms
+2024-10-17 15:08:47.894 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:08:47.906 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:08:47.907 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:08:47.908 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:08:47.940 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:08:47.942 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 31.5846ms
+2024-10-17 15:08:47.944 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:08:48.037 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0393758"ms  , body: 
+2024-10-17 15:08:48.039 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 145.107ms
+2024-10-17 15:08:49.618 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:08:49.621 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:08:49.626 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:08:49.630 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:08:49.694 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:08:49.695 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 59.7878ms
+2024-10-17 15:08:49.697 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:08:49.792 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0733483"ms  , body: 
+2024-10-17 15:08:49.794 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 175.7597ms
+2024-10-17 15:09:12.024 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:09:12.045 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:09:12.047 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 22.1012ms
+2024-10-17 15:09:12.049 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:09:12.058 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:09:12.060 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:09:12.064 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:09:12.085 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:09:12.086 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 19.7054ms
+2024-10-17 15:09:12.089 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:09:12.156 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0300604"ms  , body: 
+2024-10-17 15:09:12.157 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 107.9451ms
+2024-10-17 15:24:15.968 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:24:28.456 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:24:31.831 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:24:51.169 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:24:49.211 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:24:39.360 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:24:54.298 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:24:54.299 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 38330.9769ms
+2024-10-17 15:24:54.303 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:24:57.018 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 28562.0933ms
+2024-10-17 15:24:57.514 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 6344.076ms
+2024-10-17 15:24:58.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:24:54.307 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:24:57.016 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:25:04.640 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 25280.2232ms
+2024-10-17 15:25:04.636 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:25:04.638 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 15427.1239ms
+2024-10-17 15:24:56.262 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:25:04.681 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:25:04.724 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 8461.9802ms
+2024-10-17 15:25:04.782 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 499 null null 6458.621ms
+2024-10-17 15:25:07.821 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - null null
+2024-10-17 15:25:07.824 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:25:07.826 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - 204 null null 4.7352ms
+2024-10-17 15:25:07.829 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/login - application/json 69
+2024-10-17 15:25:07.835 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:25:07.837 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-17 15:25:07.845 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Controllers.Admin.AdminLoginController (RestApiServer).
+2024-10-17 15:25:07.934 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:25:07.937 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer) in 86.3192ms
+2024-10-17 15:25:07.939 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer)'
+2024-10-17 15:25:08.035 +02:00 [INF] POST 200 /v1/adminportal/login "00:00:00.1105653"ms  , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-17 15:25:08.037 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/login - 200 null application/json; charset=utf-8 209.1893ms
+2024-10-17 15:26:03.585 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:26:03.598 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:26:03.599 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 13.8738ms
+2024-10-17 15:26:03.602 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:26:03.614 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:26:03.616 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:26:03.618 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:26:03.647 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:26:03.649 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 28.9875ms
+2024-10-17 15:26:03.652 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:26:03.738 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0384437"ms  , body: 
+2024-10-17 15:26:03.740 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 138.3033ms
+2024-10-17 15:26:07.623 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:26:07.631 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:26:07.635 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:26:07.647 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:26:07.682 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:26:07.684 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 32.451ms
+2024-10-17 15:26:07.687 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:26:07.771 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0542959"ms  , body: 
+2024-10-17 15:26:07.772 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 149.9766ms
+2024-10-17 15:26:09.705 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:26:09.720 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:26:09.729 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 23.946ms
+2024-10-17 15:26:09.732 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:26:09.744 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:26:09.746 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:26:09.748 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:26:09.782 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:26:09.783 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 32.7812ms
+2024-10-17 15:26:09.786 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:26:09.863 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0413836"ms  , body: 
+2024-10-17 15:26:09.865 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 132.5085ms
+2024-10-17 15:26:40.273 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:26:40.369 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:26:40.373 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 99.7341ms
+2024-10-17 15:26:40.388 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:26:40.390 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:26:40.395 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:26:40.405 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:26:40.447 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:26:40.471 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 50.645ms
+2024-10-17 15:26:40.478 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:26:40.654 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0884265"ms  , body: 
+2024-10-17 15:26:40.656 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 267.6342ms
+2024-10-17 15:26:40.707 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:26:40.712 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:26:40.719 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:26:40.722 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:26:40.802 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:26:40.804 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 45.2452ms
+2024-10-17 15:26:40.807 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:26:40.914 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0912617"ms  , body: 
+2024-10-17 15:26:40.919 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 211.8622ms
+2024-10-17 15:27:50.969 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:27:51.989 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:27:51.991 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 1021.8685ms
+2024-10-17 15:27:52.007 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:27:52.040 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:27:52.042 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:27:52.050 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:27:52.122 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:27:52.124 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 68.1905ms
+2024-10-17 15:27:52.130 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:27:52.286 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0908766"ms  , body: 
+2024-10-17 15:27:52.289 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 281.7455ms
+2024-10-17 15:27:52.346 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:27:52.392 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:27:52.401 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:27:52.406 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:27:52.499 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:27:52.503 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 83.7114ms
+2024-10-17 15:27:52.507 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:27:52.720 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1155423"ms  , body: 
+2024-10-17 15:27:52.724 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 377.7239ms
+2024-10-17 15:28:46.054 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:28:46.054 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:28:46.085 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:28:46.089 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:28:46.091 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 37.3813ms
+2024-10-17 15:28:46.093 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 38.9847ms
+2024-10-17 15:28:46.218 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:28:46.222 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:28:46.226 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:28:48.692 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:28:48.909 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:28:48.914 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 87.6964ms
+2024-10-17 15:28:48.917 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:28:49.047 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:02.6947102"ms  , body: 
+2024-10-17 15:28:49.050 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:28:49.058 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:28:49.054 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 2835.0758ms
+2024-10-17 15:28:49.064 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:28:49.074 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:28:49.139 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:28:49.141 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 55.1323ms
+2024-10-17 15:28:49.147 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:28:49.331 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0897791"ms  , body: 
+2024-10-17 15:28:49.334 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 284.0202ms
+2024-10-17 15:28:49.358 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:28:49.368 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:28:49.370 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:28:49.375 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:28:49.417 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:28:49.419 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 30.0938ms
+2024-10-17 15:28:49.422 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:28:49.517 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0546151"ms  , body: 
+2024-10-17 15:28:49.519 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 161.3272ms
+2024-10-17 15:29:10.875 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:29:11.026 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:29:11.028 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 152.5765ms
+2024-10-17 15:29:11.031 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:29:11.054 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:29:11.061 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:29:11.065 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:29:11.097 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:29:11.099 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 28.7081ms
+2024-10-17 15:29:11.102 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:29:11.199 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0431142"ms  , body: 
+2024-10-17 15:29:11.201 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 170.3167ms
+2024-10-17 15:29:11.261 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:29:11.265 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:29:11.267 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:29:11.269 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:29:11.335 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:29:11.339 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 58.3203ms
+2024-10-17 15:29:11.344 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:29:11.479 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0802496"ms  , body: 
+2024-10-17 15:29:11.481 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 220.054ms
+2024-10-17 15:29:27.394 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:29:27.409 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:29:27.410 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 16.153ms
+2024-10-17 15:29:27.416 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-17 15:29:27.426 +02:00 [INF] CORS policy execution successful.
+2024-10-17 15:29:27.427 +02:00 [INF] Executing endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:29:27.429 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Controllers.Admin.AdminPortalController (RestApiServer).
+2024-10-17 15:29:27.464 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Core.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-17 15:29:27.465 +02:00 [INF] Executed action RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer) in 25.3884ms
+2024-10-17 15:29:27.474 +02:00 [INF] Executed endpoint 'RestApiServer.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer)'
+2024-10-17 15:29:27.559 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0488631"ms  , body: 
+2024-10-17 15:29:27.561 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 144.6626ms

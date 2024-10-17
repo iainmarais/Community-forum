@@ -157,7 +157,7 @@ const postLoginRoute = () => {
                                         <input type="password" class="form-control" v-model="password"/>
                                     </div>
                                     <ButtonWithLoadingIndicator class="btn btn-primary" 
-                                    :icon="'fas fa-sign-in-alt'" :label="'Log in'"
+                                    :icon="'fa-solid fa-right-to-bracket'" :label="'Log in'"
                                     :loading="loginInProgress" @click.prevent="login">
                                         Log in
                                     </ButtonWithLoadingIndicator>
