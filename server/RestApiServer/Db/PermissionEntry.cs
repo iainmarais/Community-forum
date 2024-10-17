@@ -19,3 +19,13 @@ namespace RestApiServer.Db
         public List<RolePermissionEntry> RolePermissions { get; set; } = new();
     }
 }
+
+/*
+export type PermissionEntry = {
+    permissionId: string,
+    permissionName: string,
+    permissionType: PermissionType,
+    description: string
+}
+
+*/

@@ -1,16 +1,32 @@
-export type PermissionInfo = {
-    id: number;
-    name: string;
+export type PermissionEntry = {
+    permissionId: string,
+    permissionName: string,
+    permissionType: PermissionType,
+    description: string
 }
 
-export type Permission = string;
-
-export enum  PermissionType {
-    //Todo: build out.
-}
-//Whether this is used or not depends on the design and the user context. For user context, it can't be "forum", but "admin".
 export type SystemPermissionEntry = {
     systemPermissionId: string,
-    permission: PermissionType,
-    description: string
+    systemPermissionType: SystemPermissionType,
+    systemPermissionName: string,
+    description: string,
+}
+
+export enum  SystemPermissionType {
+    Visibility,
+    Access,
+    Interactivity,
+    General,
+    Development,
+    Testing,
+    Production
+    //Add more as needed.
+}
+
+export enum PermissionType {
+    Administrative,
+    Content,
+    General,
+    Moderation
+    //Add more as needed.
 }

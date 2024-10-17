@@ -29,7 +29,7 @@ const router = createRouter({
                 {
                     path: "/contentmgmt",
                     name: ContentManagementRoute,
-                    component: () => import("@/pages/PageUnderconstruction.vue")
+                    component: () => import("@/components/Views/ContentManagementView.vue")
                 },
                 {
                     path: "/logoff",
@@ -39,7 +39,7 @@ const router = createRouter({
                 {
                     path: "/usermgmt",
                     name: UserManagementRoute,
-                    component: () => import("@/pages/PageUnderconstruction.vue")
+                    component: () => import("@/components/Views/UserManagementView.vue")
                 },
                 {
                     path: "/permissionsmgmt",
