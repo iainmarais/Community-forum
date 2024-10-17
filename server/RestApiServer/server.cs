@@ -1,19 +1,7 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.IdentityModel.JsonWebTokens;
 using System.Text;
 using RestApiServer.Core.Config;
-using RestApiServer.Core.Security;
-using RestApiServer.Core.ApiResponses;
-using RestApiServer.Core.Errorhandler;
-using RestApiServer.Utils;
-using RestApiServer.Db;
 using Serilog;
-using RestApiServer.Hubs;
-using System.Net;
 using System.Net.Sockets;
-using RestApiServer.Security;
-using Microsoft.AspNetCore.Identity;
 using RestApiServer.Db.Ops;
 
 
