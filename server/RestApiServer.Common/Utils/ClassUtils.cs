@@ -7,20 +7,17 @@ using Serilog;
 
 namespace RestApiServer.Common.Utils
 {
-    //This needs some work to make it null-safe, or even null-proof.  
-    //If it was done by Chuck Norris, even null is a non-null value, because if it is null according to him, it does not exist, literally :D
     public static class ClassUtils
     {
-        public static T CopyFromBaseclass<T, U>(T dst, U src)
+        public static T? CopyFromBaseclass<T, U>(T dst, U src)
             where T : class
             where U : class
         {
-            // Return null if either object is null
-            if (src == null || dst == null) return null;
-
+            if (src == null || dst == null) return null; // Return null if either object is null
             CopyProps(src, dst);
             return dst;
         }
+
         private static void CopyProps(object src, object dst)
         {
             var srcType = src.GetType();
@@ -36,9 +33,12 @@ namespace RestApiServer.Common.Utils
                         try
                         {
                             var value = srcProp.GetValue(src);
-                            dstProp.SetValue(dst, value);
+                            if (value != null)
+                            {
+                                dstProp.SetValue(dst, value);
+                            }
                         }
-                        catch (TargetException ex)
+                        catch (Exception ex)
                         {
                             Log.Error($"Error setting property {srcProp.Name}: {ex.Message}");
                         }
@@ -47,9 +47,9 @@ namespace RestApiServer.Common.Utils
             }
         }
 
-        private static object DeepCopyInternal(object? src, Dictionary<object, object> visited)
+        private static object? DeepCopyInternal(object? src, Dictionary<object, object> visited)
         {
-            if (src == null) return null; // Return null if the source is null.
+            if (src == null) return null; // Return null if the source is null
             if (visited.TryGetValue(src, out var existing)) return existing;
 
             var type = src.GetType();
@@ -61,8 +61,11 @@ namespace RestApiServer.Common.Utils
             {
                 var array = (Array)src;
                 var elementType = type.GetElementType();
+                if (elementType == null) return null;
+
                 var copiedArray = Array.CreateInstance(elementType, array.Length);
                 visited[src] = copiedArray;
+
                 for (int i = 0; i < array.Length; i++)
                 {
                     copiedArray.SetValue(DeepCopyInternal(array.GetValue(i), visited), i);
@@ -73,13 +76,18 @@ namespace RestApiServer.Common.Utils
             if (typeof(IEnumerable).IsAssignableFrom(type))
             {
                 var copiedCollection = CreateNewInstance(type);
+                if (copiedCollection == null) return null;
                 visited[src] = copiedCollection;
 
                 if (copiedCollection is IDictionary dict && src is IDictionary srcDict)
                 {
                     foreach (DictionaryEntry entry in srcDict)
                     {
-                        dict.Add(DeepCopyInternal(entry.Key, visited), DeepCopyInternal(entry.Value, visited));
+                        if (DeepCopyInternal(entry.Key, visited) is {} copiedKey && 
+                            DeepCopyInternal(entry.Value, visited) is {} copiedValue)
+                        {
+                            dict.Add(copiedKey, copiedValue);
+                        }
                     }
                 }
                 else if (copiedCollection is IList list && src is IList srcList)
@@ -104,6 +112,8 @@ namespace RestApiServer.Common.Utils
             }
 
             var dst = Activator.CreateInstance(type);
+            if (dst == null) return null;
+
             visited[src] = dst;
 
             foreach (var srcProp in type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance))
@@ -111,34 +121,39 @@ namespace RestApiServer.Common.Utils
                 if (srcProp.CanRead && srcProp.CanWrite && srcProp.GetIndexParameters().Length == 0)
                 {
                     var value = srcProp.GetValue(src);
-                    var copiedValue = DeepCopyInternal(value, visited);
-                    srcProp.SetValue(dst, copiedValue);
+                    if (value != null)
+                    {
+                        var copiedValue = DeepCopyInternal(value, visited);
+                        srcProp.SetValue(dst, copiedValue);
+                    }
                 }
             }
-
             return dst;
         }
 
-        private static object CreateNewInstance(Type type)
+        private static object? CreateNewInstance(Type type)
         {
             if (type.IsGenericType)
             {
                 var genericTypeDef = type.GetGenericTypeDefinition();
                 if (genericTypeDef == typeof(List<>))
                 {
-                    return Activator.CreateInstance(typeof(List<>).MakeGenericType(type.GetGenericArguments()));
+                    return Activator.CreateInstance(typeof(List<>).MakeGenericType(type.GetGenericArguments()))
+                        ?? throw new InvalidOperationException("Unable to create instance of List<>.");
                 }
                 if (genericTypeDef == typeof(Dictionary<,>))
                 {
-                    return Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(type.GetGenericArguments()));
+                    return Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(type.GetGenericArguments()))
+                        ?? throw new InvalidOperationException("Unable to create instance of Dictionary<,>.");
                 }
             }
-            return Activator.CreateInstance(type);
+            return Activator.CreateInstance(type)
+                ?? throw new InvalidOperationException($"Unable to create instance of {type.FullName}.");
         }
 
         private class ReferenceEqualityComparer : IEqualityComparer<object>
         {
-            public bool Equals(object x, object y) => ReferenceEquals(x, y);
+            public new bool Equals(object? x, object? y) => ReferenceEquals(x, y);
             public int GetHashCode(object obj) => RuntimeHelpers.GetHashCode(obj);
         }
     }

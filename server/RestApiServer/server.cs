@@ -11,8 +11,8 @@ namespace RestApiServer
     {   
         //Preparing the server class for dynamic restart. 
         //At a later point I intend to separate the endpoints and database into modules and use a watcher on them to restart the server.
-        private static WebApplication _App;
-        private static CancellationTokenSource _CancellationTokenSource;
+        private static WebApplication? _App;
+        private static CancellationTokenSource? _CancellationTokenSource;
 
         private static void ConfigureServer(WebApplicationBuilder builder, string[] args)
         {
