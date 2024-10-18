@@ -1,5 +1,5 @@
 using RestApiServer.Common.Services;
-using RestApiServer.Core.ApiResponses;
+using RestApiServer.Core.ApiCoreResponses;
 using RestApiServer.Core.Errorhandler;
 using RestApiServer.SignalR.Hubs;
 using Serilog;
@@ -60,13 +60,13 @@ namespace RestApiServer
                     jsonPayload = await reader.ReadToEndAsync();
                     context.Request.Body.Seek(0, SeekOrigin.Begin);
                 }
-                ApiErrorResponse? errorResponse = null;
+                ApiCoreErrorResponse? errorResponse = null;
                 try
                 {
                     await next(context);
                     if (context.Response.StatusCode == StatusCodes.Status404NotFound)
                     {
-                        errorResponse = new ApiErrorResponse
+                        errorResponse = new ApiCoreErrorResponse
                         {
                             ResponseMessage = "Not found"
                         };
@@ -74,7 +74,7 @@ namespace RestApiServer
                     }
                     if (context.Response.StatusCode == StatusCodes.Status401Unauthorized)
                     {
-                        errorResponse = new ApiErrorResponse
+                        errorResponse = new ApiCoreErrorResponse
                         {
                             ResponseMessage = "Unauthorized"
                         };
@@ -82,7 +82,7 @@ namespace RestApiServer
                     }
                     if (context.Response.StatusCode == StatusCodes.Status403Forbidden)
                     {
-                        errorResponse = new ApiErrorResponse
+                        errorResponse = new ApiCoreErrorResponse
                         {
                             ResponseMessage = "You are not allowed to perform this action"
                         };
@@ -93,7 +93,7 @@ namespace RestApiServer
                 }
                 catch (ClientInducedException ex)                
                 {
-                    errorResponse = new ApiClientErrorResponse()
+                    errorResponse = new ApiCoreClientErrorResponse()
                     {
                         ResponseMessage = ex.Message,
                         ClientErrorData = ex.ValidationErrors
@@ -103,7 +103,7 @@ namespace RestApiServer
                 }
                 catch(UnauthorizedAccessException ex)
                 {
-                    errorResponse = new ApiErrorResponse
+                    errorResponse = new ApiCoreErrorResponse
                     {
                         ResponseMessage = ex.Message
                     };
@@ -118,7 +118,7 @@ namespace RestApiServer
                     {
                         message += $" {ex.Message} {ex.InnerException?.Message ?? ""}";
                     }
-                    errorResponse = new ApiErrorResponse
+                    errorResponse = new ApiCoreErrorResponse
                     {
                         ResponseMessage = message
                     };

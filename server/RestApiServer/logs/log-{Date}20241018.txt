@@ -489,3 +489,35 @@ Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime
 2024-10-18 15:47:04.905 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
 2024-10-18 15:47:04.907 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.2667739"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
 2024-10-18 15:47:04.910 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 282.3424ms
+2024-10-18 19:25:03.555 +02:00 [INF] Starting up... Please be patient.
+2024-10-18 19:25:09.468 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-18 19:25:09.539 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-18 19:25:09.540 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-18 19:25:09.541 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-18 19:25:09.542 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-18 19:25:09.543 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-18 19:25:09.544 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-18 19:25:09.545 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-18 19:25:09.546 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-18 19:25:09.878 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-18 19:25:10.154 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-18 19:25:10.164 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-18 19:25:10.168 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-18 19:25:10.182 +02:00 [INF] Hosting environment: Development
+2024-10-18 19:25:10.184 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
+2024-10-18 19:42:14.944 +02:00 [INF] Starting up... Please be patient.
+2024-10-18 19:42:18.200 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-18 19:42:18.203 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-18 19:42:18.203 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-18 19:42:18.204 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-18 19:42:18.205 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-18 19:42:18.205 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-18 19:42:18.206 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-18 19:42:18.207 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-18 19:42:18.208 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-18 19:42:18.326 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-18 19:42:18.461 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-18 19:42:18.469 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-18 19:42:18.473 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-18 19:42:18.474 +02:00 [INF] Hosting environment: Development
+2024-10-18 19:42:18.475 +02:00 [INF] Content root path: C:\Users\Iain\vscode\CommunityForum\Community-forum\server\RestApiServer
