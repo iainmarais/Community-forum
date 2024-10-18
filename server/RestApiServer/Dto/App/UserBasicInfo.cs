@@ -1,5 +1,4 @@
 using RestApiServer.Db.Users;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Dto.App
 {

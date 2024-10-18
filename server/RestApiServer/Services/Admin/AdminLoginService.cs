@@ -5,8 +5,9 @@ using RestApiServer.Db.Users;
 using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.AdminLogin;
 using RestApiServer.Dto.App;
-using RestApiServer.Enums;
-using RestApiServer.Utils;
+using RestApiServer.CommonEnums;
+using RestApiServer.Database.Utils;
+using RestApiServer.Common.Services;
 
 namespace RestApiServer.Services.Admin
 {
@@ -114,7 +115,7 @@ namespace RestApiServer.Services.Admin
                 db.RemoveRange(existingRefreshTokensForSource);
             }
             //Create the user refresh token.
-            var(userRefreshToken, userRefreshTokenExpiration) = AuthUtils.GenerateRefreshToken();
+            var(userRefreshToken, userRefreshTokenExpiration) = AuthService.GenerateRefreshToken();
 
             var newRefreshToken = new UserRefreshTokenEntry
             {
@@ -129,8 +130,8 @@ namespace RestApiServer.Services.Admin
 
             var (userSessionToken, userSessionTokenExpiration) = userContext switch
             {
-                "admin" => AuthUtils.GenerateAdminUserAccessToken(userId, userResult.User.AdminUserId, permissions, new(){ userResult.Role.RoleType }),
-                "forum" => AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }),
+                "admin" => AuthService.GenerateAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }, userResult.User.AdminUserId, true),
+                "forum" => AuthService.GenerateAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }, "", false),
                 //Add more as needed to handle various contexts.
                 _ => throw ClientInducedException.MessageOnly("Unknown user context.")
             };

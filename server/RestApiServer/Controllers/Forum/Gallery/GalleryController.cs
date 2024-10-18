@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RestApiServer.Common.Services;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Services.Forum.Gallery;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Controllers.Forum.Gallery
 {
@@ -17,7 +17,7 @@ namespace RestApiServer.Controllers.Forum.Gallery
         [HttpGet("items")]
         public async Task<ApiSuccessResponse<List<GalleryItemBasicInfo>>> GetGalleryItems()
         {
-            var user = AuthUtils.GetForumUserContext(User); //How can I see why this somehow fails?
+            var user = AuthService.GetForumUserContext(User); //How can I see why this somehow fails?
             var res = await GalleryService.GetGalleryItemsAsync();
             return ApiSuccessResponses.WithData("Get gallery items successful", res);
         }
@@ -25,7 +25,7 @@ namespace RestApiServer.Controllers.Forum.Gallery
         [HttpGet("items/{itemId}")]
         public async Task<ApiSuccessResponse<GalleryItemBasicInfo>> GetGalleryItem(string itemId)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await GalleryService.GetGalleryItemInfoAsync(itemId);
             return ApiSuccessResponses.WithData("Get gallery item successful", res);
         }
@@ -33,7 +33,7 @@ namespace RestApiServer.Controllers.Forum.Gallery
         [HttpPost("items/create")]
         public async Task<ApiSuccessResponse<List<GalleryItemBasicInfo>>> CreateGalleryItem([FromForm] IFormCollection form)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
 
             if(form == null)
             {

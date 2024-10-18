@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using RestApiServer.Enums;
+using RestApiServer.CommonEnums;
 
 namespace RestApiServer.Db
 {

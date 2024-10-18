@@ -3,14 +3,12 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using RestApiServer.Core.Config;
-using RestApiServer.Db;
-using RestApiServer.Enums;
-using System.Globalization;
+using RestApiServer.Common.Config;
+using RestApiServer.CommonEnums;
 
-namespace RestApiServer.Utils
+namespace RestApiServer.Common.Services
 {
-    public static class AuthUtils
+    public static class AuthService
     {
         public struct ForumUserContext
         {
@@ -18,12 +16,12 @@ namespace RestApiServer.Utils
             public string ForumUserId { get; set; }
         }
 
-        public struct AdminUserContext 
+        public struct AdminUserContext
         {
             public string UserId { get; set; }
             public string AdminUserId { get; set; }
         }
-        public const string Claim_UserId="UserId";
+        public const string Claim_UserId = "UserId";
         public const string Claim_User_ForumUserId = "ForumUserId";
         public const string Claim_User_AdminUserId = "AdminUserId";
 
@@ -33,12 +31,12 @@ namespace RestApiServer.Utils
         {
             string? claim_UserId = context.Claims.FirstOrDefault(c => c.Type == Claim_UserId)?.Value;
             string? claim_User_ForumUserId = context.Claims.FirstOrDefault(c => c.Type == Claim_User_ForumUserId)?.Value;
-            if(string.IsNullOrEmpty(claim_UserId))
+            if (string.IsNullOrEmpty(claim_UserId))
             {
                 throw new Exception("User id not found in claims");
             }
 
-            if(string.IsNullOrEmpty(claim_User_ForumUserId))
+            if (string.IsNullOrEmpty(claim_User_ForumUserId))
             {
                 throw new Exception("Admin user id not found in claims");
             }
@@ -56,12 +54,12 @@ namespace RestApiServer.Utils
             string? claim_UserId = context.Claims.FirstOrDefault(c => c.Type == Claim_UserId)?.Value;
             string? claim_User_AdminUserId = context.Claims.FirstOrDefault(c => c.Type == Claim_User_AdminUserId)?.Value;
 
-            if(string.IsNullOrEmpty(claim_UserId))
+            if (string.IsNullOrEmpty(claim_UserId))
             {
                 throw new Exception("User id not found in claims");
             }
 
-            if(string.IsNullOrEmpty(claim_User_AdminUserId))
+            if (string.IsNullOrEmpty(claim_User_AdminUserId))
             {
                 throw new Exception("Admin user id not found in claims");
             }
@@ -97,7 +95,7 @@ namespace RestApiServer.Utils
         }
 
         //Generates the user's access token. Suggestions for improvements relating to security: Capture the IP address of the client from where the login originated.
-        public static (string, long) GenerateAdminUserAccessToken(string userId, string adminUserId, List<SystemPermissionType> SystemPermissions, List<RoleType> Roles)
+        public static (string, long) GenerateAccessToken(string userId, string forumUserId, List<SystemPermissionType> SystemPermissions, List<RoleType> Roles, string adminUserId = "", bool isAdmin = false)
         {
             string secret = ConfigurationLoader.GetConfigValue(EnvironmentVariable.JwtSharedSecret);
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
@@ -106,65 +104,26 @@ namespace RestApiServer.Utils
             var claims = new List<Claim>
             {
                 new Claim(Claim_UserId, userId),
-                new Claim(Claim_User_AdminUserId, adminUserId),
             };
 
-            //Add roles as claims
-            Roles.ForEach(role => 
+            // Add additional user claims based on context
+            if (isAdmin)
             {
-                claims.Add(new Claim(ClaimTypes.Role, role.ToString()));
-            });
+                claims.Add(new Claim(Claim_User_ForumUserId, forumUserId));
+                claims.Add(new Claim(Claim_User_AdminUserId, adminUserId));
+            }
+            else
+            {
+                claims.Add(new Claim(Claim_User_ForumUserId, forumUserId));
+            }
 
-            // Add permissions as claims
-            SystemPermissions.ForEach(p =>
-            {
-                claims.Add(new Claim(p.ToString(), "true"));
-            });
+            // Add roles and permissions as claims
+            Roles.ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role.ToString())));
+            SystemPermissions.ForEach(p => claims.Add(new Claim(p.ToString(), "true")));
 
             var expiration = DateTime.UtcNow.AddMinutes(ConfigurationLoader.GetConfigValueAsInt(EnvironmentVariable.JwtExpirationMins));
 
-            var token = new JwtSecurityToken(
-                claims: claims,
-                expires: expiration,
-                signingCredentials: credentials
-            );
-
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-            return (tokenString, expiration.Ticks);
-        }
-
-        //Forum context
-        public static (string, long) GenerateForumUserAccessToken(string userId, string forumUserId, List<SystemPermissionType> SystemPermissions, List<RoleType> Roles)
-        {
-            string secret = ConfigurationLoader.GetConfigValue(EnvironmentVariable.JwtSharedSecret);
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            var claims = new List<Claim>
-            {
-                new Claim(Claim_UserId, userId),
-                new Claim(Claim_User_ForumUserId, forumUserId),
-            };
-
-            Roles.ForEach(role => 
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role.ToString()));
-            });
-
-            // Add permissions as claims
-            SystemPermissions.ForEach(p =>
-            {
-                claims.Add(new Claim(p.ToString(), "true"));
-            });
-
-            var expiration = DateTime.UtcNow.AddMinutes(ConfigurationLoader.GetConfigValueAsInt(EnvironmentVariable.JwtExpirationMins));
-
-            var token = new JwtSecurityToken(
-                claims: claims,
-                expires: expiration,
-                signingCredentials: credentials
-            );
-
+            var token = new JwtSecurityToken(claims: claims, expires: expiration, signingCredentials: credentials);
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
             return (tokenString, expiration.Ticks);
         }
@@ -173,12 +132,12 @@ namespace RestApiServer.Utils
         {
             // Check if the user has the required claim (permission)
             bool hasPermissionClaim = context.HasClaim(c => c.Type == permission.ToString() && c.Value == "true");
-            
+
             // Check if the user is in the required role
             bool isInRole = context.IsInRole(role.ToString());
-            
+
             // Return true if either condition is met
             return hasPermissionClaim || isInRole;
-        }            
+        }
     }
 }

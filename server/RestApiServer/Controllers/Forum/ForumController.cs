@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RestApiServer.Common.Services;
 using RestApiServer.Core.ApiResponses;
-using RestApiServer.Core.Security;
-using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Services.Forum;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Controllers.Forum
 {
@@ -17,7 +15,7 @@ namespace RestApiServer.Controllers.Forum
         [Authorize]
         public async Task<ApiSuccessResponse<ForumAppState>> GetAppState()
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var svc = new ForumService();
             var res = await svc.GetForumAppStateAsync(user.UserId);
             return ApiSuccessResponses.WithData("Get forum state successful", res);

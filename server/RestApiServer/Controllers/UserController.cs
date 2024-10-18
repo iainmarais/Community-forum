@@ -1,14 +1,11 @@
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Services;
 using Microsoft.AspNetCore.Mvc;
-using RestApiServer.Db.Users;
 using RestApiServer.Dto.Login;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
-using RestApiServer.Utils;
 using Microsoft.AspNetCore.Authorization;
-using RestApiServer.Core.Security;
-using RestApiServer.Security;
+using RestApiServer.Common.Services;
 
 namespace RestApiServer.Controllers
 {
@@ -32,7 +29,7 @@ namespace RestApiServer.Controllers
             //Todo:
             //When dealing with a bearer token, I need to see what the user context is. 
             //Either that, or I need to create a dedicated admin portal for the forum.
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await UserService.RefreshUserSessionAsync(user.UserId, req);
             return ApiSuccessResponses.WithData("User auth state refresh successful", res);
         }
@@ -56,7 +53,7 @@ namespace RestApiServer.Controllers
         [Authorize(policy: "EditUsersPolicy")]
         public async Task<ApiSuccessResponse<UserBasicInfo>> UpdateUserProfile(UpdateUserProfileRequest request)
         {
-            var user = AuthUtils.GetAdminUserContext(User);
+            var user = AuthService.GetAdminUserContext(User);
             var res = await UserService.UpdateUserProfileAsync(request);
             return ApiSuccessResponses.WithData("Update user profile successful", res);
         }

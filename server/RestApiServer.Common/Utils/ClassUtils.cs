@@ -5,8 +5,10 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using Serilog;
 
-namespace RestApiServer.Utils
+namespace RestApiServer.Common.Utils
 {
+    //This needs some work to make it null-safe, or even null-proof.  
+    //If it was done by Chuck Norris, even null is a non-null value, because if it is null according to him, it does not exist, literally :D
     public static class ClassUtils
     {
         public static T CopyFromBaseclass<T, U>(T dst, U src)

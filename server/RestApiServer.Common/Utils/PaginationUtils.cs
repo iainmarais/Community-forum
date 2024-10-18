@@ -1,4 +1,4 @@
-namespace RestApiServer.Utils
+namespace RestApiServer.Common.Utils
 {
     public static class PaginationUtils
     {

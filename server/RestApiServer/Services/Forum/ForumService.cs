@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using RestApiServer.Db;
 using RestApiServer.Dto.App;
 using RestApiServer.Db.Users;
-using RestApiServer.Utils;
 using RestApiServer.Services.Forum.Categories;
 using RestApiServer.Dto.Forum;
 

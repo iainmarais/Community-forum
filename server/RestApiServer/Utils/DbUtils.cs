@@ -1,9 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using RestApiServer.Db;
-using RestApiServer.Db.Users;
-using RestApiServer.Enums;
-
-namespace RestApiServer.Utils
+namespace RestApiServer.Database.Utils
 {
     public class DbUtils
     {
@@ -16,7 +11,7 @@ namespace RestApiServer.Utils
         //Convert enum value to string
         public static string EnumNameToString<T>(T value)
         {
-            if(value == null)
+            if (value == null)
             {
                 throw new Exception("Value can't be null");
             }
@@ -25,7 +20,7 @@ namespace RestApiServer.Utils
 
         public static string? EnumNameToStringNullable<T>(T? value)
         {
-            if(value == null)
+            if (value == null)
             {
                 return null;
             }
@@ -40,7 +35,7 @@ namespace RestApiServer.Utils
 
         public static T? ParseEnumFromStringNullable<T>(string? value)
         {
-            if(value == null)
+            if (value == null)
             {
                 return default;
             }

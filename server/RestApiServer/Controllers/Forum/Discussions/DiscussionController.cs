@@ -1,12 +1,10 @@
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RestApiServer.Common.Services;
 using RestApiServer.Core.ApiResponses;
-using RestApiServer.Core.Security;
-using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Services.Forum.Discussions;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Controllers.Forum.Discussions
 {
@@ -18,7 +16,7 @@ namespace RestApiServer.Controllers.Forum.Discussions
         [HttpGet("thread/{threadId}/fullinfo")]
         public async Task<ApiSuccessResponse<ThreadFullInfo>> GetThreadFullInfo(string threadId)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await DiscussionService.GetForumThreadFullInfoAsync(threadId);
             return ApiSuccessResponses.WithData("Get discussion state successful", res);
         }
@@ -26,7 +24,7 @@ namespace RestApiServer.Controllers.Forum.Discussions
         [Authorize(policy:"CreateThreadsPolicy")]
         public async Task<ApiSuccessResponse<object>> CreateThread(CreateThreadRequest request)
         {        
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             await DiscussionService.CreateThreadAsync(request.TopicId, request.ThreadName, user.UserId);
             return ApiSuccessResponses.WithoutData("Create forum thread successful");
         }
@@ -35,7 +33,7 @@ namespace RestApiServer.Controllers.Forum.Discussions
         [Authorize(policy:"CreateThreadsPolicy")]
         public async Task<ApiSuccessResponse<object>> CreateThreadWithPost(CreateThreadWithPostRequest request)
         {	
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             await DiscussionService.CreateThreadWithPostAsync(request.TopicId, request.ThreadName, user.UserId, request.MessageContent);
             return ApiSuccessResponses.WithoutData("Create forum thread successful");
         }  
@@ -63,7 +61,7 @@ namespace RestApiServer.Controllers.Forum.Discussions
         [Authorize(policy:"CreatePostsPolicy")]
         public async Task<ApiSuccessResponse<PostFullInfo>> CreateThreadPost(CreatePostRequest request)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await DiscussionService.CreatePostAsync(request);
             return ApiSuccessResponses.WithData("Get forum thread posts successful", res);
         }
@@ -71,7 +69,7 @@ namespace RestApiServer.Controllers.Forum.Discussions
         [HttpPost("thread/{threadId}/posts/{postId}/report")]
         public async Task<ApiSuccessResponse<string>> ReportPost(ReportPostRequest request)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await DiscussionService.ReportPostAsync(request);
             return ApiSuccessResponses.WithData("Report post successful", res);
         }

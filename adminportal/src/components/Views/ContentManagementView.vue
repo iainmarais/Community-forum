@@ -2,6 +2,10 @@
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
+const refresh = () => {
+    //Todo: build out.
+}
+
 </script>
 
 <template>

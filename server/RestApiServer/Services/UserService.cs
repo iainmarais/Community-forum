@@ -6,7 +6,6 @@ User service.cs - responsible for:
     refreshing login states using user refresh tokens
 */
 
-using System.Net.Mail;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Core.CacheManagement;
@@ -16,8 +15,9 @@ using RestApiServer.Db.Users;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Dto.Login;
-using RestApiServer.Enums;
-using RestApiServer.Utils;
+using RestApiServer.CommonEnums;
+using RestApiServer.Common.Services;
+using RestApiServer.Database.Utils;
 
 namespace RestApiServer.Services
 {
@@ -133,7 +133,7 @@ namespace RestApiServer.Services
                 throw ClientInducedException.MessageOnly("User already exists");
             }
 
-            var salt = AuthUtils.GenerateSalt();
+            var salt = AuthService.GenerateSalt();
             
             if(!Enum.TryParse(req.RoleType, out RoleType parsedRoleType))
             {
@@ -147,7 +147,7 @@ namespace RestApiServer.Services
                 RoleId = db.Roles.Single(r => r.RoleType == parsedRoleType).RoleId,
                 Username = req.Username,
                 EmailAddress = req.EmailAddress,
-                HashedPassword = AuthUtils.HashPassword(req.Password, salt),
+                HashedPassword = AuthService.HashPassword(req.Password, salt),
                 //Todo: Create an entry or list entry to hold the user's role or permissions here.
             };
             await db.Users.AddAsync(user);
@@ -216,7 +216,7 @@ namespace RestApiServer.Services
 
             db.RemoveRange(existingRefreshTokensForSource);
             //Create the user refresh token.
-            var(userRefreshToken, userRefreshTokenExpiration) = AuthUtils.GenerateRefreshToken();
+            var(userRefreshToken, userRefreshTokenExpiration) = AuthService.GenerateRefreshToken();
 
             var newRefreshToken = new UserRefreshTokenEntry
             {
@@ -231,8 +231,8 @@ namespace RestApiServer.Services
             //Now, one can create the new access and refresh tokens.
             var (newUserSessionToken, newUserSessionTokenExpiration) = req.UserContext switch
             {
-                "admin" => AuthUtils.GenerateAdminUserAccessToken(userId, userResult.User.AdminUserId, permissions, new(){ userResult.Role.RoleType }),
-                "forum" => AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }),
+                "admin" => AuthService.GenerateAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }, userResult.User.AdminUserId, true),
+                "forum" => AuthService.GenerateAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }, "", false),
                 //Add more as needed to handle various contexts.
                 _ => throw ClientInducedException.MessageOnly("Unknown user context.")
             };
@@ -314,7 +314,7 @@ namespace RestApiServer.Services
                 db.RemoveRange(existingRefreshTokensForSource);
             }
             //Create the user refresh token.
-            var(userRefreshToken, userRefreshTokenExpiration) = AuthUtils.GenerateRefreshToken();
+            var(userRefreshToken, userRefreshTokenExpiration) = AuthService.GenerateRefreshToken();
 
             var newRefreshToken = new UserRefreshTokenEntry
             {
@@ -329,8 +329,8 @@ namespace RestApiServer.Services
 
             var (userSessionToken, userSessionTokenExpiration) = userContext switch
             {
-                "admin" => AuthUtils.GenerateAdminUserAccessToken(userId, userResult.User.AdminUserId, permissions, new(){ userResult.Role.RoleType }),
-                "forum" => AuthUtils.GenerateForumUserAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }),
+                "admin" => AuthService.GenerateAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }, userResult.User.AdminUserId, true),
+                "forum" => AuthService.GenerateAccessToken(userId, userResult.User.ForumUserId, permissions, new(){ userResult.Role.RoleType }, "", false),
                 //Add more as needed to handle various contexts.
                 _ => throw ClientInducedException.MessageOnly("Unknown user context.")
             };

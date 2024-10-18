@@ -1,5 +1,3 @@
-using Microsoft.Net.Http.Headers;
-
 namespace RestApiServer.Core.ApiResponses
 {
     public class ApiFileResponse

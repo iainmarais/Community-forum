@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Db;
 using RestApiServer.Dto.App;
-using RestApiServer.Enums;
+using RestApiServer.CommonEnums;
 
 namespace RestApiServer.Core.Security
 {

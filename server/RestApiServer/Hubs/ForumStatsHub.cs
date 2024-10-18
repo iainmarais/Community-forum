@@ -7,7 +7,6 @@ using RestApiServer.Dto.Forum;
 using RestApiServer.Services;
 using RestApiServer.Services.Forum.Categories;
 using Serilog;
-using System.Threading.Tasks;
 
 namespace RestApiServer.Hubs
 {

@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RestApiServer.Common.Services;
 using RestApiServer.Core.ApiResponses;
-using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Services.Forum.Categories;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Controllers.Forum.Categories
 {
@@ -17,7 +16,7 @@ namespace RestApiServer.Controllers.Forum.Categories
         [HttpGet("topics/{topicId}/fullinfo")]
         public async Task<ApiSuccessResponse<TopicFullInfo>> GetTopicFullInfo(string topicId)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await TopicService.GetForumTopicFullInfoAsync(topicId);
             return ApiSuccessResponses.WithData("Get topic full info successful", res);
         }
@@ -39,7 +38,7 @@ namespace RestApiServer.Controllers.Forum.Categories
         [HttpPost("topics/create")]
         public async Task<ApiSuccessResponse<TopicFullInfo>> CreateTopic(CreateTopicRequest request)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await TopicService.CreateForumTopicAsync(user.UserId, request);
             return ApiSuccessResponses.WithData("Create topic successful", res);
         }

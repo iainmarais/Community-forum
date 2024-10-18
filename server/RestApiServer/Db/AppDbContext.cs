@@ -1,11 +1,10 @@
-using RestApiServer.Core.Config;
+using RestApiServer.Common.Config;
 using RestApiServer.Db.Users;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql;
-using RestApiServer.Enums;
+using RestApiServer.CommonEnums;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RestApiServer.Utils;
 using RestApiServer.Db.Ops;
+using RestApiServer.Database.Utils;
 
 namespace RestApiServer.Db
 {

@@ -1,7 +1,7 @@
+using RestApiServer.Common.Services;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Core.Errorhandler;
 using RestApiServer.Hubs;
-using RestApiServer.Utils;
 using Serilog;
 
 namespace RestApiServer
@@ -138,7 +138,7 @@ namespace RestApiServer
                     string? userIdentity = null;
                     try
                     {
-                        var user = AuthUtils.GetForumUserContext(context.User);
+                        var user = AuthService.GetForumUserContext(context.User);
                         userIdentity = "{User:" + user.UserId + "}";
                     }
                     catch(Exception)

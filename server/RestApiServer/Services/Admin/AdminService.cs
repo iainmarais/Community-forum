@@ -4,9 +4,9 @@ using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.App;
-using RestApiServer.Enums;
-using RestApiServer.Utils;
+using RestApiServer.CommonEnums;
 using Serilog;
+using RestApiServer.Common.Services;
 
 namespace RestApiServer.Services.Admin
 {
@@ -66,7 +66,7 @@ namespace RestApiServer.Services.Admin
             {
                 throw ClientInducedException.MessageOnly("Passwords do not match.");
             }
-            var salt = AuthUtils.GenerateSalt();
+            var salt = AuthService.GenerateSalt();
             var role = await db.Roles.SingleOrDefaultAsync(r => r.RoleName == request.RoleName);
 
             if(role == null)
@@ -81,7 +81,7 @@ namespace RestApiServer.Services.Admin
                 RoleId = role.RoleId,
                 Username = request.Username,
                 EmailAddress = request.EmailAddress,
-                HashedPassword = AuthUtils.HashPassword(request.Password, salt)
+                HashedPassword = AuthService.HashPassword(request.Password, salt)
             };
 
             await db.Users.AddAsync(userToCreate);

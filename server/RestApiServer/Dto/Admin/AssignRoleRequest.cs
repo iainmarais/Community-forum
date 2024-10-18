@@ -1,5 +1,3 @@
-using RestApiServer.Db;
-
 namespace RestApiServer.Dto.Admin
 {
     public class AssignRoleRequest

@@ -1,10 +1,8 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.AdminLogin;
 using RestApiServer.Services.Admin;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Controllers.Admin
 {

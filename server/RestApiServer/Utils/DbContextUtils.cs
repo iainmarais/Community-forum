@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Db;
 
-namespace RestApiServer.Utils
+namespace RestApiServer.Database.Utils
 {
     public class DbContextUtils
     {

@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RestApiServer.Common.Services;
 using RestApiServer.Core.ApiResponses;
-using RestApiServer.Dto.App;
 using RestApiServer.Dto.Chat;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Services;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Controllers
 {
@@ -18,7 +17,7 @@ namespace RestApiServer.Controllers
         [HttpGet("messages")]
         public async Task<ApiSuccessResponse<List<ChatMessageBasicInfo>>> GetChatMessages(string currentChatId)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await ChatService.GetChatMessagesAsync(user.UserId, currentChatId);
             return ApiSuccessResponses.WithData("Get messages successful", res);
         }
@@ -26,7 +25,7 @@ namespace RestApiServer.Controllers
         [HttpGet("contacts")]
         public async Task<ApiSuccessResponse<List<ContactBasicInfo>>> GetContacts()
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await ChatService.GetContactsAsync(user.UserId);
             return ApiSuccessResponses.WithData("Get contacts successful", res);
         }
@@ -34,7 +33,7 @@ namespace RestApiServer.Controllers
         [HttpPost("contacts/create")]
         public async Task<ApiSuccessResponse<ContactBasicInfo>> CreateContact(CreateContactRequest request)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await ChatService.CreateContactAsync(user.UserId, request);
             return ApiSuccessResponses.WithData("Create contact successful", res);
         }
@@ -43,7 +42,7 @@ namespace RestApiServer.Controllers
         public async Task<ApiSuccessResponse<List<ChatBasicInfo>>> GetChats()
         {
             //Find all chats associated with the currently logged-in user. Group chats are a different matter though.
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await ChatService.GetChatsAsync(user.UserId);
             return ApiSuccessResponses.WithData("Get chats successful", res);
         }
@@ -53,7 +52,7 @@ namespace RestApiServer.Controllers
         [HttpPost("chats/create")]
         public async Task<ApiSuccessResponse<ChatFullInfo>> CreateChat(CreateChatRequest request)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await ChatService.CreateChatAsync(user.UserId, request);
             return ApiSuccessResponses.WithData("Create chat successful", res);
         }
@@ -61,7 +60,7 @@ namespace RestApiServer.Controllers
         [HttpPost("chats/group/create")]
         public async Task<ApiSuccessResponse<ChatFullInfo>> CreateGroupChat(CreateGroupChatRequest request)
         {
-            var user = AuthUtils.GetForumUserContext(User);
+            var user = AuthService.GetForumUserContext(User);
             var res = await ChatService.CreateGroupChatAsync(user.UserId, request);
             return ApiSuccessResponses.WithData("Create group chat successful", res);
         }

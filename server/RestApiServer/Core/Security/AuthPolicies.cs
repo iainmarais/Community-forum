@@ -1,5 +1,4 @@
 using RestApiServer.Db;
-using RestApiServer.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Serilog;

@@ -2,11 +2,10 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Db;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace RestApiServer.Hubs
 {
-public class ChatHub : Hub
+    public class ChatHub : Hub
     {
         //Todo: Use authentication against the logged-in user. If no logged-in user, block access to this hub.
 

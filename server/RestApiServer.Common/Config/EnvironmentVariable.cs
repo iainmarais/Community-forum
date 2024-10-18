@@ -1,4 +1,4 @@
-namespace RestApiServer.Core.Config
+namespace RestApiServer.Common.Config
 {
     public class EnvironmentVariable
     {

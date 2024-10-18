@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RestApiServer.Enums;
+using RestApiServer.CommonEnums;
 using Serilog;
 
 namespace RestApiServer.Db.Ops

@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RestApiServer.Common.Services;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.App;
 using RestApiServer.Services.Admin;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Controllers.Admin
 {
@@ -16,7 +16,7 @@ namespace RestApiServer.Controllers.Admin
         [Authorize(Roles = "Admin")]
         public async Task<ApiSuccessResponse<AdminPortalAppState>> GetAdminPortalAppState()
         {
-            var user = AuthUtils.GetAdminUserContext(User);
+            var user = AuthService.GetAdminUserContext(User);
             var res = await AdminPortalService.GetAdminPortalAppStateAsync(user.UserId);
             return ApiSuccessResponses.WithData("Get admin portal app state successful", res);
         }
@@ -25,7 +25,7 @@ namespace RestApiServer.Controllers.Admin
         [Authorize(Roles = "Admin")]
         public async Task<ApiSuccessResponse<UserBasicInfo>> EditUser(EditUserRequest request)
         {
-            var user = AuthUtils.GetAdminUserContext(User);
+            var user = AuthService.GetAdminUserContext(User);
             var res = await AdminPortalService.EditUserAsync(user.AdminUserId, request);
             return ApiSuccessResponses.WithData("Edit user successful", res);
         }

@@ -1,5 +1,5 @@
 using System.Text;
-using RestApiServer.Core.Config;
+using RestApiServer.Common.Config;
 using Serilog;
 using System.Net.Sockets;
 using RestApiServer.Db.Ops;

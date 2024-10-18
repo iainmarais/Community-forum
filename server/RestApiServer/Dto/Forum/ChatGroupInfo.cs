@@ -1,5 +1,5 @@
+using RestApiServer.Common.Utils;
 using RestApiServer.Db;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Dto.App
 {

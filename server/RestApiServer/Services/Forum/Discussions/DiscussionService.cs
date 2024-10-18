@@ -1,10 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Db;
 using RestApiServer.Dto.App;
-using RestApiServer.Db.Users;
-using RestApiServer.Utils;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Core.ApiResponses;
+using RestApiServer.Database.Utils;
 
 namespace RestApiServer.Services.Forum.Discussions
 {

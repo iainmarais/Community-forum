@@ -1,7 +1,5 @@
 using RestApiServer.Db;
-using RestApiServer.Db.Users;
 using RestApiServer.Dto.App;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Dto.Forum
 {

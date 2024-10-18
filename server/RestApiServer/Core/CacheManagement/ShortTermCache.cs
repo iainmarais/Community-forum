@@ -1,4 +1,4 @@
-using RestApiServer.Core.Config;
+using RestApiServer.Common.Config;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace RestApiServer.Core.CacheManagement

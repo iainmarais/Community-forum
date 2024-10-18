@@ -1,6 +1,6 @@
 using System.Net;
 using System.Net.Sockets;
-using RestApiServer.Core.Config;
+using RestApiServer.Common.Config;
 using Serilog;
 
 namespace RestApiServer

@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Db;
-using RestApiServer.Dto.App;
 using RestApiServer.Dto.Chat;
 using RestApiServer.Dto.Forum;
 

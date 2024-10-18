@@ -1,6 +1,5 @@
 using RestApiServer.Db;
 using RestApiServer.Dto.App;
-using RestApiServer.Utils;
 
 namespace RestApiServer.Dto.Chat
 {
