@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RestApiServer.Common\RestApiServer.Common.csproj" />
     <ProjectReference Include="..\RestApiServer.Database\RestApiServer.Database.csproj" />
+    <ProjectReference Include="..\RestApiServer.CommonEnums\RestApiServer.CommonEnums.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
