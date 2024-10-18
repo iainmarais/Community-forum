@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiServer.SignalR", "Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiServer.CommonEnums", "RestApiServer.CommonEnums\RestApiServer.CommonEnums.csproj", "{32F10003-85B7-4FDB-A6E5-271E9DD1A8C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiServer.Security", "RestApiServer.Security\RestApiServer.Security.csproj", "{A5B97754-FBBA-4D91-9E40-7A0CB51CF146}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{32F10003-85B7-4FDB-A6E5-271E9DD1A8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32F10003-85B7-4FDB-A6E5-271E9DD1A8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32F10003-85B7-4FDB-A6E5-271E9DD1A8C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5B97754-FBBA-4D91-9E40-7A0CB51CF146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5B97754-FBBA-4D91-9E40-7A0CB51CF146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5B97754-FBBA-4D91-9E40-7A0CB51CF146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5B97754-FBBA-4D91-9E40-7A0CB51CF146}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

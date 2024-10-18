@@ -1,7 +1,7 @@
 using RestApiServer.Common.Services;
 using RestApiServer.Core.ApiResponses;
 using RestApiServer.Core.Errorhandler;
-using RestApiServer.Hubs;
+using RestApiServer.SignalR.Hubs;
 using Serilog;
 
 namespace RestApiServer

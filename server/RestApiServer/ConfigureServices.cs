@@ -2,7 +2,6 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using RestApiServer.Common.Config;
-using RestApiServer.Core.Security;
 using RestApiServer.Security;
 
 namespace RestApiServer

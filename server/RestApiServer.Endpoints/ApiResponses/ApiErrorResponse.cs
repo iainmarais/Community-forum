@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
-//Copied from Endpoints ->  ApiResponses: ApiErrorResponse class.
-namespace RestApiServer.Core.ApiResponses
+
+namespace RestApiServer.Endpoints.ApiResponses
 {
     [JsonDerivedType(typeof(ApiClientErrorResponse))]
     public class ApiErrorResponse
