@@ -7,6 +7,10 @@ import { onMounted } from 'vue';
 
 const UserManagementStore = useUserManagementStore();
 
+const refresh = () => {
+    //Todo: build out.
+}
+
 onMounted(() => {
     
 })

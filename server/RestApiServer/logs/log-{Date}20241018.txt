@@ -392,3 +392,100 @@ Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime
 2024-10-18 13:44:22.017 +02:00 [INF] Application started. Press Ctrl+C to shut down.
 2024-10-18 13:44:22.019 +02:00 [INF] Hosting environment: Development
 2024-10-18 13:44:22.026 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-18 14:17:05.626 +02:00 [INF] Starting up... Please be patient.
+2024-10-18 14:17:12.835 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-18 14:17:12.842 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-18 14:17:12.843 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-18 14:17:12.844 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-18 14:17:12.845 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-18 14:17:12.846 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-18 14:17:12.847 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-18 14:17:12.853 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-18 14:17:12.855 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-18 14:17:12.856 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-18 14:17:12.858 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-18 14:17:12.860 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-18 14:17:12.861 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-18 14:17:12.862 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-18 14:17:12.863 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-18 14:17:12.868 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-18 14:17:12.869 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-18 14:17:12.870 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-18 14:17:12.872 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-18 14:17:13.111 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-18 14:17:13.377 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-18 14:17:13.379 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-18 14:17:13.387 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-18 14:17:13.390 +02:00 [INF] Hosting environment: Development
+2024-10-18 14:17:13.391 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-18 14:18:29.583 +02:00 [INF] Starting up... Please be patient.
+2024-10-18 14:18:34.103 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-18 14:18:34.108 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-18 14:18:34.116 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-18 14:18:34.122 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-18 14:18:34.125 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-18 14:18:34.132 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-18 14:18:34.134 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-18 14:18:34.135 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-18 14:18:34.136 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-18 14:18:34.138 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-18 14:18:34.139 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-18 14:18:34.140 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-18 14:18:34.141 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-18 14:18:34.147 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-18 14:18:34.149 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-18 14:18:34.150 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-18 14:18:34.151 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-18 14:18:34.152 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-18 14:18:34.153 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-18 14:18:34.301 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-18 14:18:34.500 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-18 14:18:34.504 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-18 14:18:34.509 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-18 14:18:34.511 +02:00 [INF] Hosting environment: Development
+2024-10-18 14:18:34.512 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-18 14:21:01.407 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-18 14:21:01.444 +02:00 [INF] CORS policy execution successful.
+2024-10-18 14:21:01.472 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 57.5765ms
+2024-10-18 14:21:01.488 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-18 14:21:01.501 +02:00 [INF] CORS policy execution successful.
+2024-10-18 14:21:02.001 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-18 14:21:02.061 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-18 14:21:02.795 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-18 14:21:02.867 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 791.3719ms
+2024-10-18 14:21:02.875 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-18 14:21:02.879 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:01.2708924"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-18 14:21:02.896 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 1408.1522ms
+2024-10-18 14:21:02.974 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-18 14:21:02.979 +02:00 [INF] CORS policy execution successful.
+2024-10-18 14:21:03.000 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-18 14:21:03.013 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-18 14:21:03.096 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-18 14:21:03.105 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 70.2014ms
+2024-10-18 14:21:03.111 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-18 14:21:03.113 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1237239"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-18 14:21:03.116 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 142.3818ms
+2024-10-18 15:18:19.477 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-18 15:18:19.565 +02:00 [INF] CORS policy execution successful.
+2024-10-18 15:18:19.574 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 96.9252ms
+2024-10-18 15:18:19.579 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-18 15:18:19.587 +02:00 [INF] CORS policy execution successful.
+2024-10-18 15:18:19.598 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-18 15:18:19.605 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-18 15:18:19.738 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-18 15:18:19.742 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 133.7138ms
+2024-10-18 15:18:19.753 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-18 15:18:19.756 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1659438"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-18 15:18:19.770 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 191.6467ms
+2024-10-18 15:47:04.590 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-18 15:47:04.607 +02:00 [INF] CORS policy execution successful.
+2024-10-18 15:47:04.610 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 20.0235ms
+2024-10-18 15:47:04.627 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-18 15:47:04.638 +02:00 [INF] CORS policy execution successful.
+2024-10-18 15:47:04.641 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-18 15:47:04.649 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-18 15:47:04.898 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-18 15:47:04.902 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 246.9557ms
+2024-10-18 15:47:04.905 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-18 15:47:04.907 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.2667739"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-18 15:47:04.910 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 282.3424ms
