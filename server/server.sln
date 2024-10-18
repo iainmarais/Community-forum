@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiServer.Database", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiServer.Common", "RestApiServer.Common\RestApiServer.Common.csproj", "{3353958A-4A71-47C4-9292-53A49BB6E6C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiServer.SignalR", "RestApiServer.SignalR\RestApiServer.SignalR.csproj", "{D72B27D1-EF91-4EBF-9C4E-178BD67BC973}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{3353958A-4A71-47C4-9292-53A49BB6E6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3353958A-4A71-47C4-9292-53A49BB6E6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3353958A-4A71-47C4-9292-53A49BB6E6C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D72B27D1-EF91-4EBF-9C4E-178BD67BC973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D72B27D1-EF91-4EBF-9C4E-178BD67BC973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D72B27D1-EF91-4EBF-9C4E-178BD67BC973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D72B27D1-EF91-4EBF-9C4E-178BD67BC973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
