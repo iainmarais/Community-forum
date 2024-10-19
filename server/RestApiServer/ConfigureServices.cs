@@ -2,6 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using RestApiServer.Common.Config;
+using RestApiServer.ErrorHandler;
 using RestApiServer.Security;
 
 namespace RestApiServer
@@ -12,11 +13,13 @@ namespace RestApiServer
         {
             string productionCorsPolicy = "productionCorsPolicy";
             string developmentCorsPolicy = "developmentCorsPolicy";
-
+            
             services.AddControllers().AddJsonOptions(options =>
             {
 
             });
+
+            services.AddDbExceptionHandler();
 
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();

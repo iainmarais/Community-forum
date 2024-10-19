@@ -14,6 +14,7 @@
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <!-- <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" /> -->
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.openapi" Version="8.0.10" />
     <PackageReference Include="microsoft.aspnetcore.server.kestrel" Version="2.2.0" />
@@ -26,12 +27,13 @@
     <PackageReference Include="microsoft.identitymodel.tokens" Version="8.1.2" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.1.2" />
     <PackageReference Include="microsoft.aspnetcore.authentication.jwtbearer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.6.22" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="openapi" Version="1.0.1" />
+    <!-- <PackageReference Include="openapi" Version="1.0.1" /> -->
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.NetTopologySuite" Version="8.0.2" />
     <PackageReference Include="serilog" Version="4.0.2" />
@@ -47,5 +49,6 @@
     <ProjectReference Include="..\RestApiServer.CommonEnums\RestApiServer.CommonEnums.csproj" />
     <ProjectReference Include="..\RestApiServer.Security\RestApiServer.Security.csproj" />
     <ProjectReference Include="..\RestApiServer.SignalR\RestApiServer.SignalR.csproj" />
+    <ProjectReference Include="..\RestApiServer.ErrorHandler\RestApiServer.ErrorHandler.csproj" />
   </ItemGroup>
 </Project>

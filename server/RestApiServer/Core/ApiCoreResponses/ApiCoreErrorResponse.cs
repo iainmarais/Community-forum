@@ -5,6 +5,10 @@ namespace RestApiServer.Core.ApiCoreResponses
     [JsonDerivedType(typeof(ApiCoreClientErrorResponse))]
     public class ApiCoreErrorResponse
     {
+        public int StatusCode { get; set; } = 0;
+        public string StatusMessage { get; set; } = "";
+        public string ExceptionType { get; set; } = "";
+        public string ExceptionMessage { get; set; } = "";
         public string? ResponseMessage { get; set; }
     }
 

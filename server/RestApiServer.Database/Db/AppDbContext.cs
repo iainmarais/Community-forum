@@ -5,6 +5,8 @@ using RestApiServer.CommonEnums;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestApiServer.Db.Ops;
 using RestApiServer.Database.Utils;
+using Serilog;
+using MySqlConnector;
 
 namespace RestApiServer.Db
 {
@@ -38,11 +40,21 @@ namespace RestApiServer.Db
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var conn = GetConnectionString(usePooling: true, minPoolSize: 10, maxPoolSize: 50);
-            var serverVersion = ServerVersion.AutoDetect(conn);
-            optionsBuilder.UseMySql(conn, serverVersion, options =>
+            try
+            {  
+                //Get the server version. If we can't get it it might help to raise an exception here that can be passed through to the app builder and handled there.
+                ServerVersion? serverVersion = ServerVersion.AutoDetect(conn);
+                optionsBuilder.UseMySql(conn, serverVersion, options =>
+                {
+                    options.MigrationsAssembly("RestApiServer");
+                });
+            }
+            catch (MySqlException ex)
             {
-                options.MigrationsAssembly("RestApiServer");
-            });
+                Log.Fatal($"Could not connect to a database: {ex.Message}", ex);
+                NotifyUserAndShutDown();
+                //Todo: Use SQLite as a fallback? Or do we simply terminate all further execution?
+            }
         }
 
         public static string GetConnectionString(bool usePooling = false, int minPoolSize = 0, int maxPoolSize = 100)
@@ -208,6 +220,15 @@ namespace RestApiServer.Db
                 v => DbUtils.ParseEnumFromString<T>(v)
             );
         }  
+        //Notify the user the server is unable to start due to a missing database engine
+        private static void NotifyUserAndShutDown()
+        {
+            Log.Information("This server requires a database, such as MySQL or MariaDB in order to start.\nPlease refer to the README.md for more information.\n");
+            Log.Information("MariaDB can be downloaded from https://mariadb.com/downloads/ \nMySQL can be downloaded from https://dev.mysql.com/downloads/");
+            Log.Information("Server will now shut down. Press any key to exit...");
+            Console.ReadKey();
+            Environment.Exit(1);
+        }
     }
 }
 

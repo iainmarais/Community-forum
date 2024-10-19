@@ -3,6 +3,8 @@ using RestApiServer.Common.Config;
 using Serilog;
 using System.Net.Sockets;
 using RestApiServer.Db.Ops;
+using RestApiServer.ErrorHandler;
+using MySql.Data.MySqlClient;
 
 
 namespace RestApiServer
@@ -59,6 +61,7 @@ namespace RestApiServer
                 ConfigureServer(builder, args);
 
                 var app = BuildWebApp(builder);
+                
                 if(args.Contains("--seed-data"))
                 {
                     //Call our DbOps.SeedDataAsync() method here.
@@ -84,7 +87,12 @@ namespace RestApiServer
             catch (Exception ex)
             {
                 Log.Fatal(ex, "Server startup failed.");
-                throw;
+                if(ex is MySqlException mySqlEx)
+                {
+                    var dbExceptionHandler = new DbExceptionHandler();
+                    var context = new DefaultHttpContext();
+                    await dbExceptionHandler.HandleAsync(context, mySqlEx);
+                }
             }
 
             finally
