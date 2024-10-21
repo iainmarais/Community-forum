@@ -2,7 +2,6 @@ using RestApiServer.Common.Config;
 using RestApiServer.Common.Services;
 using RestApiServer.Core.ApiCoreResponses;
 using RestApiServer.Core.Errorhandler;
-using RestApiServer.ErrorHandler;
 using RestApiServer.SignalR.Hubs;
 using Serilog;
 
@@ -166,7 +165,7 @@ namespace RestApiServer
                 app.UseAuthentication();
                 app.UseAuthorization();
 
-                app.UseDbExceptionHandler();
+                app.UseMiddleware<DbExceptionHandler>();
 
                 return app;
             }

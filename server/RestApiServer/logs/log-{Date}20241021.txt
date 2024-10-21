@@ -1,0 +1,178 @@
+2024-10-21 08:20:00.084 +02:00 [INF] Starting up... Please be patient.
+2024-10-21 08:20:08.566 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-21 08:20:08.570 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-21 08:20:08.571 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-21 08:20:08.572 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-21 08:20:08.573 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-21 08:20:08.574 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-21 08:20:08.576 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-21 08:20:08.577 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-21 08:20:08.578 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-21 08:20:08.579 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-21 08:20:08.580 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-21 08:20:08.580 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-21 08:20:08.581 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-21 08:20:08.582 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-21 08:20:08.583 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-21 08:20:08.590 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-21 08:20:08.591 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-21 08:20:08.592 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-21 08:20:08.593 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-21 08:20:08.723 +02:00 [FTL] Failed to build web app.
+ No public 'Invoke' or 'InvokeAsync' method found for middleware of type 'RestApiServer.ErrorHandler.DbExceptionHandler'.
+2024-10-21 08:20:08.746 +02:00 [FTL] Server startup failed.
+System.InvalidOperationException: No public 'Invoke' or 'InvokeAsync' method found for middleware of type 'RestApiServer.ErrorHandler.DbExceptionHandler'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.UseMiddleware(IApplicationBuilder app, Type middleware, Object[] args)
+   at RestApiServer.ErrorHandler.DbExceptionHandlerExtensions.UseDbExceptionHandler(IApplicationBuilder app) in C:\Users\Iain\Documents\GitHub\Community-forum\server\restapiserver\Core\DbExceptionHandler.cs:line 28
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\restapiserver\BuildWebApp.cs:line 169
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\restapiserver\server.cs:line 63
+2024-10-21 08:22:47.117 +02:00 [INF] Starting up... Please be patient.
+2024-10-21 08:22:54.794 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-21 08:22:54.802 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-21 08:22:54.804 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-21 08:22:54.806 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-21 08:22:54.807 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-21 08:22:54.809 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-21 08:22:54.818 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-21 08:22:54.820 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-21 08:22:54.825 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-21 08:22:54.827 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-21 08:22:54.831 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-21 08:22:54.832 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-21 08:22:54.840 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-21 08:22:54.841 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-21 08:22:54.843 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-21 08:22:54.844 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-21 08:22:54.847 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-21 08:22:54.848 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-21 08:22:54.850 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-21 08:22:55.031 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-21 08:22:55.107 +02:00 [FTL] Application startup exception
+System.InvalidOperationException: A suitable constructor for type 'RestApiServer.ErrorHandler.DbExceptionHandler' could not be located. Ensure the type is concrete and services are registered for all parameters of a public constructor.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2024-10-21 08:22:55.139 +02:00 [ERR] Hosting failed to start
+System.InvalidOperationException: A suitable constructor for type 'RestApiServer.ErrorHandler.DbExceptionHandler' could not be located. Ensure the type is concrete and services are registered for all parameters of a public constructor.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2024-10-21 08:22:55.189 +02:00 [FTL] Server startup failed.
+System.InvalidOperationException: A suitable constructor for type 'RestApiServer.ErrorHandler.DbExceptionHandler' could not be located. Ensure the type is concrete and services are registered for all parameters of a public constructor.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>g__LogAndRethrow|15_3(<>c__DisplayClass15_0&)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\restapiserver\server.cs:line 77
+2024-10-21 08:32:18.195 +02:00 [INF] Starting up... Please be patient.
+2024-10-21 08:32:19.976 +02:00 [FTL] Failed to build web app.
+ Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: DbExceptionHandler Lifetime: Scoped ImplementationType: DbExceptionHandler': Unable to resolve service for type 'Microsoft.AspNetCore.Http.RequestDelegate' while attempting to activate 'DbExceptionHandler'.)
+2024-10-21 08:32:20.002 +02:00 [FTL] Server startup failed.
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: DbExceptionHandler Lifetime: Scoped ImplementationType: DbExceptionHandler': Unable to resolve service for type 'Microsoft.AspNetCore.Http.RequestDelegate' while attempting to activate 'DbExceptionHandler'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: DbExceptionHandler Lifetime: Scoped ImplementationType: DbExceptionHandler': Unable to resolve service for type 'Microsoft.AspNetCore.Http.RequestDelegate' while attempting to activate 'DbExceptionHandler'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Http.RequestDelegate' while attempting to activate 'DbExceptionHandler'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.<>c__DisplayClass12_0.<.ctor>b__0()
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\restapiserver\BuildWebApp.cs:line 19
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\restapiserver\server.cs:line 62
+2024-10-21 08:37:18.111 +02:00 [INF] Starting up... Please be patient.
+2024-10-21 08:37:19.336 +02:00 [FTL] Failed to build web app.
+ Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: DbExceptionHandler Lifetime: Transient ImplementationType: DbExceptionHandler': Unable to resolve service for type 'Microsoft.AspNetCore.Http.RequestDelegate' while attempting to activate 'DbExceptionHandler'.)
+2024-10-21 08:37:19.361 +02:00 [FTL] Server startup failed.
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: DbExceptionHandler Lifetime: Transient ImplementationType: DbExceptionHandler': Unable to resolve service for type 'Microsoft.AspNetCore.Http.RequestDelegate' while attempting to activate 'DbExceptionHandler'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: DbExceptionHandler Lifetime: Transient ImplementationType: DbExceptionHandler': Unable to resolve service for type 'Microsoft.AspNetCore.Http.RequestDelegate' while attempting to activate 'DbExceptionHandler'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Http.RequestDelegate' while attempting to activate 'DbExceptionHandler'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.<>c__DisplayClass12_0.<.ctor>b__0()
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\restapiserver\BuildWebApp.cs:line 19
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\restapiserver\server.cs:line 62
+2024-10-21 08:38:25.902 +02:00 [INF] Starting up... Please be patient.
+2024-10-21 08:38:29.900 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-21 08:38:29.903 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-21 08:38:29.904 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-21 08:38:29.905 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-21 08:38:29.906 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-21 08:38:29.907 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-21 08:38:29.908 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-21 08:38:29.909 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-21 08:38:29.909 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-21 08:38:29.910 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-21 08:38:29.911 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-21 08:38:29.912 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-21 08:38:29.917 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-21 08:38:29.918 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-21 08:38:29.919 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-21 08:38:29.920 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-21 08:38:29.922 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-21 08:38:29.925 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-21 08:38:29.926 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-21 08:38:30.123 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-21 08:38:30.294 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-21 08:38:30.310 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-21 08:38:30.320 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-21 08:38:30.322 +02:00 [INF] Hosting environment: Development
+2024-10-21 08:38:30.323 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-21 09:52:45.656 +02:00 [INF] Starting up... Please be patient.
+2024-10-21 09:52:57.602 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-21 09:52:57.692 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-21 09:52:57.826 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-21 09:52:57.890 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-21 09:52:57.929 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-21 09:52:57.931 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-21 09:52:57.932 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-21 09:52:57.934 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-21 09:52:57.936 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-21 09:52:57.937 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-21 09:52:57.938 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-21 09:52:57.939 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-21 09:52:57.941 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-21 09:52:57.942 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-21 09:52:57.943 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-21 09:52:57.945 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-21 09:52:57.946 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-21 09:52:57.947 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-21 09:52:57.949 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-21 09:52:58.809 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-21 09:52:59.573 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-21 09:52:59.794 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-21 09:52:59.882 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-21 09:52:59.896 +02:00 [INF] Hosting environment: Development
+2024-10-21 09:52:59.899 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer

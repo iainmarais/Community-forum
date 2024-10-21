@@ -2,7 +2,6 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using RestApiServer.Common.Config;
-using RestApiServer.ErrorHandler;
 using RestApiServer.Security;
 
 namespace RestApiServer
@@ -18,8 +17,6 @@ namespace RestApiServer
             {
 
             });
-
-            services.AddDbExceptionHandler();
 
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();

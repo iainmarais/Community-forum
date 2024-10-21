@@ -3,7 +3,6 @@ using RestApiServer.Common.Config;
 using Serilog;
 using System.Net.Sockets;
 using RestApiServer.Db.Ops;
-using RestApiServer.ErrorHandler;
 using MySql.Data.MySqlClient;
 
 
@@ -87,12 +86,6 @@ namespace RestApiServer
             catch (Exception ex)
             {
                 Log.Fatal(ex, "Server startup failed.");
-                if(ex is MySqlException mySqlEx)
-                {
-                    var dbExceptionHandler = new DbExceptionHandler();
-                    var context = new DefaultHttpContext();
-                    await dbExceptionHandler.HandleAsync(context, mySqlEx);
-                }
             }
 
             finally
