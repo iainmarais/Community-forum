@@ -31,7 +31,7 @@ namespace RestApiServer.Endpoints.Controllers.Admin
         }
         [HttpGet("users")]
         [Authorize(Roles = "Admin")]
-        public async Task<ApiSuccessResponse<PaginatedData<List<UserBasicInfo>, UserSummary>>> GetUsers([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string? searchTerm)
+        public async Task<ApiSuccessResponse<PaginatedData<List<UserFullInfo>, UserSummary>>> GetUsers([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string? searchTerm)
         {
             var user = AuthService.GetAdminUserContext(User);
             var res = await AdminPortalService.GetUsersAsync(user.AdminUserId, pageNumber, rowsPerPage, searchTerm);

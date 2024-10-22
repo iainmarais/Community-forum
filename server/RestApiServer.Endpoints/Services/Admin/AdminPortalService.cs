@@ -79,7 +79,7 @@ namespace RestApiServer.Endpoints.Services.Admin
             return res;
         }
 
-        public static async Task<PaginatedData<List<UserBasicInfo>, UserSummary>> GetUsersAsync(string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm)
+        public static async Task<PaginatedData<List<UserFullInfo>, UserSummary>> GetUsersAsync(string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm)
         {
             using var db = new AppDbContext();
 
@@ -92,9 +92,11 @@ namespace RestApiServer.Endpoints.Services.Admin
 
             var usersQuery = from u in db.Users
                              join r in db.Roles on u.RoleId equals r.RoleId
-                             select new UserBasicInfo
+                             //Add any contacts here if needed. For Admin portal this might be essential in tracking down users associated with a particular user.
+                             select new UserFullInfo
                              {
                                  User = u,
+                                 Role = r
                              };
 
             if (!string.IsNullOrEmpty(searchTerm))

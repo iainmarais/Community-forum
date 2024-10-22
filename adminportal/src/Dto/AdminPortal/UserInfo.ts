@@ -1,3 +1,5 @@
+import type { RoleEntry } from "./RoleInfo"
+
 export type UserEntry = {
     userId: string,
     userProfileImageBase64: string,
@@ -19,6 +21,13 @@ export type UserEntry = {
 }
 export type UserBasicInfo = {
     user: UserEntry,
+    userFullName: string
+}
+
+export type UserFullInfo = {
+    user: UserEntry,
+    role: RoleEntry,
+    contacts?: UserBasicInfo[],
     userFullName: string
 }
 

@@ -1,3 +1,4 @@
+using RestApiServer.Db;
 using RestApiServer.Db.Users;
 
 namespace RestApiServer.Dto.App
@@ -11,6 +12,7 @@ namespace RestApiServer.Dto.App
     {
         public required UserEntry User { get; set; }
         //Note to self - Fix this to use contact info. Users should not see other users' passwords or anything auth-related.
+        public RoleEntry? Role { get; set; }
         public List<UserBasicInfo>? Contacts { get; set; }
         public string UserFullname { get => $"{User.UserFirstname} {User.UserLastname}"; }   
     }

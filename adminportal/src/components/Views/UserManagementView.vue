@@ -49,6 +49,8 @@ onMounted(() => {
                                             <th class="text-center">Email address</th>
                                             <th class="text-center">Date registered</th>
                                             <th class="text-center">Date last logged in</th>
+                                            <th class="text-center">Role</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,6 +59,7 @@ onMounted(() => {
                                             <td class="text-center">{{ user.user.emailAddress }}</td>
                                             <td class="text-center">{{  formatDate(user.user.registrationTime) }}</td>
                                             <td class="text-center">{{  formatDate(user.user.lastLoginTime) }}</td>
+                                            <td class="text-center">{{ user.role.roleName ?? 'User' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

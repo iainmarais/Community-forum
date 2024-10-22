@@ -1,7 +1,7 @@
 import type { ApiSuccessResponse, PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
 import type { AdminLoginRequest, AdminUserLoginResponse } from "@/Dto/AdminPortal/AdminLoginRequest";
 import type { AdminPortalAppState } from "@/Dto/AdminPortal/AdminPortalAppState";
-import type { UserBasicInfo, UserSummary } from "@/Dto/AdminPortal/UserInfo";
+import type { UserBasicInfo, UserFullInfo, UserSummary } from "@/Dto/AdminPortal/UserInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
 
@@ -17,14 +17,14 @@ const getAdminPortalAppState = async (): Promise<ApiSuccessResponse<AdminPortalA
     return res;
 }
 
-const getUserInfo = async (pageNumber: number, rowsPerPage: number, searchTerm?: string): Promise<ApiSuccessResponse<PaginatedData<UserBasicInfo[],UserSummary>>> => {
+const getUserInfo = async (pageNumber: number, rowsPerPage: number, searchTerm?: string): Promise<ApiSuccessResponse<PaginatedData<UserFullInfo[],UserSummary>>> => {
     const queryParams = [];
     queryParams.push(`pageNumber=${pageNumber}`);
     queryParams.push(`rowsPerPage=${rowsPerPage}`);
     if(searchTerm) {
         queryParams.push(`searchTerm=${searchTerm}`);
     }    
-    var res = await AxiosClient.Get<PaginatedData<UserBasicInfo[], UserSummary>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users?${queryParams.join('&')}`);
+    var res = await AxiosClient.Get<PaginatedData<UserFullInfo[], UserSummary>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users?${queryParams.join('&')}`);
     return res;
 }
 

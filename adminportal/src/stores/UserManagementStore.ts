@@ -1,12 +1,12 @@
 import type { PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
-import type { UserBasicInfo, UserEntry, UserSummary } from "@/Dto/AdminPortal/UserInfo";
+import type { UserBasicInfo, UserEntry, UserFullInfo, UserSummary } from "@/Dto/AdminPortal/UserInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import AdminPortalService from "@/Services/AdminPortalService";
 import { defineStore } from "pinia";
 
 type UserManagementStore = {
     //Pulling this in as paginated data.
-    users: PaginatedData<UserBasicInfo[], UserSummary>;
+    users: PaginatedData<UserFullInfo[], UserSummary>;
     loading_getUserInfo: boolean;
     result_getUserInfoSuccess: boolean;
 
