@@ -83,7 +83,9 @@ watch(() => activeTab.value, (newValue) => {
                 v-for="tab in tabs" 
                 :key="tab.name" 
                 :id = "tab.name">
-                    <component :is="tab.name" v-if="activeTab === tab.name" />
+                    <div class="container">
+                        <component :is="tab.component"></component>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,88 @@
+2024-10-22 08:24:26.064 +02:00 [INF] Starting up... Please be patient.
+2024-10-22 08:24:35.939 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-22 08:24:35.942 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-22 08:24:35.943 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-22 08:24:35.945 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-22 08:24:35.946 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-22 08:24:35.949 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-22 08:24:35.950 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-22 08:24:35.951 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-22 08:24:35.952 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-22 08:24:35.953 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-22 08:24:35.954 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-22 08:24:35.955 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-22 08:24:35.956 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-22 08:24:35.957 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-22 08:24:35.957 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-22 08:24:35.958 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-22 08:24:35.964 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-22 08:24:35.966 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-22 08:24:35.967 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-22 08:24:36.169 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-22 08:24:36.376 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-22 08:24:36.377 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-22 08:24:36.381 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-22 08:24:36.382 +02:00 [INF] Hosting environment: Development
+2024-10-22 08:24:36.382 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-22 08:25:57.767 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-22 08:25:57.818 +02:00 [INF] CORS policy execution successful.
+2024-10-22 08:25:57.854 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 86.1294ms
+2024-10-22 08:25:57.871 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-22 08:25:57.880 +02:00 [INF] CORS policy execution successful.
+2024-10-22 08:25:58.226 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18/10/2024 22:10:48 PM', Current time (UTC): '22/10/2024 06:25:58 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-10-22 08:25:58.263 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18/10/2024 22:10:48 PM', Current time (UTC): '22/10/2024 06:25:58 AM'.
+2024-10-22 08:25:58.274 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2024-10-22 08:25:58.282 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-10-22 08:25:58.361 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.3584118"ms  Unauthorized, body: 
+2024-10-22 08:25:58.368 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 497.5007ms
+2024-10-22 08:26:02.236 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - null null
+2024-10-22 08:26:02.241 +02:00 [INF] CORS policy execution successful.
+2024-10-22 08:26:02.243 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - 204 null null 6.8768ms
+2024-10-22 08:26:02.246 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/login - application/json 69
+2024-10-22 08:26:02.251 +02:00 [INF] CORS policy execution successful.
+2024-10-22 08:26:02.263 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer.Endpoints)'
+2024-10-22 08:26:02.296 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Endpoints.Controllers.Admin.AdminLoginController (RestApiServer.Endpoints).
+2024-10-22 08:26:03.150 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-22 08:26:03.217 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer.Endpoints) in 912.947ms
+2024-10-22 08:26:03.220 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer.Endpoints)'
+2024-10-22 08:26:03.417 +02:00 [INF] POST 200 /v1/adminportal/login "00:00:00.9707829"ms  , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-22 08:26:03.424 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/login - 200 null application/json; charset=utf-8 1178.0369ms
+2024-10-22 08:26:06.123 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-22 08:26:06.132 +02:00 [INF] CORS policy execution successful.
+2024-10-22 08:26:06.134 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 10.6128ms
+2024-10-22 08:26:06.139 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-22 08:26:06.144 +02:00 [INF] CORS policy execution successful.
+2024-10-22 08:26:06.165 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-22 08:26:06.172 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-22 08:26:06.284 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-22 08:26:06.293 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 117.7492ms
+2024-10-22 08:26:06.295 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-22 08:26:06.297 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.1513449"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-22 08:26:06.299 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 159.1932ms
+2024-10-22 08:26:06.316 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-22 08:26:06.318 +02:00 [INF] CORS policy execution successful.
+2024-10-22 08:26:06.327 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-22 08:26:06.328 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-22 08:26:06.369 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-22 08:26:06.373 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 40.9003ms
+2024-10-22 08:26:06.376 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-22 08:26:06.378 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0539146"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-22 08:26:06.380 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 63.2707ms
+2024-10-22 09:04:33.182 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-22 09:04:33.448 +02:00 [INF] CORS policy execution successful.
+2024-10-22 09:04:33.451 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 269.9446ms
+2024-10-22 09:04:33.654 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-22 09:04:34.735 +02:00 [INF] CORS policy execution successful.
+2024-10-22 09:04:34.740 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-22 09:04:35.015 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-22 09:04:35.141 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-22 09:04:35.144 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 118.3319ms
+2024-10-22 09:04:35.147 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-22 09:04:35.153 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.4146023"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-22 09:04:35.156 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 1501.9926ms
