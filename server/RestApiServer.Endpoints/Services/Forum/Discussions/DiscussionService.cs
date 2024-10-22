@@ -158,24 +158,21 @@ namespace RestApiServer.Endpoints.Services.Forum.Discussions
                                  }
                              };
 
-            var posts = await postsQuery.ToListAsync();
-
-            var filteredPosts = posts.AsQueryable();
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
-                filteredPosts = (from p in filteredPosts
+                postsQuery = (from p in postsQuery
                                  where p.Post.PostContent.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                  || p.CreatedByUser.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                  || p.CreatedByUser.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                  || p.CreatedByUser.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                  select p);
             }
-            var filteredTotal = await filteredPosts.CountAsync();
+            var filteredTotal = await postsQuery.CountAsync();
 
             var skip = (pageNumber - 1) * rowsPerPage;
-            var postRows = await filteredPosts.Skip(skip).Take(rowsPerPage).ToListAsync();
+            var postRows = await postsQuery.Skip(skip).Take(rowsPerPage).ToListAsync();
 
             int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
 

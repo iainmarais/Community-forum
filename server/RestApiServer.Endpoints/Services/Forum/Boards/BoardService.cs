@@ -94,14 +94,10 @@ namespace RestApiServer.Endpoints.Services.Forum.Boards
                                   }
                               };
 
-            var topics = await topicsQuery.ToListAsync();
-
-            var filteredTopics = topics.AsQueryable();
-
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
-                filteredTopics = (from t in filteredTopics
+                topicsQuery = (from t in topicsQuery
                                   where t.Topic.TopicName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                   || t.CreatedByUser!.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                   || t.CreatedByUser!.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
@@ -111,11 +107,11 @@ namespace RestApiServer.Endpoints.Services.Forum.Boards
             }
 
             //Count the results asynchronously
-            var filteredTotal = await filteredTopics.CountAsync();
+            var filteredTotal = await topicsQuery.CountAsync();
             var skip = (pageNumber - 1) * rowsPerPage;
 
             //Take the results asynchronously
-            var topicRows = await filteredTopics.Skip(skip).Take(rowsPerPage).ToListAsync();
+            var topicRows = await topicsQuery.Skip(skip).Take(rowsPerPage).ToListAsync();
 
             int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
 

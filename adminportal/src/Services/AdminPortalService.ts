@@ -17,8 +17,14 @@ const getAdminPortalAppState = async (): Promise<ApiSuccessResponse<AdminPortalA
     return res;
 }
 
-const getUserInfo = async (): Promise<ApiSuccessResponse<PaginatedData<UserBasicInfo[],UserSummary>>> => {
-    var res = await AxiosClient.Get<PaginatedData<UserBasicInfo[], UserSummary>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users`);
+const getUserInfo = async (pageNumber: number, rowsPerPage: number, searchTerm?: string): Promise<ApiSuccessResponse<PaginatedData<UserBasicInfo[],UserSummary>>> => {
+    const queryParams = [];
+    queryParams.push(`pageNumber=${pageNumber}`);
+    queryParams.push(`rowsPerPage=${rowsPerPage}`);
+    if(searchTerm) {
+        queryParams.push(`searchTerm=${searchTerm}`);
+    }    
+    var res = await AxiosClient.Get<PaginatedData<UserBasicInfo[], UserSummary>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users?${queryParams.join('&')}`);
     return res;
 }
 

@@ -4,15 +4,20 @@ import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
 import { useUserManagementStore } from '@/stores/UserManagementStore';
 import { onMounted } from 'vue';
+import dayjs from 'dayjs';
 
-const UserManagementStore = useUserManagementStore();
+const userManagementStore = useUserManagementStore();
 
 const refresh = () => {
-    //Todo: build out.
+    userManagementStore.getUserInfo();
+}
+
+const formatDate = (date: Date) => {
+    return dayjs(date).format('DD/MM/YYYY HH:mm:ss');
 }
 
 onMounted(() => {
-    
+    userManagementStore.getUserInfo();
 })
 
 </script>
@@ -35,7 +40,29 @@ onMounted(() => {
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <span>Coming soon...</span>
+                        <div v-if="!userManagementStore.loading_getUserInfo">
+                            <div v-if="userManagementStore.result_getUserInfoSuccess">
+                                <table class="table table-hover table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Username</th>
+                                            <th class="text-center">Email address</th>
+                                            <th class="text-center">Date registered</th>
+                                            <th class="text-center">Date last logged in</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="user in userManagementStore.users.rows">
+                                            <td class="text-center">{{ user.user.username }}</td>
+                                            <td class="text-center">{{ user.user.emailAddress }}</td>
+                                            <td class="text-center">{{  formatDate(user.user.registrationTime) }}</td>
+                                            <td class="text-center">{{  formatDate(user.user.lastLoginTime) }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>  
+                        <LoadingIndicator v-else :loading="true" />
                     </div>
                 </div>
             </div>

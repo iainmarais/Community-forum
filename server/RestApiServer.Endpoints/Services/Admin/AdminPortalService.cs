@@ -4,6 +4,7 @@ using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.App;
+using RestApiServer.Endpoints.ApiResponses;
 
 namespace RestApiServer.Endpoints.Services.Admin
 {
@@ -76,6 +77,55 @@ namespace RestApiServer.Endpoints.Services.Admin
                 User = user
             };
             return res;
+        }
+
+        public static async Task<PaginatedData<List<UserBasicInfo>, UserSummary>> GetUsersAsync(string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm)
+        {
+            using var db = new AppDbContext();
+
+            //As an added safeguard, check if the current user is an administrator.
+            var adminUser = await db.Users.SingleOrDefaultAsync(u => u.AdminUserId == adminUserId);
+            if (adminUser == null || adminUser!.RoleId != "Admin")
+            {
+                throw ClientInducedException.MessageOnly("User is not an administrator");
+            }
+
+            var usersQuery = from u in db.Users
+                             join r in db.Roles on u.RoleId equals r.RoleId
+                             select new UserBasicInfo
+                             {
+                                 User = u,
+                             };
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                usersQuery = (from u in usersQuery
+                              where u.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                              || u.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                              || u.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                              select u);
+            }
+
+
+            var filteredTotal = await usersQuery.CountAsync();
+
+            var skip = (pageNumber - 1) * rowsPerPage;
+            var userRows = await usersQuery.Skip(skip).Take(rowsPerPage).ToListAsync();
+
+            int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
+
+            return new()
+            {
+                Rows = userRows,
+                PageNumber = pageNumber,
+                RowsPerPage = rowsPerPage,
+                TotalPages = totalPages,
+                Summary = new()
+                {  
+                    TotalUsers = filteredTotal
+                }
+            };
         }
     }
 }

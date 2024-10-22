@@ -145,26 +145,21 @@ namespace RestApiServer.Endpoints.Services.Forum.Categories
                                    TotalPosts = t.Posts.Count
                                };
 
-            var threads = await threadsQuery.ToListAsync();
-
-
-            var filteredThreads = threads.AsQueryable();
-
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
-                filteredThreads = (from t in filteredThreads
+                threadsQuery = (from t in threadsQuery
                                    where t.Thread.ThreadName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                    || t.CreatedByUser.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                    || t.CreatedByUser.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                    || t.CreatedByUser!.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
                                    select t);
             }
-            var filteredTotal = await filteredThreads.CountAsync();
+            var filteredTotal = await threadsQuery.CountAsync();
 
             var skip = (pageNumber - 1) * rowsPerPage;
 
-            var threadRows = await filteredThreads.Skip(skip).Take(rowsPerPage).ToListAsync();
+            var threadRows = await threadsQuery.Skip(skip).Take(rowsPerPage).ToListAsync();
 
             int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
 

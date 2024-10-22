@@ -11,6 +11,11 @@ type UserManagementStore = {
     result_getUserInfoSuccess: boolean;
 
     selectedUser?: UserBasicInfo;
+
+    searchQuery?: string;
+
+    currentPageNumber: number,
+    rowsPerPage: number,
 }
 
 const defaultState: UserManagementStore = {
@@ -29,6 +34,9 @@ const defaultState: UserManagementStore = {
     result_getUserInfoSuccess: false,
 
     selectedUser: undefined,
+
+    currentPageNumber: 1,
+    rowsPerPage: 10,
 }
 
 export const useUserManagementStore = defineStore({
@@ -38,7 +46,7 @@ export const useUserManagementStore = defineStore({
     actions: {
         getUserInfo() {
             this.loading_getUserInfo = true;
-            AdminPortalService.getUserInfo().then(response => {
+            AdminPortalService.getUserInfo(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
                 this.loading_getUserInfo = false;
                 this.result_getUserInfoSuccess = true;
                 this.users = response.data;

@@ -29,5 +29,13 @@ namespace RestApiServer.Endpoints.Controllers.Admin
             var res = await AdminPortalService.EditUserAsync(user.AdminUserId, request);
             return ApiSuccessResponses.WithData("Edit user successful", res);
         }
+        [HttpGet("users")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<PaginatedData<List<UserBasicInfo>, UserSummary>>> GetUsers([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string? searchTerm)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            var res = await AdminPortalService.GetUsersAsync(user.AdminUserId, pageNumber, rowsPerPage, searchTerm);
+            return ApiSuccessResponses.WithData("Get users successful", res);
+        }
     }
 }
