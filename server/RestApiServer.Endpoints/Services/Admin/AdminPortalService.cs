@@ -1,10 +1,13 @@
 using Microsoft.EntityFrameworkCore;
+using RestApiServer.CommonEnums;
 using RestApiServer.Core.Errorhandler;
+using RestApiServer.Database.Db;
 using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.App;
 using RestApiServer.Endpoints.ApiResponses;
+using RestApiServer.Endpoints.Dto.Admin;
 
 namespace RestApiServer.Endpoints.Services.Admin
 {
@@ -126,6 +129,58 @@ namespace RestApiServer.Endpoints.Services.Admin
                 Summary = new()
                 {  
                     TotalUsers = filteredTotal
+                }
+            };
+        }
+
+        public static async Task<PaginatedData<List<BannedUserBasicInfo>, BannedUserSummary>> GetBannedUsersAsync(string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm)
+        {
+            using var db = new AppDbContext();
+
+            var user = await db.Users.SingleAsync(u => u.UserId == adminUserId);
+            if(user.RoleId != "Admin")
+            {
+                throw ClientInducedException.MessageOnly("User is not an administrator");
+            }
+
+            var bannedUsersQuery = from bu in db.BannedUsers
+                                    join u in db.Users on bu.UserId equals u.UserId
+                                   select new BannedUserBasicInfo
+                                   {
+                                       BannedUser = bu,
+                                       User = u
+                                   };
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                bannedUsersQuery = (from u in bannedUsersQuery
+                                    where u.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || u.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || u.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || u.BannedUser.BanExpirationDate.ToString().Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    || u.BannedUser.BanType.ToString().Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    select u);
+            }
+
+            var filteredTotal = await bannedUsersQuery.CountAsync();
+            
+            var filteredPermanentlyBannedUsers = await bannedUsersQuery.CountAsync(bu => bu.BannedUser.BanType == BanType.Permanent);
+
+            var skip = (pageNumber - 1) * rowsPerPage;
+            var bannedUserRows = await bannedUsersQuery.Skip(skip).Take(rowsPerPage).ToListAsync();
+
+            int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
+
+            return new()
+            {
+                Rows = bannedUserRows,
+                PageNumber = pageNumber,
+                RowsPerPage = rowsPerPage,
+                TotalPages = totalPages,
+                Summary = new()
+                {
+                    TotalBannedUsers = filteredTotal,
+                    PermanentlyBannedUsers = filteredPermanentlyBannedUsers
                 }
             };
         }

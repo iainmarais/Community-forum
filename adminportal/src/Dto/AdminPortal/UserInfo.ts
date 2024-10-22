@@ -44,6 +44,16 @@ export type BannedUserEntry = {
     banExpirationDate: Date
 }
 
+export type BannedUserBasicInfo = {
+    bannedUser: BannedUserEntry,
+    user: UserEntry
+}
+
+export type BannedUserSummary = {
+    totalBannedUsers: number,
+    permanentlyBannedUsers: number
+}
+
 export enum BanType {
     Permanent, //Users permanently banned will not be given a reprieve unless they are reinstated. They may appeal it.
     Administrative, //As a result of actions taken by administrators or moderators. These usually last for a specified time period, typically a year.

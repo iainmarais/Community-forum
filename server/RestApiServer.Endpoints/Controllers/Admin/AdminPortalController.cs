@@ -5,6 +5,7 @@ using RestApiServer.Endpoints.ApiResponses;
 using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.App;
 using RestApiServer.Endpoints.Services.Admin;
+using RestApiServer.Endpoints.Dto.Admin;
 
 namespace RestApiServer.Endpoints.Controllers.Admin
 {
@@ -36,6 +37,16 @@ namespace RestApiServer.Endpoints.Controllers.Admin
             var user = AuthService.GetAdminUserContext(User);
             var res = await AdminPortalService.GetUsersAsync(user.AdminUserId, pageNumber, rowsPerPage, searchTerm);
             return ApiSuccessResponses.WithData("Get users successful", res);
+        }
+
+        //Endpoint for getting banned users
+        [HttpGet("users/banned")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<PaginatedData<List<BannedUserBasicInfo>, BannedUserSummary>>> GetBannedUsers([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string? searchTerm)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            var res = await AdminPortalService.GetBannedUsersAsync(user.AdminUserId, pageNumber, rowsPerPage, searchTerm);
+            return ApiSuccessResponses.WithData("Get banned users successful", res);
         }
     }
 }
