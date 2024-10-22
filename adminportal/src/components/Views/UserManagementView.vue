@@ -15,6 +15,15 @@ const refresh = () => {
 const formatDate = (date: Date) => {
     return dayjs(date).format('DD/MM/YYYY HH:mm:ss');
 }
+const banUser = (userId: string) => {
+    //Ban the user.
+    //This should do one of two things:
+    //1. Ban the user by adding them to the banned users list.
+    //2. Ban the user by setting a prop on their user entry in the database.
+
+    //Banning the user by adding their userId to the banned list is probably more effective than simply toggling a boolean value...
+}
+
 
 onMounted(() => {
     userManagementStore.getUserInfo();
@@ -60,6 +69,11 @@ onMounted(() => {
                                             <td class="text-center">{{  formatDate(user.user.registrationTime) }}</td>
                                             <td class="text-center">{{  formatDate(user.user.lastLoginTime) }}</td>
                                             <td class="text-center">{{ user.role.roleName ?? 'User' }}</td>
+                                            <td>
+                                                <button class = "btn btn-sm btn-primary"><i class="fas fa-edit"></i>Edit</button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-ban"></i>Ban</button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-xmark"></i>Delete</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

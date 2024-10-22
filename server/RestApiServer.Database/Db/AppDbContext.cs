@@ -7,6 +7,7 @@ using RestApiServer.Db.Ops;
 using RestApiServer.Database.Utils;
 using Serilog;
 using MySqlConnector;
+using RestApiServer.Database.Db;
 
 namespace RestApiServer.Db
 {
@@ -31,6 +32,7 @@ namespace RestApiServer.Db
         public DbSet<GalleryItemEntry> GalleryItems { get; set; } = null!;
         public DbSet<ContactEntry> Contacts { get; set; } = null!;
         public DbSet<ChatEntry> Chats { get; set; } = null!;
+        public DbSet<BannedUserEntry> BannedUsers { get; set; } = null!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -87,6 +89,10 @@ namespace RestApiServer.Db
             modelBuilder.Entity<PermissionEntry>()
             .Property(prop => prop.PermissionType)
             .HasConversion(GetEnumValueConverter<PermissionType>());
+
+            modelBuilder.Entity<BannedUserEntry>()
+            .Property(prop => prop.BanType)
+            .HasConversion(GetEnumValueConverter<BanType>());
 
             modelBuilder.Entity<PermissionEntry>()
             .HasKey(p => p.PermissionId);

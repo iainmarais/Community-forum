@@ -1437,3 +1437,80 @@ System.InvalidCastException: Unable to convert MySQL date/time to System.DateTim
 2024-10-22 11:57:14.767 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
 2024-10-22 11:57:14.778 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:02.1315959"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
 2024-10-22 11:57:14.787 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 2153.0079ms
+2024-10-22 13:06:09.721 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-22 13:06:09.742 +02:00 [INF] CORS policy execution successful.
+2024-10-22 13:06:09.743 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 22.1018ms
+2024-10-22 13:06:09.750 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-22 13:06:09.754 +02:00 [INF] CORS policy execution successful.
+2024-10-22 13:06:09.757 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-22 13:06:09.759 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-22 13:06:09.938 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-22 13:06:09.942 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 177.739ms
+2024-10-22 13:06:09.945 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-22 13:06:09.957 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.2001547"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-22 13:06:09.959 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 208.4899ms
+2024-10-22 13:20:43.149 +02:00 [INF] Starting up... Please be patient.
+2024-10-22 13:20:43.946 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2024-10-22 13:20:43.952 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 19
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2024-10-22 13:22:03.843 +02:00 [INF] Starting up... Please be patient.
+2024-10-22 13:22:04.354 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2024-10-22 13:22:04.357 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 19
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2024-10-22 13:22:40.219 +02:00 [INF] Starting up... Please be patient.
+2024-10-22 13:22:40.640 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2024-10-22 13:22:40.644 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 19
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2024-10-22 13:23:40.852 +02:00 [INF] Starting up... Please be patient.
+2024-10-22 13:23:41.294 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2024-10-22 13:23:41.298 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 19
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2024-10-22 13:24:17.595 +02:00 [INF] Starting up... Please be patient.
+2024-10-22 13:24:17.929 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2024-10-22 13:24:17.931 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 19
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
