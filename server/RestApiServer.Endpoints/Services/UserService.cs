@@ -148,6 +148,7 @@ namespace RestApiServer.Endpoints.Services
                 Username = req.Username,
                 EmailAddress = req.EmailAddress,
                 HashedPassword = AuthService.HashPassword(req.Password, salt),
+                RegistrationTime = DateTime.UtcNow,
                 //Todo: Create an entry or list entry to hold the user's role or permissions here.
             };
             await db.Users.AddAsync(user);

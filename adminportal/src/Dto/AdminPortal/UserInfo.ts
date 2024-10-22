@@ -14,6 +14,7 @@ export type UserEntry = {
     totalPosts?: number,
     isOnline: boolean,
     isVisible: boolean,
+    registrationTime: Date,
     lastLoginTime: Date
 }
 export type UserBasicInfo = {

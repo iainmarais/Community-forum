@@ -2,5 +2,6 @@
 declare module "nprogress";
 declare module "vuetify";
 declare module "vue-toastification";
+declare module "dayjs";
 
 //Create module declarations as needed
