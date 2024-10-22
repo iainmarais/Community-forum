@@ -1,13 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.CommonEnums;
 using RestApiServer.Core.Errorhandler;
-using RestApiServer.Database.Db;
 using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.App;
 using RestApiServer.Endpoints.ApiResponses;
 using RestApiServer.Endpoints.Dto.Admin;
+using RestApiServer.Endpoints.Helpers;
+using Serilog;
 
 namespace RestApiServer.Endpoints.Services.Admin
 {
@@ -101,36 +102,35 @@ namespace RestApiServer.Endpoints.Services.Admin
                                  User = u,
                                  Role = r
                              };
-
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
+                //If database uses MariaDb: Create an if-check here, somehow we need to determine which database we are using... If this works, use it in all paginated data methods.
                 usersQuery = (from u in usersQuery
-                              where u.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                              || u.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                              || u.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                              select u);
+                            where u.User.UserFirstname.ToLower().Contains(searchTerm)
+                            || u.User.UserLastname.ToLower().Contains(searchTerm)
+                            || u.User.Username.ToLower().Contains(searchTerm)
+                            select u);
+                //Else if MySQL: Still to be implemented.
             }
-
-
             var filteredTotal = await usersQuery.CountAsync();
 
             var skip = (pageNumber - 1) * rowsPerPage;
             var userRows = await usersQuery.Skip(skip).Take(rowsPerPage).ToListAsync();
 
-            int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
+            var totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
 
-            return new()
+            return new PaginatedData<List<UserFullInfo>, UserSummary>()
             {
                 Rows = userRows,
                 PageNumber = pageNumber,
                 RowsPerPage = rowsPerPage,
                 TotalPages = totalPages,
                 Summary = new()
-                {  
+                {
                     TotalUsers = filteredTotal
                 }
-            };
+            };            
         }
 
         public static async Task<PaginatedData<List<BannedUserBasicInfo>, BannedUserSummary>> GetBannedUsersAsync(string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm)

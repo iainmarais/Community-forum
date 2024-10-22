@@ -1,12 +1,15 @@
 <script lang = "ts" setup>
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
-
+import { debounce } from 'lodash';
 import { useUserManagementStore } from '@/stores/UserManagementStore';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import dayjs from 'dayjs';
+import PageSelector from '../elements/Inputs/PageSelector.vue';
+import SearchBar from '../elements/Inputs/SearchBar.vue';
 
 const userManagementStore = useUserManagementStore();
+const searchQuery = ref("");
 
 const refresh = () => {
     userManagementStore.getUserInfo();
@@ -24,6 +27,13 @@ const banUser = (userId: string) => {
     //Banning the user by adding their userId to the banned list is probably more effective than simply toggling a boolean value...
 }
 
+const search = debounce((query: string) => {
+
+    //Update the search query from the user's input, then trigger the getUserInfo function in the store to pull an updated list of users.
+    //Need a way to wait until the user has finished entering their query before executing this function.
+        userManagementStore.searchQuery = query;
+        userManagementStore.getUserInfo();   
+    }, 300);
 
 onMounted(() => {
     userManagementStore.getUserInfo();
@@ -40,12 +50,15 @@ onMounted(() => {
                 </span>
             </h3>
             <div class="card-toolbar">
+                <SearchBar v-model:searchQuery="searchQuery" :handleSearch = "search" />
                 <ButtonWithLoadingIndicator :label="'Refresh'" :icon="'fas fa-sync'"  class="btn btn-primary btn-sm" @click.prevent="refresh()">
                     Refresh
                 </ButtonWithLoadingIndicator>
             </div>
         </div>
         <div class="card-body">
+            <!--Page selector-->
+            <PageSelector :current-page-number="userManagementStore.currentPageNumber" :totalPages="userManagementStore.users.totalPages" :rows-per-page="userManagementStore.rowsPerPage" @previous-page="$emit('previous-page')" @next-page="$emit('next-page')" />
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
