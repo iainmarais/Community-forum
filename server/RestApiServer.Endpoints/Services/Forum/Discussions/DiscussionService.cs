@@ -162,12 +162,12 @@ namespace RestApiServer.Endpoints.Services.Forum.Discussions
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
-                postsQuery = (from p in postsQuery
-                                 where p.Post.PostContent.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                 || p.CreatedByUser.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                 || p.CreatedByUser.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                 || p.CreatedByUser.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                 select p);
+                postsQuery = from p in postsQuery
+                                 where p.Post.PostContent.ToLower().Contains(searchTerm)
+                                 || p.CreatedByUser.User.UserFirstname.ToLower().Contains(searchTerm)
+                                 || p.CreatedByUser.User.UserLastname.ToLower().Contains(searchTerm)
+                                 || p.CreatedByUser.User.Username.ToLower().Contains(searchTerm)
+                                 select p;
             }
             var filteredTotal = await postsQuery.CountAsync();
 

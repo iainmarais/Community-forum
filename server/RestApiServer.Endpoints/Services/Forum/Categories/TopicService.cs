@@ -148,12 +148,12 @@ namespace RestApiServer.Endpoints.Services.Forum.Categories
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
-                threadsQuery = (from t in threadsQuery
-                                   where t.Thread.ThreadName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                   || t.CreatedByUser.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                   || t.CreatedByUser.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                   || t.CreatedByUser!.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                   select t);
+                threadsQuery = from t in threadsQuery
+                                   where t.Thread.ThreadName.ToLower().Contains(searchTerm)
+                                   || t.CreatedByUser.User.UserFirstname.ToLower().Contains(searchTerm)
+                                   || t.CreatedByUser.User.UserLastname.ToLower().Contains(searchTerm)
+                                   || t.CreatedByUser!.User.Username.ToLower().Contains(searchTerm)
+                                   select t;
             }
             var filteredTotal = await threadsQuery.CountAsync();
 

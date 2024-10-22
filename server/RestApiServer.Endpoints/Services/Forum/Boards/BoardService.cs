@@ -94,17 +94,17 @@ namespace RestApiServer.Endpoints.Services.Forum.Boards
                                   }
                               };
 
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                searchTerm = searchTerm.ToLower();
-                topicsQuery = (from t in topicsQuery
-                                  where t.Topic.TopicName.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                  || t.CreatedByUser!.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                  || t.CreatedByUser!.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                  || t.CreatedByUser!.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                  || t.Topic.Description.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                  select t).AsQueryable();
-            }
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    searchTerm = searchTerm.ToLower();
+                    topicsQuery = from t in topicsQuery
+                                    where t.Topic.TopicName.ToLower().Contains(searchTerm)
+                                    || t.CreatedByUser!.User.UserFirstname.ToLower().Contains(searchTerm)
+                                    || t.CreatedByUser!.User.UserLastname.ToLower().Contains(searchTerm)
+                                    || t.CreatedByUser!.User.Username.ToLower().Contains(searchTerm)
+                                    || t.Topic.Description.ToLower().Contains(searchTerm)
+                                    select t;
+                }
 
             //Count the results asynchronously
             var filteredTotal = await topicsQuery.CountAsync();
