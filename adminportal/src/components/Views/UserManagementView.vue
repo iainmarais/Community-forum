@@ -7,6 +7,8 @@ import { onMounted, ref } from 'vue';
 import dayjs from 'dayjs';
 import PageSelector from '../elements/Inputs/PageSelector.vue';
 import SearchBar from '../elements/Inputs/SearchBar.vue';
+import AddUserModal from '../modals/AddUserModal.vue';
+import { Modal } from 'bootstrap';
 
 const userManagementStore = useUserManagementStore();
 const searchQuery = ref("");
@@ -17,6 +19,12 @@ const refresh = () => {
 
 const formatDate = (date: Date) => {
     return dayjs(date).format('DD/MM/YYYY HH:mm:ss');
+}
+
+const openAddUserModal = () => {
+    var addUserModal = document.getElementById("addUserModal");
+    var modal = new Modal(addUserModal);
+    modal.show();
 }
 const banUser = (userId: string) => {
     //Ban the user.
@@ -54,6 +62,7 @@ onMounted(() => {
                 <ButtonWithLoadingIndicator :label="'Refresh'" :icon="'fas fa-sync'"  class="btn btn-primary btn-sm" @click.prevent="refresh()">
                     Refresh
                 </ButtonWithLoadingIndicator>
+                <button class="btn btn-sm btn-primary" @click="openAddUserModal()"><i class="fas fa-plus"></i>Add User</button>
             </div>
         </div>
         <div class="card-body">
@@ -98,4 +107,5 @@ onMounted(() => {
             </div>
         </div>
     </div>
+    <AddUserModal />
 </template>

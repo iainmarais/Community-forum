@@ -10,7 +10,7 @@ namespace RestApiServer.Database.Db
     public class BannedUserEntry
     {
         [Key]
-        public required string BanId { get; set; } = DbUtils.GenerateUuid();
+        public string BanId { get; set; } = DbUtils.GenerateUuid();
         public required string UserId { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter<BanType>))]
         public required BanType BanType { get; set; }

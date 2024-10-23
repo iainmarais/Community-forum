@@ -1,6 +1,9 @@
-import type { ApiSuccessResponse, PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
+import { ApiSuccessResponse, type PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
+import type { AddUserRequest } from "@/Dto/AdminPortal/AddUserRequest";
 import type { AdminLoginRequest, AdminUserLoginResponse } from "@/Dto/AdminPortal/AdminLoginRequest";
 import type { AdminPortalAppState } from "@/Dto/AdminPortal/AdminPortalAppState";
+import type { BanUserRequest } from "@/Dto/AdminPortal/BanUserRequest";
+import type { RoleEntry } from "@/Dto/AdminPortal/RoleInfo";
 import type { BannedUserBasicInfo, BannedUserSummary, UserBasicInfo, UserFullInfo, UserSummary } from "@/Dto/AdminPortal/UserInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
@@ -38,9 +41,24 @@ const getBannedUserInfo = async (pageNumber: number, rowsPerPage: number, search
     var res = await AxiosClient.Get<PaginatedData<BannedUserBasicInfo[], BannedUserSummary>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users/banned?${queryParams.join('&')}`);
     return res;
 }
+
+const banUser = async (userId: string, request: BanUserRequest) : Promise<ApiSuccessResponse<BannedUserBasicInfo>> => {
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users/${userId}/ban`, request);
+}
+
+const addUser = async (req:AddUserRequest): Promise<ApiSuccessResponse<UserBasicInfo>> => {
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users/add`, req);
+}
+
+const getUserRoles = async (): Promise<ApiSuccessResponse<RoleEntry[]>> => {
+    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users/roles`)
+}
 export default {
     getAdminPortalAppState,
     adminLogin,
     getUserInfo,
-    getBannedUserInfo
+    getBannedUserInfo, 
+    banUser,
+    addUser,
+    getUserRoles
 }

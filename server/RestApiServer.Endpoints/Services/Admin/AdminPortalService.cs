@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.CommonEnums;
 using RestApiServer.Core.Errorhandler;
+using RestApiServer.Database.Db;
 using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.Admin;
@@ -183,6 +184,57 @@ namespace RestApiServer.Endpoints.Services.Admin
                     PermanentlyBannedUsers = filteredPermanentlyBannedUsers
                 }
             };
+        }
+
+        public static async Task<BannedUserBasicInfo> BanUserAsync(string adminUserId, string userId, BanUserRequest req)
+        {
+            using var db = new AppDbContext();
+
+            //As an added safeguard, check if the current user is an administrator.
+            var adminUser = await db.Users.SingleOrDefaultAsync(u => u.AdminUserId == adminUserId);
+            if (adminUser == null || adminUser!.RoleId != "Admin")
+            {
+                throw ClientInducedException.MessageOnly("User is not an administrator");
+            }
+
+            //Find the requested user in the database
+            var user = await db.Users.SingleOrDefaultAsync(u => u.UserId == userId);
+
+            if (user == null)
+            {
+                throw ClientInducedException.MessageOnly("User not found");
+            }
+
+            //Check for any existing bans. This should return a null or zero count
+            var existingBan = await db.BannedUsers.Where(b => b.UserId == userId).CountAsync();
+            if (existingBan > 0)
+            {
+                throw ClientInducedException.MessageOnly("User is already banned");
+            }
+            var newBanType = Enum.TryParse(req.BanType, out BanType banType) ? banType : BanType.Permanent;
+            var newBan = new BannedUserEntry()
+            {
+                UserId = userId,
+                BanType = newBanType,
+                BanExpirationDate = req.BanExpirationDate,
+                BanReason = req.BanReason
+            };
+            db.BannedUsers.Add(newBan);
+            await db.SaveChangesAsync();
+            return new BannedUserBasicInfo()
+            {
+                BannedUser = newBan,
+                User = user
+            };
+        }
+
+        public static async Task<List<RoleEntry>> GetRolesAsync()
+        {
+            using var db = new AppDbContext();
+
+            var res = await db.Roles.ToListAsync();
+
+            return res;
         }
     }
 }

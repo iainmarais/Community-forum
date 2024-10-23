@@ -1,0 +1,84 @@
+<script lang = "ts" setup>
+import type { AddUserRequest } from '@/Dto/AdminPortal/AddUserRequest';
+import type { RoleEntry } from '@/Dto/AdminPortal/RoleInfo';
+import { useUserManagementStore } from '@/stores/UserManagementStore';
+import { onMounted, ref } from 'vue';
+const userManagementStore = useUserManagementStore();
+
+const userToAdd= ref<AddUserRequest>({ username: "", password: "", emailAddress: "", roleId: "" });
+
+const newUsername = ref("");
+const newPassword = ref("");
+const newEmailAddress = ref("");
+const newRoleId = ref("");
+
+const availableRoles = ref<RoleEntry[]>([]);
+
+onMounted(() => {
+    userManagementStore.getUserRoles();
+    if (userManagementStore.userRoles) {
+        availableRoles.value = userManagementStore.userRoles;
+    }
+});
+
+const addUser = () => {
+
+    if(newUsername.value == "" || newPassword.value == "" || newEmailAddress.value == "") {
+        alert("Please enter a username, password, and email address.");
+        //Stop processing here if any of these are not provided.
+        return;
+    }
+    if(newRoleId.value == "") {
+        alert("Role Id not provided, assuming an ordinary user.");
+        newRoleId.value = "User";
+    }
+
+    userToAdd.value.username = newUsername.value;
+    userToAdd.value.password = newPassword.value;
+    userToAdd.value.emailAddress = newEmailAddress.value;
+    userToAdd.value.roleId = newRoleId.value;
+
+    //Send the request to the store, which will pass it through to the service.
+    userManagementStore.addUser(userToAdd.value);
+}
+
+</script>
+
+<template>
+    <div id="addUserModal" class="modal fade stackable" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input :v-model="newUsername" type="text" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input :v-model="newPassword" type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input :v-model="newEmailAddress" type="email" class="form-control" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select v-if="availableRoles">
+                            <option v-for="role in availableRoles">
+                                {{ role.roleName }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" @click="addUser()">Add user</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

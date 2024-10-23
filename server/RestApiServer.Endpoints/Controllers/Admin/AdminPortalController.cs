@@ -6,6 +6,7 @@ using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.App;
 using RestApiServer.Endpoints.Services.Admin;
 using RestApiServer.Endpoints.Dto.Admin;
+using RestApiServer.Db;
 
 namespace RestApiServer.Endpoints.Controllers.Admin
 {
@@ -47,6 +48,24 @@ namespace RestApiServer.Endpoints.Controllers.Admin
             var user = AuthService.GetAdminUserContext(User);
             var res = await AdminPortalService.GetBannedUsersAsync(user.AdminUserId, pageNumber, rowsPerPage, searchTerm);
             return ApiSuccessResponses.WithData("Get banned users successful", res);
+        }
+
+        [HttpPost("users/{userId}/ban")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<BannedUserBasicInfo>> BanUser(string userId, BanUserRequest request)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            var res = await AdminPortalService.BanUserAsync(user.AdminUserId, userId, request);
+            return ApiSuccessResponses.WithData("Ban user successful", res);
+        }
+
+        [HttpGet("users/roles")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<List<RoleEntry>>> GetRoles()
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            var res = await AdminPortalService.GetRolesAsync();
+            return ApiSuccessResponses.WithData("Get available roles: successful", res);
         }
     }
 }
