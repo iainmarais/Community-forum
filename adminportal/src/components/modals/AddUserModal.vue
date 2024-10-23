@@ -2,7 +2,8 @@
 import type { AddUserRequest } from '@/Dto/AdminPortal/AddUserRequest';
 import type { RoleEntry } from '@/Dto/AdminPortal/RoleInfo';
 import { useUserManagementStore } from '@/stores/UserManagementStore';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
+import Select2 from 'vue3-select2-component';
 const userManagementStore = useUserManagementStore();
 
 const userToAdd= ref<AddUserRequest>({ username: "", password: "", emailAddress: "", roleId: "" });
@@ -12,14 +13,30 @@ const newPassword = ref("");
 const newEmailAddress = ref("");
 const newRoleId = ref("");
 
-const availableRoles = ref<RoleEntry[]>([]);
+const availableRoles = ref([]);
+const selectedRole = ref<string>("")
+
+const getRoles = async () => {
+    await userManagementStore.getUserRoles();
+    availableRoles.value = userManagementStore.userRoles.map((role: RoleEntry) => ({
+        id: role.roleType, 
+        text: role.roleName,
+    }));
+}
 
 onMounted(() => {
-    userManagementStore.getUserRoles();
-    if (userManagementStore.userRoles) {
-        availableRoles.value = userManagementStore.userRoles;
+    getRoles();
+});
+
+watch(() => userManagementStore.userRoles,(newValue) => {
+    if(newValue) {
+        availableRoles.value = newValue.map((role: RoleEntry)=> ({
+            id: role.roleType, 
+            text: role.roleName,
+        }));
     }
 });
+
 
 const addUser = () => {
 
@@ -46,7 +63,7 @@ const addUser = () => {
 
 <template>
     <div id="addUserModal" class="modal fade stackable" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true" data-backdrop="static">
-        <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-dialog modal-xxl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add User</h5>
@@ -59,7 +76,7 @@ const addUser = () => {
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input :v-model="newPassword" type="password" class="form-control" placeholder="Password">
+                        <input :v-model="newPassword" type="text" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
@@ -67,11 +84,7 @@ const addUser = () => {
                     </div>
                     <div class="form-group">
                         <label>Role</label>
-                        <select v-if="availableRoles">
-                            <option v-for="role in availableRoles">
-                                {{ role.roleName }}
-                            </option>
-                        </select>
+                        <Select2 v-model="newRoleId" :options="availableRoles" class="wider-select2" style="width: 60%" placeholder = "Select a role to assign" />
                     </div>
                 </div>
                 <div class="modal-footer">
