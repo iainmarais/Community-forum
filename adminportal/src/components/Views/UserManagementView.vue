@@ -9,7 +9,13 @@ import PageSelector from '../elements/Inputs/PageSelector.vue';
 import SearchBar from '../elements/Inputs/SearchBar.vue';
 import AddUserModal from '../modals/AddUserModal.vue';
 import { Modal } from 'bootstrap';
+import type { UserEntry } from '@/Dto/AdminPortal/UserInfo';
+import { useToast } from 'vue-toastification';
+import { useAppContextStore } from '@/stores/AppContextStore';
 
+const toast = useToast();
+
+const appContextStore = useAppContextStore();
 const userManagementStore = useUserManagementStore();
 const searchQuery = ref("");
 
@@ -26,13 +32,15 @@ const openAddUserModal = () => {
     var modal = new Modal(addUserModal);
     modal.show();
 }
-const banUser = (userId: string) => {
-    //Ban the user.
-    //This should do one of two things:
-    //1. Ban the user by adding them to the banned users list.
-    //2. Ban the user by setting a prop on their user entry in the database.
-
-    //Banning the user by adding their userId to the banned list is probably more effective than simply toggling a boolean value...
+const banUser = (user: UserEntry) => {
+    if(user.roleId == "Admin" && user.userId==appContextStore.currentLoggedInUser.userId) {
+        toast.error("You can't ban yourself.");
+        return;
+    }
+    if(user.roleId == "Admin") {
+        toast.error("This action is not supported.");
+        return;
+    }
 }
 
 const search = debounce((query: string) => {
@@ -88,13 +96,13 @@ onMounted(() => {
                                         <tr v-for="user in userManagementStore.users.rows">
                                             <td class="text-center">{{ user.user.username }}</td>
                                             <td class="text-center">{{ user.user.emailAddress }}</td>
-                                            <td class="text-center">{{  formatDate(user.user.registrationTime) }}</td>
-                                            <td class="text-center">{{  formatDate(user.user.lastLoginTime) }}</td>
+                                            <td class="text-center">{{ formatDate(user.user.registrationTime) }}</td>
+                                            <td class="text-center">{{ formatDate(user.user.lastLoginTime) }}</td>
                                             <td class="text-center">{{ user.role.roleName ?? 'User' }}</td>
                                             <td>
                                                 <!--Space these out by around 10 px-->
                                                 <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Edit</button>
-                                                <button style="margin-inline: 10px" class="btn btn-sm btn-danger"><i class="fas fa-ban"></i>Ban</button>
+                                                <button style="margin-inline: 10px" class="btn btn-sm btn-danger" @click="banUser(user.user)"><i class="fas fa-ban"></i>Ban</button>
                                                 <button style="margin-inline: 10px" class="btn btn-sm btn-danger"><i class="fas fa-xmark"></i>Delete</button>
                                             </td>
                                         </tr>
