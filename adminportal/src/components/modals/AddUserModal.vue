@@ -3,8 +3,11 @@ import type { AddUserRequest } from '@/Dto/AdminPortal/AddUserRequest';
 import type { RoleEntry } from '@/Dto/AdminPortal/RoleInfo';
 import { useUserManagementStore } from '@/stores/UserManagementStore';
 import { onMounted, ref, watch } from 'vue';
+import { useToast } from 'vue-toastification';
 import Select2 from 'vue3-select2-component';
 const userManagementStore = useUserManagementStore();
+
+const toast = useToast();
 
 const userToAdd= ref<AddUserRequest>({ username: "", password: "", emailAddress: "", roleId: "" });
 
@@ -41,12 +44,12 @@ watch(() => userManagementStore.userRoles,(newValue) => {
 const addUser = () => {
 
     if(newUsername.value == "" || newPassword.value == "" || newEmailAddress.value == "") {
-        alert("Please enter a username, password, and email address.");
+        toast.error("Please enter a username, password, and email address.");
         //Stop processing here if any of these are not provided.
         return;
     }
     if(newRoleId.value == "") {
-        alert("Role Id not provided, assuming an ordinary user.");
+        toast.info("Role Id not provided, assuming an ordinary user.");
         newRoleId.value = "User";
     }
 
@@ -66,7 +69,11 @@ const addUser = () => {
         <div class="modal-dialog modal-xxl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add User</h5>
+                    <h3 class="modal-title">
+                        <span class="card-label font-weight-bolder text-dark075 font-size-h5">
+                            Add a new user
+                        </span>
+                    </h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
