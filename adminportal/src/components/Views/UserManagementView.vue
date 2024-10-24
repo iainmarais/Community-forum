@@ -42,6 +42,9 @@ const banUser = (user: UserEntry) => {
         return;
     }
 }
+const deleteUser = (userId: string) => {
+    userManagementStore.deleteUser(userId);
+}
 
 const search = debounce((query: string) => {
 
@@ -103,7 +106,7 @@ onMounted(() => {
                                                 <!--Space these out by around 10 px-->
                                                 <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Edit</button>
                                                 <button style="margin-inline: 10px" class="btn btn-sm btn-danger" @click="banUser(user.user)"><i class="fas fa-ban"></i>Ban</button>
-                                                <button style="margin-inline: 10px" class="btn btn-sm btn-danger"><i class="fas fa-xmark"></i>Delete</button>
+                                                <button style="margin-inline: 10px" class="btn btn-sm btn-danger" @click="deleteUser(user.user.userId)"><i class="fas fa-xmark"></i>Delete</button>
                                             </td>
                                         </tr>
                                     </tbody>

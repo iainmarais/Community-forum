@@ -6,6 +6,9 @@ import type { BannedUserBasicInfo, BannedUserSummary, UserBasicInfo, UserEntry, 
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import AdminPortalService from "@/Services/AdminPortalService";
 import { defineStore } from "pinia";
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
 
 type UserManagementStore = {
     //Pulling this in as paginated data.
@@ -28,7 +31,11 @@ type UserManagementStore = {
     loading_gettingUserRoles: boolean;
     result_getUserRolesSuccess: boolean;
 
+    loading_deleteUserInProgress: boolean;
+    result_deleteUserSuccess: boolean;
+
     selectedUser?: UserBasicInfo;
+    bannedUser? : BannedUserBasicInfo;
 
     searchQuery?: string;
 
@@ -81,6 +88,9 @@ const defaultState: UserManagementStore = {
     loading_gettingUserRoles: false,
     result_getUserRolesSuccess: false,
 
+    loading_deleteUserInProgress: false,
+    result_deleteUserSuccess: false,
+
     selectedUser: undefined,
 
     currentPageNumber: 1,
@@ -119,16 +129,38 @@ export const useUserManagementStore = defineStore({
             });
         },
         banUser (userId: string, request: BanUserRequest) {
+            this.loading_banUserInProgress = true;
             AdminPortalService.banUser(userId, request).then(response => {
-                this.bannedUsers = response.data;
+                this.loading_banUserInProgress = false;
+                this.result_banUserSuccess = true;
+                this.bannedUser = response.data;
             }, error => {
+                this.loading_banUserInProgress = false;
+                this.result_banUserSuccess = false;
                 ErrorHandler.handleApiErrorResponse(error);
             });
         },
         addUser (request: AddUserRequest) {
+            this.loading_addUserInProgress = true;
             AdminPortalService.addUser(request).then(response => {
+                this.loading_addUserInProgress = false;
+                this.result_addUserSuccess = true;
                 this.users = response.data;
             }, error => {
+                this.loading_addUserInProgress = false;
+                this.result_addUserSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            });
+        },
+        deleteUser (userId: string) {
+            this.loading_deleteUserInProgress = true;
+            AdminPortalService.deleteUser(userId).then(response => {
+                this.loading_deleteUserInProgress = false;
+                this.result_deleteUserSuccess = true;
+                toast.success("User deleted successfully");
+            }, error => {
+                this.loading_deleteUserInProgress = false;
+                this.result_deleteUserSuccess = false;
                 ErrorHandler.handleApiErrorResponse(error);
             });
         },
