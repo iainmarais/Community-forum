@@ -59,6 +59,15 @@ namespace RestApiServer.Endpoints.Controllers.Admin
             return ApiSuccessResponses.WithData("Ban user successful", res);
         }
 
+        [HttpPost("users/{userId}/delete")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<object>> DeleteUser(string userId)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            await AdminPortalService.DeleteUserAsync(user.UserId, userId);
+            return ApiSuccessResponses.WithoutData("Delete user successful");
+        }
+
         [HttpGet("users/roles")]
         [Authorize(Roles = "Admin")]
         public async Task<ApiSuccessResponse<List<RoleEntry>>> GetRoles()

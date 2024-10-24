@@ -228,6 +228,25 @@ namespace RestApiServer.Endpoints.Services.Admin
             };
         }
 
+        public static async Task DeleteUserAsync(string adminUserId, string userId)
+        {
+            using var db = new AppDbContext();
+            
+            var userToDelete = await db.Users.SingleOrDefaultAsync(u => u.UserId == userId);
+            //Make sure the user to delete is not the same as the admin user (the one triggering this code.)
+            var adminUser = await db.Users.SingleOrDefaultAsync(a => a.UserId == adminUserId);
+            if(userToDelete == adminUser)
+            {
+                throw ClientInducedException.MessageOnly("Can't delete the admin user.");
+            }
+            if(userToDelete == null)
+            {
+                throw ClientInducedException.MessageOnly("User not found");
+            }
+            //Finally, remove the user.
+            db.Users.Remove(userToDelete);
+        }
+
         public static async Task<List<RoleEntry>> GetRolesAsync()
         {
             using var db = new AppDbContext();

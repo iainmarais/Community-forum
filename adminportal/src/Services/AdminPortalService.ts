@@ -53,6 +53,11 @@ const addUser = async (req:AddUserRequest): Promise<ApiSuccessResponse<UserBasic
 const getUserRoles = async (): Promise<ApiSuccessResponse<RoleEntry[]>> => {
     return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users/roles`)
 }
+//User id is being sent via the url, so no need for any additional data to be sent. The server only expects the user id.
+const deleteUser = async (userId: string): Promise<ApiSuccessResponse<object>> => {
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users/${userId}/delete`, null)
+}
+
 export default {
     getAdminPortalAppState,
     adminLogin,
@@ -60,5 +65,6 @@ export default {
     getBannedUserInfo, 
     banUser,
     addUser,
-    getUserRoles
+    getUserRoles,
+    deleteUser
 }
