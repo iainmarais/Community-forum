@@ -59,7 +59,7 @@ const assignRoleToUser = (selectedUser: UserEntry) => {
     const roles = userManagementStore.userRoles.map((role: RoleEntry) => {
         return `<option value="${role.roleType}">${role.roleName}</option>`;
     })
-
+    //This works nicely... but how do I get it into its own component that can be reused? <scratch-head />
     Swal.fire({
         title: `Assign role to ${selectedUser.username}`,
         text: "Select a role from the dropdown below to assign to the selected user.",
