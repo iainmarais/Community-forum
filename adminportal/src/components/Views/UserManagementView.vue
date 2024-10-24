@@ -3,7 +3,7 @@ import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingI
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import { debounce } from 'lodash';
 import { useUserManagementStore } from '@/stores/UserManagementStore';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import dayjs from 'dayjs';
 import PageSelector from '../elements/Inputs/PageSelector.vue';
 import SearchBar from '../elements/Inputs/SearchBar.vue';
@@ -100,6 +100,7 @@ const assignRoleToUser = (selectedUser: UserEntry) => {
                 return;
             }
             userManagementStore.assignUserRole(selectedUser.userId, assignRoleRequest);
+            userManagementStore.getUserInfo();
         }
     })
 }
@@ -114,6 +115,12 @@ const search = debounce((query: string) => {
 
 onMounted(() => {
     userManagementStore.getUserInfo();
+});
+
+watch(() => userManagementStore.result_assignUserRoleSuccess,(newValue) => {
+    if(newValue) {
+        userManagementStore.getUserInfo();
+    }
 })
 
 </script>
