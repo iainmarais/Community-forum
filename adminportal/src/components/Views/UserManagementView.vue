@@ -64,7 +64,7 @@ const assignRoleToUser = (selectedUser: UserEntry) => {
         title: `Assign role to ${selectedUser.username}`,
         text: "Select a role from the dropdown below to assign to the selected user.",
         html: ` 
-            <select>
+            <select id= "roleSelect">
                 ${roles.join("")}
             </select>
             `,
@@ -72,13 +72,22 @@ const assignRoleToUser = (selectedUser: UserEntry) => {
         confirmButtonText: 'Assign Role',
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
+        preConfirm: () => {
+            const selectedRole = (document.getElementById("roleSelect") as HTMLSelectElement).value;
+            return selectedRole;
+        }
     }).then((result) => {
         if (result.isConfirmed) {
-            const selectedRole = result.value;
+            const selectedRoleType = result.value;  // Captured from preConfirm
+            const selectedRoleName = userManagementStore.userRoles.find(role => role.roleType === selectedRoleType)?.roleName;
+            if(!selectedRoleName) {
+                toast.error("No role selected or role not found.");
+                return;
+            }
             const assignRoleRequest: AssignRoleRequest = {
                 selectedUserId: selectedUser.userId,
-                selectedRoleId: selectedRole.value,
-                selectedRoleName: selectedRole.text
+                selectedRoleId: selectedRoleType,
+                selectedRoleName: selectedRoleName
             
             };
             if(assignRoleRequest.selectedUserId == appContextStore.currentLoggedInUser.userId) {
@@ -90,8 +99,7 @@ const assignRoleToUser = (selectedUser: UserEntry) => {
                 toast.error("You can't assign yourself a role.");
                 return;
             }
-            console.log("If you see this in your log, it means the user was successfully assigned a role.");
-            //userManagementStore.assignUserRole(selectedUser.userId, assignRoleRequest);
+            userManagementStore.assignUserRole(selectedUser.userId, assignRoleRequest);
         }
     })
 }
