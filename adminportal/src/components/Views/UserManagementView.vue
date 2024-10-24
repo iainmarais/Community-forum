@@ -15,6 +15,7 @@ import { useAppContextStore } from '@/stores/AppContextStore';
 import type { AssignRoleRequest } from '@/Dto/AdminPortal/AssignRoleRequest';
 import type { RoleEntry } from '@/Dto/AdminPortal/RoleInfo';
 import Swal from 'sweetalert2';
+import SwalConfirm from '@/components/SwalConfirmations/SwalConfirm';
 
 const toast = useToast();
 
