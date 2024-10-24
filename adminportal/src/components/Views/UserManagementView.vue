@@ -52,16 +52,6 @@ const deleteUser = (userId: string) => {
     userManagementStore.deleteUser(userId);
 }
 
-//Not yet working.
-const assignRole = (selectedUser: UserEntry) => {
-    userManagementStore.getUserRoles(); // Fetch user roles before showing the confirmation
-
-    // Map roles to options for the select dropdown in the modal
-    const roles = userManagementStore.userRoles.map((role: RoleEntry) => {
-        return `<option value="${role.roleType}">${role.roleName}</option>`;
-    });
-};
-
 //Test: show sweetalert confirmation from custom component
 const assignRoleToUser = (selectedUser: UserEntry) => {
 
