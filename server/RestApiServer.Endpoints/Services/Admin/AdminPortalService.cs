@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using RestApiServer.Common.Services;
 using RestApiServer.CommonEnums;
 using RestApiServer.Core.Errorhandler;
 using RestApiServer.Database.Db;
@@ -254,6 +255,49 @@ namespace RestApiServer.Endpoints.Services.Admin
             var res = await db.Roles.ToListAsync();
 
             return res;
+        }
+
+        public static async Task AssignRoleAsync(string userId, AssignRoleRequest request)
+        {
+            using var db = new AppDbContext();
+
+            var user = await db.Users.SingleAsync(u => u.UserId == userId);
+            if(user == null)
+            {
+                throw ClientInducedException.MessageOnly("User not found");
+            }
+            //Look for the role using either its id or name.
+            var roleToAssign = await db.Roles.SingleAsync(r => r.RoleId == request.SelectedRoleId || r.RoleName == request.SelectedRoleName);
+
+            if(roleToAssign == null)
+            {
+                throw ClientInducedException.MessageOnly("Role not found");
+            }
+            user.RoleId = roleToAssign.RoleId;
+            await db.SaveChangesAsync();
+        }
+
+        public static async Task<UserBasicInfo> AddUserAsync(AddUserRequest req)
+        {
+            using var db = new AppDbContext();
+
+            var salt = AuthService.GenerateSalt();
+            var user = new UserEntry()
+            {
+                UserId = Guid.NewGuid().ToString(),
+                ForumUserId = Guid.NewGuid().ToString(),
+                Username = req.Username,
+                HashedPassword = AuthService.HashPassword(req.Password, salt),
+                EmailAddress = req.EmailAddress,
+                RoleId = req.RoleId ?? "User",
+                RegistrationTime = DateTime.UtcNow,
+            };
+            db.Users.Add(user);
+            await db.SaveChangesAsync();
+            return new UserBasicInfo()
+            {
+                User = user
+            };
         }
     }
 }

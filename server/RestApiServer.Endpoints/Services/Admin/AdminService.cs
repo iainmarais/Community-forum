@@ -148,7 +148,7 @@ namespace RestApiServer.Endpoints.Services.Admin
 
             //Assign the selected user the selected role.
             var userToModify = await db.Users.SingleOrDefaultAsync(u => u.UserId == request.SelectedUserId);
-            var RoleToAdd = await db.Roles.SingleOrDefaultAsync(r => r.RoleType.ToString() == request.SelectedRoleType);
+            var RoleToAdd = await db.Roles.SingleOrDefaultAsync(r => r.RoleId.ToString() == request.SelectedRoleId || r.RoleName == request.SelectedRoleName);
 
             if (userToModify == null || RoleToAdd == null)
             {

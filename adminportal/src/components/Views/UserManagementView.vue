@@ -12,12 +12,18 @@ import { Modal } from 'bootstrap';
 import type { UserEntry } from '@/Dto/AdminPortal/UserInfo';
 import { useToast } from 'vue-toastification';
 import { useAppContextStore } from '@/stores/AppContextStore';
+import type { AssignRoleRequest } from '@/Dto/AdminPortal/AssignRoleRequest';
+import type { RoleEntry } from '@/Dto/AdminPortal/RoleInfo';
+import Swal from 'sweetalert2';
 
 const toast = useToast();
 
 const appContextStore = useAppContextStore();
 const userManagementStore = useUserManagementStore();
 const searchQuery = ref("");
+
+const selectedRoleName = ref<string>("");
+const selectedRoleId = ref<string>("");
 
 const refresh = () => {
     userManagementStore.getUserInfo();
@@ -44,6 +50,60 @@ const banUser = (user: UserEntry) => {
 }
 const deleteUser = (userId: string) => {
     userManagementStore.deleteUser(userId);
+}
+
+//Not yet working.
+const assignRole = (selectedUser: UserEntry) => {
+    userManagementStore.getUserRoles(); // Fetch user roles before showing the confirmation
+
+    // Map roles to options for the select dropdown in the modal
+    const roles = userManagementStore.userRoles.map((role: RoleEntry) => {
+        return `<option value="${role.roleType}">${role.roleName}</option>`;
+    });
+};
+
+//Test: show sweetalert confirmation from custom component
+const assignRoleToUser = (selectedUser: UserEntry) => {
+
+    userManagementStore.getUserRoles();
+    const roles = userManagementStore.userRoles.map((role: RoleEntry) => {
+        return `<option value="${role.roleType}">${role.roleName}</option>`;
+    })
+
+    Swal.fire({
+        title: `Assign role to ${selectedUser.username}`,
+        text: "Select a role from the dropdown below to assign to the selected user.",
+        html: ` 
+            <select>
+                ${roles.join("")}
+            </select>
+            `,
+        showCancelButton: true,
+        confirmButtonText: 'Assign Role',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const selectedRole = result.value;
+            const assignRoleRequest: AssignRoleRequest = {
+                selectedUserId: selectedUser.userId,
+                selectedRoleId: selectedRole.value,
+                selectedRoleName: selectedRole.text
+            
+            };
+            if(assignRoleRequest.selectedUserId == appContextStore.currentLoggedInUser.userId) {
+                toast.error("You can't assign yourself a role.");
+                return;
+            }
+
+            if(assignRoleRequest.selectedRoleId == "Admin" && assignRoleRequest.selectedUserId==appContextStore.currentLoggedInUser.userId) {
+                toast.error("You can't assign yourself a role.");
+                return;
+            }
+            console.log("If you see this in your log, it means the user was successfully assigned a role.");
+            //userManagementStore.assignUserRole(selectedUser.userId, assignRoleRequest);
+        }
+    })
 }
 
 const search = debounce((query: string) => {
@@ -105,6 +165,7 @@ onMounted(() => {
                                             <td>
                                                 <!--Space these out by around 10 px-->
                                                 <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Edit</button>
+                                                <button style="margin-inline: 10px" class ="btn btn-sm btn-primary" @click="assignRoleToUser(user.user)"><i class="fas fa-check"></i>Assign role</button>
                                                 <button style="margin-inline: 10px" class="btn btn-sm btn-danger" @click="banUser(user.user)"><i class="fas fa-ban"></i>Ban</button>
                                                 <button style="margin-inline: 10px" class="btn btn-sm btn-danger" @click="deleteUser(user.user.userId)"><i class="fas fa-xmark"></i>Delete</button>
                                             </td>

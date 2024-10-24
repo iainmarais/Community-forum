@@ -2,6 +2,7 @@ import { ApiSuccessResponse, type PaginatedData } from "@/ApiResponses/ApiSucces
 import type { AddUserRequest } from "@/Dto/AdminPortal/AddUserRequest";
 import type { AdminLoginRequest, AdminUserLoginResponse } from "@/Dto/AdminPortal/AdminLoginRequest";
 import type { AdminPortalAppState } from "@/Dto/AdminPortal/AdminPortalAppState";
+import type { AssignRoleRequest } from "@/Dto/AdminPortal/AssignRoleRequest";
 import type { BanUserRequest } from "@/Dto/AdminPortal/BanUserRequest";
 import type { RoleEntry } from "@/Dto/AdminPortal/RoleInfo";
 import type { BannedUserBasicInfo, BannedUserSummary, UserBasicInfo, UserFullInfo, UserSummary } from "@/Dto/AdminPortal/UserInfo";
@@ -58,6 +59,10 @@ const deleteUser = async (userId: string): Promise<ApiSuccessResponse<object>> =
     return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users/${userId}/delete`, null)
 }
 
+const assignUserRole = async (userId: string, request: AssignRoleRequest): Promise<ApiSuccessResponse<object>> => {
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users/${userId}/assignrole`, request)
+}
+
 export default {
     getAdminPortalAppState,
     adminLogin,
@@ -66,5 +71,6 @@ export default {
     banUser,
     addUser,
     getUserRoles,
-    deleteUser
+    deleteUser,
+    assignUserRole
 }

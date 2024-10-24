@@ -1,5 +1,6 @@
 import type { PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
 import type { AddUserRequest } from "@/Dto/AdminPortal/AddUserRequest";
+import type { AssignRoleRequest } from "@/Dto/AdminPortal/AssignRoleRequest";
 import type { BanUserRequest } from "@/Dto/AdminPortal/BanUserRequest";
 import type { RoleEntry } from "@/Dto/AdminPortal/RoleInfo";
 import type { BannedUserBasicInfo, BannedUserSummary, UserBasicInfo, UserEntry, UserFullInfo, UserSummary } from "@/Dto/AdminPortal/UserInfo";
@@ -33,6 +34,9 @@ type UserManagementStore = {
 
     loading_deleteUserInProgress: boolean;
     result_deleteUserSuccess: boolean;
+
+    loading_assignUserRoleInProgress: boolean;
+    result_assignUserRoleSuccess: boolean;
 
     selectedUser?: UserBasicInfo;
     bannedUser? : BannedUserBasicInfo;
@@ -90,6 +94,9 @@ const defaultState: UserManagementStore = {
 
     loading_deleteUserInProgress: false,
     result_deleteUserSuccess: false,
+
+    loading_assignUserRoleInProgress: false,
+    result_assignUserRoleSuccess: false,
 
     selectedUser: undefined,
 
@@ -176,5 +183,17 @@ export const useUserManagementStore = defineStore({
                 ErrorHandler.handleApiErrorResponse(error);
             });
         },
+        assignUserRole(userId: string, request: AssignRoleRequest) {
+            this.loading_assignUserRoleInProgress = true;
+            AdminPortalService.assignUserRole(userId, request).then(response => {
+                this.loading_assignUserRoleInProgress = false;
+                this.result_assignUserRoleSuccess = true;
+                toast.success("User role updated successfully");
+            }, error => {
+                this.loading_assignUserRoleInProgress = false;
+                this.result_assignUserRoleSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            });
+        }
     }
 })

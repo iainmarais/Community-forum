@@ -9,8 +9,6 @@ const userManagementStore = useUserManagementStore();
 
 const toast = useToast();
 
-const userToAdd= ref<AddUserRequest>({ username: "", password: "", emailAddress: "", roleId: "" });
-
 const newUsername = ref("");
 const newPassword = ref("");
 const newEmailAddress = ref("");
@@ -53,13 +51,15 @@ const addUser = () => {
         newRoleId.value = "User";
     }
 
-    userToAdd.value.username = newUsername.value;
-    userToAdd.value.password = newPassword.value;
-    userToAdd.value.emailAddress = newEmailAddress.value;
-    userToAdd.value.roleId = newRoleId.value;
+    const req: AddUserRequest = {
+        username: newUsername.value,
+        password: newPassword.value,
+        emailAddress: newEmailAddress.value,
+        roleId: newRoleId.value
+    }
 
     //Send the request to the store, which will pass it through to the service.
-    userManagementStore.addUser(userToAdd.value);
+    userManagementStore.addUser(req);
 }
 
 </script>
@@ -79,15 +79,15 @@ const addUser = () => {
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Username</label>
-                        <input :v-model="newUsername" type="text" class="form-control" placeholder="Username">
+                        <input v-model="newUsername" type="text" class="form-control" placeholder="Username">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input :v-model="newPassword" type="text" class="form-control" placeholder="Password">
+                        <input v-model="newPassword" type="text" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input :v-model="newEmailAddress" type="email" class="form-control" placeholder="Email Address">
+                        <input v-model="newEmailAddress" type="email" class="form-control" placeholder="Email Address">
                     </div>
                     <div class="form-group">
                         <label>Role</label>

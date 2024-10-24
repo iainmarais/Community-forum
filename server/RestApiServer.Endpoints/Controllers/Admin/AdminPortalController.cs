@@ -76,5 +76,23 @@ namespace RestApiServer.Endpoints.Controllers.Admin
             var res = await AdminPortalService.GetRolesAsync();
             return ApiSuccessResponses.WithData("Get available roles: successful", res);
         }
+
+        [HttpPost("users/{userId}/assignrole")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<object>> AssignRole(string userId, AssignRoleRequest request)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            await AdminPortalService.AssignRoleAsync(userId, request);
+            return ApiSuccessResponses.WithoutData("Assign role successful");
+        }
+
+        [HttpPost("users/add")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<UserBasicInfo>> AddUser(AddUserRequest request)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            var res = await AdminPortalService.AddUserAsync(request);
+            return ApiSuccessResponses.WithData("Add user successful", res);
+        }
     }
 }

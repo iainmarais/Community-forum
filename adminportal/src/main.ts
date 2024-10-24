@@ -44,6 +44,9 @@ import $ from 'jquery';
 const windowA = window as any;
 windowA.jQuery = windowA.$ = $;
 
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 // Create Vuetify instance
 const vuetify = createVuetify({
     components,
@@ -63,6 +66,7 @@ app.use(router);
 app.use(createPinia());
 app.use(vuetify);
 app.use(Toast, toastOptions);
+app.use(VueSweetalert2);
 app.mount('#app');
 
 // Error handling configuration

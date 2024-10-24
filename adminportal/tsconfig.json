@@ -6,7 +6,7 @@
         "target": "ES2016",
         "baseUrl": ".",
         "lib": ["DOM", "ESNext", "ES2018"],
-        "types": ["node", "jquery"],
+        "types": ["node", "jquery", "vue-sweetalert2"],
         "moduleResolution": "Node", 
         "verbatimModuleSyntax": true,
         "skipLibCheck": true,
