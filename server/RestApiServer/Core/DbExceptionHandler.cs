@@ -37,8 +37,23 @@ public class DbExceptionHandler : IDbExceptionHandler
         };
 
         await context.Response.WriteAsJsonAsync(errorResponse);
-        // Shut down the server. Any non-zero exit code indicates an error
-        ShutDownServerSafely();
+
+        if(exception is InvalidOperationException ex)
+        {
+            //This could be caused by any invalid operations, some of which might not warrant shutting down the server. For now, we just log them as errors.
+            Log.Error($"An invalid operation occurred: {ex.Message}");
+        }
+        //Argument either null or invalid in the context:
+        else if (exception is ArgumentException argEx)
+        {
+            Log.Error($"Argument exception occurred: {argEx.Message}");
+        }        
+        //Since I am not yet sure about other types of exceptions to define specific handlers for, proceed to safe shutdown.
+        else
+        {
+            Log.Fatal($"Critical error occurred: {exception.Message}");
+            ShutDownServerSafely();
+        }
     }
 
     private void ShutDownServerSafely()

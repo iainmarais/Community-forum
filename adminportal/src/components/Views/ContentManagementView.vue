@@ -2,9 +2,13 @@
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import { ref, watch } from 'vue';
+import { useContentManagementStore } from '@/stores/ContentManagementStore';
+
+const contentManagementStore = useContentManagementStore();
 
 const refresh = () => {
-    //Todo: build out.
+    //Refresh all content management data.
+    contentManagementStore.getCategories();
 }
 
 
@@ -62,19 +66,20 @@ watch(() => activeTab.value, (newValue) => {
                 </span>
             </h3>
             <div class="card-toolbar">
+                <ul class="nav">
+                    <li class="nav-item" v-for="tab in tabs" :key="tab.name" :id="tab.name">
+                        <button class="nav-link" type="button" data-bs-toggle="tab" :data-bs-target="`#${tab.name}`" :aria-controls="tab.name" :aria-selected="activeTab === tab.name" :class="activeTab === tab.name ? 'active' : ''" @click.prevent="switchTab(tab.name)" href="#">
+                            {{ tab.label }}
+                        </button>
+                    </li>
+                </ul>
                 <ButtonWithLoadingIndicator :label="'Refresh'" :icon="'fas fa-sync'" class="btn btn-primary btn-sm" @click.prevent="refresh()">
                     Refresh
                 </ButtonWithLoadingIndicator>
             </div>
         </div>
         <div class="card-body">
-            <ul class="nav">
-                <li class="nav-item" v-for="tab in tabs" :key="tab.name" :id="tab.name">
-                    <button class="nav-link" type="button" data-bs-toggle="tab" :data-bs-target="`#${tab.name}`" :aria-controls="tab.name" :aria-selected="activeTab === tab.name" :class="activeTab === tab.name ? 'active' : ''" @click.prevent="switchTab(tab.name)" href="#">
-                        {{ tab.label }}
-                    </button>
-                </li>
-            </ul>
+
             <div class="tab-content">
                 <div class="tab-pane fade" 
                 :class="{show: activeTab === tab.name, active: activeTab === tab.name}"

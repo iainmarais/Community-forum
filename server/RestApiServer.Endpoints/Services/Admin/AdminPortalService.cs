@@ -359,21 +359,31 @@ namespace RestApiServer.Endpoints.Services.Admin
         {
             using var db = new AppDbContext();
 
-            var categoriesQuery = from c in db.Categories
-                                join u in db.Users on c.CreatedByUserId equals u.UserId
-                                join b in db.Boards on c.CategoryId equals b.CategoryId into boards
-                                select new CategoryBasicInfo
-                                {
-                                    Category = c,
-                                    Boards = boards
-                                        .Select(b => new BoardBasicInfo
+            var associatedBoardsQuery = from b in db.Boards 
+                                        join u in db.Users on b.CreatedByUserId equals u.UserId
+                                        orderby b.BoardName descending
+                                        select new BoardBasicInfo
                                         {
                                             Board = b,
                                             CreatedByUser = new UserBasicInfo
                                             {
                                                 User = u
                                             }
-                                        }).ToList(),
+                                        };
+
+            var categoriesQuery = from c in db.Categories
+                                join u in db.Users on c.CreatedByUserId equals u.UserId
+                                orderby c.CategoryName descending
+                                select new CategoryBasicInfo
+                                {
+                                    Category = c,
+                                    Boards = associatedBoardsQuery.Where(b => c.CategoryId == b.Board.CategoryId).ToList(),
+                                    /* Not yet available on categories.
+                                    CreatedByUser = new UserBasicInfo
+                                    {
+                                        User = u
+                                    }
+                                    */
                                 };
                             
             if(!string.IsNullOrEmpty(searchTerm))
