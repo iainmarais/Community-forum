@@ -15,4 +15,9 @@ namespace RestApiServer.Dto.Forum
         public required List<TopicBasicInfo> Topics { get; set; } = new();
         public required int TotalTopics { get; set; } = 0;
     }
+    public class BoardSummary
+    {
+        public int TotalBoards { get; set; } = 0;
+        public int BoardsPerCategory { get; set; } = 0;
+    }
 }

@@ -1537,3 +1537,676 @@ RolesAuthorizationRequirement:User.IsInRole must be true for one of the followin
 2024-10-24 14:52:49.509 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
 2024-10-24 14:52:49.511 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.1725923"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
 2024-10-24 14:52:49.513 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 204.8079ms
+2024-10-24 14:59:57.529 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 14:59:57.538 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 14:59:57.552 +02:00 [INF] CORS policy execution successful.
+2024-10-24 14:59:57.557 +02:00 [INF] CORS policy execution successful.
+2024-10-24 14:59:57.558 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 32.1513ms
+2024-10-24 14:59:57.566 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 14:59:57.560 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 21.6312ms
+2024-10-24 14:59:57.567 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 14:59:57.579 +02:00 [INF] CORS policy execution successful.
+2024-10-24 14:59:57.588 +02:00 [INF] CORS policy execution successful.
+2024-10-24 14:59:57.590 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 14:59:57.591 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 14:59:57.592 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 14:59:57.594 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 14:59:57.611 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 14:59:57.622 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 24.9648ms
+2024-10-24 14:59:57.633 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 14:59:57.635 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0461938"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 14:59:57.646 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 80.1476ms
+2024-10-24 14:59:57.668 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 14:59:57.675 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 67.8347ms
+2024-10-24 14:59:57.678 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 14:59:57.680 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0894265"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 14:59:57.682 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 115.1702ms
+2024-10-24 15:00:25.095 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:00:25.113 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:00:25.115 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 19.321ms
+2024-10-24 15:00:25.119 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:00:25.125 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:00:25.127 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:00:25.133 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:00:25.148 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:00:25.154 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 15.6354ms
+2024-10-24 15:00:25.156 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:00:25.158 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0309612"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:00:25.160 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 40.6671ms
+2024-10-24 15:00:47.308 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-24 15:00:47.351 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:00:47.354 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 45.359ms
+2024-10-24 15:00:47.363 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-24 15:00:47.369 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:00:47.371 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-24 15:00:47.377 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:00:47.429 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:00:47.431 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 49.5237ms
+2024-10-24 15:00:47.433 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-24 15:00:47.435 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0646224"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:00:47.437 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 74.7867ms
+2024-10-24 15:00:47.561 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:00:47.561 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:00:47.798 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:00:47.800 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 239.1494ms
+2024-10-24 15:00:47.780 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:00:47.808 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 247.2359ms
+2024-10-24 15:00:47.818 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:00:47.818 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:00:47.837 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:00:47.834 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:00:47.843 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:00:47.845 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:00:47.850 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:00:47.847 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:00:47.885 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:00:47.885 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:00:47.893 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 21.8114ms
+2024-10-24 15:00:47.897 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 43.1512ms
+2024-10-24 15:00:47.902 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:00:47.912 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0697793"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:00:47.916 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 98.2098ms
+2024-10-24 15:00:47.904 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:00:47.932 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0873110"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:00:47.935 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 116.7537ms
+2024-10-24 15:01:00.198 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:01:00.200 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:01:00.203 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 5.3276ms
+2024-10-24 15:01:00.206 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:01:00.215 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:01:00.219 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:01:00.225 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:01:00.243 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:01:00.247 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 16.0714ms
+2024-10-24 15:01:00.250 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:01:00.262 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0447821"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:01:00.265 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 58.7314ms
+2024-10-24 15:01:22.938 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:01:22.942 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:01:22.952 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:01:22.976 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:01:22.976 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 38.1828ms
+2024-10-24 15:01:22.979 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 37.2835ms
+2024-10-24 15:01:22.990 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:01:22.991 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:01:22.992 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:01:22.995 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:01:22.998 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:01:22.999 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:01:23.001 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:01:23.003 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:01:23.023 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:01:23.039 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 33.1639ms
+2024-10-24 15:01:23.039 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:01:23.042 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:01:23.052 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0540107"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:01:23.049 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 39.1653ms
+2024-10-24 15:01:23.064 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:01:23.066 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0672822"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:01:23.069 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 78.0977ms
+2024-10-24 15:01:23.059 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 68.9439ms
+2024-10-24 15:01:25.385 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:01:25.388 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:01:25.389 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:01:25.399 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:01:25.439 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:01:25.441 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 20.3067ms
+2024-10-24 15:01:25.447 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:01:25.454 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0649756"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:01:25.457 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 71.5246ms
+2024-10-24 15:01:44.250 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:01:44.254 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:01:44.255 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 4.6479ms
+2024-10-24 15:01:44.260 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:01:44.267 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:01:44.269 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:01:44.271 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:01:44.298 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:01:44.304 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 22.7196ms
+2024-10-24 15:01:44.314 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:01:44.316 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0473584"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:01:44.318 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 57.9496ms
+2024-10-24 15:08:04.227 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:08:04.240 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:08:04.247 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:08:04.270 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:08:04.274 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 36.3082ms
+2024-10-24 15:08:04.272 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 45.3217ms
+2024-10-24 15:08:04.290 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:08:04.290 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:08:04.293 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:08:04.296 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:08:04.300 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:08:04.303 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:08:04.304 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:08:04.306 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:08:04.323 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:08:04.326 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 15.7664ms
+2024-10-24 15:08:04.334 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:08:04.338 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0405805"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:08:04.390 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 100.1733ms
+2024-10-24 15:08:04.397 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:08:04.404 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 83.3062ms
+2024-10-24 15:08:04.406 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:08:04.415 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.1127779"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:08:04.422 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 131.8646ms
+2024-10-24 15:08:10.062 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:08:10.066 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:08:10.068 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 5.7849ms
+2024-10-24 15:08:10.070 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:08:10.077 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:08:10.079 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:08:10.081 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:08:10.110 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:08:10.113 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 22.3361ms
+2024-10-24 15:08:10.122 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:08:10.125 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0463477"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:08:10.127 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 56.8277ms
+2024-10-24 15:08:29.045 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:08:29.045 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:08:29.055 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:08:29.102 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:08:29.104 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 58.8545ms
+2024-10-24 15:08:29.103 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 58.0135ms
+2024-10-24 15:08:29.156 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:08:29.165 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:08:29.223 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:08:29.233 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:08:29.235 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:08:29.237 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:08:29.239 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:08:29.249 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:08:29.270 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:08:29.273 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 18.7499ms
+2024-10-24 15:08:29.301 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:08:29.306 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0713981"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:08:29.338 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 179.1739ms
+2024-10-24 15:08:29.339 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:08:29.362 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 93.5937ms
+2024-10-24 15:08:29.367 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:08:29.370 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.1335816"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:08:29.373 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 207.7714ms
+2024-10-24 15:09:30.740 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:09:30.764 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:09:30.791 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:30.795 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:30.796 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 55.4202ms
+2024-10-24 15:09:30.805 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 54.9828ms
+2024-10-24 15:09:30.805 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:09:30.811 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:09:30.821 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:30.826 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:30.828 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:09:30.829 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:30.834 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:30.837 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:30.868 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:09:30.886 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:09:30.899 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 43.9702ms
+2024-10-24 15:09:30.890 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 45.942ms
+2024-10-24 15:09:30.902 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:30.905 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:09:30.913 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0840884"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:09:30.915 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0878079"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:09:30.917 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 106.5202ms
+2024-10-24 15:09:30.921 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 116.0532ms
+2024-10-24 15:09:40.781 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:09:40.801 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:40.803 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 21.7617ms
+2024-10-24 15:09:40.806 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:09:40.818 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:40.820 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:40.825 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:40.854 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:09:40.858 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 23.65ms
+2024-10-24 15:09:40.861 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:40.863 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0435062"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:09:40.865 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 58.8053ms
+2024-10-24 15:09:43.422 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:09:43.424 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:43.426 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 3.5381ms
+2024-10-24 15:09:43.430 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:09:43.438 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:43.441 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:09:43.447 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:43.467 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:09:43.469 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 17.9243ms
+2024-10-24 15:09:43.476 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:09:43.477 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0366435"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:09:43.481 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 51.8918ms
+2024-10-24 15:09:46.081 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - null null
+2024-10-24 15:09:46.085 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:09:46.098 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:46.093 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:46.100 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 14.4191ms
+2024-10-24 15:09:46.102 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - 204 null null 20.1612ms
+2024-10-24 15:09:46.108 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:09:46.148 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - application/json 130
+2024-10-24 15:09:46.162 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:46.165 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:46.166 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:46.174 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints)'
+2024-10-24 15:09:46.175 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:46.182 +02:00 [INF] Route matched with {action = "AssignRole", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Object]] AssignRole(System.String, RestApiServer.Dto.Admin.AssignRoleRequest) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:46.198 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:09:46.208 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 26.8994ms
+2024-10-24 15:09:46.210 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:46.212 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0463446"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:09:46.219 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 110.9813ms
+2024-10-24 15:09:46.277 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:09:46.281 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints) in 82.0536ms
+2024-10-24 15:09:46.282 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints)'
+2024-10-24 15:09:46.284 +02:00 [INF] POST 200 /v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole "00:00:00.1142769"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: {"selectedUserId":"047160c9-adf2-49cc-b9a1-724e65bd0bd5","selectedRoleId":"JuniorModerator","selectedRoleName":"Junior Moderator"}
+2024-10-24 15:09:46.287 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - 200 null application/json; charset=utf-8 138.3319ms
+2024-10-24 15:09:48.509 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:09:48.514 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:48.515 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:48.517 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:48.535 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:09:48.539 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 18.466ms
+2024-10-24 15:09:48.541 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:48.543 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0279406"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:09:48.545 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 35.1152ms
+2024-10-24 15:09:51.511 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:09:51.513 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:51.515 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 3.7155ms
+2024-10-24 15:09:51.517 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:09:51.523 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:51.525 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:09:51.528 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:51.551 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:09:51.556 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 21.8399ms
+2024-10-24 15:09:51.560 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:09:51.562 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0372948"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:09:51.564 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 47.4434ms
+2024-10-24 15:09:54.471 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - null null
+2024-10-24 15:09:54.474 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:09:54.476 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:54.480 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:54.485 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 10.6477ms
+2024-10-24 15:09:54.496 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - application/json 115
+2024-10-24 15:09:54.482 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - 204 null null 10.4893ms
+2024-10-24 15:09:54.496 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:09:54.507 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:54.514 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:54.516 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints)'
+2024-10-24 15:09:54.516 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:54.524 +02:00 [INF] Route matched with {action = "AssignRole", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Object]] AssignRole(System.String, RestApiServer.Dto.Admin.AssignRoleRequest) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:54.526 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:54.558 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:09:54.561 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints) in 30.7748ms
+2024-10-24 15:09:54.563 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:09:54.564 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints)'
+2024-10-24 15:09:54.570 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 29.538ms
+2024-10-24 15:09:54.574 +02:00 [INF] POST 200 /v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole "00:00:00.0582135"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: {"selectedUserId":"047160c9-adf2-49cc-b9a1-724e65bd0bd5","selectedRoleId":"User","selectedRoleName":"Regular User"}
+2024-10-24 15:09:54.576 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:54.586 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0693996"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:09:54.580 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - 200 null application/json; charset=utf-8 84.1049ms
+2024-10-24 15:09:54.589 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 92.6871ms
+2024-10-24 15:09:55.646 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:09:55.650 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:09:55.653 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:55.655 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:09:55.676 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:09:55.679 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 18.3808ms
+2024-10-24 15:09:55.681 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:09:55.687 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0347719"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:09:55.690 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 44.2939ms
+2024-10-24 15:11:51.655 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:11:51.669 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:11:51.681 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:11:51.686 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:11:51.687 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 31.77ms
+2024-10-24 15:11:51.691 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 21.8214ms
+2024-10-24 15:11:51.715 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:11:51.715 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:11:51.716 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:11:51.723 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:11:51.725 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:11:51.726 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:11:51.727 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:11:51.729 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:11:51.742 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:11:51.745 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 12.4745ms
+2024-10-24 15:11:51.748 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:11:51.755 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0307288"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:11:51.759 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:11:51.764 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 22.044ms
+2024-10-24 15:11:51.759 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 47.0342ms
+2024-10-24 15:11:51.771 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:11:51.779 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0533888"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:11:51.784 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 69.2979ms
+2024-10-24 15:11:55.100 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:11:55.105 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:11:55.114 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:11:55.120 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:11:55.142 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:11:55.145 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 17.6127ms
+2024-10-24 15:11:55.147 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:11:55.148 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0371507"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:11:55.158 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 58.62ms
+2024-10-24 15:11:57.937 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - null null
+2024-10-24 15:11:57.940 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:11:57.941 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:11:57.944 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:11:57.949 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 8.5244ms
+2024-10-24 15:11:57.954 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - application/json 130
+2024-10-24 15:11:57.954 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:11:57.947 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - 204 null null 10.3865ms
+2024-10-24 15:11:57.968 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:11:57.976 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:11:57.982 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints)'
+2024-10-24 15:11:57.986 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:11:57.989 +02:00 [INF] Route matched with {action = "AssignRole", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Object]] AssignRole(System.String, RestApiServer.Dto.Admin.AssignRoleRequest) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:11:57.994 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:11:58.021 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:11:58.030 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints) in 31.3061ms
+2024-10-24 15:11:58.034 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints)'
+2024-10-24 15:11:58.045 +02:00 [INF] POST 200 /v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole "00:00:00.0623462"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: {"selectedUserId":"047160c9-adf2-49cc-b9a1-724e65bd0bd5","selectedRoleId":"JuniorModerator","selectedRoleName":"Junior Moderator"}
+2024-10-24 15:11:58.052 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - 200 null application/json; charset=utf-8 98.401ms
+2024-10-24 15:11:58.047 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:11:58.064 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 52.968ms
+2024-10-24 15:11:58.066 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:11:58.074 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0895282"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:11:58.077 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 122.7776ms
+2024-10-24 15:12:00.984 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:12:00.987 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:12:00.989 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 4.8921ms
+2024-10-24 15:12:00.992 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:12:01.003 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:12:01.007 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:12:01.009 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:12:01.031 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:12:01.038 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 16.2177ms
+2024-10-24 15:12:01.040 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:12:01.042 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0358813"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:12:01.053 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 60.9803ms
+2024-10-24 15:12:03.768 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - null null
+2024-10-24 15:12:03.771 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:12:03.772 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:12:03.776 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:12:03.781 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 9.8549ms
+2024-10-24 15:12:03.778 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - 204 null null 10.274ms
+2024-10-24 15:12:03.785 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - application/json 109
+2024-10-24 15:12:03.786 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:12:03.807 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:12:03.810 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:12:03.811 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints)'
+2024-10-24 15:12:03.812 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:12:03.814 +02:00 [INF] Route matched with {action = "AssignRole", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Object]] AssignRole(System.String, RestApiServer.Dto.Admin.AssignRoleRequest) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:12:03.819 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:12:03.855 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:12:03.858 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:12:03.859 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints) in 32.2529ms
+2024-10-24 15:12:03.868 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints)'
+2024-10-24 15:12:03.862 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 26.0041ms
+2024-10-24 15:12:03.874 +02:00 [INF] POST 200 /v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole "00:00:00.0626235"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: {"selectedUserId":"047160c9-adf2-49cc-b9a1-724e65bd0bd5","selectedRoleId":"Guest","selectedRoleName":"Guest"}
+2024-10-24 15:12:03.876 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:12:03.879 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - 200 null application/json; charset=utf-8 94.0205ms
+2024-10-24 15:12:03.887 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0746842"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:12:03.895 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 108.526ms
+2024-10-24 15:12:05.206 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:12:05.268 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:12:05.270 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:12:05.271 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:12:05.292 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:12:05.295 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 18.5669ms
+2024-10-24 15:12:05.299 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:12:05.302 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0323945"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:12:05.307 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 101.4503ms
+2024-10-24 15:12:07.559 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - application/json 115
+2024-10-24 15:12:07.563 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:12:07.564 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:12:07.568 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:12:07.570 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints)'
+2024-10-24 15:12:07.572 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:12:07.578 +02:00 [INF] Route matched with {action = "AssignRole", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Object]] AssignRole(System.String, RestApiServer.Dto.Admin.AssignRoleRequest) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:12:07.580 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:12:07.606 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:12:07.610 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints) in 22.6486ms
+2024-10-24 15:12:07.612 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.AssignRole (RestApiServer.Endpoints)'
+2024-10-24 15:12:07.621 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:12:07.621 +02:00 [INF] POST 200 /v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole "00:00:00.0513925"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: {"selectedUserId":"047160c9-adf2-49cc-b9a1-724e65bd0bd5","selectedRoleId":"User","selectedRoleName":"Regular User"}
+2024-10-24 15:12:07.626 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 30.1689ms
+2024-10-24 15:12:07.640 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:12:07.632 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/users/047160c9-adf2-49cc-b9a1-724e65bd0bd5/assignrole - 200 null application/json; charset=utf-8 72.4303ms
+2024-10-24 15:12:07.642 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0707938"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:12:07.657 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 94.1405ms
+2024-10-24 15:21:50.496 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:21:50.507 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:21:50.519 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:21:50.522 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:21:50.524 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 28.0274ms
+2024-10-24 15:21:50.525 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 18.0182ms
+2024-10-24 15:21:50.528 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 15:21:50.530 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:21:50.545 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:21:50.551 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:21:50.555 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:21:50.556 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:21:50.558 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:21:50.559 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:21:50.589 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 15:21:50.592 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 29.2417ms
+2024-10-24 15:21:50.597 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 15:21:50.603 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0488438"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:21:50.612 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 84.1835ms
+2024-10-24 15:21:50.621 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:21:50.638 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 66.7327ms
+2024-10-24 15:21:50.640 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:21:50.645 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0895808"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:21:50.648 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 118.4136ms
+2024-10-24 15:49:38.762 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10&searchTerm=bob - null null
+2024-10-24 15:49:38.794 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:49:38.799 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10&searchTerm=bob - 204 null null 36.793ms
+2024-10-24 15:49:38.805 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10&searchTerm=bob - null null
+2024-10-24 15:49:38.818 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:49:38.822 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:49:38.826 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:49:38.886 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:49:38.889 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 59.1881ms
+2024-10-24 15:49:38.891 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:49:38.892 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0709130"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:49:38.894 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10&searchTerm=bob - 200 null application/json; charset=utf-8 89.1496ms
+2024-10-24 15:49:41.678 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10&searchTerm=iain - null null
+2024-10-24 15:49:41.690 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:49:41.694 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10&searchTerm=iain - 204 null null 16.1323ms
+2024-10-24 15:49:41.703 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10&searchTerm=iain - null null
+2024-10-24 15:49:41.713 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:49:41.716 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:49:41.721 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:49:41.745 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:49:41.752 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 24.8791ms
+2024-10-24 15:49:41.755 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:49:41.757 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0415463"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:49:41.759 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10&searchTerm=iain - 200 null application/json; charset=utf-8 55.5947ms
+2024-10-24 15:49:44.326 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:49:44.339 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:49:44.342 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 15.9917ms
+2024-10-24 15:49:44.345 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 15:49:44.356 +02:00 [INF] CORS policy execution successful.
+2024-10-24 15:49:44.359 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:49:44.361 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 15:49:44.393 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 15:49:44.401 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 31.7506ms
+2024-10-24 15:49:44.405 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 15:49:44.407 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0479831"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 15:49:44.409 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 64.1421ms
+2024-10-24 16:03:26.227 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 16:03:26.262 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 16:03:26.274 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:03:26.280 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:03:26.283 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 56.5053ms
+2024-10-24 16:03:26.294 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 32.287ms
+2024-10-24 16:03:26.306 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 16:03:26.298 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 16:03:26.325 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:03:26.329 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:03:26.330 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 16:03:26.331 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 16:03:26.359 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:03:26.363 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:03:26.423 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 16:03:26.429 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 54.8171ms
+2024-10-24 16:03:26.434 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 16:03:26.430 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 16:03:26.437 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.1062386"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:03:26.443 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 72.4209ms
+2024-10-24 16:03:26.452 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 153.986ms
+2024-10-24 16:03:26.454 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 16:03:26.460 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.1309300"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:03:26.463 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 156.5946ms
+2024-10-24 16:14:37.590 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-24 16:14:37.607 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:37.613 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2024-10-24 16:14:37.621 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-10-24 16:14:37.713 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.0245220"ms  Unauthorized, body: 
+2024-10-24 16:14:37.715 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 125.4853ms
+2024-10-24 16:14:45.769 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - null null
+2024-10-24 16:14:45.771 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:45.773 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/login - 204 null null 4.2619ms
+2024-10-24 16:14:45.776 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/login - application/json 69
+2024-10-24 16:14:45.795 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:45.797 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer.Endpoints)'
+2024-10-24 16:14:45.802 +02:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminLogin"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse]] AdminLogin(RestApiServer.Dto.Admin.AdminUserLoginRequest) on controller RestApiServer.Endpoints.Controllers.Admin.AdminLoginController (RestApiServer.Endpoints).
+2024-10-24 16:14:46.138 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.AdminLogin.AdminUserLoginResponse, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 16:14:46.149 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer.Endpoints) in 342.7495ms
+2024-10-24 16:14:46.151 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminLoginController.AdminLogin (RestApiServer.Endpoints)'
+2024-10-24 16:14:46.272 +02:00 [INF] POST 200 /v1/adminportal/login "00:00:00.3557405"ms  , body: {"userIdentifier":"iain","password":"C3r3$123","userContext":"admin"}
+2024-10-24 16:14:46.276 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/login - 200 null application/json; charset=utf-8 499.1678ms
+2024-10-24 16:14:46.372 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-24 16:14:46.381 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:46.383 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 10.8576ms
+2024-10-24 16:14:46.385 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-24 16:14:46.397 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:46.399 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-24 16:14:46.403 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:14:46.434 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 16:14:46.436 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 29.2423ms
+2024-10-24 16:14:46.438 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-24 16:14:46.439 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0403629"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:14:46.447 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 61.9569ms
+2024-10-24 16:14:46.473 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-24 16:14:46.479 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:46.481 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-24 16:14:46.483 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:14:46.514 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 16:14:46.515 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 26.0554ms
+2024-10-24 16:14:46.520 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-24 16:14:46.523 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0417084"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:14:46.527 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 54.1783ms
+2024-10-24 16:14:48.579 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 16:14:48.581 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 16:14:48.583 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:48.586 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:48.587 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 7.6181ms
+2024-10-24 16:14:48.592 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 16:14:48.605 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:48.595 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 16:14:48.593 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 11.3287ms
+2024-10-24 16:14:48.612 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 16:14:48.615 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:48.619 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:14:48.621 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 16:14:48.629 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:14:48.636 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 16:14:48.649 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 23.2473ms
+2024-10-24 16:14:48.654 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 16:14:48.662 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 16:14:48.664 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0527292"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:14:48.668 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 26.8977ms
+2024-10-24 16:14:48.679 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 16:14:48.685 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0640890"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:14:48.687 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 92.4289ms
+2024-10-24 16:14:48.671 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 79.4354ms
+2024-10-24 16:14:51.513 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 16:14:51.515 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 16:14:51.516 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:51.520 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:51.532 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 16:14:51.585 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:14:51.521 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 16:14:51.601 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:14:51.616 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 16:14:51.621 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 16:14:51.621 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 26.6928ms
+2024-10-24 16:14:51.626 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 13.1396ms
+2024-10-24 16:14:51.631 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 16:14:51.634 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 16:14:51.640 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.1194495"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:14:51.637 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.1055955"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:14:51.644 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 130.9037ms
+2024-10-24 16:14:51.647 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 131.9335ms
+2024-10-24 16:14:54.862 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 16:14:54.862 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 16:14:54.876 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:54.877 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 15.3645ms
+2024-10-24 16:14:54.867 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:54.883 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 16:14:54.893 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 16:14:54.891 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 28.9864ms
+2024-10-24 16:14:54.894 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:54.896 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:54.909 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 16:14:54.910 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 16:14:54.913 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:14:54.915 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:14:54.935 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 16:14:54.937 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 16:14:54.946 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 21.0492ms
+2024-10-24 16:14:54.948 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 19.1437ms
+2024-10-24 16:14:54.951 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 16:14:54.960 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0510689"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:14:54.953 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 16:14:54.963 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 79.363ms
+2024-10-24 16:14:54.965 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0552428"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:14:54.973 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 80.0837ms
+2024-10-24 16:14:58.188 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-24 16:14:58.196 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:58.199 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 11.1672ms
+2024-10-24 16:14:58.201 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-24 16:14:58.211 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:14:58.215 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-24 16:14:58.218 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:14:58.262 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 16:14:58.264 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 34.577ms
+2024-10-24 16:14:58.268 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-24 16:14:58.278 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0634380"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:14:58.280 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 79.112ms
+2024-10-24 16:15:02.367 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 16:15:02.376 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 16:15:02.378 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:15:02.395 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users/roles - 204 null null 27.6712ms
+2024-10-24 16:15:02.384 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:15:02.401 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - null null
+2024-10-24 16:15:02.407 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 204 null null 30.4541ms
+2024-10-24 16:15:02.410 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:15:02.412 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - null null
+2024-10-24 16:15:02.423 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 16:15:02.427 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:15:02.429 +02:00 [INF] Route matched with {action = "GetRoles", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[System.Collections.Generic.List`1[RestApiServer.Db.RoleEntry]]] GetRoles() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:15:02.431 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 16:15:02.438 +02:00 [INF] Route matched with {action = "GetUsers", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.App.UserFullInfo],RestApiServer.Dto.App.UserSummary]]] GetUsers(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:15:02.443 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[System.Collections.Generic.List`1[[RestApiServer.Db.RoleEntry, RestApiServer.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-24 16:15:02.448 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints) in 14.2026ms
+2024-10-24 16:15:02.451 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetRoles (RestApiServer.Endpoints)'
+2024-10-24 16:15:02.462 +02:00 [INF] GET 200 /v1/adminportal/users/roles "00:00:00.0391417"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:15:02.468 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users/roles - 200 null application/json; charset=utf-8 67.467ms
+2024-10-24 16:15:02.490 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.App.UserFullInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.App.UserSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 16:15:02.509 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints) in 63.5909ms
+2024-10-24 16:15:02.512 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetUsers (RestApiServer.Endpoints)'
+2024-10-24 16:15:02.515 +02:00 [INF] GET 200 /v1/adminportal/users "00:00:00.0842917"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:15:02.517 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/users?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 105.3902ms
+2024-10-24 16:15:17.591 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-24 16:15:17.605 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:15:17.610 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 18.5478ms
+2024-10-24 16:15:17.614 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-24 16:15:17.622 +02:00 [INF] CORS policy execution successful.
+2024-10-24 16:15:17.625 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-24 16:15:17.630 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-24 16:15:17.664 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-24 16:15:17.672 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 33.6568ms
+2024-10-24 16:15:17.675 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-24 16:15:17.676 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.0523597"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-24 16:15:17.678 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 64.6264ms

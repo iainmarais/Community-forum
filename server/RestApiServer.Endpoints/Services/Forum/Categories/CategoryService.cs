@@ -62,7 +62,8 @@ namespace RestApiServer.Endpoints.Services.Forum.Categories
             {
                 CategoryId = Guid.NewGuid().ToString(),
                 CategoryName = request.CategoryName,
-                CategoryDescription = request.CategoryDescription
+                CategoryDescription = request.CategoryDescription,
+                CreatedByUserId = request.CreatedByUserId
             };
             db.Categories.Add(category);
             await db.SaveChangesAsync();

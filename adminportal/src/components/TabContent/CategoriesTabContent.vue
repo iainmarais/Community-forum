@@ -1,5 +1,9 @@
 <script lang = "ts" setup>
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
+import { useContentManagementStore } from '@/stores/ContentManagementStore';
+import LoadingIndicator from '@/components/LoadingIndicator.vue';
+
+const contentManagementStore = useContentManagementStore();
 
 const refresh = () => {
     //Todo: build out.
@@ -22,8 +26,11 @@ const refresh = () => {
                 </ButtonWithLoadingIndicator>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body" v-if="!contentManagementStore.loading">
             <p>Coming soon</p>
+        </div>
+        <div class="card-body" v-else>
+            <LoadingIndicator :loading="true" />
         </div>
     </div>
 </template>

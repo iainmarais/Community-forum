@@ -7,6 +7,7 @@ using RestApiServer.Db;
 using RestApiServer.Db.Users;
 using RestApiServer.Dto.Admin;
 using RestApiServer.Dto.App;
+using RestApiServer.Dto.Forum;
 using RestApiServer.Endpoints.ApiResponses;
 using RestApiServer.Endpoints.Dto.Admin;
 using RestApiServer.Endpoints.Helpers;
@@ -156,11 +157,11 @@ namespace RestApiServer.Endpoints.Services.Admin
             {
                 searchTerm = searchTerm.ToLower();
                 bannedUsersQuery = (from u in bannedUsersQuery
-                                    where u.User.UserFirstname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                    || u.User.UserLastname.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                    || u.User.Username.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                    || u.BannedUser.BanExpirationDate.ToString().Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
-                                    || u.BannedUser.BanType.ToString().Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase)
+                                    where u.User.UserFirstname.ToLower().Contains(searchTerm)
+                                    || u.User.UserLastname.ToLower().Contains(searchTerm)
+                                    || u.User.Username.ToLower().Contains(searchTerm)
+                                    || u.BannedUser.BanExpirationDate.ToString().ToLower().Contains(searchTerm)
+                                    || u.BannedUser.BanType.ToString().ToLower().Contains(searchTerm)
                                     select u);
             }
 
@@ -299,5 +300,219 @@ namespace RestApiServer.Endpoints.Services.Admin
                 User = user
             };
         }
+
+        public static async Task CreateCategoryAsync(string userId, Dto.Admin.CreateCategoryRequest req)
+        {
+            using var db = new AppDbContext();
+
+            var category = new CategoryEntry()
+            {
+                CategoryId = Guid.NewGuid().ToString(),
+                CategoryName = req.CategoryName,
+                CategoryDescription = req.CategoryDescription,
+                CreatedByUserId = userId
+            };
+
+            db.Categories.Add(category);
+
+            await db.SaveChangesAsync();
+        }
+
+        public static async Task CreateBoardAsync(string userId, Dto.Admin.CreateBoardRequest req)
+        {
+            using var db = new AppDbContext();
+
+            var board = new BoardEntry()
+            {
+                BoardId = Guid.NewGuid().ToString(),
+                BoardName = req.BoardName,
+                BoardDescription = req.BoardDescription,
+                CategoryId = req.CategoryId,
+                CreatedByUserId = userId
+            };
+
+            db.Boards.Add(board);
+
+            await db.SaveChangesAsync();
+        }
+
+        public static async Task CreateTopicAsync(string userId, Dto.Admin.CreateTopicRequest req)
+        {
+            using var db = new AppDbContext();
+
+            var topic = new TopicEntry()
+            {
+                TopicId = Guid.NewGuid().ToString(),
+                BoardId = req.BoardId,
+                TopicName = req.TopicName,
+                Description = req.Description,
+                CreatedByUserId = userId,
+                CreatedDate = DateTime.UtcNow
+            };
+
+            db.Topics.Add(topic);
+
+            await db.SaveChangesAsync();
+        }
+
+        public static async Task<PaginatedData<List<CategoryBasicInfo>, CategorySummary>> GetCategoriesAsync(int pageNumber, int rowsPerPage, string searchTerm)
+        {
+            using var db = new AppDbContext();
+
+            var categoriesQuery = from c in db.Categories
+                                join u in db.Users on c.CreatedByUserId equals u.UserId
+                                join b in db.Boards on c.CategoryId equals b.CategoryId into boards
+                                select new CategoryBasicInfo
+                                {
+                                    Category = c,
+                                    Boards = boards
+                                        .Select(b => new BoardBasicInfo
+                                        {
+                                            Board = b,
+                                            CreatedByUser = new UserBasicInfo
+                                            {
+                                                User = u
+                                            }
+                                        }).ToList(),
+                                };
+                            
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                categoriesQuery = (from c in categoriesQuery
+                                where c.Category.CategoryName.ToLower().Contains(searchTerm) ||
+                                    c.Category.CategoryDescription.ToLower().Contains(searchTerm) ||
+                                    c.Boards.Any(b => b.Board.BoardName.ToLower().Contains(searchTerm)) ||
+                                    c.Boards.Any(b => b.Board.BoardDescription.ToLower().Contains(searchTerm)) ||
+                                    c.Boards.Any(b => b.CreatedByUser.User.Username.ToLower().Contains(searchTerm))
+                                select c);
+            }
+            var filteredTotal = await categoriesQuery.CountAsync();
+            
+            var skip = (pageNumber - 1) * rowsPerPage;
+            int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
+
+            var categoryRows = await categoriesQuery
+                .Skip(skip)
+                .Take(rowsPerPage)
+                .ToListAsync();
+            
+            return new()
+            {
+                Rows = categoryRows,
+                PageNumber = pageNumber,
+                RowsPerPage = rowsPerPage,
+                TotalPages = totalPages,
+                Summary = new()
+                {
+                    TotalCategories = filteredTotal
+                }
+            };
+        }
+
+        public static async Task<PaginatedData<List<BoardBasicInfo>, BoardSummary>> GetBoardsAsync(int pageNumber, int rowsPerPage, string searchTerm)
+        {
+            using var db = new AppDbContext();
+
+            var boardsQuery = from b in db.Boards 
+                            join u in db.Users on b.CreatedByUserId equals u.UserId
+                            select new BoardBasicInfo
+                            {
+                                Board = b,
+                                CreatedByUser = new UserBasicInfo()
+                                { 
+                                    User = u
+                                }
+                            };
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                boardsQuery = (from b in boardsQuery
+                            where b.Board.BoardName.ToLower().Contains(searchTerm) ||
+                                b.Board.BoardDescription.ToLower().Contains(searchTerm) ||
+                                b.CreatedByUser.User.Username.ToLower().Contains(searchTerm) ||
+                                b.CreatedByUser.User.UserLastname.ToLower().Contains(searchTerm) ||
+                                b.CreatedByUser.User.UserFirstname.ToLower().Contains(searchTerm) ||
+                                b.CreatedByUser.User.EmailAddress.ToLower().Contains(searchTerm)
+                            select b);
+            }
+            var filteredTotal = await boardsQuery.CountAsync();
+            
+            var skip = (pageNumber - 1) * rowsPerPage;
+            int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
+
+            var boardRows = await boardsQuery
+                .Skip(skip)
+                .Take(rowsPerPage)
+                .ToListAsync();   
+
+            return new()
+            {
+                Rows = boardRows,
+                PageNumber = pageNumber,
+                RowsPerPage = rowsPerPage,
+                TotalPages = totalPages,
+                Summary = new()
+                {
+                    TotalBoards = filteredTotal
+                }
+            };      
+        }
+
+        public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> GetTopicsAsync(int pageNumber, int rowsPerPage, string searchTerm)
+        {
+            using var db = new AppDbContext();
+
+            var topicsQuery = from tp in db.Topics
+                            //Include the threads with the matching topic id.
+                            join th in db.Threads on tp.TopicId equals th.TopicId into threads
+                            //Find and include the user
+                            join u in db.Users on tp.CreatedByUserId equals u.UserId
+                            select new TopicBasicInfo
+                            {
+                                Topic = tp,
+                                TotalThreads = threads.Count(),
+                                //Find any threads in the group not older than 5 days since creation
+                                NumNewThreads = threads.Count(t => t.CreatedDate > DateTime.UtcNow.AddDays(-5)),
+                                TotalPosts = threads.Sum(t => t.Posts.Count),
+                                NumTotalThreads = threads.Count(),
+                                CreatedByUser = new UserBasicInfo()
+                                {
+                                    User = u
+                                }
+                            };
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                topicsQuery = (from t in topicsQuery
+                            where t.Topic.TopicName.ToLower().Contains(searchTerm)
+                            || t.Topic.Description.ToLower().Contains(searchTerm)
+                            || t.Topic.CreatedByUserId.ToLower().Contains(searchTerm)
+                            || t.Topic.CreatedDate.ToString().ToLower().Contains(searchTerm)
+                            select t);
+            }
+
+            var filteredTotal = await topicsQuery.CountAsync();
+            
+            var skip = (pageNumber - 1) * rowsPerPage;
+            int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
+
+            var topicRows = await topicsQuery
+                .Skip(skip)
+                .Take(rowsPerPage)
+                .ToListAsync();
+
+            return new()
+            {
+                Rows = topicRows,
+                PageNumber = pageNumber,
+                RowsPerPage = rowsPerPage,
+                TotalPages = totalPages,
+                Summary = new()
+                {
+                    TotalTopics = filteredTotal
+                }
+            };
+        }        
     }
 }

@@ -235,18 +235,21 @@ namespace RestApiServer.Db.Ops
                 CategoryId = Guid.NewGuid().ToString(),
                 CategoryName = "General",
                 CategoryDescription = "General discussions for the forum.",
+                CreatedByUserId = ""
             },
             new CategoryEntry
             {
                 CategoryId = Guid.NewGuid().ToString(),
                 CategoryName = "Computer and IT Support",
                 CategoryDescription = "Everything pertaining to computer and IT support can be discussed here.",
+                CreatedByUserId = ""
             },
             new CategoryEntry
             {
                 CategoryId = Guid.NewGuid().ToString(),
                 CategoryName = "Software development",
                 CategoryDescription = "Everything pertaining to software development can be discussed here.",
+                CreatedByUserId = ""
             }
         };
 
