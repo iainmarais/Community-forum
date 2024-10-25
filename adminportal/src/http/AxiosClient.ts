@@ -1,9 +1,11 @@
 import axios, { type RawAxiosRequestHeaders } from "axios";
-import { Last_Route, Token_Key } from "@/LocalStorage/keys";
+import { Last_Route, Token_Key, User_Refresh_Token } from "@/LocalStorage/keys";
 import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
 import router, { HomeRoute, LoginRoute, NotFoundRoute } from '@/router';
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import { useToast } from "vue-toastification";
+import ConfigurationLoader from "@/config/ConfigurationLoader";
+import type { AdminUserRefreshResponse } from "@/Dto/AdminPortal/AdminLoginRequest";
 
 const instance = axios.create({
     timeout: 10000
@@ -14,6 +16,12 @@ instance.interceptors.response.use((response) => {
     return response;
 }, (error) => {
     if (error?.response?.status === 401) {
+
+            //Need to see if this was caused by expired token deauth. If so, refresh it, else log off.
+            if(error?.response?.data?.error?.includes("expired")) {
+                ErrorHandler.handleApiErrorResponse(error);
+                refreshToken();
+            }
             // Chucked a sickie 'cause you're not allowed, mate.
             ForceLogoff();
             router.replace({ name: LoginRoute });
@@ -40,6 +48,13 @@ instance.interceptors.response.use((response) => {
     return Promise.reject(error);
 });
 
+const refreshToken = async () => {
+    const refreshToken = localStorage.getItem(User_Refresh_Token);
+    if(refreshToken) {
+        const response = await Post<ApiSuccessResponse<AdminUserRefreshResponse>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/auth/refresh}`, {refreshToken});
+        SetToken(response.data.data.newAccessToken);
+    }
+}
 
 const ForceLogoff = () => {
     RemoveToken();

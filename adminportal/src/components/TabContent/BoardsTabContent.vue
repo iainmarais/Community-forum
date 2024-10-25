@@ -2,11 +2,19 @@
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import { useContentManagementStore } from '@/stores/ContentManagementStore';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
+import CreateBoardModal from '@/components/modals/CreateBoardModal.vue';
+import { Modal } from 'bootstrap';
 
 const contentManagementStore = useContentManagementStore();
 
 const refresh = () => {
-    //Todo: build out.
+    contentManagementStore.getBoards();
+}
+
+const openCreateBoardModal = () => {
+    var createBoardModal =  document.getElementById("CreateBoardModal");
+    var modal = new Modal(createBoardModal);
+    modal.show();
 }
 
 </script>
@@ -21,16 +29,40 @@ const refresh = () => {
             </h3>
             <div class="card-toolbar">
                 <!--Todo: add search function-->
-                <ButtonWithLoadingIndicator :label="'Refresh'" :icon="'fas fa-sync'" class="btn btn-primary btn-sm" @click.prevent="refresh()">
+                <button class="btn btn-primary btn-sm font-weight-bold" @click="openCreateBoardModal()"><i class="fas fa-plus"></i>Create Board</button>
+                <ButtonWithLoadingIndicator style="margin-inline: 10px" :label="'Refresh'" :icon="'fas fa-sync'" class="btn btn-primary btn-sm" @click.prevent="refresh()">
                     Refresh
                 </ButtonWithLoadingIndicator>
             </div>
         </div>
         <div class="card-body" v-if="!contentManagementStore.loading">
-            <p>Coming soon</p>
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Board Name</th>   
+                        <th>Description</th>   
+                        <!-- <th>Category</th>    -->
+                        <th>Created By</th>   
+                        <th>Actions</th>   
+                    </tr>
+                </thead>
+                    <tbody>
+                    <tr v-for="element in contentManagementStore.boards.rows">
+                        <td> {{ element.board.boardName ?? "N/A" }} </td>
+                        <td> {{ element.board.boardDescription ?? "N/A" }}</td>
+                        <td> {{ element.createdByUser.user.username ?? "N/A" }}</td>
+                        <td> 
+                            <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Edit</button>
+                            <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-eye"></i>View</button>
+                            <button style="margin-inline: 10px" class="btn btn-sm btn-danger"><i class="fas fa-xmark"></i>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="card-body" v-else>
             <LoadingIndicator :loading="true" />
         </div>
     </div>
+<CreateBoardModal />
 </template>

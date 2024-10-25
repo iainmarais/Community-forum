@@ -11,3 +11,11 @@ export type AdminUserLoginResponse = ValidTokenResponse & {
     adminUserRefreshToken:  string,
     adminUserProfile: UserBasicInfo,
 }
+
+export type AdminUserRefreshResponse = {
+    newAccessToken: string,
+    newAccessTokenExpiration: string,
+    refreshToken: string,
+    //Not sure if I need to return the user profile along with the incoming dataset, but for continuity with the login response, will include it.
+    adminUserProfile: UserBasicInfo
+}

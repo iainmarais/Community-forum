@@ -62,7 +62,7 @@ watch(() => contentManagementStore.result_createCategory, (newValue) => {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal" @click="closeModal()">Close</button>
                     <button type="button" class="btn btn-primary btn-sm font-weight-bold" @click="createCategory()">Create</button>
                 </div>
             </div>
