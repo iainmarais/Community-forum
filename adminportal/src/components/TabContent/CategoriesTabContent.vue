@@ -2,12 +2,17 @@
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import { useContentManagementStore } from '@/stores/ContentManagementStore';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
+import { onMounted } from 'vue';
 
 const contentManagementStore = useContentManagementStore();
 
 const refresh = () => {
-    //Todo: build out.
+    contentManagementStore.getCategories();
 }
+
+onMounted(() => {
+    contentManagementStore.getCategories();
+})
 
 </script>
 
@@ -27,7 +32,20 @@ const refresh = () => {
             </div>
         </div>
         <div class="card-body" v-if="!contentManagementStore.loading">
-            <p>Coming soon</p>
+            <table class="table-sm table-borderless">
+                <tr>
+                    <th>
+                        <td>Category name</td>
+                        <td>Description</td>
+                        <td>Number of Boards</td>
+                    </th>
+                </tr>
+                <tr v-for="element in contentManagementStore.categories.rows">
+                    <td> {{ element.category.categoryName ?? "N/A" }} </td>
+                    <td> {{ element.category.categoryDescription ?? "N/A" }}</td>
+                    <td> {{ element.boards.length ?? 0 }}</td>
+                </tr>
+            </table>
         </div>
         <div class="card-body" v-else>
             <LoadingIndicator :loading="true" />

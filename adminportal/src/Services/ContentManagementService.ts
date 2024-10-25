@@ -57,5 +57,8 @@ const getTopics = async (pageNumber: number, rowsPerPage: number, searchTerm?: s
 export default {
     createCategory,
     createBoard,
-    createTopic
+    createTopic,
+    getCategories,
+    getBoards,
+    getTopics
 }

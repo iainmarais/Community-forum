@@ -13,9 +13,18 @@ import { defineStore } from "pinia";
 type ContentManagementStore = {
     loading: boolean;
 
+    searchQuery?: string;
+    currentPageNumber: number;
+    rowsPerPage: number;
+
     categories: PaginatedData<CategoryBasicInfo[], CategorySummary>;
     boards: PaginatedData<BoardBasicInfo[], BoardSummary>;
     topics: PaginatedData<TopicBasicInfo[], TopicSummary>;
+
+    //Get results
+    result_getCategories: boolean;
+    result_getBoards: boolean;
+    result_getTopics: boolean;
 
     //Categories
     result_createCategory: boolean;
@@ -36,10 +45,18 @@ type ContentManagementStore = {
 const defaultState: ContentManagementStore = {
     loading: false,
 
+    currentPageNumber: 1,
+    rowsPerPage: 10,
+
     categories: {} as PaginatedData<CategoryBasicInfo[], CategorySummary>,
     boards: {} as PaginatedData<BoardBasicInfo[], BoardSummary>,
     topics: {} as PaginatedData<TopicBasicInfo[], TopicSummary>,
 
+    //Get results
+    result_getCategories: false,
+    result_getBoards: false,
+    result_getTopics: false,
+    
     //Categories
     result_createCategory: false,
     result_updateCategory: false,
@@ -97,6 +114,36 @@ export const useContentManagementStore = defineStore({
                 this.result_createTopic = false;
                 ErrorHandler.handleApiErrorResponse(error);
             });            
+        },
+        getCategories () {
+            this.loading = true;
+            ContentManagementService.getCategories(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
+                this.loading=false,
+                this.categories = response.data;
+            }, error => {
+                this.loading = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            });
+        },
+        getBoards () {
+            this.loading = true;
+            ContentManagementService.getBoards(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
+                this.loading=false,
+                this.boards = response.data;
+            }, error => {
+                this.loading = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            });
+        },
+        getTopics () {
+            this.loading = true;
+            ContentManagementService.getTopics(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
+                this.loading=false,
+                this.topics = response.data;
+            }, error => {
+                this.loading = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            });
         }
     }
 })
