@@ -29,7 +29,7 @@ const openCreateBoardModal = () => {
             </h3>
             <div class="card-toolbar">
                 <!--Todo: add search function-->
-                <button class="btn btn-primary btn-sm font-weight-bold" @click="openCreateBoardModal()"><i class="fas fa-plus"></i>Create Board</button>
+                <button class="btn btn-primary btn-sm font-weight-bold" style="margin-inline: 10px" @click="openCreateBoardModal()"><i class="fas fa-plus"></i>Create Board</button>
                 <ButtonWithLoadingIndicator style="margin-inline: 10px" :label="'Refresh'" :icon="'fas fa-sync'" class="btn btn-primary btn-sm" @click.prevent="refresh()">
                     Refresh
                 </ButtonWithLoadingIndicator>

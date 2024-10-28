@@ -1,4 +1,4 @@
-import axios, { type RawAxiosRequestHeaders } from "axios";
+import axios, { type AxiosRequestConfig, type RawAxiosRequestHeaders } from "axios";
 import { Last_Route, Token_Key, User_Refresh_Token } from "@/LocalStorage/keys";
 import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
 import router, { HomeRoute, LoginRoute, NotFoundRoute } from '@/router';
@@ -12,47 +12,63 @@ const instance = axios.create({
 });
 const toast = useToast();
 
-instance.interceptors.response.use((response) => {
-    return response;
-}, (error) => {
-    if (error?.response?.status === 401) {
+instance.interceptors.response.use(
+    (response) => response, // Pass through successful responses
+    async (error) => {
+        const originalRequest = error.config as AxiosRequestConfig & { _retry?: boolean };
 
-            //Need to see if this was caused by expired token deauth. If so, refresh it, else log off.
-            if(error?.response?.data?.error?.includes("expired")) {
-                ErrorHandler.handleApiErrorResponse(error);
-                refreshToken();
+        if (error?.response?.status === 401) {
+            if (error?.response?.data?.error?.includes("expired")) {
+                // Only retry the refresh once to avoid an infinite loop
+                if (!originalRequest._retry) {
+                    originalRequest._retry = true; // Mark request as retried
+
+                    try {
+                        // Refresh the token and retry the original request
+                        const newToken = await refreshToken();
+                        if (newToken) {
+                            SetToken(newToken);
+                            originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
+                            return instance(originalRequest); // Retry the original request
+                        }
+                    } catch (refreshError) {
+                        // Handle refresh token failure (e.g., token invalid or server issue)
+                        console.error("Token refresh failed:", refreshError);
+                        ForceLogoff();
+                        router.replace({ name: LoginRoute });
+                    }
+                }
+            } else {
+                // Log off if the error isn’t due to an expired token
+                ForceLogoff();
+                router.replace({ name: LoginRoute });
             }
-            // Chucked a sickie 'cause you're not allowed, mate.
-            ForceLogoff();
-            router.replace({ name: LoginRoute });
         } else if (error?.response?.status === 403) {
-            // Sorry mate, you don't have the authorisation to go there.
+            // Forbidden - handle as needed
             ErrorHandler.handleApiErrorResponse(error);
         } else if (error?.response?.status === 404) {
-            // Well... bollocks. We can't find that sodding page! 
-            router.push ({ name: NotFoundRoute });
+            // Not found - navigate to a custom 404 page or home
+            router.push({ name: NotFoundRoute });
             console.error("Not found error:", error);
             ErrorHandler.handleApiErrorResponse(error);
-        router.replace({name:HomeRoute});
-        } 
-        //Return the user to the login page on any server error
-        else if (!error.response) {
-            //toast.error -> message to tell the user there is a problem communicating with the server.
+        } else if (!error.response) {
+            // Network/server error - notify the user and redirect to login
             toast.error("Could not establish a connection to the server. Please try again later.");
-            router.replace({name:LoginRoute});
-        }
-        else {
-            // Looks like the server's hit a snag. Fair dinkum.
+            router.replace({ name: LoginRoute });
+        } else {
+            // General server error - log and handle as needed
             ErrorHandler.handleApiErrorResponse(error);
         }
-    return Promise.reject(error);
-});
+        
+        return Promise.reject(error);
+    }
+);
 
 const refreshToken = async () => {
     const refreshToken = localStorage.getItem(User_Refresh_Token);
     if(refreshToken) {
-        const response = await Post<ApiSuccessResponse<AdminUserRefreshResponse>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/auth/refresh}`, {refreshToken});
-        SetToken(response.data.data.newAccessToken);
+        const response = await Post<ApiSuccessResponse<AdminUserRefreshResponse>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/auth/refresh}`, {refreshToken});
+        return response.data.data.accessToken;
     }
 }
 

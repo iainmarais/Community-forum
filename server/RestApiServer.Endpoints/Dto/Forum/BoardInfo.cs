@@ -7,6 +7,7 @@ namespace RestApiServer.Dto.Forum
     {
         public required BoardEntry Board { get; set; } = null!;
         public required UserBasicInfo CreatedByUser { get; set; } = null!;
+        public List<TopicBasicInfo> Topics { get; set; } = new();
     }
 
     public class BoardFullInfo

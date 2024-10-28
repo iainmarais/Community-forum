@@ -170,7 +170,7 @@ namespace RestApiServer.Endpoints.Services.Admin
             {
                 AccessToken = userSessionToken,
                 AccessTokenExpiration = userSessionTokenExpiration,
-                AdminUserRefreshToken = userRefreshToken,
+                RefreshToken = userRefreshToken,
                 AdminUserProfile = userProfile
             };
 

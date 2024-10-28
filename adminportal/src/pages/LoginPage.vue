@@ -76,7 +76,7 @@ const login = () => {
         SetToken(response.data.accessToken);
         localStorage.setItem(Token_Key, response.data.accessToken);
         localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
-        localStorage.setItem(User_Refresh_Token, response.data.adminUserRefreshToken);
+        localStorage.setItem(User_Refresh_Token, response.data.refreshToken);
         loginInProgress.value = false;
         postLoginRoute();
         Toast_UserLoginSuccessful(response.data.adminUserProfile.user.username);

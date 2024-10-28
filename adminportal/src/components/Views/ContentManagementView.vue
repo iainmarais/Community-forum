@@ -35,9 +35,11 @@ const switchTab = (tab: string) => {
 watch(() => activeTab.value, (newValue) => {
     switch(newValue) {
         case 'categories':
+            contentManagementStore.getCategories();
             activeTab.value = 'categories';
             break;
         case 'boards':
+            contentManagementStore.getBoards();
             activeTab.value = 'boards';
             break;
         case 'topics':

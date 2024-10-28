@@ -6,6 +6,7 @@ namespace RestApiServer.Dto.Forum
     public class PostBasicInfo
     {
         public required PostEntry Post { get; set; }
+        public required UserBasicInfo CreatedByUser { get; set; }
     }
 
     public class PostFullInfo

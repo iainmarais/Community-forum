@@ -1,3 +1,4 @@
+import type { TopicBasicInfo } from "./TopicInfo"
 import type { UserBasicInfo } from "./UserInfo"
 
 export type BoardEntry = {
@@ -9,7 +10,8 @@ export type BoardEntry = {
 
 export type BoardBasicInfo = {
     board: BoardEntry,
-    createdByUser: UserBasicInfo
+    createdByUser: UserBasicInfo,
+    topics: TopicBasicInfo[]
 }
 
 export type BoardSummary = {

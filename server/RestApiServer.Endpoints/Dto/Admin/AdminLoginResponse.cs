@@ -6,7 +6,7 @@ namespace RestApiServer.Dto.AdminLogin
     {
         public required string AccessToken { get; set; } = "";
         public required long AccessTokenExpiration { get; set; }
-        public required string AdminUserRefreshToken { get; set; } = "";
+        public required string RefreshToken { get; set; } = "";
         public required UserBasicInfo AdminUserProfile { get; set; }
     }
 }

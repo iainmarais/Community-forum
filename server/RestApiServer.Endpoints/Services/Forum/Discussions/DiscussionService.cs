@@ -23,7 +23,11 @@ namespace RestApiServer.Endpoints.Services.Forum.Discussions
                                             TotalPosts = thread.Posts.Count(),
                                             Posts = thread.Posts.Select(p => new PostBasicInfo
                                             {
-                                                Post = p
+                                                Post = p,
+                                                CreatedByUser = new UserBasicInfo
+                                                {
+                                                    User = user
+                                                }
                                             }).ToList(),
                                             CreatedByUser = new UserBasicInfo
                                             {
