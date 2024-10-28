@@ -4,6 +4,9 @@ import { useContentManagementStore } from '@/stores/ContentManagementStore';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import CreateBoardModal from '@/components/modals/CreateBoardModal.vue';
 import { Modal } from 'bootstrap';
+import { useToast } from 'vue-toastification';
+
+const toast = useToast();
 
 const contentManagementStore = useContentManagementStore();
 
@@ -15,6 +18,14 @@ const openCreateBoardModal = () => {
     var createBoardModal =  document.getElementById("CreateBoardModal");
     var modal = new Modal(createBoardModal);
     modal.show();
+}
+
+const deleteBoard = (boardId: string) => {
+    if (boardId.length == 0 || boardId == null) {
+        toast.error("Board Id can't be null or empty");
+        return;
+    }
+    contentManagementStore.deleteBoard(boardId);
 }
 
 </script>
@@ -54,7 +65,7 @@ const openCreateBoardModal = () => {
                         <td> 
                             <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Edit</button>
                             <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-eye"></i>View</button>
-                            <button style="margin-inline: 10px" class="btn btn-sm btn-danger"><i class="fas fa-xmark"></i>Delete</button>
+                            <button style="margin-inline: 10px" class="btn btn-sm btn-danger" @click = deleteBoard(element.board.boardId)><i class="fas fa-xmark"></i>Delete</button>
                         </td>
                     </tr>
                 </tbody>

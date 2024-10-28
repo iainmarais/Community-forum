@@ -7,8 +7,19 @@ using RestApiServer.Endpoints.Services.Admin;
 
 namespace RestApiServer.Endpoints.Controllers.Admin
 {
+    [ApiController]
+    [Route("v1/adminportal")]
     public class ContentManagementController : ControllerBase
     {
+        [HttpPost("boards/delete")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<object>> DeleteBoard(string boardId)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            await ContentManagementService.DeleteBoardAsync(boardId);
+            return ApiSuccessResponses.WithoutData("Board deleted successfully.");
+        }
+
 
         [HttpPost("boards/create")]
         [Authorize(Roles = "Admin")]

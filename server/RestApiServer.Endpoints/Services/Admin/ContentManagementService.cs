@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using RestApiServer.Core.Errorhandler;
 using RestApiServer.Db;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
@@ -211,6 +212,20 @@ namespace RestApiServer.Endpoints.Services.Admin
                     TotalBoards = filteredTotal
                 }
             };      
+        }
+
+        public static async Task DeleteBoardAsync(string boardId)
+        {
+            using var db = new AppDbContext();
+
+            var boardToDelete = db.Boards.SingleAsync(b => b.BoardId == boardId);
+            if (boardToDelete == null)
+            {
+                throw ClientInducedException.MessageOnly("No such board exists.");
+            }
+            
+            db.Remove(boardToDelete);
+            await db.SaveChangesAsync();
         }
 
         public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> GetTopicsAsync(int pageNumber, int rowsPerPage, string searchTerm)

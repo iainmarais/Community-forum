@@ -2,6 +2,7 @@ import type { TopicBasicInfo } from "./TopicInfo"
 import type { UserBasicInfo } from "./UserInfo"
 
 export type BoardEntry = {
+    boardId: string
     categoryId: string,
     createdByUserId: string,
     boardName: string,

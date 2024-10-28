@@ -9,7 +9,6 @@ import ErrorHandler from "@/Handlers/ErrorHandler";
 import ContentManagementService from "@/Services/ContentManagementService";
 import { defineStore } from "pinia";
 
-
 type ContentManagementStore = {
     loading: boolean;
 
@@ -138,12 +137,24 @@ export const useContentManagementStore = defineStore({
         getTopics () {
             this.loading = true;
             ContentManagementService.getTopics(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
-                this.loading=false,
+                this.loading = false,
                 this.topics = response.data;
             }, error => {
                 this.loading = false;
                 ErrorHandler.handleApiErrorResponse(error);
             });
+        },
+        deleteBoard (boardId: string) {
+            this.loading = true;
+            this.result_deleteBoard = false;
+            ContentManagementService.deleteBoard(boardId).then(response => {
+                this.loading = false;
+                this.result_deleteBoard = true;
+            }, error => {
+                this.loading = false;
+                this.result_deleteBoard = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            })
         }
     }
 })

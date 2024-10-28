@@ -10,6 +10,8 @@ using RestApiServer.Endpoints.Services.Admin;
 
 namespace RestApiServer.Endpoints.Controllers.Admin
 {
+    [ApiController]
+    [Route("v1/adminportal")]
     public class UserManagementController : ControllerBase
     {
         [HttpPost("edituser")]
