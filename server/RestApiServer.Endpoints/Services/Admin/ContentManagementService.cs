@@ -218,7 +218,7 @@ namespace RestApiServer.Endpoints.Services.Admin
         {
             using var db = new AppDbContext();
 
-            var boardToDelete = db.Boards.SingleAsync(b => b.BoardId == boardId);
+            var boardToDelete = await db.Boards.SingleAsync(b => b.BoardId == boardId);
             if (boardToDelete == null)
             {
                 throw ClientInducedException.MessageOnly("No such board exists.");

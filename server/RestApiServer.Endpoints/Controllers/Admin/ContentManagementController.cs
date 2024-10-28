@@ -11,7 +11,7 @@ namespace RestApiServer.Endpoints.Controllers.Admin
     [Route("v1/adminportal")]
     public class ContentManagementController : ControllerBase
     {
-        [HttpPost("boards/delete")]
+        [HttpPost("boards/{boardId}/delete")]
         [Authorize(Roles = "Admin")]
         public async Task<ApiSuccessResponse<object>> DeleteBoard(string boardId)
         {

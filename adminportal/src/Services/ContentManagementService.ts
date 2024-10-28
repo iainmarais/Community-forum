@@ -54,7 +54,7 @@ const getTopics = async (pageNumber: number, rowsPerPage: number, searchTerm?: s
 }
 
 const deleteBoard = async (boardId: string): Promise<ApiSuccessResponse<object>> => {
-    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/boards/delete`, boardId);
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/boards/${boardId}/delete`, null);
 }
 
 
