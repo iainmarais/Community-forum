@@ -19,9 +19,6 @@ const refresh = () => {
 }
 
 const search = debounce((query: string) => {
-
-//Update the search query from the user's input, then trigger the getUserInfo function in the store to pull an updated list of users.
-//Need a way to wait until the user has finished entering their query before executing this function.
     contentManagementStore.searchQuery = query;
     contentManagementStore.getPosts();   
 }, 300);
@@ -52,6 +49,7 @@ const search = debounce((query: string) => {
                         <tr>
                             <th>Date created</th>
                             <th>Created by</th>
+                            <th>Discussion thread</th>
                             <th>Topic</th>
                             <th>Actions</th>
                         </tr>
@@ -60,6 +58,22 @@ const search = debounce((query: string) => {
                         <tr v-for="element in contentManagementStore.posts.rows">
                             <td>{{ element.post.createdDate }}</td>
                             <td>{{ element.createdByUser.user.username }}</td>
+                            <td>{{ element.thread?.thread.threadName ?? "N/A"  }}</td>
+                            <td>{{ element.thread?.topic?.topic.topicName ?? "N/A"  }}</td>
+                            <td>
+                                <button class = "btn btn-sm btn-primary" style="margin-inline: 10px;" >
+                                    <i class="fas fa-edit"></i>
+                                    Edit post
+                                </button>
+                                <button class = "btn btn-sm btn-primary" style="margin-inline: 10px;" >
+                                    <i class="fas fa-eye"></i>
+                                    View post
+                                </button>
+                                <button class = "btn btn-sm btn-outline-danger" style="margin-inline: 10px;" >
+                                    <i class="fas fa-xmark"></i>
+                                    Delete
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
