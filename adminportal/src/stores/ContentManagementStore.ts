@@ -116,40 +116,31 @@ export const useContentManagementStore = defineStore({
         },
         getCategories () {
             this.loading = true;
-            this.result_getCategories = false;
             ContentManagementService.getCategories(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
-                this.loading=false,
-                this.result_getCategories = true;
+                this.loading=false;
                 this.categories = response.data;
             }, error => {
                 this.loading = false;
-                this.result_getCategories = false;
                 ErrorHandler.handleApiErrorResponse(error);
             });
         },
         getBoards () {
             this.loading = true;
-            this.result_getBoards = false;
             ContentManagementService.getBoards(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
-                this.loading=false,
-                this.result_getBoards = true;
+                this.loading=false;
                 this.boards = response.data;
             }, error => {
                 this.loading = false;
-                this.result_getBoards = false;
                 ErrorHandler.handleApiErrorResponse(error);
             });
         },
         getTopics () {
             this.loading = true;
-            this.result_getTopics = false;
             ContentManagementService.getTopics(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
                 this.loading = false,
-                this.result_getTopics = true;
                 this.topics = response.data;
             }, error => {
                 this.loading = false;
-                this.result_getTopics = false;
                 ErrorHandler.handleApiErrorResponse(error);
             });
         },
