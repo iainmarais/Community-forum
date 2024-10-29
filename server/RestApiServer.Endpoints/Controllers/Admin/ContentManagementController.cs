@@ -50,7 +50,7 @@ namespace RestApiServer.Endpoints.Controllers.Admin
 
         [HttpGet("categories")]
         [Authorize(Roles = "Admin")]
-        public async Task<ApiSuccessResponse<PaginatedData<List<CategoryBasicInfo>, CategorySummary>>> GetCategoriesAsync([FromQuery] int pageNumber, [FromQuery] int rowsPerPage,[FromQuery] string? searchTerm)
+        public async Task<ApiSuccessResponse<PaginatedData<List<CategoryBasicInfo>, CategorySummary>>> GetCategoriesAsync([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string searchTerm = "")
         {
             var user = AuthService.GetAdminUserContext(User);
             var res = await ContentManagementService.GetCategoriesAsync(pageNumber, rowsPerPage, searchTerm);
@@ -59,7 +59,7 @@ namespace RestApiServer.Endpoints.Controllers.Admin
 
         [HttpGet("boards")]
         [Authorize(Roles = "Admin")]  
-        public async Task<ApiSuccessResponse<PaginatedData<List<BoardBasicInfo>,BoardSummary>>> GetBoardsAsync([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string? searchTerm)
+        public async Task<ApiSuccessResponse<PaginatedData<List<BoardBasicInfo>,BoardSummary>>> GetBoardsAsync([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string searchTerm = "")
         {
             var user = AuthService.GetAdminUserContext(User);
             var res = await ContentManagementService.GetBoardsAsync(pageNumber, rowsPerPage, searchTerm);
@@ -68,7 +68,7 @@ namespace RestApiServer.Endpoints.Controllers.Admin
         
         [HttpGet("topics")]
         [Authorize(Roles = "Admin")]    
-        public async Task<ApiSuccessResponse<PaginatedData<List<TopicBasicInfo>, TopicSummary>>> GetTopicsAsync([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string? searchTerm)
+        public async Task<ApiSuccessResponse<PaginatedData<List<TopicBasicInfo>, TopicSummary>>> GetTopicsAsync([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string searchTerm = "")
         {
             var user = AuthService.GetAdminUserContext(User);
             var res = await ContentManagementService.GetTopicsAsync(pageNumber, rowsPerPage, searchTerm);
