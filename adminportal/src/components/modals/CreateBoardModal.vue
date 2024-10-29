@@ -3,7 +3,6 @@ import { onMounted, ref, watch } from 'vue';
 import { useContentManagementStore } from '@/stores/ContentManagementStore';
 import { useToast } from 'vue-toastification';
 import { Modal } from 'bootstrap';
-import Select2 from 'vue3-select2-component';
 import type { CreateBoardRequest } from '@/Dto/AdminPortal/CreateBoardRequest';
 
 const toast = useToast();

@@ -57,6 +57,10 @@ const deleteBoard = async (boardId: string): Promise<ApiSuccessResponse<object>>
     return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/boards/${boardId}/delete`, null);
 }
 
+const deleteTopic = async (topicId: string): Promise<ApiSuccessResponse<object>> => {
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/topics/${topicId}/delete`, null);
+}
+
 
 export default {
     createCategory,
@@ -65,5 +69,6 @@ export default {
     getCategories,
     getBoards,
     getTopics,
-    deleteBoard
+    deleteBoard,
+    deleteTopic
 }

@@ -214,20 +214,6 @@ namespace RestApiServer.Endpoints.Services.Admin
             };      
         }
 
-        public static async Task DeleteBoardAsync(string boardId)
-        {
-            using var db = new AppDbContext();
-
-            var boardToDelete = await db.Boards.SingleAsync(b => b.BoardId == boardId);
-            if (boardToDelete == null)
-            {
-                throw ClientInducedException.MessageOnly("No such board exists.");
-            }
-            
-            db.Remove(boardToDelete);
-            await db.SaveChangesAsync();
-        }
-
         public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> GetTopicsAsync(int pageNumber, int rowsPerPage, string searchTerm)
         {
             using var db = new AppDbContext();
@@ -282,6 +268,35 @@ namespace RestApiServer.Endpoints.Services.Admin
                     TotalTopics = filteredTotal
                 }
             };
-        }          
+        }
+
+        public static async Task DeleteBoardAsync(string boardId)
+        {
+            using var db = new AppDbContext();
+
+            var boardToDelete = await db.Boards.SingleAsync(b => b.BoardId == boardId);
+            if (boardToDelete == null)
+            {
+                throw ClientInducedException.MessageOnly("No such board exists.");
+            }
+            
+            db.Remove(boardToDelete);
+            await db.SaveChangesAsync();
+        }
+
+        public static async Task DeleteTopicAsync(string topicId)          
+        {
+            using var db = new AppDbContext();
+
+            var topicToDelete = await db.Topics.SingleAsync(t => t.TopicId == topicId);
+
+            if(topicToDelete == null)
+            {
+                throw ClientInducedException.MessageOnly("No such topic exists.");
+            }
+
+            db.Remove(topicToDelete);
+            await db.SaveChangesAsync();
+        }
     }
 }

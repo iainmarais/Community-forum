@@ -43,6 +43,7 @@ watch(() => activeTab.value, (newValue) => {
             activeTab.value = 'boards';
             break;
         case 'topics':
+            contentManagementStore.getTopics();
             activeTab.value = 'topics';
             break;
         case 'posts':

@@ -55,7 +55,7 @@ watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
             </div>
         </div>
         <div class="card-body" v-if="!contentManagementStore.loading">
-            <table class="table table-hover table-striped table-bordered">
+            <table class="table table-hover table-striped table-bordered" v-if="contentManagementStore.boards.rows.length > 0">
                 <thead>
                     <tr>
                         <th>Board Name</th>   
@@ -78,6 +78,9 @@ watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
                     </tr>
                 </tbody>
             </table>
+            <div v-else>
+                <p>No boards found</p>
+            </div>
         </div>
         <div class="card-body" v-else>
             <LoadingIndicator :loading="true" />

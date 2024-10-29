@@ -20,6 +20,15 @@ namespace RestApiServer.Endpoints.Controllers.Admin
             return ApiSuccessResponses.WithoutData("Board deleted successfully.");
         }
 
+        [HttpPost("topics/{topicId}/delete")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<object>> DeleteTopic(string topicId)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            await ContentManagementService.DeleteTopicAsync(topicId);
+            return ApiSuccessResponses.WithoutData("Topic deleted successfully.");
+        }
+
 
         [HttpPost("boards/create")]
         [Authorize(Roles = "Admin")]
