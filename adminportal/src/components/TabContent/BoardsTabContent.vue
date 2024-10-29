@@ -5,6 +5,7 @@ import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import CreateBoardModal from '@/components/modals/CreateBoardModal.vue';
 import { Modal } from 'bootstrap';
 import { useToast } from 'vue-toastification';
+import { watch } from 'vue';
 
 const toast = useToast();
 
@@ -27,6 +28,13 @@ const deleteBoard = (boardId: string) => {
     }
     contentManagementStore.deleteBoard(boardId);
 }
+
+watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
+    if(newValue) {
+        toast.success("Board deleted successfully");
+        contentManagementStore.getBoards();
+    }
+});
 
 </script>
 
