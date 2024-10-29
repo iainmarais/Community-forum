@@ -29,7 +29,6 @@ namespace RestApiServer.Endpoints.Services.Forum.Categories
                     TotalPosts = t.Posts.Count,
                 }).ToList(),
                 TotalThreads = topic.Threads.Count,
-                NumTotalThreads = topic.Threads.Count,
                 TotalPosts = topic.Threads.Sum(t => t.Posts.Count),
                 CreatedByUser = new UserBasicInfo()
                 {
@@ -51,7 +50,6 @@ namespace RestApiServer.Endpoints.Services.Forum.Categories
                                     Topic = t,
                                     TotalPosts = t.Threads.Sum(t => t.Posts.Count),
                                     TotalThreads = t.Threads.Count,
-                                    NumTotalThreads = t.Threads.Count,
                                 })
                                 .ToListAsync();
             return res;
@@ -83,7 +81,6 @@ namespace RestApiServer.Endpoints.Services.Forum.Categories
                                     Topic = t,
                                     TotalPosts = t.Threads.Sum(t => t.Posts.Count),
                                     TotalThreads = t.Threads.Count,
-                                    NumTotalThreads = t.Threads.Count,
                                 })
                                 .ToListAsync();
             //Return the result.
@@ -119,7 +116,6 @@ namespace RestApiServer.Endpoints.Services.Forum.Categories
                     TotalPosts = t.Posts.Count,
                 }).ToList(),
                 TotalThreads = topic.Threads.Count,
-                NumTotalThreads = topic.Threads.Count,
                 TotalPosts = topic.Threads.Sum(t => t.Posts.Count),
                 CreatedByUser = new UserBasicInfo()
                 {

@@ -47,6 +47,7 @@ watch(() => activeTab.value, (newValue) => {
             activeTab.value = 'topics';
             break;
         case 'posts':
+            contentManagementStore.getPosts();
             activeTab.value = 'posts';
             break;
         case 'gallery':
@@ -76,9 +77,6 @@ watch(() => activeTab.value, (newValue) => {
                         </button>
                     </li>
                 </ul>
-                <ButtonWithLoadingIndicator :label="'Refresh'" :icon="'fas fa-sync'" class="btn btn-primary btn-sm" @click.prevent="refresh()">
-                    Refresh
-                </ButtonWithLoadingIndicator>
             </div>
         </div>
         <div class="card-body">

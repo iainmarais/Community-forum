@@ -2,10 +2,15 @@
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import { useContentManagementStore } from '@/stores/ContentManagementStore';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
-import { watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useToast } from 'vue-toastification';
 import CreateTopicModal from '@/components/modals/CreateTopicModal.vue';
 import { Modal } from 'bootstrap';
+import { debounce } from 'lodash';
+import PageSelector from '@/components/elements/Inputs/PageSelector.vue';
+import SearchBar from '@/components/elements/Inputs/SearchBar.vue';
+
+const searchQuery = ref("");
 
 const contentManagementStore = useContentManagementStore();
 const toast = useToast();
@@ -20,6 +25,19 @@ watch(() => contentManagementStore.result_deleteTopic, (newValue) => {
         contentManagementStore.getTopics();
     }
 });
+
+const search = debounce((query: string) => {
+
+//Update the search query from the user's input, then trigger the getUserInfo function in the store to pull an updated list of users.
+//Need a way to wait until the user has finished entering their query before executing this function.
+    contentManagementStore.searchQuery = query;
+    contentManagementStore.getTopics();   
+}, 300);
+
+
+const viewTopic = (topicId: string) => {
+    //Todo: build out.
+}
 
 const deleteTopic = (topicId: string) => {
     if (topicId.length == 0 || topicId == null) {
@@ -46,7 +64,7 @@ const openCreateTopicModal = () => {
                 </span>
             </h3>
             <div class="card-toolbar">
-                <!--Todo: add search function-->
+                <SearchBar v-model:searchQuery="searchQuery" :handleSearch = "search" />
                 <button class="btn btn-primary btn-sm font-weight-bold" style="margin-inline: 10px" @click="openCreateTopicModal()"><i class="fas fa-plus"></i>Create Topic</button>
                 <ButtonWithLoadingIndicator style="margin-inline: 10px" :label="'Refresh'" :icon="'fas fa-sync'" class="btn btn-primary btn-sm" @click.prevent="refresh()">
                     Refresh
@@ -54,6 +72,7 @@ const openCreateTopicModal = () => {
             </div>
         </div>
         <div class="card-body" v-if="!contentManagementStore.loading">
+            <PageSelector :current-page-number="contentManagementStore.currentPageNumber" :totalPages="contentManagementStore.topics.totalPages" :rows-per-page="contentManagementStore.rowsPerPage" @previous-page="$emit('previous-page')" @next-page="$emit('next-page')" />
             <table class="table table-hover table-striped table-bordered" v-if="contentManagementStore.topics.rows.length > 0">
                 <thead>
                     <tr>
@@ -70,8 +89,8 @@ const openCreateTopicModal = () => {
                         <td> {{ element.createdByUser.user.username ?? "N/A" }}</td>
                         <td> 
                             <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Edit</button>
-                            <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-eye"></i>View</button>
-                            <button style="margin-inline: 10px" class="btn btn-sm btn-danger" @click = deleteTopic(element.topic.topicId)><i class="fas fa-xmark"></i>Delete</button>
+                            <button style="margin-inline: 10px" class ="btn btn-sm btn-primary" @click="viewTopic(element.topic.topicId)"><i class="fas fa-eye"></i>View</button>
+                            <button style="margin-inline: 10px" class="btn btn-sm btn-outline-danger" @click = deleteTopic(element.topic.topicId)><i class="fas fa-xmark"></i>Delete</button>
                         </td>
                     </tr>
                 </tbody>

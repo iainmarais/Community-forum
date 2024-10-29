@@ -1,6 +1,6 @@
 namespace RestApiServer.Endpoints.Dto.Admin
 {
-    public class CreateTopicRequest
+    public class AdminCreateTopicRequest
     {
         public string BoardId { get; set; } = "";
         public string TopicName { get; set; } = "";

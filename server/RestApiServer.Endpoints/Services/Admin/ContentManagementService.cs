@@ -4,12 +4,13 @@ using RestApiServer.Db;
 using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Endpoints.ApiResponses;
+using RestApiServer.Endpoints.Dto.Admin;
 
 namespace RestApiServer.Endpoints.Services.Admin
 {
     public class ContentManagementService
     {
-       public static async Task CreateCategoryAsync(string userId, Dto.Admin.CreateCategoryRequest req)
+       public static async Task CreateCategoryAsync(string userId, AdminCreateCategoryRequest req)
         {
             using var db = new AppDbContext();
 
@@ -26,7 +27,7 @@ namespace RestApiServer.Endpoints.Services.Admin
             await db.SaveChangesAsync();
         }
 
-        public static async Task CreateBoardAsync(string userId, Dto.Admin.CreateBoardRequest req)
+        public static async Task CreateBoardAsync(string userId, AdminCreateBoardRequest req)
         {
             using var db = new AppDbContext();
 
@@ -44,7 +45,7 @@ namespace RestApiServer.Endpoints.Services.Admin
             await db.SaveChangesAsync();
         }
 
-        public static async Task CreateTopicAsync(string userId, Dto.Admin.CreateTopicRequest req)
+        public static async Task CreateTopicAsync(string userId, AdminCreateTopicRequest req)
         {
             using var db = new AppDbContext();
 
@@ -63,7 +64,7 @@ namespace RestApiServer.Endpoints.Services.Admin
             await db.SaveChangesAsync();
         }
 
-        public static async Task<PaginatedData<List<CategoryBasicInfo>, CategorySummary>> GetCategoriesAsync(int pageNumber, int rowsPerPage, string searchTerm)
+        public static async Task<PaginatedData<List<CategoryBasicInfo>, CategorySummary>> GetCategoriesAsync(int pageNumber, int rowsPerPage, string searchTerm = "")
         {
             using var db = new AppDbContext();
 
@@ -128,7 +129,7 @@ namespace RestApiServer.Endpoints.Services.Admin
             };
         }
 
-        public static async Task<PaginatedData<List<BoardBasicInfo>, BoardSummary>> GetBoardsAsync(int pageNumber, int rowsPerPage, string searchTerm)
+        public static async Task<PaginatedData<List<BoardBasicInfo>, BoardSummary>> GetBoardsAsync(int pageNumber, int rowsPerPage, string searchTerm = "")
         {
             using var db = new AppDbContext();
             var associatedPostsQuery = from p in db.Posts 
@@ -165,7 +166,6 @@ namespace RestApiServer.Endpoints.Services.Admin
                                             },
                                             TotalThreads = associatedThreadsQuery.Where(th => th.Thread.TopicId == t.TopicId).Count(),
                                             TotalPosts = associatedPostsQuery.Where(p => p.Post.Thread.Topic.TopicId == t.TopicId).Count(),
-                                            NumTotalThreads = associatedThreadsQuery.Where(th => th.Thread.TopicId == t.TopicId).Count(),
                                         };
 
             var boardsQuery = from b in db.Boards 
@@ -214,7 +214,7 @@ namespace RestApiServer.Endpoints.Services.Admin
             };      
         }
 
-        public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> GetTopicsAsync(int pageNumber, int rowsPerPage, string searchTerm)
+        public static async Task<PaginatedData<List<TopicBasicInfo>, TopicSummary>> GetTopicsAsync(int pageNumber, int rowsPerPage, string searchTerm = "")
         {
             using var db = new AppDbContext();
 
@@ -230,7 +230,6 @@ namespace RestApiServer.Endpoints.Services.Admin
                                 //Find any threads in the group not older than 5 days since creation
                                 NumNewThreads = threads.Count(t => t.CreatedDate > DateTime.UtcNow.AddDays(-5)),
                                 TotalPosts = threads.Sum(t => t.Posts.Count),
-                                NumTotalThreads = threads.Count(),
                                 CreatedByUser = new UserBasicInfo()
                                 {
                                     User = u
@@ -270,6 +269,88 @@ namespace RestApiServer.Endpoints.Services.Admin
             };
         }
 
+        public static async Task<PaginatedData<List<PostBasicInfo>, PostSummary>> GetPostsAsync(int pageNumber, int rowsPerPage, string searchTerm = "")
+        {
+            using var db = new AppDbContext();
+
+            var postsQuery = from p in db.Posts
+                            join u in db.Users on p.CreatedByUserId equals u.UserId
+                            join th in db.Threads on p.ThreadId equals th.ThreadId
+                            join tp in db.Topics on th.TopicId equals tp.TopicId
+                            orderby p.CreatedDate descending
+                            select new PostBasicInfo
+                            {
+                                Post = p,
+                                CreatedByUser = new UserBasicInfo 
+                                {
+                                    User = u
+                                },
+                                Thread = new ThreadBasicInfo
+                                {
+                                    Thread = th,
+                                    CreatedByUser = new UserBasicInfo 
+                                    {
+                                        User = u
+                                    },
+                                    Topic = new TopicBasicInfo
+                                    {
+                                        Topic = tp,
+                                        CreatedByUser = new UserBasicInfo 
+                                        {
+                                            User = u
+                                        },                                        
+                                    }
+                                }
+                            };
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                postsQuery = (from p in postsQuery
+                            where p.Post.ReportReason.ToLower().Contains(searchTerm) ||
+                            p.Post.PostContent.ToLower().Contains(searchTerm) ||
+                            p.CreatedByUser.User.Username.ToLower().Contains(searchTerm) ||
+                            p.CreatedByUser.User.UserFirstname.ToLower().Contains(searchTerm) ||
+                            p.CreatedByUser.User.UserLastname.ToLower().Contains(searchTerm) ||
+                            p.CreatedByUser.UserFullname.ToLower().Contains(searchTerm)
+                            select p);
+            }
+
+            var filteredTotal = await postsQuery.CountAsync();
+
+            var skip = (pageNumber - 1) * rowsPerPage;
+            int totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
+
+            var postRows = await postsQuery
+                .Skip(skip)
+                .Take(rowsPerPage)
+                .ToListAsync();    
+
+            return new()
+            {
+                Rows = postRows,
+                PageNumber = pageNumber,
+                RowsPerPage = rowsPerPage,
+                TotalPages = totalPages,
+                Summary = new()
+                {
+                    TotalPosts = filteredTotal
+                }
+            };      
+        }
+
+        public static async Task DeleteCategoryAsync(string categoryId)
+        {
+            using var db = new AppDbContext();
+
+            var categoryToDelete = await db.Categories.SingleAsync(c => c.CategoryId == categoryId);
+            if(categoryToDelete == null)
+            {
+                throw ClientInducedException.MessageOnly("No such category exists");
+            }
+
+            db.Remove(categoryToDelete);
+            await db.SaveChangesAsync();
+        }
         public static async Task DeleteBoardAsync(string boardId)
         {
             using var db = new AppDbContext();

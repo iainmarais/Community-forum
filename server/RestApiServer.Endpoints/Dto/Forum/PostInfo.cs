@@ -7,12 +7,14 @@ namespace RestApiServer.Dto.Forum
     {
         public required PostEntry Post { get; set; }
         public required UserBasicInfo CreatedByUser { get; set; }
+        public ThreadBasicInfo? Thread { get; set; }
     }
 
     public class PostFullInfo
     {
         public required PostEntry Post { get; set; }
         public required UserBasicInfo CreatedByUser { get; set; }
+        public ThreadBasicInfo? Thread { get; set; }
     }
 
     public class PostSummary 

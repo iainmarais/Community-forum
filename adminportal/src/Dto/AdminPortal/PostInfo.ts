@@ -1,4 +1,9 @@
+import type { ThreadBasicInfo } from "./ThreadInfo"
+import type { TopicBasicInfo } from "./TopicInfo"
+import type { UserBasicInfo } from "./UserInfo"
+
 export type PostEntry = {
+    postId: string,
     threadId: string,
     isFirstPost: boolean,
     createdByUserId: string,
@@ -12,6 +17,8 @@ export type PostEntry = {
 
 export type PostBasicInfo = {
     post: PostEntry,
+    createdByUser: UserBasicInfo,
+    thread?: ThreadBasicInfo
 }
 
 export type PostSummary = {

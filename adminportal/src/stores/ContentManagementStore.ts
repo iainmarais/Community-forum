@@ -4,6 +4,7 @@ import type { CategoryBasicInfo, CategorySummary } from "@/Dto/AdminPortal/Categ
 import type { CreateBoardRequest } from "@/Dto/AdminPortal/CreateBoardRequest";
 import type { CreateCategoryRequest } from "@/Dto/AdminPortal/CreateCategoryRequest";
 import type { CreateTopicRequest } from "@/Dto/AdminPortal/CreateTopicRequest";
+import type { PostBasicInfo, PostSummary } from "@/Dto/AdminPortal/PostInfo";
 import type { TopicBasicInfo, TopicSummary } from "@/Dto/AdminPortal/TopicInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import ContentManagementService from "@/Services/ContentManagementService";
@@ -19,11 +20,13 @@ type ContentManagementStore = {
     categories: PaginatedData<CategoryBasicInfo[], CategorySummary>;
     boards: PaginatedData<BoardBasicInfo[], BoardSummary>;
     topics: PaginatedData<TopicBasicInfo[], TopicSummary>;
+    posts: PaginatedData<PostBasicInfo[], PostSummary>;
 
     //Get results
     result_getCategories: boolean;
     result_getBoards: boolean;
     result_getTopics: boolean;
+    result_getPosts: boolean;
 
     //Categories
     result_createCategory: boolean;
@@ -39,6 +42,11 @@ type ContentManagementStore = {
     result_createTopic: boolean;
     result_updateTopic: boolean;
     result_deleteTopic: boolean;
+
+    //Posts
+    result_createPost: boolean;
+    result_updatePost: boolean;
+    result_deletePost: boolean;
 }
 
 const defaultState: ContentManagementStore = {
@@ -50,11 +58,13 @@ const defaultState: ContentManagementStore = {
     categories: {} as PaginatedData<CategoryBasicInfo[], CategorySummary>,
     boards: {} as PaginatedData<BoardBasicInfo[], BoardSummary>,
     topics: {} as PaginatedData<TopicBasicInfo[], TopicSummary>,
+    posts: {} as PaginatedData<PostBasicInfo[], PostSummary>,
 
     //Get results
     result_getCategories: false,
     result_getBoards: false,
     result_getTopics: false,
+    result_getPosts: false,
     
     //Categories
     result_createCategory: false,
@@ -69,7 +79,12 @@ const defaultState: ContentManagementStore = {
     //Topics
     result_createTopic: false,
     result_updateTopic: false,
-    result_deleteTopic: false,    
+    result_deleteTopic: false,
+
+    //Posts
+    result_createPost: false,
+    result_updatePost: false,
+    result_deletePost: false,
 }
 
 export const useContentManagementStore = defineStore({
@@ -144,6 +159,28 @@ export const useContentManagementStore = defineStore({
                 ErrorHandler.handleApiErrorResponse(error);
             });
         },
+        getPosts () {
+            this.loading = true;
+            ContentManagementService.getPosts(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
+                this.loading = false,
+                this.posts = response.data;
+            }, error => {
+                this.loading = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            });
+        },        
+        deleteCategory (categoryId: string) {
+            this.loading = true;
+            this.result_deleteCategory = false;
+            ContentManagementService.deleteCategory(categoryId).then(response => {
+                this.loading = false;
+                this.result_deleteCategory = true;
+            }, error => {
+                this.loading = false;
+                this.result_deleteCategory = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            })
+        },        
         deleteBoard (boardId: string) {
             this.loading = true;
             this.result_deleteBoard = false;

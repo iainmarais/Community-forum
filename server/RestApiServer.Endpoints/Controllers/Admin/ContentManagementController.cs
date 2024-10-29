@@ -11,6 +11,15 @@ namespace RestApiServer.Endpoints.Controllers.Admin
     [Route("v1/adminportal")]
     public class ContentManagementController : ControllerBase
     {
+        [HttpPost("categories/{categoryId}/delete")]
+        [Authorize(Roles="Admin")]
+        public async Task<ApiSuccessResponse<object>> DeleteCategory(string categoryId)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            await ContentManagementService.DeleteCategoryAsync(categoryId);
+            return ApiSuccessResponses.WithoutData("Category deleted successfully");
+        }
+
         [HttpPost("boards/{boardId}/delete")]
         [Authorize(Roles = "Admin")]
         public async Task<ApiSuccessResponse<object>> DeleteBoard(string boardId)
@@ -28,35 +37,34 @@ namespace RestApiServer.Endpoints.Controllers.Admin
             await ContentManagementService.DeleteTopicAsync(topicId);
             return ApiSuccessResponses.WithoutData("Topic deleted successfully.");
         }
-
-
-        [HttpPost("boards/create")]
-        [Authorize(Roles = "Admin")]
-        public async Task<ApiSuccessResponse<object>> CreateBoard(Dto.Admin.CreateBoardRequest request)
-        {
-            var user = AuthService.GetAdminUserContext(User);
-            await ContentManagementService.CreateBoardAsync(user.UserId, request);
-            return ApiSuccessResponses.WithoutData("Create board successful");
-        }
-
+        //Create: topics, categories, boards only
         [HttpPost("categories/create")]
         [Authorize(Roles = "Admin")]
-        public async Task<ApiSuccessResponse<object>> CreateCategory(Dto.Admin.CreateCategoryRequest request)
+        public async Task<ApiSuccessResponse<object>> CreateCategory(Dto.Admin.AdminCreateCategoryRequest request)
         {
             var user = AuthService.GetAdminUserContext(User);
            await ContentManagementService.CreateCategoryAsync(user.UserId, request);
             return ApiSuccessResponses.WithoutData("Create category successful");
         }
 
+        [HttpPost("boards/create")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<object>> CreateBoard(Dto.Admin.AdminCreateBoardRequest request)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            await ContentManagementService.CreateBoardAsync(user.UserId, request);
+            return ApiSuccessResponses.WithoutData("Create board successful");
+        }
+
         [HttpPost("topics/create")]
         [Authorize(Roles = "Admin")]      
-        public async Task<ApiSuccessResponse<object>> CreateTopic(Dto.Admin.CreateTopicRequest request)
+        public async Task<ApiSuccessResponse<object>> CreateTopic(Dto.Admin.AdminCreateTopicRequest request)
         {
             var user = AuthService.GetAdminUserContext(User);
             await ContentManagementService.CreateTopicAsync(user.UserId, request);
             return ApiSuccessResponses.WithoutData("Create topic successful");
         }
-
+        //Getters
         [HttpGet("categories")]
         [Authorize(Roles = "Admin")]
         public async Task<ApiSuccessResponse<PaginatedData<List<CategoryBasicInfo>, CategorySummary>>> GetCategoriesAsync([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string searchTerm = "")
@@ -83,5 +91,14 @@ namespace RestApiServer.Endpoints.Controllers.Admin
             var res = await ContentManagementService.GetTopicsAsync(pageNumber, rowsPerPage, searchTerm);
             return ApiSuccessResponses.WithData("Get topics successful", res);
         }  
+
+        [HttpGet("posts")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<PaginatedData<List<PostBasicInfo>, PostSummary>>> GetPostsAsync([FromQuery] int pageNumber, [FromQuery] int rowsPerPage, [FromQuery] string searchTerm = "")
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            var res = await ContentManagementService.GetPostsAsync(pageNumber, rowsPerPage, searchTerm);
+            return ApiSuccessResponses.WithData("Get posts successful", res);            
+        }
     }
 }

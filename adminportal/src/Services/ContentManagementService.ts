@@ -5,6 +5,7 @@ import type { CategoryBasicInfo, CategorySummary } from "@/Dto/AdminPortal/Categ
 import type { CreateBoardRequest } from "@/Dto/AdminPortal/CreateBoardRequest";
 import type { CreateCategoryRequest } from "@/Dto/AdminPortal/CreateCategoryRequest";
 import type { CreateTopicRequest } from "@/Dto/AdminPortal/CreateTopicRequest";
+import type { PostBasicInfo, PostSummary } from "@/Dto/AdminPortal/PostInfo";
 import type { TopicBasicInfo, TopicSummary } from "@/Dto/AdminPortal/TopicInfo";
 import AxiosClient from "@/http/AxiosClient";
 
@@ -53,6 +54,21 @@ const getTopics = async (pageNumber: number, rowsPerPage: number, searchTerm?: s
     return res;
 }
 
+const getPosts = async (pageNumber: number, rowsPerPage: number, searchTerm?: string): Promise<ApiSuccessResponse<PaginatedData<PostBasicInfo[], PostSummary>>> => {
+    const queryParams = [];
+    queryParams.push(`pageNumber=${pageNumber}`);
+    queryParams.push(`rowsPerPage=${rowsPerPage}`);
+    if(searchTerm) {
+        queryParams.push(`searchTerm=${searchTerm}`);
+    }
+    var res = await AxiosClient.Get<PaginatedData<PostBasicInfo[], PostSummary>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/posts?${queryParams.join('&')}`);
+    return res;
+}
+
+const deleteCategory = async(categoryId: string): Promise<ApiSuccessResponse<object>> => {
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/categories/${categoryId}/delete`, null)
+}
+
 const deleteBoard = async (boardId: string): Promise<ApiSuccessResponse<object>> => {
     return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/boards/${boardId}/delete`, null);
 }
@@ -69,6 +85,8 @@ export default {
     getCategories,
     getBoards,
     getTopics,
+    getPosts,
+    deleteCategory,
     deleteBoard,
     deleteTopic
 }

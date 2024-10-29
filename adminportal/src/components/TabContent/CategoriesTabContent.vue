@@ -5,7 +5,14 @@ import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import { onMounted, ref, watch } from 'vue';
 import CreateCategoryModal from '@/components/modals/CreateCategoryModal.vue';
 import { Modal } from 'bootstrap';
+import { debounce, result } from 'lodash';
+import { useToast } from 'vue-toastification';
+import PageSelector from '@/components/elements/Inputs/PageSelector.vue';
+import SearchBar from '@/components/elements/Inputs/SearchBar.vue';
 
+const searchQuery = ref("");
+
+const toast = useToast();
 const contentManagementStore = useContentManagementStore();
 
 const openCreateCategoryModal = () => {
@@ -16,6 +23,32 @@ const openCreateCategoryModal = () => {
 
 const refresh = () => {
     contentManagementStore.getCategories();
+}
+
+const search = debounce((query: string) => {
+
+//Update the search query from the user's input, then trigger the getUserInfo function in the store to pull an updated list of users.
+//Need a way to wait until the user has finished entering their query before executing this function.
+    contentManagementStore.searchQuery = query;
+    contentManagementStore.getCategories();   
+}, 300);
+
+watch(() =>contentManagementStore.result_deleteCategory, (newValue) => {
+    if (newValue) {
+        contentManagementStore.getCategories();
+    }
+});
+
+const deleteCategory = (categoryId: string) => {
+    if(categoryId.length == 0) {
+        toast.error("Category Id can't be empty");
+        return
+    }
+    contentManagementStore.deleteCategory(categoryId);
+}
+
+const viewCategory = (categoryId: string) => {
+    //Todo: build out.
 }
 
 onMounted(() => {
@@ -40,7 +73,7 @@ watch(() => contentManagementStore.result_getCategories, (newValue) => {
                 </span>
             </h3>
             <div class="card-toolbar">
-                <!--Todo: add search function-->
+                <SearchBar v-model:searchQuery="searchQuery" :handleSearch = "search" />
                 <button class="btn btn-sm btn-primary" style="margin-inline: 10px;" @click="openCreateCategoryModal()"><i class="fas fa-plus"></i>Create Category</button>
                 <ButtonWithLoadingIndicator style="margin-inline: 10px;" :label="'Refresh'" :icon="'fas fa-sync'" class="btn btn-primary btn-sm" @click.prevent="refresh()">
                     Refresh
@@ -48,12 +81,14 @@ watch(() => contentManagementStore.result_getCategories, (newValue) => {
             </div>
         </div>
         <div class="card-body" v-if="!contentManagementStore.loading">
+            <PageSelector :current-page-number="contentManagementStore.currentPageNumber" :totalPages="contentManagementStore.categories.totalPages" :rows-per-page="contentManagementStore.rowsPerPage" @previous-page="$emit('previous-page')" @next-page="$emit('next-page')" />
             <table class="table table-hover table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Category Name</th>   
                         <th>Description</th>   
-                        <th>Number of Boards</th>   
+                        <th>Number of Boards</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                     <tbody>
@@ -61,6 +96,14 @@ watch(() => contentManagementStore.result_getCategories, (newValue) => {
                         <td> {{ element.category.categoryName ?? "N/A" }} </td>
                         <td> {{ element.category.categoryDescription ?? "N/A" }}</td>
                         <td> {{ element.boards.length ?? 0 }}</td>
+                        <td>
+                            <button class ="btn btn-sm btn-primary" style="margin-inline: 10px"><i class="fas fa-edit"></i>Edit</button>
+                            <button class ="btn btn-sm btn-primary" style="margin-inline: 10px" @click="viewCategory(element.category.categoryId)"><i class="fas fa-eye"></i>View</button>
+                            <button class="btn btn-sm btn-outline-danger" style="margin-inline: 10px" @click="deleteCategory(element.category.categoryId)">
+                                <i class="fas fa-xmark"></i>
+                                Delete
+                            </button>                            
+                        </td>
                     </tr>
                 </tbody>
             </table>

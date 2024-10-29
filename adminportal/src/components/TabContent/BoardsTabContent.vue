@@ -5,7 +5,13 @@ import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import CreateBoardModal from '@/components/modals/CreateBoardModal.vue';
 import { Modal } from 'bootstrap';
 import { useToast } from 'vue-toastification';
-import { watch } from 'vue';
+import { ref, watch } from 'vue';
+import { debounce } from 'lodash';
+import PageSelector from '@/components/elements/Inputs/PageSelector.vue';
+import SearchBar from '@/components/elements/Inputs/SearchBar.vue';
+
+
+const searchQuery = ref("");
 
 const toast = useToast();
 
@@ -14,6 +20,15 @@ const contentManagementStore = useContentManagementStore();
 const refresh = () => {
     contentManagementStore.getBoards();
 }
+
+const search = debounce((query: string) => {
+
+//Update the search query from the user's input, then trigger the getUserInfo function in the store to pull an updated list of users.
+//Need a way to wait until the user has finished entering their query before executing this function.
+    contentManagementStore.searchQuery = query;
+    contentManagementStore.getBoards();   
+}, 300);
+
 
 const openCreateBoardModal = () => {
     var createBoardModal =  document.getElementById("CreateBoardModal");
@@ -27,6 +42,10 @@ const deleteBoard = (boardId: string) => {
         return;
     }
     contentManagementStore.deleteBoard(boardId);
+}
+
+const viewBoard = (boardId: string) => {
+    //Todo: build out.
 }
 
 watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
@@ -47,7 +66,7 @@ watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
                 </span>
             </h3>
             <div class="card-toolbar">
-                <!--Todo: add search function-->
+                <SearchBar v-model:searchQuery="searchQuery" :handleSearch = "search" />
                 <button class="btn btn-primary btn-sm font-weight-bold" style="margin-inline: 10px" @click="openCreateBoardModal()"><i class="fas fa-plus"></i>Create Board</button>
                 <ButtonWithLoadingIndicator style="margin-inline: 10px" :label="'Refresh'" :icon="'fas fa-sync'" class="btn btn-primary btn-sm" @click.prevent="refresh()">
                     Refresh
@@ -55,6 +74,7 @@ watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
             </div>
         </div>
         <div class="card-body" v-if="!contentManagementStore.loading">
+            <PageSelector :current-page-number="contentManagementStore.currentPageNumber" :totalPages="contentManagementStore.boards.totalPages" :rows-per-page="contentManagementStore.rowsPerPage" @previous-page="$emit('previous-page')" @next-page="$emit('next-page')" />
             <table class="table table-hover table-striped table-bordered" v-if="contentManagementStore.boards.rows.length > 0">
                 <thead>
                     <tr>
@@ -72,8 +92,8 @@ watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
                         <td> {{ element.createdByUser.user.username ?? "N/A" }}</td>
                         <td> 
                             <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Edit</button>
-                            <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-eye"></i>View</button>
-                            <button style="margin-inline: 10px" class="btn btn-sm btn-danger" @click = deleteBoard(element.board.boardId)><i class="fas fa-xmark"></i>Delete</button>
+                            <button style="margin-inline: 10px" class ="btn btn-sm btn-primary" @click="viewBoard(element.board.boardId)"><i class="fas fa-eye"></i>View</button>
+                            <button style="margin-inline: 10px" class="btn btn-sm btn-outline-danger" @click = "deleteBoard(element.board.boardId)"><i class="fas fa-xmark"></i>Delete</button>
                         </td>
                     </tr>
                 </tbody>

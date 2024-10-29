@@ -6,9 +6,10 @@ namespace RestApiServer.Dto.Forum
     public class ThreadBasicInfo
     {
         public required ThreadEntry Thread { get; set; } = null!;
-        public required int TotalPosts { get; set; } = 0;
+        public int TotalPosts { get; set; } = 0;
         public PostBasicInfo NewestMessage { get; set; } = null!;
         public UserBasicInfo CreatedByUser { get; set; } = null!;
+        public TopicBasicInfo? Topic { get; set; } 
     }
 
     public class ThreadFullInfo 

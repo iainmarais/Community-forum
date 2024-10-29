@@ -1,7 +1,9 @@
 import type { PostBasicInfo } from "./PostInfo"
+import type { TopicBasicInfo } from "./TopicInfo"
 import type { UserBasicInfo } from "./UserInfo"
 
 export type ThreadEntry = {
+    threadId: string,
     threadName: string,
     createdDate: Date,
     topicId: string,
@@ -14,7 +16,8 @@ export type ThreadBasicInfo = {
     thread: ThreadEntry,
     totalPosts: number,
     newestMessage: PostBasicInfo,
-    createdByUser: UserBasicInfo
+    createdByUser: UserBasicInfo,
+    topic?: TopicBasicInfo
 }
 
 export type ThreadSummary = {

@@ -68,7 +68,6 @@ namespace RestApiServer.Endpoints.Services.Forum.Boards
                         Topic = t,
                         TotalPosts = t.Threads.Sum(t => t.Posts.Count),
                         TotalThreads = t.Threads.Count,
-                        NumTotalThreads = t.Threads.Count
                     })
                     .ToList(),
                 TotalTopics = board.TopicsCreated.Count
@@ -87,7 +86,6 @@ namespace RestApiServer.Endpoints.Services.Forum.Boards
                                   Topic = topic,
                                   TotalPosts = topic.Threads.Sum(t => t.Posts.Count),
                                   TotalThreads = topic.Threads.Count,
-                                  NumTotalThreads = topic.Threads.Count,
                                   CreatedByUser = new UserBasicInfo()
                                   {
                                       User = user
