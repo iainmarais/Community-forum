@@ -165,7 +165,7 @@ namespace RestApiServer.Endpoints.Services.Admin
                                                 User = u
                                             },
                                             TotalThreads = associatedThreadsQuery.Where(th => th.Thread.TopicId == t.TopicId).Count(),
-                                            TotalPosts = associatedPostsQuery.Where(p => p.Post.Thread.Topic.TopicId == t.TopicId).Count(),
+                                            TotalPosts = associatedThreadsQuery.Where(th => th.Thread.TopicId == t.TopicId).Sum(th => th.TotalPosts)
                                         };
 
             var boardsQuery = from b in db.Boards 

@@ -1,3 +1,6 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 using RestApiServer.Common.Config;
 using RestApiServer.Common.Services;
 using RestApiServer.Core.ApiCoreResponses;
@@ -80,11 +83,65 @@ namespace RestApiServer
                         }
                         if (context.Response.StatusCode == StatusCodes.Status401Unauthorized)
                         {
-                            errorResponse = new ApiCoreErrorResponse
+                            if(context.Request.Headers.ContainsKey("Authorization"))
                             {
-                                ResponseMessage = "Unauthorized"
-                            };
-                            await context.Response.WriteAsJsonAsync(errorResponse);
+                                var token = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+                                var tokenHandler = new JwtSecurityTokenHandler();
+
+                                //Reusing the same params from my ConfigureServices.cs file
+                                var validationParameters = new TokenValidationParameters
+                                {
+                                    ValidateIssuer = false,
+                                    ValidateAudience = false,
+                                    ValidateLifetime = true,
+                                    ValidateIssuerSigningKey = true,
+                                    ClockSkew = TimeSpan.Zero,
+                                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(ConfigurationLoader.GetConfigValue(EnvironmentVariable.JwtSharedSecret)))
+                                };
+                                try
+                                {
+                                    var claimsPrinicpal  = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
+
+                                    //At this point the token is good, but the user does not have the appropriate authorisation.
+                                    //Bite me, I use British English :D
+                                    errorResponse = new ApiCoreErrorResponse
+                                    {
+                                        ResponseMessage = "Unauthorised",
+                                        StatusCode = 401,
+                                        StatusMessage = "You are not authorised to access this endpoint."
+                                    };
+                                }
+                                catch (SecurityTokenExpiredException)
+                                {
+                                    errorResponse = new ApiCoreErrorResponse
+                                    {
+                                        ResponseMessage = "Unauthorised",
+                                        StatusCode = 401,
+                                        StatusMessage = "Your token has expired, and needs to be refreshed in order to continue."
+                                    };                                    
+                                }
+                                catch(Exception) 
+                                {
+                                    errorResponse = new ApiCoreErrorResponse
+                                    {
+                                        ResponseMessage = "Unauthorised",
+                                        StatusCode = 401,
+                                        StatusMessage = "Your token is invalid, please try logging in again."
+                                    };                                     
+                                }
+
+                                await context.Response.WriteAsJsonAsync(errorResponse);
+                            }
+                            //Other HTTP401 cases
+                            else
+                            {
+                                errorResponse = new ApiCoreErrorResponse
+                                {
+                                    ResponseMessage = "Unauthorized",
+                                    StatusCode = 401,
+                                };
+                                await context.Response.WriteAsJsonAsync(errorResponse);
+                            }
                         }
                         if (context.Response.StatusCode == StatusCodes.Status403Forbidden)
                         {
