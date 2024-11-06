@@ -64,6 +64,24 @@ namespace RestApiServer.Endpoints.Services.Admin
             await db.SaveChangesAsync();
         }
 
+        public static async Task CreateThreadAsync(string userId, AdminCreateThreadRequest req)
+        {
+            using var db = new AppDbContext();
+
+            var threadToCreate = new ThreadEntry()
+            {
+                ThreadId = Guid.NewGuid().ToString(),
+                TopicId = req.TopicId,
+                ThreadName = req.ThreadName,
+                CreatedByUserId = userId,
+                CreatedDate = DateTime.UtcNow
+            };
+
+            db.Threads.Add(threadToCreate);
+
+            await db.SaveChangesAsync();
+        }
+
         public static async Task<PaginatedData<List<CategoryBasicInfo>, CategorySummary>> GetCategoriesAsync(int pageNumber, int rowsPerPage, string searchTerm = "")
         {
             using var db = new AppDbContext();
@@ -377,6 +395,36 @@ namespace RestApiServer.Endpoints.Services.Admin
             }
 
             db.Remove(topicToDelete);
+            await db.SaveChangesAsync();
+        }
+
+        public static async Task DeleteThreadAsync(string threadId)
+        {
+            using var db = new AppDbContext();
+
+            var threadToDelete = await db.Threads.SingleAsync(t => t.ThreadId == threadId);
+
+            if(threadToDelete == null)
+            {
+                throw ClientInducedException.MessageOnly("No such thread exists");
+            }
+
+            db.Remove(threadToDelete);
+            await db.SaveChangesAsync();
+        }        
+
+        public static async Task DeletePostAsync(string postId)
+        {
+            using var db = new AppDbContext();
+
+            var postToDelete = await db.Posts.SingleAsync(p => p.PostId == postId);
+
+            if(postToDelete == null)
+            {
+                throw ClientInducedException.MessageOnly("No such post exists");
+            }
+
+            db.Remove(postToDelete);
             await db.SaveChangesAsync();
         }
     }

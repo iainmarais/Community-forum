@@ -24,12 +24,17 @@ namespace RestApiServer.Endpoints.Controllers.Admin
     
         [HttpPost("auth/refresh")]
         [Authorize]
-        public async Task<ApiSuccessResponse<UserRefreshResponse>> RefreshUserSession(UserRefreshRequest req)
+        public async Task<ApiSuccessResponse<UserRefreshResponse>> RefreshUserSession(string refreshToken)
         {
             //Todo:
             //When dealing with a bearer token, I need to see what the user context is. 
             //Either that, or I need to create a dedicated admin portal for the forum.
             var user = AuthService.GetAdminUserContext(User);
+            var req = new UserRefreshRequest
+            {
+                RefreshToken = refreshToken,
+                UserContext = "admin"
+            };
             var res = await UserService.RefreshUserSessionAsync(user.UserId, req);
             return ApiSuccessResponses.WithData("User auth state refresh successful", res);
         }

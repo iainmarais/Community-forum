@@ -16,9 +16,9 @@ instance.interceptors.response.use(
     (response) => response, // Pass through successful responses
     async (error) => {
         const originalRequest = error.config as AxiosRequestConfig & { _retry?: boolean };
-
+        //Server sends through an ApiErrorResponse for errors. 
         if (error?.response?.status === 401) {
-            if (error?.response?.data?.error?.includes("expired")) {
+            if (error?.response?.data?.statusMessage?.includes("expired")) {
                 // Only retry the refresh once to avoid an infinite loop
                 if (!originalRequest._retry) {
                     originalRequest._retry = true; // Mark request as retried
@@ -67,7 +67,7 @@ instance.interceptors.response.use(
 const refreshToken = async () => {
     const refreshToken = localStorage.getItem(User_Refresh_Token);
     if(refreshToken) {
-        const response = await Post<ApiSuccessResponse<AdminUserRefreshResponse>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/auth/refresh}`, {refreshToken});
+        const response = await Post<ApiSuccessResponse<AdminUserRefreshResponse>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/auth/refresh`, refreshToken);
         return response.data.data.accessToken;
     }
 }

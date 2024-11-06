@@ -16,12 +16,14 @@ import BoardsTabContent from '@/components/TabContent/BoardsTabContent.vue';
 import CategoriesTabContent from '@/components/TabContent/CategoriesTabContent.vue';
 import PostsTabContent from '@/components/TabContent/PostsTabContent.vue';
 import TopicsTabContent from '@/components/TabContent/TopicsTabContent.vue';
+import ThreadsTabContent from '@/components/TabContent/ThreadsTabContent.vue';
 import GalleryTabContent from '@/components/TabContent/GalleryTabContent.vue';
 
 const tabs = [
     { name: 'categories', label: 'Categories', component: CategoriesTabContent },
     { name: 'boards', label: 'Boards', component: BoardsTabContent },
     { name: 'topics', label: 'Topics', component: TopicsTabContent },
+    { name: 'threads', label: 'Threads', component: ThreadsTabContent },
     { name: 'posts', label: 'Posts', component: PostsTabContent },
     { name: 'gallery', label: 'Gallery', component: GalleryTabContent },
 ];
@@ -46,6 +48,9 @@ watch(() => activeTab.value, (newValue) => {
             contentManagementStore.getTopics();
             activeTab.value = 'topics';
             break;
+        case 'threads':
+            activeTab.value = 'threads';
+            break;            
         case 'posts':
             contentManagementStore.getPosts();
             activeTab.value = 'posts';

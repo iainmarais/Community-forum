@@ -306,3 +306,110 @@ RolesAuthorizationRequirement:User.IsInRole must be true for one of the followin
 2024-10-30 11:50:54.034 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetCategoriesAsync (RestApiServer.Endpoints)'
 2024-10-30 11:50:54.036 +02:00 [INF] GET 200 /v1/adminportal/categories "00:00:00.0564221"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
 2024-10-30 11:50:54.039 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/categories?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 67.6683ms
+2024-10-30 16:29:32.544 +02:00 [INF] Starting up... Please be patient.
+2024-10-30 16:29:41.109 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2024-10-30 16:29:41.114 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2024-10-30 16:29:41.115 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2024-10-30 16:29:41.132 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2024-10-30 16:29:41.155 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2024-10-30 16:29:41.157 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2024-10-30 16:29:41.158 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2024-10-30 16:29:41.160 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2024-10-30 16:29:41.162 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2024-10-30 16:29:41.163 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2024-10-30 16:29:41.168 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2024-10-30 16:29:41.172 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2024-10-30 16:29:41.173 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2024-10-30 16:29:41.175 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2024-10-30 16:29:41.176 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2024-10-30 16:29:41.178 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2024-10-30 16:29:41.180 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2024-10-30 16:29:41.183 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2024-10-30 16:29:41.189 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2024-10-30 16:29:41.380 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-30 16:29:41.611 +02:00 [INF] Now listening on: https://localhost:5051
+2024-10-30 16:29:41.623 +02:00 [INF] Now listening on: http://localhost:5050
+2024-10-30 16:29:41.639 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-30 16:29:41.641 +02:00 [INF] Hosting environment: Development
+2024-10-30 16:29:41.642 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2024-10-30 16:29:51.113 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-30 16:29:51.127 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:29:51.135 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 22.6859ms
+2024-10-30 16:29:51.146 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2024-10-30 16:29:51.152 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:29:51.639 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-30 16:29:51.662 +02:00 [INF] Route matched with {action = "GetAdminPortalAppState", controller = "AdminPortal"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Dto.Admin.AdminPortalAppState]] GetAdminPortalAppState() on controller RestApiServer.Endpoints.Controllers.Admin.AdminPortalController (RestApiServer.Endpoints).
+2024-10-30 16:29:52.041 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Dto.Admin.AdminPortalAppState, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-30 16:29:52.100 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints) in 426.608ms
+2024-10-30 16:29:52.103 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.AdminPortalController.GetAdminPortalAppState (RestApiServer.Endpoints)'
+2024-10-30 16:29:52.107 +02:00 [INF] GET 200 /v1/adminportal/appstate "00:00:00.8594319"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-30 16:29:52.119 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 200 null application/json; charset=utf-8 972.5264ms
+2024-10-30 16:30:00.823 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/categories?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:00.834 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:00.836 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/categories?pageNumber=1&rowsPerPage=10 - 204 null null 12.7117ms
+2024-10-30 16:30:00.840 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/categories?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:00.852 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:00.867 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetCategoriesAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:00.889 +02:00 [INF] Route matched with {action = "GetCategories", controller = "ContentManagement"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.Forum.CategoryBasicInfo],RestApiServer.Dto.Forum.CategorySummary]]] GetCategoriesAsync(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.ContentManagementController (RestApiServer.Endpoints).
+2024-10-30 16:30:01.189 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.Forum.CategoryBasicInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.Forum.CategorySummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-30 16:30:01.250 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetCategoriesAsync (RestApiServer.Endpoints) in 356.308ms
+2024-10-30 16:30:01.252 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetCategoriesAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:01.254 +02:00 [INF] GET 200 /v1/adminportal/categories "00:00:00.3963905"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-30 16:30:01.257 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/categories?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 416.9168ms
+2024-10-30 16:30:11.899 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/boards?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:11.906 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:11.907 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/boards?pageNumber=1&rowsPerPage=10 - 204 null null 7.499ms
+2024-10-30 16:30:11.911 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/boards?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:11.921 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:11.929 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetBoardsAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:11.937 +02:00 [INF] Route matched with {action = "GetBoards", controller = "ContentManagement"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.Forum.BoardBasicInfo],RestApiServer.Dto.Forum.BoardSummary]]] GetBoardsAsync(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.ContentManagementController (RestApiServer.Endpoints).
+2024-10-30 16:30:12.052 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.Forum.BoardBasicInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.Forum.BoardSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-30 16:30:12.074 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetBoardsAsync (RestApiServer.Endpoints) in 132.6589ms
+2024-10-30 16:30:12.078 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetBoardsAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:12.080 +02:00 [INF] GET 200 /v1/adminportal/boards "00:00:00.1575449"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-30 16:30:12.082 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/boards?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 170.8978ms
+2024-10-30 16:30:13.142 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/topics?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:13.147 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:13.149 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/topics?pageNumber=1&rowsPerPage=10 - 204 null null 6.4529ms
+2024-10-30 16:30:13.152 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/topics?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:13.161 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:13.162 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetTopicsAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:13.169 +02:00 [INF] Route matched with {action = "GetTopics", controller = "ContentManagement"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.Forum.TopicBasicInfo],RestApiServer.Dto.Forum.TopicSummary]]] GetTopicsAsync(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.ContentManagementController (RestApiServer.Endpoints).
+2024-10-30 16:30:13.234 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.Forum.TopicBasicInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.Forum.TopicSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-30 16:30:13.240 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetTopicsAsync (RestApiServer.Endpoints) in 67.3016ms
+2024-10-30 16:30:13.247 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetTopicsAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:13.250 +02:00 [INF] GET 200 /v1/adminportal/topics "00:00:00.0880098"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-30 16:30:13.252 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/topics?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 100.0051ms
+2024-10-30 16:30:14.404 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/posts?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:14.419 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:14.420 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/posts?pageNumber=1&rowsPerPage=10 - 204 null null 15.7534ms
+2024-10-30 16:30:14.423 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/posts?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:14.429 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:14.430 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetPostsAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:14.438 +02:00 [INF] Route matched with {action = "GetPosts", controller = "ContentManagement"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.Forum.PostBasicInfo],RestApiServer.Dto.Forum.PostSummary]]] GetPostsAsync(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.ContentManagementController (RestApiServer.Endpoints).
+2024-10-30 16:30:14.486 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.Forum.PostBasicInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.Forum.PostSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-30 16:30:14.495 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetPostsAsync (RestApiServer.Endpoints) in 50.4913ms
+2024-10-30 16:30:14.497 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetPostsAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:14.499 +02:00 [INF] GET 200 /v1/adminportal/posts "00:00:00.0689934"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-30 16:30:14.502 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/posts?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 78.7915ms
+2024-10-30 16:30:15.681 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/topics?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:15.685 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:15.687 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetTopicsAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:15.696 +02:00 [INF] Route matched with {action = "GetTopics", controller = "ContentManagement"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.Forum.TopicBasicInfo],RestApiServer.Dto.Forum.TopicSummary]]] GetTopicsAsync(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.ContentManagementController (RestApiServer.Endpoints).
+2024-10-30 16:30:15.717 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.Forum.TopicBasicInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.Forum.TopicSummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-30 16:30:15.720 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetTopicsAsync (RestApiServer.Endpoints) in 17.7842ms
+2024-10-30 16:30:15.723 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetTopicsAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:15.727 +02:00 [INF] GET 200 /v1/adminportal/topics "00:00:00.0403410"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-30 16:30:15.730 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/topics?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 49.2356ms
+2024-10-30 16:30:16.657 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/categories?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:16.664 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:16.667 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/categories?pageNumber=1&rowsPerPage=10 - 204 null null 9.5388ms
+2024-10-30 16:30:16.669 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/categories?pageNumber=1&rowsPerPage=10 - null null
+2024-10-30 16:30:16.683 +02:00 [INF] CORS policy execution successful.
+2024-10-30 16:30:16.684 +02:00 [INF] Executing endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetCategoriesAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:16.686 +02:00 [INF] Route matched with {action = "GetCategories", controller = "ContentManagement"}. Executing controller action with signature System.Threading.Tasks.Task`1[RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[System.Collections.Generic.List`1[RestApiServer.Dto.Forum.CategoryBasicInfo],RestApiServer.Dto.Forum.CategorySummary]]] GetCategoriesAsync(Int32, Int32, System.String) on controller RestApiServer.Endpoints.Controllers.Admin.ContentManagementController (RestApiServer.Endpoints).
+2024-10-30 16:30:16.738 +02:00 [INF] Executing ObjectResult, writing value of type 'RestApiServer.Endpoints.ApiResponses.ApiSuccessResponse`1[[RestApiServer.Endpoints.ApiResponses.PaginatedData`2[[System.Collections.Generic.List`1[[RestApiServer.Dto.Forum.CategoryBasicInfo, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[RestApiServer.Dto.Forum.CategorySummary, RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], RestApiServer.Endpoints, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-10-30 16:30:16.746 +02:00 [INF] Executed action RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetCategoriesAsync (RestApiServer.Endpoints) in 56.7408ms
+2024-10-30 16:30:16.748 +02:00 [INF] Executed endpoint 'RestApiServer.Endpoints.Controllers.Admin.ContentManagementController.GetCategoriesAsync (RestApiServer.Endpoints)'
+2024-10-30 16:30:16.749 +02:00 [INF] GET 200 /v1/adminportal/categories "00:00:00.0654614"ms {User:18b9b50e-1540-4afe-8ca6-5df988b0f7d3} , body: 
+2024-10-30 16:30:16.752 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/categories?pageNumber=1&rowsPerPage=10 - 200 null application/json; charset=utf-8 82.454ms
