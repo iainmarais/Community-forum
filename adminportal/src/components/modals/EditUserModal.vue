@@ -1,17 +1,55 @@
 <script lang = "ts" setup> 
+import type { UpdateUserRequest } from '@/Dto/AdminPortal/UpdateUserRequest';
 import type { UserEntry } from '@/Dto/AdminPortal/UserInfo';
-import { ref, type PropType } from 'vue';
+import { useUserManagementStore } from '@/stores/UserManagementStore';
+import { Modal } from 'bootstrap';
+import { ref, watch, type PropType } from 'vue';
+import { useToast } from 'vue-toastification';
+
+const toast = useToast();
+const userManagementStore = useUserManagementStore();
+
 const props = defineProps({
     selectedUser: {
-        type: Object as PropType<UserEntry>
+        type: Object as PropType<UserEntry>,
+        required: true
     }
 })
 
-const userFirstname = ref<string>(props.selectedUser.userFirstname);
-const userLastname = ref<string>(props.selectedUser?.userLastname);
+const userFirstname = ref(props.selectedUser.userFirstname);
+const userLastname = ref(props.selectedUser?.userLastname);
+const userEmailAddress = ref(props.selectedUser?.emailAddress);
+
+watch(() => props.selectedUser, (newUser) => {
+    if (newUser) {
+        userFirstname.value = newUser.userFirstname;
+        userLastname.value = newUser.userLastname;
+        userEmailAddress.value = newUser.emailAddress;
+    }
+});
+
+watch(() => userManagementStore.result_updateUserSuccess, (newValue) => {
+    if(newValue) {
+        //Close the modal, notify the user the update was successful
+        toast.success(`User ${props.selectedUser?.username} updated successfully`);
+        closeModal();
+    }
+});
+
+
+const closeModal = () => {
+    var modal = document.getElementById("EditUserModal");
+    var modalInstance = Modal.getInstance(modal);
+    modalInstance?.hide();
+}
 
 const saveChanges = () => {
-    //Todo: build out. This will execute an endpoint against the server
+    const userUpdateRequest = {} as UpdateUserRequest;
+    if(userFirstname || userLastname) {
+        userUpdateRequest.userFirstname = userFirstname.value;
+        userUpdateRequest.userLastname = userLastname.value;
+    }
+    userManagementStore.updateUser(props.selectedUser?.userId, userUpdateRequest);
 }
 
 </script>
@@ -37,7 +75,11 @@ const saveChanges = () => {
                     <div class="form-group">
                         <label>Last name</label>
                         <textarea class="form-control" id = "UserLastnameInput" :v-model="userLastname">
-
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <textarea class="form-control" id = "UserEmailAddress" :v-model="userEmailAddress">
                         </textarea>
                     </div>
                 </div>
