@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import PageSelector from '../elements/Inputs/PageSelector.vue';
 import SearchBar from '../elements/Inputs/SearchBar.vue';
 import AddUserModal from '../modals/AddUserModal.vue';
+import EditUserModal from '../modals/EditUserModal.vue';
 import { Modal } from 'bootstrap';
 import type { UserEntry } from '@/Dto/AdminPortal/UserInfo';
 import { useToast } from 'vue-toastification';
@@ -25,6 +26,7 @@ const searchQuery = ref("");
 
 const selectedRoleName = ref<string>("");
 const selectedRoleId = ref<string>("");
+const userToEdit = ref<UserEntry|null>(null);
 
 const refresh = () => {
     userManagementStore.getUserInfo();
@@ -32,6 +34,16 @@ const refresh = () => {
 
 const formatDate = (date: Date) => {
     return dayjs(date).format('DD/MM/YYYY HH:mm:ss');
+}
+
+const openEditUserModal = (selectedUser: UserEntry) => {
+    userToEdit.value = selectedUser;
+    //Todo: create modal dialog and:
+        //Pass the user from this method to the modal?
+        //Use a different message-passing method to get the selected user to the modal so we can view, and edit their props.
+    var editUserModal = document.getElementById("editUserModal");
+    var modal = new Modal(editUserModal);
+    modal.show();
 }
 
 const openAddUserModal = () => {
@@ -154,6 +166,8 @@ watch(() => userManagementStore.result_assignUserRoleSuccess,(newValue) => {
                                     <thead>
                                         <tr>
                                             <th class="text-center">Username</th>
+                                            <th class="text-center">First name</th>
+                                            <th class="text-center">Surname</th>
                                             <th class="text-center">Email address</th>
                                             <th class="text-center">Date registered</th>
                                             <th class="text-center">Date last logged in</th>
@@ -164,13 +178,15 @@ watch(() => userManagementStore.result_assignUserRoleSuccess,(newValue) => {
                                     <tbody>
                                         <tr v-for="user in userManagementStore.users.rows">
                                             <td class="text-center">{{ user.user.username }}</td>
+                                            <td class="text-center">{{ user.user.userFirstname ?? "" }} </td>
+                                            <td class="text-center">{{ user.user.userLastname ?? "" }} </td>
                                             <td class="text-center">{{ user.user.emailAddress }}</td>
                                             <td class="text-center">{{ formatDate(user.user.registrationTime) }}</td>
                                             <td class="text-center">{{ formatDate(user.user.lastLoginTime) }}</td>
                                             <td class="text-center">{{ user.role.roleName ?? 'User' }}</td>
                                             <td>
                                                 <!--Space these out by around 10 px-->
-                                                <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Edit</button>
+                                                <button style="margin-inline: 10px" class ="btn btn-sm btn-primary" @click="openEditUserModal(user.user)"><i class="fas fa-edit"></i>Edit</button>
                                                 <button style="margin-inline: 10px" class ="btn btn-sm btn-primary" @click="assignRoleToUser(user.user)"><i class="fas fa-check"></i>Assign role</button>
                                                 <button style="margin-inline: 10px" class="btn btn-sm btn-danger" @click="banUser(user.user)"><i class="fas fa-ban"></i>Ban</button>
                                                 <button style="margin-inline: 10px" class="btn btn-sm btn-danger" @click="deleteUser(user.user.userId)"><i class="fas fa-xmark"></i>Delete</button>
@@ -187,4 +203,5 @@ watch(() => userManagementStore.result_assignUserRoleSuccess,(newValue) => {
         </div>
     </div>
     <AddUserModal />
+    <EditUserModal :selected-user="userToEdit" />
 </template>

@@ -14,12 +14,12 @@ namespace RestApiServer.Endpoints.Controllers.Admin
     [Route("v1/adminportal")]
     public class UserManagementController : ControllerBase
     {
-        [HttpPost("edituser")]
+        [HttpPost("users/{userId}/update")]
         [Authorize(Roles = "Admin")]
-        public async Task<ApiSuccessResponse<UserBasicInfo>> EditUser(EditUserRequest request)
+        public async Task<ApiSuccessResponse<UserBasicInfo>> UpdateUser(UpdateUserRequest request)
         {
             var user = AuthService.GetAdminUserContext(User);
-            var res = await UserManagementService.EditUserAsync(user.AdminUserId, request);
+            var res = await UserManagementService.UpdateUserAsync(user.AdminUserId, request);
             return ApiSuccessResponses.WithData("Edit user successful", res);
         }
         [HttpGet("users")]

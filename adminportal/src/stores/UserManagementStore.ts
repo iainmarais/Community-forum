@@ -3,6 +3,7 @@ import type { AddUserRequest } from "@/Dto/AdminPortal/AddUserRequest";
 import type { AssignRoleRequest } from "@/Dto/AdminPortal/AssignRoleRequest";
 import type { BanUserRequest } from "@/Dto/AdminPortal/BanUserRequest";
 import type { RoleEntry } from "@/Dto/AdminPortal/RoleInfo";
+import type { UpdateUserRequest } from "@/Dto/AdminPortal/UpdateUserRequest";
 import type { BannedUserBasicInfo, BannedUserSummary, UserBasicInfo, UserEntry, UserFullInfo, UserSummary } from "@/Dto/AdminPortal/UserInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import AdminPortalService from "@/Services/AdminPortalService";
@@ -37,6 +38,9 @@ type UserManagementStore = {
 
     loading_assignUserRoleInProgress: boolean;
     result_assignUserRoleSuccess: boolean;
+
+    loading_updateUserInProgress: boolean;
+    result_updateUserSuccess: boolean;
 
     selectedUser?: UserBasicInfo;
     bannedUser? : BannedUserBasicInfo;
@@ -97,6 +101,9 @@ const defaultState: UserManagementStore = {
 
     loading_assignUserRoleInProgress: false,
     result_assignUserRoleSuccess: false,
+
+    loading_updateUserInProgress: false,
+    result_updateUserSuccess: false,
 
     selectedUser: undefined,
 
@@ -194,6 +201,18 @@ export const useUserManagementStore = defineStore({
                 this.result_assignUserRoleSuccess = false;
                 ErrorHandler.handleApiErrorResponse(error);
             });
+        },
+        updateUser(userId: string, request: UpdateUserRequest) {
+            this.loading_updateUserInProgress = true;
+            AdminPortalService.updateUser(userId, request).then(response =>{
+                this.loading_updateUserInProgress = false;
+                this.result_updateUserSuccess = true;
+                toast.success("User updated successfully.");
+            }, error => {
+                this.loading_updateUserInProgress = false;
+                this.result_updateUserSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            })
         }
     }
 })

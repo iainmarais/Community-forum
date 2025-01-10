@@ -5,6 +5,7 @@ import type { AdminPortalAppState } from "@/Dto/AdminPortal/AdminPortalAppState"
 import type { AssignRoleRequest } from "@/Dto/AdminPortal/AssignRoleRequest";
 import type { BanUserRequest } from "@/Dto/AdminPortal/BanUserRequest";
 import type { RoleEntry } from "@/Dto/AdminPortal/RoleInfo";
+import type { UpdateUserRequest } from "@/Dto/AdminPortal/UpdateUserRequest";
 import type { BannedUserBasicInfo, BannedUserSummary, UserBasicInfo, UserFullInfo, UserSummary } from "@/Dto/AdminPortal/UserInfo";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
@@ -63,6 +64,9 @@ const assignUserRole = async (userId: string, request: AssignRoleRequest): Promi
     return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users/${userId}/assignrole`, request)
 }
 
+const updateUser = async (userId: string, request: UpdateUserRequest): Promise<ApiSuccessResponse<UserBasicInfo>> => {
+    return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/users/${userId}/update`, request)
+}
 export default {
     getAdminPortalAppState,
     adminLogin,
@@ -72,5 +76,6 @@ export default {
     addUser,
     getUserRoles,
     deleteUser,
-    assignUserRole
+    assignUserRole,
+    updateUser
 }
