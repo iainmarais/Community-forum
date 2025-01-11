@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import AxiosClient from "@/http/AxiosClient";
-import router, { LoginRoute, HomeRoute, ContentManagementRoute, LogoffRoute, UserManagementRoute, PermissionsManagement } from "@/router";
+import router, { LoginRoute, HomeRoute, ContentManagementRoute, LogoffRoute, UserManagementRoute, PermissionsManagement, SupportRequestsRoute } from "@/router";
 import type { RouteParams, RouteQueryAndHash } from "vue-router";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import { useToast } from "vue-toastification";
@@ -57,7 +57,14 @@ const NavigationBar: NavbarItem[] = [
                 label: "Permissions management",
                 iconClass: "fa fa-key",
                 routename: PermissionsManagement
-            },   
+            },
+            {
+                id: "supportrequests",
+                type: "item",
+                label: "Support requests",
+                iconClass: "fa fa-question",
+                routename: SupportRequestsRoute
+            },  
             {
                 id: "logoff",
                 type: "item",
@@ -101,6 +108,13 @@ const NavigationBar: NavbarItem[] = [
         label: "Permissions management",
         iconClass: "fa fa-key",
         routename: PermissionsManagement
+    },
+    {
+        id: "supportrequests",
+        type: "item",
+        label: "Support requests",
+        iconClass: "fa fa-question",
+        routename: SupportRequestsRoute
     },     
     {
         id: "logoff",
@@ -111,7 +125,7 @@ const NavigationBar: NavbarItem[] = [
     },       
 ];
 
-type NavbarLinkItemId = "home" | "login" | "logoff" | "usermgmt" | "permissionsmgmt" | "contentmgmt";
+type NavbarLinkItemId = "home" | "login" | "logoff" | "usermgmt" | "permissionsmgmt" | "contentmgmt" | "supportrequests" ;
 
 export type NavbarLinkItem = {
     type: "item",

@@ -10,6 +10,7 @@ export const LogoffRoute = "logoff";
 export const ContentManagementRoute = "contentmgmt";
 export const UserManagementRoute = "usermgmt";
 export const PermissionsManagement = "permissionsmgmt";
+export const SupportRequestsRoute = "supportrequests";
 export const MainRoute = "";
 
 const router = createRouter({
@@ -40,6 +41,11 @@ const router = createRouter({
                     path: "/usermgmt",
                     name: UserManagementRoute,
                     component: () => import("@/components/Views/UserManagementView.vue")
+                },
+                {
+                    path: "/supportrequests",
+                    name: SupportRequestsRoute,
+                    component: () => import("@/components/Views/SupportRequestsView.vue")
                 },
                 {
                     path: "/permissionsmgmt",

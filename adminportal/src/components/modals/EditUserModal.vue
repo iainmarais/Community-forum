@@ -45,10 +45,30 @@ const closeModal = () => {
 
 const saveChanges = () => {
     const userUpdateRequest = {} as UpdateUserRequest;
-    if(userFirstname || userLastname) {
+    //Need this to query the db and find the appropriate user to update.
+    userUpdateRequest.userId = props.selectedUser.userId;
+    //Check for each of the fields to propagate to the request
+    //For each prop set, use that value else use the existing value.
+    if(userFirstname.value) {
         userUpdateRequest.userFirstname = userFirstname.value;
-        userUpdateRequest.userLastname = userLastname.value;
+    } else {
+        userUpdateRequest.userFirstname = props.selectedUser.userFirstname;
     }
+
+    if(userLastname.value) {
+        userUpdateRequest.userLastname = userLastname.value;
+    } else {
+        userUpdateRequest.userLastname = props.selectedUser.userLastname;
+    }
+
+    //This one is a bit of a tricky situation since the email address is also used for logging in, 
+    //however this is the admin portal, and administrators should be able to update email addresses and usernames.
+    if(userEmailAddress.value) {
+        userUpdateRequest.emailAddress = userEmailAddress.value;
+    } else {
+        userUpdateRequest.emailAddress = props.selectedUser.emailAddress;
+    }
+    //Todo: add username update code to this method.
     userManagementStore.updateUser(props.selectedUser?.userId, userUpdateRequest);
 }
 
