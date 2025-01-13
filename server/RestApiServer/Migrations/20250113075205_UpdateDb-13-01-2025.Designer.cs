@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestApiServer.Db;
 
@@ -11,9 +12,11 @@ using RestApiServer.Db;
 namespace RestApiServer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250113075205_UpdateDb-13-01-2025")]
+    partial class UpdateDb13012025
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -947,25 +950,22 @@ namespace RestApiServer.Migrations
             modelBuilder.Entity("RestApiServer.Db.SupportRequestEntry", b =>
                 {
                     b.HasOne("RestApiServer.Db.Users.UserEntry", "AssignedToUser")
-                        .WithMany("AssignedSupportRequests")
-                        .HasForeignKey("AssignedToUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .WithMany()
+                        .HasForeignKey("AssignedToUserId");
 
                     b.HasOne("RestApiServer.Db.Users.UserEntry", "CreatedByUser")
-                        .WithMany("CreatedSupportRequests")
+                        .WithMany()
                         .HasForeignKey("CreatedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RestApiServer.Db.Users.UserEntry", "LastUpdatedByUser")
-                        .WithMany("UpdatedSupportRequests")
-                        .HasForeignKey("LastUpdatedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedByUserId");
 
                     b.HasOne("RestApiServer.Db.Users.UserEntry", "ResolvedByUser")
-                        .WithMany("ResolvedSupportRequests")
-                        .HasForeignKey("ResolvedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .WithMany()
+                        .HasForeignKey("ResolvedByUserId");
 
                     b.Navigation("AssignedToUser");
 
@@ -1092,19 +1092,11 @@ namespace RestApiServer.Migrations
 
             modelBuilder.Entity("RestApiServer.Db.Users.UserEntry", b =>
                 {
-                    b.Navigation("AssignedSupportRequests");
-
-                    b.Navigation("CreatedSupportRequests");
-
                     b.Navigation("GalleryItems");
-
-                    b.Navigation("ResolvedSupportRequests");
 
                     b.Navigation("ThreadsCreated");
 
                     b.Navigation("TopicsCreated");
-
-                    b.Navigation("UpdatedSupportRequests");
 
                     b.Navigation("UserPermissions");
 

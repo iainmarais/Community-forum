@@ -1,0 +1,1052 @@
+2025-01-13 08:09:55.639 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2025-01-13 08:09:55.982 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:55.985 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 348.5835ms
+2025-01-13 08:09:56.017 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2025-01-13 08:09:56.081 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:56.114 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:56 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:56.315 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:56 AM'.
+2025-01-13 08:09:56.324 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-13 08:09:56.378 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:09:57.030 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.7288864"ms  Unauthorised, body: 
+2025-01-13 08:09:57.071 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 1053.1981ms
+2025-01-13 08:09:57.153 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/auth/refresh - null null
+2025-01-13 08:09:58.053 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:58.056 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/auth/refresh - 204 null null 903.02ms
+2025-01-13 08:09:58.070 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:09:58.431 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:58.446 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:58 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:58.462 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:58 AM'.
+2025-01-13 08:09:58.467 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:09:58.472 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:09:58.581 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0909372"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:09:58.586 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 515.3693ms
+2025-01-13 08:09:58.600 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:09:58.605 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:58.609 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:58 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:58.626 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:58 AM'.
+2025-01-13 08:09:58.632 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:09:58.635 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:09:58.795 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.1250570"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:09:58.800 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 200.737ms
+2025-01-13 08:09:58.812 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:09:58.822 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:58.830 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:58 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:58.846 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:58 AM'.
+2025-01-13 08:09:58.848 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:09:58.851 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:09:58.979 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.1056572"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:09:58.984 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 171.9568ms
+2025-01-13 08:09:58.991 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:09:59.000 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:59.003 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:59.018 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+2025-01-13 08:09:59.022 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:09:59.029 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:09:59.129 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0798258"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:09:59.134 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 143.1192ms
+2025-01-13 08:09:59.143 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:09:59.149 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:59.156 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:59.169 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+2025-01-13 08:09:59.172 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:09:59.176 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:09:59.263 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0715826"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:09:59.268 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 125.0081ms
+2025-01-13 08:09:59.275 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:09:59.283 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:59.286 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:59.301 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+2025-01-13 08:09:59.308 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:09:59.311 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:09:59.423 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0954206"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:09:59.427 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 152.1675ms
+2025-01-13 08:09:59.432 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:09:59.440 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:59.444 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:59.461 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+2025-01-13 08:09:59.467 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:09:59.469 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:09:59.556 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0689488"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:09:59.564 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 131.9912ms
+2025-01-13 08:09:59.581 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:09:59.665 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:59.672 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:59.690 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+2025-01-13 08:09:59.693 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:09:59.697 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:09:59.783 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0737525"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:09:59.788 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 206.7986ms
+2025-01-13 08:09:59.792 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:09:59.798 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:59.800 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:59.819 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+2025-01-13 08:09:59.826 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:09:59.828 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:09:59.910 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0709963"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:09:59.919 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 126.8274ms
+2025-01-13 08:09:59.927 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:09:59.933 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:09:59.937 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:09:59.951 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:09:59 AM'.
+2025-01-13 08:09:59.955 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:09:59.958 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:00.330 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0768141"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:00.335 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 407.6839ms
+2025-01-13 08:10:00.345 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:00.355 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:00.359 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:00 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:00.375 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:00 AM'.
+2025-01-13 08:10:00.379 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:00.385 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:00.480 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0760593"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:00.484 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 138.8842ms
+2025-01-13 08:10:00.490 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:00.497 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:00.500 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:00 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:00.517 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:00 AM'.
+2025-01-13 08:10:00.525 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:00.528 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:00.612 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0720553"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:00.617 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 126.999ms
+2025-01-13 08:10:00.623 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:00.631 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:00.634 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:00 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:00.651 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:00 AM'.
+2025-01-13 08:10:00.655 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:00.660 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:00.775 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0722867"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:00.780 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 157.5828ms
+2025-01-13 08:10:00.784 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:00.793 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:00.796 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:00 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:00.818 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:00 AM'.
+2025-01-13 08:10:00.822 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:00.825 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:00.941 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0721088"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:00.995 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 210.523ms
+2025-01-13 08:10:01.022 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:01.061 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:01.067 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:01 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:01.102 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:01 AM'.
+2025-01-13 08:10:01.246 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:01.265 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:01.349 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.2437728"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:01.371 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 349.2075ms
+2025-01-13 08:10:01.407 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:01.413 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:01.417 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:01 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:01.445 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:01 AM'.
+2025-01-13 08:10:01.449 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:01.477 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:01.632 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.1443159"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:01.713 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 305.5839ms
+2025-01-13 08:10:01.771 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:01.801 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:01.809 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:01 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:01.825 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:01 AM'.
+2025-01-13 08:10:01.827 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:01.830 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:01.928 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0805292"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:02.041 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 270.2779ms
+2025-01-13 08:10:02.046 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:02.050 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:02.056 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:02 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:02.068 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:02 AM'.
+2025-01-13 08:10:02.076 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:02.079 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:02.190 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0917153"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:02.195 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 148.7638ms
+2025-01-13 08:10:02.199 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:02.207 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:02.213 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:02 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:02.228 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:02 AM'.
+2025-01-13 08:10:02.231 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:02.233 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:02.344 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0755545"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:02.348 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 149.575ms
+2025-01-13 08:10:02.355 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:02.360 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:02.362 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:02 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:02.379 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:02 AM'.
+2025-01-13 08:10:02.384 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:02.388 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:02.489 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0803989"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:02.495 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 140.6033ms
+2025-01-13 08:10:02.502 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:03.222 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:03.274 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 499 null null 772.6122ms
+2025-01-13 08:10:04.524 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - null null
+2025-01-13 08:10:04.544 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:04.546 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/appstate - 204 null null 22.3734ms
+2025-01-13 08:10:04.549 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2025-01-13 08:10:04.562 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:04.565 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:04 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:04.582 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:04 AM'.
+2025-01-13 08:10:04.591 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-13 08:10:04.593 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:04.688 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.0804900"ms  Unauthorised, body: 
+2025-01-13 08:10:04.693 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 143.932ms
+2025-01-13 08:10:04.705 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/auth/refresh - null null
+2025-01-13 08:10:04.723 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:04.727 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/auth/refresh - 204 null null 22.0975ms
+2025-01-13 08:10:04.730 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:04.747 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:04.750 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:04 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:04.775 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:04 AM'.
+2025-01-13 08:10:04.780 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:04.783 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:04.881 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0882254"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:04.889 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 158.9353ms
+2025-01-13 08:10:04.895 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:04.906 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:04.909 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:04 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:04.929 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:04 AM'.
+2025-01-13 08:10:04.932 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:04.935 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:05.030 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0745689"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:05.037 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 142.4834ms
+2025-01-13 08:10:05.046 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:05.055 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:05.058 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:05.073 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+2025-01-13 08:10:05.076 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:05.079 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:05.168 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0714975"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:05.177 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 130.6448ms
+2025-01-13 08:10:05.182 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:05.189 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:05.193 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:05.214 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+2025-01-13 08:10:05.217 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:05.226 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:05.315 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0829036"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:05.323 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 141.3539ms
+2025-01-13 08:10:05.329 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:05.340 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:05.343 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:05.359 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+2025-01-13 08:10:05.365 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:05.374 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:05.467 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0822357"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:05.476 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 146.5649ms
+2025-01-13 08:10:05.481 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:05.527 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:05.531 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:05.547 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+2025-01-13 08:10:05.555 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:05.558 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:05.645 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0745454"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:05.650 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 169.2415ms
+2025-01-13 08:10:05.655 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:05.674 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:05.688 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:05.708 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+2025-01-13 08:10:05.714 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:05.717 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:05.834 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.1051572"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:05.843 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 187.5608ms
+2025-01-13 08:10:05.847 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:05.867 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:05.873 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:05.890 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:05 AM'.
+2025-01-13 08:10:05.893 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:05.899 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:05.983 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0731150"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:05.991 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 144.0294ms
+2025-01-13 08:10:05.995 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:06.010 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:06.013 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:06.030 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+2025-01-13 08:10:06.034 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:06.041 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:06.130 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0718256"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:06.138 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 143.0606ms
+2025-01-13 08:10:06.143 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:06.163 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:06.167 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:06.186 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+2025-01-13 08:10:06.192 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:06.197 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:06.281 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0766880"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:06.289 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 146.009ms
+2025-01-13 08:10:06.293 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:06.310 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:06.313 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:06.338 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+2025-01-13 08:10:06.342 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:06.348 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:06.433 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0817704"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:06.440 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 147.3315ms
+2025-01-13 08:10:06.445 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:06.462 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:06.465 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:06.484 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+2025-01-13 08:10:06.493 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:06.496 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:06.583 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0794966"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:06.591 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 146.8309ms
+2025-01-13 08:10:06.596 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:06.611 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:06.614 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:06.640 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+2025-01-13 08:10:06.643 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:06.650 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:06.746 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0948397"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:06.754 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 158.1766ms
+2025-01-13 08:10:06.759 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:06.779 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:06.782 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:06.800 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+2025-01-13 08:10:06.809 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:06.814 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:06.902 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0795826"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:06.910 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 150.4482ms
+2025-01-13 08:10:06.913 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:06.930 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:06.941 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:06.961 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:06 AM'.
+2025-01-13 08:10:06.967 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:06.974 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:07.059 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0800799"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:07.065 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 151.2608ms
+2025-01-13 08:10:07.070 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:07.084 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:07.092 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:07.110 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+2025-01-13 08:10:07.113 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:07.117 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:07.208 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0786654"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:07.213 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 143.1118ms
+2025-01-13 08:10:07.220 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:07.232 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:07.237 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:07.256 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+2025-01-13 08:10:07.261 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:07.267 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:07.356 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0767063"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:07.361 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 142.9705ms
+2025-01-13 08:10:07.365 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:07.378 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:07.380 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:07.398 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+2025-01-13 08:10:07.406 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:07.409 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:07.523 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0707639"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:07.609 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 244.3343ms
+2025-01-13 08:10:07.617 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:07.662 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:07.665 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:07.687 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+2025-01-13 08:10:07.693 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:07.696 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:07.803 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0819697"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:07.811 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 193.516ms
+2025-01-13 08:10:07.816 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:07.829 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:07.832 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:07.857 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+2025-01-13 08:10:07.863 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:07.867 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:07.960 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0846420"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:07.966 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 150.54ms
+2025-01-13 08:10:07.972 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:07.982 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:07.989 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:08.008 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:07 AM'.
+2025-01-13 08:10:08.011 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:08.017 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:08.104 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0751500"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:08.110 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 138.3208ms
+2025-01-13 08:10:08.114 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:08.127 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:08.135 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:08.164 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+2025-01-13 08:10:08.166 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:08.173 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:08.310 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.1177161"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:08.315 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 201.2569ms
+2025-01-13 08:10:08.363 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:08.377 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:08.382 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:08.401 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+2025-01-13 08:10:08.409 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:08.412 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:08.517 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0945629"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:08.523 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 160.3473ms
+2025-01-13 08:10:08.528 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:08.540 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:08.543 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:08.563 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+2025-01-13 08:10:08.566 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:08.571 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:08.658 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0732219"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:08.663 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 136.0268ms
+2025-01-13 08:10:08.671 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:08.679 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:08.682 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:08.699 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+2025-01-13 08:10:08.706 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:08.709 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:08.796 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0741365"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:08.804 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 133.2988ms
+2025-01-13 08:10:08.812 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:08.820 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:08.823 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:08.849 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+2025-01-13 08:10:08.854 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:08.860 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:08.953 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0878781"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:08.957 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 146.9161ms
+2025-01-13 08:10:08.965 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:08.972 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:08.974 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:08.995 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:08 AM'.
+2025-01-13 08:10:08.998 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:09.000 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:09.099 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0748487"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:09.108 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 143.1724ms
+2025-01-13 08:10:09.112 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:09.124 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:09.127 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:09.143 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+2025-01-13 08:10:09.149 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:09.153 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:09.246 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0800247"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:09.252 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 139.8952ms
+2025-01-13 08:10:09.256 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:09.267 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:09.271 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:09.287 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+2025-01-13 08:10:09.293 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:09.296 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:09.378 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0697121"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:09.383 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 126.1653ms
+2025-01-13 08:10:09.392 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:09.398 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:09.405 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:09.422 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+2025-01-13 08:10:09.424 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:09.427 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:09.514 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0723596"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:09.521 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 129.1466ms
+2025-01-13 08:10:09.525 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:09.533 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:09.538 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:09.555 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+2025-01-13 08:10:09.560 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:09.563 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:09.648 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0699416"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:09.654 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 128.7718ms
+2025-01-13 08:10:09.661 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:09.666 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:09.671 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:09.691 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+2025-01-13 08:10:09.694 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:09.696 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:09.809 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0779392"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:09.819 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 157.5028ms
+2025-01-13 08:10:09.829 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/auth/refresh - null null
+2025-01-13 08:10:09.849 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:09.853 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:5051/v1/adminportal/auth/refresh - 204 null null 23.4538ms
+2025-01-13 08:10:09.860 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:09.883 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:09.893 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:09.923 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:09 AM'.
+2025-01-13 08:10:09.930 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:09.936 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:10.029 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0944443"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:10.036 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 176.4661ms
+2025-01-13 08:10:10.041 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:10.050 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:10.054 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:10 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:10.070 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:10 AM'.
+2025-01-13 08:10:10.076 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:10.080 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:10.168 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.0746450"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:10.174 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 133.7468ms
+2025-01-13 08:10:10.178 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:10.189 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:10.191 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:10 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:10.209 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:10 AM'.
+2025-01-13 08:10:10.212 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:10.220 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:10.504 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.1384604"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:10.513 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 335.0399ms
+2025-01-13 08:10:10.524 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:10.530 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:10.532 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:10 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:10.562 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:10 AM'.
+2025-01-13 08:10:10.564 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:10.570 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:11.094 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.3734913"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:11.138 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 613.3335ms
+2025-01-13 08:10:11.214 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:11.412 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:11.593 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:11 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:11.624 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:11 AM'.
+2025-01-13 08:10:11.636 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:11.648 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:12.093 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.1313649"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:12.116 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 902.0198ms
+2025-01-13 08:10:12.149 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:12.181 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:12.925 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:12 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:13.128 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:12 AM'.
+2025-01-13 08:10:13.131 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:13.137 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:10:13.268 +02:00 [INF] POST 401 /v1/adminportal/auth/refresh "00:00:00.3156468"ms  Unauthorised, body: ruQHYRjE+YyEHFNns04eMGOlEgDXNBeJbqOPnFSXHas=
+2025-01-13 08:10:13.286 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - 401 null application/json; charset=utf-8 1136.8555ms
+2025-01-13 08:10:13.298 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5051/v1/adminportal/auth/refresh - application/x-www-form-urlencoded 44
+2025-01-13 08:10:13.305 +02:00 [INF] CORS policy execution successful.
+2025-01-13 08:10:13.315 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:13 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-13 08:10:13.330 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '11/01/2025 18:28:36 PM', Current time (UTC): '13/01/2025 06:10:13 AM'.
+2025-01-13 08:10:13.332 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-01-13 08:10:13.336 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 08:11:24.257 +02:00 [INF] Starting up... Please be patient.
+2025-01-13 08:11:31.072 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2025-01-13 08:11:31.074 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2025-01-13 08:11:31.076 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2025-01-13 08:11:31.077 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2025-01-13 08:11:31.078 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2025-01-13 08:11:31.079 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2025-01-13 08:11:31.080 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2025-01-13 08:11:31.081 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2025-01-13 08:11:31.082 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2025-01-13 08:11:31.083 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2025-01-13 08:11:31.084 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2025-01-13 08:11:31.085 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2025-01-13 08:11:31.086 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2025-01-13 08:11:31.087 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2025-01-13 08:11:31.088 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2025-01-13 08:11:31.089 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2025-01-13 08:11:31.089 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2025-01-13 08:11:31.090 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2025-01-13 08:11:31.091 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2025-01-13 08:11:31.217 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-13 08:11:31.425 +02:00 [INF] Now listening on: https://localhost:5051
+2025-01-13 08:11:31.539 +02:00 [INF] Now listening on: http://localhost:5050
+2025-01-13 08:11:31.544 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-13 08:11:31.553 +02:00 [INF] Hosting environment: Development
+2025-01-13 08:11:31.555 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2025-01-13 09:23:18.254 +02:00 [INF] Starting up... Please be patient.
+2025-01-13 09:23:27.504 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2025-01-13 09:23:27.508 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2025-01-13 09:23:27.510 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2025-01-13 09:23:27.512 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2025-01-13 09:23:27.513 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2025-01-13 09:23:27.515 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2025-01-13 09:23:27.516 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2025-01-13 09:23:27.517 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2025-01-13 09:23:27.519 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2025-01-13 09:23:27.520 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2025-01-13 09:23:27.521 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2025-01-13 09:23:27.527 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2025-01-13 09:23:27.528 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2025-01-13 09:23:27.530 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2025-01-13 09:23:27.531 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2025-01-13 09:23:27.532 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2025-01-13 09:23:27.533 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2025-01-13 09:23:27.535 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2025-01-13 09:23:27.536 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2025-01-13 09:23:27.693 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-13 09:23:27.878 +02:00 [INF] Now listening on: https://localhost:5051
+2025-01-13 09:23:27.884 +02:00 [INF] Now listening on: http://localhost:5050
+2025-01-13 09:23:27.887 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-13 09:23:27.889 +02:00 [INF] Hosting environment: Development
+2025-01-13 09:23:27.890 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2025-01-13 09:33:24.772 +02:00 [INF] Starting up... Please be patient.
+2025-01-13 09:33:32.031 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2025-01-13 09:33:32.048 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2025-01-13 09:33:32.055 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2025-01-13 09:33:32.056 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2025-01-13 09:33:32.058 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2025-01-13 09:33:32.064 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2025-01-13 09:33:32.067 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2025-01-13 09:33:32.075 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2025-01-13 09:33:32.084 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2025-01-13 09:33:32.086 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2025-01-13 09:33:32.087 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2025-01-13 09:33:32.088 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2025-01-13 09:33:32.095 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2025-01-13 09:33:32.096 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2025-01-13 09:33:32.097 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2025-01-13 09:33:32.099 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2025-01-13 09:33:32.101 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2025-01-13 09:33:32.102 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2025-01-13 09:33:32.103 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2025-01-13 09:33:32.398 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-13 09:33:32.689 +02:00 [INF] Now listening on: https://localhost:5051
+2025-01-13 09:33:32.725 +02:00 [INF] Now listening on: http://localhost:5050
+2025-01-13 09:33:32.731 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-13 09:33:32.734 +02:00 [INF] Hosting environment: Development
+2025-01-13 09:33:32.737 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2025-01-13 09:42:26.357 +02:00 [INF] Starting up... Please be patient.
+2025-01-13 09:42:30.507 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2025-01-13 09:42:30.510 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2025-01-13 09:42:30.511 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2025-01-13 09:42:30.513 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2025-01-13 09:42:30.514 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2025-01-13 09:42:30.515 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2025-01-13 09:42:30.518 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2025-01-13 09:42:30.519 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2025-01-13 09:42:30.520 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2025-01-13 09:42:30.521 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2025-01-13 09:42:30.522 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2025-01-13 09:42:30.523 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2025-01-13 09:42:30.524 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2025-01-13 09:42:30.525 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2025-01-13 09:42:30.526 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2025-01-13 09:42:30.527 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2025-01-13 09:42:30.528 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2025-01-13 09:42:30.529 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2025-01-13 09:42:30.530 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2025-01-13 09:42:30.658 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-13 09:42:30.802 +02:00 [INF] Now listening on: https://localhost:5051
+2025-01-13 09:42:30.813 +02:00 [INF] Now listening on: http://localhost:5050
+2025-01-13 09:42:30.817 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-13 09:42:30.820 +02:00 [INF] Hosting environment: Development
+2025-01-13 09:42:30.821 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2025-01-13 09:47:07.023 +02:00 [INF] Starting up... Please be patient.
+2025-01-13 09:47:13.207 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2025-01-13 09:47:13.210 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2025-01-13 09:47:13.212 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2025-01-13 09:47:13.214 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2025-01-13 09:47:13.215 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2025-01-13 09:47:13.217 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2025-01-13 09:47:13.218 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2025-01-13 09:47:13.219 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2025-01-13 09:47:13.220 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2025-01-13 09:47:13.221 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2025-01-13 09:47:13.222 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2025-01-13 09:47:13.223 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2025-01-13 09:47:13.224 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2025-01-13 09:47:13.225 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2025-01-13 09:47:13.227 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2025-01-13 09:47:13.228 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2025-01-13 09:47:13.230 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2025-01-13 09:47:13.235 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2025-01-13 09:47:13.237 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2025-01-13 09:47:13.399 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-13 09:47:13.563 +02:00 [INF] Now listening on: https://localhost:5051
+2025-01-13 09:47:13.581 +02:00 [INF] Now listening on: http://localhost:5050
+2025-01-13 09:47:13.586 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-13 09:47:13.587 +02:00 [INF] Hosting environment: Development
+2025-01-13 09:47:13.588 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2025-01-13 09:52:02.335 +02:00 [INF] Starting up... Please be patient.
+2025-01-13 09:52:02.892 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-13 09:52:02.895 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2025-01-13 09:56:42.934 +02:00 [INF] Starting up... Please be patient.
+2025-01-13 09:56:43.603 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-13 09:56:43.605 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2025-01-13 10:07:03.986 +02:00 [INF] Starting up... Please be patient.
+2025-01-13 10:07:04.459 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-13 10:07:04.462 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2025-01-13 10:07:27.065 +02:00 [INF] Starting up... Please be patient.
+2025-01-13 10:07:27.449 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-13 10:07:27.452 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
