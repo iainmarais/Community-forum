@@ -22,5 +22,13 @@ namespace RestApiServer.Endpoints.Controllers.Admin
             var res = await SupportRequestService.GetSupportRequestsAsync(user.AdminUserId, pageNumber, rowsPerPage, searchTerm);
             return ApiSuccessResponses.WithData("Get all support requests: successful", res);
         }
+
+        [HttpPost("supportrequests/{userId}/create")]
+        public async Task<ApiSuccessResponse<SupportRequestBasicInfo>> CreateSupportRequest([FromBody]string supportRequestTitle, [FromBody]string supportRequestContent)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            var res = await SupportRequestService.CreateSupportRequestAsync(adminUserId: user.AdminUserId, supportRequestTitle: supportRequestTitle, supportRequestContent: supportRequestContent);
+            return ApiSuccessResponses.WithData("New support request created successfully", res);
+        }
     }
 }

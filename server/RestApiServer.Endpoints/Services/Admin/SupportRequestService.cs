@@ -67,5 +67,42 @@ namespace RestApiServer.Endpoints.Services.Admin
                 }
             };
         }
+
+        public static async Task<SupportRequestBasicInfo> CreateSupportRequestAsync(string adminUserId, string supportRequestTitle, string supportRequestContent)
+        {
+            using var db = new AppDbContext();
+
+            var adminUser = await db.Users.SingleOrDefaultAsync(u => u.AdminUserId == adminUserId);
+            if (adminUser == null || adminUser!.RoleId != "Admin")
+            {
+                throw ClientInducedException.MessageOnly("User is not an administrator");
+            }
+            if(string.IsNullOrEmpty(supportRequestTitle))
+            {
+                throw ClientInducedException.MessageOnly("Support request title can't be blank.");
+            }
+            if(string.IsNullOrEmpty(supportRequestContent))
+            {
+                throw ClientInducedException.MessageOnly("Support request content can't be blank.");
+            }
+            //Validation done, now create the request entry, add to db and save changes.
+
+            var newSupportRequest = new SupportRequestEntry
+            {
+                CreatedDate = DateTime.UtcNow,
+                SupportRequestContent = supportRequestContent,
+                SupportRequestTitle = supportRequestTitle,
+                SupportRequestId = DbUtils.GenerateUuid(),
+                CreatedByUserId = adminUserId
+            };
+
+            await db.AddAsync(newSupportRequest);
+            await db.SaveChangesAsync();
+
+            return new SupportRequestBasicInfo
+            {
+                SupportRequest = newSupportRequest
+            };
+        }
     }
 }

@@ -1050,3 +1050,43 @@ Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
    at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
    at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
    at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2025-01-13 10:12:55.536 +02:00 [INF] Starting up... Please be patient.
+2025-01-13 10:13:01.465 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2025-01-13 10:13:01.469 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2025-01-13 10:13:01.471 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2025-01-13 10:13:01.472 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2025-01-13 10:13:01.473 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2025-01-13 10:13:01.475 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2025-01-13 10:13:01.477 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2025-01-13 10:13:01.478 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2025-01-13 10:13:01.479 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2025-01-13 10:13:01.480 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2025-01-13 10:13:01.482 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2025-01-13 10:13:01.483 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2025-01-13 10:13:01.484 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2025-01-13 10:13:01.486 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2025-01-13 10:13:01.492 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2025-01-13 10:13:01.493 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2025-01-13 10:13:01.494 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2025-01-13 10:13:01.495 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2025-01-13 10:13:01.497 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2025-01-13 10:13:01.698 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-13 10:13:01.949 +02:00 [INF] Now listening on: https://localhost:5051
+2025-01-13 10:13:01.979 +02:00 [INF] Now listening on: http://localhost:5050
+2025-01-13 10:13:01.984 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-13 10:13:01.985 +02:00 [INF] Hosting environment: Development
+2025-01-13 10:13:01.986 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2025-01-13 10:56:02.956 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2025-01-13 10:56:02.994 +02:00 [INF] CORS policy execution successful.
+2025-01-13 10:56:03.508 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-13 10:56:03.523 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 10:56:03.735 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.3360508"ms  Unauthorized, body: 
+2025-01-13 10:56:03.763 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 814.6295ms
+2025-01-13 10:56:48.884 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
+2025-01-13 10:56:48.911 +02:00 [INF] CORS policy execution successful.
+2025-01-13 10:56:48.939 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-13 10:56:48.955 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-13 10:56:49.005 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.0415045"ms  Unauthorized, body: 
+2025-01-13 10:56:49.010 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 125.5269ms
