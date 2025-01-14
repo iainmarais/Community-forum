@@ -16,16 +16,10 @@ namespace RestApiServer.Endpoints.Controllers.Admin
     public class SupportRequestController : ControllerBase
     {
         [HttpGet("supportrequests/{userId}")]
-        public async Task<ApiSuccessResponse<List<SupportRequestEntry>>> GetSupportRequestsByUser(string userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpGet("supportrequests/all")]
-        public async Task<ApiSuccessResponse<List<SupportRequestEntry>>> GetSupportRequests()
+        public async Task<ApiSuccessResponse<PaginatedData<List<SupportRequestBasicInfo>, SupportRequestSummary>>> GetSupportRequests([FromQuery]string? searchTerm, [FromQuery]int rowsPerPage, [FromQuery]int pageNumber)
         {
             var user = AuthService.GetAdminUserContext(User);
-            var res = await SupportRequestService.GetSupportRequestsAsync();
+            var res = await SupportRequestService.GetSupportRequestsAsync(user.AdminUserId, pageNumber, rowsPerPage, searchTerm);
             return ApiSuccessResponses.WithData("Get all support requests: successful", res);
         }
     }
