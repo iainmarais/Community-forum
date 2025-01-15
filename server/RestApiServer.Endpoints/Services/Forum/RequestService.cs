@@ -26,7 +26,7 @@ namespace RestApiServer.Endpoints.Services.Forum
                                     Request = r,
                                     CreatedByUser = new UserBasicInfo() 
                                     {
-                                        User = r.CreatedByUser!
+                                        User = r.CreatedByUser
                                     }
                                 };
 
@@ -54,8 +54,10 @@ namespace RestApiServer.Endpoints.Services.Forum
                 Summary = new()
                 {
                     TotalRequests = filteredTotal,
-                    NumResolvedRequests = requestsQuery.Where(r => r.Request.IsResolved).Count(),
-                    NumPendingRequests = requestsQuery.Where(r => !r.Request.IsResolved).Count()
+                    NumResolvedRequests = requestsQuery.Where(r => r.Request.IsResolved)
+                                                       .Count(),
+                    NumPendingRequests = requestsQuery.Where(r => !r.Request.IsResolved)
+                                                      .Count()
                 }
             };
         }

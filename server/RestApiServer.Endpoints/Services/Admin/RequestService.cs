@@ -61,7 +61,9 @@ namespace RestApiServer.Endpoints.Services.Admin
             var filteredTotal = await supportRequestsQuery.CountAsync();
 
             var skip = (pageNumber - 1) * rowsPerPage;
-            var supportRequestRows = await supportRequestsQuery.Skip(skip).Take(rowsPerPage).ToListAsync();
+            var supportRequestRows = await supportRequestsQuery.Skip(skip)
+                                                               .Take(rowsPerPage)
+                                                               .ToListAsync();
 
             var totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
 
