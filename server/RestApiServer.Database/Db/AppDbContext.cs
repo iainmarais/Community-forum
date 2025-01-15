@@ -33,7 +33,7 @@ namespace RestApiServer.Db
         public DbSet<ContactEntry> Contacts { get; set; } = null!;
         public DbSet<ChatEntry> Chats { get; set; } = null!;
         public DbSet<BannedUserEntry> BannedUsers { get; set; } = null!;
-        public DbSet<SupportRequestEntry> SupportRequests { get; set; } = null!;
+        public DbSet<RequestEntry> Requests { get; set; } = null!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -95,18 +95,18 @@ namespace RestApiServer.Db
             .Property(prop => prop.BanType)
             .HasConversion(GetEnumValueConverter<BanType>());
 
-            modelBuilder.Entity<SupportRequestEntry>()
+            modelBuilder.Entity<RequestEntry>()
             .Property(prop => prop.TriageStatus)
             .HasConversion(GetEnumValueConverter<TriageStatus>());
 
-            modelBuilder.Entity<SupportRequestEntry>()
+            modelBuilder.Entity<RequestEntry>()
             .Property(prop => prop.TriageType)
             .HasConversion(GetEnumValueConverter<TriageType>());
 
             modelBuilder.Entity<PermissionEntry>()
             .HasKey(p => p.PermissionId);
 
-            modelBuilder.Entity<SupportRequestEntry>()
+            modelBuilder.Entity<RequestEntry>()
             .HasKey(sr => sr.SupportRequestId);
 
             modelBuilder.Entity<RoleEntry>()
@@ -150,7 +150,7 @@ namespace RestApiServer.Db
                 .HasIndex(rp => rp.RoleId);
 
             //Support request entry
-            modelBuilder.Entity<SupportRequestEntry>()
+            modelBuilder.Entity<RequestEntry>()
                 .HasIndex(sr => sr.SupportRequestId);
 
             //One to many relationships
@@ -186,28 +186,28 @@ namespace RestApiServer.Db
 
             //Support request foreign key relations
             // One-to-many relationship for CreatedByUserId (User can create many requests)
-            modelBuilder.Entity<SupportRequestEntry>()
+            modelBuilder.Entity<RequestEntry>()
                 .HasOne(s => s.CreatedByUser)
                 .WithMany(u => u.CreatedSupportRequests) // Navigation property in UserEntry for created requests
                 .HasForeignKey(s => s.CreatedByUserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // One-to-many relationship for AssignedToUserId (User can be assigned many requests)
-            modelBuilder.Entity<SupportRequestEntry>()
+            modelBuilder.Entity<RequestEntry>()
                 .HasOne(s => s.AssignedToUser)
                 .WithMany(u => u.AssignedSupportRequests) // Navigation property in UserEntry for assigned requests
                 .HasForeignKey(s => s.AssignedToUserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // One-to-many relationship for ResolvedByUserId (User can resolve many requests)
-            modelBuilder.Entity<SupportRequestEntry>()
+            modelBuilder.Entity<RequestEntry>()
                 .HasOne(s => s.ResolvedByUser)
                 .WithMany(u => u.ResolvedSupportRequests) // Navigation property in UserEntry for resolved requests
                 .HasForeignKey(s => s.ResolvedByUserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // One-to-many relationship for LastUpdatedByUserId (User can update many requests)
-            modelBuilder.Entity<SupportRequestEntry>()
+            modelBuilder.Entity<RequestEntry>()
                 .HasOne(s => s.LastUpdatedByUser)
                 .WithMany(u => u.UpdatedSupportRequests) // Navigation property in UserEntry for updated requests
                 .HasForeignKey(s => s.LastUpdatedByUserId)

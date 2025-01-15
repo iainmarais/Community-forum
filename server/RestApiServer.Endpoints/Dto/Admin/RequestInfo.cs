@@ -2,12 +2,12 @@ using RestApiServer.Db;
 
 namespace RestApiServer.Dto.Admin
 {
-    public class SupportRequestBasicInfo
+    public class RequestBasicInfo
     {
-        public required SupportRequestEntry SupportRequest { get; set; }
+        public required RequestEntry Request { get; set; }
     }
 
-    public class SupportRequestSummary
+    public class RequestSummary
     {
         public int TotalSupportRequests { get; set; } = 0;
         public int NumResolvedRequests { get; set; } = 0;

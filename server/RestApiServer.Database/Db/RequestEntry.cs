@@ -7,8 +7,8 @@ using RestApiServer.Db.Users;
 
 namespace RestApiServer.Db
 {
-    [Table("SupportRequests")]
-    public class SupportRequestEntry
+    [Table("Requests")]
+    public class RequestEntry
     {
         [Key]
         public required string SupportRequestId { get; set; }

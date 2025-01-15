@@ -12,9 +12,9 @@ using RestApiServer.Endpoints.ApiResponses;
 
 namespace RestApiServer.Endpoints.Services.Admin
 {
-    public class SupportRequestService
+    public class RequestService
     {
-        public static async Task<PaginatedData<List<SupportRequestBasicInfo>, SupportRequestSummary>> GetSupportRequestsAsync(string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm, string? userId = null)
+        public static async Task<PaginatedData<List<RequestBasicInfo>, RequestSummary>> GetSupportRequestsAsync(string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm, string? userId = null)
         {
             using var db = new AppDbContext();
 
@@ -24,10 +24,10 @@ namespace RestApiServer.Endpoints.Services.Admin
                 throw ClientInducedException.MessageOnly("User is not an administrator");
             }
 
-            var supportRequestsQuery =  from sr in db.SupportRequests
-                                        select new SupportRequestBasicInfo
+            var supportRequestsQuery =  from sr in db.Requests
+                                        select new RequestBasicInfo
                                         {
-                                            SupportRequest = sr
+                                            Request = sr
                                         };
             if(!string.IsNullOrEmpty(userId))
             {
@@ -35,7 +35,7 @@ namespace RestApiServer.Endpoints.Services.Admin
                 var user = await db.Users.SingleAsync(u => u.UserId == userId);
                 if(user != null)
                 {
-                    supportRequestsQuery = supportRequestsQuery.Where(sr => sr.SupportRequest.CreatedByUserId == user.UserId);
+                    supportRequestsQuery = supportRequestsQuery.Where(sr => sr.Request.CreatedByUserId == user.UserId);
                 }
                 else
                 {
@@ -46,14 +46,14 @@ namespace RestApiServer.Endpoints.Services.Admin
             {
                 searchTerm = searchTerm.ToLower();
                 supportRequestsQuery = (from sr in supportRequestsQuery
-                                        where sr.SupportRequest.CreatedByUser.Username.ToLower().Contains(searchTerm) ||
-                                        sr.SupportRequest.CreatedByUser.EmailAddress.ToLower().Contains(searchTerm) ||
-                                        sr.SupportRequest.AssignedToUser.Username.ToLower().Contains(searchTerm)||
-                                        sr.SupportRequest.AssignedToUser.EmailAddress.ToLower().Contains(searchTerm)||
-                                        sr.SupportRequest.LastUpdatedByUser.Username.ToLower().Contains(searchTerm)||  
-                                        sr.SupportRequest.LastUpdatedByUser.EmailAddress.ToLower().Contains(searchTerm)||  
-                                        sr.SupportRequest.ResolvedByUser.Username.ToLower().Contains(searchTerm)||
-                                        sr.SupportRequest.ResolvedByUser.EmailAddress.ToLower().Contains(searchTerm)
+                                        where sr.Request.CreatedByUser.Username.ToLower().Contains(searchTerm) ||
+                                        sr.Request.CreatedByUser.EmailAddress.ToLower().Contains(searchTerm) ||
+                                        sr.Request.AssignedToUser.Username.ToLower().Contains(searchTerm)||
+                                        sr.Request.AssignedToUser.EmailAddress.ToLower().Contains(searchTerm)||
+                                        sr.Request.LastUpdatedByUser.Username.ToLower().Contains(searchTerm)||  
+                                        sr.Request.LastUpdatedByUser.EmailAddress.ToLower().Contains(searchTerm)||  
+                                        sr.Request.ResolvedByUser.Username.ToLower().Contains(searchTerm)||
+                                        sr.Request.ResolvedByUser.EmailAddress.ToLower().Contains(searchTerm)
                                         select sr
                                         );
             }
@@ -65,7 +65,7 @@ namespace RestApiServer.Endpoints.Services.Admin
 
             var totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
 
-            return new PaginatedData<List<SupportRequestBasicInfo>, SupportRequestSummary>()
+            return new PaginatedData<List<RequestBasicInfo>, RequestSummary>()
             {
                 Rows = supportRequestRows,
                 PageNumber = pageNumber,
@@ -74,14 +74,14 @@ namespace RestApiServer.Endpoints.Services.Admin
                 Summary = new()
                 {
                     TotalSupportRequests = supportRequestsQuery.Count(),
-                    NumAssignedRequests = supportRequestsQuery.Where(sr => sr.SupportRequest.AssignedToUser != null).Count(),
-                    NumResolvedRequests = supportRequestsQuery.Where(sr => sr.SupportRequest.ResolvedByUser != null).Count(),
-                    NumPendingRequests = supportRequestsQuery.Where(sr => sr.SupportRequest.AssignedToUser == null).Count()
+                    NumAssignedRequests = supportRequestsQuery.Where(sr => sr.Request.AssignedToUser != null).Count(),
+                    NumResolvedRequests = supportRequestsQuery.Where(sr => sr.Request.ResolvedByUser != null).Count(),
+                    NumPendingRequests = supportRequestsQuery.Where(sr => sr.Request.AssignedToUser == null).Count()
                 }
             };
         }
 
-        public static async Task<SupportRequestBasicInfo> CreateSupportRequestAsync(string adminUserId, string supportRequestTitle, string supportRequestContent)
+        public static async Task<RequestBasicInfo> CreateSupportRequestAsync(string adminUserId, string supportRequestTitle, string supportRequestContent)
         {
             using var db = new AppDbContext();
 
@@ -100,7 +100,7 @@ namespace RestApiServer.Endpoints.Services.Admin
             }
             //Validation done, now create the request entry, add to db and save changes.
 
-            var newSupportRequest = new SupportRequestEntry
+            var newSupportRequest = new RequestEntry
             {
                 CreatedDate = DateTime.UtcNow,
                 SupportRequestContent = supportRequestContent,
@@ -112,9 +112,9 @@ namespace RestApiServer.Endpoints.Services.Admin
             await db.AddAsync(newSupportRequest);
             await db.SaveChangesAsync();
 
-            return new SupportRequestBasicInfo
+            return new RequestBasicInfo
             {
-                SupportRequest = newSupportRequest
+                Request = newSupportRequest
             };
         }
     }
