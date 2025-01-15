@@ -14,7 +14,7 @@ namespace RestApiServer.Endpoints.Services.Admin
 {
     public class SupportRequestService
     {
-        public static async Task<PaginatedData<List<SupportRequestBasicInfo>, SupportRequestSummary>> GetSupportRequestsAsync(string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm)
+        public static async Task<PaginatedData<List<SupportRequestBasicInfo>, SupportRequestSummary>> GetSupportRequestsAsync(string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm, string? userId = null)
         {
             using var db = new AppDbContext();
 
@@ -29,6 +29,19 @@ namespace RestApiServer.Endpoints.Services.Admin
                                         {
                                             SupportRequest = sr
                                         };
+            if(!string.IsNullOrEmpty(userId))
+            {
+                //Does this user exist
+                var user = await db.Users.SingleAsync(u => u.UserId == userId);
+                if(user != null)
+                {
+                    supportRequestsQuery = supportRequestsQuery.Where(sr => sr.SupportRequest.CreatedByUserId == user.UserId);
+                }
+                else
+                {
+                    throw ClientInducedException.MessageOnly("User does not exist.");
+                }
+            }
             if(!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
