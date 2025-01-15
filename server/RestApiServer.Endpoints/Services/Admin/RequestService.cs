@@ -81,6 +81,7 @@ namespace RestApiServer.Endpoints.Services.Admin
             };
         }
 
+        //Create a new request from the admin portal.
         public static async Task<RequestBasicInfo> CreateSupportRequestAsync(string adminUserId, string supportRequestTitle, string supportRequestContent)
         {
             using var db = new AppDbContext();
