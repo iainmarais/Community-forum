@@ -34,7 +34,7 @@ namespace RestApiServer.Endpoints.Services.Forum
             {
                 requestsQuery = requestsQuery.Where(r => r.Request.SupportRequestTitle.ToLower().Contains(searchTerm) ||
                                                         r.Request.SupportRequestContent.ToLower().Contains(searchTerm) ||
-                                                        r.Request.CreatedByUser!.Username.ToLower().Contains(searchTerm) ||
+                                                        r.Request.CreatedByUser.Username.ToLower().Contains(searchTerm) ||
                                                         r.Request.CreatedByUser.EmailAddress.ToLower().Contains(searchTerm));
             }
 

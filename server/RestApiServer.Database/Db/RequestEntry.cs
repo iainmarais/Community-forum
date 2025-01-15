@@ -33,12 +33,12 @@ namespace RestApiServer.Db
         public TriageType TriageType { get; set; } = TriageType.Unspecified; //Default
         //Navigation props
         [JsonIgnore]
-        public UserEntry? CreatedByUser { get; set; }
+        public UserEntry CreatedByUser { get; set; } = new();
         [JsonIgnore]
-        public UserEntry? AssignedToUser { get; set; }
+        public UserEntry AssignedToUser { get; set; } = new();
         [JsonIgnore]
-        public UserEntry? ResolvedByUser { get; set; }
+        public UserEntry ResolvedByUser { get; set; } = new();
         [JsonIgnore]
-        public UserEntry? LastUpdatedByUser { get; set; } //The last user to update this request.
+        public UserEntry LastUpdatedByUser { get; set; } = new(); //The last user to update this request.
     }
 }
