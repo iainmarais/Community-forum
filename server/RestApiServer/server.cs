@@ -65,7 +65,20 @@ namespace RestApiServer
                 {
                     //Call our DbOps.SeedDataAsync() method here.
                     Log.Information("Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.");
-                    await DbOps.SeedDataAsync();
+                    if(args.Contains("--force"))
+                    {
+                        Log.Information("Command-line argument '--force'  passed, database will be seeded with preconfigured data, overwriting existing data.");
+                        await DbOps.SeedDataAsync(forceSeed: true);
+                    }
+                    if(args.Contains("--update-data"))
+                    {
+                        Log.Information("Command-line argument '--update-data'  passed, database will be seeded with preconfigured data, updating existing data.");
+                        await DbOps.SeedDataAsync(updateData: true);
+                    }
+                    else
+                    {
+                        await DbOps.SeedDataAsync();
+                    }
                     Log.Information("Seeding completed. Continuing with server startup.");
                     app.Run();
                 }

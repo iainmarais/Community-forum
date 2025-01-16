@@ -58,7 +58,24 @@
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             }
-        },            
+        }, 
+        {
+            "name": ".NET Core Launch (console) (seed database, update existing)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/RestApiServer/bin/Debug/net8.0/RestApiServer.dll",
+            "args": ["--seed-data", "--update-data"],
+            "cwd": "${workspaceFolder}/RestApiServer",
+            "stopAtEntry": false,
+            "console": "externalTerminal",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },                    
         {
             "name": ".NET Core Launch (console, use existing build)",
             "type": "coreclr",

@@ -142,6 +142,89 @@ namespace RestApiServer.Db.Ops
                 SystemPermissionType = SystemPermissionType.Content,
                 Description = "Allows users to delete content",
             },
+            //Content permissions relating to posts, threads and boards. Include: Permissions to create, update and view boards, topics and threads
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_create_boards",
+                SystemPermissionName = "Content: Create boards",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to create new boards",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_create_topics",
+                SystemPermissionName = "Content: Create topics",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to create new topics",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_create_threads",
+                SystemPermissionName = "Content: Create threads",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to create new threads",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_update_posts",
+                SystemPermissionName = "Content: Update posts",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to update their own posts",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_update_threads",
+                SystemPermissionName = "Content: Update threads",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to update their own threads",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_update_topics",
+                SystemPermissionName = "Content: Update topics",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to update their own topics",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_update_boards",
+                SystemPermissionName = "Content: Update boards",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to update their own boards",
+            },
+            //Content permissions for deleting topics and threads. 
+            //Idea for functionality update: Allow soft-delete via "IsMarkedForDelete=true" and "DateMarkedForDelete=DateTime.Now" where DateTime.Now refers to the date the IsMarkedForDelete prop is set true...
+            //Benefit of this code/database update: Boards, threads, topics, posts, categories etc can be marked for delete, which can then hide them from the frontend and also enable them to be purged after a certain period of time.
+            //Also, by using IsMarkedForDelete = true and another bool such as IsImportant = true, the elements in question can be virtually deleted while remaining, and only an administrator logged in to the admin portal can view deleted content. 
+            //Important content can't be deleted even though it is virtually deleted. As an additional safeguard, only approved users should be able to view such content.
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_delete_topics",
+                SystemPermissionName = "Content: Delete topics",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to delete topics",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_delete_threads",
+                SystemPermissionName = "Content: Delete threads",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to delete threads",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_delete_posts",
+                SystemPermissionName = "Content: Delete posts",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to delete posts",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_delete_boards",
+                SystemPermissionName = "Content: Delete boards",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to delete boards",
+            },            
             //Visibility permissions
             new SystemPermissionEntry
             {
@@ -302,7 +385,7 @@ namespace RestApiServer.Db.Ops
             }
         };
 
-        public static async Task SeedDataAsync()
+        public static async Task SeedDataAsync(bool forceSeed = false, bool updateData = false)
         {
             //Create our db context instance.
             using var db  = new AppDbContext();
@@ -328,7 +411,16 @@ namespace RestApiServer.Db.Ops
                     await db.RolePermissions.AddRangeAsync(PresetRolePermissions);
                     await db.SaveChangesAsync();
                 }
-                else
+                if(forceSeed == true)
+                {
+                    await db.Roles.AddRangeAsync(PresetRoles);
+                    await db.SystemPermissions.AddRangeAsync(PresetSystemPermissions);
+                    await db.Permissions.AddRangeAsync(PresetPermissions);
+                    await db.RolePermissions.AddRangeAsync(PresetRolePermissions);
+                    await db.SaveChangesAsync();
+                }
+                //This branch can do with a rewrite to make it more concise... 
+                if(updateData == true)
                 {
                     foreach (var role in PresetRoles)
                     {
@@ -389,12 +481,16 @@ namespace RestApiServer.Db.Ops
                     //Save the changes.
                     await db.SaveChangesAsync();
                 }
-                //Not sure if necessary. Need to test it.
-                return;
+                else
+                {
+                    //Nothing to do.
+                    return;   
+                }
             }
             catch (Exception ex)
             {
-                Log.Error("Something went wrong during seeding the database.\n", ex.Message);
+                Log.Error($"Something went wrong during seeding the database: {ex.Message} \n" +
+                 $"Stack trace: {ex.StackTrace}");
             }
         }
     }
