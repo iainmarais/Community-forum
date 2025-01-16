@@ -3,6 +3,7 @@ namespace RestApiServer.CommonEnums
     public enum SystemPermissionType
     {
         Visibility,
+        Content,
         Access,
         Interactivity,
         General,

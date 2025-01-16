@@ -12,6 +12,8 @@ namespace RestApiServer.Db.Ops
             modelBuilder.Entity<RoleEntry>().HasData(PresetRoles.ToArray());
             modelBuilder.Entity<PermissionEntry>().HasData(PresetPermissions.ToArray());
             modelBuilder.Entity<SystemPermissionEntry>().HasData(PresetSystemPermissions.ToArray());
+            modelBuilder.Entity<RolePermissionEntry>().HasData(PresetRolePermissions.ToArray());
+            modelBuilder.Entity<CategoryEntry>().HasData(PresetCategories.ToArray());
         }        
         
         public static List<RoleEntry> PresetRoles = new()
@@ -22,6 +24,20 @@ namespace RestApiServer.Db.Ops
                 RoleType=RoleType.Admin, 
                 RoleName="Administrator", 
                 Description="Administrators have unrestricted access to administrate the forum and chat services.", 
+            },
+            new RoleEntry
+            {
+                RoleId = "CommunityManager",
+                RoleType = RoleType.CommunityManager,
+                RoleName = "Community Manager",
+                Description = "Community managers are trusted community members of the forum."
+            },
+            new RoleEntry
+            {
+                RoleId = "ContentCreator",
+                RoleType = RoleType.ContentCreator,
+                RoleName = "Content creator",
+                Description = "Community members who create high-quality content."
             },
             new RoleEntry 
             { 
@@ -79,6 +95,10 @@ namespace RestApiServer.Db.Ops
             
         };
 
+        public static List<RolePermissionEntry> PresetRolePermissions = new()
+        {
+            //Create our role to permission mappings here. Once done, this will enable a more granular approach to handling user rights assignment.
+        };
         public static List<SystemPermissionEntry> PresetSystemPermissions = new()
         {
             //Development permissions
@@ -93,6 +113,35 @@ namespace RestApiServer.Db.Ops
 
             //Production permissions
 
+            //Content permissions
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_post_images",
+                SystemPermissionName = "Content: Post images",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to post images",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_post_audio_clips",
+                SystemPermissionName = "Content: Post audio clips",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to post audio clips",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_post_videos",
+                SystemPermissionName = "Content: Post videos",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to post videos",
+            },
+            new SystemPermissionEntry
+            {
+                SystemPermissionId = "cnt_delete_items",
+                SystemPermissionName = "Content: Delete items",
+                SystemPermissionType = SystemPermissionType.Content,
+                Description = "Allows users to delete content",
+            },
             //Visibility permissions
             new SystemPermissionEntry
             {
@@ -274,6 +323,11 @@ namespace RestApiServer.Db.Ops
                     await db.Permissions.AddRangeAsync(PresetPermissions);
                     await db.SaveChangesAsync();
                 }
+                if(!db.RolePermissions.Any())
+                {
+                    await db.RolePermissions.AddRangeAsync(PresetRolePermissions);
+                    await db.SaveChangesAsync();
+                }
                 else
                 {
                     foreach (var role in PresetRoles)
@@ -291,7 +345,6 @@ namespace RestApiServer.Db.Ops
                             existingRole.Description = role.Description;
                         }
                     }
-
                     foreach (var permission in PresetPermissions)
                     {
                         var existingPermission = await db.Permissions.FindAsync(permission.PermissionId);
@@ -318,6 +371,19 @@ namespace RestApiServer.Db.Ops
                             //Update it.
                             existingSystemPermission.SystemPermissionName = systemPermission.SystemPermissionName;
                             existingSystemPermission.SystemPermissionType = systemPermission.SystemPermissionType;
+                        }
+                    }
+                    foreach (var rolePermission in PresetRolePermissions)
+                    {
+                        var existingRolePermission = await db.RolePermissions.FindAsync(rolePermission.RolePermissionId);
+                        if(existingRolePermission == null)
+                        {
+                            await db.RolePermissions.AddAsync(rolePermission);
+                        }
+                        else
+                        {
+                            existingRolePermission.RoleId = rolePermission.RoleId;
+                            existingRolePermission.PermissionId = rolePermission.PermissionId;
                         }
                     }
                     //Save the changes.

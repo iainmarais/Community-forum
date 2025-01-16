@@ -1,0 +1,29 @@
+2025-01-16 13:50:33.504 +02:00 [INF] Starting up... Please be patient.
+2025-01-16 13:50:46.119 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2025-01-16 13:50:46.122 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2025-01-16 13:50:46.123 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2025-01-16 13:50:46.124 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2025-01-16 13:50:46.125 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2025-01-16 13:50:46.127 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2025-01-16 13:50:46.128 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2025-01-16 13:50:46.129 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2025-01-16 13:50:46.130 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2025-01-16 13:50:46.131 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2025-01-16 13:50:46.136 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2025-01-16 13:50:46.137 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2025-01-16 13:50:46.138 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2025-01-16 13:50:46.139 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2025-01-16 13:50:46.140 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2025-01-16 13:50:46.141 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2025-01-16 13:50:46.142 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2025-01-16 13:50:46.143 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2025-01-16 13:50:46.144 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2025-01-16 13:50:46.344 +02:00 [INF] Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.
+2025-01-16 13:50:47.031 +02:00 [INF] Seeding completed. Continuing with server startup.
+2025-01-16 13:50:47.084 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-16 13:50:47.421 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-01-16 13:50:47.474 +02:00 [INF] Now listening on: http://[::]:5050
+2025-01-16 13:50:47.476 +02:00 [INF] Now listening on: https://[::]:5051
+2025-01-16 13:50:47.478 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-16 13:50:47.480 +02:00 [INF] Hosting environment: Development
+2025-01-16 13:50:47.481 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer

@@ -26,6 +26,7 @@ namespace RestApiServer.Db
         public string? ResolvedByUserId { get; set; } //UserEntry id of the user responsible for resolving the request.
         public string? LastUpdatedByUserId { get; set; } //UserEntry id of the user who last updated this request. 
         public bool IsResolved { get; set; } = false;
+        public DateTime? DateUpdated { get; set; }
         public DateTime? DateResolved { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter<TriageStatus>))]
         public TriageStatus TriageStatus { get; set; } = TriageStatus.Untriaged; //Default

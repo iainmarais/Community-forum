@@ -120,5 +120,59 @@ namespace RestApiServer.Endpoints.Services.Admin
                 Request = newSupportRequest
             };
         }
+
+        public static async Task<RequestBasicInfo> UpdateRequestTriageStatus(string userId, string requestId, TriageType type, TriageStatus status)
+        {
+            using var db = new AppDbContext();
+            //Find the user identified by the userId, and see if the user is an administrator or has the permissions to work with support/feature requests.
+            var user = await db.Users.SingleOrDefaultAsync(u => u.UserId == userId);
+            if (user == null || user!.RoleId != "Admin" || user!.RoleId != "CommunityManager")
+            {
+                throw ClientInducedException.MessageOnly("User is not an administrator or a community manager.");
+            }
+
+            //Find the request to update.
+            var request = await db.Requests.SingleAsync(r => r.SupportRequestId == requestId);
+            if(request == null)
+            {
+                throw ClientInducedException.MessageOnly("Request not found.");
+            }
+            
+            request.TriageStatus = status;
+            request.TriageType = type;
+            request.LastUpdatedByUserId = userId;
+            request.DateUpdated = DateTime.UtcNow;
+            
+            await db.SaveChangesAsync();
+            return new RequestBasicInfo()
+            {
+                Request = request
+            };
+        }
+
+        //Assign requests to users
+        public static async Task<RequestBasicInfo> AssignRequestToUser(string userId, string requestId)
+        {
+            using var db = new AppDbContext();
+            //Find the user to assign this to.
+            var user = await db.Users.SingleAsync(u => u.UserId == userId);
+            if(user == null)
+            {
+                throw ClientInducedException.MessageOnly("User not found.");
+            }
+            //Find the request to assign to this user.
+            var request = await db.Requests.SingleAsync(r => r.SupportRequestId == requestId);
+            if(request == null)
+            {
+                throw ClientInducedException.MessageOnly("Request not found.");
+            }
+            request.AssignedToUserId = user.UserId;
+            request.DateUpdated = DateTime.UtcNow;
+            await db.SaveChangesAsync();
+            return new RequestBasicInfo()
+            {
+                Request = request
+            };
+        }
     }
 }
