@@ -14,6 +14,9 @@ namespace RestApiServer.Db
         public string CreatedByUserId { get; set; } = string.Empty;
         public string BoardName { get; set; } = string.Empty;
         public string BoardDescription { get; set; } = string.Empty;
+        public bool IsMarkedForDelete { get; set; } = false;
+        public DateTime DateMarkedForDelete { get; set; }
+        public bool IsImportant { get; set; } = false;        
 
         //Navigation props
         [JsonIgnore]

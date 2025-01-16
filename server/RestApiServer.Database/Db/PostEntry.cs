@@ -20,8 +20,8 @@ namespace RestApiServer.Db
         public string ReportedByUserId { get; set; } = string.Empty;
         //Handles deletion of posts from the database. On average old posts can be marked for deletion by the user and once so marked, should be deleted within a 30 day period, or whichever is preferable.
         public bool IsMarkedForDelete { get; set; } = false;
-        public DateTime DateMarkedForDeletion { get; set; }
-
+        public DateTime DateMarkedForDelete { get; set; }
+        public bool IsImportant { get; set; } = false;
         //Navigation property
         [JsonIgnore]
         public ThreadEntry? Thread { get; set; }

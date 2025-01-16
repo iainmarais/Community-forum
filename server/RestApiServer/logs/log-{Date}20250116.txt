@@ -27,3 +27,95 @@
 2025-01-16 13:50:47.478 +02:00 [INF] Application started. Press Ctrl+C to shut down.
 2025-01-16 13:50:47.480 +02:00 [INF] Hosting environment: Development
 2025-01-16 13:50:47.481 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2025-01-16 14:11:41.733 +02:00 [INF] Starting up... Please be patient.
+2025-01-16 14:11:50.580 +02:00 [ERR] Policy creation failed. Unknown permission type 'Content' for permission 'Content: Delete items'.
+2025-01-16 14:11:50.583 +02:00 [ERR] Policy creation failed. Unknown permission type 'Content' for permission 'Content: Post audio clips'.
+2025-01-16 14:11:50.586 +02:00 [ERR] Policy creation failed. Unknown permission type 'Content' for permission 'Content: Post images'.
+2025-01-16 14:11:50.588 +02:00 [ERR] Policy creation failed. Unknown permission type 'Content' for permission 'Content: Post videos'.
+2025-01-16 14:11:50.591 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2025-01-16 14:11:50.595 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2025-01-16 14:11:50.597 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2025-01-16 14:11:50.599 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2025-01-16 14:11:50.601 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2025-01-16 14:11:50.603 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2025-01-16 14:11:50.604 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2025-01-16 14:11:50.609 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2025-01-16 14:11:50.611 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2025-01-16 14:11:50.613 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2025-01-16 14:11:50.615 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2025-01-16 14:11:50.616 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2025-01-16 14:11:50.618 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2025-01-16 14:11:50.620 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2025-01-16 14:11:50.625 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2025-01-16 14:11:50.627 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2025-01-16 14:11:50.628 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2025-01-16 14:11:50.630 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2025-01-16 14:11:50.632 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2025-01-16 14:11:50.815 +02:00 [INF] Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.
+2025-01-16 14:11:51.066 +02:00 [INF] Seeding completed. Continuing with server startup.
+2025-01-16 14:11:51.156 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-16 14:11:51.373 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-01-16 14:11:51.410 +02:00 [INF] Now listening on: http://[::]:5050
+2025-01-16 14:11:51.416 +02:00 [INF] Now listening on: https://[::]:5051
+2025-01-16 14:11:51.420 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-16 14:11:51.423 +02:00 [INF] Hosting environment: Development
+2025-01-16 14:11:51.429 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2025-01-16 14:18:42.253 +02:00 [INF] Starting up... Please be patient.
+2025-01-16 14:18:48.235 +02:00 [INF] Creating general policy for Content: Delete items of type Content.
+2025-01-16 14:18:48.241 +02:00 [INF] Creating general policy for Content: Post audio clips of type Content.
+2025-01-16 14:18:48.243 +02:00 [INF] Creating general policy for Content: Post images of type Content.
+2025-01-16 14:18:48.245 +02:00 [INF] Creating general policy for Content: Post videos of type Content.
+2025-01-16 14:18:48.247 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2025-01-16 14:18:48.251 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2025-01-16 14:18:48.259 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2025-01-16 14:18:48.262 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2025-01-16 14:18:48.264 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2025-01-16 14:18:48.268 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2025-01-16 14:18:48.270 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2025-01-16 14:18:48.276 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2025-01-16 14:18:48.278 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2025-01-16 14:18:48.280 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2025-01-16 14:18:48.287 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2025-01-16 14:18:48.289 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2025-01-16 14:18:48.292 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2025-01-16 14:18:48.294 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2025-01-16 14:18:48.296 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2025-01-16 14:18:48.298 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2025-01-16 14:18:48.303 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2025-01-16 14:18:48.305 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2025-01-16 14:18:48.309 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2025-01-16 14:18:48.465 +02:00 [INF] Command-line argument '--seed-data'  passed, database will be seeded with preconfigured data.
+2025-01-16 14:18:48.680 +02:00 [INF] Seeding completed. Continuing with server startup.
+2025-01-16 14:18:48.734 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-16 14:18:48.855 +02:00 [WRN] Overriding address(es) 'https://localhost:5051, http://localhost:5050'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-01-16 14:18:48.879 +02:00 [INF] Now listening on: http://[::]:5050
+2025-01-16 14:18:48.881 +02:00 [INF] Now listening on: https://[::]:5051
+2025-01-16 14:18:48.883 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-16 14:18:48.884 +02:00 [INF] Hosting environment: Development
+2025-01-16 14:18:48.885 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
+2025-01-16 15:09:47.452 +02:00 [INF] Starting up... Please be patient.
+2025-01-16 15:09:47.996 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-16 15:09:47.999 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2025-01-16 15:10:21.415 +02:00 [INF] Starting up... Please be patient.
+2025-01-16 15:10:22.177 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-16 15:10:22.181 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62

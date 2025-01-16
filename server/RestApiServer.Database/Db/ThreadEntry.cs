@@ -16,6 +16,9 @@ namespace RestApiServer.Db
         public required string CreatedByUserId { get; set; } = string.Empty; //This must only be set when the thread is created, not for any subsequent posts.
         public int NumberOfPosts { get; set; } = 0; //This should increase with each new post.
         public bool HasNewPosts { get; set; } = false; //If the thread has new posts since the last check - this should take into account the user viewing it since it is per user.
+        public bool IsMarkedForDelete { get; set; } = false;
+        public DateTime DateMarkedForDelete { get; set; }
+        public bool IsImportant { get; set; } = false;
 
         //Navigation props:
         [JsonIgnore]

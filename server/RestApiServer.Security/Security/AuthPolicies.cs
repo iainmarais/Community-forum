@@ -28,6 +28,7 @@ namespace RestApiServer.Security
                             //This will need some adjustment in order to make it compatible with moving these enums to the database project.
                             //General, access, interactive and visibility permissions can be authorised for all regular users. Role-based auth can be used to counteract some of these if necessary.
                             case "General":
+                            case "Content":
                             case "Access":
                             case "Interactivity":
                             case "Visibility":

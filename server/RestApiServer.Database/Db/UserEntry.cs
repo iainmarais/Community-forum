@@ -31,6 +31,9 @@ namespace RestApiServer.Db.Users
         //Updating it should be run every day or so, depending on the user's current state
         public DateTime RegistrationTime { get; set; }
         public DateTime LastLoginTime { get; set; }
+        public bool IsMarkedForDelete { get; set; } = false;
+        public DateTime DateMarkedForDelete { get; set; }
+        public bool IsImportant { get; set; } = false;        
 
         //Navigation properties
         [JsonIgnore]

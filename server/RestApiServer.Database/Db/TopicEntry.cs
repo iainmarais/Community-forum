@@ -15,6 +15,9 @@ namespace RestApiServer.Db
         public string Description { get; set; } = string.Empty;
         public string CreatedByUserId { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; }
+        public bool IsMarkedForDelete { get; set; } = false;
+        public DateTime DateMarkedForDelete { get; set; }
+        public bool IsImportant { get; set; } = false;
 
         [JsonIgnore]
         public List<ThreadEntry> Threads { get; set; } = new();
