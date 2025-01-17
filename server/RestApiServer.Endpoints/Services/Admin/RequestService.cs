@@ -1,177 +1,238 @@
 using Microsoft.EntityFrameworkCore;
 using RestApiServer.Core.Errorhandler;
 using RestApiServer.Db;
-using RestApiServer.Db.Users;
 using RestApiServer.Dto.Admin;
-using RestApiServer.Dto.AdminLogin;
-using RestApiServer.Dto.App;
 using RestApiServer.CommonEnums;
 using RestApiServer.Database.Utils;
-using RestApiServer.Common.Services;
 using RestApiServer.Endpoints.ApiResponses;
 
 namespace RestApiServer.Endpoints.Services.Admin
 {
     public class RequestService
     {
-        public static async Task<PaginatedData<List<RequestBasicInfo>, RequestSummary>> GetSupportRequestsAsync(string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm, string? userId = null)
+        /// <summary>
+        /// Retrieves the list of support requests that an administrator can see.
+        /// </summary>
+        /// <param name="adminUserId">The user ID of the administrator.</param>
+        /// <param name="pageNumber">The page number of the data to retrieve.</param>
+        /// <param name="rowsPerPage">The number of rows to display per page.</param>
+        /// <param name="searchTerm">The search term to use when filtering the results.</param>
+        /// <param name="userId">The user ID of the user for whom to filter the results.</param>
+        /// <returns>The list of support requests.</returns>
+        public static async Task<PaginatedData<List<RequestBasicInfo>, RequestSummary>> GetSupportRequestsAsync(
+            string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm, string? userId = null)
         {
-            using var db = new AppDbContext();
+            using var dbContext = new AppDbContext();
 
-            var adminUser = await db.Users.SingleOrDefaultAsync(u => u.AdminUserId == adminUserId);
-            if (adminUser == null || adminUser!.RoleId != "Admin")
+            // Verify that the user is an administrator.
+            var adminUser = await dbContext.Users
+                .SingleOrDefaultAsync(u => u.AdminUserId == adminUserId);
+
+            if (adminUser == null || adminUser.RoleId != "Admin")
             {
                 throw ClientInducedException.MessageOnly("User is not an administrator");
             }
 
-            var supportRequestsQuery =  from sr in db.Requests
-                                        select new RequestBasicInfo
-                                        {
-                                            Request = sr
-                                        };
-            if(!string.IsNullOrEmpty(userId))
+            var requestsQuery = dbContext.Requests
+                .Select(r => new RequestBasicInfo { Request = r });
+
+            // Filter the results by the user ID if one is provided.
+            if (!string.IsNullOrEmpty(userId))
             {
-                //Does this user exist
-                var user = await db.Users.SingleAsync(u => u.UserId == userId);
-                if(user != null)
-                {
-                    supportRequestsQuery = supportRequestsQuery.Where(sr => sr.Request.CreatedByUserId == user.UserId);
-                }
-                else
+                var user = await dbContext.Users
+                    .SingleOrDefaultAsync(u => u.UserId == userId);
+
+                if (user == null)
                 {
                     throw ClientInducedException.MessageOnly("User does not exist.");
                 }
+
+                requestsQuery = requestsQuery
+                    .Where(r => r.Request.CreatedByUserId == user.UserId);
             }
-            if(!string.IsNullOrEmpty(searchTerm))
+
+            // Filter the results by the search term if one is provided.
+            if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
-                supportRequestsQuery = (from sr in supportRequestsQuery
-                                        where sr.Request.CreatedByUser.Username.ToLower().Contains(searchTerm) ||
-                                        sr.Request.CreatedByUser.EmailAddress.ToLower().Contains(searchTerm) ||
-                                        sr.Request.AssignedToUser.Username.ToLower().Contains(searchTerm)||
-                                        sr.Request.AssignedToUser.EmailAddress.ToLower().Contains(searchTerm)||
-                                        sr.Request.LastUpdatedByUser.Username.ToLower().Contains(searchTerm)||  
-                                        sr.Request.LastUpdatedByUser.EmailAddress.ToLower().Contains(searchTerm)||  
-                                        sr.Request.ResolvedByUser.Username.ToLower().Contains(searchTerm)||
-                                        sr.Request.ResolvedByUser.EmailAddress.ToLower().Contains(searchTerm)
-                                        select sr
-                                        );
+
+                requestsQuery = requestsQuery
+                    .Where(r => r.Request.CreatedByUser.Username.ToLower().Contains(searchTerm) ||
+                              r.Request.CreatedByUser.EmailAddress.ToLower().Contains(searchTerm) ||
+                              r.Request.AssignedToUser.Username.ToLower().Contains(searchTerm) ||
+                              r.Request.AssignedToUser.EmailAddress.ToLower().Contains(searchTerm) ||
+                              r.Request.LastUpdatedByUser.Username.ToLower().Contains(searchTerm) ||
+                              r.Request.LastUpdatedByUser.EmailAddress.ToLower().Contains(searchTerm) ||
+                              r.Request.ResolvedByUser.Username.ToLower().Contains(searchTerm) ||
+                              r.Request.ResolvedByUser.EmailAddress.ToLower().Contains(searchTerm));
             }
-            //Construct the paginated data
-            var filteredTotal = await supportRequestsQuery.CountAsync();
 
+            // Get the total number of filtered records.
+            var filteredTotal = await requestsQuery.CountAsync();
+
+            // Calculate the skip value for pagination.
             var skip = (pageNumber - 1) * rowsPerPage;
-            var supportRequestRows = await supportRequestsQuery.Skip(skip)
-                                                               .Take(rowsPerPage)
-                                                               .ToListAsync();
 
+            // Get the records for the current page.
+            var requestRows = await requestsQuery.Skip(skip)
+                .Take(rowsPerPage)
+                .ToListAsync();
+
+            // Calculate the total number of pages.
             var totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
 
+            // Return the data to the caller in a paginated format.
             return new PaginatedData<List<RequestBasicInfo>, RequestSummary>()
             {
-                Rows = supportRequestRows,
+                Rows = requestRows,
                 PageNumber = pageNumber,
                 RowsPerPage = rowsPerPage,
                 TotalPages = totalPages,
                 Summary = new()
                 {
-                    TotalSupportRequests = supportRequestsQuery.Count(),
-                    NumAssignedRequests = supportRequestsQuery.Where(sr => sr.Request.AssignedToUser != null).Count(),
-                    NumResolvedRequests = supportRequestsQuery.Where(sr => sr.Request.ResolvedByUser != null).Count(),
-                    NumPendingRequests = supportRequestsQuery.Where(sr => sr.Request.AssignedToUser == null).Count()
+                    // The total number of requests that the administrator can see.
+                    TotalRequests = filteredTotal,
+                    // The number of requests that are assigned to another user.
+                    NumAssignedRequests = requestsQuery.Count(r => r.Request.AssignedToUser != null),
+                    // The number of requests that have been resolved.
+                    NumResolvedRequests = requestsQuery.Count(r => r.Request.ResolvedByUser != null),
+                    // The number of requests that are pending, meaning they have not been assigned to anyone yet.
+                    NumPendingRequests = requestsQuery.Count(r => r.Request.AssignedToUser == null)
                 }
             };
         }
 
-        //Create a new request from the admin portal.
-        public static async Task<RequestBasicInfo> CreateSupportRequestAsync(string adminUserId, string supportRequestTitle, string supportRequestContent)
+        /// <summary>
+        /// Creates a support request.
+        /// </summary>
+        /// <param name="adminUserId">The user ID of the user creating the request.</param>
+        /// <param name="requestTitle">The title of the support request.</param>
+        /// <param name="requestContent">The content of the support request.</param>
+        /// <returns>The newly created support request.</returns>
+        public static async Task<RequestBasicInfo> CreateSupportRequestAsync(string adminUserId, string requestTitle, string requestContent)
         {
-            using var db = new AppDbContext();
+            using var dbContext = new AppDbContext();
 
-            var adminUser = await db.Users.SingleOrDefaultAsync(u => u.AdminUserId == adminUserId);
-            if (adminUser == null || adminUser!.RoleId != "Admin")
+            // Verify that the user creating the request is an administrator.
+            var adminUser = await dbContext.Users
+                .SingleOrDefaultAsync(u => u.AdminUserId == adminUserId);
+            if (adminUser == null || adminUser.RoleId != "Admin")
             {
                 throw ClientInducedException.MessageOnly("User is not an administrator");
             }
-            if(string.IsNullOrEmpty(supportRequestTitle))
+
+            // Verify that the request title is not blank.
+            if (string.IsNullOrEmpty(requestTitle))
             {
                 throw ClientInducedException.MessageOnly("Support request title can't be blank.");
             }
-            if(string.IsNullOrEmpty(supportRequestContent))
+
+            // Verify that the request content is not blank.
+            if (string.IsNullOrEmpty(requestContent))
             {
                 throw ClientInducedException.MessageOnly("Support request content can't be blank.");
             }
-            //Validation done, now create the request entry, add to db and save changes.
 
-            var newSupportRequest = new RequestEntry
+            // Create the support request.
+            var supportRequest = new RequestEntry
             {
                 CreatedDate = DateTime.UtcNow,
-                SupportRequestContent = supportRequestContent,
-                SupportRequestTitle = supportRequestTitle,
-                SupportRequestId = DbUtils.GenerateUuid(),
+                SupportRequestContent = requestContent,
+                SupportRequestTitle = requestTitle,
+                RequestId = DbUtils.GenerateUuid(),
                 CreatedByUserId = adminUserId
             };
 
-            await db.AddAsync(newSupportRequest);
-            await db.SaveChangesAsync();
+            // Add the support request to the database and save the changes.
+            await dbContext.AddAsync(supportRequest);
+            await dbContext.SaveChangesAsync();
 
+            // Return the newly created support request.
             return new RequestBasicInfo
             {
-                Request = newSupportRequest
+                Request = supportRequest
             };
         }
 
-        public static async Task<RequestBasicInfo> UpdateRequestTriageStatus(string userId, string requestId, TriageType type, TriageStatus status)
+        /// <summary>
+        /// Updates the triage status of a support request.
+        /// </summary>
+        /// <param name="userId">The user ID of the user updating the request.</param>
+        /// <param name="requestId">The ID of the request to update.</param>
+        /// <param name="triageType">The type of triage action taken.</param>
+        /// <param name="triageStatus">The status of the request after triage.</param>
+        /// <returns>The updated request.</returns>
+        public static async Task<RequestBasicInfo> UpdateRequestTriageStatusAsync(string userId, string requestId, TriageType triageType, TriageStatus triageStatus)
         {
             using var db = new AppDbContext();
-            //Find the user identified by the userId, and see if the user is an administrator or has the permissions to work with support/feature requests.
+
             var user = await db.Users.SingleOrDefaultAsync(u => u.UserId == userId);
-            if (user == null || user!.RoleId != "Admin" || user!.RoleId != "CommunityManager")
+            if (user == null || (user.RoleId != "Admin" && user.RoleId != "CommunityManager"))
             {
                 throw ClientInducedException.MessageOnly("User is not an administrator or a community manager.");
             }
 
-            //Find the request to update.
-            var request = await db.Requests.SingleAsync(r => r.SupportRequestId == requestId);
-            if(request == null)
+            var request = await db.Requests.SingleOrDefaultAsync(r => r.RequestId == requestId);
+            if (request == null)
             {
                 throw ClientInducedException.MessageOnly("Request not found.");
             }
-            
-            request.TriageStatus = status;
-            request.TriageType = type;
+
+            // Update the request.
+            request.TriageStatus = triageStatus;
+            request.TriageType = triageType;
             request.LastUpdatedByUserId = userId;
             request.DateUpdated = DateTime.UtcNow;
-            
+
+            // Save the changes.
             await db.SaveChangesAsync();
-            return new RequestBasicInfo()
+
+            // Return the updated request.
+            return new RequestBasicInfo
             {
                 Request = request
             };
         }
 
-        //Assign requests to users
-        public static async Task<RequestBasicInfo> AssignRequestToUser(string userId, string requestId)
+        /// <summary>
+        /// Assigns a request to a user.
+        /// </summary>
+        /// <param name="assignToUserId">The user ID of the user to who the request is assigned.</param>
+        /// <param name="requestId">The ID of the request to assign.</param>
+        /// <returns>The updated request.</returns>
+        public static async Task<RequestBasicInfo> AssignRequestToUserAsync(string adminUserId ,string assignToUserId, string requestId)
         {
-            using var db = new AppDbContext();
-            //Find the user to assign this to.
-            var user = await db.Users.SingleAsync(u => u.UserId == userId);
-            if(user == null)
+            using var dbContext = new AppDbContext();
+            var adminUser = await dbContext.Users.SingleOrDefaultAsync(u => u.UserId == adminUserId);
+
+            if (adminUser == null || adminUser.RoleId != "Admin")
+            {
+                throw ClientInducedException.MessageOnly("User is not an administrator.");
+            }
+            var userToAssignTo = await dbContext.Users
+                .SingleOrDefaultAsync(u => u.UserId == assignToUserId);
+
+            if (userToAssignTo == null)
             {
                 throw ClientInducedException.MessageOnly("User not found.");
             }
-            //Find the request to assign to this user.
-            var request = await db.Requests.SingleAsync(r => r.SupportRequestId == requestId);
-            if(request == null)
+
+            var requestToAssign = await dbContext.Requests
+                .SingleOrDefaultAsync(r => r.RequestId == requestId);
+
+            if (requestToAssign == null)
             {
                 throw ClientInducedException.MessageOnly("Request not found.");
             }
-            request.AssignedToUserId = user.UserId;
-            request.DateUpdated = DateTime.UtcNow;
-            await db.SaveChangesAsync();
-            return new RequestBasicInfo()
+
+            requestToAssign.AssignedToUserId = userToAssignTo.UserId;
+            requestToAssign.DateUpdated = DateTime.UtcNow;
+
+            await dbContext.SaveChangesAsync();
+
+            return new RequestBasicInfo
             {
-                Request = request
+                Request = requestToAssign
             };
         }
     }

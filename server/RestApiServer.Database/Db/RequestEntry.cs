@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using RestApiServer.CommonEnums;
 using RestApiServer.Db.Users;
 
@@ -11,7 +10,7 @@ namespace RestApiServer.Db
     public class RequestEntry
     {
         [Key]
-        public required string SupportRequestId { get; set; }
+        public required string RequestId { get; set; }
         //Id of the user
         public required string CreatedByUserId { get; set; }
         public required DateTime CreatedDate { get; set; }

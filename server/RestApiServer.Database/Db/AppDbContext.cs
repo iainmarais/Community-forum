@@ -107,7 +107,7 @@ namespace RestApiServer.Db
             .HasKey(p => p.PermissionId);
 
             modelBuilder.Entity<RequestEntry>()
-            .HasKey(sr => sr.SupportRequestId);
+            .HasKey(sr => sr.RequestId);
 
             modelBuilder.Entity<RoleEntry>()
             .HasKey(r => r.RoleId);
@@ -151,7 +151,7 @@ namespace RestApiServer.Db
 
             //Support request entry
             modelBuilder.Entity<RequestEntry>()
-                .HasIndex(sr => sr.SupportRequestId);
+                .HasIndex(sr => sr.RequestId);
 
             //One to many relationships
             modelBuilder.Entity<ThreadEntry>()
