@@ -1,5 +1,5 @@
 import type { TriageStatus, TriageType } from "./UpdateRequestTriageStatusRequest";
-import type { UserEntry } from "./UserInfo";
+import type { UserBasicInfo, UserEntry } from "./UserInfo";
 
 export type RequestEntry = {
     requestId: string,
@@ -22,7 +22,8 @@ export type RequestEntry = {
 }
 
 export type RequestBasicInfo = {
-    request: RequestEntry
+    request: RequestEntry,
+    createdByUser: UserBasicInfo,
 }
 
 export type RequestSummary = {

@@ -6,11 +6,31 @@
 //This is different from the type of tech support people offer through forums since these tech support requests are for issues pertaining to the forum platform.
 import { onMounted, ref, watch } from 'vue';
 import { useSupportRequestsStore } from '@/stores/SupportRequestsStore';
+import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
+import SearchBar from '@/components/elements/Inputs/SearchBar.vue';
+import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
+import { debounce } from 'lodash';
+import dayjs from 'dayjs';
 
-const SupportRequestsStore = useSupportRequestsStore();
+const supportRequestsStore = useSupportRequestsStore();
+
+const refresh = () => {
+    //Todo: update this function to get support requests from the server.
+}
+
+const formatDate = (date: Date) => {
+    return dayjs(date).format('DD/MM/YYYY HH:mm:ss');
+}
+
+const searchQuery = ref("");
+
+const search = debounce((query: string) => {
+    supportRequestsStore.searchQuery = query;
+    supportRequestsStore.getSupportRequests();   
+}, 300);
 
 onMounted(() => {
-    SupportRequestsStore.getSupportRequests();
+    supportRequestsStore.getSupportRequests();
 });
 
 </script>
@@ -21,30 +41,37 @@ onMounted(() => {
             <h3 class="card-title align-items-start flex-column">
                 <span class="card-label fw-bolder text-dark">Support Requests</span>
             </h3>
+            <div class="card-toolbar">
+                <SearchBar v-model:searchQuery="searchQuery" :handleSearch = "search" />
+                <ButtonWithLoadingIndicator style="margin-inline: 10px" :label="'Refresh'" :icon="'fas fa-sync'" class="btn btn-primary btn-sm" @click.prevent="refresh()">
+                    Refresh
+                </ButtonWithLoadingIndicator>
+            </div>            
         </div>
         <div class="card-body pt-0">
-            <div class="table-responsive">
-                <table v-if="SupportRequestsStore.requests" class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
-                    <thead>
-                        <tr class="fw-bolder fs-6 text-gray-800">
-                            <th class="min-w-125px">Date</th>
-                            <th class="min-w-125px">User</th>
-                            <th class="min-w-125px">Type</th>
-                            <th class="min-w-125px">Message</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fs-6">
-                        <tr v-for="element in SupportRequestsStore.requests.rows" :key="element.request.requestId">
-                            <td>{{ element.request.createdDate }}</td>
-                            <td>{{ element.request.createdByUser }}</td>
-                            <td>{{ element.request.supportRequestTitle }}</td>
-                            <td>{{ element.request.supportRequestContent }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div v-else>
+            <PageSelector :current-page-number="supportRequestsStore.currentPageNumber" :totalPages="supportRequestsStore.requests.totalPages" :rows-per-page="supportRequestsStore.rowsPerPage" @previous-page="$emit('previous-page')" @next-page="$emit('next-page')" />
+            <div class="row">
+                <div class="col-md-12">
                     <div class="text-center">
-                        <span class="text-muted fw-bold fs-6">No support requests found.</span>
+                        <div v-if="!supportRequestsStore.loading_getRequests">
+                            <table class="table table-hover table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Created by</th>
+                                        <th>Title</th>
+                                        <th>Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="element in supportRequestsStore.requests.rows" :key="element.request.requestId">
+                                        <td>{{ formatDate(element.request.createdDate) }}</td>
+                                        <td>{{ element.createdByUser.user.username }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <LoadingIndicator v-else :loading="true" />
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ using RestApiServer.Dto.Admin;
 using RestApiServer.CommonEnums;
 using RestApiServer.Database.Utils;
 using RestApiServer.Endpoints.ApiResponses;
+using RestApiServer.Dto.App;
 
 namespace RestApiServer.Endpoints.Services.Admin
 {
@@ -34,9 +35,14 @@ namespace RestApiServer.Endpoints.Services.Admin
             }
 
             var requestsQuery = from r in db.Requests
+                                join u in db.Users on r.CreatedByUserId equals u.UserId
                                 select new RequestBasicInfo
                                 {
-                                    Request = r
+                                    Request = r,
+                                    CreatedByUser = new UserBasicInfo 
+                                    {
+                                        User = u
+                                    }
                                 };
 
             // Filter the results by the user ID if one is provided.
