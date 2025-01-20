@@ -6,6 +6,7 @@
 //This is different from the type of tech support people offer through forums since these tech support requests are for issues pertaining to the forum platform.
 import { onMounted, ref, watch } from 'vue';
 import { useSupportRequestsStore } from '@/stores/SupportRequestsStore';
+import PageSelector from '@/components/elements/Inputs/PageSelector.vue';
 import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
 import SearchBar from '@/components/elements/Inputs/SearchBar.vue';
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
@@ -19,7 +20,7 @@ const refresh = () => {
 }
 
 const formatDate = (date: Date) => {
-    return dayjs(date).format('DD/MM/YYYY HH:mm:ss');
+    return dayjs(date).format('DD/MM/YYYY');
 }
 
 const searchQuery = ref("");
@@ -57,16 +58,25 @@ onMounted(() => {
                             <table class="table table-hover table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Date</th>
-                                        <th>Created by</th>
+                                        <th>Created</th>
+                                        <th>Creator</th>
                                         <th>Title</th>
                                         <th>Message</th>
+                                        <th>Last updated</th>
+                                        <th>Resolution status</th>
+                                        <th colspan="2">Triage</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="element in supportRequestsStore.requests.rows" :key="element.request.requestId">
                                         <td>{{ formatDate(element.request.createdDate) }}</td>
                                         <td>{{ element.createdByUser.user.username }}</td>
+                                        <td>{{ element.request.supportRequestTitle }}</td>
+                                        <td>{{ element.request.supportRequestContent }}</td>
+                                        <td>{{ element.request.isResolved === true ? formatDate(element.request.dateResolved) : formatDate(element.request.dateUpdated) }}</td>
+                                        <td>{{ element.request.isResolved === true ? "Resolved" : "Unresolved" }}</td>
+                                        <td> {{ element.request.triageStatus }}</td>
+                                        <td>{{ element.request.triageType }}</td>
                                     </tr>
                                 </tbody>
                             </table>
