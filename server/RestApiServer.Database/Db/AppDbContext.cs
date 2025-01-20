@@ -49,7 +49,7 @@ namespace RestApiServer.Db
                 ServerVersion? serverVersion = ServerVersion.AutoDetect(conn);
                 optionsBuilder.UseMySql(conn, serverVersion, options =>
                 {
-                    options.MigrationsAssembly("RestApiServer");
+                    options.MigrationsAssembly("RestApiServer.Database");
                 });
             }
             catch (MySqlException ex)

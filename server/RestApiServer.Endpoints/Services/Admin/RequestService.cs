@@ -22,10 +22,10 @@ namespace RestApiServer.Endpoints.Services.Admin
         public static async Task<PaginatedData<List<RequestBasicInfo>, RequestSummary>> GetSupportRequestsAsync(
             string adminUserId, int pageNumber, int rowsPerPage, string? searchTerm, string? userId = null)
         {
-            using var dbContext = new AppDbContext();
+            using var db = new AppDbContext();
 
             // Verify that the user is an administrator.
-            var adminUser = await dbContext.Users
+            var adminUser = await db.Users
                 .SingleOrDefaultAsync(u => u.AdminUserId == adminUserId);
 
             if (adminUser == null || adminUser.RoleId != "Admin")
@@ -33,13 +33,16 @@ namespace RestApiServer.Endpoints.Services.Admin
                 throw ClientInducedException.MessageOnly("User is not an administrator");
             }
 
-            var requestsQuery = dbContext.Requests
-                .Select(r => new RequestBasicInfo { Request = r });
+            var requestsQuery = from r in db.Requests
+                                select new RequestBasicInfo
+                                {
+                                    Request = r
+                                };
 
             // Filter the results by the user ID if one is provided.
             if (!string.IsNullOrEmpty(userId))
             {
-                var user = await dbContext.Users
+                var user = await db.Users
                     .SingleOrDefaultAsync(u => u.UserId == userId);
 
                 if (user == null)

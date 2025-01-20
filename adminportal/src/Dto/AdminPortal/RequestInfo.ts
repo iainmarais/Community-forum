@@ -24,3 +24,10 @@ export type RequestEntry = {
 export type RequestBasicInfo = {
     request: RequestEntry
 }
+
+export type RequestSummary = {
+    totalRequests: number,
+    numResolvedRequests: number,
+    numAssignedRequests: number,
+    numPendingRequests: number,   
+}

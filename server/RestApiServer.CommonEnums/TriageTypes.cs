@@ -7,7 +7,9 @@ namespace RestApiServer.CommonEnums
         Low, //Low priority issues - will be tended to as needed. Typically feature requests.
         Normal, //Normal priority issues - will be tended to as part of standard operating procedures.
         High, //High priority issues - issues marked high priority need to be resolved urgently but can wait if warranted.
-        Urgent //Urgent issues - issues marked urgent need to be resolved as a matter of utmost urgency. Everything else must wait.
+        Urgent, //Urgent issues - issues marked urgent need to be resolved as a matter of utmost urgency. Everything else must wait.
+        Closed //Closed requests.
+
     }
     public enum TriageType
     {

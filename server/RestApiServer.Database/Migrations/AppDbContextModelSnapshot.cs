@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestApiServer.Db;
 
 #nullable disable
 
-namespace RestApiServer.Migrations
+namespace RestApiServer.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250113075205_UpdateDb-13-01-2025")]
-    partial class UpdateDb13012025
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,6 +68,15 @@ namespace RestApiServer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("DateMarkedForDelete")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsImportant")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsMarkedForDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.HasKey("BoardId");
 
                     b.HasIndex("CategoryId");
@@ -95,9 +101,50 @@ namespace RestApiServer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("DateMarkedForDelete")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsImportant")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsMarkedForDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = "729eea77-884d-4ece-a20e-0e205ca5e229",
+                            CategoryDescription = "General discussions for the forum.",
+                            CategoryName = "General",
+                            CreatedByUserId = "",
+                            DateMarkedForDelete = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsImportant = false,
+                            IsMarkedForDelete = false
+                        },
+                        new
+                        {
+                            CategoryId = "70f6d2a8-f55b-474f-af88-7fcca957e7dd",
+                            CategoryDescription = "Everything pertaining to computer and IT support can be discussed here.",
+                            CategoryName = "Computer and IT Support",
+                            CreatedByUserId = "",
+                            DateMarkedForDelete = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsImportant = false,
+                            IsMarkedForDelete = false
+                        },
+                        new
+                        {
+                            CategoryId = "5b74c7fd-dac3-45a3-ab3c-de0f877b6170",
+                            CategoryDescription = "Everything pertaining to software development can be discussed here.",
+                            CategoryName = "Software development",
+                            CreatedByUserId = "",
+                            DateMarkedForDelete = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsImportant = false,
+                            IsMarkedForDelete = false
+                        });
                 });
 
             modelBuilder.Entity("RestApiServer.Db.ChatEntry", b =>
@@ -235,6 +282,9 @@ namespace RestApiServer.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime>("DateMarkedForDelete")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("GalleryItemDescription")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -246,6 +296,12 @@ namespace RestApiServer.Migrations
                     b.Property<string>("GalleryItemName")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsImportant")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsMarkedForDelete")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("NumDislikes")
                         .HasColumnType("int");
@@ -317,10 +373,13 @@ namespace RestApiServer.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DateMarkedForDeletion")
+                    b.Property<DateTime>("DateMarkedForDelete")
                         .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsFirstPost")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsImportant")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("IsMarkedForDelete")
@@ -356,6 +415,75 @@ namespace RestApiServer.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("RestApiServer.Db.RequestEntry", b =>
+                {
+                    b.Property<string>("RequestId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("AssignedToUserId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("CreatedByUserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DateMarkedForDelete")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DateResolved")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DateUpdated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsMarkedForDelete")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsResolved")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastUpdatedByUserId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("ResolvedByUserId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("SupportRequestContent")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
+
+                    b.Property<string>("SupportRequestTitle")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("TriageStatus")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("TriageType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("RequestId");
+
+                    b.HasIndex("AssignedToUserId");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("LastUpdatedByUserId");
+
+                    b.HasIndex("RequestId");
+
+                    b.HasIndex("ResolvedByUserId");
+
+                    b.ToTable("Requests");
+                });
+
             modelBuilder.Entity("RestApiServer.Db.RoleEntry", b =>
                 {
                     b.Property<string>("RoleId")
@@ -383,6 +511,20 @@ namespace RestApiServer.Migrations
                             Description = "Administrators have unrestricted access to administrate the forum and chat services.",
                             RoleName = "Administrator",
                             RoleType = "Admin"
+                        },
+                        new
+                        {
+                            RoleId = "CommunityManager",
+                            Description = "Community managers are trusted community members of the forum.",
+                            RoleName = "Community Manager",
+                            RoleType = "CommunityManager"
+                        },
+                        new
+                        {
+                            RoleId = "ContentCreator",
+                            Description = "Community members who create high-quality content.",
+                            RoleName = "Content creator",
+                            RoleType = "ContentCreator"
                         },
                         new
                         {
@@ -439,66 +581,6 @@ namespace RestApiServer.Migrations
                     b.ToTable("RolePermissions");
                 });
 
-            modelBuilder.Entity("RestApiServer.Db.SupportRequestEntry", b =>
-                {
-                    b.Property<string>("SupportRequestId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("AssignedToUserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("CreatedByUserId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime?>("DateResolved")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsResolved")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastUpdatedByUserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("ResolvedByUserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("SupportRequestContent")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("varchar(1000)");
-
-                    b.Property<string>("SupportRequestTitle")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("TriageStatus")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("TriageType")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("SupportRequestId");
-
-                    b.HasIndex("AssignedToUserId");
-
-                    b.HasIndex("CreatedByUserId");
-
-                    b.HasIndex("LastUpdatedByUserId");
-
-                    b.HasIndex("ResolvedByUserId");
-
-                    b.HasIndex("SupportRequestId");
-
-                    b.ToTable("SupportRequests");
-                });
-
             modelBuilder.Entity("RestApiServer.Db.SystemPermissionEntry", b =>
                 {
                     b.Property<string>("SystemPermissionId")
@@ -526,6 +608,111 @@ namespace RestApiServer.Migrations
                             Description = "Allows a user to view areas under construction. This is for development purposes only.",
                             SystemPermissionName = "Development: View areas under construction",
                             SystemPermissionType = "Development"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_post_images",
+                            Description = "Allows users to post images",
+                            SystemPermissionName = "Content: Post images",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_post_audio_clips",
+                            Description = "Allows users to post audio clips",
+                            SystemPermissionName = "Content: Post audio clips",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_post_videos",
+                            Description = "Allows users to post videos",
+                            SystemPermissionName = "Content: Post videos",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_delete_items",
+                            Description = "Allows users to delete content",
+                            SystemPermissionName = "Content: Delete items",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_create_boards",
+                            Description = "Allows users to create new boards",
+                            SystemPermissionName = "Content: Create boards",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_create_topics",
+                            Description = "Allows users to create new topics",
+                            SystemPermissionName = "Content: Create topics",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_create_threads",
+                            Description = "Allows users to create new threads",
+                            SystemPermissionName = "Content: Create threads",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_update_posts",
+                            Description = "Allows users to update their own posts",
+                            SystemPermissionName = "Content: Update posts",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_update_threads",
+                            Description = "Allows users to update their own threads",
+                            SystemPermissionName = "Content: Update threads",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_update_topics",
+                            Description = "Allows users to update their own topics",
+                            SystemPermissionName = "Content: Update topics",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_update_boards",
+                            Description = "Allows users to update their own boards",
+                            SystemPermissionName = "Content: Update boards",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_delete_topics",
+                            Description = "Allows users to delete topics",
+                            SystemPermissionName = "Content: Delete topics",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_delete_threads",
+                            Description = "Allows users to delete threads",
+                            SystemPermissionName = "Content: Delete threads",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_delete_posts",
+                            Description = "Allows users to delete posts",
+                            SystemPermissionName = "Content: Delete posts",
+                            SystemPermissionType = "Content"
+                        },
+                        new
+                        {
+                            SystemPermissionId = "cnt_delete_boards",
+                            Description = "Allows users to delete boards",
+                            SystemPermissionName = "Content: Delete boards",
+                            SystemPermissionType = "Content"
                         },
                         new
                         {
@@ -667,7 +854,16 @@ namespace RestApiServer.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime>("DateMarkedForDelete")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<bool>("HasNewPosts")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsImportant")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsMarkedForDelete")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<int>("NumberOfPosts")
@@ -706,9 +902,18 @@ namespace RestApiServer.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime>("DateMarkedForDelete")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsImportant")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsMarkedForDelete")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("TopicName")
                         .IsRequired()
@@ -837,6 +1042,9 @@ namespace RestApiServer.Migrations
                     b.Property<string>("CountryName")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("DateMarkedForDelete")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("EmailAddress")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -851,6 +1059,12 @@ namespace RestApiServer.Migrations
                     b.Property<string>("HashedPassword")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsImportant")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsMarkedForDelete")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("IsOnline")
                         .HasColumnType("tinyint(1)");
@@ -928,6 +1142,38 @@ namespace RestApiServer.Migrations
                     b.Navigation("Thread");
                 });
 
+            modelBuilder.Entity("RestApiServer.Db.RequestEntry", b =>
+                {
+                    b.HasOne("RestApiServer.Db.Users.UserEntry", "AssignedToUser")
+                        .WithMany("AssignedSupportRequests")
+                        .HasForeignKey("AssignedToUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("RestApiServer.Db.Users.UserEntry", "CreatedByUser")
+                        .WithMany("CreatedSupportRequests")
+                        .HasForeignKey("CreatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("RestApiServer.Db.Users.UserEntry", "LastUpdatedByUser")
+                        .WithMany("UpdatedSupportRequests")
+                        .HasForeignKey("LastUpdatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("RestApiServer.Db.Users.UserEntry", "ResolvedByUser")
+                        .WithMany("ResolvedSupportRequests")
+                        .HasForeignKey("ResolvedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("AssignedToUser");
+
+                    b.Navigation("CreatedByUser");
+
+                    b.Navigation("LastUpdatedByUser");
+
+                    b.Navigation("ResolvedByUser");
+                });
+
             modelBuilder.Entity("RestApiServer.Db.RolePermissionEntry", b =>
                 {
                     b.HasOne("RestApiServer.Db.PermissionEntry", "Permission")
@@ -945,35 +1191,6 @@ namespace RestApiServer.Migrations
                     b.Navigation("Permission");
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("RestApiServer.Db.SupportRequestEntry", b =>
-                {
-                    b.HasOne("RestApiServer.Db.Users.UserEntry", "AssignedToUser")
-                        .WithMany()
-                        .HasForeignKey("AssignedToUserId");
-
-                    b.HasOne("RestApiServer.Db.Users.UserEntry", "CreatedByUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedByUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RestApiServer.Db.Users.UserEntry", "LastUpdatedByUser")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedByUserId");
-
-                    b.HasOne("RestApiServer.Db.Users.UserEntry", "ResolvedByUser")
-                        .WithMany()
-                        .HasForeignKey("ResolvedByUserId");
-
-                    b.Navigation("AssignedToUser");
-
-                    b.Navigation("CreatedByUser");
-
-                    b.Navigation("LastUpdatedByUser");
-
-                    b.Navigation("ResolvedByUser");
                 });
 
             modelBuilder.Entity("RestApiServer.Db.ThreadEntry", b =>
@@ -1092,11 +1309,19 @@ namespace RestApiServer.Migrations
 
             modelBuilder.Entity("RestApiServer.Db.Users.UserEntry", b =>
                 {
+                    b.Navigation("AssignedSupportRequests");
+
+                    b.Navigation("CreatedSupportRequests");
+
                     b.Navigation("GalleryItems");
+
+                    b.Navigation("ResolvedSupportRequests");
 
                     b.Navigation("ThreadsCreated");
 
                     b.Navigation("TopicsCreated");
+
+                    b.Navigation("UpdatedSupportRequests");
 
                     b.Navigation("UserPermissions");
 

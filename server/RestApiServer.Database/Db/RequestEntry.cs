@@ -27,6 +27,8 @@ namespace RestApiServer.Db
         public bool IsResolved { get; set; } = false;
         public DateTime? DateUpdated { get; set; }
         public DateTime? DateResolved { get; set; }
+        public bool IsMarkedForDelete { get; set; } = false;
+        public DateTime DateMarkedForDelete { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter<TriageStatus>))]
         public TriageStatus TriageStatus { get; set; } = TriageStatus.Untriaged; //Default
         [JsonConverter(typeof(JsonStringEnumConverter<TriageType>))]
