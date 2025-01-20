@@ -9,7 +9,12 @@ type SupportRequestsStore = {
     loading_getRequests: boolean;
     result_getRequestsSuccess: boolean;
 
-    requests: PaginatedData<RequestBasicInfo[], RequestSummary>
+    requests: PaginatedData<RequestBasicInfo[], RequestSummary>;
+
+    searchQuery?: string;
+
+    currentPageNumber: number;
+    rowsPerPage: number;
 }
 
 const defaultState: SupportRequestsStore = {
@@ -27,7 +32,9 @@ const defaultState: SupportRequestsStore = {
             numResolvedRequests: 0,
             totalRequests: 0
         }
-    }
+    },
+    currentPageNumber: 1,
+    rowsPerPage: 10,
 }
 
 export const useSupportRequestsStore = defineStore({
@@ -36,7 +43,7 @@ export const useSupportRequestsStore = defineStore({
     getters: {},
     actions: {
         getSupportRequests() {
-            RequestService.getSupportRequests(this.requests.pageNumber, this.requests.rowsPerPage).then(response => {
+            RequestService.getSupportRequests(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
                 this.loading_getRequests = false;
                 this.result_getRequestsSuccess = true;
                 this.requests = response.data;

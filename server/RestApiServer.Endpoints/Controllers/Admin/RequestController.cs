@@ -19,20 +19,20 @@ namespace RestApiServer.Endpoints.Controllers.Admin
         /// Retrieves a list of support requests that the administrator can see.
         /// </summary>
         /// <param name="searchTerm">The search term to use when filtering the results.</param>
-        /// <param name="pageSize">The number of rows to display per page.</param>
+        /// <param name="rowsPerPage">The number of rows to display per page.</param>
         /// <param name="pageNumber">The page number of the data to retrieve.</param>
         /// <returns>The list of support requests.</returns>
         [HttpGet("supportrequests")]
         public async Task<ApiSuccessResponse<PaginatedData<List<RequestBasicInfo>, RequestSummary>>> GetSupportRequestsAsync(
             [FromQuery] string? searchTerm,
-            [FromQuery] int pageSize,
+            [FromQuery] int rowsPerPage,
             [FromQuery] int pageNumber)
         {
             var adminUser = AuthService.GetAdminUserContext(User);
             var supportRequests = await RequestService.GetSupportRequestsAsync(
                 adminUserId: adminUser.AdminUserId,
                 pageNumber: pageNumber,
-                rowsPerPage: pageSize,
+                rowsPerPage: rowsPerPage,
                 searchTerm: searchTerm);
 
             return ApiSuccessResponses.WithData("Get all support requests: successful", supportRequests);
