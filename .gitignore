@@ -54,6 +54,3 @@ yarn.lock
 *.dll
 *.exe
 *.pdb
-/server/server/obj
-/server/server/bin
-/server/server/obj
