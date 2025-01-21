@@ -3,6 +3,7 @@ using MySqlConnector;
 using RestApiServer.Common.Config;
 using RestApiServer.Db;
 using RestApiServer.Db.Users;
+using RestApiServer.CommonEnums;
 
 namespace ServerTests.testdatabase
 {
@@ -71,6 +72,23 @@ namespace ServerTests.testdatabase
         private static void SeedTestDatabase()
         {
             using var db = new AppDbContext();
+
+            //Test user roles
+            var testAdminRole = new RoleEntry
+            {
+                RoleId = "0",
+                RoleName = "admin",
+                RoleType = RoleType.Admin,
+                Description = "Admin role"
+            };
+            var testUserRole = new RoleEntry
+            {
+                RoleId = "1",
+                RoleName = "user",
+                RoleType = RoleType.User,
+                Description = "User role"
+            };
+            //Test users
             var testUser = new UserEntry
             {
                 UserId = "1",
@@ -79,16 +97,15 @@ namespace ServerTests.testdatabase
                 HashedPassword = BCrypt.Net.BCrypt.HashPassword("testuser1"),
                 RoleId = "0",
             };
-            
-            var testRole = new RoleEntry
+            var testUser2 = new UserEntry
             {
+                UserId = "2",
+                Username = "testuser2",
+                EmailAddress = "testuser2@localhost",
+                HashedPassword = BCrypt.Net.BCrypt.HashPassword("testuser2"),
                 RoleId = "0",
-                RoleName = "admin",
-                RoleType = RestApiServer.CommonEnums.RoleType.Admin,
-                Description = "Admin role"
             };
-
-            db.AddRange(testRole, testUser);
+            db.AddRange(testAdminRole, testUserRole, testUser, testUser2);
             db.SaveChanges();
         }
 
