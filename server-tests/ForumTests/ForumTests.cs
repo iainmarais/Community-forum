@@ -36,5 +36,28 @@ namespace ServerTests.ForumTests
         }
 
         //Forum related tests
+        [Fact]
+        public void CreateCategoryTest()
+        {
+            var testCategory = new CategoryEntry
+            {
+                CategoryId = "1",
+                CategoryName = "Test Category",
+                CategoryDescription = "This is a test category",
+                CreatedByUserId = "2",
+            };
+
+            using var db = new AppDbContext();
+            db.Add(testCategory);
+            db.SaveChanges();
+
+            using var checkDb = new AppDbContext();
+            var checkCategory = checkDb.Categories.Single(c => c.CategoryId == "1");
+            
+            Assert.Equal("1", checkCategory.CategoryId);
+            Assert.Equal("Test Category", checkCategory.CategoryName);
+            Assert.Equal("This is a test category", checkCategory.CategoryDescription);
+            Assert.Equal("2", checkCategory.CreatedByUserId);
+        }
     }
 }
