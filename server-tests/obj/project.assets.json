@@ -13585,8 +13585,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "c:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\RestApiServer.CommonEnums\\RestApiServer.CommonEnums.csproj": {
-              "projectPath": "c:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\RestApiServer.CommonEnums\\RestApiServer.CommonEnums.csproj"
+            "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\RestApiServer.CommonEnums\\RestApiServer.CommonEnums.csproj": {
+              "projectPath": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\RestApiServer.CommonEnums\\RestApiServer.CommonEnums.csproj"
             },
             "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\RestApiServer.Common\\RestApiServer.Common.csproj": {
               "projectPath": "C:\\Users\\Iain\\Documents\\GitHub\\Community-forum\\server\\RestApiServer.Common\\RestApiServer.Common.csproj"

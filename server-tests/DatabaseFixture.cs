@@ -29,6 +29,7 @@ namespace ServerTests.testdatabase
                 Environment.SetEnvironmentVariable("MYSQL_USERNAME", MYSQL_USERNAME);
                 Environment.SetEnvironmentVariable("MYSQL_PASSWORD", MYSQL_PASSWORD);
                 Environment.SetEnvironmentVariable("JWT_SHARED_SECRET", "my-32-character-ultra-secure-and-ultra-long-secret");
+                Environment.SetEnvironmentVariable("ASPNETCORE_URLS", "http://*:5050;https://*:5051;http://localhost:5050;https://localhost:5051");
                 ConfigurationLoader.LoadConfig();
             }
            
@@ -51,6 +52,7 @@ namespace ServerTests.testdatabase
             ConfigurationLoader.SetConfigValue(EnvironmentVariable.MySqlPassword, MYSQL_PASSWORD);	
             ConfigurationLoader.SetConfigValue(EnvironmentVariable.JwtSharedSecret, "my-32-character-ultra-secure-and-ultra-long-secret");
             ConfigurationLoader.SetConfigValue(EnvironmentVariable.EnvironmentName, "Testing");
+            ConfigurationLoader.SetConfigValue(EnvironmentVariable.AspnetCoreUrls, "http://*:5050;https://*:5051;http://localhost:5050;https://localhost:5051");
         }
 
         private static void CreateTestDatabase()
