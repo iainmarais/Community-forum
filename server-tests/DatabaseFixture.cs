@@ -1,5 +1,5 @@
 using MySqlConnector;
-using RestApiServer.Core.Config;
+using RestApiServer.Common.Config;
 using RestApiServer.Db;
 using RestApiServer.Db.Users;
 
@@ -69,6 +69,7 @@ namespace ServerTests.testdatabase
         {
             CreateTestUser1();
             CreateTestAdminRole();
+            CreateTestServiceRequest();
         }
 
         public static void CreateTestUser1()
@@ -87,6 +88,22 @@ namespace ServerTests.testdatabase
             db.SaveChanges();
         }
 
+        public static void CreateTestServiceRequest()
+        {
+            using var db = new AppDbContext();
+            var testServiceRequest = new RequestEntry
+            {
+                RequestId = "001-01",
+                CreatedByUserId = "1",
+                CreatedDate = DateTime.Now,
+                SupportRequestTitle = "Test Support Request",
+                SupportRequestContent = "This is a test support request",
+            };
+
+            db.Add(testServiceRequest);
+            db.SaveChanges();
+        }
+
         public static void CreateTestAdminRole()
         {
             using var db = new AppDbContext();
@@ -94,7 +111,7 @@ namespace ServerTests.testdatabase
             {
                 RoleId = "0",
                 RoleName = "admin",
-                RoleType = RestAPIServer.Enums.RoleType.Admin,
+                RoleType = RestApiServer.CommonEnums.RoleType.Admin,
                 Description = "Admin role"
             };
 

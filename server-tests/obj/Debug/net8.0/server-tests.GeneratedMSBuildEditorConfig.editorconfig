@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = server_tests
-build_property.ProjectDir = C:\Users\Iain\vscode\CommunityForum\server-tests\
+build_property.ProjectDir = C:\Users\Iain\Documents\GitHub\Community-forum\server-tests\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
