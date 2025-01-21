@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestApiServer.Db;
 
@@ -11,9 +12,11 @@ using RestApiServer.Db;
 namespace RestApiServer.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250121083044_21-01-2025-UpdateDb")]
+    partial class _21012025UpdateDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,7 +120,7 @@ namespace RestApiServer.Database.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryId = "fc0bc756-87b7-43ed-8015-5f03ec737b9b",
+                            CategoryId = "e8c8cfb6-0f34-4549-b57e-dec72584bc50",
                             CategoryDescription = "General discussions for the forum.",
                             CategoryName = "General",
                             CreatedByUserId = "",
@@ -127,7 +130,7 @@ namespace RestApiServer.Database.Migrations
                         },
                         new
                         {
-                            CategoryId = "641787e5-d953-4b0c-97e7-5911e1b058b3",
+                            CategoryId = "506dde4b-8d11-4e1e-a1ba-63e455911c0e",
                             CategoryDescription = "Everything pertaining to computer and IT support can be discussed here.",
                             CategoryName = "Computer and IT Support",
                             CreatedByUserId = "",
@@ -137,7 +140,7 @@ namespace RestApiServer.Database.Migrations
                         },
                         new
                         {
-                            CategoryId = "22b80a4f-9234-4f45-8802-5f7ca24a4e21",
+                            CategoryId = "de645ee8-b0b1-4102-9fb0-26e709a0fe2c",
                             CategoryDescription = "Everything pertaining to software development can be discussed here.",
                             CategoryName = "Software development",
                             CreatedByUserId = "",

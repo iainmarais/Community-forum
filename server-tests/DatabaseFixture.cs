@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using RestApiServer.Common.Config;
 using RestApiServer.Db;
@@ -69,13 +70,6 @@ namespace ServerTests.testdatabase
 
         private static void SeedTestDatabase()
         {
-            CreateTestUser1();
-            CreateTestAdminRole();
-            CreateTestServiceRequest();
-        }
-
-        public static void CreateTestUser1()
-        {
             using var db = new AppDbContext();
             var testUser = new UserEntry
             {
@@ -85,30 +79,7 @@ namespace ServerTests.testdatabase
                 HashedPassword = BCrypt.Net.BCrypt.HashPassword("testuser1"),
                 RoleId = "0",
             };
-
-            db.Add(testUser);
-            db.SaveChanges();
-        }
-
-        public static void CreateTestServiceRequest()
-        {
-            using var db = new AppDbContext();
-            var testServiceRequest = new RequestEntry
-            {
-                RequestId = "001-01",
-                CreatedByUserId = "1",
-                CreatedDate = DateTime.Now,
-                SupportRequestTitle = "Test Support Request",
-                SupportRequestContent = "This is a test support request",
-            };
-
-            db.Add(testServiceRequest);
-            db.SaveChanges();
-        }
-
-        public static void CreateTestAdminRole()
-        {
-            using var db = new AppDbContext();
+            
             var testRole = new RoleEntry
             {
                 RoleId = "0",
@@ -117,7 +88,7 @@ namespace ServerTests.testdatabase
                 Description = "Admin role"
             };
 
-            db.Add(testRole);
+            db.AddRange(testRole, testUser);
             db.SaveChanges();
         }
 
@@ -125,7 +96,7 @@ namespace ServerTests.testdatabase
         {
 
             //Clean up test database
-            using var db = new AppDbContext();
+            using var db = new AppDbContext();            
             db.Database.EnsureDeleted();
         }
 

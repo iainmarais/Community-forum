@@ -12,7 +12,7 @@ namespace RestApiServer.Db
         [Key]
         public required string RequestId { get; set; }
         //Id of the user
-        public required string CreatedByUserId { get; set; }
+        public string CreatedByUserId { get; set; } = string.Empty;
         public required DateTime CreatedDate { get; set; }
         [StringLength(100, MinimumLength = 10)] //Don't post empty request titles. Say something or the system will drop your request
         
@@ -37,10 +37,13 @@ namespace RestApiServer.Db
         [JsonIgnore]
         public UserEntry CreatedByUser { get; set; } = new();
         [JsonIgnore]
+        [NotMapped]
         public UserEntry AssignedToUser { get; set; } = new();
         [JsonIgnore]
+        [NotMapped]
         public UserEntry ResolvedByUser { get; set; } = new();
         [JsonIgnore]
+        [NotMapped]
         public UserEntry LastUpdatedByUser { get; set; } = new(); //The last user to update this request.
     }
 }

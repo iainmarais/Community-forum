@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestApiServer.Db;
 
@@ -11,9 +12,11 @@ using RestApiServer.Db;
 namespace RestApiServer.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250121083735_21-01-2025-UpdateDb-v2")]
+    partial class _21012025UpdateDbv2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -483,12 +486,6 @@ namespace RestApiServer.Database.Migrations
                     b.HasIndex("CreatedByUserId");
 
                     b.HasIndex("RequestId");
-
-                    b.HasIndex("UserEntryUserId");
-
-                    b.HasIndex("UserEntryUserId1");
-
-                    b.HasIndex("UserEntryUserId2");
 
                     b.ToTable("Requests");
                 });

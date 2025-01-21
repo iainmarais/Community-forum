@@ -58,6 +58,8 @@ namespace RestApiServer.Db
                 NotifyUserAndShutDown();
                 //Todo: Use SQLite as a fallback? Or do we simply terminate all further execution?
             }
+            //See where keys are conflicting
+            optionsBuilder.EnableSensitiveDataLogging();
         }
 
         public static string GetConnectionString(bool usePooling = false, int minPoolSize = 0, int maxPoolSize = 100)
@@ -190,27 +192,6 @@ namespace RestApiServer.Db
                 .HasOne(s => s.CreatedByUser)
                 .WithMany(u => u.CreatedSupportRequests) // Navigation property in UserEntry for created requests
                 .HasForeignKey(s => s.CreatedByUserId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            // One-to-many relationship for AssignedToUserId (User can be assigned many requests)
-            modelBuilder.Entity<RequestEntry>()
-                .HasOne(s => s.AssignedToUser)
-                .WithMany(u => u.AssignedSupportRequests) // Navigation property in UserEntry for assigned requests
-                .HasForeignKey(s => s.AssignedToUserId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            // One-to-many relationship for ResolvedByUserId (User can resolve many requests)
-            modelBuilder.Entity<RequestEntry>()
-                .HasOne(s => s.ResolvedByUser)
-                .WithMany(u => u.ResolvedSupportRequests) // Navigation property in UserEntry for resolved requests
-                .HasForeignKey(s => s.ResolvedByUserId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            // One-to-many relationship for LastUpdatedByUserId (User can update many requests)
-            modelBuilder.Entity<RequestEntry>()
-                .HasOne(s => s.LastUpdatedByUser)
-                .WithMany(u => u.UpdatedSupportRequests) // Navigation property in UserEntry for updated requests
-                .HasForeignKey(s => s.LastUpdatedByUserId)
                 .OnDelete(DeleteBehavior.Restrict);
                 
             //User permissions

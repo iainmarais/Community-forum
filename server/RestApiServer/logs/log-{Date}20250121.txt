@@ -1,0 +1,106 @@
+2025-01-21 10:26:53.853 +02:00 [INF] Starting up... Please be patient.
+2025-01-21 10:26:54.947 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-21 10:26:54.965 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2025-01-21 10:30:37.744 +02:00 [INF] Starting up... Please be patient.
+2025-01-21 10:30:38.727 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-21 10:30:38.958 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2025-01-21 10:32:19.598 +02:00 [INF] Starting up... Please be patient.
+2025-01-21 10:32:20.227 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-21 10:32:20.232 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2025-01-21 10:37:29.976 +02:00 [INF] Starting up... Please be patient.
+2025-01-21 10:37:30.693 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-21 10:37:30.697 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2025-01-21 10:44:15.839 +02:00 [INF] Starting up... Please be patient.
+2025-01-21 10:44:16.336 +02:00 [FTL] Failed to build web app.
+ The host was aborted.
+2025-01-21 10:44:16.339 +02:00 [FTL] Server startup failed.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at RestApiServer.Server.BuildWebApp(WebApplicationBuilder builder) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\BuildWebApp.cs:line 22
+   at RestApiServer.Server.StartServer(String[] args) in C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer\server.cs:line 62
+2025-01-21 11:21:29.416 +02:00 [INF] Starting up... Please be patient.
+2025-01-21 11:21:38.257 +02:00 [INF] Creating general policy for Content: Create boards of type Content.
+2025-01-21 11:21:38.260 +02:00 [INF] Creating general policy for Content: Create threads of type Content.
+2025-01-21 11:21:38.261 +02:00 [INF] Creating general policy for Content: Create topics of type Content.
+2025-01-21 11:21:38.262 +02:00 [INF] Creating general policy for Content: Delete boards of type Content.
+2025-01-21 11:21:38.263 +02:00 [INF] Creating general policy for Content: Delete items of type Content.
+2025-01-21 11:21:38.265 +02:00 [INF] Creating general policy for Content: Delete posts of type Content.
+2025-01-21 11:21:38.266 +02:00 [INF] Creating general policy for Content: Delete threads of type Content.
+2025-01-21 11:21:38.268 +02:00 [INF] Creating general policy for Content: Delete topics of type Content.
+2025-01-21 11:21:38.270 +02:00 [INF] Creating general policy for Content: Post audio clips of type Content.
+2025-01-21 11:21:38.271 +02:00 [INF] Creating general policy for Content: Post images of type Content.
+2025-01-21 11:21:38.273 +02:00 [INF] Creating general policy for Content: Post videos of type Content.
+2025-01-21 11:21:38.275 +02:00 [INF] Creating general policy for Content: Update boards of type Content.
+2025-01-21 11:21:38.294 +02:00 [INF] Creating general policy for Content: Update posts of type Content.
+2025-01-21 11:21:38.296 +02:00 [INF] Creating general policy for Content: Update threads of type Content.
+2025-01-21 11:21:38.298 +02:00 [INF] Creating general policy for Content: Update topics of type Content.
+2025-01-21 11:21:38.300 +02:00 [INF] Creating special policy for Development: View areas under construction of type Development.
+2025-01-21 11:21:38.302 +02:00 [INF] Creating general policy for Interactive: Create boards of type Interactivity.
+2025-01-21 11:21:38.304 +02:00 [INF] Creating general policy for Interactive: Create posts of type Interactivity.
+2025-01-21 11:21:38.312 +02:00 [INF] Creating general policy for Interactive: Create threads of type Interactivity.
+2025-01-21 11:21:38.313 +02:00 [INF] Creating general policy for Interactive: Delete boards of type Interactivity.
+2025-01-21 11:21:38.315 +02:00 [INF] Creating general policy for Interactive: Delete own posts of type Interactivity.
+2025-01-21 11:21:38.316 +02:00 [INF] Creating general policy for Interactive: Delete posts of type Interactivity.
+2025-01-21 11:21:38.317 +02:00 [INF] Creating general policy for Interactive: Delete threads of type Interactivity.
+2025-01-21 11:21:38.318 +02:00 [INF] Creating general policy for Interactive: Edit boards of type Interactivity.
+2025-01-21 11:21:38.320 +02:00 [INF] Creating general policy for Interactive: Edit own posts of type Interactivity.
+2025-01-21 11:21:38.321 +02:00 [INF] Creating general policy for Interactive: Edit posts of type Interactivity.
+2025-01-21 11:21:38.322 +02:00 [INF] Creating general policy for Interactive: Edit threads of type Interactivity.
+2025-01-21 11:21:38.323 +02:00 [INF] Creating general policy for Interactive: Reply to posts of type Interactivity.
+2025-01-21 11:21:38.324 +02:00 [INF] Creating general policy for Interactive: Upload images of type Interactivity.
+2025-01-21 11:21:38.330 +02:00 [INF] Creating general policy for Interactive: Vote in polls of type Interactivity.
+2025-01-21 11:21:38.333 +02:00 [INF] Creating general policy for Visibility: View banned users of type Visibility.
+2025-01-21 11:21:38.334 +02:00 [INF] Creating general policy for Visibility: View deleted posts of type Visibility.
+2025-01-21 11:21:38.336 +02:00 [INF] Creating general policy for Visibility: View hidden content of type Visibility.
+2025-01-21 11:21:38.338 +02:00 [INF] Creating general policy for Visibility: View user activity of type Visibility.
+2025-01-21 11:21:38.534 +02:00 [INF] User profile is available. Using 'C:\Users\Iain\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-21 11:21:38.762 +02:00 [INF] Now listening on: https://localhost:5051
+2025-01-21 11:21:38.764 +02:00 [INF] Now listening on: http://localhost:5050
+2025-01-21 11:21:38.790 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-21 11:21:38.793 +02:00 [INF] Hosting environment: Development
+2025-01-21 11:21:38.808 +02:00 [INF] Content root path: C:\Users\Iain\Documents\GitHub\Community-forum\server\RestApiServer
