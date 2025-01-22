@@ -47,6 +47,11 @@ namespace RestApiServer.Endpoints.Services.Admin
                                         User = u
                                     }
                                 };
+            //Throw an exception if the query is null 
+            if (requestsQuery == null)
+            {
+                throw ClientInducedException.MessageOnly("No requests found.");
+            }
 
             // Filter the results by the user ID if one is provided.
             if (!string.IsNullOrEmpty(userId))
@@ -111,6 +116,9 @@ namespace RestApiServer.Endpoints.Services.Admin
                 Summary = requestsSummary
             };
         }
+
+        //Todo: rewrite (or create new versions from the ground up of) these methods and create tests for them. 
+        //Note to self: I should try to avoid creating the conditions overcomplicated code. 
 
         /// <summary>
         /// Creates a support request.
