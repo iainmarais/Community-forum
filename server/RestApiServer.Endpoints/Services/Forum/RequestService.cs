@@ -20,13 +20,15 @@ namespace RestApiServer.Endpoints.Services.Forum
                 throw ClientInducedException.MessageOnly("User not found in database");
             }
             var requestsQuery = from r in db.Requests 
-                                where user.UserId == r.CreatedByUserId
+                                join urm in db.UserRequestMappings on r.RequestId equals urm.RequestId
+                                join u in db.Users on urm.UserId equals u.UserId
+                                where urm.UserId == userId
                                 select new RequestBasicInfo() 
                                 {
                                     Request = r,
                                     CreatedByUser = new UserBasicInfo() 
                                     {
-                                        User = r.CreatedByUser
+                                        User = u
                                     }
                                 };
 
@@ -34,8 +36,8 @@ namespace RestApiServer.Endpoints.Services.Forum
             {
                 requestsQuery = requestsQuery.Where(r => r.Request.SupportRequestTitle.ToLower().Contains(searchTerm) ||
                                                         r.Request.SupportRequestContent.ToLower().Contains(searchTerm) ||
-                                                        r.Request.CreatedByUser.Username.ToLower().Contains(searchTerm) ||
-                                                        r.Request.CreatedByUser.EmailAddress.ToLower().Contains(searchTerm));
+                                                        r.CreatedByUser.User.Username.ToLower().Contains(searchTerm) ||
+                                                        r.CreatedByUser.User.EmailAddress.ToLower().Contains(searchTerm));
             }
 
             var filteredTotal = await requestsQuery.CountAsync();
@@ -45,20 +47,22 @@ namespace RestApiServer.Endpoints.Services.Forum
 
             var totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
 
+            var summary = await db.UserRequestMappings
+                .GroupBy(urm => 1)
+                .Select(g => new RequestSummary()
+                {
+                    TotalRequests = filteredTotal,
+                    NumResolvedRequests = g.Count(urm => urm.IsResolved),
+                    NumPendingRequests = g.Count(urm => !urm.IsResolved)
+                }).FirstOrDefaultAsync() ?? new RequestSummary();
+
             return new PaginatedData<List<RequestBasicInfo>, RequestSummary>()
             {
                 Rows = requestRows,
                 PageNumber = pageNumber,
                 RowsPerPage = rowsPerPage,
                 TotalPages = totalPages,
-                Summary = new()
-                {
-                    TotalRequests = filteredTotal,
-                    NumResolvedRequests = requestsQuery.Where(r => r.Request.IsResolved)
-                                                       .Count(),
-                    NumPendingRequests = requestsQuery.Where(r => !r.Request.IsResolved)
-                                                      .Count()
-                }
+                Summary = summary
             };
         }
     }

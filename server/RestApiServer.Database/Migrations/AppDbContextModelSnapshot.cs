@@ -117,7 +117,7 @@ namespace RestApiServer.Database.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryId = "fc0bc756-87b7-43ed-8015-5f03ec737b9b",
+                            CategoryId = "f260aadd-21ae-4782-9291-df3e8dda3155",
                             CategoryDescription = "General discussions for the forum.",
                             CategoryName = "General",
                             CreatedByUserId = "",
@@ -127,7 +127,7 @@ namespace RestApiServer.Database.Migrations
                         },
                         new
                         {
-                            CategoryId = "641787e5-d953-4b0c-97e7-5911e1b058b3",
+                            CategoryId = "ef58d5dc-98f3-4b2f-8a61-7782507c28cd",
                             CategoryDescription = "Everything pertaining to computer and IT support can be discussed here.",
                             CategoryName = "Computer and IT Support",
                             CreatedByUserId = "",
@@ -137,7 +137,7 @@ namespace RestApiServer.Database.Migrations
                         },
                         new
                         {
-                            CategoryId = "22b80a4f-9234-4f45-8802-5f7ca24a4e21",
+                            CategoryId = "fc53d84c-38bd-4899-83c7-14e24fc450c1",
                             CategoryDescription = "Everything pertaining to software development can be discussed here.",
                             CategoryName = "Software development",
                             CreatedByUserId = "",
@@ -420,10 +420,11 @@ namespace RestApiServer.Database.Migrations
                     b.Property<string>("RequestId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("AssignedToUserId")
-                        .HasColumnType("longtext");
+                    b.Property<string>("AssignedToUserUserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
-                    b.Property<string>("CreatedByUserId")
+                    b.Property<string>("CreatedByUserUserId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
@@ -442,14 +443,9 @@ namespace RestApiServer.Database.Migrations
                     b.Property<bool>("IsMarkedForDelete")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool>("IsResolved")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastUpdatedByUserId")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ResolvedByUserId")
-                        .HasColumnType("longtext");
+                    b.Property<string>("ResolvedByUserUserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("SupportRequestContent")
                         .IsRequired()
@@ -469,26 +465,15 @@ namespace RestApiServer.Database.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UserEntryUserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("UserEntryUserId1")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("UserEntryUserId2")
-                        .HasColumnType("varchar(255)");
-
                     b.HasKey("RequestId");
 
-                    b.HasIndex("CreatedByUserId");
+                    b.HasIndex("AssignedToUserUserId");
+
+                    b.HasIndex("CreatedByUserUserId");
 
                     b.HasIndex("RequestId");
 
-                    b.HasIndex("UserEntryUserId");
-
-                    b.HasIndex("UserEntryUserId1");
-
-                    b.HasIndex("UserEntryUserId2");
+                    b.HasIndex("ResolvedByUserUserId");
 
                     b.ToTable("Requests");
                 });
@@ -993,6 +978,43 @@ namespace RestApiServer.Database.Migrations
                     b.ToTable("UserRefreshTokens");
                 });
 
+            modelBuilder.Entity("RestApiServer.Db.UserRequestMapping.UserRequestMappingEntry", b =>
+                {
+                    b.Property<string>("UserMappingId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime>("DateAssigned")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsAssigned")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsClosed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsCreator")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsResolved")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("RequestId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("UserMappingId");
+
+                    b.HasIndex("RequestId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRequestMappings");
+                });
+
             modelBuilder.Entity("RestApiServer.Db.UserSessionTokenEntry", b =>
                 {
                     b.Property<string>("UserSessionTokenId")
@@ -1153,25 +1175,29 @@ namespace RestApiServer.Database.Migrations
 
             modelBuilder.Entity("RestApiServer.Db.RequestEntry", b =>
                 {
-                    b.HasOne("RestApiServer.Db.Users.UserEntry", "CreatedByUser")
-                        .WithMany("CreatedSupportRequests")
-                        .HasForeignKey("CreatedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                    b.HasOne("RestApiServer.Db.Users.UserEntry", "AssignedToUser")
+                        .WithMany()
+                        .HasForeignKey("AssignedToUserUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RestApiServer.Db.Users.UserEntry", null)
-                        .WithMany("AssignedSupportRequests")
-                        .HasForeignKey("UserEntryUserId");
+                    b.HasOne("RestApiServer.Db.Users.UserEntry", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("RestApiServer.Db.Users.UserEntry", null)
-                        .WithMany("ResolvedSupportRequests")
-                        .HasForeignKey("UserEntryUserId1");
+                    b.HasOne("RestApiServer.Db.Users.UserEntry", "ResolvedByUser")
+                        .WithMany()
+                        .HasForeignKey("ResolvedByUserUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("RestApiServer.Db.Users.UserEntry", null)
-                        .WithMany("UpdatedSupportRequests")
-                        .HasForeignKey("UserEntryUserId2");
+                    b.Navigation("AssignedToUser");
 
                     b.Navigation("CreatedByUser");
+
+                    b.Navigation("ResolvedByUser");
                 });
 
             modelBuilder.Entity("RestApiServer.Db.RolePermissionEntry", b =>
@@ -1261,6 +1287,25 @@ namespace RestApiServer.Database.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("RestApiServer.Db.UserRequestMapping.UserRequestMappingEntry", b =>
+                {
+                    b.HasOne("RestApiServer.Db.RequestEntry", "Request")
+                        .WithMany("UserRequestMappings")
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("RestApiServer.Db.Users.UserEntry", "User")
+                        .WithMany("UserRequestMappings")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Request");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("RestApiServer.Db.UserSessionTokenEntry", b =>
                 {
                     b.HasOne("RestApiServer.Db.Users.UserEntry", "User")
@@ -1287,6 +1332,11 @@ namespace RestApiServer.Database.Migrations
                     b.Navigation("RolePermissions");
                 });
 
+            modelBuilder.Entity("RestApiServer.Db.RequestEntry", b =>
+                {
+                    b.Navigation("UserRequestMappings");
+                });
+
             modelBuilder.Entity("RestApiServer.Db.RoleEntry", b =>
                 {
                     b.Navigation("RolePermissions");
@@ -1309,23 +1359,17 @@ namespace RestApiServer.Database.Migrations
 
             modelBuilder.Entity("RestApiServer.Db.Users.UserEntry", b =>
                 {
-                    b.Navigation("AssignedSupportRequests");
-
-                    b.Navigation("CreatedSupportRequests");
-
                     b.Navigation("GalleryItems");
-
-                    b.Navigation("ResolvedSupportRequests");
 
                     b.Navigation("ThreadsCreated");
 
                     b.Navigation("TopicsCreated");
 
-                    b.Navigation("UpdatedSupportRequests");
-
                     b.Navigation("UserPermissions");
 
                     b.Navigation("UserRefreshTokens");
+
+                    b.Navigation("UserRequestMappings");
 
                     b.Navigation("UserSessionTokens");
                 });

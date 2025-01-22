@@ -8,6 +8,7 @@ using RestApiServer.Database.Utils;
 using Serilog;
 using MySqlConnector;
 using RestApiServer.Database.Db;
+using RestApiServer.Db.UserRequestMapping;
 
 namespace RestApiServer.Db
 {
@@ -34,6 +35,7 @@ namespace RestApiServer.Db
         public DbSet<ChatEntry> Chats { get; set; } = null!;
         public DbSet<BannedUserEntry> BannedUsers { get; set; } = null!;
         public DbSet<RequestEntry> Requests { get; set; } = null!;
+        public DbSet<UserRequestMappingEntry> UserRequestMappings { get; set; } = null!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -186,12 +188,22 @@ namespace RestApiServer.Db
             .WithOne(b => b.Category)
             .HasForeignKey(b => b.CategoryId);
 
-            //Support request foreign key relations
-            // One-to-many relationship for CreatedByUserId (User can create many requests)
-            modelBuilder.Entity<RequestEntry>()
-                .HasOne(s => s.CreatedByUser)
-                .WithMany(u => u.CreatedSupportRequests) // Navigation property in UserEntry for created requests
-                .HasForeignKey(s => s.CreatedByUserId)
+            //User-Request mappings
+            modelBuilder.Entity<UserRequestMappingEntry>()
+                .HasKey(urm => urm.UserMappingId); //Primary key
+
+            //URM User
+            modelBuilder.Entity<UserRequestMappingEntry>()
+                .HasOne(urm => urm.User)
+                .WithMany(u => u.UserRequestMappings)
+                .HasForeignKey(urm => urm.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //URM Request
+            modelBuilder.Entity<UserRequestMappingEntry>()
+                .HasOne(urm => urm.Request)
+                .WithMany(r => r.UserRequestMappings)
+                .HasForeignKey(urm => urm.RequestId)
                 .OnDelete(DeleteBehavior.Restrict);
                 
             //User permissions

@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using RestApiServer.Db.UserRequestMapping;
 
 namespace RestApiServer.Db.Users
 {
@@ -49,13 +50,8 @@ namespace RestApiServer.Db.Users
         [JsonIgnore]
         public List<UserSessionTokenEntry> UserSessionTokens { get; set; } = new();
         [JsonIgnore]
-        public List<RequestEntry> CreatedSupportRequests { get; set; } = new();
-        [JsonIgnore]
-        public List<RequestEntry> AssignedSupportRequests { get; set; } = new();
-        [JsonIgnore]
-        public List<RequestEntry> UpdatedSupportRequests { get; set; } = new();
-        [JsonIgnore]
-        public List<RequestEntry> ResolvedSupportRequests { get; set; } = new();
+        public List<UserRequestMappingEntry> UserRequestMappings { get; set; } = new();
+
 
         //Guest placeholder user
         public static UserEntry CreateDefaultGuestUser()

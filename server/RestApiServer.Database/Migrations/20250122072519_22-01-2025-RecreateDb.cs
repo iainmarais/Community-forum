@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RestApiServer.Database.Migrations
 {
     /// <inheritdoc />
-    public partial class _20012025InitialCreate : Migration
+    public partial class _22012025RecreateDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -354,54 +354,47 @@ namespace RestApiServer.Database.Migrations
                 {
                     RequestId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatedByUserId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     SupportRequestTitle = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     SupportRequestContent = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AssignedToUserId = table.Column<string>(type: "varchar(255)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ResolvedByUserId = table.Column<string>(type: "varchar(255)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastUpdatedByUserId = table.Column<string>(type: "varchar(255)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsResolved = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     DateResolved = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    IsMarkedForDelete = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DateMarkedForDelete = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     TriageStatus = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TriageType = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedByUserUserId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    AssignedToUserUserId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ResolvedByUserUserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Requests", x => x.RequestId);
                     table.ForeignKey(
-                        name: "FK_Requests_Users_AssignedToUserId",
-                        column: x => x.AssignedToUserId,
+                        name: "FK_Requests_Users_AssignedToUserUserId",
+                        column: x => x.AssignedToUserUserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Requests_Users_CreatedByUserId",
-                        column: x => x.CreatedByUserId,
+                        name: "FK_Requests_Users_CreatedByUserUserId",
+                        column: x => x.CreatedByUserUserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Requests_Users_LastUpdatedByUserId",
-                        column: x => x.LastUpdatedByUserId,
+                        name: "FK_Requests_Users_ResolvedByUserUserId",
+                        column: x => x.ResolvedByUserUserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Requests_Users_ResolvedByUserId",
-                        column: x => x.ResolvedByUserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -528,6 +521,40 @@ namespace RestApiServer.Database.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "UserRequestMappings",
+                columns: table => new
+                {
+                    UserMappingId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    RequestId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsCreator = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IsAssigned = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IsResolved = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IsClosed = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DateAssigned = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserRequestMappings", x => x.UserMappingId);
+                    table.ForeignKey(
+                        name: "FK_UserRequestMappings_Requests_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "Requests",
+                        principalColumn: "RequestId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_UserRequestMappings_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Threads",
                 columns: table => new
                 {
@@ -606,9 +633,9 @@ namespace RestApiServer.Database.Migrations
                 columns: new[] { "CategoryId", "CategoryDescription", "CategoryName", "CreatedByUserId", "DateMarkedForDelete", "IsImportant", "IsMarkedForDelete" },
                 values: new object[,]
                 {
-                    { "0da80bb0-7169-4984-be86-24a060637641", "Everything pertaining to computer and IT support can be discussed here.", "Computer and IT Support", "", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false },
-                    { "5a255d76-04af-4938-9e0c-52bac5e753f4", "Everything pertaining to software development can be discussed here.", "Software development", "", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false },
-                    { "a2e9616e-9689-4877-a41d-fb7bd60c48ca", "General discussions for the forum.", "General", "", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false }
+                    { "ef58d5dc-98f3-4b2f-8a61-7782507c28cd", "Everything pertaining to computer and IT support can be discussed here.", "Computer and IT Support", "", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false },
+                    { "f260aadd-21ae-4782-9291-df3e8dda3155", "General discussions for the forum.", "General", "", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false },
+                    { "fc53d84c-38bd-4899-83c7-14e24fc450c1", "Everything pertaining to software development can be discussed here.", "Software development", "", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false }
                 });
 
             migrationBuilder.InsertData(
@@ -692,19 +719,14 @@ namespace RestApiServer.Database.Migrations
                 column: "ThreadId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Requests_AssignedToUserId",
+                name: "IX_Requests_AssignedToUserUserId",
                 table: "Requests",
-                column: "AssignedToUserId");
+                column: "AssignedToUserUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Requests_CreatedByUserId",
+                name: "IX_Requests_CreatedByUserUserId",
                 table: "Requests",
-                column: "CreatedByUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Requests_LastUpdatedByUserId",
-                table: "Requests",
-                column: "LastUpdatedByUserId");
+                column: "CreatedByUserUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Requests_RequestId",
@@ -712,9 +734,9 @@ namespace RestApiServer.Database.Migrations
                 column: "RequestId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Requests_ResolvedByUserId",
+                name: "IX_Requests_ResolvedByUserUserId",
                 table: "Requests",
-                column: "ResolvedByUserId");
+                column: "ResolvedByUserUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RolePermissions_PermissionId",
@@ -768,6 +790,16 @@ namespace RestApiServer.Database.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_UserRequestMappings_RequestId",
+                table: "UserRequestMappings",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserRequestMappings_UserId",
+                table: "UserRequestMappings",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserSessionTokens_AssignedToUserId",
                 table: "UserSessionTokens",
                 column: "AssignedToUserId");
@@ -804,9 +836,6 @@ namespace RestApiServer.Database.Migrations
                 name: "Posts");
 
             migrationBuilder.DropTable(
-                name: "Requests");
-
-            migrationBuilder.DropTable(
                 name: "RolePermissions");
 
             migrationBuilder.DropTable(
@@ -814,6 +843,9 @@ namespace RestApiServer.Database.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserRefreshTokens");
+
+            migrationBuilder.DropTable(
+                name: "UserRequestMappings");
 
             migrationBuilder.DropTable(
                 name: "UserSessionTokens");
@@ -829,6 +861,9 @@ namespace RestApiServer.Database.Migrations
 
             migrationBuilder.DropTable(
                 name: "SystemPermissions");
+
+            migrationBuilder.DropTable(
+                name: "Requests");
 
             migrationBuilder.DropTable(
                 name: "Topics");

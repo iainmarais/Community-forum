@@ -35,7 +35,9 @@ namespace RestApiServer.Endpoints.Services.Admin
             }
 
             var requestsQuery = from r in db.Requests
-                                join u in db.Users on r.CreatedByUserId equals u.UserId
+                                join urm in db.UserRequestMappings on r.RequestId equals urm.RequestId
+                                join u in db.Users on urm.UserId equals u.UserId
+                                where urm.IsCreator == true && (string.IsNullOrEmpty(userId) || urm.UserId == userId)
                                 select new RequestBasicInfo
                                 {
                                     Request = r,
@@ -57,7 +59,7 @@ namespace RestApiServer.Endpoints.Services.Admin
                 }
 
                 requestsQuery = requestsQuery
-                    .Where(r => r.Request.CreatedByUserId == user.UserId);
+                    .Where(r => r.CreatedByUser.User.UserId == user.UserId);
             }
 
             // Filter the results by the search term if one is provided.
@@ -66,14 +68,10 @@ namespace RestApiServer.Endpoints.Services.Admin
                 searchTerm = searchTerm.ToLower();
 
                 requestsQuery = requestsQuery
-                    .Where(r => r.Request.CreatedByUser.Username.ToLower().Contains(searchTerm) ||
-                              r.Request.CreatedByUser.EmailAddress.ToLower().Contains(searchTerm) ||
-                              r.Request.AssignedToUser.Username.ToLower().Contains(searchTerm) ||
-                              r.Request.AssignedToUser.EmailAddress.ToLower().Contains(searchTerm) ||
-                              r.Request.LastUpdatedByUser.Username.ToLower().Contains(searchTerm) ||
-                              r.Request.LastUpdatedByUser.EmailAddress.ToLower().Contains(searchTerm) ||
-                              r.Request.ResolvedByUser.Username.ToLower().Contains(searchTerm) ||
-                              r.Request.ResolvedByUser.EmailAddress.ToLower().Contains(searchTerm));
+                    .Where(r => r.CreatedByUser.User.Username.ToLower().Contains(searchTerm) ||
+                              r.CreatedByUser.User.EmailAddress.ToLower().Contains(searchTerm) ||
+                              r.CreatedByUser.User.Username.ToLower().Contains(searchTerm) ||
+                              r.CreatedByUser.User.EmailAddress.ToLower().Contains(searchTerm));
             }
 
             // Get the total number of filtered records.
@@ -90,6 +88,18 @@ namespace RestApiServer.Endpoints.Services.Admin
             // Calculate the total number of pages.
             var totalPages = (filteredTotal + rowsPerPage - 1) / rowsPerPage;
 
+            //Calculate the summary of the requests prior to returning it to the caller.
+            var requestsSummary = await db.Requests
+                .GroupBy(r => 1)
+                .Select(g => new RequestSummary
+                {
+                    TotalRequests = g.Count(),
+                    NumAssignedRequests = g.Count(r => r.AssignedToUser != null),
+                    NumResolvedRequests = g.Count(r => r.ResolvedByUser != null),
+                    NumPendingRequests = g.Count(r => r.AssignedToUser == null)
+                })
+                .FirstOrDefaultAsync() ?? new RequestSummary();
+
             // Return the data to the caller in a paginated format.
             return new PaginatedData<List<RequestBasicInfo>, RequestSummary>()
             {
@@ -97,17 +107,7 @@ namespace RestApiServer.Endpoints.Services.Admin
                 PageNumber = pageNumber,
                 RowsPerPage = rowsPerPage,
                 TotalPages = totalPages,
-                Summary = new()
-                {
-                    // The total number of requests that the administrator can see.
-                    TotalRequests = filteredTotal,
-                    // The number of requests that are assigned to another user.
-                    NumAssignedRequests = requestsQuery.Count(r => r.Request.AssignedToUser != null),
-                    // The number of requests that have been resolved.
-                    NumResolvedRequests = requestsQuery.Count(r => r.Request.ResolvedByUser != null),
-                    // The number of requests that are pending, meaning they have not been assigned to anyone yet.
-                    NumPendingRequests = requestsQuery.Count(r => r.Request.AssignedToUser == null)
-                }
+                Summary = requestsSummary
             };
         }
 
@@ -149,7 +149,6 @@ namespace RestApiServer.Endpoints.Services.Admin
                 SupportRequestContent = requestContent,
                 SupportRequestTitle = requestTitle,
                 RequestId = DbUtils.GenerateUuid(),
-                CreatedByUserId = adminUserId
             };
 
             // Add the support request to the database and save the changes.
@@ -190,7 +189,6 @@ namespace RestApiServer.Endpoints.Services.Admin
             // Update the request.
             request.TriageStatus = triageStatus;
             request.TriageType = triageType;
-            request.LastUpdatedByUserId = userId;
             request.DateUpdated = DateTime.UtcNow;
 
             // Save the changes.
@@ -234,7 +232,6 @@ namespace RestApiServer.Endpoints.Services.Admin
                 throw ClientInducedException.MessageOnly("Request not found.");
             }
 
-            requestToAssign.AssignedToUserId = userToAssignTo.UserId;
             requestToAssign.DateUpdated = DateTime.UtcNow;
 
             await dbContext.SaveChangesAsync();
