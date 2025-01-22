@@ -31,12 +31,12 @@ namespace RestApiServer.Db
         public List<UserRequestMappingEntry> UserRequestMappings { get; set; } = new();
         [JsonIgnore]
         [NotMapped]
-        public UserEntry CreatedByUser { get; set; } = new();
+        public UserEntry? CreatedByUser { get; set; } = null!;
         [JsonIgnore]
         [NotMapped]
-        public UserEntry AssignedToUser { get; set; } = new();
+        public UserEntry? AssignedToUser { get; set; } = null!;
         [JsonIgnore]
         [NotMapped]
-        public UserEntry ResolvedByUser { get; set; } = new();
+        public UserEntry? ResolvedByUser { get; set; } = null!;
     }
 }
