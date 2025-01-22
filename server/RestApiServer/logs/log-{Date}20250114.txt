@@ -1,7 +1,0 @@
-2025-01-14 12:36:44.281 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - null null
-2025-01-14 12:36:44.329 +02:00 [INF] CORS policy execution successful.
-2025-01-14 12:36:44.364 +02:00 [INF] Authorization failed. These requirements were not met:
-RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
-2025-01-14 12:36:44.378 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
-2025-01-14 12:36:44.528 +02:00 [INF] GET 401 /v1/adminportal/appstate "00:00:00.0221762"ms  Unauthorized, body: 
-2025-01-14 12:36:45.356 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5051/v1/adminportal/appstate - 401 null application/json; charset=utf-8 1077.1657ms
