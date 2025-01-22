@@ -27,12 +27,16 @@ namespace RestApiServer.Db
         public TriageType TriageType { get; set; } = TriageType.Unspecified; //Default
         //Navigation props
         [JsonIgnore]
+        [NotMapped] //Experience and evidence tells me the [NotMapped] directive is not necessary for collections, but I'm not taking any chances now.
         public List<UserRequestMappingEntry> UserRequestMappings { get; set; } = new();
         [JsonIgnore]
+        [NotMapped]
         public UserEntry CreatedByUser { get; set; } = new();
         [JsonIgnore]
+        [NotMapped]
         public UserEntry AssignedToUser { get; set; } = new();
         [JsonIgnore]
+        [NotMapped]
         public UserEntry ResolvedByUser { get; set; } = new();
     }
 }
