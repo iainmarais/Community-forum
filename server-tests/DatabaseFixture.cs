@@ -107,6 +107,8 @@ namespace ServerTests.testdatabase
             };
             db.AddRange(testAdminRole, testUserRole, testUser, testUser2);
             db.SaveChanges();
+
+            //Test case for creating service/feature requests to see if it works properly.
         }
 
         public void Dispose()

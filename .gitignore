@@ -15,6 +15,7 @@ node_modules/
 target/
 bin/
 obj/
+logs/
 
 # Compiled Code and Binaries
 *.o
