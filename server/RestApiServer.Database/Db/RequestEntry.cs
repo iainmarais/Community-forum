@@ -19,8 +19,6 @@ namespace RestApiServer.Db
         public string SupportRequestTitle { get; set; } = string.Empty;
         [StringLength(1000, MinimumLength =20)] //No posting of meaningless requests to the system. 20 chars minimum should do to prevent stupid messages being posted.
         public string SupportRequestContent { get; set; } = string.Empty;
-        public DateTime? DateUpdated { get; set; }
-        public DateTime? DateResolved { get; set; }
         public bool IsMarkedForDelete { get; set; } = false;
         public DateTime DateMarkedForDelete { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter<TriageStatus>))]

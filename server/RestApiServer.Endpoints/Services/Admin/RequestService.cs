@@ -9,6 +9,7 @@ using RestApiServer.Dto.App;
 
 namespace RestApiServer.Endpoints.Services.Admin
 {
+    //Todo: rewrite this to use the new structures of the request entry, user entry and user-request mapping entry.
     public class RequestService
     {
         /// <summary>
@@ -189,7 +190,6 @@ namespace RestApiServer.Endpoints.Services.Admin
             // Update the request.
             request.TriageStatus = triageStatus;
             request.TriageType = triageType;
-            request.DateUpdated = DateTime.UtcNow;
 
             // Save the changes.
             await db.SaveChangesAsync();
@@ -231,8 +231,6 @@ namespace RestApiServer.Endpoints.Services.Admin
             {
                 throw ClientInducedException.MessageOnly("Request not found.");
             }
-
-            requestToAssign.DateUpdated = DateTime.UtcNow;
 
             await dbContext.SaveChangesAsync();
 

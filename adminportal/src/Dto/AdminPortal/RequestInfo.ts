@@ -2,23 +2,33 @@ import type { TriageStatus, TriageType } from "./UpdateRequestTriageStatusReques
 import type { UserBasicInfo, UserEntry } from "./UserInfo";
 
 export type RequestEntry = {
+    requestId: string;
+    createdDate: Date;
+    supportRequestTitle: string;
+    supportRequestContent: string;
+    dateUpdated: Date;
+    dateResolved: Date;
+    isMarkedForDelete: boolean;
+    dateMarkedForDelete: Date;
+    triageStatus: TriageStatus;
+    triageType: TriageType;
+    userRequestMappings: UserRequestMappingEntry[];
+    createdByUser: UserEntry;
+    assignedToUser: UserEntry;
+    resolvedByUser: UserEntry;
+}
+
+export type UserRequestMappingEntry = {
+    UserMappingId: string,
+    user: UserEntry,
+    userId: string,
+    request: RequestEntry,
     requestId: string,
-    createdByUserId: string,
-    createdDate: Date,
-    supportRequestTitle: string,
-    supportRequestContent: string,
-    assignedToUserId: string | null,
-    resolvedByUserId: string | null,
-    lastUpdatedByUserId: string | null,
+    isCreator: boolean,
+    isAssigned: boolean,
     isResolved: boolean,
-    dateUpdated: Date | null,
-    dateResolved: Date | null,
-    triageStatus: TriageStatus,
-    triageType: TriageType,
-    createdByUser: UserEntry,
-    assignedToUser: UserEntry,
-    resolvedByUser: UserEntry,
-    lastUpdatedByUser: UserEntry
+    isClosed: boolean,
+    dateAssigned: Date
 }
 
 export type RequestBasicInfo = {

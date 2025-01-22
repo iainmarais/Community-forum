@@ -11,8 +11,6 @@ namespace RestApiServer.Dto.Forum
     public class RequestBasicInfo
     {
         public required RequestEntry Request {get; set; }
-        //Needed to filter out any requests where CreatedByUserId is the same as CreatedByUser.UserId.
-        public required UserBasicInfo CreatedByUser { get; set; }
     }
     public class RequestSummary
     {

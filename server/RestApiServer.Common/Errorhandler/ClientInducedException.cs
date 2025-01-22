@@ -55,6 +55,8 @@ namespace RestApiServer.Core.Errorhandler
         public enum InputValidationTargetId
         {
             Thread_Name_Input,
+            Request_Title_Input,
+            Request_Content_Input
         }
         public InputValidationTargetId Id { get; }
         public string Name { get; }
@@ -64,5 +66,7 @@ namespace RestApiServer.Core.Errorhandler
             Name = name;
         }
         public static InputValidationTarget ThreadNameEmpty => new InputValidationTarget(InputValidationTargetId.Thread_Name_Input, "Thread name");
+        public static InputValidationTarget RequestTitleEmpty => new InputValidationTarget(InputValidationTargetId.Request_Title_Input, "Request title");
+        public static InputValidationTarget RequestContentEmpty => new InputValidationTarget(InputValidationTargetId.Request_Content_Input, "Request content");
     }
 }

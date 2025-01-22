@@ -62,8 +62,6 @@ onMounted(() => {
                                         <th>Creator</th>
                                         <th>Title</th>
                                         <th>Message</th>
-                                        <th>Last updated</th>
-                                        <th>Resolution status</th>
                                         <th colspan="2">Triage</th>
                                     </tr>
                                 </thead>
@@ -73,8 +71,6 @@ onMounted(() => {
                                         <td>{{ element.createdByUser.user.username }}</td>
                                         <td>{{ element.request.supportRequestTitle }}</td>
                                         <td>{{ element.request.supportRequestContent }}</td>
-                                        <td>{{ element.request.isResolved === true ? formatDate(element.request.dateResolved) : formatDate(element.request.dateUpdated) }}</td>
-                                        <td>{{ element.request.isResolved === true ? "Resolved" : "Unresolved" }}</td>
                                         <td> {{ element.request.triageStatus }}</td>
                                         <td>{{ element.request.triageType }}</td>
                                     </tr>
