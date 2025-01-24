@@ -6,6 +6,8 @@ import ErrorHandler from "@/Handlers/ErrorHandler";
 import { useToast } from "vue-toastification";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
 import type { AdminUserRefreshResponse } from "@/Dto/AdminPortal/AdminLoginRequest";
+import type { RefreshTokenRequest } from "@/Dto/AdminPortal/RefreshTokenRequest";
+import { useAppContextStore } from "@/stores/AppContextStore";
 
 const instance = axios.create({
     timeout: 10000
@@ -24,12 +26,17 @@ instance.interceptors.response.use(
                     originalRequest._retry = true; // Mark request as retried
 
                     try {
-                        // Refresh the token and retry the original request
-                        const newToken = await refreshToken();
+                        // Refresh the token and retry the original request, send the user Id of the logged in user to validate the refresh request
+                        const currentUserId = useAppContextStore().currentLoggedInUser?.userId;
+                        const newToken = await refreshToken(currentUserId);
                         if (newToken) {
                             SetToken(newToken);
-                            originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
-                            return instance(originalRequest); // Retry the original request
+                            console.log(`New access token is: ${newToken}`);
+                            originalRequest.headers = {
+                                ...originalRequest.headers,
+                                Authorization: `Bearer ${newToken}`
+                            };
+                            return instance(originalRequest);
                         }
                     } catch (refreshError) {
                         // Handle refresh token failure (e.g., token invalid or server issue)
@@ -64,11 +71,16 @@ instance.interceptors.response.use(
     }
 );
 
-const refreshToken = async () => {
+const refreshToken = async (userId: string) => {
     const refreshToken = localStorage.getItem(User_Refresh_Token);
     if(refreshToken) {
-        const response = await Post<ApiSuccessResponse<AdminUserRefreshResponse>>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/auth/refresh`, refreshToken);
-        return response.data.data.accessToken;
+        //Construct the request to be sent to the server
+        const req: RefreshTokenRequest = {
+            refreshToken: refreshToken,
+            loggedInUserId: userId
+        };
+        const response = await Post<AdminUserRefreshResponse>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/auth/refresh`, req);
+        return response.data.newAccessToken;
     }
 }
 

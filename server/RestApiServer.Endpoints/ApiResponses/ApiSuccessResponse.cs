@@ -2,27 +2,27 @@ using RestApiServer.Endpoints.Security;
 
 namespace RestApiServer.Endpoints.ApiResponses
 {
-    public class ApiSuccessResponse<T>
+    public class ApiSuccessResponse<T> : ApiResponse<T>
     {
-        public string Message { get; set; }
-        public T? Data  { get; set; }
+        public string SuccessMessage { get; set; }
+        public T? SuccessData  { get; set; }
         public Dictionary<string, List<AllowedUserAction>>? AllowedUserActions { get; set; }
 
-        public ApiSuccessResponse(string message, T? data, Dictionary<string, List<AllowedUserAction>>? allowedUserActions)
+        public ApiSuccessResponse(string message, T? data, Dictionary<string, List<AllowedUserAction>>? allowedUserActions) : base(message, data)
         {
-            Message = message;
-            Data = data;
+            SuccessMessage = message;
+            SuccessData = data;
             AllowedUserActions = allowedUserActions;
         }
     }
 
     public class ApiSuccessResponseWithMetadata<T, M> : ApiSuccessResponse<T>
     {
-        public M? Metadata { get; set; }
+        public M? SuccessMetadata { get; set; }
 
         public ApiSuccessResponseWithMetadata(string message, T? data, M? metadata, Dictionary<string, List<AllowedUserAction>>? allowedUserActions) : base(message, data, allowedUserActions) 
         { 
-            Metadata = metadata; 
+            SuccessMetadata = metadata; 
         }
     }
 

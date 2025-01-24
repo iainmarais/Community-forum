@@ -24,5 +24,7 @@ namespace RestApiServer.Common.Config
         public static EnvironmentVariable ServerListenPrimaryIp = new EnvironmentVariable("SERVER_LISTEN_PRIMARY_IP", "0.0.0.0");
         public static EnvironmentVariable ServerHttpsPort = new EnvironmentVariable("SERVER_HTTPS_PORT", "443");
         public static EnvironmentVariable ServerHttpPort = new EnvironmentVariable("SERVER_HTTP_PORT", "80");
+        public static EnvironmentVariable JwtIssuer = new EnvironmentVariable("JWT_ISSUER", "ICCS");
+        public static EnvironmentVariable AppName = new EnvironmentVariable("APP_NAME", "Community Forum");
     }
 }

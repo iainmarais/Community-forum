@@ -18,7 +18,9 @@ namespace RestApiServer.Common.Config
             EnvironmentVariable.ServerListenPrimaryIp,
             EnvironmentVariable.ServerListenLocalhostIp,
             EnvironmentVariable.ServerHttpPort,
-            EnvironmentVariable.ServerHttpsPort
+            EnvironmentVariable.ServerHttpsPort,
+            EnvironmentVariable.JwtIssuer,
+            EnvironmentVariable.AppName
         };
 
         private static bool IsConfigLoaded = false;

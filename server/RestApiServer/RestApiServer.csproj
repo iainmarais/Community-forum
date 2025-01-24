@@ -49,6 +49,5 @@
     <ProjectReference Include="..\RestApiServer.CommonEnums\RestApiServer.CommonEnums.csproj" />
     <ProjectReference Include="..\RestApiServer.Security\RestApiServer.Security.csproj" />
     <ProjectReference Include="..\RestApiServer.SignalR\RestApiServer.SignalR.csproj" />
-    <ProjectReference Include="..\RestApiServer.ErrorHandler\RestApiServer.ErrorHandler.csproj" />
   </ItemGroup>
 </Project>

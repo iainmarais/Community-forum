@@ -5,7 +5,7 @@
 //Important props include date, user, type and message.
 //This is different from the type of tech support people offer through forums since these tech support requests are for issues pertaining to the forum platform.
 import { onMounted, ref, watch } from 'vue';
-import { useSupportRequestsStore } from '@/stores/SupportRequestsStore';
+import { useServiceRequestsStore } from '@/stores/ServiceRequestsStore';
 import PageSelector from '@/components/elements/Inputs/PageSelector.vue';
 import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
 import SearchBar from '@/components/elements/Inputs/SearchBar.vue';
@@ -13,7 +13,7 @@ import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingI
 import { debounce } from 'lodash';
 import dayjs from 'dayjs';
 
-const supportRequestsStore = useSupportRequestsStore();
+const serviceRequestsStore = useServiceRequestsStore();
 
 const refresh = () => {
     //Todo: update this function to get support requests from the server.
@@ -26,12 +26,12 @@ const formatDate = (date: Date) => {
 const searchQuery = ref("");
 
 const search = debounce((query: string) => {
-    supportRequestsStore.searchQuery = query;
-    supportRequestsStore.getSupportRequests();   
+    serviceRequestsStore.searchQuery = query;
+    serviceRequestsStore.getSupportRequests();   
 }, 300);
 
 onMounted(() => {
-    supportRequestsStore.getSupportRequests();
+    serviceRequestsStore.getSupportRequests();
 });
 
 </script>
@@ -40,7 +40,7 @@ onMounted(() => {
     <div class="card card-custom">
         <div class="card-header border-0 pt-7">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label fw-bolder text-dark">Support Requests</span>
+                <span class="card-label fw-bolder text-dark">Service Requests</span>
             </h3>
             <div class="card-toolbar">
                 <SearchBar v-model:searchQuery="searchQuery" :handleSearch = "search" />
@@ -50,11 +50,11 @@ onMounted(() => {
             </div>            
         </div>
         <div class="card-body pt-0">
-            <PageSelector :current-page-number="supportRequestsStore.currentPageNumber" :totalPages="supportRequestsStore.requests.totalPages" :rows-per-page="supportRequestsStore.rowsPerPage" @previous-page="$emit('previous-page')" @next-page="$emit('next-page')" />
+            <PageSelector :current-page-number="serviceRequestsStore.currentPageNumber" :totalPages="serviceRequestsStore.requests.totalPages" :rows-per-page="serviceRequestsStore.rowsPerPage" @previous-page="$emit('previous-page')" @next-page="$emit('next-page')" />
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <div v-if="!supportRequestsStore.loading_getRequests">
+                        <div v-if="!serviceRequestsStore.loading_getRequests">
                             <table class="table table-hover table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -66,7 +66,7 @@ onMounted(() => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="element in supportRequestsStore.requests.rows" :key="element.request.requestId">
+                                    <tr v-for="element in serviceRequestsStore.requests.rows" :key="element.request.requestId">
                                         <td>{{ formatDate(element.request.createdDate) }}</td>
                                         <td>{{ element.createdByUser.user.username }}</td>
                                         <td>{{ element.request.supportRequestTitle }}</td>

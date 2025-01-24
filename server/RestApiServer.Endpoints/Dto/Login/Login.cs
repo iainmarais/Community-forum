@@ -18,7 +18,6 @@ namespace RestApiServer.Dto.Login
         public required string RefreshToken { get; set; } = "";
         public required UserBasicInfo UserProfile { get; set; }
     }
-
     public class UserLoginRequest
     {
         public required string UserIdentifier { get; set; }

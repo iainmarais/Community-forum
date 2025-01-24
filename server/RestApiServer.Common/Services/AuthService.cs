@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using RestApiServer.Common.Config;
 using RestApiServer.CommonEnums;
+using RestApiServer.Core.Errorhandler;
 
 namespace RestApiServer.Common.Services
 {
@@ -25,20 +26,52 @@ namespace RestApiServer.Common.Services
         public const string Claim_User_ForumUserId = "ForumUserId";
         public const string Claim_User_AdminUserId = "AdminUserId";
 
+        //Use the existing access token to extract the claims and generate a new access token.
+        public static string GenerateNewAccessToken(string refreshToken, string sharedSecret, string expiredAccessToken)
+        {
+            //Todo: Create a new access token using the refresh token and the shared secret.
+            var handler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(sharedSecret);
+
+            var validationParams = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true, // Ensure the refresh token has not expired
+                ClockSkew = TimeSpan.Zero // Optional: prevent clock drift issues
+            };
+            try 
+            {
+                handler.ValidateToken(refreshToken, validationParams, out SecurityToken validatedToken);
+            }
+            catch (Exception ex)
+            {
+                throw ClientInducedException.MessageOnly($"Refresh token validation failed: {ex.Message}");
+            }
+            //Read in the claims from the expired token
+            var expiredToken = handler.ReadJwtToken(expiredAccessToken);
+            var claims = new List<Claim>(expiredToken.Claims);
+
+            var newAccessToken = handler.CreateJwtSecurityToken(
+                subject: new ClaimsIdentity(claims),
+                notBefore: DateTime.UtcNow,
+                expires: DateTime.UtcNow.AddMinutes(15),
+                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
+            );
+            return handler.WriteToken(newAccessToken);
+        }
+
         //Forum user context - currently in use.
 
         public static ForumUserContext GetForumUserContext(ClaimsPrincipal context)
         {
             string? claim_UserId = context.Claims.FirstOrDefault(c => c.Type == Claim_UserId)?.Value;
             string? claim_User_ForumUserId = context.Claims.FirstOrDefault(c => c.Type == Claim_User_ForumUserId)?.Value;
-            if (string.IsNullOrEmpty(claim_UserId))
+            if (string.IsNullOrEmpty(claim_UserId) || string.IsNullOrEmpty(claim_User_ForumUserId))
             {
-                throw new Exception("User id not found in claims");
-            }
-
-            if (string.IsNullOrEmpty(claim_User_ForumUserId))
-            {
-                throw new Exception("Admin user id not found in claims");
+                throw ClientInducedException.MessageOnly($"Required claims are missing: UserId: {claim_UserId}, ForumUserId: {claim_User_ForumUserId}");
             }
 
             return new ForumUserContext
@@ -54,14 +87,9 @@ namespace RestApiServer.Common.Services
             string? claim_UserId = context.Claims.FirstOrDefault(c => c.Type == Claim_UserId)?.Value;
             string? claim_User_AdminUserId = context.Claims.FirstOrDefault(c => c.Type == Claim_User_AdminUserId)?.Value;
 
-            if (string.IsNullOrEmpty(claim_UserId))
+            if (string.IsNullOrEmpty(claim_UserId) || string.IsNullOrEmpty(claim_User_AdminUserId))
             {
-                throw new Exception("User id not found in claims");
-            }
-
-            if (string.IsNullOrEmpty(claim_User_AdminUserId))
-            {
-                throw new Exception("Admin user id not found in claims");
+                throw ClientInducedException.MessageOnly($"Required claims are missing: UserId: {claim_UserId}, AdminUserId: {claim_User_AdminUserId}");
             }
             return new AdminUserContext
             {
@@ -95,15 +123,25 @@ namespace RestApiServer.Common.Services
         }
 
         //Generates the user's access token. Suggestions for improvements relating to security: Capture the IP address of the client from where the login originated.
-        public static (string, long) GenerateAccessToken(string userId, string forumUserId, List<SystemPermissionType> SystemPermissions, List<RoleType> Roles, string adminUserId = "", bool isAdmin = false)
+        public static (string, long) GenerateAccessToken(
+            string userId,
+            string forumUserId,
+            List<SystemPermissionType> SystemPermissions,
+            List<RoleType> Roles,
+            string adminUserId = "",
+            bool isAdmin = false)
         {
             string secret = ConfigurationLoader.GetConfigValue(EnvironmentVariable.JwtSharedSecret);
+            int expirationMinutes = ConfigurationLoader.GetConfigValueAsInt(EnvironmentVariable.JwtExpirationMins);
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new List<Claim>
             {
                 new Claim(Claim_UserId, userId),
+                new Claim(JwtRegisteredClaimNames.Iss, ConfigurationLoader.GetConfigValue(EnvironmentVariable.JwtIssuer)),
+                new Claim(JwtRegisteredClaimNames.Aud, ConfigurationLoader.GetConfigValue(EnvironmentVariable.AppName)),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
             // Add additional user claims based on context
@@ -121,7 +159,7 @@ namespace RestApiServer.Common.Services
             Roles.ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role.ToString())));
             SystemPermissions.ForEach(p => claims.Add(new Claim(p.ToString(), "true")));
 
-            var expiration = DateTime.UtcNow.AddMinutes(ConfigurationLoader.GetConfigValueAsInt(EnvironmentVariable.JwtExpirationMins));
+            var expiration = DateTime.UtcNow.AddMinutes(expirationMinutes);
 
             var token = new JwtSecurityToken(claims: claims, expires: expiration, signingCredentials: credentials);
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);

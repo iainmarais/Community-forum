@@ -1,9 +1,12 @@
-import axios, { type RawAxiosRequestHeaders } from "axios";
-import { Last_Route, Token_Key } from "@/LocalStorage/keys";
+import axios, { type AxiosRequestConfig, type RawAxiosRequestHeaders } from "axios";
+import { Last_Route, Token_Key, User_Refresh_Token } from "@/LocalStorage/keys";
 import type { ApiSuccessResponse } from "@/ApiResponses/ApiSuccessResponse";
 import router, { HomeRoute, LoginRoute, NotFoundRoute } from '@/router';
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import { useToast } from "vue-toastification";
+import type { UserRefreshResponse } from "@/Dto/UserLoginRequest";
+import ConfigurationLoader from "@/config/ConfigurationLoader";
+import { useAppContextStore } from "@/stores/AppContextStore";
 
 const instance = axios.create({
     timeout: 10000
@@ -12,11 +15,34 @@ const toast = useToast();
 
 instance.interceptors.response.use((response) => {
     return response;
-}, (error) => {
+}, async (error) => {
+    const originalRequest = error.config as AxiosRequestConfig & { _retry?: boolean };
     if (error?.response?.status === 401) {
-            // Chucked a sickie 'cause you're not allowed, mate.
-            ForceLogoff();
-            router.replace({ name: LoginRoute });
+        if (error?.response?.data?.statusMessage?.includes("expired")) {
+            if (!originalRequest._retry) {
+                originalRequest._retry = true;
+                try {
+                    const currentUserId = useAppContextStore().loggedInUser?.userId;
+                    const newToken = await refreshToken(currentUserId!);
+                    if (newToken) {
+                        SetToken(newToken);
+                        console.log(`New access token is: ${newToken}`);
+                        originalRequest.headers = {
+                            ...originalRequest.headers,
+                            Authorization: `Bearer ${newToken}`
+                        };
+                        return instance(originalRequest);
+                    }
+                } catch (refreshError) {
+                    console.error("Token refresh failed:", refreshError);
+                    ForceLogoff();
+                    router.replace({ name: LoginRoute });
+                }
+            } else {
+                // Chucked a sickie 'cause you're not allowed, mate.
+                ForceLogoff();
+                router.replace({ name: LoginRoute });
+            }
         } else if (error?.response?.status === 403) {
             // Sorry mate, you don't have the authorisation to go there.
             ErrorHandler.handleApiErrorResponse(error);
@@ -38,8 +64,20 @@ instance.interceptors.response.use((response) => {
             ErrorHandler.handleApiErrorResponse(error);
         }
     return Promise.reject(error);
+    }
 });
 
+const refreshToken = async (userId: string) => {
+    const refreshToken = localStorage.getItem(User_Refresh_Token);
+    if(refreshToken) {
+        const refreshTokenRequest = {
+            refreshToken: refreshToken,
+            loggedInUserId: userId
+        };
+        const response = await Post<UserRefreshResponse>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/users/auth/refresh`, refreshTokenRequest);
+        return response.data.newAccessToken;
+    }
+}
 
 const ForceLogoff = () => {
     RemoveToken();
@@ -97,5 +135,6 @@ export default {
     Delete,
     Post_WithBlobResponse,
     Get_WithBlobResponse,
-    ForceLogoff
+    ForceLogoff,
+    refreshToken
 };

@@ -45,7 +45,7 @@ const router = createRouter({
                 {
                     path: "/supportrequests",
                     name: SupportRequestsRoute,
-                    component: () => import("@/components/Views/SupportRequestsView.vue")
+                    component: () => import("@/components/Views/ServiceRequestsView.vue")
                 },
                 {
                     path: "/permissionsmgmt",

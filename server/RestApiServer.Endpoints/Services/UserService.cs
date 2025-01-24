@@ -18,6 +18,8 @@ using RestApiServer.Dto.Login;
 using RestApiServer.CommonEnums;
 using RestApiServer.Common.Services;
 using RestApiServer.Database.Utils;
+using Serilog;
+using System.Security.AccessControl;
 
 namespace RestApiServer.Endpoints.Services
 {
@@ -159,13 +161,13 @@ namespace RestApiServer.Endpoints.Services
             };
         }
 
-        public static async Task<UserRefreshResponse> RefreshUserSessionAsync(string userId, UserRefreshRequest req)
+        public static async Task<UserRefreshResponse> RefreshUserSessionAsync(string claimUserId, UserRefreshRequest req)
         {
             using var db = new AppDbContext();
 
             //Find the user in the db given the incoming user Id:
             var userResult = await (from u in db.Users
-                                    where u.UserId == userId
+                                    where u.UserId == claimUserId
                                     join role in db.Roles on u.RoleId equals role.RoleId
                                     select new
                                     {
@@ -174,15 +176,17 @@ namespace RestApiServer.Endpoints.Services
                                     }).SingleAsync();
 
             //SingleOrDefaultAsync will find a result or return a functionally null yet valid result.
-            if (userResult == null || userResult.User.UserId != userId)
+            if (userResult == null || userResult.User.UserId != claimUserId)
             {
                 throw ClientInducedException.MessageOnly("User not found in database.");
             }
             //Else, continue to check our token.
-            var existingRefreshToken = await db.UserRefreshTokens.SingleAsync(urt => urt.AssignedToUserId == userId && urt.Source == req.UserContext);
+            var existingRefreshToken = await db.UserRefreshTokens.SingleAsync(urt => urt.AssignedToUserId == claimUserId && urt.Source == req.UserContext);
 
-            if (existingRefreshToken.RefreshTokenExpirationDate < DateTime.UtcNow)
+            if (existingRefreshToken.RefreshTokenExpirationDate <= DateTime.UtcNow)
             {
+                Log.Information($"Refresh token expiration date is {existingRefreshToken.RefreshTokenExpirationDate}");
+                Log.Information($"Current date is {DateTime.UtcNow}");
                 throw ClientInducedException.MessageOnly("Refresh token has expired.");
             }
 
@@ -195,7 +199,7 @@ namespace RestApiServer.Endpoints.Services
             var permissions = await (from up in db.UserPermissions
                                      join sp in db.SystemPermissions
                                      on up.SystemPermissionId equals sp.SystemPermissionId
-                                     where up.UserId == userId
+                                     where up.UserId == claimUserId
                                      select sp.SystemPermissionType)
                                     .Distinct().ToListAsync();
 
@@ -213,7 +217,7 @@ namespace RestApiServer.Endpoints.Services
                 RolePermissions = rolePermissions,
                 userResult.Role
             };
-            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.AssignedToUserId == userId && t.Source == req.UserContext).ToListAsync();
+            var existingRefreshTokensForSource = await db.UserRefreshTokens.Where(t => t.AssignedToUserId == claimUserId && t.Source == req.UserContext).ToListAsync();
 
             db.RemoveRange(existingRefreshTokensForSource);
             //Create the user refresh token.
@@ -222,24 +226,25 @@ namespace RestApiServer.Endpoints.Services
             var newRefreshToken = new UserRefreshTokenEntry
             {
                 UserRefreshTokenId = DbUtils.GenerateUuid(),
-                AssignedToUserId = userId,
+                AssignedToUserId = claimUserId,
                 RefreshToken = userRefreshToken,
                 RefreshTokenExpirationDate = userRefreshTokenExpiration,
                 Source = req.UserContext ?? "Unknown",
                 IsRevoked = false
             };
             await db.UserRefreshTokens.AddAsync(newRefreshToken);
-            //Now, one can create the new access and refresh tokens.
+
+            //Now, one can create the new access and refresh tokens. This needs to be done in a way that is context-aware, and reusable
             var (newUserSessionToken, newUserSessionTokenExpiration) = req.UserContext switch
             {
-                "admin" => AuthService.GenerateAccessToken(userId, userResult.User.ForumUserId, permissions, new() { userResult.Role.RoleType }, userResult.User.AdminUserId, true),
-                "forum" => AuthService.GenerateAccessToken(userId, userResult.User.ForumUserId, permissions, new() { userResult.Role.RoleType }, "", false),
+                "admin" => AuthService.GenerateAccessToken(claimUserId, userResult.User.ForumUserId, permissions, new() { userResult.Role.RoleType }, userResult.User.AdminUserId, true),
+                "forum" => AuthService.GenerateAccessToken(claimUserId, userResult.User.ForumUserId, permissions, new() { userResult.Role.RoleType }, "", false),
                 //Add more as needed to handle various contexts.
                 _ => throw ClientInducedException.MessageOnly("Unknown user context.")
             };
 
             //Find and remove any previous session tokens.
-            var existingSessionTokensForSource = await db.UserSessionTokens.Where(t => t.AssignedToUserId == userId && t.Source == req.UserContext).ToListAsync();
+            var existingSessionTokensForSource = await db.UserSessionTokens.Where(t => t.AssignedToUserId == claimUserId && t.Source == req.UserContext).ToListAsync();
 
             if (existingSessionTokensForSource.Count > 0)
             {
@@ -249,17 +254,17 @@ namespace RestApiServer.Endpoints.Services
             var newSessionTokenEntry = new UserSessionTokenEntry
             {
                 UserSessionTokenId = DbUtils.GenerateUuid(),
-                AssignedToUserId = userId,
+                AssignedToUserId = claimUserId,
                 SessionToken = newUserSessionToken,
                 DateCreated = DateTime.UtcNow,
                 IsRevoked = false,
                 DateExpired = new DateTime(newUserSessionTokenExpiration),
-                Source = req.UserContext
+                Source = req.UserContext ?? "Unknown"
             };
 
             await db.UserSessionTokens.AddAsync(newSessionTokenEntry);
 
-            var userProfile = GetUserBasicInfo(userId);
+            var userProfile = GetUserBasicInfo(claimUserId);
 
             var res = new UserRefreshResponse
             {
@@ -268,7 +273,6 @@ namespace RestApiServer.Endpoints.Services
                 RefreshToken = userRefreshToken,
                 UserProfile = userProfile
             };
-
             return res;
         }
 
@@ -335,7 +339,6 @@ namespace RestApiServer.Endpoints.Services
                 //Add more as needed to handle various contexts.
                 _ => throw ClientInducedException.MessageOnly("Unknown user context.")
             };
-
 
             //Find and remove any previous session tokens.
             var existingSessionTokensForSource = await db.UserSessionTokens.Where(t => t.AssignedToUserId == userId && t.Source == userContext).ToListAsync();

@@ -5,7 +5,7 @@ import ErrorHandler from "@/Handlers/ErrorHandler";
 import RequestService from "@/Services/RequestService";
 import { defineStore } from "pinia";
 
-type SupportRequestsStore = {
+type ServiceRequestsStore = {
     loading_getRequests: boolean;
     result_getRequestsSuccess: boolean;
 
@@ -17,7 +17,7 @@ type SupportRequestsStore = {
     rowsPerPage: number;
 }
 
-const defaultState: SupportRequestsStore = {
+const defaultState: ServiceRequestsStore = {
     loading_getRequests: false,
     result_getRequestsSuccess: false,
 
@@ -37,7 +37,7 @@ const defaultState: SupportRequestsStore = {
     rowsPerPage: 10,
 }
 
-export const useSupportRequestsStore = defineStore({
+export const useServiceRequestsStore = defineStore({
     id: "SupportRequestsStore",
     state: () => defaultState,
     getters: {},

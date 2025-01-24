@@ -23,15 +23,34 @@ namespace RestApiServer.Endpoints.Controllers
         }
         //This may need some work still, so will not yet use it. If users want to use the chat and get logged off, they can log in again for now.
         [HttpPost("auth/refresh")]
-        [Authorize]
-        public async Task<ApiSuccessResponse<UserRefreshResponse>> RefreshUserSession(UserRefreshRequest req)
+        public async Task<ApiResponse<UserRefreshResponse>> RefreshUserSession([FromBody] RefreshTokenRequest req)
         {
-            //Todo:
-            //When dealing with a bearer token, I need to see what the user context is. 
-            //Either that, or I need to create a dedicated admin portal for the forum.
-            var user = AuthService.GetForumUserContext(User);
-            var res = await UserService.RefreshUserSessionAsync(user.UserId, req);
-            return ApiSuccessResponses.WithData("User auth state refresh successful", res);
+            //Read the UserId from the expired JWT, but how does one instruct it to disregard the expiration
+            try
+            {
+                var refreshRequest = new UserRefreshRequest 
+                {
+                    RefreshToken = req.RefreshToken,
+                    UserContext = "forum"
+                };
+                var res = await UserService.RefreshUserSessionAsync(req.LoggedInUserId, refreshRequest);
+                return ApiSuccessResponses.WithData("User auth state refresh successful", res);
+            }
+            catch (Exception ex)
+            {
+                //Create a functionally null response to send back. This satisfies the need for a non-null payload. The error tells the client there's a fault and it will log off accordingly.
+                var nullResponse = new UserRefreshResponse
+                {
+                    NewAccessToken = "",
+                    NewAccessTokenExpiration = 0,
+                    RefreshToken = "",
+                    UserProfile = new UserBasicInfo()
+                    {
+                        User = new()
+                    }
+                };
+                return ApiClientErrorResponses.WithData(ex.Message, nullResponse);
+            }
         }
 
         [HttpPost("login")]
@@ -58,5 +77,10 @@ namespace RestApiServer.Endpoints.Controllers
             return ApiSuccessResponses.WithData("Update user profile successful", res);
         }
 
+        public class RefreshTokenRequest
+        {
+            public required string RefreshToken { get; set; }
+            public required string LoggedInUserId { get; set; }
+        }
     }
 }
