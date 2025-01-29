@@ -2,7 +2,7 @@
 import type { BoardFullInfo } from '@/Dto/AdminPortal/BoardInfo';
 import type { PropType } from 'vue';
 import { Modal } from 'bootstrap';
-import { ref, inject, defineExpose, defineEmits } from 'vue';
+import { inject, ref, watch } from 'vue';
 
 // 1. Props (existing)
 const props = defineProps({
@@ -25,6 +25,22 @@ const updateModalData = (data: any) => {
     modalData.value = data;
 };
 
+// Close modal method
+const closeModal = () => {
+    const modalElement = document.getElementById('ViewBoardModal');
+    if (modalElement) {
+        const modal = Modal.getInstance(modalElement) || new Modal(modalElement);
+        modal.hide();
+    }
+};
+
+// Loading state
+const isLoading = ref(true);
+
+watch(() => props.selectedBoard, (newValue) => {
+    isLoading.value = !newValue?.board;
+}, { immediate: true });
+
 // Expose methods/data to parent
 defineExpose({
     modalData,
@@ -44,13 +60,20 @@ defineExpose({
         <div class="modal-dialog modal-xxl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">View Board {{ selectedBoard?.board?.boardName ?? "-" }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        View Board {{ selectedBoard?.board?.boardName ?? "-" }}
+                    </h5>
+                    <button type="button" class="close" aria-label="Close" @click="closeModal">
                         <i aria-hidden="true" class="ki ki-close"></i>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="container">
+                    <div v-if="isLoading" class="text-center p-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div v-else class="container">
                         <!-- Board Details -->
                         <div class="card mb-4">
                             <div class="card-header">
@@ -64,7 +87,7 @@ defineExpose({
                                         <p><strong>Category ID:</strong> {{ selectedBoard?.board?.categoryId ?? "N/A" }}</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><strong>Created By:</strong> {{ selectedBoard?.createdByUser?.user.username ?? "N/A" }}</p>
+                                        <p><strong>Created By:</strong> {{ selectedBoard?.createdByUser?.user?.username ?? "N/A" }}</p>
                                         <p><strong>Total Topics:</strong> {{ selectedBoard?.totalTopics ?? 0 }}</p>
                                     </div>
                                 </div>
@@ -89,7 +112,7 @@ defineExpose({
                                         <tbody>
                                             <tr v-for="element in selectedBoard.topics" :key="element.topic.topicId">
                                                 <td>{{ element.topic.topicName }}</td>
-                                                <td>{{ element.createdByUser?.user.username }}</td>
+                                                <td>{{ element.createdByUser?.user?.username }}</td>
                                                 <td>{{ element.totalPosts }}</td>
                                             </tr>
                                         </tbody>
@@ -101,7 +124,7 @@ defineExpose({
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" @click="closeModal">Close</button>
                 </div>
             </div>
         </div>

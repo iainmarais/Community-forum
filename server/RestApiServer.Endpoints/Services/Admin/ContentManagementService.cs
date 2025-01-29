@@ -359,6 +359,46 @@ namespace RestApiServer.Endpoints.Services.Admin
             };
         }
 
+        public static async Task<BoardFullInfo> GetBoardFullInfoAsync(string boardId)
+        {
+            using var db = new AppDbContext();
+            //Find the board and the associated topics
+            var board = await db.Boards
+                .Where(b => b.BoardId == boardId)
+                //Join in the user, then the topics
+                .Join(db.Users, b => b.CreatedByUserId, u => u.UserId, (b, u) => new { b, u })
+                .Join(db.Topics, b => b.b.BoardId, t => t.BoardId, (b, t) => new { b, t })
+                .SingleOrDefaultAsync();
+
+            if(board == null)
+            {
+                throw ClientInducedException.MessageOnly("Board not found");
+            }
+
+            return new BoardFullInfo()
+            {
+                Board = board.b.b,
+                CreatedByUser = new UserBasicInfo()
+                {
+                    User = board.b.u
+                },
+                Topics = await db.Topics
+                    .Where(t => t.BoardId == boardId)
+                    .Join(db.Users, t => t.CreatedByUserId, u => u.UserId, (t, u) => new TopicBasicInfo()
+                    {
+                        Topic = t,
+                        CreatedByUser = new UserBasicInfo()
+                        {
+                            User = u
+                        }
+                    }).ToListAsync(),
+                TotalTopics = await db.Topics
+                    .Where(t => t.BoardId == boardId)
+                    .CountAsync()
+            };
+            
+        }
+
         public static async Task DeleteCategoryAsync(string categoryId)
         {
             using var db = new AppDbContext();

@@ -1,41 +1,27 @@
-using System.Text.Json.Serialization;
-
 namespace RestApiServer.Endpoints.ApiResponses
 {
-    //API client error response with data
+    // API client error response with optional data
     public class ApiErrorResponse<D> : ApiResponse<D>
     {
-        public ApiErrorResponse(string errorMessage, D? data) : base(errorMessage, data)
-        {
-            Message = errorMessage;
-            Data = data;
-        }
+        public ApiErrorResponse(string errorMessage, D? data = default) 
+            : base(false, errorMessage, data) { }
     }
 
-    public class ApiErrorResponseWithMetadata<D, M> : ApiErrorResponse<D>
+    public class ApiErrorResponseWithMetadata<D, M> : ApiResponseWithMetadata<D, M>
     {
-        public M? Metadata { get; set; }
-        public ApiErrorResponseWithMetadata(string errorMessage, D? data, M? metadata) : base(errorMessage, data) 
-        { 
-            Metadata = metadata; 
-        }
+        public ApiErrorResponseWithMetadata(string errorMessage, D? data, M? metadata) 
+            : base(false, errorMessage, data, metadata) { }
     }
 
     public static class ApiClientErrorResponses
     {
-        public static ApiErrorResponse<D> WithData<D>(string errorMessage, D data)
-        {
-            return new ApiErrorResponse<D>(errorMessage, data);
-        }
+        public static ApiErrorResponse<D> WithData<D>(string errorMessage, D data) =>
+            new(errorMessage, data);
 
-        public static ApiErrorResponseWithMetadata<D, M> WithData<D, M>(string errorMessage, D data, M metadata)
-        {
-            return new ApiErrorResponseWithMetadata<D, M>(errorMessage, data, metadata);
-        }
+        public static ApiErrorResponseWithMetadata<D, M> WithData<D, M>(string errorMessage, D data, M metadata) =>
+            new(errorMessage, data, metadata);
 
-        public static ApiErrorResponse<object> WithoutData(string errorMessage)
-        {
-            return new ApiErrorResponse<object>(errorMessage, null);
-        }
+        public static ApiErrorResponse<object> WithoutData(string errorMessage) =>
+            new(errorMessage, null);
     }
 }

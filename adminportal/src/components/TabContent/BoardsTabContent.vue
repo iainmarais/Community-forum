@@ -45,11 +45,15 @@ const deleteBoard = (boardId: string) => {
     contentManagementStore.deleteBoard(boardId);
 }
 
-const viewBoard = (boardId: string) => {
-    //Load the full board info from the selected board Id.
-    contentManagementStore.getBoardFullInfo(boardId);
-
-    openShowViewBoardModal();
+const viewBoard = async (boardId: string) => {
+    // Load the full board info from the selected board Id
+    await contentManagementStore.getBoardFullInfo(boardId);
+    
+    // Only open modal if we have the data
+    if (contentManagementStore.selectedBoard) {
+        selectedBoard.value = contentManagementStore.selectedBoard;
+        openShowViewBoardModal();
+    }
 }
 
 const openShowViewBoardModal = () => {
@@ -63,12 +67,6 @@ const openShowViewBoardModal = () => {
         modal.show();
     }
 }
-
-watch(() => contentManagementStore.selectedBoard, (newValue) => {
-    if(newValue) {
-        selectedBoard.value = contentManagementStore.selectedBoard;
-    }
-});
 
 watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
     if(newValue) {

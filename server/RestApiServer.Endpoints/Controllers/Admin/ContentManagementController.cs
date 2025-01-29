@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestApiServer.Common.Services;
+using RestApiServer.Dto.App;
 using RestApiServer.Dto.Forum;
 using RestApiServer.Endpoints.ApiResponses;
 using RestApiServer.Endpoints.Services.Admin;
@@ -103,11 +104,56 @@ namespace RestApiServer.Endpoints.Controllers.Admin
 
         [HttpGet("categories/{categoryId}/fullinfo")]
         [Authorize(Roles = "Admin")]
-        public async Task<ApiSuccessResponse<CategoryFullInfo>> GetCategoryFullInfo(string categoryId)
+        public async Task<ApiResponse<CategoryFullInfo>> GetCategoryFullInfo(string categoryId)
         {
-            var user = AuthService.GetAdminUserContext(User);
-            var res = await ContentManagementService.GetCategoryFullInfoAsync(categoryId);
-            return ApiSuccessResponses.WithData("Get category full info successful", res);
+            try
+            {
+                var user = AuthService.GetAdminUserContext(User);
+                var res = await ContentManagementService.GetCategoryFullInfoAsync(categoryId);
+                return ApiSuccessResponses.WithData("Get category full info successful", res);
+            }
+            catch (Exception ex)
+            {
+                var nullResponse = new CategoryFullInfo
+                {
+                    Category = new()
+                    {
+                        CategoryId = "",
+                        CategoryName = "",
+                        CategoryDescription = "",
+                        CreatedByUserId = ""
+                    },
+                    Boards = new List<BoardBasicInfo>(),
+                    TotalBoards = 0
+                };
+                return ApiClientErrorResponses.WithData(ex.Message, nullResponse);
+            }
+        }
+
+        [HttpGet("boards/{boardId}/fullinfo")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiResponse<BoardFullInfo>> GetBoardFullInfo(string boardId)
+        {
+            try
+            {
+                var user = AuthService.GetAdminUserContext(User);
+                var res = await ContentManagementService.GetBoardFullInfoAsync(boardId);
+                return ApiSuccessResponses.WithData("Get board full info successful", res);
+            }
+            catch (Exception ex)
+            {
+                var nullResponse = new BoardFullInfo
+                {
+                    Board = new(),
+                    CreatedByUser = new UserBasicInfo()
+                    {
+                        User = new()
+                    },
+                    Topics = new List<TopicBasicInfo>(),
+                    TotalTopics = 0
+                };
+                return ApiClientErrorResponses.WithData(ex.Message, nullResponse);
+            }
         }
     }
 }

@@ -2,64 +2,47 @@ using RestApiServer.Endpoints.Security;
 
 namespace RestApiServer.Endpoints.ApiResponses
 {
-    public class ApiSuccessResponse<T> : ApiResponse<T>
+    public class ApiSuccessResponse<D> : ApiResponse<D>
     {
-        public string SuccessMessage { get; set; }
-        public T? SuccessData  { get; set; }
         public Dictionary<string, List<AllowedUserAction>>? AllowedUserActions { get; set; }
 
-        public ApiSuccessResponse(string message, T? data, Dictionary<string, List<AllowedUserAction>>? allowedUserActions) : base(message, data)
+        public ApiSuccessResponse(string message, D? data, Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null)
+            : base(true, message, data)
         {
-            SuccessMessage = message;
-            SuccessData = data;
             AllowedUserActions = allowedUserActions;
         }
     }
 
-    public class ApiSuccessResponseWithMetadata<T, M> : ApiSuccessResponse<T>
+    public class ApiSuccessResponseWithMetadata<D, M> : ApiResponseWithMetadata<D, M>
     {
-        public M? SuccessMetadata { get; set; }
+        public Dictionary<string, List<AllowedUserAction>>? AllowedUserActions { get; set; }
 
-        public ApiSuccessResponseWithMetadata(string message, T? data, M? metadata, Dictionary<string, List<AllowedUserAction>>? allowedUserActions) : base(message, data, allowedUserActions) 
-        { 
-            SuccessMetadata = metadata; 
+        public ApiSuccessResponseWithMetadata(string message, D? data, M? metadata, Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null)
+            : base(true, message, data, metadata)
+        {
+            AllowedUserActions = allowedUserActions;
         }
     }
 
     public static class ApiSuccessResponses
     {
-        public static ApiSuccessResponse<D> WithData<D>(string message, D data, Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null)
-        {
-            return new ApiSuccessResponse<D>(message: message, data: data, allowedUserActions);
-        }
+        public static ApiSuccessResponse<D> WithData<D>(string message, D data, Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null) =>
+            new(message, data, allowedUserActions);
 
-        public static ApiSuccessResponseWithMetadata<D, M> WithData<D, M>(string message, D data, M metadata, Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null)
-        {
-            return new ApiSuccessResponseWithMetadata<D, M>(message: message, data: data, metadata, allowedUserActions);
-        }
+        public static ApiSuccessResponseWithMetadata<D, M> WithData<D, M>(string message, D data, M metadata, Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null) =>
+            new(message, data, metadata, allowedUserActions);
 
-        public static ApiSuccessResponse<object> WithoutData(string message)
-        {
-            return new ApiSuccessResponse<object>(message, null, null);
-        }
+        public static ApiSuccessResponse<object> WithoutData(string message) =>
+            new(message, null, null);
     }
 
-    //Pagination support
+    // Pagination support
     public class PaginatedData<D, S>
     {
         public required D Rows { get; set; }
         public required int PageNumber { get; set; }
         public required int RowsPerPage { get; set; }
         public required int TotalPages { get; set; }
-        public required S Summary { get; set; }
+        public S? Summary { get; set; } // Optional summary
     }
-    //Dedicated data object class for paginated data without summary information available. 
-    //Sometimes there are cases when there is no summary information to send through.
-    public class PaginatedDataWithoutSummary<T>
-    {
-        public required T Rows { get; set; }
-        public required int PageNum { get; set; }
-        public required int RowsPerPage { get; set; }
-        public required int TotalPages { get; set; }
-    }    
 }

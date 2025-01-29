@@ -14,7 +14,7 @@ namespace RestApiServer.Endpoints.Services.Admin
 {
     public class UserManagementService
     {
- public static async Task<UserBasicInfo> UpdateUserAsync(string adminUserId, UpdateUserRequest req)
+        public static async Task<UserBasicInfo> UpdateUserAsync(string adminUserId, UpdateUserRequest req)
         {
             using var db = new AppDbContext();
             //As an added safeguard, check if the current user is an administrator.

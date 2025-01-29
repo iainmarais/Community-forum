@@ -64,13 +64,14 @@ namespace RestApiServer.Endpoints.Services.Forum.Gallery
             var contentType = GetContentType(filePath);
 
             var response = new ApiFileResponse
-            {
-                ResponseMessage = "Get file successful",
-                FileContents = fileBytes,
-                ContentType = contentType,
-                FileDownloadName = fileName,
-                FileName = $"{uploadsFolderName}/{fileName}"
-            };
+            (
+                isSuccessful: true,
+                message: "Get file successful",
+                fileContents: fileBytes,
+                contentType: contentType,
+                fileDownloadName: fileName,
+                fileName: $"{uploadsFolderName}/{fileName}"
+            );
             return response;
         }
         private static string GetContentType(string path)
