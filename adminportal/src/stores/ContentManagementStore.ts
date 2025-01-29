@@ -1,14 +1,15 @@
 import type { PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
 import type { BoardBasicInfo, BoardSummary } from "@/Dto/AdminPortal/BoardInfo";
-import type { CategoryBasicInfo, CategorySummary } from "@/Dto/AdminPortal/CategoryInfo";
+import type { CategoryBasicInfo, CategoryFullInfo, CategorySummary } from "@/Dto/AdminPortal/CategoryInfo";
 import type { CreateBoardRequest } from "@/Dto/AdminPortal/CreateBoardRequest";
 import type { CreateCategoryRequest } from "@/Dto/AdminPortal/CreateCategoryRequest";
 import type { CreateTopicRequest } from "@/Dto/AdminPortal/CreateTopicRequest";
 import type { PostBasicInfo, PostSummary } from "@/Dto/AdminPortal/PostInfo";
-import type { TopicBasicInfo, TopicSummary } from "@/Dto/AdminPortal/TopicInfo";
+import type { TopicBasicInfo, TopicFullInfo, TopicSummary } from "@/Dto/AdminPortal/TopicInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import ContentManagementService from "@/Services/ContentManagementService";
 import { defineStore } from "pinia";
+import type { BoardFullInfo } from "@/Dto/AdminPortal/BoardInfo";
 
 type ContentManagementStore = {
     loading: boolean;
@@ -21,6 +22,10 @@ type ContentManagementStore = {
     boards: PaginatedData<BoardBasicInfo[], BoardSummary>;
     topics: PaginatedData<TopicBasicInfo[], TopicSummary>;
     posts: PaginatedData<PostBasicInfo[], PostSummary>;
+
+    selectedCategory?: CategoryFullInfo;
+    selectedBoard?: BoardFullInfo;
+    selectedTopic?: TopicFullInfo;
 
     //Get results
     result_getCategories: boolean;
@@ -47,6 +52,11 @@ type ContentManagementStore = {
     result_createPost: boolean;
     result_updatePost: boolean;
     result_deletePost: boolean;
+
+    //Instance
+    result_getCategoryFullInfoSuccess: boolean;
+    result_getBoardFullInfoSuccess: boolean;
+    result_getTopicFullInfoSuccess: boolean;
 }
 
 const defaultState: ContentManagementStore = {
@@ -85,6 +95,11 @@ const defaultState: ContentManagementStore = {
     result_createPost: false,
     result_updatePost: false,
     result_deletePost: false,
+
+    //Instances
+    result_getCategoryFullInfoSuccess: false,
+    result_getBoardFullInfoSuccess: false,
+    result_getTopicFullInfoSuccess: false
 }
 
 export const useContentManagementStore = defineStore({
@@ -93,7 +108,7 @@ export const useContentManagementStore = defineStore({
     getters: {},
     actions: {
 
-        //Categories
+        //Object creation
         createCategory (request: CreateCategoryRequest) {
             this.loading = true;
             ContentManagementService.createCategory(request).then(response => {
@@ -105,7 +120,6 @@ export const useContentManagementStore = defineStore({
                 ErrorHandler.handleApiErrorResponse(error);
             });
         },
-        //Boards
         createBoard (request: CreateBoardRequest) {
             this.loading = true;
             ContentManagementService.createBoard(request).then(response => {
@@ -117,7 +131,6 @@ export const useContentManagementStore = defineStore({
                 ErrorHandler.handleApiErrorResponse(error);
             });
         },
-        //Topics
         createTopic (request: CreateTopicRequest) {
             this.loading = true;
             ContentManagementService.createTopic(request).then(response => {
@@ -129,6 +142,7 @@ export const useContentManagementStore = defineStore({
                 ErrorHandler.handleApiErrorResponse(error);
             });            
         },
+        //Retrieval
         getCategories () {
             this.loading = true;
             ContentManagementService.getCategories(this.currentPageNumber, this.rowsPerPage, this.searchQuery).then(response => {
@@ -168,7 +182,49 @@ export const useContentManagementStore = defineStore({
                 this.loading = false;
                 ErrorHandler.handleApiErrorResponse(error);
             });
-        },        
+        },
+        //Instance retrieval
+        getCategoryFullInfo (categoryId: string) {
+            this.loading = true;
+            this.result_getCategoryFullInfoSuccess = false;
+            ContentManagementService.getCategoryFullInfo(categoryId).then(response => {
+                this.loading = false;
+                this.result_getCategoryFullInfoSuccess = true;
+                this.selectedCategory = response.data;
+            }, error => {
+                this.loading = false;
+                this.result_getCategoryFullInfoSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            });
+        },
+        getBoardFullInfo (boardId: string) {
+            this.loading = true;
+            this.result_getBoardFullInfoSuccess = false;
+            ContentManagementService.getBoardFullInfo(boardId).then(response => {
+                this.loading = false;
+                this.result_getBoardFullInfoSuccess = true;
+                this.selectedBoard = response.data;
+            }, error => {
+                this.loading = false;
+                this.result_getBoardFullInfoSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            });
+        },
+        getTopicFullInfo (topicId: string) {
+            this.loading = true;
+            this.result_getTopicFullInfoSuccess = false;
+            ContentManagementService.getTopicFullInfo(topicId).then(response => {
+                this.loading = false;
+                this.result_getTopicFullInfoSuccess = true;
+                this.selectedTopic = response.data;
+            }, error => {
+                this.loading = false;
+                this.result_getTopicFullInfoSuccess = false;
+                ErrorHandler.handleApiErrorResponse(error);
+            });
+        },
+
+        //Deletion        
         deleteCategory (categoryId: string) {
             this.loading = true;
             this.result_deleteCategory = false;

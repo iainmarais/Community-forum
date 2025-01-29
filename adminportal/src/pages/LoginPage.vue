@@ -144,8 +144,10 @@ const postLoginRoute = () => {
                     <div class="d-flex flex-column-fluid">
                         <div class="container">
                             <div class="card card-custom">
-                                <div class="card-header">
-                                    <h3>Log in</h3>
+                                <div class="card-header border-0 pt-7">
+                                    <h3 class="card-title align-items-start flex-column">
+                                        <span class="card-label fw-bolder text-dark">Log in</span>
+                                    </h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">

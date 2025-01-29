@@ -12,6 +12,13 @@ export type BoardEntry = {
 export type BoardBasicInfo = {
     board: BoardEntry,
     createdByUser: UserBasicInfo,
+    numTopics: number
+}
+
+export type BoardFullInfo = {
+    board: BoardEntry,
+    createdByUser: UserBasicInfo,
+    totalTopics: number,
     topics: TopicBasicInfo[]
 }
 

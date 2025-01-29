@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using RestApiServer.Common.Config;
 using RestApiServer.CommonEnums;
@@ -143,6 +144,13 @@ namespace RestApiServer.Common.Services
                 new Claim(JwtRegisteredClaimNames.Aud, ConfigurationLoader.GetConfigValue(EnvironmentVariable.AppName)),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+
+            var httpContext = new HttpContextAccessor().HttpContext;
+            string clientIpAddress = httpContext?.Connection.RemoteIpAddress?.ToString();
+            if (!string.IsNullOrEmpty(clientIpAddress))
+            {
+                claims.Add(new Claim("IpAddress", clientIpAddress));
+            }
 
             // Add additional user claims based on context
             if (isAdmin)

@@ -73,7 +73,7 @@ const openCreateTopicModal = () => {
         </div>
         <div class="card-body" v-if="!contentManagementStore.loading">
             <PageSelector :current-page-number="contentManagementStore.currentPageNumber" :totalPages="contentManagementStore.topics.totalPages" :rows-per-page="contentManagementStore.rowsPerPage" @previous-page="$emit('previous-page')" @next-page="$emit('next-page')" />
-            <table class="table table-hover table-striped table-bordered" v-if="contentManagementStore.topics.rows.length > 0">
+            <table class="table table-hover table-striped table-bordered" v-if="contentManagementStore.topics?.rows?.length > 0">
                 <thead>
                     <tr>
                         <th>Topic Name</th>   

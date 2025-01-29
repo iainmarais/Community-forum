@@ -100,5 +100,14 @@ namespace RestApiServer.Endpoints.Controllers.Admin
             var res = await ContentManagementService.GetPostsAsync(pageNumber, rowsPerPage, searchTerm);
             return ApiSuccessResponses.WithData("Get posts successful", res);            
         }
+
+        [HttpGet("categories/{categoryId}/fullinfo")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ApiSuccessResponse<CategoryFullInfo>> GetCategoryFullInfo(string categoryId)
+        {
+            var user = AuthService.GetAdminUserContext(User);
+            var res = await ContentManagementService.GetCategoryFullInfoAsync(categoryId);
+            return ApiSuccessResponses.WithData("Get category full info successful", res);
+        }
     }
 }

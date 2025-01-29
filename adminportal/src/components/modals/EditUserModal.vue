@@ -1,9 +1,9 @@
-<script lang = "ts" setup> 
+<script lang="ts" setup>
 import type { UpdateUserRequest } from '@/Dto/AdminPortal/UpdateUserRequest';
 import type { UserEntry } from '@/Dto/AdminPortal/UserInfo';
 import { useUserManagementStore } from '@/stores/UserManagementStore';
 import { Modal } from 'bootstrap';
-import { ref, watch, type PropType } from 'vue';
+import { ref, watch, onMounted, type PropType } from 'vue';
 import { useToast } from 'vue-toastification';
 
 const toast = useToast();
@@ -12,19 +12,26 @@ const userManagementStore = useUserManagementStore();
 const props = defineProps({
     selectedUser: {
         type: Object as PropType<UserEntry>,
-        required: true
+        required: true,
+        default: () => ({} as UserEntry)
     }
 })
 
-const userFirstname = ref(props.selectedUser.userFirstname);
-const userLastname = ref(props.selectedUser?.userLastname);
-const userEmailAddress = ref(props.selectedUser?.emailAddress);
+const userFirstname = ref('');
+const userLastname = ref('');
+const userEmailAddress = ref('');
+
+onMounted(() => {
+    userFirstname.value = props.selectedUser?.userFirstname || '';
+    userLastname.value = props.selectedUser?.userLastname || '';
+    userEmailAddress.value = props.selectedUser?.emailAddress || '';
+});
 
 watch(() => props.selectedUser, (newUser) => {
     if (newUser) {
-        userFirstname.value = newUser.userFirstname;
-        userLastname.value = newUser.userLastname;
-        userEmailAddress.value = newUser.emailAddress;
+        userFirstname.value = newUser.userFirstname || '';
+        userLastname.value = newUser.userLastname || '';
+        userEmailAddress.value = newUser.emailAddress || '';
     }
 });
 
@@ -35,7 +42,6 @@ watch(() => userManagementStore.result_updateUserSuccess, (newValue) => {
         closeModal();
     }
 });
-
 
 const closeModal = () => {
     var modal = document.getElementById("EditUserModal");
@@ -75,7 +81,14 @@ const saveChanges = () => {
 </script>
 
 <template>
-    <div id="editUserModal" class="modal fade stackable" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true" data-backdrop="static">
+    <div id="editUserModal" 
+         class="modal fade stackable" 
+         tabindex="-1"
+         role="dialog" 
+         aria-labelledby="staticBackdrop" 
+         aria-hidden="true" 
+         data-bs-backdrop="static"
+         data-bs-keyboard="false">
         <div class="modal-dialog modal-xxl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -89,17 +102,29 @@ const saveChanges = () => {
                 <div class="modal-body">
                     <div class="form-group">
                         <label>First name</label>
-                        <textarea class="form-control" id="UserFirstnameInput" :v-model="userFirstname">
+                        <textarea 
+                            class="form-control" 
+                            id="UserFirstnameInput" 
+                            v-model="userFirstname" 
+                            :placeholder="props.selectedUser?.userFirstname || 'Enter first name'">
                         </textarea>
                     </div>
                     <div class="form-group">
                         <label>Last name</label>
-                        <textarea class="form-control" id = "UserLastnameInput" :v-model="userLastname">
+                        <textarea 
+                            class="form-control" 
+                            id="UserLastnameInput" 
+                            v-model="userLastname" 
+                            :placeholder="props.selectedUser?.userLastname || 'Enter last name'">
                         </textarea>
                     </div>
                     <div class="form-group">
                         <label>Email address</label>
-                        <textarea class="form-control" id = "UserEmailAddress" :v-model="userEmailAddress">
+                        <textarea 
+                            class="form-control" 
+                            id="UserEmailAddress" 
+                            v-model="userEmailAddress" 
+                            :placeholder="props.selectedUser?.emailAddress || 'Enter email address'">
                         </textarea>
                     </div>
                 </div>

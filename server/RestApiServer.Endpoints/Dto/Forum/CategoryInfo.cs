@@ -5,7 +5,8 @@ namespace RestApiServer.Dto.Forum
     public class CategoryBasicInfo
     {
         public required CategoryEntry Category { get; set; } = null!;
-        public required List<BoardBasicInfo> Boards { get; set; } = new();
+        //We don't need to pull the boards here, just the count
+        public required int TotalBoards { get; set; } = 0;
     }
 
     public class CategoryFullInfo

@@ -4,8 +4,8 @@ import type { UserBasicInfo, UserEntry } from "./UserInfo";
 export type RequestEntry = {
     requestId: string;
     createdDate: Date;
-    supportRequestTitle: string;
-    supportRequestContent: string;
+    serviceRequestTitle: string;
+    serviceRequestContent: string;
     dateUpdated: Date;
     dateResolved: Date;
     isMarkedForDelete: boolean;

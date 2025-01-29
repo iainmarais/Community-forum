@@ -52,8 +52,8 @@ namespace RestApiServer.Endpoints.Services.Forum
                 {
                     RequestId = Guid.NewGuid().ToString(),
                     CreatedDate = DateTime.UtcNow,
-                    SupportRequestTitle = req.RequestTitle,
-                    SupportRequestContent = req.RequestContent,
+                    ServiceRequestTitle = req.RequestTitle,
+                    ServiceRequestContent = req.RequestContent,
                 };
                 await db.Requests.AddAsync(newRequest);
 
@@ -119,8 +119,8 @@ namespace RestApiServer.Endpoints.Services.Forum
 
             if (searchTerm != null)
             {
-                requestsQuery = requestsQuery.Where(r => r.Request.SupportRequestTitle.ToLower().Contains(searchTerm) ||
-                                                        r.Request.SupportRequestContent.ToLower().Contains(searchTerm));
+                requestsQuery = requestsQuery.Where(r => r.Request.ServiceRequestTitle.ToLower().Contains(searchTerm) ||
+                                                        r.Request.ServiceRequestContent.ToLower().Contains(searchTerm));
             }
 
             var filteredTotal = await requestsQuery.CountAsync();

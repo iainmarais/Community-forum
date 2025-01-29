@@ -1,12 +1,12 @@
 import { ApiSuccessResponse, type PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
 import ConfigurationLoader from "@/config/ConfigurationLoader";
-import type { BoardBasicInfo, BoardSummary } from "@/Dto/AdminPortal/BoardInfo";
-import type { CategoryBasicInfo, CategorySummary } from "@/Dto/AdminPortal/CategoryInfo";
+import type { BoardBasicInfo, BoardFullInfo, BoardSummary } from "@/Dto/AdminPortal/BoardInfo";
+import type { CategoryBasicInfo, CategoryFullInfo, CategorySummary } from "@/Dto/AdminPortal/CategoryInfo";
 import type { CreateBoardRequest } from "@/Dto/AdminPortal/CreateBoardRequest";
 import type { CreateCategoryRequest } from "@/Dto/AdminPortal/CreateCategoryRequest";
 import type { CreateTopicRequest } from "@/Dto/AdminPortal/CreateTopicRequest";
 import type { PostBasicInfo, PostSummary } from "@/Dto/AdminPortal/PostInfo";
-import type { TopicBasicInfo, TopicSummary } from "@/Dto/AdminPortal/TopicInfo";
+import type { TopicBasicInfo, TopicFullInfo, TopicSummary } from "@/Dto/AdminPortal/TopicInfo";
 import AxiosClient from "@/http/AxiosClient";
 
 const createCategory = async (request: CreateCategoryRequest) : Promise<ApiSuccessResponse<object>> => {
@@ -77,6 +77,18 @@ const deleteTopic = async (topicId: string): Promise<ApiSuccessResponse<object>>
     return await AxiosClient.Post(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/topics/${topicId}/delete`, null);
 }
 
+const getCategoryFullInfo = async (categoryId: string): Promise<ApiSuccessResponse<CategoryFullInfo>> => {
+    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/categories/${categoryId}/fullinfo`);
+}
+
+const getBoardFullInfo = async (boardId: string): Promise<ApiSuccessResponse<BoardFullInfo>> => {
+    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/boards/${boardId}/fullinfo`);
+}
+
+const getTopicFullInfo = async (topicId: string): Promise<ApiSuccessResponse<TopicFullInfo>> => {
+    return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/adminportal/topics/${topicId}/fullinfo`);
+}
+
 
 export default {
     createCategory,
@@ -88,5 +100,8 @@ export default {
     getPosts,
     deleteCategory,
     deleteBoard,
-    deleteTopic
+    deleteTopic,
+    getCategoryFullInfo,
+    getBoardFullInfo,
+    getTopicFullInfo
 }

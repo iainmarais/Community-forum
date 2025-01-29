@@ -40,7 +40,7 @@ namespace RestApiServer.Endpoints.Services.Forum.Categories
                                     select new CategoryBasicInfo()
                                     {
                                         Category = category,
-                                        Boards = (from b in db.Boards
+                                        TotalBoards = (from b in db.Boards
                                                   where b.CategoryId == category.CategoryId
                                                   join user in db.Users on b.CreatedByUserId equals user.UserId
                                                   select new BoardBasicInfo()
@@ -50,7 +50,7 @@ namespace RestApiServer.Endpoints.Services.Forum.Categories
                                                       {
                                                           User = user
                                                       }
-                                                  }).AsEnumerable().ToList()
+                                                  }).AsEnumerable().Count()
                                     }).ToListAsync();
             return categories;
         }
@@ -95,7 +95,7 @@ namespace RestApiServer.Endpoints.Services.Forum.Categories
             return new CategoryBasicInfo()
             {
                 Category = category,
-                Boards = boards.ToList()
+                TotalBoards = boards.Count()
             };
         }
     }

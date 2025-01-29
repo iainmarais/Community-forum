@@ -11,12 +11,20 @@ import LoadingIndicator from '@/components/elements/LoadingIndicator.vue';
 import SearchBar from '@/components/elements/Inputs/SearchBar.vue';
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import { debounce } from 'lodash';
+import { Modal } from 'bootstrap';
 import dayjs from 'dayjs';
+import CreateServiceRequestModal from '../modals/CreateServiceRequestModal.vue';
 
 const serviceRequestsStore = useServiceRequestsStore();
 
 const refresh = () => {
     //Todo: update this function to get support requests from the server.
+}
+
+const openCreateServiceRequestModal = () => {
+    var createServiceRequestModal = document.getElementById("CreateServiceRequestModal");
+    var modal = new Modal(createServiceRequestModal);
+    modal.show();
 }
 
 const formatDate = (date: Date) => {
@@ -47,40 +55,36 @@ onMounted(() => {
                 <ButtonWithLoadingIndicator style="margin-inline: 10px" :label="'Refresh'" :icon="'fas fa-sync'" class="btn btn-primary btn-sm" @click.prevent="refresh()">
                     Refresh
                 </ButtonWithLoadingIndicator>
+                <button class="btn btn-sm btn-primary" style="margin-inline: 10px" @click.prevent="openCreateServiceRequestModal()">
+                    <i class="fa fa-plus"></i>
+                    Create new
+                </button>
             </div>            
         </div>
-        <div class="card-body pt-0">
+        <div class="card-body pt-0" v-if="!serviceRequestsStore.loading_getRequests">
             <PageSelector :current-page-number="serviceRequestsStore.currentPageNumber" :totalPages="serviceRequestsStore.requests.totalPages" :rows-per-page="serviceRequestsStore.rowsPerPage" @previous-page="$emit('previous-page')" @next-page="$emit('next-page')" />
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="text-center">
-                        <div v-if="!serviceRequestsStore.loading_getRequests">
-                            <table class="table table-hover table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Created</th>
-                                        <th>Creator</th>
-                                        <th>Title</th>
-                                        <th>Message</th>
-                                        <th colspan="2">Triage</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="element in serviceRequestsStore.requests.rows" :key="element.request.requestId">
-                                        <td>{{ formatDate(element.request.createdDate) }}</td>
-                                        <td>{{ element.createdByUser.user.username }}</td>
-                                        <td>{{ element.request.supportRequestTitle }}</td>
-                                        <td>{{ element.request.supportRequestContent }}</td>
-                                        <td> {{ element.request.triageStatus }}</td>
-                                        <td>{{ element.request.triageType }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <LoadingIndicator v-else :loading="true" />
-                    </div>
+            <div>
+                <div v-if="serviceRequestsStore.requests.rows.length > 0">
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr v-for="element in serviceRequestsStore.requests.rows">
+                                <td> {{ element.request.createdDate }} </td>
+                                <td> {{ element.request.createdByUser.username }} </td>
+                                <td> {{ element.request.serviceRequestTitle }} </td>
+                                <td> {{ element.request.serviceRequestContent }} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div v-else>
+                    <span> No service requests yet</span>
                 </div>
             </div>
         </div>
+        <LoadingIndicator v-else :loading="true" />
     </div>
+    <CreateServiceRequestModal />
 </template>

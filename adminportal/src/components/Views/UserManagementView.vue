@@ -1,4 +1,4 @@
-<script lang = "ts" setup>
+<script lang="ts" setup>
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import { debounce } from 'lodash';
@@ -38,12 +38,15 @@ const formatDate = (date: Date) => {
 
 const openEditUserModal = (selectedUser: UserEntry) => {
     userToEdit.value = selectedUser;
-    //Todo: create modal dialog and:
-        //Pass the user from this method to the modal?
-        //Use a different message-passing method to get the selected user to the modal so we can view, and edit their props.
-    var editUserModal = document.getElementById("editUserModal");
-    var modal = new Modal(editUserModal);
-    modal.show();
+    const editUserModal = document.getElementById("editUserModal");
+    if (editUserModal) {
+        const modal = new Modal(editUserModal, {
+            backdrop: true,
+            keyboard: true,
+            focus: true
+        });
+        modal.show();
+    }
 }
 
 const openAddUserModal = () => {
@@ -203,5 +206,8 @@ watch(() => userManagementStore.result_assignUserRoleSuccess,(newValue) => {
         </div>
     </div>
     <AddUserModal />
-    <EditUserModal :selected-user="userToEdit" />
+    <EditUserModal 
+        v-if="userToEdit"
+        :selected-user="userToEdit" 
+    />
 </template>

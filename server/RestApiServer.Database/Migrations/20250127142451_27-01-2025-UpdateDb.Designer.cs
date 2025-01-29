@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestApiServer.Db;
 
@@ -11,9 +12,11 @@ using RestApiServer.Db;
 namespace RestApiServer.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250127142451_27-01-2025-UpdateDb")]
+    partial class _27012025UpdateDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,7 +120,7 @@ namespace RestApiServer.Database.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryId = "f8d259a1-4a62-4041-9f1d-e753c5f84b64",
+                            CategoryId = "356d0f1d-0cfd-44e2-8443-319316d3ae1f",
                             CategoryDescription = "General discussions for the forum.",
                             CategoryName = "General",
                             CreatedByUserId = "",
@@ -127,7 +130,7 @@ namespace RestApiServer.Database.Migrations
                         },
                         new
                         {
-                            CategoryId = "fed5577d-c0fb-4675-b67b-eececfd5e3cc",
+                            CategoryId = "28574860-0202-439e-8b92-ae1b6a49145d",
                             CategoryDescription = "Everything pertaining to computer and IT support can be discussed here.",
                             CategoryName = "Computer and IT Support",
                             CreatedByUserId = "",
@@ -137,7 +140,7 @@ namespace RestApiServer.Database.Migrations
                         },
                         new
                         {
-                            CategoryId = "a2368d0d-49fc-4c3a-bf97-06f241a2f7fe",
+                            CategoryId = "15ecfd4d-17ef-41f6-8af0-9b0d31aa1fa6",
                             CategoryDescription = "Everything pertaining to software development can be discussed here.",
                             CategoryName = "Software development",
                             CreatedByUserId = "",
@@ -441,12 +444,12 @@ namespace RestApiServer.Database.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("ServiceRequestContent")
+                    b.Property<string>("SupportRequestContent")
                         .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("varchar(1000)");
 
-                    b.Property<string>("ServiceRequestTitle")
+                    b.Property<string>("SupportRequestTitle")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");

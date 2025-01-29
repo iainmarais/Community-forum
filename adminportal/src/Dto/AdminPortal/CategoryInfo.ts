@@ -9,6 +9,12 @@ export type CategoryEntry = {
 
 export type CategoryBasicInfo = {
     category: CategoryEntry,
+    totalBoards: number
+}
+
+export type CategoryFullInfo = {
+    category: CategoryEntry,
+    totalBoards: number,
     boards: BoardBasicInfo[]
 }
 

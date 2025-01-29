@@ -188,6 +188,25 @@ namespace RestApiServer.Db
             .WithOne(b => b.Category)
             .HasForeignKey(b => b.CategoryId);
 
+            //Service requests
+            modelBuilder.Entity<RequestEntry>()
+            .HasOne(sr => sr.CreatedByUser)
+            .WithMany()
+            .HasForeignKey(sr => sr.CreatedByUserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RequestEntry>()
+            .HasOne(sr => sr.AssignedToUser)
+            .WithMany()
+            .HasForeignKey(sr => sr.AssignedToUserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RequestEntry>()
+            .HasOne(sr => sr.ResolvedByUser)
+            .WithMany()
+            .HasForeignKey(sr => sr.ResolvedByUserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
             //User-Request mappings
             modelBuilder.Entity<UserRequestMappingEntry>()
                 .HasKey(urm => urm.UserMappingId); //Primary key

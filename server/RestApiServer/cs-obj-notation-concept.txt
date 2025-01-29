@@ -1,0 +1,14 @@
+//How can one create a C# object notation format that can be used for configuration or message passing?
+
+/*
+Objectives
+1. It should resemble C# objects.
+2. It should use similar constructs for strings, chars, numbers, etc.
+3. Classes could be used to represent the equivalent of ini file sections.
+4. Using get and set should determine whether values can be read from or written to configuration keys.
+5. Comments should be supported. The reason for this is simple, since it allows one to write in-line explanations of what configuration variables do.
+
+Implementation ideas
+1. Use an extension such as .cson
+2. Serialise and deserialise into the appropriate datatypes for message passing.
+*/

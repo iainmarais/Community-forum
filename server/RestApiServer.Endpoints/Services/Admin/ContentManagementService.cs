@@ -6,6 +6,7 @@ using RestApiServer.Dto.Forum;
 using RestApiServer.Endpoints.ApiResponses;
 using RestApiServer.Endpoints.Dto.Admin;
 
+//Note to self: This file is getting huge. I need to break it up into smaller files.
 namespace RestApiServer.Endpoints.Services.Admin
 {
     public class ContentManagementService
@@ -104,7 +105,7 @@ namespace RestApiServer.Endpoints.Services.Admin
                                 select new CategoryBasicInfo
                                 {
                                     Category = c,
-                                    Boards = associatedBoardsQuery.Where(b => c.CategoryId == b.Board.CategoryId).ToList(),
+                                    TotalBoards = associatedBoardsQuery.Where(b => b.Board.CategoryId == c.CategoryId).Count(),
                                     /* Not yet available on categories.
                                     CreatedByUser = new UserBasicInfo
                                     {
@@ -118,10 +119,7 @@ namespace RestApiServer.Endpoints.Services.Admin
                 searchTerm = searchTerm.ToLower();
                 categoriesQuery = (from c in categoriesQuery
                                 where c.Category.CategoryName.ToLower().Contains(searchTerm) ||
-                                    c.Category.CategoryDescription.ToLower().Contains(searchTerm) ||
-                                    c.Boards.Any(b => b.Board.BoardName.ToLower().Contains(searchTerm)) ||
-                                    c.Boards.Any(b => b.Board.BoardDescription.ToLower().Contains(searchTerm)) ||
-                                    c.Boards.Any(b => b.CreatedByUser.User.Username.ToLower().Contains(searchTerm))
+                                    c.Category.CategoryDescription.ToLower().Contains(searchTerm)
                                 select c);
             }
             var filteredTotal = await categoriesQuery.CountAsync();
@@ -150,42 +148,16 @@ namespace RestApiServer.Endpoints.Services.Admin
         public static async Task<PaginatedData<List<BoardBasicInfo>, BoardSummary>> GetBoardsAsync(int pageNumber, int rowsPerPage, string searchTerm = "")
         {
             using var db = new AppDbContext();
-            var associatedPostsQuery = from p in db.Posts 
-                                        join u in db.Users on p.CreatedByUserId equals u.UserId
-                                        select new PostBasicInfo
-                                        {
-                                            Post = p,
-                                            CreatedByUser = new UserBasicInfo
-                                            {
-                                                User = u
-                                            }
-                                        };
-
-            var associatedThreadsQuery = from th in db.Threads
-                                        join u in db.Users on th.CreatedByUserId equals u.UserId
-                                        select new ThreadBasicInfo
-                                        {
-                                            Thread = th,
-                                            CreatedByUser = new UserBasicInfo
-                                            {
-                                                User = u
-                                            },
-                                            TotalPosts = associatedPostsQuery.Where(p => p.Post.ThreadId == th.ThreadId).Count()
-                                        };
-
             var associatedTopicsQuery = from t in db.Topics
                                         join u in db.Users on t.CreatedByUserId equals u.UserId
                                         select new TopicBasicInfo
                                         {
                                             Topic = t,
-                                            CreatedByUser = new UserBasicInfo
+                                            CreatedByUser = new UserBasicInfo()
                                             {
                                                 User = u
-                                            },
-                                            TotalThreads = associatedThreadsQuery.Where(th => th.Thread.TopicId == t.TopicId).Count(),
-                                            TotalPosts = associatedThreadsQuery.Where(th => th.Thread.TopicId == t.TopicId).Sum(th => th.TotalPosts)
+                                            }
                                         };
-
             var boardsQuery = from b in db.Boards 
                             join u in db.Users on b.CreatedByUserId equals u.UserId
                             select new BoardBasicInfo
@@ -195,7 +167,7 @@ namespace RestApiServer.Endpoints.Services.Admin
                                 { 
                                     User = u
                                 },
-                                Topics = associatedTopicsQuery.ToList()
+                                NumTopics = associatedTopicsQuery.Count()
                             };
             if(!string.IsNullOrEmpty(searchTerm))
             {
@@ -354,6 +326,37 @@ namespace RestApiServer.Endpoints.Services.Admin
                     TotalPosts = filteredTotal
                 }
             };      
+        }
+        public static async Task<CategoryFullInfo> GetCategoryFullInfoAsync(string categoryId)
+        {
+            using var db = new AppDbContext();
+
+            var category = await db.Categories
+                .Where(category => category.CategoryId == categoryId)
+                .Join(db.Boards, c => c.CategoryId, b => b.CategoryId, (c, b) => new { c, b })
+                .SingleOrDefaultAsync();
+
+            if(category == null)
+            {
+                throw ClientInducedException.MessageOnly("Category not found");
+            }
+            return new CategoryFullInfo()
+            {
+                Category = category.c,
+                Boards = await db.Boards
+                    .Where(b => b.CategoryId == categoryId)
+                    .Join(db.Users, b => b.CreatedByUserId, u => u.UserId, (b, u) => new BoardBasicInfo()
+                    {
+                        Board = b,
+                        CreatedByUser = new UserBasicInfo()
+                        {
+                            User = u
+                        }
+                    }).ToListAsync(),
+                TotalBoards = await db.Boards
+                    .Where(b => b.CategoryId == categoryId)
+                    .CountAsync()
+            };
         }
 
         public static async Task DeleteCategoryAsync(string categoryId)

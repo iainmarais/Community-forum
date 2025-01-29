@@ -6,6 +6,7 @@ using RestApiServer.CommonEnums;
 using RestApiServer.Database.Utils;
 using RestApiServer.Endpoints.ApiResponses;
 using RestApiServer.Dto.App;
+using RestApiServer.Db.UserRequestMapping;
 
 namespace RestApiServer.Endpoints.Services.Admin
 {
@@ -35,18 +36,19 @@ namespace RestApiServer.Endpoints.Services.Admin
                 throw ClientInducedException.MessageOnly("User is not an administrator");
             }
 
-            var requestsQuery = from r in db.Requests
-                                join urm in db.UserRequestMappings on r.RequestId equals urm.RequestId
-                                join u in db.Users on urm.UserId equals u.UserId
-                                where urm.IsCreator == true && (string.IsNullOrEmpty(userId) || urm.UserId == userId)
-                                select new RequestBasicInfo
-                                {
-                                    Request = r,
-                                    CreatedByUser = new UserBasicInfo 
-                                    {
-                                        User = u
-                                    }
-                                };
+            //Create a query that executes a join against the user-request mappings and then another join against the user-request mappings and users tables to select requests for users.
+
+            var requestsQuery = db.Requests
+                .Join(db.UserRequestMappings, r => r.RequestId, urm => urm.RequestId, (r, urm) => new { r, urm })
+                .Join(db.Users, rurm => rurm.urm.UserId, u => u.UserId, (rurm, u) => new { rurm.r, rurm.urm, u })
+                .Select(r => new RequestBasicInfo
+                {
+                    Request = r.r,
+                    CreatedByUser = new UserBasicInfo 
+                    {
+                        User = r.u
+                    },
+                });
             //Throw an exception if the query is null 
             if (requestsQuery == null)
             {
@@ -155,8 +157,8 @@ namespace RestApiServer.Endpoints.Services.Admin
             var supportRequest = new RequestEntry
             {
                 CreatedDate = DateTime.UtcNow,
-                SupportRequestContent = requestContent,
-                SupportRequestTitle = requestTitle,
+                ServiceRequestContent = requestContent,
+                ServiceRequestTitle = requestTitle,
                 RequestId = DbUtils.GenerateUuid(),
             };
 

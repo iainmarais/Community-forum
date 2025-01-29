@@ -19,6 +19,16 @@ export type TopicBasicInfo = {
     createdByUser: UserBasicInfo
 }
 
+export type TopicFullInfo = {
+    topic: TopicEntry,
+    totalThreads: number,
+    totalPosts: number,
+    numNewthreads: number,
+    newestThread: ThreadBasicInfo,
+    createdByUser: UserBasicInfo,
+    threads: ThreadBasicInfo[]
+}
+
 export type TopicSummary = {
     totalTopics: number
 }

@@ -21,7 +21,7 @@ const createBoard = () => {
     }
     const req: CreateBoardRequest = {
         boardName: boardName.value,
-        description: boardDescription.value,
+        boardDescription: boardDescription.value,
         categoryId: selectedCategoryId.value
     }
     contentManagementStore.createBoard(req);

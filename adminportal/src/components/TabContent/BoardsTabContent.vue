@@ -1,17 +1,19 @@
-<script lang = "ts" setup>
+<script lang="ts" setup>
 import ButtonWithLoadingIndicator from '@/components/elements/ButtonWithLoadingIndicator.vue';
 import { useContentManagementStore } from '@/stores/ContentManagementStore';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import CreateBoardModal from '@/components/modals/CreateBoardModal.vue';
+import ViewBoardModal from '@/components/modals/ViewBoardModal.vue';
 import { Modal } from 'bootstrap';
 import { useToast } from 'vue-toastification';
 import { ref, watch } from 'vue';
 import { debounce } from 'lodash';
 import PageSelector from '@/components/elements/Inputs/PageSelector.vue';
 import SearchBar from '@/components/elements/Inputs/SearchBar.vue';
-
+import type { BoardFullInfo } from '@/Dto/AdminPortal/BoardInfo';
 
 const searchQuery = ref("");
+const selectedBoard = ref<BoardFullInfo|null>(null);
 
 const toast = useToast();
 
@@ -29,7 +31,6 @@ const search = debounce((query: string) => {
     contentManagementStore.getBoards();   
 }, 300);
 
-
 const openCreateBoardModal = () => {
     var createBoardModal =  document.getElementById("CreateBoardModal");
     var modal = new Modal(createBoardModal);
@@ -45,8 +46,29 @@ const deleteBoard = (boardId: string) => {
 }
 
 const viewBoard = (boardId: string) => {
-    //Todo: build out.
+    //Load the full board info from the selected board Id.
+    contentManagementStore.getBoardFullInfo(boardId);
+
+    openShowViewBoardModal();
 }
+
+const openShowViewBoardModal = () => {
+    const viewBoardModal = document.getElementById("ViewBoardModal");
+    if (viewBoardModal) {
+        const modal = new Modal(viewBoardModal, {
+            backdrop: true,
+            keyboard: true,
+            focus: true
+        });
+        modal.show();
+    }
+}
+
+watch(() => contentManagementStore.selectedBoard, (newValue) => {
+    if(newValue) {
+        selectedBoard.value = contentManagementStore.selectedBoard;
+    }
+});
 
 watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
     if(newValue) {
@@ -80,6 +102,7 @@ watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
                     <tr>
                         <th>Board Name</th>   
                         <th>Description</th>   
+                        <th>Topics</th>
                         <!-- <th>Category</th>    -->
                         <th>Created By</th>   
                         <th>Actions</th>   
@@ -89,6 +112,7 @@ watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
                     <tr v-for="element in contentManagementStore.boards.rows">
                         <td> {{ element.board.boardName ?? "N/A" }} </td>
                         <td> {{ element.board.boardDescription ?? "N/A" }}</td>
+                        <td> {{ element.numTopics ?? 0 }}</td>
                         <td> {{ element.createdByUser.user.username ?? "N/A" }}</td>
                         <td> 
                             <button style="margin-inline: 10px" class ="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Edit</button>
@@ -107,4 +131,5 @@ watch(() => contentManagementStore.result_deleteBoard, (newValue) => {
         </div>
     </div>
 <CreateBoardModal />
+<ViewBoardModal :selected-board = "selectedBoard" />
 </template>

@@ -44,7 +44,7 @@ const search = debounce((query: string) => {
         <div class="card-body">
             <div v-if="!contentManagementStore.loading">
                 <PageSelector :current-page-number="contentManagementStore.currentPageNumber" :totalPages="contentManagementStore.posts.totalPages" :rows-per-page="contentManagementStore.rowsPerPage" @previous-page="$emit('previous-page')" @next-page="$emit('next-page')" />
-                <table class="table table-hover table-striped table-bordered" v-if="contentManagementStore.posts.rows.length > 0">
+                <table class="table table-hover table-striped table-bordered" v-if="contentManagementStore.posts.rows?.length > 0">
                     <thead>
                         <tr>
                             <th>Date created</th>

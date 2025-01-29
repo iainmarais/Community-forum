@@ -95,7 +95,7 @@ watch(() => contentManagementStore.result_getCategories, (newValue) => {
                     <tr v-for="element in contentManagementStore.categories.rows">
                         <td> {{ element.category.categoryName ?? "N/A" }} </td>
                         <td> {{ element.category.categoryDescription ?? "N/A" }}</td>
-                        <td> {{ element.boards.length ?? 0 }}</td>
+                        <td> {{ element.totalBoards ?? 0 }}</td>
                         <td>
                             <button class ="btn btn-sm btn-primary" style="margin-inline: 10px"><i class="fas fa-edit"></i>Edit</button>
                             <button class ="btn btn-sm btn-primary" style="margin-inline: 10px" @click="viewCategory(element.category.categoryId)"><i class="fas fa-eye"></i>View</button>
