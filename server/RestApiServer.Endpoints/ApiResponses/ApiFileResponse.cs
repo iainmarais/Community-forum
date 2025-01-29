@@ -16,7 +16,7 @@ namespace RestApiServer.Endpoints.ApiResponses
         
         //This should be a default response for the case where no data can be sent back to the frontend.
         public ApiFileResponse()
-            : base(true, string.Empty, null, null)
+            : base(true, "No data available", null, null)
         {
         }
     }
