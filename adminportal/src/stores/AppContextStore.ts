@@ -128,25 +128,23 @@ const NavigationBar: NavbarItem[] = [
 type NavbarLinkItemId = "home" | "login" | "logoff" | "usermgmt" | "permissionsmgmt" | "contentmgmt" | "supportrequests" ;
 
 export type NavbarLinkItem = {
-    type: "item",
+    type: "item";
     id: NavbarLinkItemId;
     label: string;
     labelClass?: string;
     iconClass: string;
     routename: string;
     routeParams?: any;
-    //Not yet used
-    //permissions: PermissionType[]
     featureFlag?: FeatureId;
 }
 
 export type NavbarMenuItem = {
-    type: "menu",
+    type: "menu";
     id: string;
     label: string;
     labelClass?: string;
     iconClass: string;
-    items: (NavbarLinkItem[] | NavbarSubmenuItem[]);
+    items: NavbarItem[];
 }
 
 export type NavbarSubmenuItem = {
@@ -156,7 +154,6 @@ export type NavbarSubmenuItem = {
     labelClass?: string;
     iconClass: string;
     items: NavbarLinkItem[];
-
 }
 
 export type NavbarItem = NavbarMenuItem | NavbarLinkItem | NavbarSubmenuItem;
@@ -211,37 +208,41 @@ export const useAppContextStore = defineStore({
             return permissions.some(permission => permissions.includes(permission));
         },
 
-        getAppState() {
+        async getAppState() {
             this.appLoading = true;
-            AdminPortalService.getAdminPortalAppState().then(async response => {
-                this.appLoading = false;
+            try {
+                const response = await AdminPortalService.getAdminPortalAppState();
+                
+                // Update user state
+                if (response.data.currentLoggedInUser) {
+                    this.currentLoggedInUser = response.data.currentLoggedInUser;
+                } else {
+                    this.currentLoggedInUser = undefined;
+                }
+                
+                // Update app stats
+                if (response.data.adminPortalStats) {
+                    this.appStats = response.data.adminPortalStats;
+                } else {
+                    this.appStats = {} as AdminPortalStats;
+                }
+                
+                // Update navbar after state changes
+                this.buildNavbar(!this.currentLoggedInUser);
+                
                 toast.success("App state updated from server");
-                if(!response.data.currentLoggedInUser) {
-                    this.currentLoggedInUser = defaultState.currentLoggedInUser;
-                }
-                if(!response.data.adminPortalStats) {
-                    this.appStats = defaultState.appStats;
-                }
-                try {
-                    //If something goes wrong 
-                }
-                catch (error: any) {
-                    toast.error(error.message);
-                }
-                finally {
-                    this.onAppReady();
-                }
-            }, error => {
-                if(error.response?.status === 401) {
-                    ErrorHandler.handleApiErrorResponse(error);
-                    this.logoff("Authentication failed. Please log in again.");
-                }
-            });
+            } catch (error: any) {
+                toast.error(error.message);
+                // Clear user state on error
+                this.currentLoggedInUser = undefined;
+                this.appStats = {} as AdminPortalStats;
+            } finally {
+                this.appLoading = false;
+                this.onAppReady();
+            }
         },
 
         onAppReady() {
-            this.buildNavbar();
-            this.appLoading = false;
             console.log(`App loading: ${this.appLoading}`)
         },
 
@@ -255,55 +256,81 @@ export const useAppContextStore = defineStore({
         },
         buildNavbar(isLoggedOff: boolean = false) {
             const contextualNavbar: NavbarItem[] = [];
+            
             for(const navitem of NavigationBar) {
-                if(navitem.type==="item") {
-                    if(!isLoggedOff && navitem.id === "login") {
-                        continue;
-                    }
-                    else if(isLoggedOff && navitem.id === "logoff") {
-                        continue;
+                if(navitem.type === "item") {
+                    if(isLoggedOff) {
+                        if(navitem.id === "login") {
+                            contextualNavbar.push(navitem);
+                        }
                     }
                     else {
-                        contextualNavbar.push(navitem);
+                        if(navitem.id !== "login") {
+                            contextualNavbar.push(navitem);
+                        }
                     }
                 }
-
-                if(navitem.type==="menu") {
-                    const submenuItems: (NavbarLinkItem | NavbarSubmenuItem)[] = [];
-                    for(const menuItem of navitem.items as (NavbarLinkItem | NavbarSubmenuItem)[]) {
-                        if(menuItem.type==="item") {
+                else if(navitem.type === "menu") {
+                    const submenuItems: NavbarItem[] = [];
+                    for(const menuItem of navitem.items) {
+                        if(menuItem.type === "item") {
+                            if(isLoggedOff) {
+                                if(menuItem.id === "login") {
+                                    submenuItems.push(menuItem);
+                                }
+                            }
+                            else {
+                                if(menuItem.id !== "login") {
+                                    submenuItems.push(menuItem);
+                                }
+                            }
+                        }
+                        else if(menuItem.type === "submenu") {
                             submenuItems.push(menuItem);
                         }
-                        const subSubmenuItems: NavbarLinkItem[] = [];
-                        if(menuItem.type=="submenu") {
-                            for(const subMenuItem of menuItem.items) {
-                                subSubmenuItems.push(subMenuItem);
-                            }
-                            if(subSubmenuItems.length > 0) {
-                                const subSubmenu: NavbarSubmenuItem = {
-                                    ...menuItem,
-                                    items: subSubmenuItems
-                                };
-                                submenuItems.push(subSubmenu);
-                            }
-                        }
                     }
+
                     if(submenuItems.length > 0) {
                         contextualNavbar.push({
                             ...navitem,
-                            items: submenuItems as NavbarLinkItem[]
+                            items: submenuItems
                         });
                     }
                 }
             }
             this.navbar = contextualNavbar;
         },
-        logoff(reason?: string) {
-            this.currentLoggedInUser = undefined;
-
-            AxiosClient.ForceLogoff();
-            this.previousRoute = undefined;
-            router.replace({ name: 'login', query: { logoffReason: reason, logoffMethod: "manual" } });
+        async logoff(reason?: string) {
+            try {
+                // Clear user state first
+                this.currentLoggedInUser = undefined;
+                this.appStats = {} as AdminPortalStats;
+                
+                // Clear all tokens and cached data
+                localStorage.removeItem("Token_Key");
+                localStorage.removeItem("User_Refresh_Token");
+                
+                // Force client cleanup
+                AxiosClient.ForceLogoff();
+                this.previousRoute = undefined;
+                
+                // Rebuild navbar for logged out state
+                this.buildNavbar(true);
+                
+                // Navigate to login page
+                await router.replace({ 
+                    name: 'login', 
+                    query: { 
+                        logoffReason: reason, 
+                        logoffMethod: "manual",
+                        timestamp: Date.now().toString() // Prevent caching
+                    } 
+                });
+            } catch (error) {
+                console.error('Error during logoff:', error);
+                // Even if there's an error, ensure user is logged out
+                router.replace({ name: 'login' });
+            }
         }
     }
 });

@@ -1,4 +1,4 @@
-<script lang = "ts" setup>
+<script lang="ts" setup>
 import router, { HomeRoute, MainRoute, LoginRoute } from '@/router';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
@@ -16,28 +16,40 @@ const route = useRoute();
 const appContextStore = useAppContextStore();
 const mainPageStore = useMainPageStore();
 
-onMounted(() => {
-    const storedToken = localStorage.getItem(Token_Key);
-    if(storedToken) {
-        SetToken(storedToken);
-    }
-    appContextStore.getAppState();
-});
-
-watch(() => router, _ => {
-    mainPageStore.setBreadcrumbs([]);
-}, {flush: "pre", immediate: true, deep: true});
-
-watch(() => appContextStore.currentLoggedInUser, (newValue) => {
-    //If the user is logged in 
-    if (newValue) {
-        router.push(MainRoute);
-    }
-    //Return to login screen.
-    if(!newValue) {
+onMounted(async () => {
+    try {
+        const storedToken = localStorage.getItem(Token_Key);
+        if (storedToken) {
+            SetToken(storedToken);
+            await appContextStore.getAppState();
+        } else {
+            appContextStore.appLoading = false;
+            router.push(LoginRoute);
+        }
+    } catch (error) {
+        console.error('Error initializing app:', error);
+        appContextStore.appLoading = false;
         router.push(LoginRoute);
     }
 });
+
+watch(() => appContextStore.currentLoggedInUser, (newValue, oldValue) => {
+    if (newValue) {
+        // User logged in - ensure we're on main route
+        if (route.name === LoginRoute) {
+            router.push(MainRoute);
+        }
+    } else if (oldValue) { // Only redirect if we're transitioning from logged in to logged out
+        // User logged out - ensure we're on login route
+        router.push(LoginRoute);
+    }
+}, { immediate: true });
+
+watch(() => route.fullPath, () => {
+    if (!appContextStore.appLoading && appContextStore.currentLoggedInUser) {
+        mainPageStore.setBreadcrumbs([]);
+    }
+}, { immediate: true });
 
 </script>
 

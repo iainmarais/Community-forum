@@ -1,4 +1,4 @@
-<script lang = "ts" setup>
+<script lang="ts" setup>
 import { Toast_UserLoginSuccessful } from '@/components/prepopulatedToasts';
 import type { AdminLoginRequest } from '@/Dto/AdminPortal/AdminLoginRequest';
 import ErrorHandler from '@/Handlers/ErrorHandler';
@@ -29,8 +29,8 @@ const loginInProgress = ref<boolean>(false);
 
 const route = useRoute();
 
-watch (userIdentifier, () => {
-    if(localStorage.getItem(Last_Logged_In_User_Identifier)) {
+watch(userIdentifier, () => {
+    if (localStorage.getItem(Last_Logged_In_User_Identifier)) {
         localStorage.removeItem(Last_Logged_In_User_Identifier);
     }
 });
@@ -38,23 +38,23 @@ watch (userIdentifier, () => {
 onMounted(() => {
     $(".modal-backdrop").remove();
     const LastLoggedInIdentifier = localStorage.getItem(Last_Logged_In_User_Identifier);
-    if(LastLoggedInIdentifier) {
+    if (LastLoggedInIdentifier) {
         userIdentifier.value = LastLoggedInIdentifier;
     }
-    document.title ="Log in";
-    if(route.params.logoffReason){
+    document.title = "Log in";
+    if (route.params.logoffReason) {
         console.log(route.params.logoffReason);
     }
     appContextStore.buildNavbar(true);
     const storedToken = localStorage.getItem(Token_Key);
-    if(storedToken) {
+    if (storedToken) {
         loading.value = true;
         SetToken(storedToken);
         postLoginRoute();
     }
     setTimeout(() => {
-        if(loginMethod.value="identifier_password") {
-            if(userIdentifier.value) {
+        if (loginMethod.value = "identifier_password") {
+            if (userIdentifier.value) {
                 document.getElementById("userIdentifierInput")?.focus();
             }
             else {
@@ -64,58 +64,66 @@ onMounted(() => {
     }, 50);
 });
 
-const login = () => {
-    const request:AdminLoginRequest = {
+const login = async () => {
+    if (!userIdentifier.value || !password.value) {
+        toast.error("Please enter both username and password");
+        return;
+    }
+
+    const request: AdminLoginRequest = {
         userIdentifier: userIdentifier.value,
         password: password.value,
-        //Hardcoded this here since in this case the user is logging in via the admin portal
         userContext: "admin"
     }
+    
     loginInProgress.value = true;
-    AdminPortalService.adminLogin(request).then(response => {
+    try {
+        const response = await AdminPortalService.adminLogin(request);
+        
+        // Handle tokens first
         SetToken(response.data.accessToken);
         localStorage.setItem(Token_Key, response.data.accessToken);
         localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
         localStorage.setItem(User_Refresh_Token, response.data.refreshToken);
+        
+        // Update app state
+        await appContextStore.getAppState();
+        
+        // Then update UI state
         loginInProgress.value = false;
-        postLoginRoute();
         Toast_UserLoginSuccessful(response.data.adminUserProfile.user.username);
-    }, error => {
-        ErrorHandler.handleApiErrorResponse(error);
+        
+        // Navigate after state is updated
+        await postLoginRoute();
+    } catch (error) {
         loginInProgress.value = false;
-    });
-    
+        ErrorHandler.handleApiErrorResponse(error);
+        // Clear any potentially cached tokens on error
+        localStorage.removeItem(Token_Key);
+        localStorage.removeItem(User_Refresh_Token);
+    }
 }
 
-const postLoginRoute = () => {
-    //Route to the login page.
-    var postLoginRoute = {
+const postLoginRoute = async () => {
+    let postLoginRoute = {
         name: HomeRoute,
         params: {},
         query: {},
     }
-    const lastRoute = localStorage.getItem(Last_Route); //Get the last route from localStorage if not login or logoff.
     
-    if(lastRoute) {
-        const lastRouteJson = JSON.parse(lastRoute);
-        postLoginRoute = lastRouteJson;  
-    }
-
-    if(route.query.logoffMethod != "manual") {
-        if(appContextStore.previousRoute) {
-            if(appContextStore.previousRoute.path != "/") {
-                if(appContextStore.previousRoute.name) {
-                    postLoginRoute.name = appContextStore.previousRoute.name;
-                    postLoginRoute.params = appContextStore.previousRoute.params;
-                    postLoginRoute.query = appContextStore.previousRoute.query;
-                }
+    const lastRoute = localStorage.getItem(Last_Route);
+    if (lastRoute) {
+        try {
+            const lastRouteJson = JSON.parse(lastRoute);
+            if (lastRouteJson.name !== LogoffRoute) {
+                postLoginRoute = lastRouteJson;
             }
+        } catch (e) {
+            console.error('Error parsing last route:', e);
         }
     }
-    if(lastRoute == LogoffRoute) {
-        router.replace({name: HomeRoute, params: {}});
-    }
-    router.replace(postLoginRoute);
+    
+    await router.push(postLoginRoute);
 }
 
 </script>
@@ -139,7 +147,7 @@ const postLoginRoute = () => {
                             </div>
                         </div>
                     </div>
-                </div>    
+                </div>
                 <div class="content d-flex flex-column flex-column-fluid">
                     <div class="d-flex flex-column-fluid">
                         <div class="container">
@@ -152,15 +160,15 @@ const postLoginRoute = () => {
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>User Identifier:</label>
-                                        <input type="text" class="form-control" v-model="userIdentifier"/>
+                                        <input type="text" class="form-control" v-model="userIdentifier" />
                                     </div>
                                     <div class="form-group">
                                         <label>Password:</label>
-                                        <input type="password" class="form-control" v-model="password"/>
+                                        <input type="password" class="form-control" v-model="password" />
                                     </div>
-                                    <ButtonWithLoadingIndicator class="btn btn-primary" 
-                                    :icon="'fa-solid fa-right-to-bracket'" :label="'Log in'"
-                                    :loading="loginInProgress" @click.prevent="login">
+                                    <ButtonWithLoadingIndicator class="btn btn-primary"
+                                        :icon="'fa-solid fa-right-to-bracket'" :label="'Log in'"
+                                        :loading="loginInProgress" @click.prevent="login">
                                         Log in
                                     </ButtonWithLoadingIndicator>
                                 </div>
