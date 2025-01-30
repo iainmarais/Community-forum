@@ -6,8 +6,12 @@ namespace RestApiServer.Endpoints.ApiResponses
     {
         public Dictionary<string, List<AllowedUserAction>>? AllowedUserActions { get; set; }
 
-        public ApiSuccessResponse(string message, D? data, Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null)
-            : base(true, message, data)
+        public ApiSuccessResponse(
+            string message, 
+            D? data, 
+            Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null,
+            int? statusCode = null)
+            : base(true, message, data, ApiResponseType.Success, null, statusCode)
         {
             AllowedUserActions = allowedUserActions;
         }
@@ -17,8 +21,13 @@ namespace RestApiServer.Endpoints.ApiResponses
     {
         public Dictionary<string, List<AllowedUserAction>>? AllowedUserActions { get; set; }
 
-        public ApiSuccessResponseWithMetadata(string message, D? data, M? metadata, Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null)
-            : base(true, message, data, metadata)
+        public ApiSuccessResponseWithMetadata(
+            string message, 
+            D? data, 
+            M metadata,
+            Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null,
+            int? statusCode = null)
+            : base(true, message, data, metadata, ApiResponseType.Success, null, statusCode)
         {
             AllowedUserActions = allowedUserActions;
         }
@@ -26,14 +35,25 @@ namespace RestApiServer.Endpoints.ApiResponses
 
     public static class ApiSuccessResponses
     {
-        public static ApiSuccessResponse<D> WithData<D>(string message, D data, Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null) =>
-            new(message, data, allowedUserActions);
+        public static ApiSuccessResponse<D> WithData<D>(
+            string message, 
+            D data, 
+            Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null,
+            int? statusCode = null) =>
+            new(message, data, allowedUserActions, statusCode);
 
-        public static ApiSuccessResponseWithMetadata<D, M> WithData<D, M>(string message, D data, M metadata, Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null) =>
-            new(message, data, metadata, allowedUserActions);
+        public static ApiSuccessResponseWithMetadata<D, M> WithData<D, M>(
+            string message, 
+            D data, 
+            M metadata,
+            Dictionary<string, List<AllowedUserAction>>? allowedUserActions = null,
+            int? statusCode = null) =>
+            new(message, data, metadata, allowedUserActions, statusCode);
 
-        public static ApiSuccessResponse<object> WithoutData(string message) =>
-            new(message, null, null);
+        public static ApiSuccessResponse<object> WithoutData(
+            string message,
+            int? statusCode = null) =>
+            new(message, null, null, statusCode);
     }
 
     // Pagination support
