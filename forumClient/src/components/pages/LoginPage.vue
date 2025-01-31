@@ -1,7 +1,7 @@
 <script lang = "ts" setup>
 import { Last_Logged_In_User_Identifier, Last_Route, Token_Key, User_Refresh_Token } from '@/LocalStorage/keys';
 import { SetToken } from '@/http/AxiosClient';
-import router, { LoginRoute, MainRoute, LogoffRoute, RegisterRoute, HomeRoute } from '@/router';
+import router, { LoginRoute, MainRoute, LogoffRoute, HomeRoute } from '@/router';
 import LoginService from '@/services/LoginService';
 import { useAppContextStore, type NavbarItem } from '@/stores/AppContextStore';
 import {onMounted, ref, watch } from 'vue';
@@ -68,65 +68,73 @@ onMounted(() => {
     }, 50);
 });
 
-const login = () => {
+const LoginContext = "forum";
+const ManualLogoffMethod = "manual";
+
+const login = async () => {
+    //Return early if the user identifier and password are empty.
+    if(!identifier.value || !password.value) {
+        toast.error("Please enter a username and password.");
+        return;
+    }
+
     const request:UserLoginRequest = {
         userIdentifier: identifier.value,
         password: password.value,
         //Hardcoded this here since in this case the user is logging in via the forum. It should be inferred based on the value set in the server-side DTO.
-        userContext: "forum"
+        userContext: LoginContext
     }
     loginInProgress.value = true;
-    LoginService.LoginUser(request).then(response => {
-        if(response.data) {
-            SetToken(response.data.accessToken);
-            localStorage.setItem(Token_Key, response.data.accessToken);
-            localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
-            localStorage.setItem(User_Refresh_Token, response.data.userRefreshToken);
-            loginInProgress.value = false;
-            postLoginRoute();
-            Toast_UserLoginSuccessful(response.data.userProfile.user.username);
-        } 
-        else {
-            //Something went wrong while logging in or the payload returned by the server is invalid.
-            toast.error("Could not log in. Please try again later.");
-            loginInProgress.value = false;
-        }
-    }, error => {
+    try {
+        const response = await LoginService.LoginUser(request);
+
+            if(response.data) {
+                SetToken(response.data.accessToken);
+                localStorage.setItem(Token_Key, response.data.accessToken);
+                localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
+                localStorage.setItem(User_Refresh_Token, response.data.userRefreshToken);
+                loginInProgress.value = false;
+
+                postLoginRoute();
+                
+                //Reload the page to ensure the user is logged in.
+                window.location.reload();
+
+                Toast_UserLoginSuccessful(response.data.userProfile.user.username);
+            } 
+            else {
+                //Something went wrong while logging in or the payload returned by the server is invalid.
+                toast.error("Could not log in. Please try again later.");
+                loginInProgress.value = false;
+            }
+        } catch (error) {
         ErrorHandler.handleApiErrorResponse(error);
         loginInProgress.value = false;
-    });
-    
+    }
 }
 
 const postLoginRoute = () => {
-    //Route to the login page.
-    var postLoginRoute = {
-        name: HomeRoute,
-        params: {},
-        query: {},
-    }
     const lastRoute = localStorage.getItem(Last_Route); //Get the last route from localStorage if not login or logoff.
+    //Route to the login page.
+    var postLoginRoute = lastRoute ? JSON.parse(lastRoute) : { name: HomeRoute, params: {}, query: {}, };
     
-    if(lastRoute) {
-        const lastRouteJson = JSON.parse(lastRoute);
-        postLoginRoute = lastRouteJson;  
-    }
+    if(route.query.logoffMethod != ManualLogoffMethod) {
+        const { previousRoute } = appContextStore;
 
-    if(route.query.logoffMethod != "manual") {
-        if(appContextStore.previousRoute) {
-            if(appContextStore.previousRoute.path != "/") {
-                if(appContextStore.previousRoute.name) {
-                    postLoginRoute.name = appContextStore.previousRoute.name;
-                    postLoginRoute.params = appContextStore.previousRoute.params;
-                    postLoginRoute.query = appContextStore.previousRoute.query;
-                }
-            }
+        if (previousRoute && previousRoute.path !== "/" && previousRoute.name) {
+            postLoginRoute = {
+                name: previousRoute.name,
+                params: previousRoute.params,
+                query: previousRoute.query
+            };
         }
     }
     if(lastRoute == LogoffRoute) {
         router.replace({name: HomeRoute, params: {}});
+    } 
+    else {
+        router.replace(postLoginRoute);
     }
-    router.replace(postLoginRoute);
 }
 
 </script>
