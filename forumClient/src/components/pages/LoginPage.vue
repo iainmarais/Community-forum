@@ -13,6 +13,9 @@ import { useMainPageStore } from '@/stores/MainPageStore';
 import "@/assets/scss/pagestyles.scss";
 import Navbar from '../elements/Navbar.vue';
 import type { UserLoginRequest } from '../../Dto/UserLoginRequest';
+import { useToast } from 'vue-toastification';
+
+const toast = useToast();
 
 //Add additional login methods here.
 type LoginMethod = "identifier_password";
@@ -69,18 +72,25 @@ const login = () => {
     const request:UserLoginRequest = {
         userIdentifier: identifier.value,
         password: password.value,
-        //Hardcoded this here since in this case the user is logging in via the forum
+        //Hardcoded this here since in this case the user is logging in via the forum. It should be inferred based on the value set in the server-side DTO.
         userContext: "forum"
     }
     loginInProgress.value = true;
     LoginService.LoginUser(request).then(response => {
-        SetToken(response.data.accessToken);
-        localStorage.setItem(Token_Key, response.data.accessToken);
-        localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
-        localStorage.setItem(User_Refresh_Token, response.data.userRefreshToken);
-        loginInProgress.value = false;
-        postLoginRoute();
-        Toast_UserLoginSuccessful(response.data.userProfile.user.username);
+        if(response.data) {
+            SetToken(response.data.accessToken);
+            localStorage.setItem(Token_Key, response.data.accessToken);
+            localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
+            localStorage.setItem(User_Refresh_Token, response.data.userRefreshToken);
+            loginInProgress.value = false;
+            postLoginRoute();
+            Toast_UserLoginSuccessful(response.data.userProfile.user.username);
+        } 
+        else {
+            //Something went wrong while logging in or the payload returned by the server is invalid.
+            toast.error("Could not log in. Please try again later.");
+            loginInProgress.value = false;
+        }
     }, error => {
         ErrorHandler.handleApiErrorResponse(error);
         loginInProgress.value = false;
