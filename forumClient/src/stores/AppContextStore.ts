@@ -225,7 +225,9 @@ export const useAppContextStore = defineStore({
             this.stopPollers();
             const getStatePoll = setInterval(() => {
                 ForumService.getForumAppState().then(async response => {
-                    this.forumStats = response.data.forumStats;
+                    if(response.data) {
+                        this.forumStats = response.data.forumStats;
+                    }
                 }, error => {
                     if(error.response?.status === 401) {
                         this.stopPollers(); 
@@ -261,17 +263,18 @@ export const useAppContextStore = defineStore({
                 //Note to self:
                 //Restructure this method to get details like app config and the logged-in user's details.
                 //Stats should be done by the pollers.
-                if(!response.data.forumStats) {
+                if(!response.data) {
                     this.forumStats = defaultState.forumStats;
                 }
                 else {
                     this.forumStats = response.data.forumStats;
                 }
-                if(!response.data.loggedInUser) {
+                if(!response.data) {
                     this.loggedInUser = defaultState.loggedInUser;
                 }
                 else {
-                    this.loggedInUser = response.data.loggedInUser;
+                    //At this point, data will not be null
+                    this.loggedInUser = response.data.loggedInUser!;
                 }
                 try {
                     // This might still be built using flagsmith or some other feature flagging lib.
