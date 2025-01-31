@@ -75,7 +75,10 @@ const refreshToken = async (userId: string) => {
             loggedInUserId: userId
         };
         const response = await Post<UserRefreshResponse>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/users/auth/refresh`, refreshTokenRequest);
-        return response.data.newAccessToken;
+        //Check that the response payload is not null
+        if (response.data) {
+            return response.data.newAccessToken;
+        }
     }
 }
 
