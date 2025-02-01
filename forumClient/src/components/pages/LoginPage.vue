@@ -81,39 +81,45 @@ const login = async () => {
     const request:UserLoginRequest = {
         userIdentifier: identifier.value,
         password: password.value,
-        //Hardcoded this here since in this case the user is logging in via the forum. It should be inferred based on the value set in the server-side DTO.
         userContext: LoginContext
     }
+
     loginInProgress.value = true;
     try {
         const response = await LoginService.LoginUser(request);
 
-            if(response.data) {
-                SetToken(response.data.accessToken);
-                localStorage.setItem(Token_Key, response.data.accessToken);
-                localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
-                localStorage.setItem(User_Refresh_Token, response.data.userRefreshToken);
-                loginInProgress.value = false;
+        if(response.data) {
+            SetToken(response.data.accessToken);
+            localStorage.setItem(Token_Key, response.data.accessToken);
+            localStorage.setItem(Last_Logged_In_User_Identifier, request.userIdentifier);
+            localStorage.setItem(User_Refresh_Token, response.data.userRefreshToken);
+            loginInProgress.value = false;
+            
+            await appContextStore.getAppState();
 
-                postLoginRoute();
-                
-                //Reload the page to ensure the user is logged in.
-                window.location.reload();
+            await postLoginRoute();
+            
+            //Reload the page to ensure the user is logged in.
+            window.location.reload();
 
-                Toast_UserLoginSuccessful(response.data.userProfile.user.username);
-            } 
-            else {
-                //Something went wrong while logging in or the payload returned by the server is invalid.
-                toast.error("Could not log in. Please try again later.");
-                loginInProgress.value = false;
-            }
-        } catch (error) {
-        ErrorHandler.handleApiErrorResponse(error);
+            Toast_UserLoginSuccessful(response.data.userProfile.user.username);
+        } 
+        else {
+            //Something went wrong while logging in or the payload returned by the server is invalid.
+            toast.error("Could not log in. Please try again later.");
+            loginInProgress.value = false;
+        }
+    } catch (error) {
         loginInProgress.value = false;
+        ErrorHandler.handleApiErrorResponse(error);
+
+        //Remove any tokens that might be stored.
+        localStorage.removeItem(Token_Key);
+        localStorage.removeItem(User_Refresh_Token);
     }
 }
 
-const postLoginRoute = () => {
+const postLoginRoute = async () => {
     const lastRoute = localStorage.getItem(Last_Route); //Get the last route from localStorage if not login or logoff.
     //Route to the login page.
     var postLoginRoute = lastRoute ? JSON.parse(lastRoute) : { name: HomeRoute, params: {}, query: {}, };

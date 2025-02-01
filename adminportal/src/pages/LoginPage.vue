@@ -64,6 +64,9 @@ onMounted(() => {
     }, 50);
 });
 
+const LoginContext = "forum";
+const ManualLogoffMethod = "manual";
+
 const login = async () => {
     if (!userIdentifier.value || !password.value) {
         toast.error("Please enter both username and password");
@@ -73,7 +76,7 @@ const login = async () => {
     const request: AdminLoginRequest = {
         userIdentifier: userIdentifier.value,
         password: password.value,
-        userContext: "admin"
+        userContext: LoginContext
     }
     
     loginInProgress.value = true;
@@ -91,13 +94,18 @@ const login = async () => {
         
         // Then update UI state
         loginInProgress.value = false;
-        Toast_UserLoginSuccessful(response.data.adminUserProfile.user.username);
         
         // Navigate after state is updated
         await postLoginRoute();
+
+        //Reload the page to ensure the user is logged in.
+        window.location.reload();        
+
+        Toast_UserLoginSuccessful(response.data.adminUserProfile.user.username);
     } catch (error) {
         loginInProgress.value = false;
         ErrorHandler.handleApiErrorResponse(error);
+
         // Clear any potentially cached tokens on error
         localStorage.removeItem(Token_Key);
         localStorage.removeItem(User_Refresh_Token);
@@ -105,25 +113,28 @@ const login = async () => {
 }
 
 const postLoginRoute = async () => {
-    let postLoginRoute = {
-        name: HomeRoute,
-        params: {},
-        query: {},
-    }
-    
     const lastRoute = localStorage.getItem(Last_Route);
-    if (lastRoute) {
-        try {
-            const lastRouteJson = JSON.parse(lastRoute);
-            if (lastRouteJson.name !== LogoffRoute) {
-                postLoginRoute = lastRouteJson;
-            }
-        } catch (e) {
-            console.error('Error parsing last route:', e);
+
+    var postLoginRoute = lastRoute ? JSON.parse(lastRoute) : { name: HomeRoute, params: {}, query: {}, };
+    
+    
+    if (route.query.logoffMethod != ManualLogoffMethod) {
+        const { previousRoute } = appContextStore;
+
+        if(previousRoute && previousRoute.path !== "/" && previousRoute.name) {
+            postLoginRoute = {
+                name: previousRoute.name,
+                params: previousRoute.params,
+                query: previousRoute.query,
+            };
         }
     }
-    
-    await router.push(postLoginRoute);
+    if(lastRoute == LogoffRoute) {
+        router.replace({name: HomeRoute, params: {}});
+    }
+    else {
+        router.replace(postLoginRoute);
+    }
 }
 
 </script>
