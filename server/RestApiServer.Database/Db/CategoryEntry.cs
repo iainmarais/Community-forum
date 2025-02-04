@@ -9,16 +9,14 @@ namespace RestApiServer.Db
     {
         [Key]
         public required string CategoryId { get; set; } = string.Empty;
-        public required string CategoryName { get; set; } = string.Empty;
-        public required string CategoryDescription { get; set; } = string.Empty;
+        public string? CategoryName { get; set; } // Made optional
+        public string? CategoryDescription { get; set; } // Made optional
         public required string CreatedByUserId { get; set; } = string.Empty;
         public bool IsMarkedForDelete { get; set; } = false;
-        public DateTime DateMarkedForDelete { get; set; }
+        public DateTime? DateMarkedForDelete { get; set; } // Made optional
         public bool IsImportant { get; set; } = false;
-        //Navigation properties
+        // Navigation properties
         [JsonIgnore]
         public List<BoardEntry> BoardsCreated { get; set; } = new();
-
     }
-
 }
