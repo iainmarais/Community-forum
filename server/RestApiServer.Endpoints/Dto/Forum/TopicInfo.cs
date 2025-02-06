@@ -21,7 +21,7 @@ namespace RestApiServer.Dto.Forum
         public int NumNewThreads { get; set; }
         public ThreadBasicInfo NewestThread { get; set; } = null!;
         public required UserBasicInfo CreatedByUser { get; set; }
-        public required List<ThreadBasicInfo> Threads { get; set; }
+        public List<ThreadBasicInfo> Threads { get; set; } = new();
     }
     public class TopicSummary 
     {
