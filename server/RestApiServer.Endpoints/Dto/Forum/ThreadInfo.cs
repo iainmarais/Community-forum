@@ -15,8 +15,8 @@ namespace RestApiServer.Dto.Forum
     public class ThreadFullInfo 
     {
         public required ThreadEntry Thread { get; set; } = null!;
-        public required int TotalPosts { get; set; } = 0;
-        public required List<PostBasicInfo> Posts { get; set; }
+        public int TotalPosts { get; set; } = 0;
+        public List<PostBasicInfo> Posts { get; set; } = new();
         //Represents the user that created the thread
         public required UserBasicInfo CreatedByUser { get; set; }
     }
