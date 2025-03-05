@@ -64,7 +64,7 @@ onMounted(() => {
     }, 50);
 });
 
-const LoginContext = "forum";
+const LoginContext = "admin";
 const ManualLogoffMethod = "manual";
 
 const login = async () => {
