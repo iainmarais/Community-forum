@@ -5,10 +5,10 @@ import { defineStore } from "pinia";
 import { type ApiFileResponse } from "@/ApiResponses/ApiFileResponse";
 
 type GalleryStoreState = {
-    galleryItems: GalleryItemBasicInfo[],
-    selectedGalleryItem: GalleryItemBasicInfo,
+    galleryItems?: GalleryItemBasicInfo[],
+    selectedGalleryItem?: GalleryItemBasicInfo,
 
-    imageFile: ApiFileResponse,
+    imageFile?: ApiFileResponse,
 
     loading_galleryItems: boolean,
     result_galleryItemsSuccess: boolean

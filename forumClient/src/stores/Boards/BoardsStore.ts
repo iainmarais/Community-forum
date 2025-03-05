@@ -4,7 +4,7 @@ import ErrorHandler from "@/Handlers/ErrorHandler";
 import BoardService from "@/services/BoardService";
 
 type BoardsStoreState = {
-    boards: BoardBasicInfo[]
+    boards?: BoardBasicInfo[],
     selectedBoard?: BoardFullInfo,
 
     loading_getBoards: boolean,

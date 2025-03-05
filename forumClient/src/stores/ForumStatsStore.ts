@@ -6,7 +6,7 @@ import { defineStore } from "pinia";
 type ForumStatsStoreState = {
     loading_getForumStats: boolean,
     result_getForumStatsSuccess: boolean,
-    forumStats: ForumStats
+    forumStats?: ForumStats
 }
 
 const defaultState: ForumStatsStoreState = {
@@ -31,7 +31,7 @@ export const useForumStatsStore = defineStore({
         getForumStats() {
             this.loading_getForumStats = true;
             ForumService.getForumAppState().then(response => {
-                this.forumStats = response.data.forumStats;
+                this.forumStats = response.data!.forumStats;
                 this.result_getForumStatsSuccess = true;
                 this.loading_getForumStats = false;
             }, error => {

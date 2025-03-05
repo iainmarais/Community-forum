@@ -4,8 +4,8 @@ import CategoryService from "@/services/CategoryService";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 
 type CategoryStoreState = {
-    selectedCategory: CategoryFullInfo,
-    categories: CategoryBasicInfo[],
+    selectedCategory?: CategoryFullInfo,
+    categories?: CategoryBasicInfo[],
     loading_getCategoryFullInfo: boolean,
     result_getCategoryFullInfoSuccess: boolean,
 
@@ -19,7 +19,7 @@ type CategoryStoreState = {
     result_createCategorySuccess: boolean,
 
     selectedCategoryId?: string | undefined,
-    selectedCategoryBasicInfo: CategoryBasicInfo,
+    selectedCategoryBasicInfo?: CategoryBasicInfo,
 
     loading_selectedCategory: Map<string, boolean>,
 }

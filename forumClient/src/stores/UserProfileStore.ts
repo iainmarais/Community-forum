@@ -4,7 +4,7 @@ import UserService from "@/services/UserService";
 import { defineStore } from "pinia";
 
 type UserProfileStoreState  = {
-    user: UserBasicInfo,
+    user?: UserBasicInfo,
 
     loading_updateUserProfile: boolean,
     result_updateUserProfileSuccess: boolean

@@ -14,7 +14,6 @@ const appContextStore = useAppContextStore();
 const mainPageStore = useMainPageStore();
 
 import LoadingIndicator from '../elements/LoadingIndicator.vue';
-import ConfigurationLoader from '@/config/ConfigurationLoader';
 import UserProfileModal from '@/components/modals/UserProfileModal.vue';
 
 const route = useRoute();

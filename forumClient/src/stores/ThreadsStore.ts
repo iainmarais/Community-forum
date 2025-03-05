@@ -6,8 +6,8 @@ import TopicService from "@/services/TopicService";
 import { defineStore } from "pinia";
 
 type ThreadsStoreState = {
-    threads: ThreadBasicInfo[],
-    associatedTopic: TopicBasicInfo,
+    threads?: ThreadBasicInfo[],
+    associatedTopic?: TopicBasicInfo,
 
     loading_getAssociatedTopic: boolean,
     result_getAssociatedTopicSuccess: boolean,

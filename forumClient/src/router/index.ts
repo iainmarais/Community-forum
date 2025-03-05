@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
 import { Last_Route } from "@/LocalStorage/keys";
-import NProgress from "NProgress";
+import NProgress from "nprogress";
 
 export const LoginRoute = "login";
 export const RegisterRoute = "register";

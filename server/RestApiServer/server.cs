@@ -14,6 +14,18 @@ namespace RestApiServer
         //At a later point I intend to separate the endpoints and database into modules and use a watcher on them to restart the server.
         private static WebApplication? _App;
         private static CancellationTokenSource? _CancellationTokenSource;
+        private static List<string> _StartArgs = new()
+        {
+            "--seed-data",
+            "--update-data",
+            "--force"
+        };
+        private static List<string> _HostArgs = new()
+        {
+            "--host-alt",
+            "--host",
+            "--dev"
+        };
 
         private static void ConfigureServer(WebApplicationBuilder builder, string[] args)
         {
@@ -56,9 +68,17 @@ namespace RestApiServer
 
                 Log.Information("Starting up... Please be patient.");
                 var builder = WebApplication.CreateBuilder(args);
-
-                ConfigureServer(builder, args);
-
+                
+                if(_HostArgs.Any(args.Contains))
+                {   
+                    Log.Information("Host arguments passed. Overriding default hosting configuration.");
+                    ConfigureServer(builder, args);
+                }
+                else
+                {
+                    //No host args provided, proceed as per normal.
+                    ConfigureServer(builder, args);
+                }
                 var app = BuildWebApp(builder);
                 
                 if(args.Contains("--seed-data"))
@@ -82,8 +102,7 @@ namespace RestApiServer
                     Log.Information("Seeding completed. Continuing with server startup.");
                     app.Run();
                 }
-
-                //No args passed, start normally.
+                //No startup args passed, start normally.
                 else
                 {
                     app.Run();

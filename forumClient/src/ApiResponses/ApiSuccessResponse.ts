@@ -4,7 +4,7 @@ import type { AllowedUserActions } from '@/Actions/AllowedUserActions';
 export class ApiSuccessResponse<D> extends ApiResponse<D> {
     constructor(
         message: string,
-        data: D | null | undefined,
+        data: D | undefined,
         public allowedUserActions?: AllowedUserActions,
         statusCode?: number
     ) {
@@ -16,7 +16,7 @@ export class ApiSuccessResponse<D> extends ApiResponse<D> {
 export class ApiSuccessResponseWithMetadata<D, M> extends ApiResponseWithMetadata<D, M> {
     constructor(
         message: string,
-        data: D | null | undefined,
+        data: D | undefined,
         metadata: M,
         public allowedUserActions?: AllowedUserActions,
         statusCode?: number

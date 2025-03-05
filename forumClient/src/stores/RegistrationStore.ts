@@ -11,7 +11,7 @@ type RegistrationStoreState = {
 
     loading_RegistrationInProgress: boolean,
     result_RegistrationSuccess: boolean,
-    userResult: UserBasicInfo
+    userResult?: UserBasicInfo
 }
 
 const defaultState: RegistrationStoreState = {

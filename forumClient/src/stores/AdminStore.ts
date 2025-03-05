@@ -19,8 +19,8 @@ type AdminStoreState = {
     selectedUserId?: string;
     selectedRoleId?: string;
 
-    users: UserBasicInfo[];
-    roles: RoleBasicInfo[];
+    users: UserBasicInfo[] | undefined;
+    roles: RoleBasicInfo[] | undefined;
 
     loading_createUser: boolean;
     result_createUserSuccess: boolean;

@@ -5,7 +5,7 @@ import { defineStore } from "pinia";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 
 type SearchStoreState = {
-    topicSearchResults: PaginatedData<TopicBasicInfo[], TopicSummary>,
+    topicSearchResults?: PaginatedData<TopicBasicInfo[], TopicSummary>,
     searchResults: PaginatedData<any, any>,
 
     rowsPerPage: number,
@@ -23,19 +23,19 @@ export const useSearchStore = defineStore({
             rows: [] ,
             pageNumber: 0,
             totalPages: 0,
-            totalRows: 0,
+            rowsPerPage: 0,
             summary: {}
-        },
+        } as PaginatedData<any, any>,
 
         topicSearchResults: {
             rows: [] as TopicBasicInfo[],
             pageNumber: 0,
             totalPages: 0,
-            totalRows: 0,
+            rowsPerPage: 0,
             summary: {
                 totalTopics: 0
             }
-        },
+        } as PaginatedData<TopicBasicInfo[], TopicSummary>,
 
         searchQuery: "",
         rowsPerPage: 10,

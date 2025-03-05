@@ -8,7 +8,7 @@ import type { TopicBasicInfo } from "@/Dto/app/TopicInfo";
 import ErrorHandler from "@/Handlers/ErrorHandler";
 import type { PermissionType } from "@/Dto/PermissionInfo";
 import { useToast } from "vue-toastification";
-import NProgress from "NProgress";
+import NProgress from "nprogress";
 import { Last_Route } from "@/LocalStorage/keys";
 
 const toast = useToast();

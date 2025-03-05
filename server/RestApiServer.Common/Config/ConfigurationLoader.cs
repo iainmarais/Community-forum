@@ -16,6 +16,7 @@ namespace RestApiServer.Common.Config
             EnvironmentVariable.ShortTermCacheExpirationSecs,
             EnvironmentVariable.AspnetCoreUrls,
             EnvironmentVariable.ServerListenPrimaryIp,
+            EnvironmentVariable.ServerListenAlternateIp,
             EnvironmentVariable.ServerListenLocalhostIp,
             EnvironmentVariable.ServerHttpPort,
             EnvironmentVariable.ServerHttpsPort,

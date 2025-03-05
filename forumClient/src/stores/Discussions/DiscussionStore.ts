@@ -6,9 +6,9 @@ import type { CreatePostRequest, PostBasicInfo, PostFullInfo, PostSummary } from
 import type { PaginatedData } from "@/ApiResponses/ApiSuccessResponse";
 
 type DiscussionStoreState = {
-    thread: ThreadFullInfo,
+    thread: ThreadFullInfo | undefined,
     post: PostFullInfo | undefined,
-    posts: PaginatedData<PostFullInfo[], PostSummary>
+    posts?: PaginatedData<PostFullInfo[], PostSummary>, 
 
     loading_getThreadFullInfo: boolean,
     result_discussionSuccess: boolean,
@@ -28,7 +28,6 @@ type DiscussionStoreState = {
 const defaultState: DiscussionStoreState = {
     thread: {} as ThreadFullInfo,
     post: undefined,
-
     posts: {} as PaginatedData<PostFullInfo[], PostSummary>,
 
     loading_getThreadFullInfo: false,
@@ -64,7 +63,7 @@ export const useDiscussionStore = defineStore({
         },
         getPostsForThread() {
             this.loading_getPosts = true;
-            DiscussionService.getPostsForThread(this.thread?.thread.threadId, this.currentPageNumber, this.rowsPerPage, this.searchQuery).then((response) => {
+            DiscussionService.getPostsForThread(this.thread!.thread.threadId, this.currentPageNumber, this.rowsPerPage, this.searchQuery).then((response) => {
                 this.posts = response.data;
                 this.result_getPostsSuccess = true;
                 this.loading_getPosts = false;
