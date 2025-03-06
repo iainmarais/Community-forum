@@ -5,10 +5,10 @@ using RestApiServer.Endpoints.Services;
 namespace RestApiServer.Endpoints.Controllers
 {
     [ApiController]
-    [Route("v1/introduction")]
+    [Route("/")]
     public class GreetingController : ControllerBase
     {
-        [HttpGet("greeting")]
+        [HttpGet("")]
         public async Task<ApiSuccessResponse<string>> GreetUser()
         {
             var res = await GreetingService.GreetUser();
