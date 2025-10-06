@@ -7,7 +7,12 @@ import ConfigurationLoader from "@/config/ConfigurationLoader";
 import AxiosClient from "@/http/AxiosClient";
 
 const getForumAppState = async (): Promise<ApiSuccessResponse<ForumAppState>> => {
+    try {
     return await AxiosClient.Get(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/forum/state`);
+    } catch (error) {
+        console.error(`Could not get forum state: ${error}`);
+        return Promise.reject(error);
+    }
 }
 
 const getForumPublicAppState = async (): Promise<ApiSuccessResponse<ForumAppState>> => {
