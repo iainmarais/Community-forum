@@ -17,6 +17,12 @@ instance.interceptors.response.use((response) => {
     return response;
 }, async (error) => {
     const originalRequest = error.config as AxiosRequestConfig & { _retry?: boolean };
+    
+    // Check if this is a login or registration endpoint - don't auto-redirect on these
+    const isAuthEndpoint = originalRequest?.url?.includes('/users/login') || 
+                          originalRequest?.url?.includes('/users/register');
+    
+    // Handle 401 Unauthorized.
     if (error?.response?.status === 401) {
         if (error?.response?.data?.statusMessage?.includes("expired")) {
             if (!originalRequest._retry) {
@@ -39,32 +45,57 @@ instance.interceptors.response.use((response) => {
                     router.replace({ name: LoginRoute });
                 }
             } else {
-                // Chucked a sickie 'cause you're not allowed, mate.
+                // Token refresh already attempted, force logoff
                 ForceLogoff();
                 router.replace({ name: LoginRoute });
             }
-        } else if (error?.response?.status === 403) {
-            // Sorry mate, you don't have the authorisation to go there.
-            ErrorHandler.handleApiErrorResponse(error);
-        } else if (error?.response?.status === 404) {
-            // Well... bollocks. We can't find that sodding page! 
-            router.push ({ name: NotFoundRoute });
-            console.error("Not found error:", error);
-            ErrorHandler.handleApiErrorResponse(error);
-        router.replace({name:HomeRoute});
-        } 
-        //Return the user to the login page on any server error
-        else if (!error.response) {
-            //toast.error -> message to tell the user there is a problem communicating with the server.
+        } else {
+            // 401 but not expired token - likely invalid credentials
+            if (!isAuthEndpoint) {
+                ForceLogoff();
+                router.replace({ name: LoginRoute });
+            }
+            // For auth endpoints, let the error propagate to the caller
+        }
+    } 
+    // Handle 403 Forbidden
+    else if (error?.response?.status === 403) {
+        ErrorHandler.handleApiErrorResponse(error);
+        if (!isAuthEndpoint) {
+            toast.error("You don't have permission to access this resource.");
+        }
+    } 
+    // Handle 404 Not Found
+    else if (error?.response?.status === 404) {
+        console.error("Not found error:", error);
+        ErrorHandler.handleApiErrorResponse(error);
+        if (!isAuthEndpoint) {
+            router.push({ name: NotFoundRoute });
+        }
+    } 
+    // Handle network errors (no response from server - CORS, connection refused, etc.)
+    else if (!error.response) {
+        console.error("Network error:", {
+            message: error.message,
+            code: error.code,
+            url: originalRequest?.url
+        });
+        
+        if (!isAuthEndpoint) {
             toast.error("Could not establish a connection to the server. Please try again later.");
-            router.replace({name:LoginRoute});
+            router.replace({ name: LoginRoute });
         }
-        else {
-            // Looks like the server's hit a snag. Fair dinkum.
-            ErrorHandler.handleApiErrorResponse(error);
+        // For auth endpoints, let the error propagate so the login page can handle it
+    } 
+    // Handle other server errors (5xx)
+    else {
+        ErrorHandler.handleApiErrorResponse(error);
+        if (!isAuthEndpoint) {
+            toast.error("A server error occurred. Please try again later.");
         }
-    return Promise.reject(error);
     }
+    
+    return Promise.reject(error);
 });
 
 const refreshToken = async (userId: string) => {
@@ -74,56 +105,65 @@ const refreshToken = async (userId: string) => {
             refreshToken: refreshToken,
             loggedInUserId: userId
         };
-        const response = await Post<UserRefreshResponse>(`${ConfigurationLoader.getConfig().apiV1.baseUrl}/users/auth/refresh`, refreshTokenRequest);
-        //Check that the response payload is not null
-        if (response.data) {
-            return response.data.newAccessToken;
+        try {
+            const response = await Post<UserRefreshResponse>(
+                `${ConfigurationLoader.getConfig().apiV1.baseUrl}/users/auth/refresh`, 
+                refreshTokenRequest
+            );
+            // Check that the response payload is not null
+            if (response.data) {
+                return response.data.newAccessToken;
+            }
+        } catch (error) {
+            console.error("Failed to refresh token:", error);
+            return null;
         }
     }
+    return null;
 }
 
 const ForceLogoff = () => {
     RemoveToken();
     localStorage.removeItem(Token_Key);
+    localStorage.removeItem(User_Refresh_Token);
 }
 
-export const SetToken = (token:string) => {
+export const SetToken = (token: string) => {
     instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }
 
 const RemoveToken = () => {
-    instance.defaults.headers.common['Authorization'] = ``;
+    instance.defaults.headers.common['Authorization'] = '';
 }
 
-const Get = async <T>(url: string) : Promise<ApiSuccessResponse<T>> => {
+const Get = async <T>(url: string): Promise<ApiSuccessResponse<T>> => {
     const response = await instance.get(url);
     return response.data as ApiSuccessResponse<T>;
 }
 
-const Put = async <T>(url: string, data: any) : Promise<ApiSuccessResponse<T>> => {
+const Put = async <T>(url: string, data: any): Promise<ApiSuccessResponse<T>> => {
     const response = await instance.put(url, data);
     return response.data as ApiSuccessResponse<T>;
 }
 
-const Post = async <T>(url: string, data: any, headers?: any) : Promise<ApiSuccessResponse<T>> => {
+const Post = async <T>(url: string, data: any, headers?: any): Promise<ApiSuccessResponse<T>> => {
     const response = await instance.post(url, data, { headers });
     return response.data as ApiSuccessResponse<T>;
 }
 
-const Delete = async <T>(url: string, data: any) : Promise<ApiSuccessResponse<T>> => {
+const Delete = async <T>(url: string, data: any): Promise<ApiSuccessResponse<T>> => {
     const response = await instance.delete(url, data);
     return response.data as ApiSuccessResponse<T>;
 }
 
-//Blob responses
-
-const Post_WithBlobResponse = async <T>(url: string, data: any) : Promise<any> => {
-    const response = await instance.post(url, data, {responseType: 'blob'});
+// Blob responses
+const Post_WithBlobResponse = async <T>(url: string, data: any): Promise<any> => {
+    const response = await instance.post(url, data, { responseType: 'blob' });
     return response.data as ApiSuccessResponse<T>;
 }
 
-const Get_WithBlobResponse = async <T>(url: string) : Promise<any> => {
-    const response = await instance.get(url, {responseType: 'blob'});
+const Get_WithBlobResponse = async <T>(url: string): Promise<any> => {
+    const response = await instance.get(url, { responseType: 'blob' });
     return response.data as ApiSuccessResponse<T>;
 }
 

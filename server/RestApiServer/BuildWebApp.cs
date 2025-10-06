@@ -15,15 +15,16 @@ namespace RestApiServer
         private static WebApplication BuildWebApp(WebApplicationBuilder builder)
         {
             List<int> dontLogStatusCodes = new() { 404 };
-            List<string> dontLogEndpoints =new()  {"health/info", "/api/greeting"};
+            List<string> dontLogEndpoints = new() { "health/info", "/api/greeting" };
             List<string> dontLogBodyEndpoints = new();
-            try 
+            try
             {
                 var app = builder.Build();
 
                 string productionCorsPolicy = "productionCorsPolicy";
                 string developmentCorsPolicy = "developmentCorsPolicy";
 
+                // 1. CORS - MUST BE FIRST
                 if (app.Environment.IsDevelopment())
                 {
                     app.UseCors(developmentCorsPolicy);
@@ -34,22 +35,19 @@ namespace RestApiServer
                     app.UseCors(productionCorsPolicy);
                     app.UseExceptionHandler($"{ConfigurationLoader.GetConfigValue(EnvironmentVariable.ServerListenLocalhostIp)}/v1/error");
                 }
-                
-                //Use the exception handler middleware to deal with any exceptions thrown.
 
+                // 2. Static files and routing
                 app.UseStaticFiles();
-                
                 app.UseRouting();
 
-                //Toplevel registration of endpoints
-                app.MapControllers(); // Maps the API controllers
-
-                //Map the SignalR hubs
-                app.MapHub<ChatHub>("/v1/hubs/chat"); // Maps the SignalR hub for chat
-                app.MapHub<ForumStatsHub>("/v1/hubs/forumstats"); 
-
+                // 3. WebSockets
                 app.UseWebSockets();
 
+                // 4. Authentication and Authorization - BEFORE mapping endpoints
+                app.UseAuthentication();
+                app.UseAuthorization();
+
+                // 5. Custom middleware for logging and error handling
                 app.Use(async (context, next) =>
                 {
                     context.Request.EnableBuffering();
@@ -59,7 +57,7 @@ namespace RestApiServer
                     var requestStart = DateTime.Now;
 
                     string jsonPayload;
-                    if(dontLogBodyEndpoints.Any(endpoint => url.ToString().Contains(endpoint)))
+                    if (dontLogBodyEndpoints.Any(endpoint => url.ToString().Contains(endpoint)))
                     {
                         jsonPayload = "<removed>";
                     }
@@ -83,12 +81,11 @@ namespace RestApiServer
                         }
                         if (context.Response.StatusCode == StatusCodes.Status401Unauthorized)
                         {
-                            if(context.Request.Headers.ContainsKey("Authorization"))
+                            if (context.Request.Headers.ContainsKey("Authorization"))
                             {
                                 var token = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
                                 var tokenHandler = new JwtSecurityTokenHandler();
 
-                                //Reusing the same params from my ConfigureServices.cs file
                                 var validationParameters = new TokenValidationParameters
                                 {
                                     ValidateIssuer = false,
@@ -100,10 +97,8 @@ namespace RestApiServer
                                 };
                                 try
                                 {
-                                    var claimsPrinicpal  = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
+                                    var claimsPrinicpal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
 
-                                    //At this point the token is good, but the user does not have the appropriate authorisation.
-                                    //Bite me, I use British English :D
                                     errorResponse = new ApiCoreErrorResponse
                                     {
                                         ResponseMessage = "Unauthorised",
@@ -118,21 +113,20 @@ namespace RestApiServer
                                         ResponseMessage = "Unauthorised",
                                         StatusCode = 401,
                                         StatusMessage = "Your token has expired, and needs to be refreshed in order to continue."
-                                    };                                    
+                                    };
                                 }
-                                catch(Exception) 
+                                catch (Exception)
                                 {
                                     errorResponse = new ApiCoreErrorResponse
                                     {
                                         ResponseMessage = "Unauthorised",
                                         StatusCode = 401,
                                         StatusMessage = "Your token is invalid, please try logging in again."
-                                    };                                     
+                                    };
                                 }
 
                                 await context.Response.WriteAsJsonAsync(errorResponse);
                             }
-                            //Other HTTP401 cases
                             else
                             {
                                 errorResponse = new ApiCoreErrorResponse
@@ -154,7 +148,7 @@ namespace RestApiServer
                             await context.Response.WriteAsJsonAsync(errorResponse);
                         }
                     }
-                    catch (ClientInducedException ex)                
+                    catch (ClientInducedException ex)
                     {
                         errorResponse = new ApiCoreClientErrorResponse()
                         {
@@ -164,7 +158,7 @@ namespace RestApiServer
                         context.Response.StatusCode = StatusCodes.Status400BadRequest;
                         await context.Response.WriteAsJsonAsync(errorResponse);
                     }
-                    catch(UnauthorizedAccessException ex)
+                    catch (UnauthorizedAccessException ex)
                     {
                         errorResponse = new ApiCoreErrorResponse
                         {
@@ -175,9 +169,8 @@ namespace RestApiServer
                     }
                     catch (Exception ex)
                     {
-                        
                         string message = "Something went wrong";
-                        if(app.Environment.IsDevelopment())
+                        if (app.Environment.IsDevelopment())
                         {
                             message += $" {ex.Message} {ex.InnerException?.Message ?? ""}";
                         }
@@ -204,25 +197,28 @@ namespace RestApiServer
                             var user = AuthService.GetForumUserContext(context.User);
                             userIdentity = "{User:" + user.UserId + "}";
                         }
-                        catch(Exception)
+                        catch (Exception)
                         {
 
                         }
-                        if(!dontLogStatusCodes.Contains(statusCode))
+                        if (!dontLogStatusCodes.Contains(statusCode))
                         {
-                            if(!dontLogEndpoints.Any(ep => url.ToString().Contains(ep)))
+                            if (!dontLogEndpoints.Any(ep => url.ToString().Contains(ep)))
                             {
-                                Log.Information("{Method} {StatusCode} {Url} {RequestTime}ms {UserIdentity} {ErrorMessage}, body: {RequestBody}", method, statusCode, url, requestTime, userIdentity ?? "", exMessage ?? "", jsonPayload);
+                                Log.Information("{Method} {StatusCode} {Url} {RequestTime}ms {UserIdentity} {ErrorMessage}, body: {RequestBody}", 
+                                    method, statusCode, url, requestTime, userIdentity ?? "", exMessage ?? "", jsonPayload);
                             }
                         }
                     }
-                    
                 });
 
-                app.UseAuthentication();
-                app.UseAuthorization();
-
+                // 6. Database exception handler
                 app.UseMiddleware<DbExceptionHandler>();
+
+                // 7. Map endpoints - MUST BE LAST
+                app.MapControllers();
+                app.MapHub<ChatHub>("/v1/hubs/chat");
+                app.MapHub<ForumStatsHub>("/v1/hubs/forumstats");
 
                 return app;
             }
@@ -231,11 +227,11 @@ namespace RestApiServer
                 Log.Fatal($"Failed to build web app.\n {ex.Message}", ex);
                 throw;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Fatal($"Failed to build web app.\n {ex.Message}", ex);
                 throw;
-            }  
-        }       
+            }
+        }
     }
 }
